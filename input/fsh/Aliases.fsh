@@ -43,6 +43,7 @@ Alias: $diagnosis-role = https://dhp.uz/fhir/integrations/CodeSystem/diagnosis-r
 
 Alias: $encounter-status = http://hl7.org/fhir/encounter-status
 Alias: $encounter-status-vs = https://terminology.dhp.uz/fhir/core/ValueSet/encounter-status-vs
+Alias: $encounter-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-type-cs
 Alias: $episode-of-care-status = http://hl7.org/fhir/episode-of-care-status
 Alias: $extra-security-role-type = http://terminology.hl7.org/CodeSystem/extra-security-role-type
 Alias: $fhir-types = http://hl7.org/fhir/fhir-types
@@ -143,3 +144,19 @@ Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-Particip
 Alias: $v3-RoleClass = http://terminology.hl7.org/CodeSystem/v3-RoleClass
 Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $valueset-supplement = http://hl7.org/fhir/StructureDefinition/valueset-supplement
+
+Alias: $organizational-subordination-group-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-subordination-group-cs
+Alias: $organizational-structure-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-structure-cs
+Alias: $organizational-service-group-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-service-group-cs
+Alias: $states-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/states-cs
+Alias: $organization-tax-id-system-dhp = https://dhp.uz/fhir/core/sid/org/uz/soliq
+Alias: $screening-local-id = https://dhp.uz/fhir/core/sid/uz/screening
+Alias: $screening-patient-id = https://dhp.uz/fhir/core/sid/pid/uz/screening
+Alias: $screening-practitioner-id = https://dhp.uz/fhir/core/sid/pro/uz/screening
+Alias: $nationality-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/nationality-cs
+
+Alias: $doc-typecodes = http://hl7.org/fhir/ValueSet/doc-typecodes
+Alias: $mimetypes = http://hl7.org/fhir/ValueSet/mimetypes
+Alias: $drs-vs = http://hl7.org/fhir/ValueSet/document-reference-status
+Alias: $position-and-profession-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs
+Alias: $diagnostic-report-status-vs = https://terminology.dhp.uz/fhir/core/ValueSet/diagnostic-report-status-vs

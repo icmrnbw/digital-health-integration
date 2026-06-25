@@ -7,3 +7,17 @@ Context: Encounter.admission.origin
 * value[x] only CodeableConcept
 * valueCodeableConcept from EncounterAdmissionOriginVS (required)
 
+
+// screening
+Extension: BreastQuadrantExtension
+Id: breast-quadrant
+Title: "Breast Quadrant Extension"
+Description: "Breast quadrant used to localize findings."
+* ^status = #active
+* ^experimental = true
+* ^url = "https://dhp.uz/fhir/integrations/StructureDefinition/breast-quadrant"
+* ^context.type = #element
+* ^context.expression = "Observation.bodySite"
+* value[x] only CodeableConcept
+* valueCodeableConcept from ScreeningBreastQuadrantVS (required)
+
