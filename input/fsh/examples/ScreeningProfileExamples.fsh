@@ -53,15 +53,29 @@ Description: "Example pathology request for a breast biopsy specimen with its bi
 * orderDetail.parameter[materialClass].valueCodeableConcept = $sct#258415003
 * orderDetail.parameter[biopsySubtype].code = ScreeningHistologyOrderParameterCS#scrn-0069-00002
 * orderDetail.parameter[biopsySubtype].valueCodeableConcept = $sct#277667006
-* orderDetail.parameter[treatmentType][0].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
-* orderDetail.parameter[treatmentType][0].valueCodeableConcept = $sct#367336001
-* orderDetail.parameter[treatmentType][1].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
-* orderDetail.parameter[treatmentType][1].valueCodeableConcept = ScreeningSpecialTreatmentTypeCS#scrn-0086-00008
-* orderDetail.parameter[treatmentPeriod].code = ScreeningHistologyOrderParameterCS#scrn-0069-00007
-* orderDetail.parameter[treatmentPeriod].valuePeriod.start = 2026-08-18
-* orderDetail.parameter[treatmentPeriod].valuePeriod.end = 2026-08-18
-* orderDetail.parameter[otherTreatment].code = ScreeningHistologyOrderParameterCS#scrn-0069-00008
-* orderDetail.parameter[otherTreatment].valueString = "Individual treatment protocol"
+
+Instance: ScreeningSpecialTreatmentObservationExample
+InstanceOf: ScreeningSpecialTreatmentObservation
+Usage: #example
+Title: "Screening Special Treatment Observation Example"
+Description: "Example history of prior special treatment (chemotherapy plus an individual protocol) associated with the breast pathology examination, linked to its DiagnosticReport via supportingInfo."
+* id = "screening-special-treatment-observation-example"
+* identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
+* identifier[0].value = "PATH-REQ-1001-TREATMENT"
+* status = #final
+* subject.reference = "Patient/lola-oripova"
+* encounter.reference = "Encounter/Encounter-onco-followup"
+* effectiveDateTime = 2026-07-17T12:10:00+05:00
+* performer[0].reference = "PractitionerRole/practitioner-role-surgeon"
+* component[treatmentType][0].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
+* component[treatmentType][0].valueCodeableConcept = $sct#367336001
+* component[treatmentType][1].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
+* component[treatmentType][1].valueCodeableConcept = ScreeningSpecialTreatmentTypeCS#scrn-0086-00008
+* component[treatmentPeriod].code = ScreeningHistologyOrderParameterCS#scrn-0069-00007
+* component[treatmentPeriod].valuePeriod.start = 2026-08-18
+* component[treatmentPeriod].valuePeriod.end = 2026-08-18
+* component[otherTreatment].code = ScreeningHistologyOrderParameterCS#scrn-0069-00008
+* component[otherTreatment].valueString = "Individual treatment protocol"
 
 Instance: ScreeningSpecimenExample
 InstanceOf: ScreeningSpecimen

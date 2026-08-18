@@ -18,20 +18,15 @@ Description: "A breast cytology request must include the cytology material type.
 Severity: #error
 Expression: "orderDetail.parameter.where(code.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-histology-order-parameter-cs' and code = 'scrn-0069-00001').exists()).value.ofType(CodeableConcept).coding.where(system = 'http://snomed.info/sct' and code = '764445001').exists() implies orderDetail.parameter.where(code.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-histology-order-parameter-cs' and code = 'scrn-0069-00004').exists()).exists()"
 
-Invariant: spr-5
-Description: "Other treatment text must be present if and only if the Other special treatment type is selected."
-Severity: #error
-Expression: "orderDetail.parameter.where(code.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-histology-order-parameter-cs' and code = 'scrn-0069-00006').exists()).value.ofType(CodeableConcept).coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-special-treatment-type-cs' and code = 'scrn-0086-00008').exists() = orderDetail.parameter.where(code.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-histology-order-parameter-cs' and code = 'scrn-0069-00008').exists()).exists()"
-
 Profile: ScreeningPathologyServiceRequest
 Parent: ScreeningServiceRequest
 Id: screening-pathology-service-request
 Title: "Screening Pathology Service Request"
-Description: "FHIR R5 request for breast or cervical pathology with conditionally required material and treatment parameters."
+Description: "FHIR R5 request for breast or cervical pathology with conditionally required material parameters. Special treatment history (type, period, other) is recorded separately as ScreeningSpecialTreatmentObservation and linked to the resulting DiagnosticReport via supportingInfo, not to this request."
 * ^status = #active
 * ^experimental = true
 * ^publisher = "DHP Integration"
-* obeys spr-1 and spr-2 and spr-3 and spr-4 and spr-5
+* obeys spr-1 and spr-2 and spr-3 and spr-4
 
 * basedOn 1..1 MS
 * code.concept 1..1 MS
@@ -46,10 +41,7 @@ Description: "FHIR R5 request for breast or cervical pathology with conditionall
     biopsySubtype 0..1 MS and
     surgicalProcedureType 0..1 MS and
     cytologyMaterialType 0..1 MS and
-    cervicalMaterialType 0..1 MS and
-    treatmentType 0..* MS and
-    treatmentPeriod 0..1 MS and
-    otherTreatment 0..1 MS
+    cervicalMaterialType 0..1 MS
 
 * orderDetail.parameter[materialClass].code = ScreeningHistologyOrderParameterCS#scrn-0069-00001
 * orderDetail.parameter[materialClass].value[x] only CodeableConcept
@@ -70,18 +62,3 @@ Description: "FHIR R5 request for breast or cervical pathology with conditionall
 * orderDetail.parameter[cervicalMaterialType].code = ScreeningHistologyOrderParameterCS#scrn-0069-00005
 * orderDetail.parameter[cervicalMaterialType].value[x] only CodeableConcept
 * orderDetail.parameter[cervicalMaterialType].valueCodeableConcept from ScreeningCervicalMaterialTypeVS (required)
-
-* orderDetail.parameter[treatmentType].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
-* orderDetail.parameter[treatmentType].value[x] 1..1 MS
-* orderDetail.parameter[treatmentType].value[x] only CodeableConcept
-* orderDetail.parameter[treatmentType].valueCodeableConcept from ScreeningSpecialTreatmentTypeVS (required)
-
-* orderDetail.parameter[treatmentPeriod].code = ScreeningHistologyOrderParameterCS#scrn-0069-00007
-* orderDetail.parameter[treatmentPeriod] ^short = "Date or period of prior special treatment; omit when unknown"
-* orderDetail.parameter[treatmentPeriod] ^comment = "This is historical clinical context and is distinct from ServiceRequest.occurrence[x], which describes when the requested pathology service should occur."
-* orderDetail.parameter[treatmentPeriod].value[x] 1..1 MS
-* orderDetail.parameter[treatmentPeriod].value[x] only Period
-
-* orderDetail.parameter[otherTreatment].code = ScreeningHistologyOrderParameterCS#scrn-0069-00008
-* orderDetail.parameter[otherTreatment].value[x] 1..1 MS
-* orderDetail.parameter[otherTreatment].value[x] only string
