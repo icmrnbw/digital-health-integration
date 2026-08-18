@@ -33,9 +33,11 @@ Description: "FHIR R5 request for breast or cervical pathology with conditionall
 * ^publisher = "DHP Integration"
 * obeys spr-1 and spr-2 and spr-3 and spr-4 and spr-5
 
+* basedOn 1..1 MS
 * code.concept 1..1 MS
 * code.concept = $sct#714797009 "Histologic test"
 * orderDetail 1..1 MS
+* orderDetail.parameter.code from ScreeningHistologyOrderParameterVS (required)
 * orderDetail.parameter ^slicing.discriminator.type = #value
 * orderDetail.parameter ^slicing.discriminator.path = "code"
 * orderDetail.parameter ^slicing.rules = #open
@@ -75,10 +77,10 @@ Description: "FHIR R5 request for breast or cervical pathology with conditionall
 * orderDetail.parameter[treatmentType].valueCodeableConcept from ScreeningSpecialTreatmentTypeVS (required)
 
 * orderDetail.parameter[treatmentPeriod].code = ScreeningHistologyOrderParameterCS#scrn-0069-00007
+* orderDetail.parameter[treatmentPeriod] ^short = "Date or period of prior special treatment; omit when unknown"
+* orderDetail.parameter[treatmentPeriod] ^comment = "This is historical clinical context and is distinct from ServiceRequest.occurrence[x], which describes when the requested pathology service should occur."
 * orderDetail.parameter[treatmentPeriod].value[x] 1..1 MS
 * orderDetail.parameter[treatmentPeriod].value[x] only Period
-* orderDetail.parameter[treatmentPeriod].valuePeriod.start 1..1 MS
-* orderDetail.parameter[treatmentPeriod].valuePeriod.end 1..1 MS
 
 * orderDetail.parameter[otherTreatment].code = ScreeningHistologyOrderParameterCS#scrn-0069-00008
 * orderDetail.parameter[otherTreatment].value[x] 1..1 MS

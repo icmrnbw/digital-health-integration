@@ -41,6 +41,7 @@ Description: "Example pathology request for a breast biopsy specimen with its bi
 * id = "screening-pathology-request-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "PATH-REQ-1001"
+* basedOn[0].reference = "ServiceRequest/screening-breast-biopsy-request-example"
 * status = #active
 * intent = #order
 * code.concept = http://snomed.info/sct#714797009 "Histologic test"
@@ -53,7 +54,7 @@ Description: "Example pathology request for a breast biopsy specimen with its bi
 * orderDetail.parameter[biopsySubtype].code = ScreeningHistologyOrderParameterCS#scrn-0069-00002
 * orderDetail.parameter[biopsySubtype].valueCodeableConcept = $sct#277667006
 * orderDetail.parameter[treatmentType][0].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
-* orderDetail.parameter[treatmentType][0].valueCodeableConcept = ScreeningSpecialTreatmentTypeCS#scrn-0086-00002
+* orderDetail.parameter[treatmentType][0].valueCodeableConcept = $sct#367336001
 * orderDetail.parameter[treatmentType][1].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
 * orderDetail.parameter[treatmentType][1].valueCodeableConcept = ScreeningSpecialTreatmentTypeCS#scrn-0086-00008
 * orderDetail.parameter[treatmentPeriod].code = ScreeningHistologyOrderParameterCS#scrn-0069-00007
