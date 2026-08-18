@@ -52,6 +52,15 @@ Description: "Example pathology request for a breast biopsy specimen with its bi
 * orderDetail.parameter[materialClass].valueCodeableConcept = $sct#258415003
 * orderDetail.parameter[biopsySubtype].code = ScreeningHistologyOrderParameterCS#scrn-0069-00002
 * orderDetail.parameter[biopsySubtype].valueCodeableConcept = $sct#277667006
+* orderDetail.parameter[treatmentType][0].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
+* orderDetail.parameter[treatmentType][0].valueCodeableConcept = ScreeningSpecialTreatmentTypeCS#scrn-0086-00002
+* orderDetail.parameter[treatmentType][1].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
+* orderDetail.parameter[treatmentType][1].valueCodeableConcept = ScreeningSpecialTreatmentTypeCS#scrn-0086-00008
+* orderDetail.parameter[treatmentPeriod].code = ScreeningHistologyOrderParameterCS#scrn-0069-00007
+* orderDetail.parameter[treatmentPeriod].valuePeriod.start = 2026-08-18
+* orderDetail.parameter[treatmentPeriod].valuePeriod.end = 2026-08-18
+* orderDetail.parameter[otherTreatment].code = ScreeningHistologyOrderParameterCS#scrn-0069-00008
+* orderDetail.parameter[otherTreatment].valueString = "Individual treatment protocol"
 
 Instance: ScreeningSpecimenExample
 InstanceOf: ScreeningSpecimen
