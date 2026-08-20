@@ -31,16 +31,17 @@
 
 ### Выпуск отчёта (DiagnosticReport)
 
-Установите `DiagnosticReport.code` в процедуру (те же коды, что и в направлении). Отчёт о маммографии может также содержать общее заключение в `conclusionCode`.
+Установите `DiagnosticReport.code` в процедуру (те же коды, что и в направлении). Отчёт о маммографии может также содержать общее заключение в `conclusionCode`. Отчёт по патоморфологии переносит историю специального лечения через `supportingInfo`, а не через направление.
 
 Профиль: [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html)
 
-Примеры: [DiagnosticReport-cytology](DiagnosticReport-DiagnosticReport-cytology.html), [DiagnosticReport-colposcopy](DiagnosticReport-DiagnosticReport-colposcopy.html), [DiagnosticReport-mammography](DiagnosticReport-DiagnosticReport-mammography.html)
+Примеры: [DiagnosticReport-cytology](DiagnosticReport-DiagnosticReport-cytology.html), [DiagnosticReport-colposcopy](DiagnosticReport-DiagnosticReport-colposcopy.html), [DiagnosticReport-mammography](DiagnosticReport-DiagnosticReport-mammography.html), [DiagnosticReport-breast-pathology](DiagnosticReport-DiagnosticReport-breast-pathology.html)
 
 | Записываемая информация | Справочник | Пример кода |
 | :--- | :--- | :--- |
 | Тип отчёта | [ScreeningLaboratoryVS](ValueSet-screening-laboratory-vs.html) / [ScreeningDiagnosticProcedureVS](ValueSet-screening-diagnostic-procedure-vs.html) | `LOINC#18500-9` (цитология)<br>`SNOMED CT#392003006` (кольпоскопия)<br>`SNOMED CT#71651007` (маммография) |
 | Общее заключение BI-RADS (маммография) | [ScreeningBiradsVS](ValueSet-screening-birads-vs.html) | `screening-birads-cs#src-birads-2` (BI-RADS 2) |
+| Дополнительная клиническая информация (патоморфология) | `supportingInfo.type` из `http://terminology.hl7.org/CodeSystem/v2-0936` | `v2-0936#SCI` (Supporting Clinical Information) → `Observation` по профилю `ScreeningSpecialTreatmentObservation` |
 
 ### Результат цитологии
 
@@ -155,7 +156,23 @@
 | Тип цитологического материала молочной железы | [ScreeningBreastCytologyMaterialTypeVS](ValueSet-screening-breast-cytology-material-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00004` |
 | Тип материала шейки матки | [ScreeningCervicalMaterialTypeVS](ValueSet-screening-cervical-material-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00005` |
 
-Четыре инварианта делают второй параметр зависимым от класса материала: биопсия (`SNOMED CT#258415003`) требует указания подтипа биопсии, хирургический материал (`SNOMED CT#373826004`) - типа операции, а цитологический материал (`SNOMED CT#764445001`) - типа цитологического материала.
+Четыре инварианта делают второй параметр зависимым от класса материала: биопсия требует подтип биопсии, хирургический материал — вид операции, цитологический — вид цитологии, а профиль в целом требует ровно одну основную ветку (класс материала РМЖ либо тип материала РШМ). Виды, дата и другое лечение к этой заявке не относятся — они фиксируются отдельным `Observation`, см. следующий раздел.
+
+### Наблюдение о специальном лечении
+
+История ранее проведённого специального лечения (виды, дата, произвольный текст), относящаяся к патоморфологическому исследованию. Хранится отдельно от заявки и связывается с итоговым отчётом, а не с самим исследованием.
+
+Профиль: [ScreeningSpecialTreatmentObservation](StructureDefinition-screening-special-treatment-observation.html)
+
+Пример: [ScreeningSpecialTreatmentObservationExample](Observation-screening-special-treatment-observation-example.html)
+
+| Параметр | Справочник | Код компонента |
+| :--- | :--- | :--- |
+| Вид специального лечения (повторяемый) | [ScreeningSpecialTreatmentTypeVS](ValueSet-screening-special-treatment-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00006` |
+| Дата или период лечения | `Period` | `screening-histology-order-parameter-cs#scrn-0069-00007` |
+| Другое лечение | `string` | `screening-histology-order-parameter-cs#scrn-0069-00008` |
+
+Инвариант профиля требует текст другого лечения тогда и только тогда, когда среди видов специального лечения выбрано «Другое». Одна дата лечения представляется как `Period` с одинаковыми значениями `start` и `end`; если дата лечения неизвестна, опциональный компонент не передаётся. Этот исторический период лечения отличается от `ServiceRequest.occurrencePeriod` патоморфологической заявки, который обозначает плановое время выполнения запрошенного исследования. Ресурс связывается с итоговым `DiagnosticReport` через `DiagnosticReport.supportingInfo` (тип `http://terminology.hl7.org/CodeSystem/v2-0936#SCI`), а не с `ServiceRequest`.
 
 ### Образец (Specimen)
 
@@ -285,9 +302,9 @@
 | Окончательный диагноз по МКБ-10 | - | `LOINC#29308-4` | `section[diagnosis].entry` (Condition) |
 | Автор | - | - | `Composition.author` (PractitionerRole) |
 | Ответственная организация | - | - | `Composition.custodian` |
-| Документируемые направления, процедуры и визиты | - | - | `Composition.event.detail` |
+| Документируемые направления и процедуры | - | - | `Composition.event.detail` |
 
-Чтобы передать итоговый документ как неизменяемый, поместите его в `Bundle` с `type = document`, где Composition является **первой** записью, а все ресурсы, на которые он ссылается - Patient, Encounter, Condition, Observation, QuestionnaireResponse и прочие - находятся в том же Bundle.
+Чтобы передать итоговый документ как неизменяемый, поместите его в `Bundle` с `type = document`, где Composition является **первой** записью, а все ресурсы, на которые он ссылается - Patient, Condition, Observation, QuestionnaireResponse и прочие - находятся в том же Bundle.
 
 ### Витальные показатели (рост, вес, ИМТ)
 

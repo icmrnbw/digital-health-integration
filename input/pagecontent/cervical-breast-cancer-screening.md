@@ -154,8 +154,11 @@ Example: [ScreeningPathologyRequestExample](ServiceRequest-screening-pathology-r
 | Surgical procedure type | [ScreeningBreastSurgicalProcedureTypeVS](ValueSet-screening-breast-surgical-procedure-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00003` |
 | Breast cytology material type | [ScreeningBreastCytologyMaterialTypeVS](ValueSet-screening-breast-cytology-material-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00004` |
 | Cervical material type | [ScreeningCervicalMaterialTypeVS](ValueSet-screening-cervical-material-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00005` |
+| Special treatment type (repeatable) | [ScreeningSpecialTreatmentTypeVS](ValueSet-screening-special-treatment-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00006` |
+| Treatment date or period | `Period` | `screening-histology-order-parameter-cs#scrn-0069-00007` |
+| Other treatment | `string` | `screening-histology-order-parameter-cs#scrn-0069-00008` |
 
-Four invariants make the second parameter conditional on the material class: a biopsy (`SNOMED CT#258415003`) requires the biopsy subtype, a surgical specimen (`SNOMED CT#373826004`) requires the procedure type, and cytological material (`SNOMED CT#764445001`) requires the cytology material type.
+Five invariants make the second parameter conditional on the material class and require other-treatment text if and only if the special treatment type includes `Other`. A single treatment date is represented by a `Period` with equal `start` and `end` values; when the treatment date is unknown, the optional parameter is omitted. This historical treatment period is distinct from `ServiceRequest.occurrencePeriod`, which represents when the requested pathology service should occur.
 
 ### Specimen
 
@@ -285,9 +288,9 @@ Examples: [ScreeningCompositionExample](Composition-screening-composition-exampl
 | Final ICD-10 diagnosis | - | `LOINC#29308-4` | `section[diagnosis].entry` (Condition) |
 | Author | - | - | `Composition.author` (PractitionerRole) |
 | Responsible organisation | - | - | `Composition.custodian` |
-| Referrals, procedures and visits documented | - | - | `Composition.event.detail` |
+| Referrals and procedures documented | - | - | `Composition.event.detail` |
 
-To hand the summary over as an immutable document, put it in a `Bundle` with `type = document`, with the Composition as the **first** entry and every resource it references - Patient, Encounter, Condition, Observation, QuestionnaireResponse and the rest - in the same Bundle.
+To hand the summary over as an immutable document, put it in a `Bundle` with `type = document`, with the Composition as the **first** entry and every resource it references - Patient, Condition, Observation, QuestionnaireResponse and the rest - in the same Bundle.
 
 ### Vital signs (height, weight, BMI)
 
