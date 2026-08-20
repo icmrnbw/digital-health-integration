@@ -337,3 +337,114 @@ Description: "Example encounter representing a tuberculosis patient's inpatient 
 * diagnosis[0].condition = Reference(example-tbc-diagnosis)
 
 * diagnosis[0].use = $encounter-diagnosis-use-cs#final "Final"
+
+Instance: example-practitionerrole
+InstanceOf: UZCorePractitionerRole
+Title: "Example PractitionerRole"
+Description: "General practitioner role at the example organization"
+Usage: #example
+* language = #uz
+* active = true
+* practitioner = Reference(Practitioner/example-practitioner)
+* organization = Reference(Organization/example-organization)
+* code = $position-and-profession-cs#2211.1 "Umumiy amaliyot vrachi"
+* specialty = $profession-specialization-cs#394814009 "Umumiy amaliyot"
+
+Instance: example-headache
+InstanceOf: UZCoreCondition
+Title: "Example Uz Core Condition - Headache"
+Description: "Headache documented for Salim during an outpatient visit"
+Usage: #example
+* language = #en
+* clinicalStatus = $condition-clinical#active "Active"
+* verificationStatus = $condition-ver-status#confirmed "Confirmed"
+* severity = $sct#255604002 "Mild"
+* code = $icd-10#R51 "Headache"
+* extension[diagnosisType].valueCodeableConcept = diagnosis-type-cs#gencl-0001-00001 "Diagnosis of the referring institution"
+* bodySite = $sct#69536005 "Head structure"
+* subject = Reference(example-salim)
+* onsetDateTime = "2025-07-25"
+* recordedDate = "2025-07-29"
+* participant
+  * actor = Reference(example-practitioner)
+  * function = $provenance-participant-type#author "Author"
+* note
+  * text = "Patient complained of mild headache for two days. Condition resolved after rest and hydration."
+
+Instance: example-location
+InstanceOf: UZCoreLocation
+Usage: #example
+Title: "Example Location"
+Description: "City hospital where the outpatient visit took place"
+* language = #uz
+* status = #active
+* mode = #instance
+* name = "Toshkent shahar 1-sonli shifoxona"
+* address.text = "Toshkent shahar, Chilonzor tumani, Katta Qo'yliq 45"
+
+Instance: example-encounter
+InstanceOf: UZCoreEncounter
+Title: "Example Encounter"
+Description: "Outpatient visit at which Salim's headache was assessed"
+Usage: #example
+* status = #completed "Completed"
+* class = $v3-ActCode#AMB "Ambulatory"
+* priority = $v3ActPriority#R "Routine"
+* type[0] = encounter-type-cs#mserv-0001-00004 "Treatment services"
+* subject = Reference(example-salim)
+* subjectStatus = encounter-subject-status-cs#gencl-0003-00001 "Awake"
+
+* participant.type = $v3-ParticipationType#ATND "attender"
+* participant.actor = Reference(PractitionerRole/example-practitionerrole)
+* participant.period
+  * start = "2025-07-29T10:00:00Z"
+  * end = "2025-07-29T11:00:00Z"
+
+* reason[0]
+  * use = encounter-reason-use-cs#mserv-0002-00001 "Disease"
+  * value = Reference(Condition/example-headache)
+
+* actualPeriod
+  * start = "2025-07-29T10:00:00Z"
+  * end = "2025-07-29T11:00:00Z"
+
+* plannedStartDate = "2025-07-29T10:00:00Z"
+* plannedEndDate = "2025-07-29T11:00:00Z"
+
+* diagnosis[0].condition = Reference(Condition/example-headache)
+* diagnosis[0].use = $encounter-diagnosis-use-cs#final "Final"
+
+* location[0].location = Reference(example-location)
+* location[0].status = #completed
+
+Instance: example-healthcareservice
+InstanceOf: UZCoreHealthcareService
+Title: "Example HealthcareService"
+Description: "Immunohistochemistry service offered by an oncology centre"
+Usage: #example
+* active = true
+* providedBy = Reference(Organization/example-organization)
+* category.coding[dhpCategory]
+  * code = #cancr0013.00000
+* type.coding[dhpService]
+  * code = #cancr0013.00001
+* language = #uz
+* name = "IHC-ga xos"
+  * extension[translation][0]
+    * extension[lang][0]
+      * valueCode = #ru
+    * extension[content][+]
+      * valueString = "ИГХ специфические"
+  * extension[translation][+]
+    * extension[lang][0]
+      * valueCode = #kaa
+    * extension[content][+]
+      * valueString = "IHC ushın arnawlı"
+
+Instance: example-narcology-center
+InstanceOf: UZCoreOrganization
+Title: "Example Narcology Centre"
+Description: "Republican Centre for Mental Health and Narcology, which keeps the narcology registry"
+Usage: #example
+
+* name = "Respublika ruhiy salomatlik va narkologiya markazi"

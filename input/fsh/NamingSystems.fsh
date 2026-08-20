@@ -153,3 +153,41 @@ Usage: #definition
 * uniqueId[0].type = #uri
 * uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/sickleave"
 * uniqueId[=].preferred = true
+
+Instance: narko-identifier
+InstanceOf: NamingSystem
+Description: "Identifier system for NARKO registration numbers in Uzbekistan"
+Usage: #definition
+
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/narko-identifier"
+* name = "UzbekistanNARKOIdentifier"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-02-03"
+* description = "Identifier namespace used for NARKO registration identifiers in Uzbekistan"
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used in EpisodeOfCare.identifier when referencing NARKO registration identifiers"
+
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/reg/uz/narco"
+* uniqueId[=].preferred = true
+
+Instance: psychiatry-identifier
+InstanceOf: NamingSystem
+Description: "Identifier system for Psychiatry registration numbers in Uzbekistan"
+Usage: #definition
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/psychiatry-identifier"
+* name = "UzbekistanPsychiatryIdentifier"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-02-03"
+* description = "Identifier namespace used for Psychiatry registration identifiers in Uzbekistan"
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used in EpisodeOfCare.identifier when referencing Psychiatry registration identifiers"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/reg/uz/psychiatry"
+* uniqueId[=].preferred = true
