@@ -13,8 +13,6 @@ Description: "Downloadable summary of a cervical or breast cancer screening epis
 
 * subject 1..1 MS
 * subject only Reference(ScreeningPatient)
-* encounter 0..1 MS
-* encounter only Reference(ScreeningEncounter)
 * date 1..1 MS
 
 * author 1..* MS
@@ -24,7 +22,7 @@ Description: "Downloadable summary of a cervical or breast cancer screening epis
 
 // The referrals, procedures and visits this document reports on.
 * event 0..* MS
-* event.detail only CodeableReference(ScreeningServiceRequest or UZCoreProcedure or ScreeningEncounter)
+* event.detail only CodeableReference(ScreeningServiceRequest or UZCoreProcedure)
 
 * section ^slicing.discriminator.type = #value
 * section ^slicing.discriminator.path = "code"

@@ -10,7 +10,6 @@ Description: "Structured breast or cervical immunohistochemistry results: ER, PR
 * identifier MS
 * basedOn 0..1 MS
 * subject 1..1 MS
-* encounter 1..1 MS
 * effective[x] 1..1 MS
 * effective[x] only dateTime
 * performer 1..* MS

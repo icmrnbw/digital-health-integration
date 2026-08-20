@@ -96,7 +96,7 @@ Usage: #definition
 * date = "2026-06-03"
 * publisher = "Uzinfocom"
 * responsible = "Uzinfocom"
-* usage = "Business-identifier system for clinical and administrative records within the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System (e.g. Observation, Encounter, DiagnosticReport, ServiceRequest, Condition, QuestionnaireResponse, PractitionerRole). Person identities use the pid/pro systems instead."
+* usage = "Business-identifier system for clinical and administrative records within the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System (e.g. Observation, DiagnosticReport, ServiceRequest, Condition, QuestionnaireResponse, PractitionerRole). Person identities use the pid/pro systems instead."
 * jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
 * uniqueId[0].type = #uri
 * uniqueId[0].value = "https://dhp.uz/fhir/core/sid/uz/screening"

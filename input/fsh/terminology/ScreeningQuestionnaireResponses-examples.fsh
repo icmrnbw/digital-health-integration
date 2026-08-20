@@ -16,7 +16,6 @@ Description: "Example completed response to the Screening breast cancer risk que
 * status = #completed
 * subject.reference = "Patient/lola-oripova"
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * authored = 2025-11-17T09:18:00+05:00
 * author.reference = "PractitionerRole/practitioner-role-nurse"
 * source.reference = "Patient/lola-oripova"
@@ -91,7 +90,6 @@ Description: "Example completed response to the Screening cervical cancer risk q
 * status = #completed
 * subject.reference = "Patient/lola-oripova"
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * authored = 2025-11-17T09:18:00+05:00
 * author.reference = "PractitionerRole/practitioner-role-nurse"
 * source.reference = "Patient/lola-oripova"

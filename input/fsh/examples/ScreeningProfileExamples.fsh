@@ -14,7 +14,6 @@ Description: "Example request for an ultrasound-guided breast core biopsy."
 * intent = #order
 * code.concept = $sct#277667006
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * authoredOn = 2026-07-17T11:30:00+05:00
 * requester.reference = "PractitionerRole/practitioner-role-surgeon"
 
@@ -29,7 +28,6 @@ Description: "Example completed ultrasound-guided breast core biopsy."
 * status = #completed
 * code = $sct#277667006
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * occurrenceDateTime = 2026-07-17T12:00:00+05:00
 * performer[0].actor.reference = "PractitionerRole/practitioner-role-surgeon"
 
@@ -46,7 +44,6 @@ Description: "Example pathology request for a breast biopsy specimen with its bi
 * intent = #order
 * code.concept = http://snomed.info/sct#714797009 "Histologic test"
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * authoredOn = 2026-07-17T12:10:00+05:00
 * requester.reference = "PractitionerRole/practitioner-role-surgeon"
 * orderDetail.parameter[materialClass].code = ScreeningHistologyOrderParameterCS#scrn-0069-00001
@@ -64,7 +61,6 @@ Description: "Example history of prior special treatment (chemotherapy plus an i
 * identifier[0].value = "PATH-REQ-1001-TREATMENT"
 * status = #final
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-17T12:10:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-surgeon"
 * component[treatmentType][0].code = ScreeningHistologyOrderParameterCS#scrn-0069-00006
@@ -104,7 +100,6 @@ Description: "Example final breast cytology conclusion classified as Yokohama C3
 * status = #final
 * code = ScreeningSpecializedObservationParameterCS#scrn-0073-00029
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-17T16:00:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-pathologist"
 * valueCodeableConcept = ScreeningYokohamaCategoryCS#scrn-0084-00003
@@ -125,7 +120,6 @@ Description: "Example final breast biopsy histology result."
 * status = #final
 * code = $sct#394597005
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-17T16:00:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-pathologist"
 * component[materialClass].code = $sct#371439000
@@ -145,7 +139,6 @@ Description: "Example final breast ultrasonography result with one coded finding
 * code = http://snomed.info/sct#47079000 "Ultrasonography of breast"
 * bodySite = $sct#80248007 "Left breast structure"
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-17T11:00:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-ultrasound-doctor"
 * component[breastFinding].code = ScreeningSpecializedObservationParameterCS#scrn-0073-00004
@@ -162,7 +155,6 @@ Description: "Example final cervical histology conclusion classified as CIN 2."
 * status = #final
 * code = $sct#394597005
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-18T15:00:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-pathologist"
 * bodySite = http://snomed.info/sct#71252005 "Cervix uteri structure"
@@ -181,7 +173,6 @@ Description: "Example immunohistochemistry result derived from the breast histol
 * status = #final
 * code = $sct#117617002
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-17T16:30:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-pathologist"
 * derivedFrom[0].reference = "Observation/screening-breast-histology-observation-example"
@@ -201,7 +192,6 @@ Description: "Example final mammography result with BI-RADS, density, image qual
 * status = #final
 * code = http://snomed.info/sct#71651007 "Mammography"
 * subject.reference = "Patient/lola-oripova"
-* encounter.reference = "Encounter/Encounter-onco-followup"
 * effectiveDateTime = 2026-07-17T10:00:00+05:00
 * performer[0].reference = "PractitionerRole/practitioner-role-radiologist"
 * component[birads].code = http://snomed.info/sct#1348266008 "Breast Imaging and Reporting and Data System"

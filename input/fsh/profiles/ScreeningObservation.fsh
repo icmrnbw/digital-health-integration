@@ -59,7 +59,6 @@ Description: "Patient's place of work and employer, recorded as social history."
 * code = $sct#224406003 "Details relating to place of work and employer"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-nurse)
@@ -77,7 +76,6 @@ Description: "Result of cytological smear examination: LSIL."
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-laboratory)
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * issued = "2025-11-17T13:28:17.239+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-laborant)
@@ -95,7 +93,6 @@ Description: "Cytological smear analysis performed by an AI system."
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-laboratory)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-laborant)
@@ -114,7 +111,6 @@ Description: "High-risk HPV DNA test result."
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-laboratory)
 * performer = Reference(PractitionerRole/practitioner-role-laborant)
 * valueCodeableConcept = screening-hpv-cs#scr-hpv-3 "Positive"
 
@@ -130,7 +126,6 @@ Description: "Colposcopy conclusion including transformation zone assessment."
 * code = $sct#392003006 "Colposcopy"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-diagnostics)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-gynecologist)
@@ -150,7 +145,6 @@ Description: "Mammography summary including BI-RADS category, breast density, an
 * code = $sct#71651007 "Mammography"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-radiology)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-radiologist)
@@ -173,7 +167,6 @@ Description: "Finding (mole) detected in the right breast during mammography."
 * code = $sct#71651007 "Mammography"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-radiology)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-radiologist)
@@ -194,7 +187,6 @@ Description: "Finding (skin thickening) detected in the left breast during mammo
 * code = $sct#71651007 "Mammography"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-radiology)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-radiologist)
@@ -214,7 +206,6 @@ Description: "Medical history obtained during gynecological examination. Anthrop
 * code = $sct#5880005 "Physical examination"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-gynecologist)
@@ -231,7 +222,6 @@ Description: "Patient-reported symptoms and complaints during gynecological cons
 * code = $sct#1269489004 "Chief complaint"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-gynecologist)
@@ -250,7 +240,6 @@ Description: "Data from examination in the oncology follow-up office (complaints
 * code = $sct#281036007 "Follow-up consultation"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * issued = "2025-11-17T13:28:17.239+02:00"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-nurse)
@@ -274,7 +263,6 @@ Description: "Patient body height, recorded as a vital sign during the screening
 * code = $loinc#8302-2 "Body height"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-gynecologist)
 * valueQuantity = 160 'cm' "cm"
@@ -291,7 +279,6 @@ Description: "Patient body weight, recorded as a vital sign during the screening
 * code = $loinc#29463-7 "Body weight"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-gynecologist)
 * valueQuantity = 52 'kg' "kg"
@@ -308,7 +295,6 @@ Description: "Patient body mass index, recorded as a vital sign during the scree
 * code = $loinc#39156-5 "Body mass index (BMI) [Ratio]"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
 * performer = Reference(PractitionerRole/practitioner-role-gynecologist)
 * valueQuantity = 20.3 'kg/m2' "kg/m2"

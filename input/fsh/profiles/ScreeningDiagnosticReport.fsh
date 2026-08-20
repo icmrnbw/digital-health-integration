@@ -12,7 +12,6 @@ Description: "Profile for storing final medical reports resulting from cervical 
 * status MS
 * code MS
 * subject MS
-* encounter MS
 * issued MS
 * performer MS
 * resultsInterpreter MS
@@ -42,7 +41,6 @@ Description: "Breast pathology report (histology plus immunohistochemistry), wit
 * code = $sct#714797009 "Histologic test"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-onco-followup)
 * issued = "2026-07-17T16:00:00+05:00"
 * performer[0] = Reference(PractitionerRole/practitioner-role-pathologist)
 * resultsInterpreter[0] = Reference(PractitionerRole/practitioner-role-pathologist)
@@ -64,7 +62,6 @@ Description: "Mammography report (summary and findings)"
 * code = $sct#71651007 "Mammography"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-radiology)
 * issued = "2025-11-18T14:27:00Z"
 * performer[0] = Reference(PractitionerRole/practitioner-role-radiologist)
 * resultsInterpreter[0] = Reference(PractitionerRole/practitioner-role-radiologist)
@@ -86,7 +83,6 @@ Description: "Laboratory report: Liquid-based cytology"
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-laboratory)
 * issued = "2025-11-18T14:27:00Z"
 * performer[0] = Reference(Organization/xonobod-medical-association)
 * performer[=].display = "Khonobod City Medical Association"
@@ -107,7 +103,6 @@ Description: "Diagnostic report: Colposcopy"
 * code = $sct#392003006 "Colposcopy"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-diagnostics)
 * issued = "2025-11-18T14:27:00Z"
 * performer[0] = Reference(Organization/xonobod-medical-association)
 * performer[=].display = "Khonobod City Medical Association"
