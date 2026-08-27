@@ -12,7 +12,6 @@ Description: "Profile for creating referrals for laboratory and diagnostic inves
 * intent MS
 * code MS
 * subject MS
-* encounter MS
 * authoredOn MS
 * requester MS
 * performer MS
@@ -36,7 +35,6 @@ Description: "Referral for liquid-based cytology"
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep" 
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * authoredOn = "2025-11-10T13:28:17-05:00"
 * requester = Reference(PractitionerRole/practitioner-role-gynecologist)
 * requester.display = "Lyuba Dadaeva Yuldashevna"
@@ -56,7 +54,6 @@ Description: "Referral for HPV testing"
 * code =  $loinc#82675-0 "HPV I/H Risk 4 DNA Cvx Ql NAA+probe" 
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * authoredOn = "2025-11-10T13:28:17-05:00"
 * requester = Reference(PractitionerRole/practitioner-role-gynecologist)
 * requester.display = "Lyuba Dadaeva Yuldashevna"
@@ -76,7 +73,6 @@ Description: "Referral for colposcopy"
 * code = $sct#392003006 "Colposcopy"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * authoredOn = "2025-11-10T13:28:17-05:00"
 * requester = Reference(PractitionerRole/practitioner-role-gynecologist)
 * requester.display = "Lyuba Dadaeva Yuldashevna"
@@ -96,7 +92,6 @@ Description: "Referral for mammography"
 * code = $sct#71651007 "Mammography"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-general)
 * authoredOn = "2025-11-10T13:28:17-05:00"
 * requester = Reference(PractitionerRole/practitioner-role-gynecologist)
 * requester.display = "Lyuba Dadaeva Yuldashevna"

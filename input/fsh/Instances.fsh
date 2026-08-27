@@ -158,3 +158,62 @@ Description: "Example family-care sick leave linked to a related person"
 
 * extension[diagnosisUse].valueCodeableConcept = https://terminology.dhp.uz/fhir/core/CodeSystem/diagnosis-type-cs#gencl-0001-00008 "Final diagnosis"
 * extension[relatedPerson].valueReference = Reference(SickLeaveRelatedPersonExample)
+
+// Narcology instances
+Instance: example-narcologist
+InstanceOf: UZCorePractitioner
+Title: "Narcologist Example"
+Description: "Narcologist who sees Salim in the narcology registry"
+Usage: #example
+
+* active = true
+* name
+  * family = "Toshmatov"
+  * given[0] = "Toshmat"
+  * given[1] = "Toshmatovich"
+
+Instance: example-narcologist-role
+InstanceOf: UZCorePractitionerRole
+Title: "Narcologist Role Example"
+Description: "Narcologist role at the Republican Centre for Mental Health and Narcology"
+Usage: #example
+
+* language = #uz
+* active = true
+* practitioner = Reference(example-narcologist)
+* organization = Reference(example-narcology-center)
+* code = $position-and-profession-cs#2212.66 "Vrach narkolog"
+* specialty = $profession-specialization-cs#394587001 "Psixiatriya"
+
+Instance: example-commission-psychiatrist
+InstanceOf: UZCorePractitioner
+Title: "Commission Psychiatrist Example"
+Description: "Psychiatrist sitting on the medical-consultation commission"
+Usage: #example
+
+* active = true
+* name
+  * family = "Karimova"
+  * given[0] = "Dilnoza"
+  * given[1] = "Anvarovna"
+
+Instance: example-commission-psychiatrist-role
+InstanceOf: UZCorePractitionerRole
+Title: "Commission Psychiatrist Role Example"
+Description: "Psychiatrist role on the medical-consultation commission at the Republican Centre for Mental Health and Narcology"
+Usage: #example
+
+* language = #uz
+* active = true
+* practitioner = Reference(example-commission-psychiatrist)
+* organization = Reference(example-narcology-center)
+* code = $position-and-profession-cs#2212.93 "Vrach psixiatr"
+* specialty = $profession-specialization-cs#394587001 "Psixiatriya"
+
+Instance: example-psychiatry-center
+InstanceOf: UZCoreOrganization
+Title: "Example Psychiatry Centre"
+Description: "Republican Centre for Mental Health and Psychiatry, which maintains the psychiatry registry"
+Usage: #example
+
+* name = "Respublika ruhiy salomatlik va psixiatriya markazi"

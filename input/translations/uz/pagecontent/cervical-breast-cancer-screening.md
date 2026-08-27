@@ -154,8 +154,11 @@ Misol: [ScreeningPathologyRequestExample](ServiceRequest-screening-pathology-req
 | Jarrohlik amaliyoti turi | [ScreeningBreastSurgicalProcedureTypeVS](ValueSet-screening-breast-surgical-procedure-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00003` |
 | Sut bezi sitologik materiali turi | [ScreeningBreastCytologyMaterialTypeVS](ValueSet-screening-breast-cytology-material-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00004` |
 | Bachadon bo'yni materiali turi | [ScreeningCervicalMaterialTypeVS](ValueSet-screening-cervical-material-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00005` |
+| Maxsus davolash turi (takrorlanadi) | [ScreeningSpecialTreatmentTypeVS](ValueSet-screening-special-treatment-type-vs.html) | `screening-histology-order-parameter-cs#scrn-0069-00006` |
+| Davolash sanasi yoki davri | `Period` | `screening-histology-order-parameter-cs#scrn-0069-00007` |
+| Boshqa davolash | `string` | `screening-histology-order-parameter-cs#scrn-0069-00008` |
 
-To'rtta invariant ikkinchi parametrni material sinfiga bog'liq qiladi: biopsiya (`SNOMED CT#258415003`) biopsiya kichik turini, jarrohlik materiali (`SNOMED CT#373826004`) amaliyot turini, sitologik material (`SNOMED CT#764445001`) esa sitologik material turini talab qiladi.
+Beshta invariant ikkinchi parametrni material sinfiga bog'liq qiladi va maxsus davolash turi `Boshqa` bo'lsa va faqat shunda boshqa davolash matnini talab qiladi. Bitta davolash sanasi `start` va `end` qiymatlari teng bo'lgan `Period` sifatida uzatiladi; sana noma'lum bo'lsa, ixtiyoriy parametr uzatilmaydi. Bu tarixiy davolash davri so'ralgan patologiya xizmati qachon bajarilishi kerakligini bildiradigan `ServiceRequest.occurrencePeriod` dan farq qiladi.
 
 ### Namuna (Specimen)
 
@@ -285,9 +288,9 @@ Misollar: [ScreeningCompositionExample](Composition-screening-composition-exampl
 | MKB-10 bo'yicha yakuniy tashxis | - | `LOINC#29308-4` | `section[diagnosis].entry` (Condition) |
 | Muallif | - | - | `Composition.author` (PractitionerRole) |
 | Mas'ul tashkilot | - | - | `Composition.custodian` |
-| Hujjatlashtirilgan yo'llanmalar, muolajalar va tashriflar | - | - | `Composition.event.detail` |
+| Hujjatlashtirilgan yo'llanmalar va muolajalar | - | - | `Composition.event.detail` |
 
-Yakuniy hujjatni o'zgarmas ko'rinishda uzatish uchun uni `type = document` bo'lgan `Bundle` ga joylashtiring: Composition **birinchi** yozuv bo'lishi, u havola qiladigan barcha resurslar - Patient, Encounter, Condition, Observation, QuestionnaireResponse va boshqalar - o'sha Bundle ichida bo'lishi kerak.
+Yakuniy hujjatni o'zgarmas ko'rinishda uzatish uchun uni `type = document` bo'lgan `Bundle` ga joylashtiring: Composition **birinchi** yozuv bo'lishi, u havola qiladigan barcha resurslar - Patient, Condition, Observation, QuestionnaireResponse va boshqalar - o'sha Bundle ichida bo'lishi kerak.
 
 ### Hayotiy ko'rsatkichlar (bo'y, vazn, TVI)
 

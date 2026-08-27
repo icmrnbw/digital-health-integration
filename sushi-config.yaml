@@ -9,7 +9,7 @@ name: DHP integrations
 title: Uzbekistan Digital Health Platform - Integrations
 description: Profiles for DHP integrations with systems in Uzbekistan
 status: draft # draft | active | retired | unknown
-version: 0.7.0
+version: 0.8.0
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
 releaseLabel: ci-build
@@ -25,7 +25,7 @@ publisher:
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  uz.dhp.core: 0.7.0
+  uz.dhp.core: 0.8.0
 #
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
@@ -111,6 +111,10 @@ pages:
     title: Sick Leave
   dhis-tuberculosis.md:
     title: Tuberculosis (DHIS)
+  narcology.md:
+    title: Narcology
+  psychiatry.md:
+    title: Psychiatry
   forms.md:
     title: Forms
   changelog.md:
@@ -132,6 +136,8 @@ menu:
     Cervical and Breast Cancer Screening: cervical-breast-cancer-screening.html
     Sick Leave: sick-leave.html
     Tuberculosis (DHIS): dhis-tuberculosis.html
+    Narcology: narcology.html
+    Psychiatry: psychiatry.html
   Forms: forms.html
   Artifacts: artifacts.html
   Changelog: changelog.html

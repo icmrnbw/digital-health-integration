@@ -12,7 +12,6 @@ Description: "Profile for references to documents (consent forms, protocols) use
 * status MS
 * type MS
 * subject MS
-* context MS
 * content MS
 * content.attachment MS
 
@@ -38,8 +37,6 @@ Description: "Patient informed consent for mammography screening"
 * type.coding[0] = $loinc#59284-0 "Consent document"
 // Ссылка на пациента
 * subject = Reference(Patient/lola-oripova)
-// Контекст (визит)
-* context[0] = Reference(Encounter/Encounter-radiology)
 // Содержимое документа
 * content[0].attachment.contentType = #application/pdf
 * content[0].attachment.url = "https://storage.ssv.uz/docs/consent-lola-oripova.pdf"

@@ -12,7 +12,6 @@ Description: "Profile for storing final medical reports resulting from cervical 
 * status MS
 * code MS
 * subject MS
-* encounter MS
 * issued MS
 * performer MS
 * resultsInterpreter MS
@@ -21,11 +20,35 @@ Description: "Profile for storing final medical reports resulting from cervical 
 * study MS
 * conclusion MS
 * conclusionCode MS
+* supportingInfo MS
+* supportingInfo.type MS
+* supportingInfo.reference MS
 
 // * status from $diagnostic-report-status-vs (required)
 * code from ScreeningServiceRequestCodesVS (preferred)
 * conclusionCode from ScreeningObservationValuesVS (preferred)
 
+
+Instance: DiagnosticReport-breast-pathology
+InstanceOf: ScreeningDiagnosticReport
+Usage: #example
+Description: "Breast pathology report (histology plus immunohistochemistry), with the patient's prior special treatment history carried as supporting information rather than on the pathology request."
+* identifier[0].system = $screening-local-id
+* identifier[=].value = "126"
+* identifier[=].use = #usual
+* basedOn[0] = Reference(ServiceRequest/screening-pathology-request-example)
+* status = #final
+* code = $sct#714797009 "Histologic test"
+* subject = Reference(Patient/lola-oripova)
+* subject.display = "Lola Oripova Shakhzodovna"
+* issued = "2026-07-17T16:00:00+05:00"
+* performer[0] = Reference(PractitionerRole/practitioner-role-pathologist)
+* resultsInterpreter[0] = Reference(PractitionerRole/practitioner-role-pathologist)
+* result[0] = Reference(Observation/screening-breast-histology-observation-example)
+* result[+] = Reference(Observation/screening-immunohistochemistry-observation-example)
+* supportingInfo[0].type = $v2-0936#SCI "Supporting Clinical Information"
+* supportingInfo[=].reference = Reference(Observation/screening-special-treatment-observation-example)
+* conclusion = "Патоморфологическое заключение и связанная ИГХ опубликованы."
 
 Instance: DiagnosticReport-mammography
 InstanceOf: ScreeningDiagnosticReport
@@ -39,7 +62,6 @@ Description: "Mammography report (summary and findings)"
 * code = $sct#71651007 "Mammography"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-radiology)
 * issued = "2025-11-18T14:27:00Z"
 * performer[0] = Reference(PractitionerRole/practitioner-role-radiologist)
 * resultsInterpreter[0] = Reference(PractitionerRole/practitioner-role-radiologist)
@@ -61,7 +83,6 @@ Description: "Laboratory report: Liquid-based cytology"
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-laboratory)
 * issued = "2025-11-18T14:27:00Z"
 * performer[0] = Reference(Organization/xonobod-medical-association)
 * performer[=].display = "Khonobod City Medical Association"
@@ -82,7 +103,6 @@ Description: "Diagnostic report: Colposcopy"
 * code = $sct#392003006 "Colposcopy"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
-* encounter = Reference(Encounter/Encounter-diagnostics)
 * issued = "2025-11-18T14:27:00Z"
 * performer[0] = Reference(Organization/xonobod-medical-association)
 * performer[=].display = "Khonobod City Medical Association"
