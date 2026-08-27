@@ -73,7 +73,7 @@ Description: "Composition profile for Form 111 (Homilador va tuqqan ayolning ind
 * section[registrationAndPersonalInformation].code = $loinc#LP36348-8 "Patient Information"
 * section[registrationAndPersonalInformation].code ^short = "Qon guruhi, homiladorning va turmush o'rtog'ining Rh mansubligi, ro'yxatga olingan kun, WR I, WR II, OIV, HBs Ag I, HBs Ag II, gonokokk, toksoplazmoz, boshqa tekshiruv, Med ID raqami, F.I.Sh, tug'ilgan sanasi, oilaviy sharoiti, yashash manzili, telefon raqami, ma'lumoti, ish joyi va uning telefon raqami, mutaxassisligi, lavozimi, ish sharoiti, turmush o'rtog'ining F.I.Sh, ish joyi va telefon raqami"
 * section[registrationAndPersonalInformation].entry 1..*
-* section[registrationAndPersonalInformation].entry only Reference(UZCorePatient or UZCoreRelatedPerson or Organization or UZCoreObservation or UZCoreSocioeconomicObservation or UZCoreEpisodeOfCare)
+* section[registrationAndPersonalInformation].entry only Reference(UZCorePatient or UZCoreRelatedPerson or Organization or UZCoreObservation or UZCoreEpisodeOfCare)
 * section[registrationAndPersonalInformation].entry ^short = "Bemor, turmush o'rtog'i, muassasa, ish joyi, ijtimoiy-iqtisodiy kuzatuvlar va laboratoriya natijalari"
 
 // 2. Tashxis

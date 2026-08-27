@@ -869,7 +869,9 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2025-10-20"
-* valueCodeableConcept = $form111-education-level-cs#chr-0010-00002 "O'rta umumiy ta'lim"
+* valueCodeableConcept.coding[0] = $education-cs#regis0005.00004 "O'rtacha"
+* valueCodeableConcept.coding[+] = $form111-education-level-cs#chr-0010-00003 "O'rta umumiy ta'lim"
+* valueCodeableConcept.text = "O'rta umumiy ta'lim"
 
 Instance: observation-111-workplace-name
 InstanceOf: UZCoreObservation
