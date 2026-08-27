@@ -15,3 +15,15 @@ Description: "CodeSystem for Screening Ultrasound Intramammary Node Status"
   * ^designation[=].value = "Лоцируются"
   * ^designation[+].language = #en
   * ^designation[=].value = "Visualized"
+
+* #scrn-0047-00003 "Patologiyasiz"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Без патологий"
+  * ^designation[+].language = #en
+  * ^designation[=].value = "Without pathology"
+
+* #scrn-0047-00004 "O‘zgargan"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Изменены"
+  * ^designation[+].language = #en
+  * ^designation[=].value = "Changed"

@@ -14,3 +14,9 @@ Description: "CodeSystem for Screening Ultrasound Axillary Node Status"
   * ^designation[=].value = "Изменены"
   * ^designation[+].language = #en
   * ^designation[=].value = "Changed"
+
+* #scrn-0048-00003 "Vizualizatsiya qilinmaydi"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Не лоцируются"
+  * ^designation[+].language = #en
+  * ^designation[=].value = "Not visualized"

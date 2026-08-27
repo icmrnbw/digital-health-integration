@@ -22,12 +22,6 @@ Description: "CodeSystem for Screening Urination Characteristic"
   * ^designation[+].language = #en
   * ^designation[=].value = "Difficult"
 
-* #scrn-0016-00004 "Og‘riqli"
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "Болезненное"
-  * ^designation[+].language = #en
-  * ^designation[=].value = "Painful"
-
 * #scrn-0016-00005 "Og‘riqsiz"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Безболезненное"

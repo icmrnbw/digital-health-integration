@@ -1,7 +1,7 @@
 CodeSystem: ScreeningObesityDegreeCS
 Id: screening-obesity-degree-cs
 Title: "Screening Obesity Degree CodeSystem"
-Description: "Local supplement to the SNOMED CT-based screening-obesity-degree-vs, for the degree I-IV grading scale that has no SNOMED CT equivalent."
+Description: "Local codes complementing the SNOMED CT-based screening-obesity-degree-vs, for the degree I-IV grading scale that has no SNOMED CT equivalent."
 * insert OriginalCodeSystemDraft(screening-obesity-degree-cs)
 
 * #scrn-0025-00001 "I"

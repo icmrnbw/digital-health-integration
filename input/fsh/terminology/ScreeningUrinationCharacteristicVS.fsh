@@ -6,3 +6,4 @@ Description: "Defines Screening Urination Characteristic"
 * ^experimental = true
 * ^language = #uz
 * include codes from system screening-urination-characteristic-cs
+* include $sct#49650001

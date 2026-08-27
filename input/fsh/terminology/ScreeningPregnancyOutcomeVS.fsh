@@ -10,4 +10,4 @@ Description: "Defines Screening Pregnancy Outcome"
 * include $sct#276507005
 * include $sct#285409006
 * include $sct#17369002
-* include codes from system screening-pregnancy-outcome-cs
+* include $sct#386641000
