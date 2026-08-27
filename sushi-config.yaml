@@ -26,6 +26,9 @@ publisher:
 #
 dependencies:
   uz.dhp.core: 0.7.0
+  # sdc-questionnaire-calculatedExpression used by the DMED screening questionnaires
+  # (Diabetes, BreastCancer, Oncohematology risk scoring).
+  hl7.fhir.uv.sdc: 3.0.0
 #
 #
 # The pages property corresponds to IG.definition.page. SUSHI can
