@@ -136,20 +136,20 @@ Description: "Pre-test probability of ischemic heart disease (ihd_screenings)"
         * extension[content].valueString = "Pain type"
     * type = #coding
     * readOnly = true
-    * answerOption[+].valueCoding = $sct#429559004 "Tipik stenokardiya"
+    * answerOption[+].valueCoding = $sct#429559004 "Typical angina"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Типичная стенокардия"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
-      * extension[lang].valueCode = #en
-      * extension[content].valueString = "Typical angina"
-    * answerOption[+].valueCoding = $sct#371807002 "Atipik stenokardiya"
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Tipik stenokardiya"
+    * answerOption[+].valueCoding = $sct#371807002 "Atypical angina"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Атипичная стенокардия"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
-      * extension[lang].valueCode = #en
-      * extension[content].valueString = "Atypical angina"
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Atipik stenokardiya"
     * answerOption[+].valueCoding = $ihd-chest-pain-type-cs#non-anginal "Noanginoz og'riq"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
@@ -157,13 +157,13 @@ Description: "Pre-test probability of ischemic heart disease (ihd_screenings)"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Non-anginal pain"
-    * answerOption[+].valueCoding = $sct#267036007 "Nafas qisilishi ekvivalenti"
+    * answerOption[+].valueCoding = $sct#267036007 "Dyspnea"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Эквивалент одышки"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
-      * extension[lang].valueCode = #en
-      * extension[content].valueString = "Dyspnea equivalent"
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Nafas qisilishi ekvivalenti"
 
   * item[+]
     * linkId = "ihd-risk-score"

@@ -7,6 +7,14 @@
 # Faulty error in IG publisher, this link does work
 The link 'https://dhp.uz/fhir/core/%
 
+# IG Publisher auto-generates "Formal Views of Profile Content" CSV/Excel/Schematron download
+# links on some StructureDefinition pages (seen on form-111-pregnant-woman-individual-card-composition
+# and screening-encounter), but never actually produces those files anywhere in the build output -
+# not something FSH source controls.
+The link '%.csv' for "CSV" cannot be resolved
+The link '%.xlsx' for "Excel" cannot be resolved
+The link '%.sch' for "Schematron" cannot be resolved
+
 # SDC only publishes for R4 (no R5 package exists); we depend on it cross-version so the
 # sdc-questionnaire-calculatedExpression used by the DMED screening questionnaires resolves - same suppression as in uz.dhp.core
 This IG is version 5.0.0, while the IG 'hl7.fhir.uv.sdc' is from version 4.0.1
