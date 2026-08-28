@@ -24,7 +24,7 @@ The ImplementationGuide uses package hl7.fhir.uv.sdc#3.0.0 released on 2022-03-0
 # SNOMED CT has no official Uzbek-language designations, so any answerOption coded against it in a
 # uz-language Questionnaire (Cerebrovascular, IhdPretest) necessarily falls back to the English
 # canonical display - that's correct/expected, not a real problem.
-There are no valid display names found for the code http://snomed.info/sct#% for language(s) 'uz'. The display is '%' which is a valid display for the default language (for 'http://snomed.info/sct#%')
+There are no valid display names found for the code http://snomed.info/sct#%
 
 
 # Warning that can be ignored for our use since our instances use Uzbek/Russian but generated narrative in English
