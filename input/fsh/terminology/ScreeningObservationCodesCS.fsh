@@ -15,6 +15,18 @@ Description: "SNOMED CT supplement containing Uzbek and Russian designations for
   * ^designation[+].language = #uz
   * ^designation[=].value = "Jismoniy ko'rik"
 
+* #49650001 "Dysuria"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Дизурия"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Dizuriya"
+
+* #443371000124107 "Obese class I"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Ожирение I степени"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "I darajali semizlik"
+
 * #1269489004 "Chief complaint"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Основная жалоба"

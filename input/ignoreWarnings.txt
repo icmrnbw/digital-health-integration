@@ -17,12 +17,18 @@ The ImplementationGuide uses package hl7.fhir.uv.sdc#3.0.0 released on 2022-03-0
 # questionnaire answerOptions), not ISO 3166 (the jurisdiction UZ on every CodeSystem/ValueSet),
 # not LOINC - so a uz-language resource necessarily falls back to the English canonical display.
 # That is correct and unfixable on our side.
-# Scoped to uz deliberately: the same message for ru is actionable, because we do ship ru
-# designations in our SNOMED supplements, so a ru gap means a supplement is missing. It stays visible.
+# Originally scoped to uz only, on the assumption that a ru gap was actionable via our local
+# SNOMED CT supplement CodeSystems (e.g. SnomedUzSupplementCS, ScreeningObservationCodesCS). Verified
+# empirically (2026-09-02) that this assumption doesn't hold when validating with an external -tx
+# server (tx.fhir.org, as both CI and _genonce.sh do): this message comes from the terminology
+# server checking SNOMED CT's own official ru designations, which never sees our local, unpublished
+# package supplements regardless of designation or valueset-supplement wiring. So a ru gap is exactly
+# as unfixable on our side as a uz gap - broadened to cover both.
 # Safe to match this broadly: the message only fires when the display used IS valid for the default
 # language, so it cannot mask a wrong code - that case is a separate "Wrong Display Name" message,
 # which is deliberately not suppressed.
 %for language(s) 'uz'. The display is%
+%for language(s) 'ru'. The display is%
 
 
 # Warning that can be ignored for our use since our instances use Uzbek/Russian but generated narrative in English
