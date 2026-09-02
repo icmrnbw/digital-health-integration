@@ -7,24 +7,22 @@
 # Faulty error in IG publisher, this link does work
 The link 'https://dhp.uz/fhir/core/%
 
-# IG Publisher auto-generates "Formal Views of Profile Content" CSV/Excel/Schematron download
-# links on some StructureDefinition pages (seen on form-111-pregnant-woman-individual-card-composition
-# and screening-encounter), but never actually produces those files anywhere in the build output -
-# not something FSH source controls.
-The link '%.csv' for "CSV" cannot be resolved
-The link '%.xlsx' for "Excel" cannot be resolved
-The link '%.sch' for "Schematron" cannot be resolved
-
 # SDC only publishes for R4 (no R5 package exists); we depend on it cross-version so the
 # sdc-questionnaire-calculatedExpression used by the DMED screening questionnaires resolves - same suppression as in uz.dhp.core
 This IG is version 5.0.0, while the IG 'hl7.fhir.uv.sdc' is from version 4.0.1
 The ImplementationGuide is based on FHIR version 5.0.0 but package hl7.fhir.uv.sdc#3.0.0 is based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
 The ImplementationGuide uses package hl7.fhir.uv.sdc#3.0.0 released on 2022-03-08, but the most recent appropriate version is 4.0.0. This reference is getting old and the more recent version should be considered
 
-# SNOMED CT has no official Uzbek-language designations, so any answerOption coded against it in a
-# uz-language Questionnaire (Cerebrovascular, IhdPretest) necessarily falls back to the English
-# canonical display - that's correct/expected, not a real problem.
-There are no valid display names found for the code http://snomed.info/sct#%
+# No external code system we use publishes Uzbek designations - not SNOMED CT (the DMED
+# questionnaire answerOptions), not ISO 3166 (the jurisdiction UZ on every CodeSystem/ValueSet),
+# not LOINC - so a uz-language resource necessarily falls back to the English canonical display.
+# That is correct and unfixable on our side.
+# Scoped to uz deliberately: the same message for ru is actionable, because we do ship ru
+# designations in our SNOMED supplements, so a ru gap means a supplement is missing. It stays visible.
+# Safe to match this broadly: the message only fires when the display used IS valid for the default
+# language, so it cannot mask a wrong code - that case is a separate "Wrong Display Name" message,
+# which is deliberately not suppressed.
+%for language(s) 'uz'. The display is%
 
 
 # Warning that can be ignored for our use since our instances use Uzbek/Russian but generated narrative in English
