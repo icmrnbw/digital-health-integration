@@ -5,4 +5,5 @@ Description: "Value set containing Cervical Cancer Screening Questionnaire"
 * insert IntegrationsValueSet(cervical-cancer-screening-questionnaire-vs)
 * ^experimental = true
 
-* include codes from system cervical-cancer-screening-questionnaire-cs
+* include $sct#302757007
+* include $sct#80182007

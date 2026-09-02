@@ -4,6 +4,12 @@ Title: "Screening Breast Biopsy Subtype CodeSystem"
 Description: "CodeSystem for Screening Breast Biopsy Subtype"
 * insert OriginalCodeSystemDraft(screening-breast-biopsy-subtype-cs)
 
+* #scrn-0061-00004 "Stereotaktik"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Стереотаксическая"
+  * ^designation[+].language = #en
+  * ^designation[=].value = "Stereotactic"
+
 * #scrn-0061-00006 "Boshqa"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Другое"

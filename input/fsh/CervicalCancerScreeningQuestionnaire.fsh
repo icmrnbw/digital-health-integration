@@ -36,14 +36,20 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = cervical-cancer-screening-questionnaire-cs#scrn-0075-00001 "Muntazam"
+  * answerOption[+].valueCoding = $sct#302757007 "Regular periods"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Muntazam"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Регулярный"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Regular"
-  * answerOption[+].valueCoding = cervical-cancer-screening-questionnaire-cs#scrn-0075-00002 "Muntazamsiz"
+  * answerOption[+].valueCoding = $sct#80182007 "Irregular periods"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Muntazamsiz"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нерегулярный"
@@ -76,14 +82,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -106,7 +112,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "menopause"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "sexual-life"
@@ -120,14 +126,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -149,7 +155,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "sexual-life"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "pregnancies"
@@ -163,14 +169,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -192,7 +198,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "pregnancies"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "deliveries"
@@ -206,14 +212,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -235,7 +241,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "deliveries"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "abortions"
@@ -249,14 +255,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -279,7 +285,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "abortions"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "contraception"
@@ -293,14 +299,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -323,7 +329,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "contraception"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "gyn-surgery"
@@ -337,14 +343,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -367,7 +373,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "gyn-surgery"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "chemo-radiotherapy"
@@ -381,14 +387,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -411,7 +417,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "chemo-radiotherapy"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "hormone-therapy"
@@ -425,14 +431,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -455,7 +461,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "hormone-therapy"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "cervix-treatment"
@@ -469,14 +475,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -499,7 +505,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "cervix-treatment"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "contact-bleeding"
@@ -513,14 +519,14 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * type = #coding
   * required = true
   * repeats = false
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Да"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Нет"
@@ -543,7 +549,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
     * enableWhen[+]
       * question = "contact-bleeding"
       * operator = #=
-      * answerCoding = $fertility-questionnaire-cs#Y
+      * answerCoding = $v2-0532#Y
 
 * item[+]
   * linkId = "specimen-date"
@@ -573,7 +579,7 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
 * item[+]
   * linkId = "menstrual-cycle"
   * text = "Hayz tsikli"
-  * answer[+].valueCoding = cervical-cancer-screening-questionnaire-cs#scrn-0075-00001 "Muntazam"
+  * answer[+].valueCoding = $sct#302757007 "Regular periods"
 
 * item[+]
   * linkId = "last-menstruation-date"
@@ -583,13 +589,13 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
 * item[+]
   * linkId = "menopause"
   * text = "Menopauza boshlanganmi?"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "sexual-life"
   * text = "Jinsiy hayot boshlanganmi?"
   * answer[+]
-    * valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * valueCoding = $v2-0532#Y "Yes"
     * item[+]
       * linkId = "sexual-life-age"
       * text = "Jinsiy hayot boshlanish yoshi"
@@ -599,7 +605,7 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
   * linkId = "pregnancies"
   * text = "Homiladorliklar bo'lganmi?"
   * answer[+]
-    * valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * valueCoding = $v2-0532#Y "Yes"
     * item[+]
       * linkId = "pregnancies-count"
       * text = "Homiladorliklar soni"
@@ -609,7 +615,7 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
   * linkId = "deliveries"
   * text = "Tug'ruqlar bo'lganmi?"
   * answer[+]
-    * valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * valueCoding = $v2-0532#Y "Yes"
     * item[+]
       * linkId = "deliveries-count"
       * text = "Tug'ruq soni"
@@ -619,7 +625,7 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
   * linkId = "abortions"
   * text = "Tibbiy abortlar bo'lganmi?"
   * answer[+]
-    * valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * valueCoding = $v2-0532#Y "Yes"
     * item[+]
       * linkId = "abortions-count"
       * text = "Tibbiy abortlar soni"
@@ -628,33 +634,33 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
 * item[+]
   * linkId = "contraception"
   * text = "Kontratseptiv vositalardan foydalanasizmi?"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "gyn-surgery"
   * text = "Ginekologik operatsiyalar bo'lganmi?"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "chemo-radiotherapy"
   * text = "Kimyoterapiya yoki nur terapiyasidan o'tganmisiz?"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "hormone-therapy"
   * text = "Gormon terapiyasidan foydalanish"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "cervix-treatment"
   * text = "Bachadon bo'yni davolanganmi?"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "contact-bleeding"
   * text = "Aloqa paytida qon ketish kuzatilganmi?"
   * answer[+]
-    * valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * valueCoding = $v2-0532#Y "Yes"
     * item[+]
       * linkId = "bleeding-type"
       * text = "Qanday qon ketish turi kuzatilgan?"

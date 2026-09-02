@@ -159,7 +159,7 @@ Description: "Example for Diabetes Screening Questionnaire"
   * type = #coding
   * required = true
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 5
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -168,7 +168,7 @@ Description: "Example for Diabetes Screening Questionnaire"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -190,8 +190,11 @@ Description: "Example for Diabetes Screening Questionnaire"
   * type = #coding
   * required = true
 
-  * answerOption[+].valueCoding = screening-diabetes-cs#scrn-0074-00009 "Ota-ona, aka-uka, opa-singil"
+  * answerOption[+].valueCoding = $sct#416855002 "Family history of diabetes mellitus in first degree relative"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 4
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Ota-ona, aka-uka, opa-singil"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "У родителей, братьев, сестёр"
@@ -208,7 +211,7 @@ Description: "Example for Diabetes Screening Questionnaire"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Grandparents, aunt, uncle"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -242,7 +245,10 @@ Description: "Example for Diabetes Screening Questionnaire"
   * type = #coding
   * required = true
 
-  * answerOption[+].valueCoding = screening-diabetes-cs#scrn-0074-00011 "Och qoringa"
+  * answerOption[+].valueCoding = $sct#726054005 "After fasting"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Och qoringa"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Натощак"
@@ -250,7 +256,10 @@ Description: "Example for Diabetes Screening Questionnaire"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Fasting"
 
-  * answerOption[+].valueCoding = screening-diabetes-cs#scrn-0074-00012 "Ovqatlangandan 2 soat o'tib"
+  * answerOption[+].valueCoding = $sct#703768009 "Two hours after a meal"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Ovqatlangandan 2 soat o'tib"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Через 2 часа после приема пищи"
@@ -452,11 +461,11 @@ Description: "Bemorning qandli diabetni erta aniqlash skriningiga to‘ldirilgan
 
 * item[+]
   * linkId = "sedentary"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "family-history"
-  * answer[+].valueCoding = screening-diabetes-cs#scrn-0074-00009 "Ota-ona, aka-uka, opa-singil"
+  * answer[+].valueCoding = $sct#416855002 "Family history of diabetes mellitus in first degree relative"
 
 * item[+]
   * linkId = "glucose"
@@ -464,7 +473,7 @@ Description: "Bemorning qandli diabetni erta aniqlash skriningiga to‘ldirilgan
 
 * item[+]
   * linkId = "blood-sampling"
-  * answer[+].valueCoding = screening-diabetes-cs#scrn-0074-00011 "Och qoringa"
+  * answer[+].valueCoding = $sct#726054005 "After fasting"
 
 * item[+]
   * linkId = "diabetes-risk-result"

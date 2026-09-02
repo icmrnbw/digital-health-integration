@@ -52,26 +52,9 @@ Description: "Screening Diabetes CodeSystem with Uzbek and Russian translations"
   * ^designation[+].language = #en
   * ^designation[=].value = "88 and above"
 
-* #scrn-0074-00009 "Ota-ona, aka-uka, opa-singil"
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "У родителей, братьев, сестер"
-  * ^designation[+].language = #en
-  * ^designation[=].value = "Parents, siblings"
-
 * #scrn-0074-00010 "Buva, buvi, xola, amaki, tog'a"
   * ^designation[0].language = #ru
   * ^designation[=].value = "У дедушки, бабушки, тети, дяди"
   * ^designation[+].language = #en
   * ^designation[=].value = "Grandparents, aunt, uncle"
 
-* #scrn-0074-00011 "Och qoringa"
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "Натощак"
-  * ^designation[+].language = #en
-  * ^designation[=].value = "Fasting"
-
-* #scrn-0074-00012 "Ovqatlangandan 2 soat o'tib"
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "Через 2 часа после еды"
-  * ^designation[+].language = #en
-  * ^designation[=].value = "2 hours after meal"

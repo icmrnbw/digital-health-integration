@@ -180,7 +180,10 @@ Description: "Example for CVD Risk Screening Questionnaire"
   * type = #coding
   * required = true
 
-  * answerOption[+].valueCoding = $cvd-tobacco-use-cs#scrn-0073-00001 "Iste'mol qilmaydi"
+  * answerOption[+].valueCoding = $sct#702979003 "Never used tobacco"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Iste'mol qilmaydi"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Не употребляет"
@@ -188,7 +191,10 @@ Description: "Example for CVD Risk Screening Questionnaire"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Does not use"
 
-  * answerOption[+].valueCoding = $cvd-tobacco-use-cs#scrn-0073-00002 "Iste'mol qiladi"
+  * answerOption[+].valueCoding = $sct#110483000 "Tobacco user"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Iste'mol qiladi"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Употребляет"
@@ -196,7 +202,10 @@ Description: "Example for CVD Risk Screening Questionnaire"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Uses"
 
-  * answerOption[+].valueCoding = $cvd-tobacco-use-cs#scrn-0073-00003 "Tashlagan"
+  * answerOption[+].valueCoding = $sct#702975009 "Ex-tobacco user"
+  * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Tashlagan"
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
     * extension[content].valueString = "Бросил"
@@ -451,7 +460,7 @@ Description: "Bemorning yurak-qon tomir kasalliklari xavfini erta aniqlash skrin
 
 * item[+]
   * linkId = "tobacco-use"
-  * answer[+].valueCoding = $cvd-tobacco-use-cs#scrn-0073-00002 "Iste'mol qiladi"
+  * answer[+].valueCoding = $sct#110483000 "Tobacco user"
 
 * item[+]
   * linkId = "cvd-risk-result"

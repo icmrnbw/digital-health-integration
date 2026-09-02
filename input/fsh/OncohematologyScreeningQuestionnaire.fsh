@@ -35,7 +35,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Is there unexplained weight loss during the last 6 months?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -44,7 +44,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -64,7 +64,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Do unexplained headaches occur, especially in the morning?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -73,7 +73,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -93,7 +93,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Are increasing body and joint pains or limping present?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -102,7 +102,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -122,7 +122,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Do unexplained bruises and rashes appear over the body?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -131,7 +131,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -151,7 +151,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Are there spontaneous bleedings from the nose, mouth, gums, or ears?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -160,7 +160,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -180,7 +180,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Do nausea and vomiting with blood streaks occur frequently?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -189,7 +189,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -209,7 +209,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Are weakness, restlessness, or increased night sweating observed?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -218,7 +218,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -238,7 +238,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Has there been a sudden episode of dizziness and blurred vision?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -247,7 +247,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -267,7 +267,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Is there periodic unexplained fever?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -276,7 +276,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -296,7 +296,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Is there difficult urination or blood in the urine?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -305,7 +305,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -325,7 +325,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Is there marked skin pallor and bruising on the body?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -334,7 +334,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -354,7 +354,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Are there swellings in the neck or chest area and enlarged lymph nodes on palpation?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -363,7 +363,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -383,7 +383,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Are changes in the appearance or shape of the eyes observed?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -392,7 +392,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -412,7 +412,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Is there difficulty in nasal breathing, nasal discharge, nasal voice, facial asymmetry, or shortness of breath?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -421,7 +421,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -441,7 +441,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
       * extension[content].valueString = "Is there abdominal enlargement and stool changes?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -450,7 +450,7 @@ Description: "Example for Questionnaire for Oncohematology Screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -517,63 +517,63 @@ Description: "Bemorning onkogematologik kasalliklarni erta aniqlash so‘rovnoma
 
 * item[+]
   * linkId = "unexplained-weight-loss"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "morning-headaches"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answer[+].valueCoding = $v2-0532#Y "Yes"
 
 * item[+]
   * linkId = "body-joint-pain-limping"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "unexplained-bruises-rashes"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "spontaneous-bleeding"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "nausea-vomiting-blood"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "weakness-restlessness-night-sweats"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answer[+].valueCoding = $v2-0532#Y "Yes"
 
 * item[+]
   * linkId = "dizziness-blurred-vision"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "periodic-fever"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answer[+].valueCoding = $v2-0532#Y "Yes"
 
 * item[+]
   * linkId = "dysuria-hematuria"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "pallor-bruises-exam"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "neck-chest-swelling-lymph-nodes"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "eye-shape-change-glow"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "nasal-breathing-voice-face-dyspnea"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "abdominal-enlargement-stool-changes"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "oncohematology-risk-result"

@@ -46,7 +46,7 @@ Description: "Example Questionnaire for fertility history collection"
         * extension[content].valueString = "Menstruation"
     * type = #coding
     * required = true
-    * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * answerOption[+].valueCoding = $v2-0532#Y "Yes"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Да"
@@ -54,7 +54,7 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Yes"
 
-    * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+    * answerOption[+].valueCoding = $v2-0532#N "No"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Нет"
@@ -139,7 +139,7 @@ Description: "Example Questionnaire for fertility history collection"
         * extension[content].valueString = "Perinatal losses"
     * type = #coding
     * required = true
-    * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * answerOption[+].valueCoding = $v2-0532#Y "Yes"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Да"
@@ -147,7 +147,7 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Yes"
 
-    * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+    * answerOption[+].valueCoding = $v2-0532#N "No"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Нет"
@@ -243,7 +243,10 @@ Description: "Example Questionnaire for fertility history collection"
         * extension[content].valueString = "Contraception"
     * type = #coding
     * repeats = true
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00001 "Jarrohlik — ayol sterilizatsiyasi"
+    * answerOption[+].valueCoding = $sct#60890002 "Female sterilization"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohlik — ayol sterilizatsiyasi"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Хирургическая — женская стерилизация"
@@ -251,7 +254,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Surgical — female sterilization"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00002 "Jarrohlik — vazektomiya"
+    * answerOption[+].valueCoding = $sct#830148006 "Partner had vasectomy"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohlik — vazektomiya"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Хирургическая — вазэктомия"
@@ -259,7 +265,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Surgical — vasectomy"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00003 "Jarrohliksiz — tabiiy"
+    * answerOption[+].valueCoding = $sct#225371000 "Uses natural contraception"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohliksiz — tabiiy"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Не хирургическая — естественная"
@@ -267,7 +276,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Non-surgical — natural"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00004 "Jarrohliksiz — baryer"
+    * answerOption[+].valueCoding = $sct#225370004 "Uses barrier contraception method"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohliksiz — baryer"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Не хирургическая — барьерная"
@@ -275,7 +287,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Non-surgical — barrier"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00005 "Jarrohliksiz — kimyoviy"
+    * answerOption[+].valueCoding = $sct#268466006 "Uses spermicidal contraception"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohliksiz — kimyoviy"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Не хирургическая — химическая"
@@ -283,7 +298,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Non-surgical — chemical"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00006 "Jarrohliksiz — bachadon ichi"
+    * answerOption[+].valueCoding = $sct#312081001 "Uses IUD (intrauterine device) contraception"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohliksiz — bachadon ichi"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Не хирургическая — внутриматочная"
@@ -291,7 +309,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Non-surgical — intrauterine"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00007 "Jarrohliksiz — gormonal"
+    * answerOption[+].valueCoding = $sct#1237404009 "Uses hormonal contraception"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Jarrohliksiz — gormonal"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Не хирургическая — гормональная"
@@ -299,7 +320,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Non-surgical — hormonal"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00008 "Foydalanilmaydi"
+    * answerOption[+].valueCoding = $sct#445375000 "Does not use contraception"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Foydalanilmaydi"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Не используется"
@@ -341,7 +365,7 @@ Description: "Example Questionnaire for fertility history collection"
     * type = #coding
     * required = true
 
-    * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * answerOption[+].valueCoding = $v2-0532#Y "Yes"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Да"
@@ -349,7 +373,7 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Yes"
 
-    * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+    * answerOption[+].valueCoding = $v2-0532#N "No"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Нет"
@@ -367,7 +391,10 @@ Description: "Example Questionnaire for fertility history collection"
         * extension[lang].valueCode = #en
         * extension[content].valueString = "Type of infertility"
     * type = #coding
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00009 "Birlamchi"
+    * answerOption[+].valueCoding = $sct#297106006 "Primary infertility"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Birlamchi"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Первично"
@@ -375,7 +402,10 @@ Description: "Example Questionnaire for fertility history collection"
       * extension[lang].valueCode = #en
       * extension[content].valueString = "Primary"
 
-    * answerOption[+].valueCoding = fertility-questionnaire-cs#scrn-0071-00010 "Ikkilamchi"
+    * answerOption[+].valueCoding = $sct#297121000 "Secondary infertility"
+    * answerOption[=].valueCoding.display.extension[$translation-extension][+]
+      * extension[lang].valueCode = #uz
+      * extension[content].valueString = "Ikkilamchi"
     * answerOption[=].valueCoding.display.extension[$translation-extension][+]
       * extension[lang].valueCode = #ru
       * extension[content].valueString = "Вторично"
@@ -420,7 +450,7 @@ Description: "Пример заполненного опросника по фе
   * linkId = "menstruation"
   * item[+]
     * linkId = "menstruation-present"
-    * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+    * answer[+].valueCoding = $v2-0532#Y "Yes"
   * item[+]
     * linkId = "menstruation-age-start"
     * answer[+].valueInteger = 15
@@ -429,10 +459,10 @@ Description: "Пример заполненного опросника по фе
   * linkId = "perinatal-losses"
   * item[+]
     * linkId = "perinatal-losses-present"
-    * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+    * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "infertility"
   * item[+]
     * linkId = "infertility-present"
-    * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+    * answer[+].valueCoding = $v2-0532#N "No"

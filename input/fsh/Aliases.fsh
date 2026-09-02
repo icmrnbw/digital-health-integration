@@ -168,7 +168,7 @@ Alias: $flag-status-cs = http://hl7.org/fhir/flag-status
 Alias: $profession-specialization-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/profession-specialization-cs
 
 // ===================== DMED early-detection screening questionnaires (moved from digital-health-ig) =====================
-Alias: $fertility-questionnaire-cs = http://terminology.hl7.org/CodeSystem/v2-0532
+Alias: $v2-0532 = http://terminology.hl7.org/CodeSystem/v2-0532
 Alias: $ordinal-value = http://hl7.org/fhir/StructureDefinition/ordinalValue
 Alias: $variable = http://hl7.org/fhir/StructureDefinition/variable
 Alias: $sdc-calculated-expression = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression
@@ -187,8 +187,6 @@ Alias: $cerebrovascular-heart-condition-cs = https://terminology.dhp.uz/fhir/int
 Alias: $cerebrovascular-physical-activity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-physical-activity-cs
 Alias: $cerebrovascular-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-risk-category-cs
 Alias: $cerebrovascular-smoking-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-smoking-status-cs
-Alias: $cerebrovascular-weight-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-weight-status-cs
 Alias: $diabetes-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/diabetes-risk-category-cs
 Alias: $ihd-chest-pain-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-chest-pain-type-cs
 Alias: $cvd-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cvd-risk-category-cs
-Alias: $cvd-tobacco-use-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cvd-tobacco-use-cs

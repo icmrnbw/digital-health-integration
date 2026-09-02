@@ -36,7 +36,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have you had mastitis?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 3
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -45,7 +45,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -66,7 +66,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have you had breast surgery?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 1
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -75,7 +75,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -96,7 +96,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have you had breast trauma?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 3
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -105,7 +105,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -126,7 +126,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have you had fibrocystic mastopathy?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 3
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -135,7 +135,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -156,7 +156,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Are there changes in axillary lymph nodes on palpation (enlarged or painful)?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 5
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -165,7 +165,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -186,7 +186,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Do you have breast changes (skin redness, orange-peel skin, nipple discharge, lumps, tumors)?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 5
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -195,7 +195,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -216,7 +216,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have you had gynecological diseases?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 3
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -225,7 +225,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -246,7 +246,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Do you have breast pain related to the menstrual cycle (before menstruation)?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 3
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -255,7 +255,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -276,7 +276,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have you had thyroid disease (goiter)?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 3
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -285,7 +285,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -306,7 +306,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
       * extension[content].valueString = "Have any of your relatives (grandmother, mother, aunt, sister) had breast cancer?"
   * type = #coding
   * required = true
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answerOption[+].valueCoding = $v2-0532#Y "Yes"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 5
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -315,7 +315,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Yes"
 
-  * answerOption[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answerOption[+].valueCoding = $v2-0532#N "No"
   * answerOption[=].valueCoding.extension[$ordinal-value].valueDecimal = 0
   * answerOption[=].valueCoding.display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
@@ -484,43 +484,43 @@ Description: "Bemorning ko‘krak bezi saratonini aniqlash skrining so‘rovnoma
 
 * item[+]
   * linkId = "mastitis-history"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "breast-surgery-history"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "breast-trauma-history"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answer[+].valueCoding = $v2-0532#Y "Yes"
 
 * item[+]
   * linkId = "fibrocystic-mastopathy"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "axillary-lymph-node-changes"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "breast-local-changes"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "gynecological-diseases"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answer[+].valueCoding = $v2-0532#Y "Yes"
 
 * item[+]
   * linkId = "cyclic-breast-pain"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#Y "Yes"
+  * answer[+].valueCoding = $v2-0532#Y "Yes"
 
 * item[+]
   * linkId = "thyroid-disease"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "relation"
-  * answer[+].valueCoding = $fertility-questionnaire-cs#N "No"
+  * answer[+].valueCoding = $v2-0532#N "No"
 
 * item[+]
   * linkId = "breast-cancer-risk-result"

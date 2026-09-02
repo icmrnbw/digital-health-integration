@@ -3,6 +3,8 @@
 // on tx.fhir.org) directly in the Questionnaire's answerOption, not a local code. taking_statins
 // stays local: no verified SNOMED CT "on statin therapy" finding was found, and it's arguably a
 // medication-use fact rather than a finding (MedicationStatement candidate) — open question.
+// no is also NOT here: coded via v2-0532 N. unknown stays local: its display ("Don't know / not
+// checked this year") is more specific than the generic v2-0532 UNK, so the meaning would differ.
 CodeSystem: CerebrovascularCholesterolStatusCS
 Id: cerebrovascular-cholesterol-status-cs
 Title: "Cerebrovascular screening: cholesterol status answers"
@@ -15,11 +17,6 @@ Description: "Answer codes for elevated cholesterol / statin use in the cerebrov
   * ^designation[=].value = "Принимаю статины"
   * ^designation[+].language = #en
   * ^designation[=].value = "Taking statins"
-* #no "Yo'q"
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "Нет"
-  * ^designation[+].language = #en
-  * ^designation[=].value = "No"
 * #unknown "Bilmayman / bir yildan beri tekshirmaganman"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Не знаю / не проверял за год"

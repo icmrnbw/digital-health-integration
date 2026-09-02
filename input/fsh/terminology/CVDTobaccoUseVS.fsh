@@ -5,4 +5,6 @@ Description: "Value set containing CVD Tobacco Use"
 * insert IntegrationsValueSet(cvd-tobacco-use-vs)
 * ^experimental = true
 
-* include codes from system cvd-tobacco-use-cs
+* include $sct#702979003
+* include $sct#110483000
+* include $sct#702975009
