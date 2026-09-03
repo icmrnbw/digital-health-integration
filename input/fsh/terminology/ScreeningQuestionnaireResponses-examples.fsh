@@ -706,9 +706,6 @@ Description: "Example completed response to the Screening woman examination ques
 * item[7].item[1].answer[0].valueCoding.system = $sct
 * item[7].item[1].answer[0].valueCoding.code = #443371000124107
 * item[7].item[1].answer[0].valueCoding.display = "Obese class I"
-* item[7].item[1].answer[0].valueCoding.display.extension[$translation-extension][+]
-  * extension[lang].valueCode = #ru
-  * extension[content].valueString = "Ожирение I степени"
 * item[8].linkId = "hirsutism-general-exam"
 * item[8].text = "Степень гирсутизма и дополнительные данные общего осмотра"
 * item[8].item[0].linkId = "hirsutism-face"
@@ -788,9 +785,6 @@ Description: "Example completed response to the Screening woman examination ques
 * item[8].item[15].answer[0].valueCoding.system = "http://snomed.info/sct"
 * item[8].item[15].answer[0].valueCoding.code = #49650001
 * item[8].item[15].answer[0].valueCoding.display = "Dysuria"
-* item[8].item[15].answer[0].valueCoding.display.extension[$translation-extension][+]
-  * extension[lang].valueCode = #ru
-  * extension[content].valueString = "Дизурия"
 * item[8].item[16].linkId = "urination-times-per-day"
 * item[8].item[16].text = "Кол-во раз в сутки"
 * item[8].item[16].answer[0].valueInteger = 1
