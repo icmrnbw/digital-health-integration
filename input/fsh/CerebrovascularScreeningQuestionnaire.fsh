@@ -4,6 +4,12 @@ Usage: #definition
 Title: "Cerebrovascular Disease Screening Questionnaire"
 Description: "Early detection questionnaire for cerebrovascular disease"
 * url = "https://dhp.uz/fhir/integrations/Questionnaire/CerebrovascularScreeningQuestionnaire"
+// NOTE: no SNOMED CT concept exists for general "cerebrovascular disease screening" as a risk-factor
+// questionnaire (verified via r4.ontoserver.csiro.au $expand under 312851005 "Screening for disorder" —
+// no match for "cerebrovascular"/"stroke"). Closest available concept is Carotid artery disease screening,
+// which is actually a specific imaging test, not this risk questionnaire — flag for DHP/consultant review.
+* identifier[0].system = $screening-program-type-id
+* identifier[0].value = "24071000087108"
 * name = "CerebrovascularScreeningQuestionnaire"
 * language = #uz
 * status = #draft

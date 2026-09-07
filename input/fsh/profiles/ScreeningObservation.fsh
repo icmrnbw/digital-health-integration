@@ -71,9 +71,11 @@ Description: "Result of cytological smear examination: LSIL."
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "333"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * basedOn = Reference(ServiceRequest/ServiceRequest-cytology)
 * status = #final
-* code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
+* code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
 * effectiveDateTime = "2025-11-17T13:28:17+02:00"
@@ -88,9 +90,11 @@ Description: "Cytological smear analysis performed by an AI system."
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "333"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * basedOn = Reference(ServiceRequest/ServiceRequest-cytology)
 * status = #final
-* code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
+* code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"
 * subject = Reference(Patient/lola-oripova)
 * subject.display = "Lola Oripova Shakhzodovna"
 * issued = "2025-11-17T13:28:17.239+02:00"
@@ -105,6 +109,8 @@ Description: "High-risk HPV DNA test result."
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "333"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * basedOn = Reference(ServiceRequest/ServiceRequest-hpv)
 * status = #final
 * code = $loinc#82675-0 "HPV I/H Risk 4 DNA Cvx Ql NAA+probe"
@@ -121,6 +127,8 @@ Description: "Colposcopy conclusion including transformation zone assessment."
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "334"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * basedOn = Reference(ServiceRequest/ServiceRequest-colposcopy)
 * status = #final
 * code = $sct#392003006 "Colposcopy"
@@ -140,6 +148,8 @@ Description: "Mammography summary including BI-RADS category, breast density, an
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "335"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "268547008"
 * basedOn = Reference(ServiceRequest/ServiceRequest-mammography)
 * status = #final
 * code = $sct#71651007 "Mammography"
@@ -162,6 +172,8 @@ Description: "Finding (mole) detected in the right breast during mammography."
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "335"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "268547008"
 * basedOn = Reference(ServiceRequest/ServiceRequest-mammography)
 * status = #final
 * code = $sct#71651007 "Mammography"
@@ -182,6 +194,8 @@ Description: "Finding (skin thickening) detected in the left breast during mammo
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "335"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "268547008"
 * basedOn = Reference(ServiceRequest/ServiceRequest-mammography)
 * status = #final
 * code = $sct#71651007 "Mammography"

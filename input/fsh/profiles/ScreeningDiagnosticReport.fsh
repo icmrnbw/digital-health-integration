@@ -36,6 +36,8 @@ Description: "Breast pathology report (histology plus immunohistochemistry), wit
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "126"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "268547008"
 * basedOn[0] = Reference(ServiceRequest/screening-pathology-request-example)
 * status = #final
 * code = $sct#714797009 "Histologic test"
@@ -57,6 +59,8 @@ Description: "Mammography report (summary and findings)"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "123"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "268547008"
 * basedOn[0] = Reference(ServiceRequest/ServiceRequest-mammography)
 * status = #final
 * code = $sct#71651007 "Mammography"
@@ -78,6 +82,8 @@ Description: "Laboratory report: Liquid-based cytology"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "124"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * basedOn[0] = Reference(ServiceRequest/ServiceRequest-cytology)
 * status = #final
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep"  
@@ -98,6 +104,8 @@ Description: "Diagnostic report: Colposcopy"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "125"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * basedOn[0] = Reference(ServiceRequest/ServiceRequest-colposcopy)
 * status = #final
 * code = $sct#392003006 "Colposcopy"

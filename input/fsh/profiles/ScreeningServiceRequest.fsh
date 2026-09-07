@@ -30,6 +30,8 @@ Description: "Referral for liquid-based cytology"
 * identifier[+].system = $screening-local-id
 * identifier[=].value = "26-95-01-1-00065"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * status = #completed
 * intent = #order
 * code = $loinc#18500-9 "Microscopic observation [Identifier] in Cervix by Cyto stain.thin prep" 
@@ -49,6 +51,8 @@ Description: "Referral for HPV testing"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "236"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * status = #completed
 * intent = #order
 * code =  $loinc#82675-0 "HPV I/H Risk 4 DNA Cvx Ql NAA+probe" 
@@ -68,6 +72,8 @@ Description: "Referral for colposcopy"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "234"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "171149006"
 * status = #completed
 * intent = #order
 * code = $sct#392003006 "Colposcopy"
@@ -87,6 +93,8 @@ Description: "Referral for mammography"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "235"
 * identifier[=].use = #usual
+* identifier[+].system = $screening-program-type-id
+* identifier[=].value = "268547008"
 * status = #completed
 * intent = #order
 * code = $sct#71651007 "Mammography"

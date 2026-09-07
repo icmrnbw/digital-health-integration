@@ -10,6 +10,8 @@ Description: "Example request for an ultrasound-guided breast core biopsy."
 * id = "screening-breast-biopsy-request-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "BIOPSY-REQ-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #active
 * intent = #order
 * code.concept = $sct#277667006
@@ -25,6 +27,8 @@ Description: "Example completed ultrasound-guided breast core biopsy."
 * id = "screening-breast-biopsy-procedure-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "BIOPSY-PROC-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #completed
 * code = $sct#277667006
 * subject.reference = "Patient/lola-oripova"
@@ -39,6 +43,8 @@ Description: "Example pathology request for a breast biopsy specimen with its bi
 * id = "screening-pathology-request-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "PATH-REQ-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * basedOn[0].reference = "ServiceRequest/screening-breast-biopsy-request-example"
 * status = #active
 * intent = #order
@@ -59,6 +65,8 @@ Description: "Example history of prior special treatment (chemotherapy plus an i
 * id = "screening-special-treatment-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "PATH-REQ-1001-TREATMENT"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #final
 * subject.reference = "Patient/lola-oripova"
 * effectiveDateTime = 2026-07-17T12:10:00+05:00
@@ -81,6 +89,8 @@ Description: "Example breast biopsy specimen collected for the pathology request
 * id = "screening-breast-biopsy-specimen-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "SPEC-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #available
 * type = $sct#258415003
 * subject.reference = "Patient/lola-oripova"
@@ -96,6 +106,8 @@ Description: "Example final breast cytology conclusion classified as Yokohama C3
 * id = "screening-breast-cytology-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "CYT-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * basedOn[0].reference = "ServiceRequest/screening-pathology-request-example"
 * status = #final
 * code = ScreeningSpecializedObservationParameterCS#scrn-0073-00029
@@ -116,6 +128,8 @@ Description: "Example final breast biopsy histology result."
 * id = "screening-breast-histology-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "HIST-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * basedOn[0].reference = "ServiceRequest/screening-pathology-request-example"
 * status = #final
 * code = $sct#394597005
@@ -135,6 +149,8 @@ Description: "Example final breast ultrasonography result with one coded finding
 * id = "screening-breast-ultrasound-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "US-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #final
 * code = http://snomed.info/sct#47079000 "Ultrasonography of breast"
 * bodySite = $sct#80248007 "Left breast structure"
@@ -152,6 +168,8 @@ Description: "Example final cervical histology conclusion classified as CIN 2."
 * id = "screening-cervical-histology-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "CERV-HIST-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "171149006"
 * status = #final
 * code = $sct#394597005
 * subject.reference = "Patient/lola-oripova"
@@ -170,6 +188,8 @@ Description: "Example immunohistochemistry result derived from the breast histol
 * id = "screening-immunohistochemistry-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "IHC-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #final
 * code = $sct#117617002
 * subject.reference = "Patient/lola-oripova"
@@ -189,6 +209,8 @@ Description: "Example final mammography result with BI-RADS, density, image qual
 * id = "screening-mammography-observation-example"
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/uz/screening"
 * identifier[0].value = "MAMMO-1001"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
 * status = #final
 * code = http://snomed.info/sct#71651007 "Mammography"
 * subject.reference = "Patient/lola-oripova"
