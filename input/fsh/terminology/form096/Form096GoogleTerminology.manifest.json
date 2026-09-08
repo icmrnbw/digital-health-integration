@@ -1,0 +1,31 @@
+{
+  "sourceWorkbook": "https://docs.google.com/spreadsheets/d/1zX3HmGvyh3_eY0aMbyhoGozrTIC6pXqo5IbSMMSX-Eo",
+  "sourceSheet": "ValueSets",
+  "rows": 149,
+  "valueSets": 35,
+  "localCodeSystems": 22,
+  "conceptsByLocalCodeSystem": {
+    "amniotic-fluid-appearance-cs": 4,
+    "amniotic-fluid-volume-measurement-cs": 1,
+    "apgar-total-score-cs": 11,
+    "cervical-dilation-measurement-cs": 1,
+    "fetal-lie-cs": 3,
+    "fetal-presentation-cs": 3,
+    "intervention-effectiveness-cs": 3,
+    "marital-status-form-cs": 2,
+    "maternal-death-timing-cs": 3,
+    "maternal-labor-medication-effect-code-cs": 1,
+    "maternal-pelvimetry-measurement-code-cs": 6,
+    "medication-administration-route-form-cs": 15,
+    "newborn-birth-datetime-observation-cs": 2,
+    "newborn-eye-prophylaxis-cs": 1,
+    "placenta-delivery-method-cs": 4,
+    "placental-separation-method-cs": 4,
+    "prenatal-visit-count-observation-cs": 1,
+    "previous-pregnancy-outcome-cs": 2,
+    "satisfactory-status-cs": 2,
+    "tissue-integrity-status-cs": 2,
+    "vaginal-discharge-color-cs": 6,
+    "yes-no-cs": 2
+  }
+}

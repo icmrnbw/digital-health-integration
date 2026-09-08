@@ -2,7 +2,7 @@ Profile: Form096MaternityMedicalRecordComposition
 Parent: Composition
 Id: form-096-maternity-medical-record-composition
 Title: "Form 096 - Maternity Medical Record Composition"
-Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi)."
+Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned with the approved Form 096 mapping and terminology workbook."
 
 * identifier 1..*
 * identifier ^short = "Form 096 maternity medical-record number"
@@ -14,7 +14,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi)."
 * subject 1..1
 * subject only Reference(UZCorePatient)
 * encounter 1..1
-* encounter only Reference(UZCoreEncounter)
+* encounter only Reference(Form096Encounter)
 * author 1..*
 * author only Reference(UZCorePractitionerRole)
 * custodian 1..1
@@ -36,6 +36,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi)."
     diagnosticOrders 0..1 and
     procedureOrders 0..1 and
     usedMaterials 0..1 and
+    sickLeaveCertificates 0..1 and
     responsiblePersons 1..1
 
 // Document identifiers, demographics, admission/discharge, laboratory values,
@@ -44,7 +45,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi)."
 * section[admissionInformation].code 1..1
 * section[admissionInformation].code = $loinc#46241-6 "Hospital admission diagnosis Narrative - Reported"
 * section[admissionInformation].entry 1..*
-* section[admissionInformation].entry only Reference(UZCorePatient or UZCoreEncounter or UZCoreOrganization or UZCoreObservation or UZCoreCondition or Procedure)
+* section[admissionInformation].entry only Reference(UZCorePatient or Form096Encounter or UZCoreOrganization or UZCoreObservation or UZCoreCondition or Procedure or AllergyIntolerance)
 
 // General diseases, spouse health, menstrual/sexual/gynecological history, and
 // previous pregnancies, births, abortions, operations, newborn weights and outcomes.
@@ -86,7 +87,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi)."
 * section[newbornDeliveryRecord].code 1..1
 * section[newbornDeliveryRecord].code = $loinc#57075-4 "Newborn delivery information"
 * section[newbornDeliveryRecord].entry 1..*
-* section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or Procedure or UZCorePractitionerRole)
+* section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or Procedure or Immunization or UZCorePractitionerRole)
 
 // Repeating postpartum observation rows.
 * section[postpartumPeriod].title 1..1
@@ -118,6 +119,14 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi)."
 * section[usedMaterials].code = $loinc#46264-8 "History of medical device use"
 * section[usedMaterials].entry 1..*
 * section[usedMaterials].entry only Reference(SupplyDelivery)
+
+// Sick-leave certificates shown on the title sheet are represented by the
+// existing SickLeaveCarePlan profile and may repeat for one hospitalization.
+* section[sickLeaveCertificates].title 1..1
+* section[sickLeaveCertificates].code 1..1
+* section[sickLeaveCertificates].code = $sct#224459001 "On sick leave from work"
+* section[sickLeaveCertificates].entry 1..*
+* section[sickLeaveCertificates].entry only Reference(SickLeaveCarePlan)
 
 * section[responsiblePersons].title 1..1
 * section[responsiblePersons].code 1..1

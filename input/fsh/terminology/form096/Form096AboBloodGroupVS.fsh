@@ -1,0 +1,11 @@
+ValueSet: Form096AboBloodGroupVS
+Id: abo-blood-group-vs
+Title: "ABO Blood Group"
+Description: "Form 096 terminology binding for Observation.valueCodeableConcept; FHIR_Mapping row 18. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/abo-blood-group-vs"
+* ^status = #draft
+* ^experimental = true
+* include $sct#58460004 "Group I (O)"
+* include $sct#112144000 "Group II (A)"
+* include $sct#112149005 "Group III (B)"
+* include $sct#165743006 "Group IV (AB)"

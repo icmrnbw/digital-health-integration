@@ -241,7 +241,7 @@ Usage: #inline
 
 
 Instance: encounter-096-001
-InstanceOf: UZCoreEncounter
+InstanceOf: Form096Encounter
 Usage: #inline
 * language = #en
 * status = #completed
@@ -498,7 +498,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0038 "Form 096 admission laboratory and screening observations"
+* code.text = "Form 096 admission laboratory and screening observations"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T08:45:00+05:00"
@@ -509,7 +509,7 @@ Usage: #inline
 * component[=].valueQuantity = 112 'g/L' "g/L"
 * component[+].code = $loinc#10331-7 "Rh [Type] in Blood"
 * component[=].valueCodeableConcept = $sct#165747007 "RhD positive"
-* component[+].code = $forms-observation-cs#ob-0096-0001 "Antibody level"
+* component[+].code.text = "Antibody level"
 * component[=].valueQuantity.value = 0
 * component[=].valueQuantity.unit = "titer"
 * component[+].code = $loinc#LP345116-0 "Allergy"
@@ -518,13 +518,13 @@ Usage: #inline
 * component[=].valueCodeableConcept = $v3-ObservationInterpretation#NEG "Negative"
 * component[+].code = $loinc#24111-7
 * component[=].valueCodeableConcept = $sct#260385009 "Negative"
-* component[+].code = $forms-observation-cs#ob-0096-0002 "Prenatal supervision received"
+* component[+].code = $sct#424441002 "Under medical supervision during pregnancy"
 * component[=].valueBoolean = true
 * component[+].code = $sct#3401000175105
 * component[=].valueInteger = 8
-* component[+].code = $forms-observation-cs#ob-0096-0003 "Number of obstetrician-gynecologist examinations"
+* component[+].code = $form096-prenatal-visit-count-observation-cs#chr-0090-0001 "Number of prenatal visits"
 * component[=].valueInteger = 6
-* component[+].code = $forms-observation-cs#ob-0096-0004 "Timing of maternal death relative to pregnancy and childbirth"
+* component[+].code.text = "Timing of maternal death relative to pregnancy and childbirth"
 * component[=].dataAbsentReason = $data-absent-reason#not-applicable "Not Applicable"
 
 
@@ -533,7 +533,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0008 "Form 096 maternal medical and obstetric history"
+* code.text = "Form 096 maternal medical and obstetric history"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T08:50:00+05:00"
@@ -542,19 +542,19 @@ Usage: #inline
 * component[=].valueString = "Healthy; no relevant hereditary disease reported."
 * component[+].code = $loinc#42798-9
 * component[=].valueQuantity = 13 'a' "years"
-* component[+].code = $forms-observation-cs#ob-0096-0005 "Age at sexual debut"
+* component[+].code.text = "Age at sexual debut"
 * component[=].valueQuantity = 20 'a' "years"
 * component[+].code = $sct#246211005 "Number of previous pregnancies"
 * component[=].valueInteger = 2
-* component[+].code = $forms-observation-cs#ob-0096-0006 "Number of previous abortions"
+* component[+].code.text = "Number of previous abortions"
 * component[=].valueInteger = 0
-* component[+].code = $forms-observation-cs#ob-0096-0007 "Weights of previous newborns"
+* component[+].code.text = "Weights of previous newborns"
 * component[=].valueQuantity = 3200 'g' "g"
-* component[+].code = $forms-observation-cs#ob-0096-0039 "Number of living children"
+* component[+].code.text = "Number of living children"
 * component[=].valueInteger = 2
 * component[+].code =  $sct#394571004 "Employer"
 * component[=].valueString = "Tashkent City School No. 42"
-* component[+].code = $forms-observation-cs#ob-0096-0040 "Occupation and position"
+* component[+].code.text = "Occupation and position"
 * component[=].valueString = "Secondary-school teacher"
 * component[+].code = $sct#252112002 "Number of stillbirths"
 * component[=].valueInteger = 0
@@ -567,12 +567,12 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0041 "General examination on maternity admission"
+* code.text = "General examination on maternity admission"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T09:00:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $forms-observation-cs#ob-0096-0042 "General inspection findings"
+* component[0].code.text = "General inspection findings"
 * component[=].valueString = "Alert, cooperative, skin and visible mucosa normal."
 * component[+].code = $loinc#LP19466-9
 * component[=].valueString = "Regular rhythm, no murmur."
@@ -580,13 +580,13 @@ Usage: #inline
 * component[=].valueQuantity = 82 '/min' "beats/min"
 * component[+].code = $loinc#85354-9 "Blood pressure panel with all children optional"
 * component[=].valueString = "Right arm 118/76 mmHg; left arm 116/74 mmHg."
-* component[+].code = $forms-observation-cs#ob-0096-0009 "Respiratory system examination findings"
+* component[+].code.text = "Respiratory system examination findings"
 * component[=].valueString = "Breath sounds vesicular, no added sounds."
-* component[+].code = $forms-observation-cs#ob-0096-0010 "Digestive system examination findings"
+* component[+].code.text = "Digestive system examination findings"
 * component[=].valueString = "Abdomen appropriate for gestation; no gastrointestinal complaint."
-* component[+].code = $forms-observation-cs#ob-0096-0011 "Urogenital system examination findings"
+* component[+].code.text = "Urogenital system examination findings"
 * component[=].valueString = "No dysuria; renal angles non-tender."
-* component[+].code = $forms-observation-cs#ob-0096-0012 "Urine centrifugate findings"
+* component[+].code.text = "Urine centrifugate findings"
 * component[=].valueString = "No clinically significant sediment abnormality."
 * component[+].code = $loinc#8302-2 "Body height"
 * component[=].valueQuantity = 164 'cm' "cm"
@@ -609,22 +609,22 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0043 "Maternal pelvimetry and abdominal measurements"
+* code.text = "Maternal pelvimetry and abdominal measurements"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T09:10:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $forms-observation-cs#ob-0096-0013 "Distantia spinarum"
+* component[0].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0001 "Distantia spinarum"
 * component[=].valueQuantity = 25 'cm' "cm"
-* component[+].code = $forms-observation-cs#ob-0096-0014 "Distantia cristarum"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0002 "Distantia cristarum"
 * component[=].valueQuantity = 28 'cm' "cm"
-* component[+].code = $forms-observation-cs#ob-0096-0015 "Distantia trochanterica"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0003 "Distantia trochanterica"
 * component[=].valueQuantity = 31 'cm' "cm"
-* component[+].code = $forms-observation-cs#ob-0096-0016 "Conjugata externa"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0004 "Conjugata externa"
 * component[=].valueQuantity = 20 'cm' "cm"
-* component[+].code = $forms-observation-cs#ob-0096-0017 "Conjugata diagonalis"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0005 "Conjugata diagonalis"
 * component[=].valueQuantity = 12.5 'cm' "cm"
-* component[+].code = $forms-observation-cs#ob-0096-0018 "Conjugata vera"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0006 "Conjugata vera"
 * component[=].valueQuantity = 11 'cm' "cm"
 * component[+].code = $loinc#8280-0 "Waist Circumference at umbilicus by Tape measure"
 * component[=].valueQuantity = 104 'cm' "cm"
@@ -637,26 +637,26 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0044 "Fetal assessment"
+* code.text = "Fetal assessment"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T09:15:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $forms-observation-cs#ob-0096-0019 "Fetal lie"
-* component[=].valueCodeableConcept = $forms-observation-values-cs#chr-0096-00015 "Longitudinal"
+* component[0].code = $loinc#11874-5 "Fetal position by palpation"
+* component[=].valueCodeableConcept = $form096-fetal-lie-cs#chr-0045-0001 "Longitudinal"
 * component[+].code = $loinc#LP72582-7 "Fetal position"
 * component[=].valueCodeableConcept.text = "First position"
-* component[+].code = $forms-observation-cs#ob-0096-0020 "Fetal attitude or variety"
+* component[+].code.text = "Fetal attitude or variety"
 * component[=].valueCodeableConcept.text = "Anterior variety"
-* component[+].code = $forms-observation-cs#ob-0096-0021 "Location where fetal heart sounds are heard"
+* component[+].code.text = "Location where fetal heart sounds are heard"
 * component[=].valueString = "Left lower abdominal quadrant"
 * component[+].code = $loinc#55283-6 "Fetal Heart rate"
 * component[=].valueInteger = 142
 * component[+].code = $loinc#11877-8 "Fetal presentation US"
-* component[=].valueCodeableConcept = $forms-observation-values-cs#chr-0096-00009 "Cephalic presentation"
-* component[+].code = $forms-observation-cs#ob-0096-0022 "Station of the fetal presenting part"
+* component[=].valueCodeableConcept = $form096-fetal-presentation-cs#chr-0044-0001 "Cephalic"
+* component[+].code.text = "Station of the fetal presenting part"
 * component[=].valueString = "Engaged at the pelvic inlet"
-* component[+].code = $forms-observation-cs#ob-0096-0023 "Labor activity"
+* component[+].code.text = "Labor activity"
 * component[=].valueString = "Regular contractions, three per ten minutes"
 * component[+].code = $loinc#11727-5 "Fetal Body weight estimated by US"
 * component[=].valueQuantity = 3000 'g' "g"
@@ -675,15 +675,15 @@ Usage: #inline
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * component[0].code = $loinc#LP172832-0 "Onset of labor"
 * component[=].valueDateTime = "2026-08-16T06:10:00+05:00"
-* component[+].code = $forms-observation-cs#ob-0096-0031 "Date and time of rupture of membranes"
+* component[+].code.text = "Date and time of rupture of membranes"
 * component[=].valueDateTime = "2026-08-16T10:05:00+05:00"
-* component[+].code = $forms-observation-cs#ob-0096-0032 "Amniotic fluid volume at rupture"
+* component[+].code = $form096-amniotic-fluid-volume-measurement-cs#chr-0087-0001 "Amniotic fluid volume"
 * component[=].valueQuantity = 650 'mL' "mL"
 * component[+].code = $loinc#1887-9 "Appearance of Amniotic fluid"
 * component[=].valueCodeableConcept = $sct#168090003 "Amniotic fluid - clear"
-* component[+].code = $forms-observation-cs#ob-0096-0033 "Date and time of full cervical dilation"
+* component[+].code.text = "Date and time of full cervical dilation"
 * component[=].valueDateTime = "2026-08-16T12:05:00+05:00"
-* component[+].code = $forms-observation-cs#ob-0096-0034 "Date and time pushing began"
+* component[+].code.text = "Date and time pushing began"
 * component[=].valueDateTime = "2026-08-16T12:10:00+05:00"
 * component[+].code = $sct#271562002 "Total duration of labor"
 * component[=].valueQuantity = 390 'min' "minutes"
@@ -699,7 +699,7 @@ Instance: procedure-096-newborn-prophylaxis
 InstanceOf: Procedure
 Usage: #inline
 * status = #completed
-* code = $forms-observation-cs#ob-0096-0045 "Neonatal gonococcal ophthalmia prophylaxis"
+* code = $form096-newborn-eye-prophylaxis-cs#chr-0085-0001 "Neonatal ocular prophylaxis against gonococcal ophthalmia"
 * subject = Reference(urn:uuid:09600009-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-08-16T12:28:00+05:00"
@@ -712,7 +712,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0046 "First newborn birth record"
+* code = $form096-newborn-birth-datetime-observation-cs#chr-0089-0001 "First newborn birth date and time"
 * subject = Reference(urn:uuid:09600009-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:20:00+05:00"
@@ -720,7 +720,7 @@ Usage: #inline
 * component[0].code = $loinc#69043-8 "Other pregnancy outcomes #"
 * component[=].valueCodeableConcept = $sct#281050002 "Livebirth"
 * component[+].code = $loinc#11877-8 "Fetal presentation US"
-* component[=].valueCodeableConcept = $forms-observation-values-cs#chr-0096-00009 "Cephalic presentation"
+* component[=].valueCodeableConcept = $form096-fetal-presentation-cs#chr-0044-0001 "Cephalic"
 * component[+].code = $loinc#8339-4 "Birth weight measured"
 * component[=].valueQuantity = 2850 'g' "g"
 * component[+].code = $loinc#89269-5 "Body height Measured --at birth"
@@ -736,7 +736,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0047 "Second newborn birth record"
+* code = $form096-newborn-birth-datetime-observation-cs#chr-0089-0002 "Second newborn birth date and time"
 * subject = Reference(urn:uuid:09600010-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:27:00+05:00"
@@ -760,28 +760,28 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 
 * status = #final
-* code = $forms-observation-cs#ob-0096-0048 "Apgar, placenta, membranes, cord and blood-loss record"
+* code.text = "Apgar, placenta, membranes, cord and blood-loss record"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:40:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $forms-observation-cs#ob-0096-0024 "Clinical condition assessed by the Apgar scale"
+* component[0].code.text = "Clinical condition assessed by the Apgar scale"
 * component[=].valueCodeableConcept.text = "Good adaptation"
 * component[+].code = $loinc#9272-6 "1 minute Apgar Score"
 * component[=].valueInteger = 8
-* component[+].code = $forms-observation-cs#ob-0096-0025 "Interval from birth to placental delivery"
+* component[+].code.text = "Interval from birth to placental delivery"
 * component[=].valueQuantity = 10 'min' "minutes"
-* component[+].code = $forms-observation-cs#ob-0096-0026 "Placental completeness"
-* component[=].valueCodeableConcept = $forms-observation-values-cs#chr-0096-00007 "Complete"
-* component[+].code = $forms-observation-cs#ob-0096-0027 "Fetal membranes completeness"
-* component[=].valueCodeableConcept = $forms-observation-values-cs#chr-0096-00007 "Complete"
-* component[+].code = $forms-observation-cs#ob-0096-0028 "Umbilical cord length"
+* component[+].code.text = "Placental completeness"
+* component[=].valueCodeableConcept = $form096-tissue-integrity-status-cs#chr-0048-0001 "Intact"
+* component[+].code.text = "Fetal membranes completeness"
+* component[=].valueCodeableConcept = $form096-tissue-integrity-status-cs#chr-0048-0001 "Intact"
+* component[+].code.text = "Umbilical cord length"
 * component[=].valueQuantity = 55 'cm' "cm"
-* component[+].code = $forms-observation-cs#ob-0096-0029 "Umbilical cord entanglement present"
+* component[+].code.text = "Umbilical cord entanglement present"
 * component[=].valueBoolean = false
-* component[+].code = $forms-observation-cs#ob-0096-0030 "Umbilical cord characteristics"
+* component[+].code.text = "Umbilical cord characteristics"
 * component[=].valueString = "Three vessels, no true knot"
-* component[+].code = $forms-observation-cs#ob-0096-0049 "Blood loss during labor"
+* component[+].code.text = "Blood loss during labor"
 * component[=].valueQuantity = 320 'mL' "mL"
 
 
@@ -794,7 +794,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-08-16T12:37:00+05:00"
 * performer.actor = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* outcome = $forms-observation-values-cs#chr-0096-00004 "Spontaneously separated"
+* outcome = $form096-placenta-delivery-method-cs#chr-0086-0002 "Separated spontaneously"
 
 
 Instance: procedure-096-labor-support
@@ -806,7 +806,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-08-16T10:30:00+05:00"
 * performer.actor = Reference(urn:uuid:09600008-1111-2222-3333-444444444444)
-* outcome = $forms-observation-values-cs#chr-0096-00012 "Fully effective"
+* outcome = $form096-intervention-effectiveness-cs#chr-0049-0001 "Fully effective"
 
 
 Instance: medication-administration-096-analgesic
@@ -826,12 +826,12 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $forms-observation-cs#ob-0096-0050 "Postpartum observation row"
+* code.text = "Postpartum observation row"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-17T08:00:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $forms-observation-cs#ob-0096-0035 "General condition during the postpartum period"
+* component[0].code.text = "General condition during the postpartum period"
 * component[=].valueString = "Satisfactory, afebrile"
 * component[+].code = $sct#116339002 "Breast finding"
 * component[=].valueString = "Soft, lactation established"
@@ -843,9 +843,9 @@ Usage: #inline
 * component[=].valueString = "Spontaneous urination"
 * component[+].code = $sct#118435004 "Finding of small intestine"
 * component[=].valueString = "Normal"
-* component[+].code = $forms-observation-cs#ob-0096-0036 "Treatment recommendations during the postpartum period"
+* component[+].code.text = "Treatment recommendations during the postpartum period"
 * component[=].valueString = "Breastfeeding support, hydration and routine postpartum monitoring"
-* component[+].code = $forms-observation-cs#ob-0096-0037 "Diet table number"
+* component[+].code.text = "Diet table number"
 * component[=].valueInteger = 15
 
 
@@ -907,7 +907,7 @@ InstanceOf: UZCoreServiceRequest
 Usage: #inline
 * status = #completed
 * intent = #order
-* code.concept = $forms-observation-cs#ob-0096-0051 "Perineal wound care"
+* code.concept.text = "Perineal wound care"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * authoredOn = "2026-08-17T07:10:00+05:00"
@@ -918,7 +918,7 @@ Instance: procedure-096-ordered
 InstanceOf: Procedure
 Usage: #inline
 * status = #completed
-* code = $forms-observation-cs#ob-0096-0051 "Perineal wound care"
+* code.text = "Perineal wound care"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-08-17T08:45:00+05:00"

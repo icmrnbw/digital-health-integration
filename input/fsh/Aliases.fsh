@@ -191,5 +191,4 @@ Alias: $diabetes-risk-category-cs = https://terminology.dhp.uz/fhir/integrations
 Alias: $ihd-chest-pain-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-chest-pain-type-cs
 Alias: $cvd-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cvd-risk-category-cs
 
-Alias: $forms-observation-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-observation-cs
-Alias: $forms-observation-values-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/forms-observation-values-cs
+// Form 096 CHR terminology aliases are maintained with its generated terminology artifacts.
