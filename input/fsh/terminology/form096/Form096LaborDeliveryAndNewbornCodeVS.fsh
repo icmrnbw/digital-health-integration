@@ -2,8 +2,8 @@ ValueSet: Form096LaborDeliveryAndNewbornCodeVS
 Id: labor-delivery-and-newborn-code-vs
 Title: "Labor, Delivery and Newborn-at-Birth Codes"
 Description: "Form 096 terminology binding for Terminology concepts used by FHIR code/value elements; FHIR_Mapping rows 71, 109, 110, 116, 119, 120, 121, 122, 123, 124, 125, 128, 130, 135. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
-* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/labor-delivery-and-newborn-code-vs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/labor-delivery-and-newborn-code-vs"
+* ^status = #active
 * ^experimental = true
 * include $loinc#9272-6 "1-minute Apgar score"
 * include $loinc#69043-8 "Newborn condition"

@@ -2,8 +2,8 @@ ValueSet: Form096MaternalLaboratoryAndBloodCodeVS
 Id: maternal-laboratory-and-blood-code-vs
 Title: "Maternal Laboratory and Blood Codes"
 Description: "Form 096 terminology binding for Terminology concepts used by FHIR code/value elements; FHIR_Mapping rows 16, 17, 18, 19, 20, 21, 23, 28, 29, 35. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
-* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/maternal-laboratory-and-blood-code-vs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/maternal-laboratory-and-blood-code-vs"
+* ^status = #active
 * ^experimental = true
 * include $loinc#718-7 "Blood hemoglobin level"
 * include $loinc#883-9 "Blood group"

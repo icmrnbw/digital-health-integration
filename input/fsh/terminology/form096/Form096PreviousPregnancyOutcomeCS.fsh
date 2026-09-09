@@ -2,8 +2,8 @@ CodeSystem: Form096PreviousPregnancyOutcomeCS
 Id: previous-pregnancy-outcome-cs
 Title: "Previous Pregnancy Outcome CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/previous-pregnancy-outcome-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/previous-pregnancy-outcome-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

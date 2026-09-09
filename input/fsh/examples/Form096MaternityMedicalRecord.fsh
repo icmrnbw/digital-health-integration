@@ -95,6 +95,12 @@ Description: "Example of Form 096 (Tug'ruq tibbiy kartasi) represented as a FHIR
 * entry[=].resource = supply-delivery-096
 * entry[+].fullUrl = "urn:uuid:09600043-1111-2222-3333-444444444444"
 * entry[=].resource = provenance-signature-096
+* entry[+].fullUrl = "urn:uuid:09600044-1111-2222-3333-444444444444"
+* entry[=].resource = organization-096-referring
+* entry[+].fullUrl = "urn:uuid:09600045-1111-2222-3333-444444444444"
+* entry[=].resource = location-096-ward
+* entry[+].fullUrl = "urn:uuid:09600046-1111-2222-3333-444444444444"
+* entry[=].resource = observation-096-birth-outcome-summary
 
 
 
@@ -120,6 +126,7 @@ Usage: #inline
 * section[=].entry[0] = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600004-1111-2222-3333-444444444444)
+* section[=].entry[+] = Reference(urn:uuid:09600044-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600011-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600012-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600013-1111-2222-3333-444444444444)
@@ -170,6 +177,7 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:09600030-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600031-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600032-1111-2222-3333-444444444444)
+* section[=].entry[+] = Reference(urn:uuid:09600046-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:09600008-1111-2222-3333-444444444444)
 
@@ -228,6 +236,7 @@ Usage: #inline
 * address[uzAddress].city = "16090011"
 * address[uzAddress].line[0] = "Chilonzor-12"
 * address[uzAddress].line[+] = "15-uy, 24-xonadon"
+* deceasedBoolean = false
 * managingOrganization = Reference(urn:uuid:09600004-1111-2222-3333-444444444444)
 
 
@@ -238,6 +247,24 @@ Usage: #inline
 * identifier.system = "https://dhp.uz/fhir/core/sid/uz/organization-code"
 * identifier.value = "200096"
 * name = "Toshkent City Perinatal Center"
+
+
+Instance: organization-096-referring
+InstanceOf: UZCoreOrganization
+Usage: #inline
+* language = #en
+* name = "Chilonzor District Polyclinic No. 5"
+
+
+Instance: location-096-ward
+InstanceOf: UZCoreLocation
+Usage: #inline
+* language = #en
+* status = #active
+* name = "Maternity ward, room 12"
+* identifier[unit].type = $location-kinds-cs#Ward "Ward"
+* identifier[unit].value = "12"
+* managingOrganization = Reference(urn:uuid:09600004-1111-2222-3333-444444444444)
 
 
 Instance: encounter-096-001
@@ -253,8 +280,10 @@ Usage: #inline
 * actualPeriod.start = "2026-08-16T08:20:00+05:00"
 * actualPeriod.end = "2026-08-18T15:00:00+05:00"
 * serviceProvider = Reference(urn:uuid:09600004-1111-2222-3333-444444444444)
+* admission.origin = Reference(urn:uuid:09600044-1111-2222-3333-444444444444)
 * admission.dischargeDisposition = $discharge-disposition-home-cs#mserv-0004-00004 "Discharged"
 * length = 2.28 'd' "days"
+* location.location = Reference(urn:uuid:09600045-1111-2222-3333-444444444444)
 * location.location.display = "Maternity ward, room 12"
 * participant[0].actor = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * participant[1].actor = Reference(urn:uuid:09600008-1111-2222-3333-444444444444)
@@ -518,7 +547,10 @@ Usage: #inline
 * component[=].valueCodeableConcept = $v3-ObservationInterpretation#NEG "Negative"
 * component[+].code = $loinc#24111-7
 * component[=].valueCodeableConcept = $sct#260385009 "Negative"
-* component[+].code = $sct#424441002 "Under medical supervision during pregnancy"
+// TODO: SNOMED 424441002's real meaning is "Prenatal initial visit", not "under medical
+// supervision during pregnancy" - the intended concept (was the mother monitored at all
+// during pregnancy) needs a different code. Revisit before this goes further than an example.
+* component[+].code = $sct#424441002 "Prenatal initial visit"
 * component[=].valueBoolean = true
 * component[+].code = $sct#3401000175105
 * component[=].valueInteger = 8
@@ -614,17 +646,17 @@ Usage: #inline
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T09:10:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0001 "Distantia spinarum"
+* component[0].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0001 "Distantia spinarum — interspinous pelvic diameter; result is Observation.valueQuantity in cm"
 * component[=].valueQuantity = 25 'cm' "cm"
-* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0002 "Distantia cristarum"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0002 "Distantia cristarum — intercristal pelvic diameter; result is Observation.valueQuantity in cm"
 * component[=].valueQuantity = 28 'cm' "cm"
-* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0003 "Distantia trochanterica"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0003 "Distantia trochanterica — intertrochanteric pelvic diameter; result is Observation.valueQuantity in cm"
 * component[=].valueQuantity = 31 'cm' "cm"
-* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0004 "Conjugata externa"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0004 "Conjugata externa — external conjugate; result is Observation.valueQuantity in cm"
 * component[=].valueQuantity = 20 'cm' "cm"
-* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0005 "Conjugata diagonalis"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0005 "Conjugata diagonalis — diagonal conjugate; result is Observation.valueQuantity in cm"
 * component[=].valueQuantity = 12.5 'cm' "cm"
-* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0006 "Conjugata vera"
+* component[+].code = $form096-maternal-pelvimetry-measurement-code-cs#chr-0083-0006 "Conjugata vera — true conjugate; result is Observation.valueQuantity in cm"
 * component[=].valueQuantity = 11 'cm' "cm"
 * component[+].code = $loinc#8280-0 "Waist Circumference at umbilicus by Tape measure"
 * component[=].valueQuantity = 104 'cm' "cm"
@@ -642,7 +674,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T09:15:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code = $loinc#11874-5 "Fetal position by palpation"
+* component[0].code = $loinc#11874-5 "Fetal position palpation"
 * component[=].valueCodeableConcept = $form096-fetal-lie-cs#chr-0045-0001 "Longitudinal"
 * component[+].code = $loinc#LP72582-7 "Fetal position"
 * component[=].valueCodeableConcept.text = "First position"
@@ -712,7 +744,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $form096-newborn-birth-datetime-observation-cs#chr-0089-0001 "First newborn birth date and time"
+* code = $form096-newborn-birth-datetime-observation-cs#chr-0089-0001 "First newborn: date / time"
 * subject = Reference(urn:uuid:09600009-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:20:00+05:00"
@@ -736,7 +768,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $form096-newborn-birth-datetime-observation-cs#chr-0089-0002 "Second newborn birth date and time"
+* code = $form096-newborn-birth-datetime-observation-cs#chr-0089-0002 "Second newborn: date / time"
 * subject = Reference(urn:uuid:09600010-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:27:00+05:00"
@@ -753,6 +785,24 @@ Usage: #inline
 * component[=].valueQuantity = 33 'cm' "cm"
 * component[+].code = $sct#248366000 "Chest circumference"
 * component[=].valueQuantity = 31 'cm' "cm"
+
+
+Instance: observation-096-birth-outcome-summary
+InstanceOf: UZCoreObservation
+Usage: #inline
+* language = #en
+* status = #final
+* code.text = "Birth outcome summary for this delivery"
+* subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
+* encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
+* effectiveDateTime = "2026-08-16T12:27:00+05:00"
+* performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
+* component[0].code.text = "Number of live births in this delivery"
+* component[=].valueInteger = 2
+* component[+].code.text = "Number of stillbirths in this delivery"
+* component[=].valueInteger = 0
+* component[+].code.text = "Number of postnatal deaths from this delivery"
+* component[=].valueInteger = 0
 
 
 Instance: observation-096-apgar-placenta-cord

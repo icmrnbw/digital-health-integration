@@ -2,8 +2,8 @@ ValueSet: Form096MaternalPostpartumAssessmentCodeVS
 Id: maternal-postpartum-assessment-code-vs
 Title: "Maternal Postpartum Assessment Codes"
 Description: "Form 096 terminology binding for Terminology concepts used by FHIR code/value elements; FHIR_Mapping rows 141, 142, 143, 144, 145, 146, 152, 153, 154, 155, 156. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
-* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/maternal-postpartum-assessment-code-vs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/maternal-postpartum-assessment-code-vs"
+* ^status = #active
 * ^experimental = true
 * include $loinc#11881-0 "Uterine fundal height"
 * include $loinc#63893-2 "Pregnancy outcome"

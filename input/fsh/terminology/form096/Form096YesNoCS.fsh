@@ -2,8 +2,8 @@ CodeSystem: Form096YesNoCS
 Id: yes-no-cs
 Title: "Yes / No CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/yes-no-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/yes-no-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

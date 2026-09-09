@@ -2,8 +2,8 @@ CodeSystem: Form096MaritalStatusFormCS
 Id: marital-status-form-cs
 Title: "Marital Status for CHR Forms CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/marital-status-form-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/marital-status-form-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

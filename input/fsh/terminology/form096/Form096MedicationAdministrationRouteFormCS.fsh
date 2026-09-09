@@ -2,8 +2,8 @@ CodeSystem: Form096MedicationAdministrationRouteFormCS
 Id: medication-administration-route-form-cs
 Title: "Medication Administration Route for CHR Form CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/medication-administration-route-form-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/medication-administration-route-form-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

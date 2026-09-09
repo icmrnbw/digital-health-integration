@@ -2,8 +2,8 @@ CodeSystem: Form096ApgarTotalScoreCS
 Id: apgar-total-score-cs
 Title: "Apgar Total Score CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/apgar-total-score-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/apgar-total-score-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

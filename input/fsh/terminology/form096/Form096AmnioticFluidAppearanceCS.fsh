@@ -2,8 +2,8 @@ CodeSystem: Form096AmnioticFluidAppearanceCS
 Id: amniotic-fluid-appearance-cs
 Title: "Amniotic Fluid Characteristic CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/amniotic-fluid-appearance-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-appearance-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

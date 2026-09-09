@@ -2,8 +2,8 @@ CodeSystem: Form096SatisfactoryStatusCS
 Id: satisfactory-status-cs
 Title: "Satisfactory Status CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/satisfactory-status-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/satisfactory-status-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

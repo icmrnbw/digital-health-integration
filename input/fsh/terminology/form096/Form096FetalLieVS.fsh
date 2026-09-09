@@ -2,8 +2,8 @@ ValueSet: Form096FetalLieVS
 Id: fetal-lie-vs
 Title: "Fetal Lie"
 Description: "Form 096 terminology binding for Observation.valueCodeableConcept; FHIR_Mapping row 64. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
-* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/fetal-lie-vs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/fetal-lie-vs"
+* ^status = #active
 * ^experimental = true
 * include $form096-fetal-lie-cs#chr-0045-0001 "Longitudinal"
 * include $form096-fetal-lie-cs#chr-0045-0002 "Transverse"

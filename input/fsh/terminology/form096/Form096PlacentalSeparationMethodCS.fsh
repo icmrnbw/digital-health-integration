@@ -2,8 +2,8 @@ CodeSystem: Form096PlacentalSeparationMethodCS
 Id: placental-separation-method-cs
 Title: "Placental Separation Method CodeSystem"
 Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
-* ^url = "https://terminology.dhp.uz/fhir/chr/CodeSystem/placental-separation-method-cs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/placental-separation-method-cs"
+* ^status = #active
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

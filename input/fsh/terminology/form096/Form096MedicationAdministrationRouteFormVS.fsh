@@ -2,8 +2,8 @@ ValueSet: Form096MedicationAdministrationRouteFormVS
 Id: medication-administration-route-form-vs
 Title: "Medication Administration Route for CHR Form"
 Description: "Form 096 terminology binding for MedicationRequest.dosageInstruction.route; FHIR_Mapping row 167. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
-* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/medication-administration-route-form-vs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/medication-administration-route-form-vs"
+* ^status = #active
 * ^experimental = true
 * include $form096-medication-administration-route-form-cs#chr-0051-0001 "Intravenous"
 * include $form096-medication-administration-route-form-cs#chr-0051-0002 "Subcutaneous"

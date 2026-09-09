@@ -2,8 +2,8 @@ ValueSet: Form096AboBloodGroupVS
 Id: abo-blood-group-vs
 Title: "ABO Blood Group"
 Description: "Form 096 terminology binding for Observation.valueCodeableConcept; FHIR_Mapping row 18. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
-* ^url = "https://terminology.dhp.uz/fhir/chr/ValueSet/abo-blood-group-vs"
-* ^status = #draft
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/abo-blood-group-vs"
+* ^status = #active
 * ^experimental = true
 * include $sct#58460004 "Group I (O)"
 * include $sct#112144000 "Group II (A)"
