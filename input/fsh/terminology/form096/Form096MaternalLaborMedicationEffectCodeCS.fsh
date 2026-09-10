@@ -1,7 +1,7 @@
 CodeSystem: Form096MaternalLaborMedicationEffectCodeCS
 Id: maternal-labor-medication-effect-code-cs
 Title: "Maternal Labor Medication Effect CodeSystem"
-Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
+Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-labor-medication-effect-code-cs"
 * ^status = #active
 * ^experimental = true

@@ -1,7 +1,7 @@
 ValueSet: Form096AmnioticFluidCharacteristicVS
 Id: amniotic-fluid-characteristic-vs
 Title: "Amniotic Fluid Characteristic"
-Description: "Form 096 terminology binding for Observation.valueCodeableConcept; FHIR_Mapping row 114. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Observation.valueCodeableConcept."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/amniotic-fluid-characteristic-vs"
 * ^status = #active
 * ^experimental = true

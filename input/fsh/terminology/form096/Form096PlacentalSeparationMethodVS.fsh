@@ -1,7 +1,7 @@
 ValueSet: Form096PlacentalSeparationMethodVS
 Id: placental-separation-method-vs
 Title: "Placental Separation Method"
-Description: "Form 096 terminology binding for Procedure.code; FHIR_Mapping row 72. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Procedure.code."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/placental-separation-method-vs"
 * ^status = #active
 * ^experimental = true

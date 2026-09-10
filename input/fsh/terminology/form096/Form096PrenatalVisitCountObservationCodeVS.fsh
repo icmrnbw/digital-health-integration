@@ -1,7 +1,7 @@
 ValueSet: Form096PrenatalVisitCountObservationCodeVS
 Id: prenatal-visit-count-observation-code-vs
 Title: "Prenatal Visit Count Observation Code"
-Description: "Form 096 terminology binding for Observation.code; FHIR_Mapping rows 28–29; JSON_FHIR_Mapping rows 28–29. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Observation.code."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/prenatal-visit-count-observation-code-vs"
 * ^status = #active
 * ^experimental = true

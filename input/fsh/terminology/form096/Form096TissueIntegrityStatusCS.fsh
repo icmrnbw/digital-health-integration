@@ -1,7 +1,7 @@
 CodeSystem: Form096TissueIntegrityStatusCS
 Id: tissue-integrity-status-cs
 Title: "Tissue Integrity Status CodeSystem"
-Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
+Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/tissue-integrity-status-cs"
 * ^status = #active
 * ^experimental = true

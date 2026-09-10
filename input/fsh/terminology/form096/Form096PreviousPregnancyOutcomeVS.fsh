@@ -1,7 +1,7 @@
 ValueSet: Form096PreviousPregnancyOutcomeVS
 Id: previous-pregnancy-outcome-vs
 Title: "Previous Pregnancy Outcome"
-Description: "Form 096 terminology binding for QuestionnaireResponse.item.answer.valueCoding; FHIR_Mapping row 45. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for QuestionnaireResponse.item.answer.valueCoding."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/previous-pregnancy-outcome-vs"
 * ^status = #active
 * ^experimental = true

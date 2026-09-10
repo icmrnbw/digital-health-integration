@@ -1,17 +1,14 @@
-// Generated from Google Sheet 1zX3HmGvyh3_eY0aMbyhoGozrTIC6pXqo5IbSMMSX-Eo, ValueSets tab.
-// Form 096 terminology uses the governed CHR terminology namespace.
+// Aliases for the local CodeSystems used by Form 096 terminology.
 Alias: $form096-amniotic-fluid-appearance-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-appearance-cs
 Alias: $form096-amniotic-fluid-volume-measurement-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-volume-measurement-cs
-Alias: $form096-apgar-total-score-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/apgar-total-score-cs
+Alias: $form096-birth-attendant-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/birth-attendant-cs
 Alias: $form096-cervical-dilation-measurement-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cervical-dilation-measurement-cs
 Alias: $form096-fetal-lie-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/fetal-lie-cs
 Alias: $form096-fetal-presentation-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/fetal-presentation-cs
 Alias: $form096-intervention-effectiveness-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/intervention-effectiveness-cs
-Alias: $form096-marital-status-form-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/marital-status-form-cs
 Alias: $form096-maternal-death-timing-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-death-timing-cs
 Alias: $form096-maternal-labor-medication-effect-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-labor-medication-effect-code-cs
 Alias: $form096-maternal-pelvimetry-measurement-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-pelvimetry-measurement-code-cs
-Alias: $form096-medication-administration-route-form-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/medication-administration-route-form-cs
 Alias: $form096-newborn-birth-datetime-observation-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-birth-datetime-observation-cs
 Alias: $form096-newborn-eye-prophylaxis-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-eye-prophylaxis-cs
 Alias: $form096-placenta-delivery-method-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/placenta-delivery-method-cs
@@ -21,4 +18,3 @@ Alias: $form096-previous-pregnancy-outcome-cs = https://terminology.dhp.uz/fhir/
 Alias: $form096-satisfactory-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/satisfactory-status-cs
 Alias: $form096-tissue-integrity-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/tissue-integrity-status-cs
 Alias: $form096-vaginal-discharge-color-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/vaginal-discharge-color-cs
-Alias: $form096-yes-no-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/yes-no-cs

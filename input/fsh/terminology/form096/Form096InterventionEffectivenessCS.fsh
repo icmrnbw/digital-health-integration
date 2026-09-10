@@ -1,7 +1,7 @@
 CodeSystem: Form096InterventionEffectivenessCS
 Id: intervention-effectiveness-cs
 Title: "Intervention Effectiveness CodeSystem"
-Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
+Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/intervention-effectiveness-cs"
 * ^status = #active
 * ^experimental = true

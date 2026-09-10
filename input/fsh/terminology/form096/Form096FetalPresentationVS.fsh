@@ -1,7 +1,7 @@
 ValueSet: Form096FetalPresentationVS
 Id: fetal-presentation-vs
 Title: "Fetal Presentation"
-Description: "Form 096 terminology binding for Observation.valueCodeableConcept; FHIR_Mapping rows 63, 120, 129. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Observation.valueCodeableConcept."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/fetal-presentation-vs"
 * ^status = #active
 * ^experimental = true

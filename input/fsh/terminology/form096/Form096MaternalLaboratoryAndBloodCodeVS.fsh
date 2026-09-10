@@ -1,7 +1,7 @@
 ValueSet: Form096MaternalLaboratoryAndBloodCodeVS
 Id: maternal-laboratory-and-blood-code-vs
 Title: "Maternal Laboratory and Blood Codes"
-Description: "Form 096 terminology binding for Terminology concepts used by FHIR code/value elements; FHIR_Mapping rows 16, 17, 18, 19, 20, 21, 23, 28, 29, 35. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Terminology concepts used by FHIR code/value elements."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/maternal-laboratory-and-blood-code-vs"
 * ^status = #active
 * ^experimental = true

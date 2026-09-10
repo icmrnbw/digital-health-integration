@@ -1,7 +1,7 @@
 CodeSystem: Form096VaginalDischargeColorCS
 Id: vaginal-discharge-color-cs
 Title: "Vaginal Discharge Color CodeSystem"
-Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
+Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/vaginal-discharge-color-cs"
 * ^status = #active
 * ^experimental = true

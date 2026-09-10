@@ -1,7 +1,7 @@
 ValueSet: Form096NewbornEyeProphylaxisCodeVS
 Id: newborn-eye-prophylaxis-code-vs
 Title: "Newborn Eye Prophylaxis Code"
-Description: "Form 096 terminology binding for Procedure.code; FHIR_Mapping row 69; JSON_FHIR_Mapping row 69. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Procedure.code."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/newborn-eye-prophylaxis-code-vs"
 * ^status = #active
 * ^experimental = true

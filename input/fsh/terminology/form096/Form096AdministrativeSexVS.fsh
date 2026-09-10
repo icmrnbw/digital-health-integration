@@ -1,7 +1,7 @@
 ValueSet: Form096AdministrativeSexVS
 Id: administrative-sex-vs
 Title: "Administrative Sex"
-Description: "Form 096 terminology binding for Patient.gender; FHIR_Mapping rows 121, 130. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Patient.gender."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/administrative-sex-vs"
 * ^status = #active
 * ^experimental = true

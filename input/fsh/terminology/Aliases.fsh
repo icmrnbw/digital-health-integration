@@ -91,6 +91,7 @@ Alias: $v2-0131 = http://terminology.hl7.org/CodeSystem/v2-0131
 Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
 Alias: $v2-0360 = http://terminology.hl7.org/CodeSystem/v2-0360
 Alias: $v2-0487 = http://terminology.hl7.org/CodeSystem/v2-0487
+Alias: $v2-0532 = http://terminology.hl7.org/CodeSystem/v2-0532
 Alias: $v2-0916 = http://terminology.hl7.org/CodeSystem/v2-0916
 Alias: $v2-0936 = http://terminology.hl7.org/CodeSystem/v2-0936
 Alias: $v2-admission = http://terminology.hl7.org/CodeSystem/v2-0092

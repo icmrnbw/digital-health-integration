@@ -1,7 +1,7 @@
 ValueSet: Form096PlacentaDeliveryMethodVS
 Id: placenta-delivery-method-vs
 Title: "Placenta Delivery Method"
-Description: "Form 096 terminology binding for Procedure.code; FHIR_Mapping row 72; JSON_FHIR_Mapping row 72. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Procedure.code."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/placenta-delivery-method-vs"
 * ^status = #active
 * ^experimental = true

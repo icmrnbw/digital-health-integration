@@ -1,7 +1,7 @@
 ValueSet: Form096InterventionEffectivenessVS
 Id: intervention-effectiveness-vs
 Title: "Intervention Effectiveness"
-Description: "Form 096 terminology binding for Procedure.outcome / Observation.valueCodeableConcept; FHIR_Mapping rows 136, 138, 140; JSON_FHIR_Mapping rows 136, 138, 140. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Procedure.outcome / Observation.valueCodeableConcept."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/intervention-effectiveness-vs"
 * ^status = #active
 * ^experimental = true

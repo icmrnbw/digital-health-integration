@@ -1,7 +1,7 @@
 ValueSet: Form096NewbornBirthDatetimeObservationCodeVS
 Id: newborn-birth-datetime-observation-code-vs
 Title: "Newborn Birth Date and Time Observation Codes"
-Description: "Form 096 terminology binding for Observation.code; FHIR_Mapping rows 117–118, 126–127; JSON_FHIR_Mapping rows 117–118, 126–127. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Observation.code."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/newborn-birth-datetime-observation-code-vs"
 * ^status = #active
 * ^experimental = true

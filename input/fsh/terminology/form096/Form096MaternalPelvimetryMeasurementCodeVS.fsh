@@ -1,7 +1,7 @@
 ValueSet: Form096MaternalPelvimetryMeasurementCodeVS
 Id: maternal-pelvimetry-measurement-code-vs
 Title: "Maternal Pelvimetry Measurement Codes"
-Description: "Form 096 terminology binding for Observation.code; FHIR_Mapping rows 185–190; JSON_FHIR_Mapping rows 185–190. Source: 096 Word form, maternal pelvis measurement block."
+Description: "Form 096 terminology binding for Observation.code."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/maternal-pelvimetry-measurement-code-vs"
 * ^status = #active
 * ^experimental = true

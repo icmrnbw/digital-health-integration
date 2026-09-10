@@ -1,7 +1,7 @@
 CodeSystem: Form096MaternalPelvimetryMeasurementCodeCS
 Id: maternal-pelvimetry-measurement-code-cs
 Title: "Maternal Pelvimetry Measurement CodeSystem"
-Description: "Governed local concepts for Form 096, generated from the approved Google Sheet terminology table."
+Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-pelvimetry-measurement-code-cs"
 * ^status = #active
 * ^experimental = true

@@ -91,6 +91,7 @@ Alias: $v2-0131 = http://terminology.hl7.org/CodeSystem/v2-0131
 Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
 Alias: $v2-0360 = http://terminology.hl7.org/CodeSystem/v2-0360
 Alias: $v2-0487 = http://terminology.hl7.org/CodeSystem/v2-0487
+Alias: $v2-0532 = http://terminology.hl7.org/CodeSystem/v2-0532
 Alias: $v2-0916 = http://terminology.hl7.org/CodeSystem/v2-0916
 Alias: $v2-0936 = http://terminology.hl7.org/CodeSystem/v2-0936
 Alias: $v2-admission = http://terminology.hl7.org/CodeSystem/v2-0092
@@ -168,4 +169,5 @@ Alias: $signature-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/sign
 Alias: $flag-status-cs = http://hl7.org/fhir/flag-status
 Alias: $profession-specialization-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/profession-specialization-cs
 
-// Form 096 CHR terminology aliases are maintained with its generated terminology artifacts.
+// Form 096 local terminology aliases are maintained alongside its terminology artifacts
+// in input/fsh/terminology/form096/.

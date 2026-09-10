@@ -1,7 +1,7 @@
 ValueSet: Form096MaternalDeathTimingVS
 Id: maternal-death-timing-vs
 Title: "Maternal Death Timing"
-Description: "Form 096 terminology binding for Observation.valueCodeableConcept; FHIR_Mapping row 38. Source: 096-ТУҒРУҚ ТИББИЙ КАРТАСИ.doc."
+Description: "Form 096 terminology binding for Observation.valueCodeableConcept."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/maternal-death-timing-vs"
 * ^status = #active
 * ^experimental = true
