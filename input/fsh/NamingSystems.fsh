@@ -126,7 +126,7 @@ Usage: #definition
 * url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/screening-source-system-identifier"
 * name = "ScreeningSourceSystemIdentifier"
 * status = #active
-* kind = #uri
+* kind = #identifier
 * date = "2026-09-07"
 * publisher = "Uzinfocom"
 * responsible = "Uzinfocom"
