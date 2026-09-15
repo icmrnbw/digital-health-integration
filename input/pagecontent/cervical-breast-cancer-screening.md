@@ -14,6 +14,8 @@ Each section gives the value set to use, an example code, the governing profile 
 
 Coded values use SNOMED CT or LOINC wherever an equivalent concept exists. Local codes remain only where no standard concept matches; those are published in the `screening-*-cs` CodeSystems with Uzbek, Russian and English designations.
 
+<div>{% include screening-model-en.svg %}</div><br clear="all"/>
+
 ### Ordering a test or procedure (ServiceRequest)
 
 Set `ServiceRequest.code` to the test or procedure being ordered.
@@ -329,6 +331,6 @@ Examples: [practitioner-role-laborant](PractitionerRole-practitioner-role-labora
 | Role | Example code |
 | :--- | :--- |
 | Laboratory technician | `screening-roles-cs#his_laboratory_laborant` |
-| Obstetrician-gynecologist | `screening-roles-cs#his_centre_obstetrics_gynecology_obstetrician_gynecologist` |
+| Obstetrician-gynecologist | `screening-roles-cs#his_centre_obgyn_obstetrician_gynecologist` |
 | Radiologist | `screening-roles-cs#his_ris_ragiologist_head` |
 | Patronage nurse | `screening-roles-cs#his_poliklinika_patronage_nurse` |

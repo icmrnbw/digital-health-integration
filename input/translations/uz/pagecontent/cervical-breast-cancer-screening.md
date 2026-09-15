@@ -14,6 +14,8 @@ Har bir bo'limda foydalaniladigan ma'lumotnoma, kod namunasi, boshqaruvchi profi
 
 Kodlanadigan qiymatlar ekvivalent tushuncha mavjud bo'lgan hamma joyda SNOMED CT yoki LOINC dan foydalanadi. Mahalliy kodlar faqat standart tushuncha mos kelmagan joyda qoladi; ular `screening-*-cs` CodeSystem larida o'zbek, rus va ingliz tilidagi belgilanishlari bilan nashr etiladi.
 
+<div>{% include screening-model-uz.svg %}</div><br clear="all"/>
+
 ### Test yoki muolajani buyurtirish (ServiceRequest)
 
 `ServiceRequest.code` ni buyurtirilayotgan test yoki muolajaga o'rnating.
@@ -329,6 +331,6 @@ Misollar: [practitioner-role-laborant](PractitionerRole-practitioner-role-labora
 | Rol | Misol kodi |
 | :--- | :--- |
 | Laborant | `screening-roles-cs#his_laboratory_laborant` |
-| Akusher-ginekolog | `screening-roles-cs#his_centre_obstetrics_gynecology_obstetrician_gynecologist` |
+| Akusher-ginekolog | `screening-roles-cs#his_centre_obgyn_obstetrician_gynecologist` |
 | Radiolog | `screening-roles-cs#his_ris_ragiologist_head` |
 | Patronaj hamshira | `screening-roles-cs#his_poliklinika_patronage_nurse` |

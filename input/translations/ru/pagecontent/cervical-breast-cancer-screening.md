@@ -14,6 +14,8 @@
 
 Кодируемые значения используют SNOMED CT или LOINC везде, где существует эквивалентное понятие. Локальные коды остаются только там, где стандартного понятия нет; они публикуются в CodeSystem `screening-*-cs` с обозначениями на узбекском, русском и английском языках.
 
+<div>{% include screening-model-ru.svg %}</div><br clear="all"/>
+
 ### Назначение теста или процедуры (ServiceRequest)
 
 Установите `ServiceRequest.code` в назначаемый тест или процедуру.
@@ -343,6 +345,6 @@
 | Роль | Пример кода |
 | :--- | :--- |
 | Лаборант | `screening-roles-cs#his_laboratory_laborant` |
-| Акушер-гинеколог | `screening-roles-cs#his_centre_obstetrics_gynecology_obstetrician_gynecologist` |
+| Акушер-гинеколог | `screening-roles-cs#his_centre_obgyn_obstetrician_gynecologist` |
 | Радиолог | `screening-roles-cs#his_ris_ragiologist_head` |
 | Патронажная медсестра | `screening-roles-cs#his_poliklinika_patronage_nurse` |
