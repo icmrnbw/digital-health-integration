@@ -12,48 +12,48 @@ Description: "Maps DMED payment_type values to national coverage type codes. The
 * group.target = $coverage-type
 * group.element[+].code = #insurance_311_resolution
 * group.element[=].display = "Фонд страхования по ПП-311"
-* group.element[=].target[+].code = #dtsj-treated-case
+* group.element[=].target[+].code = #covtp-0001-00001
 * group.element[=].target[=].display = "State Health Insurance treated case (Resolution No. PQ-311)"
 * group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #insurance_5199_resolution
 * group.element[=].display = "Фонд стархования по ПП-5199"
-* group.element[=].target[+].code = #dtsj-privileged-category
+* group.element[=].target[+].code = #covtp-0001-00002
 * group.element[=].target[=].display = "State Health Insurance treatment of patients belonging to privileged categories (Resolution No. PQ-5199)"
 * group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #fond_VAQF
 * group.element[=].display = "VAQF - Благотворительный общественный фонд"
-* group.element[=].target[+].code = #saxovat-komak-fund
-* group.element[=].target[=].display = "Sakhovat and Support Fund through State Health Insurance"
+* group.element[=].target[+].code = #covtp-0001-00003
+* group.element[=].target[=].display = "Sakhovat and Support Fund through State Health Insurance (Decree No. PF-17, Resolution No. 462)"
 * group.element[=].target[=].relationship = #related-to
 * group.element[+].code = #insurance_17_decree
 * group.element[=].display = "Фонд страхования по УП-17 от 30.01.2025"
-* group.element[=].target[+].code = #saxovat-komak-fund
-* group.element[=].target[=].display = "Sakhovat and Support Fund through State Health Insurance"
+* group.element[=].target[+].code = #covtp-0001-00003
+* group.element[=].target[=].display = "Sakhovat and Support Fund through State Health Insurance (Decree No. PF-17, Resolution No. 462)"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
-* group.element[=].target[+].code = #womens-notebook-fund
-* group.element[=].target[=].display = "Women's Notebook Fund through State Health Insurance"
+* group.element[=].target[+].code = #covtp-0001-00004
+* group.element[=].target[=].display = "Women's Notebook Fund through State Health Insurance (Decree No. PF-17, Resolution No. 462)"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
-* group.element[=].target[+].code = #youth-notebook-fund
-* group.element[=].target[=].display = "Youth Notebook Fund through State Health Insurance"
+* group.element[=].target[+].code = #covtp-0001-00005
+* group.element[=].target[=].display = "Youth Notebook Fund through State Health Insurance (Decree No. PF-17, Resolution No. 462)"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #local_budget
 * group.element[=].display = "Местный бюджет"
-* group.element[=].target[+].code = #local-budget
+* group.element[=].target[+].code = #covtp-0001-00010
 * group.element[=].target[=].display = "Local budget"
 * group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #sponsorship
 * group.element[=].display = "Спонсорство"
-* group.element[=].target[+].code = #sponsorship
+* group.element[=].target[+].code = #covtp-0001-00011
 * group.element[=].target[=].display = "Sponsorship"
 * group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #state_nonstate_grant
 * group.element[=].display = "Государственные и негосударственные гранты"
-* group.element[=].target[+].code = #state-and-nonstate-grants
+* group.element[=].target[+].code = #covtp-0001-00012
 * group.element[=].target[=].display = "State and non-state grants"
 * group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #other
 * group.element[=].display = "Другие"
-* group.element[=].target[+].code = #other
+* group.element[=].target[+].code = #covtp-0001-00013
 * group.element[=].target[=].display = "Other"
 * group.element[=].target[=].relationship = #equivalent
 
