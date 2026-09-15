@@ -13,12 +13,12 @@ Description: "Maps DMED medical_care_form values to the standard or national Enc
 * group[=].element[+].code = #emergency
 * group[=].element[=].display = "Экстренная"
 * group[=].element[=].target[+].code = #EM
-* group[=].element[=].target[=].display = "Emergency"
+* group[=].element[=].target[=].display = "emergency"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #planned
 * group[=].element[=].display = "Плановая"
 * group[=].element[=].target[+].code = #R
-* group[=].element[=].target[=].display = "Routine"
+* group[=].element[=].target[=].display = "routine"
 * group[=].element[=].target[=].relationship = #related-to
 * group[=].element[+].code = #urgent
 * group[=].element[=].display = "Неотложная"
@@ -92,10 +92,10 @@ Description: "Maps DMED bed_type values to the national organizational specializ
 * group.element[+].code = #obstetrics_gynecology
 * group.element[=].display = "Акушеро-гинекологический"
 * group.element[=].target[+].code = #148.0
-* group.element[=].target[=].display = "For pregnant women, women in labor and postpartum women"
+* group.element[=].target[=].display = "For pregnant women, women in labor and postpartum women (except pregnancy pathologies)"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[=].target[+].code = #150.0
-* group.element[=].target[=].display = "Adult gynecology"
+* group.element[=].target[=].display = "Gynecology (except abortions) for adults"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #resuscitation
 * group.element[=].display = "Реанимационный (интенсивная терапия)"
@@ -193,9 +193,11 @@ Description: "Maps DMED result_treatment values that represent discharge disposi
 * group[=].element[+].code = #discharged_at_his_own_request
 * group[=].element[=].display = "Выписан по собственному желанию"
 * group[=].element[=].target[+].code = #mserv-0004-00003
-* group[=].element[=].target[=].display = "Self left from hospital"
+// display matches the source CodeSystem's own (typo'd) EN designation verbatim - see encounter-discharge-disposition-home-cs#mserv-0004-00003
+* group[=].element[=].target[=].display = "Self letft from hospital"
 * group[=].element[=].target[=].relationship = #related-to
 * group[+].source = Canonical(DMEDForm066TreatmentResultCS)
+* group[=].target = $discharge-disposition
 * group[=].element[+].code = #healthy
 * group[=].element[=].display = "Выписан из больницы: здоров"
 * group[=].element[=].noMap = true
@@ -206,38 +208,43 @@ Description: "Maps DMED result_treatment values that represent discharge disposi
 * group[=].element[=].display = "Выписан из больницы: незначительное улучшение"
 * group[=].element[=].noMap = true
 
-Instance: dmed-form-066-treatment-outcome-to-normalized
+Instance: dmed-form-066-treatment-outcome-to-subject-status
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Form 066 Treatment Outcome to Normalized Outcome"
-Description: "Maps DMED outcome_treatment values to stable Form 066 treatment outcome codes."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-treatment-outcome-to-normalized"
-* name = "DMEDForm066TreatmentOutcomeToNormalized"
+Title: "DMED Form 066 Treatment Outcome to Encounter Subject Status"
+Description: "Maps DMED outcome_treatment health-state values to Encounter.subjectStatus, as specified by integration-066.md. death_certificate has no subject-status target and must not be repurposed as discharge disposition; death disposition is derived from result_treatment."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-treatment-outcome-to-subject-status"
+* name = "DMEDForm066TreatmentOutcomeToSubjectStatus"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
-* group.source = Canonical(DMEDForm066TreatmentOutcomeCS)
-* group.target = Canonical(Form066TreatmentOutcomeCS)
-* group.element[+].code = #better
-* group.element[=].display = "Стало лучше"
-* group.element[=].target[+].code = #improved
-* group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #death_certificate
-* group.element[=].display = "Констатация смерти"
-* group.element[=].target[+].code = #death-confirmed
-* group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #deterioration
-* group.element[=].display = "Ухудшение"
-* group.element[=].target[+].code = #deteriorated
-* group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #no_change
-* group.element[=].display = "Без изменений"
-* group.element[=].target[+].code = #no-change
-* group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #recovered
-* group.element[=].display = "Выздоровел"
-* group.element[=].target[+].code = #recovered
-* group.element[=].target[=].relationship = #equivalent
+* group[+].source = Canonical(DMEDForm066TreatmentOutcomeCS)
+* group[=].target = $encounter-local-subject-status-cs
+* group[=].element[+].code = #better
+* group[=].element[=].display = "Стало лучше"
+* group[=].element[=].target[+].code = #loc-cs-002
+* group[=].element[=].target[=].display = "Improved"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #deterioration
+* group[=].element[=].display = "Ухудшение"
+* group[=].element[=].target[+].code = #loc-cs-004
+* group[=].element[=].target[=].display = "Worsened"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #no_change
+* group[=].element[=].display = "Без изменений"
+* group[=].element[=].target[+].code = #loc-cs-003
+* group[=].element[=].target[=].display = "Unchanged"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #recovered
+* group[=].element[=].display = "Выздоровел"
+* group[=].element[=].target[+].code = #loc-cs-001
+* group[=].element[=].target[=].display = "Recovered"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[+].source = Canonical(DMEDForm066TreatmentOutcomeCS)
+* group[=].target = $encounter-local-subject-status-cs
+* group[=].element[+].code = #death_certificate
+* group[=].element[=].display = "Констатация смерти"
+* group[=].element[=].noMap = true
 
 Instance: dmed-form-066-tuberculosis-resistance-to-sensitivity
 InstanceOf: ConceptMap

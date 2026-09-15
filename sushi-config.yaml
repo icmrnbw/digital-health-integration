@@ -26,6 +26,11 @@ publisher:
 #
 dependencies:
   uz.dhp.core: 0.8.0
+  # Pin automatically-provided R5 packages so SUSHI and CI do not depend on
+  # resolving the moving `latest` tag during a build.
+  hl7.terminology.r5: 7.3.0
+  hl7.fhir.uv.extensions.r5: 5.3.0
+  hl7.fhir.uv.tools.r5: 1.2.0
   # R4-only package used cross-version for sdc-questionnaire-calculatedExpression (same as uz.dhp.core);
   # the resulting version-mismatch messages are suppressed in ignoreWarnings.txt
   hl7.fhir.uv.sdc: 3.0.0

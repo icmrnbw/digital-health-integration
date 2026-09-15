@@ -202,80 +202,64 @@ Description: "Maps DMED disease-codes type values to Form 066 diagnosis roles. T
 * group.element[+].code = #clinical
 * group.element[=].noMap = true
 
-Instance: dmed-form-066-arrival-type-to-normalized
+Instance: dmed-form-066-arrival-type-unmapped
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Form 066 Arrival Type to Normalized Arrival Type"
-Description: "Maps DMED arrival_type values, including its misspelled source code, to stable Form 066 arrival type codes."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-arrival-type-to-normalized"
-* name = "DMEDForm066ArrivalTypeToNormalized"
+Title: "DMED Form 066 Arrival Type - No FHIR Mapping"
+Description: "Records that DMED arrival_type is not assigned a FHIR target by integration-066.md. In particular, ambulance transport is represented from the separate delivered_by_ambulance Boolean field, so arrival_type must not be substituted for it or silently converted to Encounter.admission.admitSource."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-arrival-type-unmapped"
+* name = "DMEDForm066ArrivalTypeUnmapped"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 * group.source = Canonical(DMEDForm066ArrivalTypeCS)
-* group.target = Canonical(Form066ArrivalTypeCS)
 * group.element[+].code = #accompaned-by-police
-* group.element[=].target[+].code = #accompanied-by-police
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #by-ambulance
-* group.element[=].target[+].code = #ambulance
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #other
-* group.element[=].target[+].code = #other
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #self-referred
-* group.element[=].target[+].code = #self-referred
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 
-Instance: dmed-form-066-transportation-kind-to-normalized
+Instance: dmed-form-066-transportation-kind-unmapped
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Form 066 Transportation Kind to Normalized Transportation Kind"
-Description: "Maps DMED transportation_kind values to stable Form 066 transportation mode codes."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-transportation-kind-to-normalized"
-* name = "DMEDForm066TransportationKindToNormalized"
+Title: "DMED Form 066 Transportation Kind - No FHIR Mapping"
+Description: "Records that DMED transportation_kind currently has no defined element or bound target code system in the Form 066 FHIR profiles. Implementers must not invent a local target or drop these values into Encounter.admission.admitSource."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-transportation-kind-unmapped"
+* name = "DMEDForm066TransportationKindUnmapped"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 * group.source = Canonical(DMEDForm066TransportationKindCS)
-* group.target = Canonical(Form066TransportationKindCS)
 * group.element[+].code = #carried-in-arms
-* group.element[=].target[+].code = #carried
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #crutches
-* group.element[=].target[+].code = #crutches
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #stretcher
-* group.element[=].target[+].code = #stretcher
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #walk
-* group.element[=].target[+].code = #ambulatory
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #wheelchair
-* group.element[=].target[+].code = #wheelchair
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 
-Instance: dmed-form-066-hospitalization-reason-to-normalized
+Instance: dmed-form-066-hospitalization-reason-unmapped
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Form 066 Hospitalization Reason to Normalized Reason"
-Description: "Maps DMED hospitalization_reason values to stable Form 066 hospitalization reason codes."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-hospitalization-reason-to-normalized"
-* name = "DMEDForm066HospitalizationReasonToNormalized"
+Title: "DMED Form 066 Hospitalization Reason - No FHIR Mapping"
+Description: "Records that DMED hospitalization_reason currently has no defined target in the Form 066 FHIR profiles and is removed by the current DMED client before save. Implementers must not infer a target until the field is present in the saved payload and the profile defines its representation."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-hospitalization-reason-unmapped"
+* name = "DMEDForm066HospitalizationReasonUnmapped"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 * group.source = Canonical(DMEDForm066HospitalizationReasonCS)
-* group.target = Canonical(Form066HospitalizationReasonCS)
 * group.element[+].code = #car_accident
-* group.element[=].target[+].code = #road-traffic-accident
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #disease
-* group.element[=].target[+].code = #disease
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #injury
-* group.element[=].target[+].code = #injury
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #planned
-* group.element[=].target[+].code = #planned-admission
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true

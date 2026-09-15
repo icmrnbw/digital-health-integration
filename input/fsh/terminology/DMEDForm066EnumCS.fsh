@@ -152,7 +152,7 @@ Description: "Source codes used by DMED disease-codes data[].type in Form 066."
 CodeSystem: DMEDForm066ArrivalTypeCS
 Id: dmed-form-066-arrival-type-cs
 Title: "DMED Form 066 Arrival Type"
-Description: "Source codes used by DMED data.arrival_type. Their applicability to Form 066 requires confirmation."
+Description: "Source codes used by DMED data.arrival_type. integration-066.md currently defines no FHIR target for this field; ambulance transport is sourced separately from delivered_by_ambulance."
 * insert OriginalCodeSystemDraft(dmed-form-066-arrival-type-cs)
 * ^language = #ru
 * #accompaned-by-police "В сопровождении сотрудника ГУВД"
@@ -163,7 +163,7 @@ Description: "Source codes used by DMED data.arrival_type. Their applicability t
 CodeSystem: DMEDForm066TransportationKindCS
 Id: dmed-form-066-transportation-kind-cs
 Title: "DMED Form 066 Transportation Kind"
-Description: "Source codes used by DMED data.transportation_kind. Their applicability to Form 066 requires confirmation."
+Description: "Source codes used by DMED data.transportation_kind. Form 066 currently defines no FHIR target for this field."
 * insert OriginalCodeSystemDraft(dmed-form-066-transportation-kind-cs)
 * ^language = #ru
 * #carried-in-arms "На руках"
@@ -175,7 +175,7 @@ Description: "Source codes used by DMED data.transportation_kind. Their applicab
 CodeSystem: DMEDForm066HospitalizationReasonCS
 Id: dmed-form-066-hospitalization-reason-cs
 Title: "DMED Form 066 Hospitalization Reason"
-Description: "Source codes used by DMED data.hospitalization_reason. The current DMED Form 066 client removes this field from the save request, so its applicability requires confirmation."
+Description: "Source codes used by DMED data.hospitalization_reason. The current DMED Form 066 client removes this field from the save request, and Form 066 currently defines no FHIR target for it."
 * insert OriginalCodeSystemDraft(dmed-form-066-hospitalization-reason-cs)
 * ^language = #ru
 * #car_accident "ДТП"
