@@ -56,10 +56,10 @@ InstanceOf: UZCorePatient
 Description: "Gepatit profili uchun Tolibjon To'lanboev misolida namuna"
 Usage: #example
 
-// citizenship deliberately omitted: iso-3166-2-vs in uz.dhp.core declares a required supplement on
-// urn:iso:std:iso:3166, which no FHIR package ships, so the validator can never mark the supplement
-// as used and fails any instance bound to it. Restore once the core ValueSet is fixed -
-// see uzinfocom-org/digital-health-ig#<issue>.
+// citizenship temporarily omitted: IG Publisher 2.3.4 wrongly fails the required supplement on
+// iso-3166-2-vs because urn:iso:std:iso:3166 is only available on the terminology server.
+// Restore once hapifhir/org.hl7.fhir.core#2636 is fixed in a publisher release:
+// * extension[citizenship].extension[code].valueCodeableConcept = urn:iso:std:iso:3166#UZ "Uzbekistan"
 * identifier[nationalId]
   * system = "https://dhp.uz/fhir/core/sid/pid/uz/ni"
   * value = "515050500505"
