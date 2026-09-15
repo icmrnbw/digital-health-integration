@@ -5,6 +5,7 @@ Title: "Screening Composition Example"
 Description: "Screening summary for a completed cycle: questionnaire answers, results of every step and the final ICD-10 diagnosis."
 * id = "screening-composition-example"
 * language = #en
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[0].value = "128"
 * identifier[1].system = $screening-program-type-id

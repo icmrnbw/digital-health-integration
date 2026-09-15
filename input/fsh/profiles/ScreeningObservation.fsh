@@ -6,6 +6,7 @@ Description: "Profile for storing cervical and breast cancer screening results (
 * ^experimental = true
 * ^status = #active
 * ^publisher = "DHP Integration"
+* insert ScreeningMetaSource
 
 * bodySite MS
 
@@ -52,6 +53,7 @@ Instance: patient-workplace
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Patient's place of work and employer, recorded as social history."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "340"
 * identifier[=].use = #usual
@@ -68,6 +70,7 @@ Instance: cytology-result
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Result of cytological smear examination: LSIL."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "333"
 * identifier[=].use = #usual
@@ -87,6 +90,7 @@ Instance: cytology-ai-analysis
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Cytological smear analysis performed by an AI system."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "333"
 * identifier[=].use = #usual
@@ -106,6 +110,7 @@ Instance: hpv-result
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "High-risk HPV DNA test result."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "333"
 * identifier[=].use = #usual
@@ -124,6 +129,7 @@ Instance: colposcopy-result
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Colposcopy conclusion including transformation zone assessment."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "334"
 * identifier[=].use = #usual
@@ -145,6 +151,7 @@ Instance: mammography-summary
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Mammography summary including BI-RADS category, breast density, and image quality."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "335"
 * identifier[=].use = #usual
@@ -169,6 +176,7 @@ Instance: mammography-right-breast-finding
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Finding (mole) detected in the right breast during mammography."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "335"
 * identifier[=].use = #usual
@@ -191,6 +199,7 @@ Instance: mammography-left-breast-finding
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Finding (skin thickening) detected in the left breast during mammography."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "335"
 * identifier[=].use = #usual
@@ -213,6 +222,7 @@ Instance: gynecological-physical-exam
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Medical history obtained during gynecological examination. Anthropometrics (height, weight, BMI) are recorded as separate vital-signs Observations."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "336"
 * identifier[=].use = #usual
@@ -229,6 +239,7 @@ Instance: gynecological-complaints
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Patient-reported symptoms and complaints during gynecological consultation."
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "337"
 * identifier[=].use = #usual
@@ -246,7 +257,7 @@ Instance: oncogynecological-followup
 InstanceOf: ScreeningObservation
 Usage: #example
 Description: "Data from examination in the oncology follow-up office (complaints, contraindications)."
-
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "338"
 * identifier[=].use = #usual

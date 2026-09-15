@@ -119,26 +119,6 @@ Usage: #definition
 * uniqueId[0].value = "https://dhp.uz/fhir/core/sid/uz/screening-program-type"
 * uniqueId[0].preferred = true
 
-Instance: screening-source-system-identifier
-InstanceOf: NamingSystem
-Description: "URI scheme identifying which system (DMED or HPV) authored a screening resource, for meta.source"
-Usage: #definition
-* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/screening-source-system-identifier"
-* name = "ScreeningSourceSystemIdentifier"
-* status = #active
-* kind = #identifier
-* date = "2026-09-07"
-* publisher = "Uzinfocom"
-* responsible = "Uzinfocom"
-* usage = "Values for Resource.meta.source, written by the DMED and HPV (ВПЧ) screening systems themselves on every resource they create, except Patient, Practitioner and PractitionerRole (shared across both systems and not screening-specific) -- the same exclusion list as screening-program-type-identifier-system. Unlike that identifier, though, meta.source applies regardless of whether the resource belongs to a single screening program: e.g. a general-intake Observation not tied to one program still gets meta.source, but not the program-type identifier. meta.source is a single uri per resource, not an identifier system/value pair: https://dhp.uz/fhir/source/screening for HPV-authored resources, https://dhp.uz/fhir/source/dmed for DMED-authored ones. Do not infer source system from the presence of an identifier from screening-identifier-system -- that system's usage does not indicate which system produced a resource; DMED currently not writing to it is an implementation detail, not a guarantee."
-* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
-* uniqueId[0].type = #uri
-* uniqueId[0].value = "https://dhp.uz/fhir/source/screening"
-* uniqueId[0].preferred = false
-* uniqueId[+].type = #uri
-* uniqueId[=].value = "https://dhp.uz/fhir/source/dmed"
-* uniqueId[=].preferred = false
-
 Instance: screening-patient-identifier-system
 InstanceOf: NamingSystem
 Description: "Patient identifier system for the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System"

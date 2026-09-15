@@ -6,6 +6,7 @@ Description: "Profile for creating referrals for laboratory and diagnostic inves
 * ^experimental = true
 * ^status = #active
 * ^publisher = "DHP Integration"
+* insert ScreeningMetaSource
 
 * identifier MS
 * status MS
@@ -24,6 +25,7 @@ Instance: ServiceRequest-cytology
 InstanceOf: ScreeningServiceRequest
 Usage: #example
 Description: "Referral for liquid-based cytology"
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "233"
 * identifier[=].use = #usual
@@ -48,6 +50,7 @@ Instance: ServiceRequest-hpv
 InstanceOf: ScreeningServiceRequest
 Usage: #example
 Description: "Referral for HPV testing"
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "236"
 * identifier[=].use = #usual
@@ -69,6 +72,7 @@ Instance: ServiceRequest-colposcopy
 InstanceOf: ScreeningServiceRequest
 Usage: #example
 Description: "Referral for colposcopy"
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "234"
 * identifier[=].use = #usual
@@ -90,6 +94,7 @@ Instance: ServiceRequest-mammography
 InstanceOf: ScreeningServiceRequest
 Usage: #example
 Description: "Referral for mammography"
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].system = $screening-local-id
 * identifier[=].value = "235"
 * identifier[=].use = #usual
