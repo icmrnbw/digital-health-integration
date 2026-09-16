@@ -666,15 +666,13 @@ Usage: #inline
 
 
 Instance: procedure-surgery-066
-InstanceOf: UZCoreProcedure
+InstanceOf: Procedure066
 Usage: #inline
 * language = #en
 * status = #completed
-// category duplicates code below as a stand-in for a "primary operation" flag - a
-// PrimaryProcedure extension now exists in digital-health-ig (uz-core#066-terminology-gaps)
-// but isn't usable here until uz.dhp.core publishes a version that includes it
 * category = $sct#387713003 "Surgical procedure (procedure)"
 * code = $sct#387713003 "Surgical procedure (procedure)"
+* extension[mainProcedure].valueBoolean = true
 * subject = Reference(urn:uuid:06600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:06600003-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-01-08T11:30:00+05:00"
