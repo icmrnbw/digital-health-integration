@@ -49,32 +49,6 @@ Description: "Source tokens for patient_bad_habits. Preserves the observed DMED 
 * #"promiscuous_sexual_life" "Беспорядочная половая жизнь"
 * #"criminal_dependency" "Зависимость от уголовной преступности"
 
-CodeSystem: DMEDForm111PartnerBloodGroupCS
-Id: dmed-form-111-partner-blood-group-cs
-Title: "DMED Form 111 partner_blood_group"
-Description: "Source tokens for partner_blood_group. Preserves the observed DMED values; see the form mapping evidence document."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-partner-blood-group-cs"
-* ^status = #draft
-* ^experimental = false
-* ^caseSensitive = true
-* ^content = #fragment
-* #"o" "O(I)"
-* #"a" "A(II)"
-* #"b" "B(III)"
-* #"ab" "AB(IV)"
-
-CodeSystem: DMEDForm111PartnerRhesusFactorCS
-Id: dmed-form-111-partner-rhesus-factor-cs
-Title: "DMED Form 111 partner_rhesus_factor"
-Description: "Source tokens for partner_rhesus_factor. Preserves the observed DMED values; see the form mapping evidence document."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-partner-rhesus-factor-cs"
-* ^status = #draft
-* ^experimental = false
-* ^caseSensitive = true
-* ^content = #fragment
-* #"negative" "Rh-"
-* #"positive" "Rh"
-
 CodeSystem: DMEDForm111BreastConditionCS
 Id: dmed-form-111-breast-condition-cs
 Title: "DMED Form 111 breast_condition"
@@ -311,18 +285,6 @@ Description: "Source tokens for pregnancy_outcome. Preserves the observed DMED v
 * #"abort" "Аборт"
 * #"birth" "Рождение ребенка"
 
-CodeSystem: DMEDForm111DeliveryMethodCS
-Id: dmed-form-111-delivery-method-cs
-Title: "DMED Form 111 delivery_method"
-Description: "Source tokens for delivery_method. Preserves the observed DMED values; see the form mapping evidence document."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-delivery-method-cs"
-* ^status = #draft
-* ^experimental = false
-* ^caseSensitive = true
-* ^content = #fragment
-* #"natural" "Роды через естественные родовые пути"
-* #"surgical" "Акушерско-хирургическая практика"
-
 CodeSystem: DMEDForm111AnalysisTitleCS
 Id: dmed-form-111-analysis-title-cs
 Title: "DMED Form 111 analysis_title"
@@ -343,33 +305,72 @@ Description: "Source tokens for child_birth_status. Preserves the observed DMED 
 * ^experimental = false
 * ^caseSensitive = true
 * ^content = #fragment
-* #"antenatal_stillbirth" "Stillbirth - antenatal death"
-* #"intrapartum_stillbirth" "Stillbirth - intrapartum death"
-* #"live_birth" "Live birth"
+* #"preterm" "Недоношенный"
+* #"term" "Доношенный"
 
-CodeSystem: DMEDForm111EducationTypeCoreCS
-Id: dmed-form-111-education-type-core-cs
-Title: "DMED Form 111 education-type-core"
-Description: "Source tokens for education-type-core. Preserves the observed DMED values; see the form mapping evidence document."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-education-type-core-cs"
+CodeSystem: DMEDForm111BloodGroupCS
+Id: dmed-form-111-blood-group-cs
+Title: "DMED Form 111 blood_group"
+Description: "Source tokens for blood_group. Preserves the observed DMED values; see the form mapping evidence document."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-blood-group-cs"
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
 * ^content = #fragment
-* #"no_education" "Таълимсиз"
-* #"unorganized" "Ташкил этилмаган (0-3 ёш)"
-* #"preschool" "Мактабгача таълим (3-7 ёш)"
-* #"elementary" "Бошланғич умумий таълим"
-* #"secondary" "Ўрта умумий таълим"
-* #"incomplete_secondary" "Ўрта тугалланмаган таълим"
-* #"secondary_vocational" "Ўрта касбий таълим"
-* #"special_needs_school" "Ақлий заиф болалар мактаби"
-* #"incomplete_higher" "Тугалланмаган олий таълим"
-* #"higher" "Олий таълим - бакалавриат"
-* #"higher_master" "Олий таълим - магистратура"
-* #"higher_specialist" "Олий таълим - мутахассислик"
-* #"postgraduate" "Аспирантура"
-* #"residency" "Ординатура"
-* #"internship" "Интернатура"
-* #"professional_development" "Малака ошириш"
+* #"o" "O(I)"
+* #"a" "A(II)"
+* #"b" "B(III)"
+* #"ab" "AB(IV)"
+
+CodeSystem: DMEDForm111RhesusFactorCS
+Id: dmed-form-111-rhesus-factor-cs
+Title: "DMED Form 111 rhesus_factor"
+Description: "Source tokens for rhesus_factor. Preserves the observed DMED values; see the form mapping evidence document."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-rhesus-factor-cs"
+* ^status = #draft
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #fragment
+* #"negative" "Rh-"
+* #"positive" "Rh"
+
+CodeSystem: DMEDForm111BirthTypeCS
+Id: dmed-form-111-birth-type-cs
+Title: "DMED Form 111 birth_type"
+Description: "Source tokens for birth_type. Preserves the observed DMED values; see the form mapping evidence document."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-birth-type-cs"
+* ^status = #draft
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #fragment
+* #"vaginal_delivery" "Роды через естественные родовые пути"
+* #"surgical_delivery" "Акушерско-хирургическая практика"
+
+CodeSystem: DMEDForm111ChildBirthConditionCS
+Id: dmed-form-111-child-birth-condition-cs
+Title: "DMED Form 111 child_birth_condition"
+Description: "Source tokens for child_birth_condition. Preserves the observed DMED values; see the form mapping evidence document."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-child-birth-condition-cs"
+* ^status = #draft
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #fragment
+* #"live_birth" "Живорожденный"
+* #"stillbirth_antenatal" "Мертворожденный — антенатальная смерть"
+* #"stillbirth_intranatal" "Мертворождение — интранатальная смерть"
+
+CodeSystem: DMEDForm111FamilyStatusCS
+Id: dmed-form-111-family-status-cs
+Title: "DMED Form 111 family_status"
+Description: "Source tokens for family_status. Preserves the observed DMED values; see the form mapping evidence document."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-family-status-cs"
+* ^status = #draft
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #fragment
+* #"not_married" "Никоҳда эмас"
+* #"married" "Никоҳланган"
+* #"divorced" "Ажрашкан"
+* #"widowed" "Шубҳаси"
+* #"cohabitant" "Бирга туғилган"
 * #"other" "Бошқа"

@@ -163,68 +163,6 @@ Description: "DMED patient_bad_habits to FHIR terminology. Only explicit listed 
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
 
-Instance: dmed-form-111-partner-blood-group-cm
-InstanceOf: ConceptMap
-Usage: #definition
-Title: "DMED Form 111 partner_blood_group mapping"
-Description: "DMED partner_blood_group to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-partner-blood-group-cm"
-* name = "DMEDForm111PartnerBloodGroupCM"
-* status = #draft
-* experimental = false
-* publisher = "Uzinfocom"
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-partner-blood-group-cs"
-* group[=].target = "http://snomed.info/sct"
-* group[=].element[+].code = #"o"
-* group[=].element[=].display = "O(I)"
-* group[=].element[=].target[+].code = #"58460004"
-* group[=].element[=].target[=].display = "Blood group O"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
-* group[=].element[+].code = #"a"
-* group[=].element[=].display = "A(II)"
-* group[=].element[=].target[+].code = #"112144000"
-* group[=].element[=].target[=].display = "Blood group A"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
-* group[=].element[+].code = #"b"
-* group[=].element[=].display = "B(III)"
-* group[=].element[=].target[+].code = #"112149005"
-* group[=].element[=].target[=].display = "Blood group B"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
-* group[=].element[+].code = #"ab"
-* group[=].element[=].display = "AB(IV)"
-* group[=].element[=].target[+].code = #"165743006"
-* group[=].element[=].target[=].display = "Blood group AB"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
-
-Instance: dmed-form-111-partner-rhesus-factor-cm
-InstanceOf: ConceptMap
-Usage: #definition
-Title: "DMED Form 111 partner_rhesus_factor mapping"
-Description: "DMED partner_rhesus_factor to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-partner-rhesus-factor-cm"
-* name = "DMEDForm111PartnerRhesusFactorCM"
-* status = #draft
-* experimental = false
-* publisher = "Uzinfocom"
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-partner-rhesus-factor-cs"
-* group[=].target = "http://snomed.info/sct"
-* group[=].element[+].code = #"negative"
-* group[=].element[=].display = "Rh-"
-* group[=].element[=].target[+].code = #"165746003"
-* group[=].element[=].target[=].display = "RhD negative"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Corrected SCT code against HL7 IPS blood group ValueSet."
-* group[=].element[+].code = #"positive"
-* group[=].element[=].display = "Rh"
-* group[=].element[=].target[+].code = #"165747007"
-* group[=].element[=].target[=].display = "RhD positive"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Corrected SCT code against HL7 IPS blood group ValueSet."
-
 Instance: dmed-form-111-breast-condition-cm
 InstanceOf: ConceptMap
 Usage: #definition
@@ -897,31 +835,6 @@ Description: "DMED pregnancy_outcome to FHIR terminology. Only explicit listed m
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Исход предыдущей беременности."
 
-Instance: dmed-form-111-delivery-method-cm
-InstanceOf: ConceptMap
-Usage: #definition
-Title: "DMED Form 111 delivery_method mapping"
-Description: "DMED delivery_method to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-delivery-method-cm"
-* name = "DMEDForm111DeliveryMethodCM"
-* status = #draft
-* experimental = false
-* publisher = "Uzinfocom"
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-delivery-method-cs"
-* group[=].target = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-birth-type-cs"
-* group[=].element[+].code = #"natural"
-* group[=].element[=].display = "Роды через естественные родовые пути"
-* group[=].element[=].target[+].code = #"chr-0003-00001"
-* group[=].element[=].target[=].display = "Tabiiy tug'ruq yo'llari orqali tug'ruq"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Подтверждённый токен DMED."
-* group[=].element[+].code = #"surgical"
-* group[=].element[=].display = "Акушерско-хирургическая практика"
-* group[=].element[=].target[+].code = #"chr-0003-00002"
-* group[=].element[=].target[=].display = "Akusherlik-jarrohlik amaliyoti"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Подтверждённый токен DMED."
-
 Instance: dmed-form-111-analysis-title-cm
 InstanceOf: ConceptMap
 Usage: #definition
@@ -953,24 +866,181 @@ Description: "DMED child_birth_status to FHIR terminology. Only explicit listed 
 * publisher = "Uzinfocom"
 * group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-child-birth-status-cs"
 * group[=].target = "http://snomed.info/sct"
-* group[=].element[+].code = #"antenatal_stillbirth"
-* group[=].element[=].display = "Stillbirth - antenatal death"
-* group[=].element[=].target[+].code = #"713202001"
-* group[=].element[=].target[=].display = "Antepartum stillbirth"
+* group[=].element[+].code = #"preterm"
+* group[=].element[=].display = "Недоношенный"
+* group[=].element[=].target[+].code = #"367494004"
+* group[=].element[=].target[=].display = "Premature birth of newborn"
 * group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Точное соответствие DMED-токена к SNOMED CT."
-* group[=].element[+].code = #"intrapartum_stillbirth"
-* group[=].element[=].display = "Stillbirth - intrapartum death"
-* group[=].element[=].target[+].code = #"237362003"
-* group[=].element[=].target[=].display = "Fetal intrapartum death"
+* group[=].element[=].target[=].comment = "Map by token semantics. The current DMED client renders the FullTerm label for preterm; this observed UI label inversion must be corrected in DMED."
+* group[=].element[+].code = #"term"
+* group[=].element[=].display = "Доношенный"
+* group[=].element[=].target[+].code = #"21243004"
+* group[=].element[=].target[=].display = "Term birth of newborn"
 * group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Точное соответствие DMED-токена к SNOMED CT."
+* group[=].element[=].target[=].comment = "Map by token semantics. The current DMED client renders the Premature label for term; this observed UI label inversion must be corrected in DMED."
+
+Instance: dmed-form-111-blood-group-cm
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Form 111 blood_group mapping"
+Description: "DMED blood_group to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-blood-group-cm"
+* name = "DMEDForm111BloodGroupCM"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-blood-group-cs"
+* group[=].target = "http://snomed.info/sct"
+* group[=].element[+].code = #"o"
+* group[=].element[=].display = "O(I)"
+* group[=].element[=].target[+].code = #"58460004"
+* group[=].element[=].target[=].display = "Blood group O"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
+* group[=].element[+].code = #"a"
+* group[=].element[=].display = "A(II)"
+* group[=].element[=].target[+].code = #"112144000"
+* group[=].element[=].target[=].display = "Blood group A"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
+* group[=].element[+].code = #"b"
+* group[=].element[=].display = "B(III)"
+* group[=].element[=].target[+].code = #"112149005"
+* group[=].element[=].target[=].display = "Blood group B"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
+* group[=].element[+].code = #"ab"
+* group[=].element[=].display = "AB(IV)"
+* group[=].element[=].target[+].code = #"165743006"
+* group[=].element[=].target[=].display = "Blood group AB"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Corrected invalid/misassigned SCT code in the source workbook; verified against HL7 IPS blood group ValueSet."
+
+Instance: dmed-form-111-rhesus-factor-cm
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Form 111 rhesus_factor mapping"
+Description: "DMED rhesus_factor to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-rhesus-factor-cm"
+* name = "DMEDForm111RhesusFactorCM"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-rhesus-factor-cs"
+* group[=].target = "http://snomed.info/sct"
+* group[=].element[+].code = #"negative"
+* group[=].element[=].display = "Rh-"
+* group[=].element[=].target[+].code = #"165746003"
+* group[=].element[=].target[=].display = "RhD negative"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Corrected SCT code against HL7 IPS blood group ValueSet."
+* group[=].element[+].code = #"positive"
+* group[=].element[=].display = "Rh"
+* group[=].element[=].target[+].code = #"165747007"
+* group[=].element[=].target[=].display = "RhD positive"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Corrected SCT code against HL7 IPS blood group ValueSet."
+
+Instance: dmed-form-111-birth-type-cm
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Form 111 birth_type mapping"
+Description: "DMED birth_type to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-birth-type-cm"
+* name = "DMEDForm111BirthTypeCM"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-birth-type-cs"
+* group[=].target = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-birth-type-cs"
+* group[=].element[+].code = #"vaginal_delivery"
+* group[=].element[=].display = "Роды через естественные родовые пути"
+* group[=].element[=].target[+].code = #"chr-0003-00001"
+* group[=].element[=].target[=].display = "Tabiiy tug'ruq yo'llari orqali tug'ruq"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Current DMED previous-pregnancy token; replaces the obsolete delivery_method=natural token."
+* group[=].element[+].code = #"surgical_delivery"
+* group[=].element[=].display = "Акушерско-хирургическая практика"
+* group[=].element[=].target[+].code = #"chr-0003-00002"
+* group[=].element[=].target[=].display = "Akusherlik-jarrohlik amaliyoti"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Current DMED previous-pregnancy token; replaces the obsolete delivery_method=surgical token."
+
+Instance: dmed-form-111-child-birth-condition-cm
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Form 111 child_birth_condition mapping"
+Description: "DMED child_birth_condition to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-child-birth-condition-cm"
+* name = "DMEDForm111ChildBirthConditionCM"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-child-birth-condition-cs"
+* group[=].target = "http://snomed.info/sct"
 * group[=].element[+].code = #"live_birth"
-* group[=].element[=].display = "Live birth"
+* group[=].element[=].display = "Живорожденный"
 * group[=].element[=].target[+].code = #"281050002"
 * group[=].element[=].target[=].display = "Livebirth"
 * group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Точное соответствие DMED-токена к SNOMED CT."
+* group[=].element[=].target[=].comment = "Current DMED child_birth_condition token."
+* group[=].element[+].code = #"stillbirth_antenatal"
+* group[=].element[=].display = "Мертворожденный — антенатальная смерть"
+* group[=].element[=].target[+].code = #"713202001"
+* group[=].element[=].target[=].display = "Antepartum stillbirth"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Current DMED child_birth_condition token; replaces antenatal_stillbirth."
+* group[=].element[+].code = #"stillbirth_intranatal"
+* group[=].element[=].display = "Мертворождение — интранатальная смерть"
+* group[=].element[=].target[+].code = #"237362003"
+* group[=].element[=].target[=].display = "Fetal intrapartum death"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Current DMED child_birth_condition token; replaces intrapartum_stillbirth."
+
+Instance: dmed-form-111-family-status-cm
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Form 111 family_status mapping"
+Description: "DMED family_status to FHIR terminology. Only explicit listed mappings apply; absence is not an inferred negative answer."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-111-family-status-cm"
+* name = "DMEDForm111FamilyStatusCM"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-family-status-cs"
+* group[=].target = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+* group[=].element[+].code = #"not_married"
+* group[=].element[=].display = "Никоҳда эмас"
+* group[=].element[=].target[+].code = #"U"
+* group[=].element[=].target[=].display = "unmarried"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "The DMED value means currently not married; it does not establish that the patient has never married."
+* group[=].element[+].code = #"married"
+* group[=].element[=].display = "Никоҳланган"
+* group[=].element[=].target[+].code = #"M"
+* group[=].element[=].target[=].display = "Married"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #"divorced"
+* group[=].element[=].display = "Ажрашкан"
+* group[=].element[=].target[+].code = #"D"
+* group[=].element[=].target[=].display = "Divorced"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #"widowed"
+* group[=].element[=].display = "Шубҳаси"
+* group[=].element[=].target[+].code = #"W"
+* group[=].element[=].target[=].display = "Widowed"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Token semantics are unambiguous; the observed DMED Uzbek label appears incorrect and requires a client dictionary fix."
+* group[=].element[+].code = #"cohabitant"
+* group[=].element[=].display = "Бирга туғилган"
+* group[=].element[=].target[+].code = #"T"
+* group[=].element[=].target[=].display = "Domestic partner"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Token semantics are used; the observed DMED Uzbek label should be reviewed."
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-family-status-cs"
+* group[=].element[+].code = #"other"
+* group[=].element[=].display = "Бошқа"
+* group[=].element[=].noMap = true
 
 Instance: dmed-form-111-education-type-core-cm
 InstanceOf: ConceptMap
@@ -982,7 +1052,7 @@ Description: "DMED education-type-core to FHIR terminology. Only explicit listed
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-education-type-core-cs"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-education-type-cs"
 * group[=].target = "https://terminology.dhp.uz/fhir/core/CodeSystem/education-cs"
 * group[=].element[+].code = #"no_education"
 * group[=].element[=].display = "Таълимсиз"
@@ -1002,6 +1072,12 @@ Description: "DMED education-type-core to FHIR terminology. Only explicit listed
 * group[=].element[=].target[=].display = "Maktabgacha (3-7 yosh)"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation."
+* group[=].element[+].code = #"elementary"
+* group[=].element[=].display = "Бошланғич умумий таълим"
+* group[=].element[=].target[+].code = #"regis0005.00010"
+* group[=].element[=].target[=].display = "Boshqa"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].target[=].comment = "National education-cs has no direct category. Use national Other to satisfy the required binding and retain the precise DMED source coding in the same CodeableConcept."
 * group[=].element[+].code = #"secondary"
 * group[=].element[=].display = "Ўрта умумий таълим"
 * group[=].element[=].target[+].code = #"regis0005.00004"
@@ -1037,35 +1113,46 @@ Description: "DMED education-type-core to FHIR terminology. Only explicit listed
 * group[=].element[=].target[+].code = #"regis0005.00008"
 * group[=].element[=].target[=].display = "Oliy ma'lumot"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; preserve the more specific source level."
+* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; retain the more specific DMED source coding in the same CodeableConcept."
 * group[=].element[+].code = #"higher_master"
 * group[=].element[=].display = "Олий таълим - магистратура"
 * group[=].element[=].target[+].code = #"regis0005.00008"
 * group[=].element[=].target[=].display = "Oliy ma'lumot"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; preserve the more specific source level."
+* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; retain the more specific DMED source coding in the same CodeableConcept."
+* group[=].element[+].code = #"higher_specialist"
+* group[=].element[=].display = "Олий таълим - мутахассислик"
+* group[=].element[=].target[+].code = #"regis0005.00012"
+* group[=].element[=].target[=].display = "Ixtisoslik"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation."
+* group[=].element[+].code = #"postgraduate"
+* group[=].element[=].display = "Аспирантура"
+* group[=].element[=].target[+].code = #"regis0005.00008"
+* group[=].element[=].target[=].display = "Oliy ma'lumot"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; retain the more specific DMED source coding in the same CodeableConcept."
+* group[=].element[+].code = #"residency"
+* group[=].element[=].display = "Ординатура"
+* group[=].element[=].target[+].code = #"regis0005.00008"
+* group[=].element[=].target[=].display = "Oliy ma'lumot"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; retain the more specific DMED source coding in the same CodeableConcept."
+* group[=].element[+].code = #"internship"
+* group[=].element[=].display = "Интернатура"
+* group[=].element[=].target[+].code = #"regis0005.00008"
+* group[=].element[=].target[=].display = "Oliy ma'lumot"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation; retain the more specific DMED source coding in the same CodeableConcept."
+* group[=].element[+].code = #"professional_development"
+* group[=].element[=].display = "Малака ошириш"
+* group[=].element[=].target[+].code = #"regis0005.00010"
+* group[=].element[=].target[=].display = "Boshqa"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].target[=].comment = "National education-cs has no direct category. Use national Other to satisfy the required binding and retain the precise DMED source coding in the same CodeableConcept."
 * group[=].element[+].code = #"other"
 * group[=].element[=].display = "Бошқа"
 * group[=].element[=].target[+].code = #"regis0005.00010"
 * group[=].element[=].target[=].display = "Boshqa"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation."
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-education-type-core-cs"
-* group[=].element[+].code = #"elementary"
-* group[=].element[=].display = "Бошланғич умумий таълим"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"higher_specialist"
-* group[=].element[=].display = "Олий таълим - мутахассислик"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"postgraduate"
-* group[=].element[=].display = "Аспирантура"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"residency"
-* group[=].element[=].display = "Ординатура"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"internship"
-* group[=].element[=].display = "Интернатура"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"professional_development"
-* group[=].element[=].display = "Малака ошириш"
-* group[=].element[=].noMap = true
