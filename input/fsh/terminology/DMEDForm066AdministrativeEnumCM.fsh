@@ -176,7 +176,7 @@ Instance: dmed-form-066-diagnosis-type-to-role
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Diagnosis Type to Diagnosis Role"
-Description: "Maps DMED disease-codes type values to Form 066 diagnosis roles. The generic clinical type has no unambiguous target role."
+Description: "Maps DMED disease-codes type values to Form 066 diagnosis roles. All 5 confirmed dropdown values map 1:1 - see DMEDForm066DiagnosisTypeCS for the removal of the 6th, spurious `clinical` code."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-diagnosis-type-to-role"
 * name = "DMEDForm066DiagnosisTypeToRole"
 * status = #draft
@@ -199,8 +199,6 @@ Description: "Maps DMED disease-codes type values to Form 066 diagnosis roles. T
 * group.element[+].code = #critical
 * group.element[=].target[+].code = #complication
 * group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #clinical
-* group.element[=].noMap = true
 
 Instance: dmed-form-066-arrival-type-unmapped
 InstanceOf: ConceptMap

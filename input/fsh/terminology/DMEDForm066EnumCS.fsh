@@ -139,12 +139,11 @@ Description: "Source codes used by DMED beneficiary data[].category in Form 066.
 CodeSystem: DMEDForm066DiagnosisTypeCS
 Id: dmed-form-066-diagnosis-type-cs
 Title: "DMED Form 066 Diagnosis Type"
-Description: "Source codes used by DMED disease-codes data[].type in Form 066."
+Description: "Source codes used by DMED disease-codes data[].type in Form 066. Confirmed against the live 'Выберите тип' dropdown on the Диагнозы в эпизоде (МКБ-10) screen (screenshot, 2026-09-16): exactly these 5 values. An earlier draft of this CodeSystem also listed a 6th code, `clinical` (\"Клинический\"), scraped from the DMED web client's translation dictionary - that turned out to be the label of the unrelated, free-text `Клинический диагноз` field on the same screen, not a value of this dropdown, and was removed."
 * insert OriginalCodeSystemDraft(dmed-form-066-diagnosis-type-cs)
 * ^language = #ru
 * #additional "Сопутствующий"
 * #background "Фоновый"
-* #clinical "Клинический"
 * #competing "Конкурирующий"
 * #critical "Осложнение"
 * #main "Основной"
