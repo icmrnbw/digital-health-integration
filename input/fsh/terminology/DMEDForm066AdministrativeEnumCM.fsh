@@ -200,35 +200,24 @@ Description: "Maps DMED disease-codes type values to Form 066 diagnosis roles. A
 * group.element[=].target[+].code = #complication
 * group.element[=].target[=].relationship = #equivalent
 
-Instance: dmed-form-066-arrival-type-to-admission-origin
+Instance: dmed-form-066-arrival-type-unmapped
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Form 066 Arrival Type to Admission Origin"
-Description: "Maps DMED arrival_type values to Encounter.admission.origin.extension[admissionOrigin] (AdmissionOrigin, an existing extension already used by UZCoreEncounter066 - not a new one). This is a different element from Encounter.admission.admitSource (has_direction - referral pathway) and from delivered_by_ambulance (a separate Boolean); arrival_type must not be substituted into either of those. by-ambulance stays noMap: it describes a mode of transport, not a place of origin, and is already fully captured by delivered_by_ambulance."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-arrival-type-to-admission-origin"
-* name = "DMEDForm066ArrivalTypeToAdmissionOrigin"
+Title: "DMED Form 066 Arrival Type - No FHIR Mapping"
+Description: "Records that DMED arrival_type is not assigned a FHIR target. Re-examined 2026-09-16 and reverted from an earlier attempt to map self-referred/accompanied-by-police/other to Encounter.admission.origin (AdmissionOrigin extension): the official Form 066 template (order no. 363 dated 2020-12-31, .doc source, field 3 'Shifoxonaga kim tomonidan olib kelingan') has only two options - self ('o'zi') or with-referral ('yo'llanma bilan') - which is has_direction, not a broader arrival-type categorical field. Neither 'ambulance' nor 'police' appears anywhere in that document. This mirrors the DMEDForm066DiagnosisTypeCS#clinical case: arrival_type is very likely a DMED-internal field from a different module (e.g. ER/dispatch intake) that got swept up by the enum scraper, not a real Form 066 field. delivered_by_ambulance is unaffected by this - unlike arrival_type, it was independently confirmed present on DMED's live Form 066 UI by direct inspection."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-arrival-type-unmapped"
+* name = "DMEDForm066ArrivalTypeUnmapped"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 * group.source = Canonical(DMEDForm066ArrivalTypeCS)
-* group.target = Canonical(AdmitSourceHomeCS)
-* group.element[+].code = #self-referred
-* group.element[=].display = "Обратился самостоятельно"
-* group.element[=].target[+].code = #mserv-0003-00001
-* group.element[=].target[=].display = "From home"
-* group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #accompaned-by-police
-* group.element[=].display = "В сопровождении сотрудника ГУВД"
-* group.element[=].target[+].code = #mserv-0003-00004
-* group.element[=].target[=].display = "From the Ministry of Internal Affairs"
-* group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #other
-* group.element[=].display = "Другое"
-* group.element[=].target[+].code = #mserv-0003-00005
-* group.element[=].target[=].display = "Other"
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].noMap = true
 * group.element[+].code = #by-ambulance
-* group.element[=].display = "На машине скорой помощи"
+* group.element[=].noMap = true
+* group.element[+].code = #other
+* group.element[=].noMap = true
+* group.element[+].code = #self-referred
 * group.element[=].noMap = true
 
 Instance: dmed-form-066-transportation-kind-unmapped
