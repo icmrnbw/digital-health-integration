@@ -104,7 +104,7 @@ Instance: dmed-form-066-benefit-category-to-national
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Benefit Category to National Benefits"
-Description: "Maps DMED beneficiary category values to the national benefits code system. The hematological-disease category has no target in the current national list."
+Description: "Maps DMED beneficiary category values to the national benefits code system. The hematological-disease category has no target in the current national list. Revisited 2026-09-16: not adding one - unlike the other local CodeSystems extended this session (organizational-specialization-cs, coverage-type-cs, etc.), benefits-cs is a legally-codified list where every entry cites a specific Uzbek law or article; inventing a code here would assert a legal benefit category exists without verification against actual legislation. Also unresolved: whether DMED's benefit_category/data.category field is even in scope for Form 066 at all - it has zero rows in the authoritative DMED_066_066-1_v02.xlsx SQ_FHIR mapping tab, and appeared as static/read-only text (not a DMED-editable dropdown) when checked live - see integration-066.md."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-benefit-category-to-national"
 * name = "DMEDForm066BenefitCategoryToNational"
 * status = #draft
@@ -200,31 +200,42 @@ Description: "Maps DMED disease-codes type values to Form 066 diagnosis roles. A
 * group.element[=].target[+].code = #complication
 * group.element[=].target[=].relationship = #equivalent
 
-Instance: dmed-form-066-arrival-type-unmapped
+Instance: dmed-form-066-arrival-type-to-admission-origin
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Form 066 Arrival Type - No FHIR Mapping"
-Description: "Records that DMED arrival_type is not assigned a FHIR target by integration-066.md. In particular, ambulance transport is represented from the separate delivered_by_ambulance Boolean field, so arrival_type must not be substituted for it or silently converted to Encounter.admission.admitSource."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-arrival-type-unmapped"
-* name = "DMEDForm066ArrivalTypeUnmapped"
+Title: "DMED Form 066 Arrival Type to Admission Origin"
+Description: "Maps DMED arrival_type values to Encounter.admission.origin.extension[admissionOrigin] (AdmissionOrigin, an existing extension already used by UZCoreEncounter066 - not a new one). This is a different element from Encounter.admission.admitSource (has_direction - referral pathway) and from delivered_by_ambulance (a separate Boolean); arrival_type must not be substituted into either of those. by-ambulance stays noMap: it describes a mode of transport, not a place of origin, and is already fully captured by delivered_by_ambulance."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-arrival-type-to-admission-origin"
+* name = "DMEDForm066ArrivalTypeToAdmissionOrigin"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 * group.source = Canonical(DMEDForm066ArrivalTypeCS)
-* group.element[+].code = #accompaned-by-police
-* group.element[=].noMap = true
-* group.element[+].code = #by-ambulance
-* group.element[=].noMap = true
-* group.element[+].code = #other
-* group.element[=].noMap = true
+* group.target = Canonical(AdmitSourceHomeCS)
 * group.element[+].code = #self-referred
+* group.element[=].display = "Обратился самостоятельно"
+* group.element[=].target[+].code = #mserv-0003-00001
+* group.element[=].target[=].display = "From home"
+* group.element[=].target[=].relationship = #equivalent
+* group.element[+].code = #accompaned-by-police
+* group.element[=].display = "В сопровождении сотрудника ГУВД"
+* group.element[=].target[+].code = #mserv-0003-00004
+* group.element[=].target[=].display = "From the Ministry of Internal Affairs"
+* group.element[=].target[=].relationship = #equivalent
+* group.element[+].code = #other
+* group.element[=].display = "Другое"
+* group.element[=].target[+].code = #mserv-0003-00005
+* group.element[=].target[=].display = "Other"
+* group.element[=].target[=].relationship = #equivalent
+* group.element[+].code = #by-ambulance
+* group.element[=].display = "На машине скорой помощи"
 * group.element[=].noMap = true
 
 Instance: dmed-form-066-transportation-kind-unmapped
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Transportation Kind - No FHIR Mapping"
-Description: "Records that DMED transportation_kind currently has no defined element or bound target code system in the Form 066 FHIR profiles. Implementers must not invent a local target or drop these values into Encounter.admission.admitSource."
+Description: "Records that DMED transportation_kind currently has no defined element or bound target code system in the Form 066 FHIR profiles. Implementers must not invent a local target or drop these values into Encounter.admission.admitSource. Revisited 2026-09-16: no existing FHIR element fits (unlike arrival_type, which reuses the existing AdmissionOrigin extension). Representing this would require introducing a new extension, which per team policy needs sign-off from both the product owner and a clinical/FHIR-modeling expert before being added - not done unilaterally here."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-transportation-kind-unmapped"
 * name = "DMEDForm066TransportationKindUnmapped"
 * status = #draft
@@ -246,7 +257,7 @@ Instance: dmed-form-066-hospitalization-reason-unmapped
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Hospitalization Reason - No FHIR Mapping"
-Description: "Records that DMED hospitalization_reason currently has no defined target in the Form 066 FHIR profiles and is removed by the current DMED client before save. Implementers must not infer a target until the field is present in the saved payload and the profile defines its representation."
+Description: "Records that DMED hospitalization_reason currently has no defined target in the Form 066 FHIR profiles and is removed by the current DMED client before save. Implementers must not infer a target until the field is present in the saved payload and the profile defines its representation. Revisited 2026-09-16: still doubly moot - no existing FHIR element fits, and even if one did, the client strips this field before the save request ever reaches us, so there is nothing to map in practice."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-hospitalization-reason-unmapped"
 * name = "DMEDForm066HospitalizationReasonUnmapped"
 * status = #draft

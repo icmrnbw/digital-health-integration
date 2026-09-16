@@ -65,7 +65,7 @@ Instance: dmed-form-066-bed-type-to-organizational-specialization
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Bed Type to Organizational Specialization"
-Description: "Maps DMED bed_type values to the national organizational specialization code system. Composite source categories map to each applicable narrower target. Geriatrics maps to organizational-specialization-cs#176.0, added 2026-09-16."
+Description: "Maps DMED bed_type values to the national organizational specialization code system. Geriatrics maps to organizational-specialization-cs#176.0, added 2026-09-16. obstetrics_gynecology and narcology_psychiatry are DMED composite categories that organizational-specialization-cs splits further (148.0/150.0 and 157.0/158.0/161.0 respectively) - each now maps to a single canonical target picked 2026-09-16 to minimize expected misclassification; see the inline comment on each element for the reasoning. This is a judgment call, not a confirmed 1:1 fact - revisit if DHP/DMED ever exposes the finer distinction."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-bed-type-to-organizational-specialization"
 * name = "DMEDForm066BedTypeToOrganizationalSpecialization"
 * status = #draft
@@ -93,11 +93,12 @@ Description: "Maps DMED bed_type values to the national organizational specializ
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #obstetrics_gynecology
 * group.element[=].display = "Акушеро-гинекологический"
+// Canonical single target (16.09.2026): DMED does not distinguish obstetrics from gynecology in this
+// bed type, but organizational-specialization-cs does. Maternity/obstetrics wards typically carry
+// materially higher bed-turnover than standalone gynecology wards, so #148.0 is picked as the default
+// to minimize expected misclassification - not a discovered fact, a judgment call pending confirmation.
 * group.element[=].target[+].code = #148.0
 * group.element[=].target[=].display = "For pregnant women, women in labor and postpartum women (except pregnancy pathologies)"
-* group.element[=].target[=].relationship = #source-is-broader-than-target
-* group.element[=].target[+].code = #150.0
-* group.element[=].target[=].display = "Gynecology (except abortions) for adults"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #resuscitation
 * group.element[=].display = "Реанимационный (интенсивная терапия)"
@@ -117,14 +118,12 @@ Description: "Maps DMED bed_type values to the national organizational specializ
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #narcology_psychiatry
 * group.element[=].display = "Наркология-психиатрия"
+// Canonical single target (16.09.2026): general psychiatric admissions materially outnumber
+// narcology-specific ones in most bed-fund statistics, and pediatric narcology/psychiatry wards
+// are uncommon, so adult psychiatry (#157.0) is picked as the default to minimize expected
+// misclassification - a judgment call pending confirmation, not a discovered fact.
 * group.element[=].target[+].code = #157.0
 * group.element[=].target[=].display = "Adult psychiatry (psychoneurology)"
-* group.element[=].target[=].relationship = #source-is-broader-than-target
-* group.element[=].target[+].code = #158.0
-* group.element[=].target[=].display = "Child psychiatry"
-* group.element[=].target[=].relationship = #source-is-broader-than-target
-* group.element[=].target[+].code = #161.0
-* group.element[=].target[=].display = "Narcological"
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #other
 * group.element[=].display = "Другие"
