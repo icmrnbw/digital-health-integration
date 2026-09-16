@@ -168,6 +168,8 @@ Alias: $signature-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/sign
 Alias: $flag-status-cs = http://hl7.org/fhir/flag-status
 Alias: $profession-specialization-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/profession-specialization-cs
 
+Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context-type
+Alias: $integration-area = https://terminology.dhp.uz/fhir/integrations/CodeSystem/integration-area-cs
 // ===================== DMED early-detection screening questionnaires (moved from digital-health-ig) =====================
 Alias: $v2-0532 = http://terminology.hl7.org/CodeSystem/v2-0532
 Alias: $ordinal-value = http://hl7.org/fhir/StructureDefinition/ordinalValue
