@@ -2,7 +2,7 @@ Instance: dmed-form-066-medical-care-form-to-priority
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Medical Care Form to Encounter Priority"
-Description: "Maps DMED medical_care_form values to the standard or national Encounter priority codes used by Form 066. `urgent` has no valid target: v3-ActPriority#UR is not included in the required-bound EncounterPriorityVS, and the only local fallback (encounter-priority-home-cs) is a High/Medium/Low triage scale, not an urgency-vs-routine distinction - EncounterPriorityVS needs a proper 'Urgent' code added upstream before this can be mapped."
+Description: "Maps DMED medical_care_form values to the standard or national Encounter priority codes used by Form 066. `urgent` and `planned` are resolved via v3-ActPriority#UR and #EL respectively, both now included in EncounterPriorityVS (2026-09-16)."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-medical-care-form-to-priority"
 * name = "DMEDForm066MedicalCareFormToPriority"
 * status = #draft
@@ -17,12 +17,14 @@ Description: "Maps DMED medical_care_form values to the standard or national Enc
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #planned
 * group[=].element[=].display = "Плановая"
-* group[=].element[=].target[+].code = #R
-* group[=].element[=].target[=].display = "routine"
-* group[=].element[=].target[=].relationship = #related-to
+* group[=].element[=].target[+].code = #EL
+* group[=].element[=].target[=].display = "elective"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #urgent
 * group[=].element[=].display = "Неотложная"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #UR
+* group[=].element[=].target[=].display = "urgent"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[+].source = Canonical(DMEDForm066MedicalCareFormCS)
 * group[=].target = $encounter-local-priority-cs
 * group[=].element[+].code = #transferred
@@ -63,7 +65,7 @@ Instance: dmed-form-066-bed-type-to-organizational-specialization
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Bed Type to Organizational Specialization"
-Description: "Maps DMED bed_type values to the national organizational specialization code system. Composite source categories map to each applicable narrower target. Geriatrics has no target in the current national code system."
+Description: "Maps DMED bed_type values to the national organizational specialization code system. Composite source categories map to each applicable narrower target. Geriatrics maps to organizational-specialization-cs#176.0, added 2026-09-16."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-bed-type-to-organizational-specialization"
 * name = "DMEDForm066BedTypeToOrganizationalSpecialization"
 * status = #draft
@@ -134,7 +136,9 @@ Description: "Maps DMED bed_type values to the national organizational specializ
 * group.element[=].target[=].relationship = #source-is-broader-than-target
 * group.element[+].code = #geriatrics
 * group.element[=].display = "Гериатрия"
-* group.element[=].noMap = true
+* group.element[=].target[+].code = #176.0
+* group.element[=].target[=].display = "Geriatrics for adults"
+* group.element[=].target[=].relationship = #equivalent
 
 Instance: dmed-form-066-treatment-result-to-discharge-disposition
 InstanceOf: ConceptMap

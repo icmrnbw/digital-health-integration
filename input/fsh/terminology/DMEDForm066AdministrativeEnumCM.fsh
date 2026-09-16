@@ -2,7 +2,7 @@ Instance: dmed-form-066-payment-type-to-coverage-type
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Payment Type to Coverage Type"
-Description: "Maps DMED payment_type values to national coverage type codes. The broad PF-17 insurance value maps to the three more specific PF-17 fund categories."
+Description: "Maps DMED payment_type values to national coverage type codes. The broad PF-17 insurance value maps to the three more specific PF-17 fund categories. fond_VAQF maps to its own coverage-type-cs#covtp-0001-00014 code, added 2026-09-16 (previously approximated via the unrelated Sakhovat fund code)."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-payment-type-to-coverage-type"
 * name = "DMEDForm066PaymentTypeToCoverageType"
 * status = #draft
@@ -22,9 +22,9 @@ Description: "Maps DMED payment_type values to national coverage type codes. The
 * group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #fond_VAQF
 * group.element[=].display = "VAQF - Благотворительный общественный фонд"
-* group.element[=].target[+].code = #covtp-0001-00003
-* group.element[=].target[=].display = "Sakhovat and Support Fund through State Health Insurance (Decree No. PF-17, Resolution No. 462)"
-* group.element[=].target[=].relationship = #related-to
+* group.element[=].target[+].code = #covtp-0001-00014
+* group.element[=].target[=].display = "Vaqf Fund"
+* group.element[=].target[=].relationship = #equivalent
 * group.element[+].code = #insurance_17_decree
 * group.element[=].display = "Фонд страхования по УП-17 от 30.01.2025"
 * group.element[=].target[+].code = #covtp-0001-00003
