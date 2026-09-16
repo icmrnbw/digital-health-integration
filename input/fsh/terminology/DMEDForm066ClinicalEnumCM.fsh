@@ -144,7 +144,7 @@ Instance: dmed-form-066-treatment-result-to-discharge-disposition
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Treatment Result to Discharge Disposition"
-Description: "Maps DMED result_treatment values that represent discharge disposition. Detailed death contexts map to the broader Expired code; health-state outcomes have no discharge-disposition mapping."
+Description: "Maps DMED result_treatment values that represent discharge disposition. Detailed death contexts map to the broader Expired code. The three health-state-outcome codes (healthy/no_change/slight_improvement) also map to Discharged: their own display text in the live DMED UI is prefixed 'Выписан из больницы: ...' (Discharged from hospital: ...), confirming they are narrower variants of a discharge, not disposition-less values - screenshot-verified 2026-09-16."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-treatment-result-to-discharge-disposition"
 * name = "DMEDForm066TreatmentResultToDischargeDisposition"
 * status = #draft
@@ -201,16 +201,22 @@ Description: "Maps DMED result_treatment values that represent discharge disposi
 * group[=].element[=].target[=].display = "Self letft from hospital"
 * group[=].element[=].target[=].relationship = #related-to
 * group[+].source = Canonical(DMEDForm066TreatmentResultCS)
-* group[=].target = $discharge-disposition
+* group[=].target = $discharge-disposition-home-cs
 * group[=].element[+].code = #healthy
 * group[=].element[=].display = "Выписан из больницы: здоров"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #mserv-0004-00004
+* group[=].element[=].target[=].display = "Discharged"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #no_change
 * group[=].element[=].display = "Выписан из больницы: без изменений"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #mserv-0004-00004
+* group[=].element[=].target[=].display = "Discharged"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #slight_improvement
 * group[=].element[=].display = "Выписан из больницы: незначительное улучшение"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #mserv-0004-00004
+* group[=].element[=].target[=].display = "Discharged"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 
 Instance: dmed-form-066-treatment-outcome-to-subject-status
 InstanceOf: ConceptMap
