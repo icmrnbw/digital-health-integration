@@ -104,7 +104,7 @@ Instance: dmed-form-066-benefit-category-to-national
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Benefit Category to National Benefits"
-Description: "Maps DMED beneficiary category values to the national benefits code system. The hematological-disease category has no target in the current national list. Revisited 2026-09-16: not adding one - unlike the other local CodeSystems extended this session (organizational-specialization-cs, coverage-type-cs, etc.), benefits-cs is a legally-codified list where every entry cites a specific Uzbek law or article; inventing a code here would assert a legal benefit category exists without verification against actual legislation. Also unresolved: whether DMED's benefit_category/data.category field is even in scope for Form 066 at all - it has zero rows in the authoritative DMED_066_066-1_v02.xlsx SQ_FHIR mapping tab, and appeared as static/read-only text (not a DMED-editable dropdown) when checked live - see integration-066.md."
+Description: "Maps DMED beneficiary category values to the national benefits code system. All 20 categories now resolved. Revisited 2026-09-17: the hematological-disease category is confirmed by primary legislation - Presidential Decree No. UP-88 dated 2025-05-19 added it as item 19 of Annex 2 to Decree No. UP-3214 (https://lex.uz/ru/docs/170150), the legal basis for benefits-cs. Target code benefits-cs#regis0004.00024 added accordingly (digital-health-ig, next free sequential slot - does not mirror the decree's own item numbering). Also confirmed live in DMED (2026-09-17): the field is an editable dropdown under the patient record (Пациенты -> patient -> 'Изменить учеты' -> 'Льготный пациент'), not read-only as first assumed - see integration-066.md."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-benefit-category-to-national"
 * name = "DMEDForm066BenefitCategoryToNational"
 * status = #draft
@@ -170,7 +170,8 @@ Description: "Maps DMED beneficiary category values to the national benefits cod
 * group.element[=].target[+].code = #regis0004.00019
 * group.element[=].target[=].relationship = #source-is-narrower-than-target
 * group.element[+].code = #hematological_disease_patients
-* group.element[=].noMap = true
+* group.element[=].target[+].code = #regis0004.00024
+* group.element[=].target[=].relationship = #equivalent
 
 Instance: dmed-form-066-diagnosis-type-to-role
 InstanceOf: ConceptMap
