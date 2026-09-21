@@ -86,3 +86,7 @@ Unable to expand included value set 'http://hl7.org/fhir/ValueSet/body-site': Th
 # (rather than widening '//%' above) since it pins to this specific script's signature.
 # Trailing % => startsWith match; exact line/column and output path differ per language (en/ru/uz).
 The <script> containing the javascript 'document.addEventLis'... is illegal and not allowed on the HL7 ci-build%
+
+Unable to check if https://terminology.dhp.uz/fhir/integrations/ValueSet/cancer-body-location-vs is a proper subset of http://hl7.org/fhir/ValueSet/body-site|5.0.0 - value set is too large to check
+
+The Target Code System http://snomed.info/sct is not fully defined and populated, and no targetScope is specified, so the target code checking will not be performed
