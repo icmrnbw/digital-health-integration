@@ -2,7 +2,7 @@ Instance: dmed-form-066-medical-care-form-to-priority
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Medical Care Form to Encounter Priority"
-Description: "Maps DMED medical_care_form values to the standard or national Encounter priority codes used by Form 066. `urgent` and `planned` are resolved via v3-ActPriority#UR and #EL respectively, both now included in EncounterPriorityVS (2026-09-16)."
+Description: "Maps DMED medical_care_form values to the standard or national Encounter priority codes used by Form 066. `urgent` and `planned` are resolved via v3-ActPriority#UR and #EL respectively, both included in EncounterPriorityVS by digital-health-ig PR #336 (merged 2026-09-17) - note that this change is not part of the published uz.dhp.core 0.9.2 and becomes usable for Encounter.priority only with the next core release. All 4 DMED values match item 2.2 'Yotqizish turi' of the order-399 Form 066 template (2025-12-26, list sheet '2.2.': Tezkor, Shoshilinch, Rejali, Boshqa muassasadan ko'chirilgan) one-to-one - checked 2026-09-21."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-medical-care-form-to-priority"
 * name = "DMEDForm066MedicalCareFormToPriority"
 * status = #draft
@@ -37,7 +37,7 @@ Instance: dmed-form-066-urgency-time-to-disease-injury-delay
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Urgency Time to Disease/Injury Delay"
-Description: "Maps DMED urgency_time values to the Form 066 disease/injury delay code system."
+Description: "Maps DMED urgency_time values to the Form 066 disease/injury delay code system. The 3 values are item 2.2a 'Kasallik yoki jarohatlangandan so'ng necha soatda' of the order-399 Form 066 template (2025-12-26, list sheet '2.2a.') - checked 2026-09-21."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-urgency-time-to-disease-injury-delay"
 * name = "DMEDForm066UrgencyTimeToDiseaseInjuryDelay"
 * status = #draft
@@ -65,7 +65,7 @@ Instance: dmed-form-066-bed-type-to-organizational-specialization
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Bed Type to Organizational Specialization"
-Description: "Maps DMED bed_type values to the national organizational specialization code system. Geriatrics maps to organizational-specialization-cs#176.0, added 2026-09-16. obstetrics_gynecology and narcology_psychiatry are DMED composite categories that organizational-specialization-cs splits further (148.0/150.0 and 157.0/158.0/161.0 respectively) - each now maps to a single canonical target picked 2026-09-16 to minimize expected misclassification; see the inline comment on each element for the reasoning. This is a judgment call, not a confirmed 1:1 fact - revisit if DHP/DMED ever exposes the finer distinction."
+Description: "Maps DMED bed_type values to the national organizational specialization code system. Geriatrics maps to organizational-specialization-cs#176.0, added by digital-health-ig PR #336 (merged 2026-09-17; not yet in the published uz.dhp.core 0.9.2 - see integration-066.md). All 9 DMED values match item 3.3 'O'rin joy turi' of the order-399 Form 066 template (2025-12-26, list sheet '3.3.') one-to-one, including the composite wording 'Akusherlik va Ginekologik' and 'Narkologiya-Psixiatriya' - i.e. the composites are the form's own categories, not a DMED simplification (checked 2026-09-21). obstetrics_gynecology and narcology_psychiatry are therefore composite categories that organizational-specialization-cs splits further (148.0/150.0 and 157.0/158.0/161.0 respectively) - each now maps to a single canonical target picked 2026-09-16 to minimize expected misclassification; see the inline comment on each element for the reasoning. This is a judgment call, not a confirmed 1:1 fact - revisit if DHP/DMED ever exposes the finer distinction."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-bed-type-to-organizational-specialization"
 * name = "DMEDForm066BedTypeToOrganizationalSpecialization"
 * status = #draft
@@ -143,7 +143,7 @@ Instance: dmed-form-066-treatment-result-to-discharge-disposition
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Treatment Result to Discharge Disposition"
-Description: "Maps DMED result_treatment values that represent discharge disposition. Detailed death contexts map to the broader Expired code. The three health-state-outcome codes (healthy/no_change/slight_improvement) also map to Discharged: their own display text in the live DMED UI is prefixed 'Выписан из больницы: ...' (Discharged from hospital: ...), confirming they are narrower variants of a discharge, not disposition-less values - screenshot-verified 2026-09-16."
+Description: "Maps DMED result_treatment values that represent discharge disposition. Detailed death contexts map to the broader Expired code. The three health-state-outcome codes (healthy/no_change/slight_improvement) also map to Discharged: their own display text in the live DMED UI is prefixed 'Выписан из больницы: ...' (Discharged from hospital: ...), confirming they are narrower variants of a discharge, not disposition-less values - screenshot-verified 2026-09-16. Cross-checked 2026-09-21 with the order-399 Form 066 template (2025-12-26): item 3.7 'Shifonadan chiqarish holati' has exactly 4 dispositions (Chiqarildi, Vafot etdi, O'zi chiqib ketdi, Boshqa shifoxonaga o'tkazildi), i.e. discharged / deceased / discharged_at_his_own_request / transferred_to_another_facility here; the finer death contexts and the three 'Выписан из больницы: ...' values are DMED refinements not present on the paper form."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-treatment-result-to-discharge-disposition"
 * name = "DMEDForm066TreatmentResultToDischargeDisposition"
 * status = #draft
@@ -221,7 +221,7 @@ Instance: dmed-form-066-treatment-outcome-to-subject-status
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Treatment Outcome to Encounter Subject Status"
-Description: "Maps DMED outcome_treatment health-state values to Encounter.subjectStatus, as specified by integration-066.md. death_certificate has no subject-status target and must not be repurposed as discharge disposition; death disposition is derived from result_treatment."
+Description: "Maps DMED outcome_treatment health-state values to Encounter.subjectStatus, as specified by integration-066.md. death_certificate has no subject-status target and must not be repurposed as discharge disposition; death disposition is derived from result_treatment. Confirmed 2026-09-21 against the order-399 Form 066 template (2025-12-26): item 3.7a 'Bemor holati' lists exactly the 4 mapped states (Tuzaldi, Ijobiy o'zgarish bilan, O'zgarishsiz, Og'irlashdi - the very displays of encounter-local-subject-status-cs) and no death value, so the noMap for death_certificate is backed by the form itself."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-treatment-outcome-to-subject-status"
 * name = "DMEDForm066TreatmentOutcomeToSubjectStatus"
 * status = #draft
@@ -259,7 +259,7 @@ Instance: dmed-form-066-tuberculosis-resistance-to-sensitivity
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 066 Tuberculosis Resistance to Drug Susceptibility"
-Description: "Maps DMED tuberculosis_treatment_resistance values to the Form 066 tuberculosis drug susceptibility codes."
+Description: "Maps DMED tuberculosis_treatment_resistance values to the Form 066 tuberculosis drug susceptibility codes. The 5 values are item 9 'O'pka silida doriga sezgirlik' of the order-399 Form 066 template (2025-12-26, list sheet '9.': Sezgir, Monorezistentlik, Polirezistentlik, Multirezistentlik (MLU), O'ta rezistentlik (ShLU)) one-to-one - checked 2026-09-21."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-066-tuberculosis-resistance-to-sensitivity"
 * name = "DMEDForm066TuberculosisResistanceToSensitivity"
 * status = #draft
