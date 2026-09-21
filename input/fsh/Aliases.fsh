@@ -201,3 +201,26 @@ Alias: $icd-o-3-morphology-vs = https://terminology.dhp.uz/fhir/core/ValueSet/ic
 Alias: $icd-o-3-topography-vs = https://terminology.dhp.uz/fhir/core/ValueSet/icd-o-3-topography-vs
 Alias: $icd-o-3 = http://terminology.hl7.org/CodeSystem/icd-o-3
 Alias: $nci = http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
+
+// ===================== PRESCRIPTION =====================
+Alias: $prescription-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-type-cs
+Alias: $prescription-workflow-action-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-action-cs
+Alias: $prescription-workflow-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-status-cs
+Alias: $prescription-error-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-error-cs
+Alias: $dmed-prescription-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-prescription-status-cs
+Alias: $dmed-prescription-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-prescription-type-cs
+Alias: $dmed-prescription-route-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-prescription-route-cs
+Alias: $atc = http://www.whocc.no/atc
+Alias: $dmed-prescription-id = https://dhp.uz/fhir/core/sid/doc/uz/dmed-prescription
+Alias: $dmed-prescription-uuid = https://dhp.uz/fhir/core/sid/doc/uz/dmed-prescription-uuid
+Alias: $dmed-medication-id = https://dhp.uz/fhir/core/sid/medication/uz/dmed
+Alias: $dmed-dispense-id = https://dhp.uz/fhir/core/sid/dispense/uz/dmed
+Alias: $dmed-administration-id = https://dhp.uz/fhir/core/sid/administration/uz/dmed
+Alias: $dmed-prescription-source = https://dhp.uz/fhir/source/dmed-prescription
+Alias: $inn-medication-name-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/inn-medication-name-cs
+Alias: $medication-doseform-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/medication-doseform-cs
+Alias: $dmed-route-code-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/dmed-route-code-cs
+Alias: $route-code-vs = https://terminology.dhp.uz/fhir/core/ValueSet/route-code-vs
+Alias: $medication-total-volume-local-units-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/medication-total-volume-local-units-cs
+Alias: $medicationrequest-status = http://hl7.org/fhir/CodeSystem/medicationrequest-status
+Alias: $task-status = http://hl7.org/fhir/task-status
