@@ -25,6 +25,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
 * description.extension[$translation-extension][+]
   * extension[lang].valueCode = #en
   * extension[content].valueString = "Questionnaire for collecting medical history and cervical cancer risk factors within the national screening program."
+* code = $screening-code-cs#mserv-0007-00009 "Bachadon bo'yni saratoni skriningi"
 
 * item[+]
   * linkId = "menstrual-cycle"

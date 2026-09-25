@@ -25,6 +25,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for breast cancer risk screening"
+* code = $screening-code-cs#mserv-0007-00007 "Ko'krak bezi saratonini aniqlash so'rovnomasi"
 
 // Question 1: Mastitis history. Score: Yes=3, No=0
 * item[+]

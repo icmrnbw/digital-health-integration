@@ -1,8 +1,24 @@
 ### В разработке
 
+#### Добавлено
+
+[Категории риска по предтестовой вероятности ИБС](CodeSystem-ihd-risk-category-cs.html) теперь публикуются здесь. [Опросник предтестовой вероятности ИБС](Questionnaire-IhdPretestQuestionnaire.html) уже использовал их в ответах на вопрос о категории риска, но под каноническим URL UZ Core, которого нет ни в одном релизе UZ Core.
+
 #### Изменено
 
 [Опросник скрининга сахарного диабета](Questionnaire-DiabetesScreeningQuestionnaire.html) и [шаблон скринингового анкетирования](Questionnaire-screening-intake-template.html) объявляли версии `1.0` и `1.1`; теперь они объявляют `1.0.0` и `1.1.0`, поскольку версия любого артефакта имеет вид `MAJOR.MINOR.PATCH`.
+
+Опросники по [сахарному диабету](Questionnaire-DiabetesScreeningQuestionnaire.html), [онкогематологии](Questionnaire-OncohematologyScreeningQuestionnaire.html), [раку молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html), [раку шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html) и [фертильности](Questionnaire-FertilityQuestionnaire.html) теперь содержат `Questionnaire.code` из `screening-code-cs` UZ Core, как уже содержали остальные четыре скрининговых опросника.
+
+[Ответ на опросник фертильности с установленным бесплодием](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) показывает два диагноза по МКБ-10, каждый из которых записан отдельным Condition ([первый](Condition-example-fertility-infertility-condition.html), [второй](Condition-example-fertility-infertility-condition-2.html)), чей `evidence` ссылается на этот ответ.
+
+Опросники по [сахарному диабету](Questionnaire-DiabetesScreeningQuestionnaire.html) и [сердечно-сосудистому риску](Questionnaire-CVDRiskScreeningQuestionnaire.html) теперь подсчитывают баллы по тем ответам, которые в них действительно есть. Опросник диабета сравнивал возраст, окружность талии и семейный анамнез с кодами, которых нет ни в одном варианте ответа, поэтому эти вопросы всегда давали 0 баллов; опросник сердечно-сосудистого риска сравнивал курение с устаревшим локальным кодом, поэтому курящие искались в половине таблицы ВОЗ/МОАГ для некурящих. Ответы не изменились.
+
+#### Критические изменения
+
+Вопрос `infertility-icd-diagnosis` опросника фертильности теперь имеет тип `coding` с привязкой к МКБ-10 и допускает несколько ответов вместо свободного текста `string`. Ответы должны передавать по одному `valueCoding` на каждый диагноз вместо `valueString`.
+
+Коды категорий риска ИБС `low`, `medium` и `high` сохраняются, но их система меняется с `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` на `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs`.
 
 ### Версия 0.9.0
 
