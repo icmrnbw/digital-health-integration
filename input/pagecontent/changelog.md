@@ -6,8 +6,6 @@ The [IHD pre-test probability risk categories](CodeSystem-ihd-risk-category-cs.h
 
 #### Changed
 
-The [diabetes screening questionnaire](Questionnaire-DiabetesScreeningQuestionnaire.html) and the [screening intake template](Questionnaire-screening-intake-template.html) declared their versions as `1.0` and `1.1`; they now declare `1.0.0` and `1.1.0`, as every artifact version is `MAJOR.MINOR.PATCH`.
-
 The [diabetes](Questionnaire-DiabetesScreeningQuestionnaire.html), [oncohematology](Questionnaire-OncohematologyScreeningQuestionnaire.html), [breast cancer](Questionnaire-BreastCancerScreeningQuestionnaire.html), [cervical cancer](Questionnaire-CervicalCancerScreeningQuestionnaire.html) and [fertility](Questionnaire-FertilityQuestionnaire.html) questionnaires now carry `Questionnaire.code` from UZ Core `screening-code-cs`, as the other four screening questionnaires already did.
 
 A [fertility questionnaire response with diagnosed infertility](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) shows two ICD-10 diagnoses, each recorded as its own Condition ([first](Condition-example-fertility-infertility-condition.html), [second](Condition-example-fertility-infertility-condition-2.html)) whose `evidence` references the response.
@@ -19,6 +17,14 @@ The [diabetes](Questionnaire-DiabetesScreeningQuestionnaire.html) and [cardiovas
 The fertility questionnaire's `infertility-icd-diagnosis` item is now `coding` bound to ICD-10 and repeats, instead of free-text `string`. Responses must send one `valueCoding` per diagnosis instead of `valueString`.
 
 The IHD risk category codes `low`, `medium` and `high` keep their codes but their system changes from `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` to `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs`.
+
+### Version 0.9.1
+
+#### Changed
+
+The [diabetes screening questionnaire](Questionnaire-DiabetesScreeningQuestionnaire.html) and the [screening intake template](Questionnaire-screening-intake-template.html) declared their versions as `1.0` and `1.1`; they now declare `1.0.0` and `1.1.0`, as every artifact version is `MAJOR.MINOR.PATCH`.
+
+The package is now built as a publication build. Its `package.json` carried `notForPublication` and a `file://` url, so [packages2.fhir.org](https://packages2.fhir.org/packages/uz.dhp.integrations) rejected every version. The guide is also built against [UZ Core 0.9.2](https://dhp.uz/fhir/core/changelog.html), whose package had the same flaw: links from this guide to UZ Core artifacts pointed at `file://` paths and now go to dhp.uz.
 
 ### Version 0.9.0
 

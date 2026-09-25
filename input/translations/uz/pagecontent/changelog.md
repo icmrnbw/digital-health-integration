@@ -6,8 +6,6 @@
 
 #### O'zgartirildi
 
-[Qandli diabet skriningi so'rovnomasi](Questionnaire-DiabetesScreeningQuestionnaire.html) va [skrining so'rovi shabloni](Questionnaire-screening-intake-template.html) versiyalarini `1.0` va `1.1` deb e'lon qilardi; endi ular `1.0.0` va `1.1.0` ni e'lon qiladi, chunki har qanday artefakt versiyasi `MAJOR.MINOR.PATCH` ko'rinishida bo'ladi.
-
 [Qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html) va [fertillik](Questionnaire-FertilityQuestionnaire.html) so'rovnomalari endi UZ Core `screening-code-cs` dan olingan `Questionnaire.code` ga ega, qolgan to'rtta skrining so'rovnomasidagi kabi.
 
 [Bepushtlik aniqlangan fertillik so'rovnomasi javobi](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) XKT-10 bo'yicha ikkita tashxisni ko'rsatadi; ularning har biri alohida Condition sifatida qayd etilgan ([birinchi](Condition-example-fertility-infertility-condition.html), [ikkinchi](Condition-example-fertility-infertility-condition-2.html)) va ularning `evidence` maydoni shu javobga havola qiladi.
@@ -19,6 +17,14 @@
 Fertillik so'rovnomasining `infertility-icd-diagnosis` savoli endi erkin matnli `string` o'rniga XKT-10 ga bog'langan va takrorlanuvchi `coding` turiga ega. Javoblar `valueString` o'rniga har bir tashxis uchun bittadan `valueCoding` yuborishi kerak.
 
 YuIK xavf kategoriyalarining `low`, `medium` va `high` kodlari saqlanadi, ammo ularning tizimi `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` dan `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs` ga o'zgaradi.
+
+### Versiya 0.9.1
+
+#### O'zgartirildi
+
+[Qandli diabet skriningi so'rovnomasi](Questionnaire-DiabetesScreeningQuestionnaire.html) va [skrining so'rovi shabloni](Questionnaire-screening-intake-template.html) versiyalarini `1.0` va `1.1` deb e'lon qilardi; endi ular `1.0.0` va `1.1.0` ni e'lon qiladi, chunki har qanday artefakt versiyasi `MAJOR.MINOR.PATCH` ko'rinishida bo'ladi.
+
+Paket endi nashr yig'ilishi sifatida yig'iladi. Uning `package.json` fayli `notForPublication` belgisi va `file://` URL manzilini o'z ichiga olardi, shuning uchun [packages2.fhir.org](https://packages2.fhir.org/packages/uz.dhp.integrations) barcha versiyalarni rad etardi. Qo'llanma endi [UZ Core 0.9.2](https://dhp.uz/fhir/core/changelog.html) asosida ham yig'iladi, uning paketida xuddi shu kamchilik bor edi: ushbu qo'llanmadan UZ Core artefaktlariga havolalar `file://` yo'llariga olib borardi, endi esa dhp.uz ga olib boradi.
 
 ### Versiya 0.9.0
 

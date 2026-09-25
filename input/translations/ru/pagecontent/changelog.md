@@ -6,8 +6,6 @@
 
 #### Изменено
 
-[Опросник скрининга сахарного диабета](Questionnaire-DiabetesScreeningQuestionnaire.html) и [шаблон скринингового анкетирования](Questionnaire-screening-intake-template.html) объявляли версии `1.0` и `1.1`; теперь они объявляют `1.0.0` и `1.1.0`, поскольку версия любого артефакта имеет вид `MAJOR.MINOR.PATCH`.
-
 Опросники по [сахарному диабету](Questionnaire-DiabetesScreeningQuestionnaire.html), [онкогематологии](Questionnaire-OncohematologyScreeningQuestionnaire.html), [раку молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html), [раку шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html) и [фертильности](Questionnaire-FertilityQuestionnaire.html) теперь содержат `Questionnaire.code` из `screening-code-cs` UZ Core, как уже содержали остальные четыре скрининговых опросника.
 
 [Ответ на опросник фертильности с установленным бесплодием](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) показывает два диагноза по МКБ-10, каждый из которых записан отдельным Condition ([первый](Condition-example-fertility-infertility-condition.html), [второй](Condition-example-fertility-infertility-condition-2.html)), чей `evidence` ссылается на этот ответ.
@@ -19,6 +17,14 @@
 Вопрос `infertility-icd-diagnosis` опросника фертильности теперь имеет тип `coding` с привязкой к МКБ-10 и допускает несколько ответов вместо свободного текста `string`. Ответы должны передавать по одному `valueCoding` на каждый диагноз вместо `valueString`.
 
 Коды категорий риска ИБС `low`, `medium` и `high` сохраняются, но их система меняется с `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` на `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs`.
+
+### Версия 0.9.1
+
+#### Изменено
+
+[Опросник скрининга сахарного диабета](Questionnaire-DiabetesScreeningQuestionnaire.html) и [шаблон скринингового анкетирования](Questionnaire-screening-intake-template.html) объявляли версии `1.0` и `1.1`; теперь они объявляют `1.0.0` и `1.1.0`, поскольку версия любого артефакта имеет вид `MAJOR.MINOR.PATCH`.
+
+Пакет теперь собирается как публикационная сборка. Его `package.json` содержал `notForPublication` и URL `file://`, поэтому [packages2.fhir.org](https://packages2.fhir.org/packages/uz.dhp.integrations) отклонял все версии. Гайд также собирается на основе [UZ Core 0.9.2](https://dhp.uz/fhir/core/changelog.html), пакет которого имел тот же недостаток: ссылки из этого гайда на артефакты UZ Core вели на пути `file://`, а теперь ведут на dhp.uz.
 
 ### Версия 0.9.0
 
