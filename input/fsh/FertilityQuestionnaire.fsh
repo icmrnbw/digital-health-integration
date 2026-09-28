@@ -452,7 +452,7 @@ Title: "Пример ответа на опросник фертильности
 Description: "Пример заполненного опросника по фертильности пациента"
 * questionnaire = Canonical(FertilityQuestionnaire)
 * status = #completed
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * authored = "2026-07-01T14:30:00+05:00"
 * language = #ru
 
@@ -486,7 +486,7 @@ Description: "Пример заполненного опросника по фе
 * identifier[0].value = "408961002"
 * questionnaire = Canonical(FertilityQuestionnaire)
 * status = #completed
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * authored = "2026-07-27T14:26:00+05:00"
 * language = #ru
 
@@ -530,7 +530,7 @@ Description: "Первый из двух диагнозов бесплодия �
 * identifier[0].value = "408961002"
 * clinicalStatus = $condition-clinical#active
 * code.coding[0] = $icd-10#N97.0 "Female infertility associated with anovulation"
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * recordedDate = "2026-07-27"
 * participant[0].actor = Reference(example-practitioner)
 * evidence[0].reference = Reference(example-fertility-questionnaire-response-infertility)
@@ -544,7 +544,7 @@ Description: "Второй диагноз бесплодия по МКБ-10 из
 * identifier[0].value = "408961002"
 * clinicalStatus = $condition-clinical#active
 * code.coding[0] = $icd-10#N97.1 "Female infertility of tubal origin"
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * recordedDate = "2026-07-27"
 * participant[0].actor = Reference(example-practitioner)
 * evidence[0].reference = Reference(example-fertility-questionnaire-response-infertility)

@@ -575,7 +575,7 @@ Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so
 
 * questionnaire = Canonical(CervicalCancerScreeningQuestionnaire)
 * status = #completed
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * authored = "2026-07-01T14:30:00+05:00"
 * language = #uz
 
