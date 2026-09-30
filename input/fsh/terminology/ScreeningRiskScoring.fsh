@@ -73,7 +73,7 @@ RuleSet: ScreeningBreastRiskScoring
 * extension[+].url = $variable
 * extension[=].valueExpression.name = #expectedRiskCode
 * extension[=].valueExpression.language = #"text/fhirpath"
-* extension[=].valueExpression.expression = "iif(%totalScore <= 5, 'scrn-0081-00001', iif(%totalScore <= 12, 'scrn-0081-00002', iif(%totalScore <= 19, 'scrn-0081-00003', 'scrn-0081-00004')))"
+* extension[=].valueExpression.expression = "iif(%totalScore.exists(), iif(%totalScore <= 5, 'scrn-0081-00001', iif(%totalScore <= 12, 'scrn-0081-00002', iif(%totalScore <= 19, 'scrn-0081-00003', 'scrn-0081-00004'))), {})"
 * extension[+].url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
 * extension[=].extension[0].url = "key"
 * extension[=].extension[0].valueId = "screening-risk-match"
@@ -81,7 +81,7 @@ RuleSet: ScreeningBreastRiskScoring
 * extension[=].extension[1].valueCode = #error
 * extension[=].extension[2].url = "expression"
 * extension[=].extension[2].valueExpression.language = #"text/fhirpath"
-* extension[=].extension[2].valueExpression.expression = "%resource.item.where(linkId='statusRisk').count() = 1 and %resource.item.where(linkId='statusRisk').answer.count() = 1 and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).system.single() = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-risk-level-cs' and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).code.single() = %expectedRiskCode"
+* extension[=].extension[2].valueExpression.expression = "%expectedRiskCode.exists() and %resource.item.where(linkId='statusRisk').count() = 1 and %resource.item.where(linkId='statusRisk').answer.count() = 1 and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).system.single() = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-risk-level-cs' and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).code.single() = %expectedRiskCode"
 * extension[=].extension[3].url = "human"
 * extension[=].extension[3].valueString = "Submitted statusRisk must equal the risk recalculated from all answers."
 * item[12].linkId = "totalScore"
@@ -198,7 +198,7 @@ RuleSet: ScreeningCervicalRiskScoring
 * extension[+].url = $variable
 * extension[=].valueExpression.name = #expectedRiskCode
 * extension[=].valueExpression.language = #"text/fhirpath"
-* extension[=].valueExpression.expression = "iif(%totalScore <= 6, 'scrn-0081-00001', iif(%totalScore <= 12, 'scrn-0081-00002', iif(%totalScore <= 15, 'scrn-0081-00003', 'scrn-0081-00004')))"
+* extension[=].valueExpression.expression = "iif(%totalScore.exists(), iif(%totalScore <= 6, 'scrn-0081-00001', iif(%totalScore <= 12, 'scrn-0081-00002', iif(%totalScore <= 15, 'scrn-0081-00003', 'scrn-0081-00004'))), {})"
 * extension[+].url = "http://hl7.org/fhir/StructureDefinition/targetConstraint"
 * extension[=].extension[0].url = "key"
 * extension[=].extension[0].valueId = "screening-risk-match"
@@ -206,7 +206,7 @@ RuleSet: ScreeningCervicalRiskScoring
 * extension[=].extension[1].valueCode = #error
 * extension[=].extension[2].url = "expression"
 * extension[=].extension[2].valueExpression.language = #"text/fhirpath"
-* extension[=].extension[2].valueExpression.expression = "%resource.item.where(linkId='statusRisk').count() = 1 and %resource.item.where(linkId='statusRisk').answer.count() = 1 and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).system.single() = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-risk-level-cs' and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).code.single() = %expectedRiskCode"
+* extension[=].extension[2].valueExpression.expression = "%expectedRiskCode.exists() and %resource.item.where(linkId='statusRisk').count() = 1 and %resource.item.where(linkId='statusRisk').answer.count() = 1 and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).system.single() = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-risk-level-cs' and %resource.item.where(linkId='statusRisk').answer.value.ofType(Coding).code.single() = %expectedRiskCode"
 * extension[=].extension[3].url = "human"
 * extension[=].extension[3].valueString = "Submitted statusRisk must equal the risk recalculated from all answers."
 * item[19].linkId = "totalScore"
