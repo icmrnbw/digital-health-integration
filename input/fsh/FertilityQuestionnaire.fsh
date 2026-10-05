@@ -26,7 +26,13 @@ Description: "Example Questionnaire for fertility history collection"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for fertility history collection"
-* code = $screening-code-cs#mserv-0007-00002 "Fertillik bo'yicha so'rovnoma"
+* code = $sct#408961002 "Fertility care assessment"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Fertillikni baholash"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Оценка фертильности"
 
 * item[+]
   * linkId = "menstruation"

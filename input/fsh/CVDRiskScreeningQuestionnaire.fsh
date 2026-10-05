@@ -25,13 +25,13 @@ Description: "Example for CVD Risk Screening Questionnaire"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for DMed during patient visit: age, sex, weight, height, BMI, blood pressure and tobacco use."
-* code[+] = $screening-code-cs#mserv-0007-00005 "Yurak-qon tomir kasalliklari xavfini erta aniqlash so'rovnomasi"
+* code[+] = $sct#300007000 "Screening for cardiovascular system disease"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Yurak-qon tomir tizimi kasalliklari skriningi"
   * display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
-    * extension[content].valueString = "Опросник раннего выявления риска сердечно-сосудистых заболеваний"
-  * display.extension[$translation-extension][+]
-    * extension[lang].valueCode = #en
-    * extension[content].valueString = "Early Detection Questionnaire for Cardiovascular Disease Risk"
+    * extension[content].valueString = "Скрининг заболеваний сердечно-сосудистой системы"
 
 // Question 1: Age (years)
 * item[+]

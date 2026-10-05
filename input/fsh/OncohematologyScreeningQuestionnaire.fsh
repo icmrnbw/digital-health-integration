@@ -25,7 +25,13 @@ Description: "Example for Questionnaire for Oncohematology Screening"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for early detection of signs of oncohematologic diseases"
-* code = $screening-code-cs#mserv-0007-00008 "Onkogematologik kasalliklarni erta aniqlash so'rovnomasi"
+* code = $sct#762445000 "Screening for hematological disorder"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Gematologik kasalliklar skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг гематологических заболеваний"
 
 * item[+]
   * linkId = "unexplained-weight-loss"
