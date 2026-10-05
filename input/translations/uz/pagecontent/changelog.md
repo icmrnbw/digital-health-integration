@@ -1,26 +1,46 @@
 ### Ishlab chiqish jarayonida
 
+#### O'zgartirildi
+
+Skrining so'rovnomalari endi `Questionnaire.code` ni SNOMED CT da olib yuradi - dastur turi identifikatoridagi konseptning o'zi: [YuIK testoldi ehtimoli](Questionnaire-IhdPretestQuestionnaire.html), [fertillik](Questionnaire-FertilityQuestionnaire.html), [gelmintozlar](Questionnaire-HelminthScreeningQuestionnaire.html), [yurak-qon tomir xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html), [qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html) va [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html). Ular avval UZ Core `screening-code-cs` kodini olib yurar edi, UZ Core uni SNOMED CT bilan almashtirmoqda. [Serebrovaskulyar](Questionnaire-CerebrovascularScreeningQuestionnaire.html) so'rovnoma `screening-code-cs#mserv-0007-00003` ni saqlab qoladi, chunki unga mos SNOMED CT konsepti yo'q.
+
+[Skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) identifikatori uchun SNOMED CT kodlari va `mserv-0007-00003` dan tashqari endi uchinchi qiymat ham tavsiflangan - `breast-cervical-unspecified`. Uni OPV (ВПЧ) skrining tizimi ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resursga yozadi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma. Bunday resurs dastur turining faqat bitta identifikatoriga ega bo'ladi.
+
+### Versiya 0.10.0
+
 #### Qo'shildi
+
+[Kanser registri](cancer.html) endi FHIR modeliga ega; model registr ma'lumotlari imkon bergan joyda [mCODE](https://hl7.org/fhir/us/mcode/STU4/) asosida tuzilgan. [Cancer Condition](StructureDefinition-cancer-condition.html) tashxis, registr identifikatori, lateral joylashuv va aniqlanish holatlarini saqlaydi, [Cancer Episode Of Care](StructureDefinition-cancer-episode-of-care.html) davolash kursini birlashtiradi, [Cancer Encounter](StructureDefinition-cancer-encounter.html) esa shu kurs ichidagi tashrifni qayd etadi. Oltita Observation profili o'smaning morfologiyasi va xatti-harakati, differensiallashuv darajasi, metastazlar, TNM toifalari va TNM bosqichini qayd etadi.
+
+Kodlashda ICD-10, ICD-O-3, SNOMED CT va LOINC mavjud bo'lganda ishlatiladi, aniqlanish holati, tasdiqlash usuli va davolash maqsadi kabi registrga xos tushunchalar uchun esa mahalliy kod tizimlari qo'llaniladi. Uchta ConceptMap registrning o'z ma'lumotnoma identifikatorlarini - holat, ICD-10 va ICD-O-3 topografiyasi - DHP kutgan kodlarga o'giradi.
+
+Gepatit registrida ham model bor: [Hepatitis Patient](StructureDefinition-hepatitis-patient.html), [Condition](StructureDefinition-hepatitis-condition.html), [Episode Of Care](StructureDefinition-hepatitis-episode-of-care.html), [Encounter](StructureDefinition-hepatitis-encounter.html), laboratoriya va ultratovush Observation profillari, shuningdek davolash so'rovnomasi uchun [Questionnaire](StructureDefinition-hepatitis-questionnaire.html) va [unga javob](StructureDefinition-hepatitis-questionnaire-response.html) - 0.9.0 da yetkazilgan profillanmagan misollar o'rniga. Yozuvlar `https://dhp.uz/fhir/core/sid/reg/uz/hepatitis` tizimidagi registr identifikatorini olib yuradi. Har bir maydon [gepatit registri sahifasida](hepatitis.html) tavsiflangan.
+
+[066-shakl](form-066-mapping.html) statsionardan chiqarish kartasidagi operatsiya kodi endi ICHI kodi. [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html) jarrohlik amaliyotlari bo'limi havola qiladigan Procedure ni profillaydi va `Procedure.code` ni [ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html) ga bog'laydi. Ilgari bo'lim har qanday Procedure ni qabul qilardi.
+
+[ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html) DMED da mavjud 6 853 kodni sanab o'tadi: JSST hozir nashr etadigan 9 428 o'zak koddan 6 176 tasi va JSST keyinchalik olib tashlagan 677 kod. Olib tashlanganlari [kod tizimida](https://dhp.uz/fhir/core/CodeSystem-who-ichi.html) `inactive` deb belgilangan va bu yerda qabul qilinadi - shunda DMED da allaqachon mavjud yozuvlar validatsiyadan o'tadi, ammo kelgusida ulardan foydalanmaslik kerak. Platforma o'zi kodlaydigan protsedura UZ Core dagi [ICHI Codes](https://dhp.uz/fhir/core/ValueSet-ichi-vs.html) dan olinadi.
 
 [YuIK testoldi ehtimoli bo'yicha xavf kategoriyalari](CodeSystem-ihd-risk-category-cs.html) endi shu yerda e'lon qilinadi. [YuIK testoldi ehtimoli so'rovnomasi](Questionnaire-IhdPretestQuestionnaire.html) xavf kategoriyasi savoliga javoblarda ulardan allaqachon foydalanardi, biroq UZ Core ning hech bir relizida mavjud bo'lmagan UZ Core kanonik URL manzili ostida.
 
+[Onkologiya](cancer.html) va [gepatit](hepatitis.html) sahifalarida resurslar o'zaro qanday bog'lanishini ko'rsatuvchi diagramma paydo bo'ldi. Boshqa integratsiya sahifalaridagi diagrammalar endi integratsiyaning barcha profillarini o'z ichiga oladi (skriningning yakuniy hujjati ScreeningComposition bundan mustasno), noto'g'ri kardinalliklar tuzatildi. Barcha diagrammalar klinik grafni ko'rsatadi, tashkilotlar, tibbiyot xodimlari va boshqa ishtirokchilarga havolalarsiz.
+
 #### O'zgartirildi
 
-Skrining so'rovnomalari endi `Questionnaire.code` ni SNOMED CT da olib yuradi - dastur turi identifikatoridagi konseptning o'zi: [YuIK testoldi ehtimoli](Questionnaire-IhdPretestQuestionnaire.html), [fertillik](Questionnaire-FertilityQuestionnaire.html), [gelmintozlar](Questionnaire-HelminthScreeningQuestionnaire.html), [yurak-qon tomir xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html), [qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html) va [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html). YuIK, gelmintoz va yurak-qon tomir xavfi so'rovnomalari avval UZ Core `screening-code-cs` kodini olib yurar edi, UZ Core uni SNOMED CT bilan almashtirmoqda. [Serebrovaskulyar](Questionnaire-CerebrovascularScreeningQuestionnaire.html) so'rovnoma `screening-code-cs#mserv-0007-00003` ni saqlab qoladi, chunki unga mos SNOMED CT konsepti yo'q.
+Qo'llanma [UZ Core 0.10.0](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi: unda 066-shaklga kerak bo'lgan ICHI kod tizimi nashr etiladi va `Procedure.code` bog'lanishi extensible darajasiga yumshatiladi.
 
-[Skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) identifikatori uchun SNOMED CT kodlari va `mserv-0007-00003` dan tashqari endi uchinchi qiymat ham tavsiflangan - `breast-cervical-unspecified`. Uni OPV (ВПЧ) skrining tizimi ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resursga yozadi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma. Bunday resurs dastur turining faqat bitta identifikatoriga ega bo'ladi.
+[Qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html) va [fertillik](Questionnaire-FertilityQuestionnaire.html) so'rovnomalari endi UZ Core `screening-code-cs` dan olingan `Questionnaire.code` ga ega, qolgan to'rtta skrining so'rovnomasidagi kabi.
 
 [Bepushtlik aniqlangan fertillik so'rovnomasi javobi](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) XKT-10 bo'yicha ikkita tashxisni ko'rsatadi; ularning har biri alohida Condition sifatida qayd etilgan ([birinchi](Condition-example-fertility-infertility-condition.html), [ikkinchi](Condition-example-fertility-infertility-condition-2.html)) va ularning `evidence` maydoni shu javobga havola qiladi.
 
 [Qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html) va [yurak-qon tomir xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html) so'rovnomalari endi ballarni o'zlarida haqiqatan mavjud bo'lgan javoblar bo'yicha hisoblaydi. Qandli diabet so'rovnomasi yosh, bel o'lchami va oilaviy anamnezni hech bir javob variantida bo'lmagan kodlar bilan solishtirardi, shuning uchun bu savollar doim 0 ball berardi; yurak-qon tomir xavfi so'rovnomasi tamaki iste'molini eskirgan mahalliy kod bilan solishtirardi, shuning uchun chekuvchilar JSST/XGJ jadvalining chekmaydiganlar qismidan qidirilardi. Javoblar o'zgarmagan.
 
+Barcha artefakt versiyalari `MAJOR.MINOR.PATCH` ko'rinishida. [Qandli diabet skriningi so'rovnomasi](Questionnaire-DiabetesScreeningQuestionnaire.html) va [skrining so'rovi shabloni](Questionnaire-screening-intake-template.html) versiyalarini `1.0` va `1.1` deb e'lon qilardi; endi ular `1.0.0` va `1.1.0` ni e'lon qiladi.
+
+Har bir so'rovnoma endi o'zi tegishli integratsiyani `program` qo'llanish kontekstida ko'rsatadi: to'qqizta skrining so'rovnomasi va gepatit so'rovnomasida u yo'q edi, shuning uchun ular [so'rovnomalar](forms.html) sahifasida guruhsiz qolardi. [Integration Area](CodeSystem-integration-area-cs.html) ga `hepatitis` kodi qo'shildi, `screening` esa endi faqat bachadon bo'yni va ko'krak bezi saratoni skriningini emas, butun skrining xizmatini qamrab oladi.
+
 #### Muhim o'zgarishlar
 
-Fertillik so'rovnomasining `infertility-icd-diagnosis` savoli endi erkin matnli `string` o'rniga XKT-10 ga bog'langan va takrorlanuvchi `coding` turiga ega. Javoblar `valueString` o'rniga har bir tashxis uchun bittadan `valueCoding` yuborishi kerak.
-
-YuIK xavf kategoriyalarining `low`, `medium` va `high` kodlari saqlanadi, ammo ularning tizimi `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` dan `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs` ga o'zgaradi.
-
-Skrining identifikator tizimlari endi `https://dhp.uz/fhir/core/sid/{namespace}/{country}/{type}` shabloniga amal qiladi. Ulardan ikkitasida nomlar maydoni segmenti yo'q edi, jamoat salomatligi holati identifikatori esa holatlar va so'rovnoma javoblarini identifikatsiya qilsa-da, tashkilotlar nomlar maydonida joylashgan edi. Yozuvlar va holatlar `doc` nomlar maydoniga, dastur turi esa har qanday sog'liqni saqlash dasturi o'z qiymati bilan qayta foydalanishi mumkin bo'lgan umumiy `prg` dastur tizimiga ko'chirildi. Identifikator qiymatlari o'zgarmaydi; yuboruvchilar tizimni almashtiradi:
+Skrining identifikator tizimlari endi `https://dhp.uz/fhir/core/sid/{namespace}/{country}/{type}` shabloniga amal qiladi. Ulardan ikkitasida nomlar maydoni segmenti yo'q edi, jamoat salomatligi holati identifikatori esa tashkilotlarni emas, holatlarni identifikatsiya qilsa-da, tashkilotlar nomlar maydonida joylashgan edi. Yozuvlar va holatlar `doc` nomlar maydoniga, dastur turi esa har qanday sog'liqni saqlash dasturi o'z qiymati bilan qayta foydalanishi mumkin bo'lgan umumiy `prg` dastur tizimiga ko'chirildi. Identifikator qiymatlari o'zgarmaydi; yuboruvchilar tizimni almashtiradi:
 
 | Identifikator | Avvalgi tizim | Yangi tizim |
 |---|---|---|
@@ -30,13 +50,9 @@ Skrining identifikator tizimlari endi `https://dhp.uz/fhir/core/sid/{namespace}/
 
 O'zbekiston JSHSHIR nom tizimi olib tashlandi. JSHSHIR - UZ Core allaqachon `https://dhp.uz/fhir/core/sid/pid/uz/ni` sifatida belgilagan milliy identifikator; uni `https://dhp.uz/fhir/core/sid/uz/pinfl` o'rniga shu tizimda yuboring.
 
-### Versiya 0.9.1
+Fertillik so'rovnomasining `infertility-icd-diagnosis` savoli endi erkin matnli `string` o'rniga XKT-10 ga bog'langan va takrorlanuvchi `coding` turiga ega. Javoblar `valueString` o'rniga har bir tashxis uchun bittadan `valueCoding` yuborishi kerak.
 
-#### O'zgartirildi
-
-[Qandli diabet skriningi so'rovnomasi](Questionnaire-DiabetesScreeningQuestionnaire.html) va [skrining so'rovi shabloni](Questionnaire-screening-intake-template.html) versiyalarini `1.0` va `1.1` deb e'lon qilardi; endi ular `1.0.0` va `1.1.0` ni e'lon qiladi, chunki har qanday artefakt versiyasi `MAJOR.MINOR.PATCH` ko'rinishida bo'ladi.
-
-Paket endi nashr yig'ilishi sifatida yig'iladi. Uning `package.json` fayli `notForPublication` belgisi va `file://` URL manzilini o'z ichiga olardi, shuning uchun [packages2.fhir.org](https://packages2.fhir.org/packages/uz.dhp.integrations) barcha versiyalarni rad etardi. Qo'llanma endi [UZ Core 0.9.2](https://dhp.uz/fhir/core/changelog.html) asosida ham yig'iladi, uning paketida xuddi shu kamchilik bor edi: ushbu qo'llanmadan UZ Core artefaktlariga havolalar `file://` yo'llariga olib borardi, endi esa dhp.uz ga olib boradi.
+YuIK xavf kategoriyalarining `low`, `medium` va `high` kodlari saqlanadi, ammo ularning tizimi `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` dan `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs` ga o'zgaradi.
 
 ### Versiya 0.9.0
 

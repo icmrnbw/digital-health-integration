@@ -15,6 +15,8 @@ Condition, EpisodeOfCare, and both Observation profiles require one `identifier[
 
 The [care episode](#following-the-care-episode) references the [patient](#registering-the-patient) and [diagnosis](#recording-diagnosis-and-outcome). A [visit](#recording-the-visit) can reference the episode, and the diagnosis references the visit. Observations and [questionnaire answers](#recording-answers) identify their patient independently. The examples share one patient record, and the visit links to the care episode.
 
+<div>{% include hepatitis-model-en.svg %}</div><br clear="all"/>
+
 ### Registering the patient (Patient) {#registering-the-patient}
 
 The patient record provides identity, demographics, and contact details. HepatitisPatient inherits UZ Core Patient and marks `telecom` as Must Support; this does not by itself make the field mandatory.
@@ -92,7 +94,7 @@ Example: [example-hepatitis-condition](Condition-example-hepatitis-condition.htm
 | Diagnosis | [ConditionCodeVS](https://dhp.uz/fhir/core/ValueSet-condition-code-vs.html) | `ICD-10#B17.1` | `code` |
 | Clinical status | [ClinicalStatusVS](https://dhp.uz/fhir/core/ValueSet-clinical-status-vs.html) | `condition-clinical#active` | `clinicalStatus` |
 | Diagnosis type | [DiagnosisTypeVS](https://dhp.uz/fhir/core/ValueSet-diagnosis-type-vs.html) | `diagnosis-type-cs#gencl-0001-00003` | `extension[diagnosisType]` |
-| Treatment outcome | [HepatitisConditionOutcomeCodesVS](ValueSet-hepatitis-condition-outcome-codes-vs.html) | `SNOMED CT#1137679005` | `extension[http://hl7.org/fhir/StructureDefinition/condition-outcome].valueCodeableConcept` |
+| Treatment outcome | [ConditionOutcomeCodes](https://hl7.org/fhir/R5/valueset-condition-outcome.html) | `SNOMED CT#1137679005` | `extension[http://hl7.org/fhir/StructureDefinition/condition-outcome].valueCodeableConcept` |
 | Patient | - | [hepatitis-patient-example](Patient-hepatitis-patient-example.html) | `subject` |
 | Visit | - | [hepatitis-encounter-example](Encounter-hepatitis-encounter-example.html) | `encounter` |
 | Recorded date | - | `2026-09-18T10:45:00+05:00` | `recordedDate` |

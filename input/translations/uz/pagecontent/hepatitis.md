@@ -17,6 +17,8 @@ Condition, EpisodeOfCare va ikkala Observation profili `https://dhp.uz/fhir/core
 
 [Yordam ko‘rsatish epizodi](#following-the-care-episode) [bemor](#registering-the-patient) va [tashxis](#recording-diagnosis-and-outcome) ga havola qiladi. [Tashrif](#recording-the-visit) epizodga, tashxis esa tashrifga havola qilishi mumkin. Kuzatuvlar va [so‘rovnoma javoblari](#recording-answers) bemorni mustaqil ko‘rsatadi. Misollar bitta bemor yozuvidan foydalanadi va tashrif yordam ko‘rsatish epizodiga bog‘langan.
 
+<div>{% include hepatitis-model-uz.svg %}</div><br clear="all"/>
+
 ### Bemorni ro‘yxatga olish (Patient) {#registering-the-patient}
 
 Bemor yozuvi identifikatsiya, demografik va aloqa ma’lumotlarini saqlaydi. HepatitisPatient UZ Core Patient profilidan meros oladi va `telecom` ni Must Support deb belgilaydi; bu belgi o‘z-o‘zidan maydonni majburiy qilmaydi.
@@ -94,7 +96,7 @@ Misol: [example-hepatitis-condition](Condition-example-hepatitis-condition.html)
 | Tashxis | [ConditionCodeVS](https://dhp.uz/fhir/core/ValueSet-condition-code-vs.html) | `ICD-10#B17.1` | `code` |
 | Klinik holat | [ClinicalStatusVS](https://dhp.uz/fhir/core/ValueSet-clinical-status-vs.html) | `condition-clinical#active` | `clinicalStatus` |
 | Tashxis turi | [DiagnosisTypeVS](https://dhp.uz/fhir/core/ValueSet-diagnosis-type-vs.html) | `diagnosis-type-cs#gencl-0001-00003` | `extension[diagnosisType]` |
-| Davolash natijasi | [HepatitisConditionOutcomeCodesVS](ValueSet-hepatitis-condition-outcome-codes-vs.html) | `SNOMED CT#1137679005` | `extension[http://hl7.org/fhir/StructureDefinition/condition-outcome].valueCodeableConcept` |
+| Davolash natijasi | [ConditionOutcomeCodes](https://hl7.org/fhir/R5/valueset-condition-outcome.html) | `SNOMED CT#1137679005` | `extension[http://hl7.org/fhir/StructureDefinition/condition-outcome].valueCodeableConcept` |
 | Bemor | - | [hepatitis-patient-example](Patient-hepatitis-patient-example.html) | `subject` |
 | Tashrif | - | [hepatitis-encounter-example](Encounter-hepatitis-encounter-example.html) | `encounter` |
 | Qayd etilgan sana | - | `2026-09-18T10:45:00+05:00` | `recordedDate` |

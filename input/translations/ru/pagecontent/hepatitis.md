@@ -17,6 +17,8 @@ Condition, EpisodeOfCare и оба профиля Observation требуют о�
 
 [Эпизод помощи](#following-the-care-episode) ссылается на [пациента](#registering-the-patient) и [диагноз](#recording-diagnosis-and-outcome). [Посещение](#recording-the-visit) может ссылаться на эпизод, а диагноз — на посещение. Наблюдения и [ответы на анкету](#recording-answers) самостоятельно указывают пациента. Примеры используют одну запись пациента, а посещение связано с эпизодом помощи.
 
+<div>{% include hepatitis-model-ru.svg %}</div><br clear="all"/>
+
 ### Регистрация пациента (Patient) {#registering-the-patient}
 
 Запись пациента содержит идентификационные, демографические и контактные данные. HepatitisPatient наследует UZ Core Patient и помечает `telecom` как Must Support; сама по себе эта пометка не делает поле обязательным.
@@ -94,7 +96,7 @@ Condition содержит диагноз и клинический статус
 | Диагноз | [ConditionCodeVS](https://dhp.uz/fhir/core/ValueSet-condition-code-vs.html) | `ICD-10#B17.1` | `code` |
 | Клинический статус | [ClinicalStatusVS](https://dhp.uz/fhir/core/ValueSet-clinical-status-vs.html) | `condition-clinical#active` | `clinicalStatus` |
 | Тип диагноза | [DiagnosisTypeVS](https://dhp.uz/fhir/core/ValueSet-diagnosis-type-vs.html) | `diagnosis-type-cs#gencl-0001-00003` | `extension[diagnosisType]` |
-| Исход лечения | [HepatitisConditionOutcomeCodesVS](ValueSet-hepatitis-condition-outcome-codes-vs.html) | `SNOMED CT#1137679005` | `extension[http://hl7.org/fhir/StructureDefinition/condition-outcome].valueCodeableConcept` |
+| Исход лечения | [ConditionOutcomeCodes](https://hl7.org/fhir/R5/valueset-condition-outcome.html) | `SNOMED CT#1137679005` | `extension[http://hl7.org/fhir/StructureDefinition/condition-outcome].valueCodeableConcept` |
 | Пациент | - | [hepatitis-patient-example](Patient-hepatitis-patient-example.html) | `subject` |
 | Посещение | - | [hepatitis-encounter-example](Encounter-hepatitis-encounter-example.html) | `encounter` |
 | Дата регистрации | - | `2026-09-18T10:45:00+05:00` | `recordedDate` |
