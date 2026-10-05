@@ -27,7 +27,13 @@ Description: "Pre-test probability of ischemic heart disease (ihd_screenings)"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Pre-test probability of IHD assessed by chest pain type, sex and age."
-* code = $screening-code-cs#mserv-0007-00001 "Yurak ishemik kasalligining testoldi ehtimolini baholash so'rovnomasi"
+* code = $sct#171223006 "Ischemic heart disease screening"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Yurak ishemik kasalligi skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг ишемической болезни сердца"
 
 * item[+]
   * linkId = "age"

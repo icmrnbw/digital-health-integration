@@ -21,7 +21,13 @@ Description: "Example for Diabetes Screening Questionnaire"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Early Diabetes Screening"
-* code = $screening-code-cs#mserv-0007-00006 "Qandli diabetni erta aniqlash so'rovnomasi"
+* code = $sct#171183004 "Diabetes mellitus screening"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Qandli diabet skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг сахарного диабета"
 
 // Question 1: Age band. Score: 40-64=5, 65+=7
 * item[+]

@@ -1,6 +1,10 @@
 ### Ishlab chiqish jarayonida
 
-(Hozircha o'zgarishlar yo'q)
+#### O'zgartirildi
+
+Skrining so'rovnomalari endi `Questionnaire.code` ni SNOMED CT da olib yuradi - dastur turi identifikatoridagi konseptning o'zi: [YuIK testoldi ehtimoli](Questionnaire-IhdPretestQuestionnaire.html), [fertillik](Questionnaire-FertilityQuestionnaire.html), [gelmintozlar](Questionnaire-HelminthScreeningQuestionnaire.html), [yurak-qon tomir xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html), [qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html) va [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html). Ular avval UZ Core `screening-code-cs` kodini olib yurar edi, UZ Core uni SNOMED CT bilan almashtirmoqda. [Serebrovaskulyar](Questionnaire-CerebrovascularScreeningQuestionnaire.html) so'rovnoma `screening-code-cs#mserv-0007-00003` ni saqlab qoladi, chunki unga mos SNOMED CT konsepti yo'q.
+
+[Skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) identifikatori uchun SNOMED CT kodlari va `mserv-0007-00003` dan tashqari endi uchinchi qiymat ham tavsiflangan - `breast-cervical-unspecified`. Uni OPV (ВПЧ) skrining tizimi ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resursga yozadi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma. Bunday resurs dastur turining faqat bitta identifikatoriga ega bo'ladi.
 
 ### Versiya 0.10.0
 
