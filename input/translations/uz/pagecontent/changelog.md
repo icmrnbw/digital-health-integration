@@ -6,6 +6,10 @@ Skrining so'rovnomalari endi `Questionnaire.code` ni SNOMED CT da olib yuradi - 
 
 [Skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) identifikatori uchun SNOMED CT kodlari va `mserv-0007-00003` dan tashqari endi uchinchi qiymat ham tavsiflangan - `breast-cervical-unspecified`. Uni OPV (ВПЧ) skrining tizimi ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resursga yozadi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma. Bunday resurs dastur turining faqat bitta identifikatoriga ega bo'ladi.
 
+#### Olib tashlandi
+
+[Screening Composition](StructureDefinition-screening-composition.html) foydalanishdan chiqarildi, uning misollari olib tashlandi. VPCh skrining tizimi endi skrining tsikli bo'yicha yakuniy hujjat yubormaydi: natijalar o'z resurslarida qoladi va [bachadon bo'yni va sut bezi saratoni skriningi](cervical-breast-cancer-screening.html) sahifasida tavsiflanganidek bevosita o'qiladi. Bemor uchun yagona Composition har bir tsikl bilan kattalashib borardi, chunki bu tizimda tsikl yopilmaydi, va DHP da uni hech kim o'qimasdi.
+
 ### Versiya 0.10.0
 
 #### Qo'shildi

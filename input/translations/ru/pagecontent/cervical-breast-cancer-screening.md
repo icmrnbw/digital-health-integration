@@ -18,9 +18,9 @@
 
 ### Идентификаторы программы и источника
 
-**Тип программы скрининга.** Второй `identifier`, система `https://dhp.uz/fhir/core/sid/prg/uz/program`, указывающий код SNOMED CT программы скрининга, к которой относится ресурс, - например, `171149006` (скрининг шейки матки) или `268547008` (скрининг рака молочной железы). По соглашению указывается в Observation, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, Composition, а также в Questionnaire/QuestionnaireResponse, если опросник целиком относится к одной программе, - но не в Patient, Practitioner или PractitionerRole, которые являются общими для обеих программ. Опросник [Осмотр женщины](Questionnaire-screening-woman-exam.html) и ответ на него содержат оба кода программы, так как опросник охватывает обе программы. Ресурс, созданный в рамках скрининга рака молочной железы и шейки матки, который нельзя отнести ни к одной из программ, вместо этого содержит один идентификатор типа программы со значением `breast-cervical-unspecified`: Condition, чей код МКБ-10 не входит ни в один из списков программ или входит в оба, и направление в филиал РСНПМЦОиР или РСНПМЦЗМиР.
+**Тип программы скрининга.** Второй `identifier`, система `https://dhp.uz/fhir/core/sid/prg/uz/program`, указывающий код SNOMED CT программы скрининга, к которой относится ресурс, - например, `171149006` (скрининг шейки матки) или `268547008` (скрининг рака молочной железы). По соглашению указывается в Observation, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, а также в Questionnaire/QuestionnaireResponse, если опросник целиком относится к одной программе, - но не в Patient, Practitioner или PractitionerRole, которые являются общими для обеих программ. Опросник [Осмотр женщины](Questionnaire-screening-woman-exam.html) и ответ на него содержат оба кода программы, так как опросник охватывает обе программы. Ресурс, созданный в рамках скрининга рака молочной железы и шейки матки, который нельзя отнести ни к одной из программ, вместо этого содержит один идентификатор типа программы со значением `breast-cervical-unspecified`: Condition, чей код МКБ-10 не входит ни в один из списков программ или входит в оба, и направление в филиал РСНПМЦОиР или РСНПМЦЗМиР.
 
-**Система-источник.** `meta.source` указывает, какая система создала ресурс: `https://dhp.uz/fhir/source/screening` (данная информационная система скрининга рака шейки матки и молочной железы) либо `https://dhp.uz/fhir/source/dmed` (ДМЕД). Обязательное поле, проверяется инвариантом в профилях [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) и [ScreeningComposition](StructureDefinition-screening-composition.html). Не пытайтесь определить систему-источник по наличию идентификатора из системы `https://dhp.uz/fhir/core/sid/doc/uz/screening` - эта система идентификаторов не указывает, какая система создала ресурс.
+**Система-источник.** `meta.source` указывает, какая система создала ресурс: `https://dhp.uz/fhir/source/screening` (данная информационная система скрининга рака шейки матки и молочной железы) либо `https://dhp.uz/fhir/source/dmed` (ДМЕД). Обязательное поле, проверяется инвариантом в профилях [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html) и [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html). Не пытайтесь определить систему-источник по наличию идентификатора из системы `https://dhp.uz/fhir/core/sid/doc/uz/screening` - эта система идентификаторов не указывает, какая система создала ресурс.
 
 ### Назначение теста или процедуры (ServiceRequest)
 
@@ -294,25 +294,9 @@
 
 ### Итоговый документ скрининга
 
-Итоговый документ скрининга собирает всё, что зафиксировано в рамках одного цикла скрининга, в один скачиваемый документ. Он может быть сформирован на любом этапе цикла: то, что ещё не внесено, просто не попадает в документ, поэтому сформированный на раннем этапе документ содержит только ответы на опросники.
+Итоговый документ по циклу скрининга не передаётся. Результаты остаются в отдельных ресурсах QuestionnaireResponse, Observation, DiagnosticReport, Procedure и Condition; их читают по пациентке и идентификатору типа скрининговой программы или через `basedOn` (расширение `event-basedOn` у Condition и Consent) на плановый ServiceRequest программы. Система, которой нужна скачиваемая сводка, формирует её в момент запроса и не сохраняет в DHP.
 
-Отдельные этапы не получают собственный Composition - каждый результат остаётся Observation, а этот документ ссылается на них.
-
-Профиль: [ScreeningComposition](StructureDefinition-screening-composition.html)
-
-Примеры: [ScreeningCompositionExample](Composition-screening-composition-example.html), [ScreeningCompositionDocumentExample](Bundle-screening-composition-document-example.html)
-
-| Записываемая информация | Справочник | Пример кода | Где хранится |
-| :--- | :--- | :--- | :--- |
-| Тип документа | - | `LOINC#34133-9` (Summary of episode note) | `Composition.type` |
-| Опросники | - | `LOINC#74465-6` | `section[questionnaire].entry` (QuestionnaireResponse) |
-| Результаты всех выполненных этапов | - | `LOINC#30954-2` | `section[results].entry` (Observation) |
-| Окончательный диагноз по МКБ-10 | - | `LOINC#29308-4` | `section[diagnosis].entry` (Condition) |
-| Автор | - | - | `Composition.author` (PractitionerRole) |
-| Ответственная организация | - | - | `Composition.custodian` |
-| Документируемые направления и процедуры | - | - | `Composition.event.detail` |
-
-Чтобы передать итоговый документ как неизменяемый, поместите его в `Bundle` с `type = document`, где Composition является **первой** записью, а все ресурсы, на которые он ссылается - Patient, Condition, Observation, QuestionnaireResponse и прочие - находятся в том же Bundle.
+[ScreeningComposition](StructureDefinition-screening-composition.html) выведен из использования. Не создавайте и не обновляйте его; Composition, уже сохранённые в DHP, остаются как есть.
 
 ### Витальные показатели (рост, вес, ИМТ)
 

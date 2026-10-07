@@ -18,9 +18,9 @@ Kodlanadigan qiymatlar ekvivalent tushuncha mavjud bo'lgan hamma joyda SNOMED CT
 
 ### Dastur va manba tizimi identifikatorlari
 
-**Skrining dasturi turi.** Ikkinchi `identifier`, tizim `https://dhp.uz/fhir/core/sid/prg/uz/program`, resurs tegishli bo'lgan skrining dasturining SNOMED CT kodini bildiradi - masalan, `171149006` (bachadon bo'yni skriningi) yoki `268547008` (sut bezi saratoni skriningi). Kelishuvga ko'ra Observation, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, Composition, shuningdek so'rovnoma butunlay bitta dasturga tegishli bo'lganda Questionnaire/QuestionnaireResponse da ko'rsatiladi - lekin ikkala dastur uchun umumiy bo'lgan Patient, Practitioner yoki PractitionerRole da ko'rsatilmaydi. [Ayolni tibbiy ko'rikdan o'tkazish](Questionnaire-screening-woman-exam.html) so'rovnomasi va unga javob ikkala dastur kodini ham o'z ichiga oladi, chunki so'rovnoma ikkala dasturni ham qamrab oladi. Ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resurs buning o'rniga `breast-cervical-unspecified` qiymatli bitta dastur turi identifikatoriga ega bo'ladi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma.
+**Skrining dasturi turi.** Ikkinchi `identifier`, tizim `https://dhp.uz/fhir/core/sid/prg/uz/program`, resurs tegishli bo'lgan skrining dasturining SNOMED CT kodini bildiradi - masalan, `171149006` (bachadon bo'yni skriningi) yoki `268547008` (sut bezi saratoni skriningi). Kelishuvga ko'ra Observation, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, shuningdek so'rovnoma butunlay bitta dasturga tegishli bo'lganda Questionnaire/QuestionnaireResponse da ko'rsatiladi - lekin ikkala dastur uchun umumiy bo'lgan Patient, Practitioner yoki PractitionerRole da ko'rsatilmaydi. [Ayolni tibbiy ko'rikdan o'tkazish](Questionnaire-screening-woman-exam.html) so'rovnomasi va unga javob ikkala dastur kodini ham o'z ichiga oladi, chunki so'rovnoma ikkala dasturni ham qamrab oladi. Ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resurs buning o'rniga `breast-cervical-unspecified` qiymatli bitta dastur turi identifikatoriga ega bo'ladi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma.
 
-**Manba tizimi.** `meta.source` resursni qaysi tizim yaratganini bildiradi: `https://dhp.uz/fhir/source/screening` (ushbu bachadon bo'yni va sut bezi saratoni skriningi axborot tizimi) yoki `https://dhp.uz/fhir/source/dmed` (DMED). Majburiy maydon, [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) va [ScreeningComposition](StructureDefinition-screening-composition.html) profillarida invariant orqali tekshiriladi. Manba tizimini `https://dhp.uz/fhir/core/sid/doc/uz/screening` tizimidan olingan identifikator mavjudligiga qarab aniqlamang - bu identifikator tizimi resursni qaysi tizim yaratganini bildirmaydi.
+**Manba tizimi.** `meta.source` resursni qaysi tizim yaratganini bildiradi: `https://dhp.uz/fhir/source/screening` (ushbu bachadon bo'yni va sut bezi saratoni skriningi axborot tizimi) yoki `https://dhp.uz/fhir/source/dmed` (DMED). Majburiy maydon, [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html) va [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) profillarida invariant orqali tekshiriladi. Manba tizimini `https://dhp.uz/fhir/core/sid/doc/uz/screening` tizimidan olingan identifikator mavjudligiga qarab aniqlamang - bu identifikator tizimi resursni qaysi tizim yaratganini bildirmaydi.
 
 ### Test yoki muolajani buyurtirish (ServiceRequest)
 
@@ -280,25 +280,9 @@ Uchta so'rovnoma nashr etiladi. Javoblar QuestionnaireResponse ko'rinishida qayt
 
 ### Skrining yakuniy hujjati
 
-Skrining yakuniy hujjati bitta skrining tsikli doirasida qayd etilgan hamma narsani bitta yuklab olinadigan hujjatga jamlaydi. U tsiklning istalgan bosqichida shakllantirilishi mumkin: hali kiritilmagan narsalar hujjatga tushmaydi, shuning uchun erta shakllantirilgan hujjat faqat so'rovnoma javoblarini o'z ichiga oladi.
+Skrining tsikli bo'yicha yakuniy hujjat uzatilmaydi. Natijalar alohida QuestionnaireResponse, Observation, DiagnosticReport, Procedure va Condition resurslarida qoladi; ular bemor va skrining dasturi turi identifikatori bo'yicha yoki `basedOn` (Condition va Consent da `event-basedOn` kengaytmasi) orqali dasturning rejali ServiceRequest iga ko'ra o'qiladi. Yuklab olinadigan xulosa kerak bo'lgan tizim uni so'ralgan paytda shakllantiradi va DHP da saqlamaydi.
 
-Alohida bosqichlar o'z Composition iga ega bo'lmaydi - har bir natija Observation bo'lib qoladi, bu hujjat esa ularga havola qiladi.
-
-Profil: [ScreeningComposition](StructureDefinition-screening-composition.html)
-
-Misollar: [ScreeningCompositionExample](Composition-screening-composition-example.html), [ScreeningCompositionDocumentExample](Bundle-screening-composition-document-example.html)
-
-| Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
-| :--- | :--- | :--- | :--- |
-| Hujjat turi | - | `LOINC#34133-9` (Summary of episode note) | `Composition.type` |
-| So'rovnomalar | - | `LOINC#74465-6` | `section[questionnaire].entry` (QuestionnaireResponse) |
-| Bajarilgan barcha bosqichlar natijalari | - | `LOINC#30954-2` | `section[results].entry` (Observation) |
-| MKB-10 bo'yicha yakuniy tashxis | - | `LOINC#29308-4` | `section[diagnosis].entry` (Condition) |
-| Muallif | - | - | `Composition.author` (PractitionerRole) |
-| Mas'ul tashkilot | - | - | `Composition.custodian` |
-| Hujjatlashtirilgan yo'llanmalar va muolajalar | - | - | `Composition.event.detail` |
-
-Yakuniy hujjatni o'zgarmas ko'rinishda uzatish uchun uni `type = document` bo'lgan `Bundle` ga joylashtiring: Composition **birinchi** yozuv bo'lishi, u havola qiladigan barcha resurslar - Patient, Condition, Observation, QuestionnaireResponse va boshqalar - o'sha Bundle ichida bo'lishi kerak.
+[ScreeningComposition](StructureDefinition-screening-composition.html) foydalanishdan chiqarilgan. Uni yaratmang va yangilamang; DHP da allaqachon saqlangan Composition lar o'zgarishsiz qoladi.
 
 ### Hayotiy ko'rsatkichlar (bo'y, vazn, TVI)
 

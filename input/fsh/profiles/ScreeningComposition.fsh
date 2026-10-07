@@ -2,8 +2,8 @@ Profile: ScreeningComposition
 Parent: Composition
 Id: screening-composition
 Title: "Screening Composition"
-Description: "Downloadable summary of a cervical or breast cancer screening episode. It aggregates the results recorded so far, the final diagnosis and the surrounding clinical context."
-* ^status = #active
+Description: "Retired: the HPV screening system no longer sends a summary document, and screening results are read from their own resources. Formerly the downloadable summary of a cervical or breast cancer screening episode, aggregating the results recorded so far, the final diagnosis and the surrounding clinical context."
+* ^status = #retired
 * ^experimental = true
 * ^publisher = "DHP Integration"
 * insert ScreeningMetaSource

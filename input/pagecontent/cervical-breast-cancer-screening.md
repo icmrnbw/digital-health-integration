@@ -18,9 +18,9 @@ Coded values use SNOMED CT or LOINC wherever an equivalent concept exists. Local
 
 ### Program and source identifiers
 
-**Screening program type.** A second `identifier`, system `https://dhp.uz/fhir/core/sid/prg/uz/program`, naming the SNOMED CT screening program a resource belongs to - for example `171149006` (Screening for malignant neoplasm of cervix) or `268547008` (Screening for malignant neoplasm of breast). Written by convention on Observation, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, Composition, and Questionnaire/QuestionnaireResponse when the whole questionnaire is one program - not on Patient, Practitioner or PractitionerRole, which are shared across programs. The [Woman medical exam](Questionnaire-screening-woman-exam.html) questionnaire and its response carry both program codes, since the questionnaire spans both programs. A resource created for breast and cervical cancer screening that cannot be attributed to either program carries a single program type identifier with the value `breast-cervical-unspecified` instead: a Condition whose ICD-10 code is on neither program's list, or on both, and a referral to a branch of the national oncology or maternal and child health centre.
+**Screening program type.** A second `identifier`, system `https://dhp.uz/fhir/core/sid/prg/uz/program`, naming the SNOMED CT screening program a resource belongs to - for example `171149006` (Screening for malignant neoplasm of cervix) or `268547008` (Screening for malignant neoplasm of breast). Written by convention on Observation, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, and Questionnaire/QuestionnaireResponse when the whole questionnaire is one program - not on Patient, Practitioner or PractitionerRole, which are shared across programs. The [Woman medical exam](Questionnaire-screening-woman-exam.html) questionnaire and its response carry both program codes, since the questionnaire spans both programs. A resource created for breast and cervical cancer screening that cannot be attributed to either program carries a single program type identifier with the value `breast-cervical-unspecified` instead: a Condition whose ICD-10 code is on neither program's list, or on both, and a referral to a branch of the national oncology or maternal and child health centre.
 
-**Source system.** `meta.source` identifies which system created a resource: `https://dhp.uz/fhir/source/screening` (this Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System) or `https://dhp.uz/fhir/source/dmed` (DMED). Required and enforced by invariant on [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) and [ScreeningComposition](StructureDefinition-screening-composition.html). Do not infer the source system from the presence of an identifier from `https://dhp.uz/fhir/core/sid/doc/uz/screening` - that identifier system does not indicate which system produced a resource.
+**Source system.** `meta.source` identifies which system created a resource: `https://dhp.uz/fhir/source/screening` (this Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System) or `https://dhp.uz/fhir/source/dmed` (DMED). Required and enforced by invariant on [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html) and [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html). Do not infer the source system from the presence of an identifier from `https://dhp.uz/fhir/core/sid/doc/uz/screening` - that identifier system does not indicate which system produced a resource.
 
 ### Ordering a test or procedure (ServiceRequest)
 
@@ -280,25 +280,9 @@ Three questionnaires are published. Answers come back as a QuestionnaireResponse
 
 ### Screening summary document
 
-The screening summary gathers everything recorded for one screening episode into a single downloadable document. It can be produced at any point in the cycle: whatever has not been recorded yet is simply left out, so a summary generated early carries only the questionnaire answers.
+No summary document is exchanged for a screening cycle. The results stay in the individual QuestionnaireResponse, Observation, DiagnosticReport, Procedure and Condition resources; read them for the patient by the screening program type identifier, or through `basedOn` (the `event-basedOn` extension on Condition and Consent) to the program's plan ServiceRequest. A system that needs a downloadable summary builds it when it is requested and does not store it in DHP.
 
-Individual steps do not get their own Composition - each result stays an Observation, and this document references them.
-
-Profile: [ScreeningComposition](StructureDefinition-screening-composition.html)
-
-Examples: [ScreeningCompositionExample](Composition-screening-composition-example.html), [ScreeningCompositionDocumentExample](Bundle-screening-composition-document-example.html)
-
-| Information to record | Value set | Example code | Stored in |
-| :--- | :--- | :--- | :--- |
-| Document type | - | `LOINC#34133-9` (Summary of episode note) | `Composition.type` |
-| Questionnaires | - | `LOINC#74465-6` | `section[questionnaire].entry` (QuestionnaireResponse) |
-| Results of every completed step | - | `LOINC#30954-2` | `section[results].entry` (Observation) |
-| Final ICD-10 diagnosis | - | `LOINC#29308-4` | `section[diagnosis].entry` (Condition) |
-| Author | - | - | `Composition.author` (PractitionerRole) |
-| Responsible organisation | - | - | `Composition.custodian` |
-| Referrals and procedures documented | - | - | `Composition.event.detail` |
-
-To hand the summary over as an immutable document, put it in a `Bundle` with `type = document`, with the Composition as the **first** entry and every resource it references - Patient, Condition, Observation, QuestionnaireResponse and the rest - in the same Bundle.
+[ScreeningComposition](StructureDefinition-screening-composition.html) is retired. Do not create or update it; Compositions already stored in DHP are left as they are.
 
 ### Vital signs (height, weight, BMI)
 

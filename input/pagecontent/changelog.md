@@ -6,6 +6,10 @@ The screening questionnaires now carry `Questionnaire.code` in SNOMED CT, the sa
 
 The [screening program type](NamingSystem-screening-program-type-identifier-system.html) identifier now documents a third value besides the SNOMED CT codes and `mserv-0007-00003`: `breast-cervical-unspecified`, which the HPV screening system writes on a resource it creates for breast and cervical cancer screening but cannot attribute to either program - a Condition whose ICD-10 code is on neither program's list, or on both, and a referral to a branch of the national oncology or maternal and child health centre. Such a resource carries exactly one program type identifier.
 
+#### Removed
+
+[Screening Composition](StructureDefinition-screening-composition.html) is retired, and its examples are removed. The HPV screening system no longer sends a summary document for a screening cycle: the results stay in their own resources and are read directly, as [cervical and breast cancer screening](cervical-breast-cancer-screening.html) describes. A single Composition per patient grew with every cycle, since a cycle in that system is never closed, and nothing in DHP read it.
+
 ### Version 0.10.0
 
 #### Added
