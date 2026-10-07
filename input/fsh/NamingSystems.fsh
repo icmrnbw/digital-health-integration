@@ -99,7 +99,7 @@ Usage: #definition
 * usage = "Business-identifier system for clinical and administrative records within the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System (e.g. Observation, DiagnosticReport, ServiceRequest, Condition, QuestionnaireResponse, PractitionerRole). Person identities use the pid/pro systems instead."
 * jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
 * uniqueId[0].type = #uri
-* uniqueId[0].value = "https://dhp.uz/fhir/core/sid/uz/screening"
+* uniqueId[0].value = "https://dhp.uz/fhir/core/sid/doc/uz/screening"
 * uniqueId[0].preferred = true
 
 Instance: screening-program-type-identifier-system
@@ -113,10 +113,10 @@ Usage: #definition
 * date = "2026-09-04"
 * publisher = "Uzinfocom"
 * responsible = "Uzinfocom"
-* usage = "Written by the DMED and HPV (ВПЧ) screening systems on every clinical or workflow resource that belongs to a single screening program (Observation including anthropometry, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, Composition, and Questionnaire/QuestionnaireResponse when the questionnaire covers one program). Not used on Patient, Practitioner or PractitionerRole, which are shared across programs. The value is the program's SNOMED CT code: 171149006 Cervical screen, 268547008 Screening for breast cancer, 300007000 Screening for cardiovascular system disease, 171183004 Diabetes screening, 171223006 Ischaemic heart disease screening, 171147008 Screening for intestinal helminthiasis, 762445000 Screening for haematological disorder, 408961002 Fertility care assessment. Cerebrovascular screening has no suitable SNOMED CT concept and uses its screening-code-cs code, mserv-0007-00003. This identifier does not replace the resource's business identifier from screening-identifier-system and does not indicate which system (DMED or HPV) produced the resource."
+* usage = "Written by the DMED and HPV (ВПЧ) screening systems on every clinical or workflow resource that belongs to a single screening program (Observation including anthropometry, DiagnosticReport, ServiceRequest, Condition, Consent, Specimen, Composition, and Questionnaire/QuestionnaireResponse when the questionnaire covers one program). Not used on Patient, Practitioner or PractitionerRole, which are shared across programs. The value is the program's SNOMED CT code: 171149006 Screening for malignant neoplasm of cervix, 268547008 Screening for malignant neoplasm of breast, 300007000 Screening for cardiovascular system disease, 171183004 Diabetes mellitus screening, 171223006 Ischemic heart disease screening, 171147008 Screening for intestinal helminthiasis, 762445000 Screening for hematological disorder, 408961002 Fertility care assessment. Cerebrovascular screening has no suitable SNOMED CT concept and uses its screening-code-cs code, mserv-0007-00003. A resource the HPV screening system creates for the breast and cervical cancer screening programs, but that cannot be attributed to either of them, carries breast-cervical-unspecified instead: a Condition whose ICD-10 code is on neither the breast nor the cervical list, or on both, and a referral to a branch of the national oncology or maternal and child health centre. Such a resource carries exactly one program type identifier, never both SNOMED CT codes. This identifier does not replace the resource's business identifier from screening-identifier-system and does not indicate which system (DMED or HPV) produced the resource."
 * jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
 * uniqueId[0].type = #uri
-* uniqueId[0].value = "https://dhp.uz/fhir/core/sid/uz/screening-program-type"
+* uniqueId[0].value = "https://dhp.uz/fhir/core/sid/prg/uz/program"
 * uniqueId[0].preferred = true
 
 Instance: screening-patient-identifier-system
@@ -226,4 +226,22 @@ Usage: #definition
 * usage = "Used for identifiers related to cancer registry records in the Uzbekistan healthcare information system."
 * uniqueId[0].type = #uri
 * uniqueId[=].value = "https://dhp.uz/fhir/core/sid/reg/uz/cancer"
+* uniqueId[=].preferred = true
+
+Instance: hepatitis-identifier
+InstanceOf: NamingSystem
+Description: "Official identifier system for hepatitis-related records in Uzbekistan"
+Usage: #definition
+
+* name = "UzbekistanHepatitisIdentifier"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-08-27"
+* description = "Identifier system used for hepatitis-related records in the Digital Health Platform of Uzbekistan"
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used to identify hepatitis-related records and questionnaires in Uzbekistan"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/reg/uz/hepatitis"
 * uniqueId[=].preferred = true

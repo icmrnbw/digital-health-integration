@@ -147,10 +147,10 @@ Alias: $organizational-structure-cs = https://terminology.dhp.uz/fhir/core/CodeS
 Alias: $organizational-service-group-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-service-group-cs
 Alias: $states-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/states-cs
 Alias: $organization-tax-id-system-dhp = https://dhp.uz/fhir/core/sid/org/uz/soliq
-Alias: $screening-local-id = https://dhp.uz/fhir/core/sid/uz/screening
+Alias: $screening-local-id = https://dhp.uz/fhir/core/sid/doc/uz/screening
 Alias: $screening-patient-id = https://dhp.uz/fhir/core/sid/pid/uz/screening
 Alias: $screening-practitioner-id = https://dhp.uz/fhir/core/sid/pro/uz/screening
-Alias: $screening-program-type-id = https://dhp.uz/fhir/core/sid/uz/screening-program-type
+Alias: $screening-program-type-id = https://dhp.uz/fhir/core/sid/prg/uz/program
 Alias: $nationality-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/nationality-cs
 Alias: $doc-typecodes = http://hl7.org/fhir/ValueSet/doc-typecodes
 Alias: $mimetypes = http://hl7.org/fhir/ValueSet/mimetypes
@@ -174,16 +174,17 @@ Alias: $iccc-3 = http://terminology.hl7.org/CodeSystem/iccc-3
 Alias: $iccc-3-vs = https://terminology.dhp.uz/fhir/core/ValueSet/iccc-3-vs
 Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context-type
 Alias: $integration-area = https://terminology.dhp.uz/fhir/integrations/CodeSystem/integration-area-cs
+Alias: $lab-methods-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/lab-methods-cs
+Alias: $hep-id-sys = https://dhp.uz/fhir/core/sid/reg/uz/hepatitis
+Alias: $diagnosis-type = https://terminology.dhp.uz/fhir/core/CodeSystem/diagnosis-type-cs
 // ===================== DMED early-detection screening questionnaires (moved from digital-health-ig) =====================
 Alias: $v2-0532 = http://terminology.hl7.org/CodeSystem/v2-0532
 Alias: $ordinal-value = http://hl7.org/fhir/StructureDefinition/ordinalValue
 Alias: $variable = http://hl7.org/fhir/StructureDefinition/variable
 Alias: $sdc-calculated-expression = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression
-// screening-code-cs and ihd-risk-category-cs stay defined only in digital-health-ig (core) —
-// still used there by CVDRiskScreeningQuestionnaire and ScreeningIHDProbabilityQuestionnaire —
-// so these alias directly to the core canonical instead of duplicating the resource.
+// screening-code-cs stays defined only in digital-health-ig (core), so it aliases the core canonical.
 Alias: $screening-code-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/screening-code-cs
-Alias: $ihd-risk-category-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs
+Alias: $ihd-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs
 Alias: $breast-cancer-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/breast-cancer-risk-category-cs
 Alias: $cerebrovascular-alcohol-stress-level-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-alcohol-stress-level-cs
 Alias: $cerebrovascular-blood-pressure-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-blood-pressure-status-cs
@@ -200,4 +201,7 @@ Alias: $cvd-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/Code
 Alias: $icd-o-3-morphology-vs = https://terminology.dhp.uz/fhir/core/ValueSet/icd-o-3-morphology-vs
 Alias: $icd-o-3-topography-vs = https://terminology.dhp.uz/fhir/core/ValueSet/icd-o-3-topography-vs
 Alias: $icd-o-3 = http://terminology.hl7.org/CodeSystem/icd-o-3
+Alias: $ichi = http://id.who.int/icd/release/11/ichi
+Alias: $dmed-ichi-vs = https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs
+Alias: $ichi-vs = https://terminology.dhp.uz/fhir/core/ValueSet/ichi-vs
 Alias: $nci = http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl

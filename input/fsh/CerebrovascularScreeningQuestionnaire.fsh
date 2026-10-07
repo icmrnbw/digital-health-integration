@@ -9,13 +9,15 @@ Description: "Early detection questionnaire for cerebrovascular disease"
 // no match for "cerebrovascular"/"stroke"/"vascular"/"TIA"/"nervous system"). The only related concept,
 // Carotid artery disease screening (24071000087108), is a specific imaging test, not this risk questionnaire,
 // so it was rejected. Falls back to the local screening-code-cs value for this program instead of SNOMED —
-// the one exception to this identifier system's "value is always a SNOMED CT code" contract. Flag for
+// an exception to this identifier system's "value is a SNOMED CT code" rule (see the NamingSystem usage). Flag for
 // DHP/consultant review if/when a suitable SNOMED concept is identified.
 * identifier[0].system = $screening-program-type-id
 * identifier[0].value = "mserv-0007-00003"
 * name = "CerebrovascularScreeningQuestionnaire"
 * language = #uz
 * status = #draft
+* useContext[0].code = $usage-context-type#program
+* useContext[0].valueCodeableConcept = $integration-area#screening
 * publisher = "Ministry of Health of the Republic of Uzbekistan"
 * subjectType = #Patient
 * title = "Tserebrovaskulyar patologiyani erta aniqlash so'rovnomasi"

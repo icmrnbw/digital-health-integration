@@ -9,6 +9,8 @@ Description: "Example for Questionnaire for breast cancer risk screening"
 * name = "BreastCancerScreeningQuestionnaire"
 * language = #uz
 * status = #active
+* useContext[0].code = $usage-context-type#program
+* useContext[0].valueCodeableConcept = $integration-area#screening
 * publisher = "Uzinfocom"
 * subjectType = #Patient
 * title = "Ko‘krak bezi saratonini aniqlash skrining so‘rovnomasi"
@@ -25,6 +27,13 @@ Description: "Example for Questionnaire for breast cancer risk screening"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for breast cancer risk screening"
+* code = $sct#268547008 "Screening for malignant neoplasm of breast"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Ko'krak bezi saratoni skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг рака молочной железы"
 
 // Question 1: Mastitis history. Score: Yes=3, No=0
 * item[+]
@@ -480,7 +489,7 @@ Title: "Ko‘krak bezi saratoni skriningiga javob namunasi"
 Description: "Bemorning ko‘krak bezi saratonini aniqlash skrining so‘rovnomasiga to‘ldirilgan javob namunasi"
 * questionnaire = Canonical(BreastCancerScreeningQuestionnaire)
 * status = #completed
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * authored = "2026-07-01T14:30:00+05:00"
 * language = #uz
 
