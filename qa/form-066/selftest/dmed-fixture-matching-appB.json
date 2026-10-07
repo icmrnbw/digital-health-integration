@@ -1,0 +1,54 @@
+{
+ "data": {
+  "id": 4615,
+  "hospitalization_id": "MRN-066-2026-0001",
+  "region": "Toshkent",
+  "city": "Yunusobod",
+  "zip_code": "100017",
+  "phone": "+998901234567",
+  "email": "test@mail.com",
+  "emergency_care": true,
+  "medical_care_form": "emergency",
+  "urgency_time": "first_6_hours",
+  "delivered_by_ambulance": true,
+  "has_direction": true,
+  "same_illness_in_last_month": false,
+  "hospitalization_result": "discharged",
+  "result_treatment": "discharged",
+  "outcome_treatment": "recovered",
+  "bed_type": "therapeutic",
+  "reanimation_period": "0",
+  "death_cause": null,
+  "death_cause_cause": null,
+  "death_main_diagnosis": null,
+  "aids": false,
+  "aids_analysis_date": "2026-01-06",
+  "rw": false,
+  "rw_analysis_date": "2026-01-06",
+  "hepatitis_b": false,
+  "hepatitis_b_analysis_date": "2026-01-06",
+  "hepatitis_c": false,
+  "hepatitis_c_analysis_date": "2026-01-06",
+  "payment_type": "insurance_311_resolution",
+  "newborn_weight": 3200,
+  "newborn_height": 51,
+  "newborn_mothers_pinfl": "39876543210987",
+  "tuberculosis_treatment_resistance": "not_resistant",
+  "sick_leave_start_date": "2026-01-05",
+  "sick_leave_end_date": "2026-01-15",
+  "doctor": {
+   "id": 1,
+   "name": "RASULOV B B"
+  },
+  "department_head": {
+   "id": 2,
+   "name": "QODIROV A A"
+  },
+  "deputy_chief": {
+   "id": 3,
+   "surname": "KARIMOVA",
+   "name": "D",
+   "patronymic": "D"
+  }
+ }
+}

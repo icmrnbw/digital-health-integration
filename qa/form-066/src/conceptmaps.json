@@ -1,0 +1,276 @@
+{
+ "dmed-form-066-payment-type-to-coverage-type": {
+  "insurance_311_resolution": [
+   "covtp-0001-00001"
+  ],
+  "insurance_5199_resolution": [
+   "covtp-0001-00002"
+  ],
+  "fond_VAQF": [
+   "covtp-0001-00014"
+  ],
+  "insurance_17_decree": [
+   "covtp-0001-00003",
+   "covtp-0001-00004",
+   "covtp-0001-00005"
+  ],
+  "local_budget": [
+   "covtp-0001-00010"
+  ],
+  "sponsorship": [
+   "covtp-0001-00011"
+  ],
+  "state_nonstate_grant": [
+   "covtp-0001-00012"
+  ],
+  "other": [
+   "covtp-0001-00013"
+  ]
+ },
+ "dmed-form-066-social-status-to-national": {
+  "student": [
+   "regis0010.00001"
+  ],
+  "working": [
+   "regis0010.00003"
+  ],
+  "not_working": [
+   "regis0010.00004"
+  ],
+  "military": [
+   "regis0010.00009"
+  ],
+  "school_student": [
+   "regis0010.00010"
+  ],
+  "preferential_category": [
+   "regis0010.00011"
+  ]
+ },
+ "dmed-form-066-benefit-category-to-national": {
+  "childhood_disability": [
+   "regis0004.00001"
+  ],
+  "orphans": [
+   "regis0004.00002"
+  ],
+  "disabled_groups_i_ii": [
+   "regis0004.00003"
+  ],
+  "war_veterans_1941_1945": [
+   "regis0004.00004"
+  ],
+  "unemployed_pensioners": [
+   "regis0004.00005"
+  ],
+  "labor_front_participants": [
+   "regis0004.00006"
+  ],
+  "chernobyl_liquidators": [
+   "regis0004.00007"
+  ],
+  "international_soldiers": [
+   "regis0004.00008"
+  ],
+  "low_income_families": [
+   "regis0004.00009"
+  ],
+  "children_with_pathology": [
+   "regis0004.00010"
+  ],
+  "conscripts": [
+   "regis0004.00011"
+  ],
+  "pregnant_women_with_pathology": [
+   "regis0004.00012"
+  ],
+  "endocrine_disease_patients": [
+   "regis0004.00013"
+  ],
+  "std_patients": [
+   "regis0004.00014"
+  ],
+  "tuberculosis_patients": [
+   "regis0004.00015"
+  ],
+  "cancer_patients": [
+   "regis0004.00016"
+  ],
+  "hemodialysis_patients": [
+   "regis0004.00017"
+  ],
+  "deceased_military_families": [
+   "regis0004.00018"
+  ],
+  "medical_workers": [
+   "regis0004.00019"
+  ],
+  "hematological_disease_patients": [
+   "regis0004.00024"
+  ]
+ },
+ "dmed-form-066-diagnosis-type-to-role": {
+  "main": [
+   "main"
+  ],
+  "competing": [
+   "competing"
+  ],
+  "additional": [
+   "concomitant"
+  ],
+  "background": [
+   "background"
+  ],
+  "critical": [
+   "complication"
+  ]
+ },
+ "dmed-form-066-arrival-type-unmapped": {
+  "accompaned-by-police": [],
+  "by-ambulance": [],
+  "other": [],
+  "self-referred": []
+ },
+ "dmed-form-066-transportation-kind-unmapped": {
+  "carried-in-arms": [],
+  "crutches": [],
+  "stretcher": [],
+  "walk": [],
+  "wheelchair": []
+ },
+ "dmed-form-066-hospitalization-reason-unmapped": {
+  "car_accident": [],
+  "disease": [],
+  "injury": [],
+  "planned": []
+ },
+ "dmed-form-066-medical-care-form-to-priority": {
+  "emergency": [
+   "EM"
+  ],
+  "planned": [
+   "EL"
+  ],
+  "urgent": [
+   "UR"
+  ],
+  "transferred": [
+   "transferred"
+  ]
+ },
+ "dmed-form-066-urgency-time-to-disease-injury-delay": {
+  "first_6_hours": [
+   "delay0001_00001"
+  ],
+  "before_24_hours": [
+   "delay0001_00002"
+  ],
+  "after_24_hours": [
+   "delay0001_00003"
+  ]
+ },
+ "dmed-form-066-bed-type-to-organizational-specialization": {
+  "therapeutic": [
+   "101.0"
+  ],
+  "pediatric": [
+   "170.0"
+  ],
+  "surgical": [
+   "122.0",
+   "123.0"
+  ],
+  "obstetrics_gynecology": [
+   "148.0"
+  ],
+  "resuscitation": [
+   "174.0",
+   "175.0"
+  ],
+  "infectious_diseases": [
+   "112.0",
+   "113.0"
+  ],
+  "narcology_psychiatry": [
+   "157.0"
+  ],
+  "other": [
+   "172.0",
+   "173.0"
+  ],
+  "geriatrics": [
+   "176.0"
+  ]
+ },
+ "dmed-form-066-treatment-result-to-discharge-disposition": {
+  "deceased": [
+   "exp"
+  ],
+  "deceased_after_28_weeks": [
+   "exp"
+  ],
+  "deceased_after_childbirth": [
+   "exp"
+  ],
+  "deceased_before_28_weeks": [
+   "exp"
+  ],
+  "deceased_before_childbirth": [
+   "exp"
+  ],
+  "deceased_in_er": [
+   "exp"
+  ],
+  "transferred_to_another_facility": [
+   "other-hcf"
+  ],
+  "discharged": [
+   "mserv-0004-00004"
+  ],
+  "discharged_at_his_own_request": [
+   "mserv-0004-00003"
+  ],
+  "healthy": [
+   "mserv-0004-00004"
+  ],
+  "no_change": [
+   "mserv-0004-00004"
+  ],
+  "slight_improvement": [
+   "mserv-0004-00004"
+  ]
+ },
+ "dmed-form-066-treatment-outcome-to-subject-status": {
+  "better": [
+   "loc-cs-002"
+  ],
+  "deterioration": [
+   "loc-cs-004"
+  ],
+  "no_change": [
+   "loc-cs-003"
+  ],
+  "recovered": [
+   "loc-cs-001"
+  ],
+  "death_certificate": []
+ },
+ "dmed-form-066-tuberculosis-resistance-to-sensitivity": {
+  "not_resistant": [
+   "Tub-004-001"
+  ],
+  "monoresistant": [
+   "Tub-004-002"
+  ],
+  "polyresistant": [
+   "Tub-004-003"
+  ],
+  "multiresistant": [
+   "Tub-004-004"
+  ],
+  "extremely_resistant": [
+   "Tub-004-005"
+  ]
+ }
+}

@@ -1,0 +1,2394 @@
+{
+  "resourceType": "Bundle",
+  "id": "example-form-066-hospital-discharge",
+  "language": "en",
+  "identifier": {
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:760e8400-e29b-41d4-a716-446655440066"
+  },
+  "type": "document",
+  "timestamp": "2026-01-15T14:30:00+05:00",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:06600001-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "composition-066-001",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/integrations/StructureDefinition/form-066-hospital-discharge-composition"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:861f9511-f30c-52e5-b827-557766550666"
+          },
+          {
+            "system": "https://dhp.uz/fhir/core/sid/doc/uz/form-number",
+            "value": "066"
+          }
+        ],
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18842-5",
+              "display": "Discharge summary"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/document-category-cs",
+                "code": "form-066",
+                "display": "Hospital discharge statistical card"
+              }
+            ]
+          }
+        ],
+        "subject": [
+          {
+            "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+          }
+        ],
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "date": "2026-01-15T14:30:00+05:00",
+        "author": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          },
+          {
+            "reference": "urn:uuid:06600009-1111-2222-3333-444444444444"
+          },
+          {
+            "reference": "urn:uuid:06600010-1111-2222-3333-444444444444"
+          }
+        ],
+        "title": "Form 066 - Hospital Discharge Statistical Card",
+        "section": [
+          {
+            "title": "Personal Information",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "LP36348-8",
+                  "display": "Patient Information"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600012-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600013-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Residence Information",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "56799-0",
+                  "display": "Address"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600011-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Admission Information",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "LP74442-2",
+                  "display": "Admission Information"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600014-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600016-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600017-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600018-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600019-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600020-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600021-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Hospitalization Information",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8648-8",
+                  "display": "Hospital course note"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600022-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600024-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600025-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600026-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Final Diagnosis",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "LA32800-7",
+                  "display": "Final diagnosis (discharge)"
+                }
+              ]
+            },
+            "section": [
+              {
+                "title": "Main diagnosis",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "main"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600029-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Competing diagnosis",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "competing"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600030-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Concomitant diagnosis",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "concomitant"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600031-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Background diagnosis",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "background"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600032-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Complication",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "complication"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600033-1111-2222-3333-444444444444"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Pathologoanatomical Diagnosis",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "60567-5",
+                  "display": "Comprehensive pathology report panel"
+                }
+              ]
+            },
+            "section": [
+              {
+                "title": "Immediate cause of death",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "immediate-cause-of-death"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600034-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Underlying cause of death",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "underlying-cause-of-death"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600035-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Main disease (cause of death)",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "main-disease-death"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600036-1111-2222-3333-444444444444"
+                  }
+                ]
+              },
+              {
+                "title": "Other significant diseases",
+                "code": {
+                  "coding": [
+                    {
+                      "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                      "code": "other-significant-death"
+                    }
+                  ]
+                },
+                "entry": [
+                  {
+                    "reference": "urn:uuid:06600037-1111-2222-3333-444444444444"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Surgical Procedures",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29554-3",
+                  "display": "Procedure Narrative"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600038-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Relevant diagnostic tests/laboratory data note"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600039-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600040-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600041-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600042-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Payment Type",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48768-6",
+                  "display": "Payment sources Document"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600043-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Newborn Information",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "57075-4",
+                  "display": "Newborn delivery information"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600044-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600045-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600046-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Tuberculosis Drug Sensitivity",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "18769-0",
+                  "display": "Microbial susceptibility tests Set"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600047-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Temporary Disability Insurance",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "34109-9",
+                  "display": "Note"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600048-1111-2222-3333-444444444444"
+              }
+            ]
+          },
+          {
+            "title": "Responsible Persons",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "LP35157-4",
+                  "display": "Responsible party"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600009-1111-2222-3333-444444444444"
+              },
+              {
+                "reference": "urn:uuid:06600010-1111-2222-3333-444444444444"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600002-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "patient-066-001",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-patient"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pid/uz/ni",
+            "value": "31234567890123"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "HC"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pid/uz/hc",
+            "value": "HC-2026-00066"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PPN"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pid/uz/ppn/local",
+            "value": "AC1234567"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Tursunov Alisher Valiyevich",
+            "family": "Tursunov",
+            "given": [
+              "Alisher",
+              "Valiyevich"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+998901234567"
+          },
+          {
+            "system": "email",
+            "value": "test@mail.com"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1990-04-12",
+        "address": [
+          {
+            "line": [
+              "12-mavze",
+              "15-uy",
+              "24-xonadon"
+            ],
+            "city": "16090011",
+            "district": "1726266",
+            "state": "1726",
+            "postalCode": "100017",
+            "country": "UZ"
+          }
+        ],
+        "managingOrganization": {
+          "reference": "urn:uuid:06600011-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600003-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "encounter-066-001",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/integrations/StructureDefinition/uz-core-encounter-066"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "system": "https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number",
+            "value": "MRN-066-2026-0001"
+          }
+        ],
+        "status": "completed",
+        "class": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                "code": "IMP",
+                "display": "inpatient encounter"
+              }
+            ]
+          }
+        ],
+        "priority": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActPriority",
+              "code": "EM",
+              "display": "Emergency"
+            }
+          ]
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-type-cs",
+                "code": "mserv-0001-00004"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "subjectStatus": {
+          "coding": [
+            {
+              "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-local-subject-status-cs",
+              "code": "loc-cs-001",
+              "display": "Recovered"
+            }
+          ]
+        },
+        "serviceProvider": {
+          "reference": "urn:uuid:06600004-1111-2222-3333-444444444444"
+        },
+        "participant": [
+          {
+            "actor": {
+              "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+            }
+          },
+          {
+            "actor": {
+              "reference": "urn:uuid:06600009-1111-2222-3333-444444444444"
+            }
+          },
+          {
+            "actor": {
+              "reference": "urn:uuid:06600010-1111-2222-3333-444444444444"
+            }
+          }
+        ],
+        "actualPeriod": {
+          "start": "2026-01-05T10:00:00+05:00",
+          "end": "2026-01-15T14:00:00+05:00"
+        },
+        "length": {
+          "value": 10,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        },
+        "admission": {
+          "admitSource": {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/admit-source-local-cs",
+                "code": "mserv-0006-00001",
+                "display": "Without referral / Self-referred"
+              }
+            ]
+          },
+          "reAdmission": {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/re-admission-local-cs",
+                "code": "first-time",
+                "display": "First time"
+              }
+            ]
+          },
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-discharge-disposition-home-cs",
+                "code": "mserv-0004-00004",
+                "display": "Discharged"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "urn:uuid:06600023-1111-2222-3333-444444444444"
+            },
+            "form": {
+              "coding": [
+                {
+                  "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-specialization-cs",
+                  "code": "101.0",
+                  "display": "Therapy"
+                }
+              ]
+            },
+            "period": {
+              "start": "2026-01-05T10:00:00+05:00",
+              "end": "2026-01-15T14:00:00+05:00"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600004-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "organization-066-001",
+        "language": "en",
+        "identifier": [
+          {
+            "system": "https://dhp.uz/fhir/core/sid/uz/organization-code",
+            "value": "200001"
+          }
+        ],
+        "name": "Toshkent shahar klinik shifoxonasi"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600005-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-066-001",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-practitioner"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pro/uz/argos",
+            "value": "12345678900001"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Rasulov B.B.",
+            "family": "Rasulov",
+            "given": [
+              "B.",
+              "B."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600006-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-066-002",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-practitioner"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pro/uz/argos",
+            "value": "12345678900002"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Qodirov A.A.",
+            "family": "Qodirov",
+            "given": [
+              "A.",
+              "A."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600007-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-066-003",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-practitioner"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pro/uz/argos",
+            "value": "12345678900003"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Karimova D.D.",
+            "family": "Karimova",
+            "given": [
+              "D.",
+              "D."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600008-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "PractitionerRole",
+        "id": "practitionerrole-066-001",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-practitioner-role"
+          ]
+        },
+        "language": "en",
+        "practitioner": {
+          "reference": "urn:uuid:06600005-1111-2222-3333-444444444444"
+        },
+        "organization": {
+          "reference": "urn:uuid:06600004-1111-2222-3333-444444444444"
+        },
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs",
+                "code": "2211.6",
+                "display": "Medical specialist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600009-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "PractitionerRole",
+        "id": "practitionerrole-066-002",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-practitioner-role"
+          ]
+        },
+        "language": "en",
+        "practitioner": {
+          "reference": "urn:uuid:06600006-1111-2222-3333-444444444444"
+        },
+        "organization": {
+          "reference": "urn:uuid:06600004-1111-2222-3333-444444444444"
+        },
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs",
+                "code": "1342.18",
+                "display": "Head of department (health institution)"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600010-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "PractitionerRole",
+        "id": "practitionerrole-066-003",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-practitioner-role"
+          ]
+        },
+        "language": "en",
+        "practitioner": {
+          "reference": "urn:uuid:06600007-1111-2222-3333-444444444444"
+        },
+        "organization": {
+          "reference": "urn:uuid:06600004-1111-2222-3333-444444444444"
+        },
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs",
+                "code": "1342.1",
+                "display": "Chief medical nurse"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600011-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "organization-attached-066",
+        "language": "en",
+        "identifier": [
+          {
+            "system": "https://dhp.uz/fhir/core/sid/uz/organization-code",
+            "value": "200935"
+          }
+        ],
+        "name": "Yunusobod tuman oilaviy poliklinikasi"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600012-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-social-status-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-socioeconomic-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "82996008",
+              "display": "Social status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T10:30:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/social-status-cs",
+              "code": "regis0010.00004",
+              "display": "Unemployed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600013-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-benefit-category-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-socioeconomic-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "1303306008",
+              "display": "Eligible for benefit"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T10:35:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/benefits-cs",
+              "code": "regis0004.00019",
+              "display": "Medical staff"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600014-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-emergency-care-provided-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57276-8",
+              "display": "Emergent care utilized during assessment period [CMS Assessment]"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T09:40:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueBoolean": true
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600016-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-disease-injury-delay-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "77977-7",
+              "display": "Illness duration"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T09:50:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/disease-injury-delay-cs",
+              "code": "delay0001_00001",
+              "display": "Within first 6 hours"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600017-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-arrived-by-ambulance-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "LP97912-7",
+              "display": "Ambulance transport"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T09:55:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueBoolean": true
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600018-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-referral-available-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57133-1",
+              "display": "Referral note"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T10:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueBoolean": true
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600019-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "organization-referring-066",
+        "language": "en",
+        "identifier": [
+          {
+            "system": "https://dhp.uz/fhir/core/sid/uz/organization-code",
+            "value": "200002"
+          }
+        ],
+        "name": "Yunusobod tuman tibbiyot birlashmasi"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600020-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-referral-diagnosis-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "referral"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J18.9",
+              "display": "Pneumonia, unspecified"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "onsetDateTime": "2026-01-03"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600021-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-readmission-30-days-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "LP73229-4",
+              "display": "Readmission to the same hospital within 30D of surgical discharge"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-05T10:05:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueBoolean": false
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600022-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-admission-diagnosis-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "admission"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J18.9",
+              "display": "Pneumonia, unspecified"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "onsetDateTime": "2026-01-05"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600024-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-bed-days-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "78033-8",
+              "display": "Hospital stay duration"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-15T14:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueQuantity": {
+          "value": 10,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600025-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-icu-days-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "LP76050-1",
+              "display": "Intensive care unit"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-15T14:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600026-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "organization-discharge-department-066",
+        "language": "en",
+        "identifier": [
+          {
+            "system": "https://dhp.uz/fhir/core/sid/uz/department-code",
+            "value": "DEP-001"
+          }
+        ],
+        "name": "Therapeutic department"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600029-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-main-diagnosis-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "main"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J18.9",
+              "display": "Pneumonia, unspecified"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600030-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-competing-diagnosis-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "competing"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J44.9",
+              "display": "Chronic obstructive pulmonary disease, unspecified"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600031-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-comorbid-diagnosis-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "concomitant"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "I10",
+              "display": "Essential (primary) hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600032-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-background-diagnosis-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "background"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "E11.9",
+              "display": "Type 2 diabetes mellitus : Without complications"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600033-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-complication-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "complication"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "J96.0",
+              "display": "Acute respiratory failure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600034-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-immediate-cause-of-death-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "inactive"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "immediate-cause-of-death"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "R99",
+              "display": "Other ill-defined and unspecified causes of mortality"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600035-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-underlying-cause-of-death-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "inactive"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "underlying-cause-of-death"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "R99",
+              "display": "Other ill-defined and unspecified causes of mortality"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600036-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-primary-disease-death-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "inactive"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "main-disease-death"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "R99",
+              "display": "Other ill-defined and unspecified causes of mortality"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600037-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-other-significant-death-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
+          ]
+        },
+        "language": "en",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "inactive"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/diagnosis-role-integration",
+                "code": "other-significant-death"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "code": "R99",
+              "display": "Other ill-defined and unspecified causes of mortality"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600038-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "procedure-surgery-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/integrations/StructureDefinition/procedure-066"
+          ]
+        },
+        "language": "en",
+        "extension": [
+          {
+            "url": "https://dhp.uz/fhir/integrations/StructureDefinition/main-procedure",
+            "valueBoolean": true
+          }
+        ],
+        "status": "completed",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "387713003",
+                "display": "Surgical procedure (procedure)"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Surgical procedure (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "occurrenceDateTime": "2026-01-08T11:30:00+05:00",
+        "performer": [
+          {
+            "actor": {
+              "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+            }
+          }
+        ],
+        "reason": [
+          {
+            "reference": {
+              "reference": "urn:uuid:06600029-1111-2222-3333-444444444444"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600039-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-hiv-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56888-1",
+              "display": "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-06T09:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+              "code": "NEG",
+              "display": "Negative"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600040-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-rw-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "47236-5",
+              "display": "Treponema pallidum IgG+IgM Ab [Presence] in Serum or Plasma by Immunoassay"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-06T09:10:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+              "code": "NEG",
+              "display": "Negative"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600041-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-hepb-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "5196-1",
+              "display": "Hepatitis B virus surface Ag [Presence] in Serum or Plasma by Immunoassay"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-06T09:20:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+              "code": "NEG",
+              "display": "Negative"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600042-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-hepc-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "13955-0",
+              "display": "Hepatitis C virus Ab [Presence] in Serum or Plasma by Immunoassay"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-06T09:30:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+              "code": "NEG",
+              "display": "Negative"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600043-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "coverage-066",
+        "language": "en",
+        "status": "active",
+        "kind": "insurance",
+        "type": {
+          "coding": [
+            {
+              "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/coverage-type-cs",
+              "code": "covtp-0001-00001",
+              "display": "State Health Insurance treated case (Resolution No. PQ-311)"
+            }
+          ]
+        },
+        "beneficiary": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600044-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-newborn-weight-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8339-4",
+              "display": "Birth weight measured"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-06T09:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3200,
+          "unit": "g",
+          "system": "http://unitsofmeasure.org",
+          "code": "g"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600045-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-newborn-height-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "89269-5",
+              "display": "Body height Measured --at birth"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-06T09:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueQuantity": {
+          "value": 51,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600046-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "RelatedPerson",
+        "id": "relatedperson-mother-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-relatedperson"
+          ]
+        },
+        "language": "en",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NI",
+                  "display": "National unique individual identifier"
+                }
+              ]
+            },
+            "system": "https://dhp.uz/fhir/core/sid/pid/uz/ni",
+            "value": "39876543210987"
+          }
+        ],
+        "patient": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "MTH",
+                "display": "mother"
+              }
+            ]
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Karimova Dilnoza",
+            "family": "Karimova",
+            "given": [
+              "Dilnoza"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1992-03-12"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600047-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-tb-drug-sensitivity-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18769-0",
+              "display": "Microbial susceptibility tests Set"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectiveDateTime": "2026-01-07T10:00:00+05:00",
+        "performer": [
+          {
+            "reference": "urn:uuid:06600008-1111-2222-3333-444444444444"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/tb-drug-sensitivity-cs",
+              "code": "Tub-004-001",
+              "display": "Drug-sensitive"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600048-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-temporary-disability-period-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-observation"
+          ]
+        },
+        "language": "en",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "105583-9",
+              "display": "Worker Sick leave form"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "encounter": {
+          "reference": "urn:uuid:06600003-1111-2222-3333-444444444444"
+        },
+        "effectivePeriod": {
+          "start": "2026-01-05T10:00:00+05:00",
+          "end": "2026-01-15T14:00:00+05:00"
+        },
+        "performer": [
+          {
+            "reference": "urn:uuid:06600005-1111-2222-3333-444444444444"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600023-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Location",
+        "id": "location-066-001",
+        "language": "en",
+        "status": "active",
+        "name": "Therapeutic department",
+        "mode": "instance"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:06600049-1111-2222-3333-444444444444",
+      "resource": {
+        "resourceType": "Provenance",
+        "id": "provenance-signature-066",
+        "meta": {
+          "profile": [
+            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-provenance"
+          ]
+        },
+        "language": "en",
+        "target": [
+          {
+            "reference": "Bundle/example-form-066-hospital-discharge"
+          }
+        ],
+        "occurredDateTime": "2026-01-15T14:45:00+05:00",
+        "recorded": "2026-01-15T14:45:00+05:00",
+        "activity": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-DocumentCompletion",
+              "code": "LA",
+              "display": "legally authenticated"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "urn:uuid:06600002-1111-2222-3333-444444444444"
+        },
+        "agent": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+                  "code": "attester",
+                  "display": "Attester"
+                }
+              ]
+            },
+            "who": {
+              "reference": "urn:uuid:06600008-1111-2222-3333-444444444444",
+              "display": "Rasulov B.B."
+            }
+          }
+        ],
+        "entity": [
+          {
+            "role": "source",
+            "what": {
+              "reference": "Bundle/example-form-066-hospital-discharge"
+            }
+          }
+        ],
+        "signature": [
+          {
+            "type": [
+              {
+                "system": "https://terminology.dhp.uz/fhir/core/CodeSystem/signature-type-cs",
+                "code": "soliqAuth",
+                "display": "soliq autentifikatsiyasi va raqamli imzo"
+              }
+            ],
+            "when": "2026-01-15T14:45:00+05:00",
+            "who": {
+              "reference": "urn:uuid:06600008-1111-2222-3333-444444444444",
+              "display": "Rasulov B.B."
+            },
+            "sigFormat": "application/pdf",
+            "data": "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2Jq"
+          }
+        ]
+      }
+    }
+  ]
+}
