@@ -4,8 +4,15 @@ Usage: #definition
 Title: "Breast Cancer Screening Questionnaire"
 Description: "Example for Questionnaire for breast cancer risk screening"
 * url = "https://dhp.uz/fhir/integrations/Questionnaire/BreastCancerScreeningQuestionnaire"
+// DMED's breast and cervical questionnaires use their local screening-code-cs value instead of the SNOMED CT
+// program code, so that their plan ServiceRequests stay separate from the HPV (ВПЧ) screening system's, which carry
+// 268547008. DMED completes its plan once the questionnaire is saved, while the HPV plan stays open for all cycles;
+// a shared program value would let one system close the other's plan. No SNOMED CT concept describes this
+// risk questionnaire as opposed to the screening programme itself (checked on tx.fhir.org: the nearest are
+// 717130009 Breast Cancer Risk Assessment Tool, an assessment scale for the Gail model,
+// and 866242004 At increased risk of malignant neoplasm of breast, a finding).
 * identifier[0].system = $screening-program-type-id
-* identifier[0].value = "268547008"
+* identifier[0].value = "mserv-0007-00007"
 * name = "BreastCancerScreeningQuestionnaire"
 * language = #uz
 * status = #active
@@ -27,13 +34,7 @@ Description: "Example for Questionnaire for breast cancer risk screening"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for breast cancer risk screening"
-* code = $sct#268547008 "Screening for malignant neoplasm of breast"
-  * display.extension[$translation-extension][+]
-    * extension[lang].valueCode = #uz
-    * extension[content].valueString = "Ko'krak bezi saratoni skriningi"
-  * display.extension[$translation-extension][+]
-    * extension[lang].valueCode = #ru
-    * extension[content].valueString = "Скрининг рака молочной железы"
+* code = $screening-code-cs#mserv-0007-00007 "Ko'krak bezi saratonini aniqlash so'rovnomasi"
 
 // Question 1: Mastitis history. Score: Yes=3, No=0
 * item[+]

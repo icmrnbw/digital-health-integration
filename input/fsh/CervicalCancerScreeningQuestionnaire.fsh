@@ -4,8 +4,15 @@ Usage: #definition
 Title: "Cervical Cancer Screening Questionnaire"
 Description: "Example for Questionnaire for Cervical Cancer Screening"
 * url = "https://dhp.uz/fhir/integrations/Questionnaire/CervicalCancerScreeningQuestionnaire"
+// DMED's breast and cervical questionnaires use their local screening-code-cs value instead of the SNOMED CT
+// program code, so that their plan ServiceRequests stay separate from the HPV (ВПЧ) screening system's, which carry
+// 171149006. DMED completes its plan once the questionnaire is saved, while the HPV plan stays open for all cycles;
+// a shared program value would let one system close the other's plan. No SNOMED CT concept describes this
+// risk questionnaire as opposed to the screening programme itself (checked on tx.fhir.org: the nearest are
+// 128331000119100 High risk for cervical cancer, a finding, and the
+// status variants of 171149006).
 * identifier[0].system = $screening-program-type-id
-* identifier[0].value = "171149006"
+* identifier[0].value = "mserv-0007-00009"
 * name = "CervicalCancerScreeningQuestionnaire"
 * version = "1.0.0"
 * language = #uz
@@ -27,13 +34,7 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
 * description.extension[$translation-extension][+]
   * extension[lang].valueCode = #en
   * extension[content].valueString = "Questionnaire for collecting medical history and cervical cancer risk factors within the national screening program."
-* code = $sct#171149006 "Screening for malignant neoplasm of cervix"
-  * display.extension[$translation-extension][+]
-    * extension[lang].valueCode = #uz
-    * extension[content].valueString = "Bachadon bo'yni saratoni skriningi"
-  * display.extension[$translation-extension][+]
-    * extension[lang].valueCode = #ru
-    * extension[content].valueString = "Скрининг рака шейки матки"
+* code = $screening-code-cs#mserv-0007-00009 "Bachadon bo'yni saratoni skriningi"
 
 * item[+]
   * linkId = "menstrual-cycle"
