@@ -136,7 +136,7 @@
 | Ginekologik kasalliklari | Гинекологические заболевания | Condition.code | ICD-10 `N72` | Inflammatory disease of cervix uteri |
 | Operatsiyalar | Операции | Observation.valueBoolean (fakt) + alohida Observation.valueDateTime (sana) | Form111 General Observation Code `chr-0035-00025` / `chr-0035-00026` | Ha (2018-09-12) |
 | Jinsiy hayoti necha yoshdan boshlangani | Возраст начала половой жизни | Observation.valueQuantity | Form111 General Observation Code `chr-0035-00010` | 21 yosh |
-| Erining sog'ligi | Состояние здоровья супруга | Observation.category[social-history]; Observation.valueCodeableConcept/valueString (`focus` = RelatedPerson) | Social Observation Code `chr-0029-00001` | Sog'lom, zararli odatlari yo'q |
+| Erining sog'ligi | Состояние здоровья супруга | Observation.category[social-history]; Observation.valueCodeableConcept/valueString (`focus` = RelatedPerson) | Social Observation Code `chr-0029-00001` | Chekadi (kuniga 5-6 dona) |
 | Xayz ko'rish necha yoshdan boshlangani | Возраст начала менструации | Observation.valueQuantity | LOINC `42798-9` "Age at menarche" | 13 yosh |
 | Xayz ko'rish va uning xususiyatlari | Менструация и её особенности | Observation.valueString | Form111 General Observation Code `chr-0035-00011` | Muntazam, 28 kunlik sikl |
 | Oxirgi xayz ko'rish sanasi (boshlanish) | Дата последней менструации (начало) | Observation.valueDateTime | LOINC `8665-2` "Last menstrual period start date" | 2025-08-20 |
@@ -149,19 +149,19 @@
 
 Код раздела: LOINC `10162-6` "History of pregnancies Narrative".
 
-В примере приведены три предыдущие беременности: 1-я (2019, запоздалые роды), 2-я (2022, срочные роды), 3-я (2024, самопроизвольный выкидыш). Для каждой повторяются следующие поля (Encounter используется только для группировки визита; год передаётся отдельным Observation):
+В примере приведены три предыдущие беременности: 1-я (2019, преждевременные роды), 2-я (2022, срочные роды), 3-я (2024, самопроизвольный выкидыш). Для каждой повторяются следующие поля (Encounter используется только для группировки визита; год передаётся отдельным Observation):
 
 | UZ | RU | Путь FHIR | Код | Пример значения |
 |----|----|------------|------|---------------|
 | Yil | Год | Observation.valueDateTime | Form111 General Observation Code `chr-0035-00027` | 2019 / 2022 / 2024 |
 | Homiladorlik qachon va qanday yakunlandi | Когда и чем завершилась беременность | Observation.valueCodeableConcept | LOINC `63893-2` / SNOMED `3950001` (birth), `17369002` (miscarriage) | Birth, Birth, Miscarriage |
 | Abort turi | Вид аборта | *(значение того же Observation) valueCodeableConcept = abort* | - | *(в этом примере не применяется — ни одна предыдущая беременность не завершилась абортом)* |
-| Tug'ruq turi (muddati bo'yicha) | Вид родов (по сроку) | Observation.valueCodeableConcept | Form111 General Observation Code `chr-0035-00015` / [Previous Delivery Term](ValueSet-form111-previous-delivery-term-vs.html) (SNOMED `21243004`, `367494004`, or local `chr-0026-00001`) | 1-homiladorlik: `chr-0026-00001` "Muddatidan kech tug'ruq"; 2-homiladorlik: SNOMED `21243004` "Term birth" |
+| Tug'ruq turi (muddati bo'yicha) | Вид родов (по сроку) | Observation.valueCodeableConcept | Form111 General Observation Code `chr-0035-00015` / [Previous Delivery Term](ValueSet-form111-previous-delivery-term-vs.html) (SNOMED `21243004`, `367494004`) | 1-homiladorlik: SNOMED `367494004` "Premature birth of newborn"; 2-homiladorlik: SNOMED `21243004` "Term birth" |
 | Bola tirik/o'lik tug'ilgani | Ребёнок родился живым/мёртвым | Observation.valueCodeableConcept | Form111 General Observation Code `chr-0035-00013` / [Newborn Birth Condition](ValueSet-form111-newborn-birth-condition-vs.html) (SNOMED `281050002`, `713202001`, `237362003`) | Livebirth |
 | Vazni | Вес | Observation.valueQuantity | LOINC `8339-4` | 3.1 kg |
 | Bola tirikligi (hozirgi holati) | Текущее состояние ребёнка | Observation.valueString | Form111 General Observation Code `chr-0035-00014` | Tirik, sog'lom (4 yoshda) |
 | Qaysi yoshda o'lgani | В каком возрасте умер | Observation.valueAge | - | *(не применяется в данном примере — все живорождённые дети живы)* |
-| Avvalgi homiladorliklarning o'ziga xosligi | Особенности предыдущих беременностей | Observation.valueString | Form111 General Observation Code `chr-0035-00016` | 1-homiladorlik (2019) — muddatidan kech tug'ruq. 2-homiladorlik (2022) — asoratsiz, vaqtida tug'ruq. 3-homiladorlik (2024) — 9-haftada o'z-o'zidan tushish. |
+| Avvalgi homiladorliklarning o'ziga xosligi | Особенности предыдущих беременностей | Observation.valueString | Form111 General Observation Code `chr-0035-00016` | 1-homiladorlik (2019) — muddatidan oldin tug'ruq. 2-homiladorlik (2022) — asoratsiz, vaqtida tug'ruq. 3-homiladorlik (2024) — 9-haftada o'z-o'zidan tushish. |
 
 *"Вид аборта" не кодируется отдельным полем: DMED для предыдущей беременности передаёт только исход abort/birth, без дополнительной детализации типа аборта — искусственная детализация не добавляется.*
 
@@ -191,10 +191,10 @@
 
 | UZ | RU | Путь FHIR | Код | Пример значения |
 |----|----|------------|------|---------------|
-| Bachadon tubi balandligi | Высота дна матки | Observation.valueQuantity | LOINC `11881-0` "Uterus Fundal height Tape measure" | 9 cm |
+| Bachadon tubi balandligi | Высота дна матки | Observation.valueQuantity | LOINC `11881-0` "Uterus Fundal height Tape measure" | - |
 | Qorin aylanasi | Окружность живота | Observation.valueQuantity | Pregnancy Monitoring Observation Code `chr-0023-00001` | 76 cm |
 | Homilaning joylanish holati / oldin keluvchi qismi | Положение плода / предлежащая часть | Observation.valueCodeableConcept | SNOMED `364607000` / [Fetal Presentation](CodeSystem-form111-fetal-presentation-cs.html) `chr-0015-00003` | Aniqlanmagan |
-| Homilaning yurak urishi | Сердцебиение плода | Observation.valueQuantity | LOINC `55283-6` "Fetal heart rate" | 158 /min |
+| Homilaning yurak urishi | Сердцебиение плода | Observation.valueQuantity | LOINC `55283-6` "Fetal heart rate" | - |
 
 ---
 
@@ -251,7 +251,7 @@
 | Ko'rsatmalar va maslahatlar | Указания и рекомендации | CarePlan.description | - | Temir preparatlari, parhez |
 | Shifoxonaga yotqizildi | Госпитализирована | Observation.valueCodeableConcept | Form111 General Observation Code `chr-0035-00019` / Boolean `chr-0031-00001` | Yo'q |
 | Stafilokokk anatoksini yuborildi | Введён стафилококковый анатоксин | [Immunization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-immunization.html).vaccineCode | SNOMED `871921009` | Staphylococcus toxoid vaccine |
-| Navbatdagi tashrif sanasi | Дата следующего визита | Observation.code.text + Observation.valueDateTime | - | 2026-02-12 |
+| Navbatdagi tashrif sanasi | Дата следующего визита | Appointment.requestedPeriod.start | - | 2026-02-12 |
 | Imzo | Подпись | Provenance.signature | - | Yusupova S.T. |
 
 ---

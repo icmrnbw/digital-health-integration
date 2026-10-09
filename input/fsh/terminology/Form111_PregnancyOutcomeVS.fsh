@@ -6,7 +6,7 @@ Description: "Form 111 Pregnancy Outcome ValueSet for clinical documents and oth
 
 * include codes from system form111-pregnancy-outcome-cs
 * $sct#386639001 "Termination of pregnancy"
-* $sct#3950001 "Delivery"
+* $sct#3950001 "Birth"
 * $sct#17369002 "Miscarriage"
 
 * ^experimental = true

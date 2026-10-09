@@ -203,4 +203,4 @@ Description: "Categories for clinical documents and other knowledge resources in
   * ^designation[0].language = #en
   * ^designation[=].value = "Individual card of a pregnant and postpartum woman"
   * ^designation[+].language = #ru
-  * ^designation[=].value = "Индивидуальная карта беременной и родившей женщины"
+  * ^designation[=].value = "Индивидуальная карта беременной и родильницы"

@@ -481,13 +481,13 @@ Description: "DMED obstetric_gynecological_history to FHIR terminology. Only exp
 * group[=].element[+].code = #"premature_birth"
 * group[=].element[=].display = "Преждевременные роды"
 * group[=].element[=].target[+].code = #"chr-0019-00011"
-* group[=].element[=].target[=].display = "Муддатидан олдин туғруқ"
+* group[=].element[=].target[=].display = "Muddatidan oldin tug'ruq"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
 * group[=].element[+].code = #"stillbirth"
 * group[=].element[=].display = "Мертворождение"
 * group[=].element[=].target[+].code = #"chr-0019-00012"
-* group[=].element[=].target[=].display = "Ўлик туғилиш"
+* group[=].element[=].target[=].display = "O'lik tug'ilish"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
 * group[=].element[+].code = #"neonatal_death"

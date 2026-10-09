@@ -165,14 +165,10 @@ Description: "Example of an individual antenatal/postpartum card (Form 111) as a
 * entry[=].resource = observation-111-other-organs
 * entry[+].fullUrl = "urn:uuid:11100064-1111-2222-3333-444444444444"
 * entry[=].resource = observation-111-pelvimetry
-* entry[+].fullUrl = "urn:uuid:11100065-1111-2222-3333-444444444444"
-* entry[=].resource = observation-111-fundal-height-first
 * entry[+].fullUrl = "urn:uuid:11100066-1111-2222-3333-444444444444"
 * entry[=].resource = observation-111-abdominal-circumference-first
 * entry[+].fullUrl = "urn:uuid:11100067-1111-2222-3333-444444444444"
 * entry[=].resource = observation-111-fetal-position-first
-* entry[+].fullUrl = "urn:uuid:11100068-1111-2222-3333-444444444444"
-* entry[=].resource = observation-111-fetal-heart-rate-first
 * entry[+].fullUrl = "urn:uuid:11100069-1111-2222-3333-444444444444"
 * entry[=].resource = observation-111-obstetric-ultrasound
 * entry[+].fullUrl = "urn:uuid:11100070-1111-2222-3333-444444444444"
@@ -238,7 +234,7 @@ Description: "Example of an individual antenatal/postpartum card (Form 111) as a
 * entry[+].fullUrl = "urn:uuid:11100097-1111-2222-3333-444444444444"
 * entry[=].resource = immunization-111-staphylococcal-toxoid
 * entry[+].fullUrl = "urn:uuid:11100098-1111-2222-3333-444444444444"
-* entry[=].resource = observation-111-visit-next-appointment
+* entry[=].resource = appointment-111-next-visit
 * entry[+].fullUrl = "urn:uuid:11100157-1111-2222-3333-444444444444"
 * entry[=].resource = provenance-111-repeat-visit-signature
 * entry[+].fullUrl = "urn:uuid:11100099-1111-2222-3333-444444444444"
@@ -461,10 +457,8 @@ Usage: #inline
 // --- 7. Tashqi akusherlik tekshiruvi ---
 * section[externalObstetricExamination].title = "Tashqi akusherlik tekshiruvi"
 * section[=].code = $form111-cs#chr-0034-00002
-* section[=].entry[0] = Reference(urn:uuid:11100065-1111-2222-3333-444444444444) //observation-111-fundal-height-first
-* section[=].entry[+] = Reference(urn:uuid:11100066-1111-2222-3333-444444444444) //observation-111-abdominal-circumference-first
+* section[=].entry[0] = Reference(urn:uuid:11100066-1111-2222-3333-444444444444) //observation-111-abdominal-circumference-first
 * section[=].entry[+] = Reference(urn:uuid:11100067-1111-2222-3333-444444444444) //observation-111-fetal-position-first
-* section[=].entry[+] = Reference(urn:uuid:11100068-1111-2222-3333-444444444444) //observation-111-fetal-heart-rate-first
 * section[=].entry[+] = Reference(urn:uuid:11100069-1111-2222-3333-444444444444) //observation-111-obstetric-ultrasound
 
 // --- 8. Qin orqali tekshiruv ---
@@ -487,7 +481,7 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:11100078-1111-2222-3333-444444444444) //provenance-111-first-visit-signature
 
 // --- 10. Homiladorlikning kechishi ---
-* section[pregnancyDelay].title = "Homiladorlikning kechishi"
+* section[courseOfPregnancy].title = "Homiladorlikning kechishi"
 * section[=].code = $form111-cs#chr-0034-00004 
 * section[=].entry[0] = Reference(urn:uuid:11100079-1111-2222-3333-444444444444) //encounter-111-antenatal-visit
 * section[=].entry[+] = Reference(urn:uuid:11100080-1111-2222-3333-444444444444) //observation-111-visit-complaints
@@ -509,7 +503,7 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:11100095-1111-2222-3333-444444444444) //careplan-111-visit
 * section[=].entry[+] = Reference(urn:uuid:11100096-1111-2222-3333-444444444444) //observation-111-visit-hospitalization
 * section[=].entry[+] = Reference(urn:uuid:11100097-1111-2222-3333-444444444444) //immunization-111-staphylococcal-toxoid
-* section[=].entry[+] = Reference(urn:uuid:11100098-1111-2222-3333-444444444444) //observation-111-visit-next-appointment
+* section[=].entry[+] = Reference(urn:uuid:11100098-1111-2222-3333-444444444444) //appointment-111-next-visit
 * section[=].entry[+] = Reference(urn:uuid:11100157-1111-2222-3333-444444444444) //provenance-111-repeat-visit-signature
 
 // --- 11. Tug'ishga tayyorlash ---
@@ -539,7 +533,7 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:11100165-1111-2222-3333-444444444444) //provenance-111-patronage-signature
 
 // --- 13. Aylanma karta va boshqa hujjatlarni yopishtirish uchun varoq ---
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].title = "Aylanma karta va boshqa hujjatlarni yopishtirish uchun varoq"
+* section[attachmentsSheet].title = "Aylanma karta va boshqa hujjatlarni yopishtirish uchun varoq"
 * section[=].code = $form111-cs#chr-0034-00007
 * section[=].entry[0] = Reference(urn:uuid:11100116-1111-2222-3333-444444444444) //observation-111-prenatal-leave
 * section[=].entry[+] = Reference(urn:uuid:11100154-1111-2222-3333-444444444444) //documentreference-111-prenatal-leave-certificate
@@ -1303,14 +1297,14 @@ Usage: #inline
 * valueDateTime = "2026-01-05"
 
 // 5. AVVALGI HOMILADORLIKLARNING YAKUNI
-// 1-homiladorlik (2019) — muddatidan kech tug'ruq
+// 1-homiladorlik (2019) — muddatidan oldin tug'ruq
 Instance: encounter-111-previous-pregnancy-1
 InstanceOf: UZCoreEncounter
 Usage: #inline
 * language = #uz
 * status = #completed
 * class = $v3-ActCode#IMP
-* type[nationalType].coding = $encounter-type-cs#mserv-0001-00001 "Profilaktik"
+* type[nationalType].coding = $encounter-type-cs#mserv-0001-00004 "Davolash"
 * subject = Reference(urn:uuid:11100002-1111-2222-3333-444444444444)
 * actualPeriod.start = "2019-06-02"
 * actualPeriod.end = "2019-06-05"
@@ -1341,7 +1335,7 @@ Usage: #inline
 * effectiveDateTime = "2019-06-02"
 * valueCodeableConcept = $sct#3950001 "Birth"
 
-// YANGI kod: chr-0035-00015 + form111-previous-delivery-term-vs (chr-0026-00001, muddatidan kech tug'ruq uchun mahalliy kod)
+// YANGI kod: chr-0035-00015 + form111-previous-delivery-term-vs
 Instance: observation-111-previous-delivery-term-1
 InstanceOf: UZCoreObservation
 Usage: #inline
@@ -1352,7 +1346,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100149-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2019-06-02"
-* valueCodeableConcept = $form111-previous-delivery-term-cs#chr-0026-00001 "Muddatidan kech tug'ruq"
+* valueCodeableConcept = $sct#367494004 "Premature birth of newborn"
 
 Instance: observation-111-previous-child-vital-status-1
 InstanceOf: UZCoreObservation
@@ -1373,7 +1367,7 @@ Usage: #inline
 * language = #uz
 * status = #completed
 * class = $v3-ActCode#IMP
-* type[nationalType].coding = $encounter-type-cs#mserv-0001-00001 "Profilaktik"
+* type[nationalType].coding = $encounter-type-cs#mserv-0001-00004 "Davolash"
 * subject = Reference(urn:uuid:11100002-1111-2222-3333-444444444444)
 * actualPeriod.start = "2022-04-11"
 * actualPeriod.end = "2022-04-14"
@@ -1492,7 +1486,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2025-10-20"
-* valueString = "1-homiladorlik (2019) — muddatidan kech tug'ruq. 2-homiladorlik (2022) — asoratsiz, vaqtida tug'ruq. 3-homiladorlik (2024) — 9-haftada o'z-o'zidan tushish."
+* valueString = "1-homiladorlik (2019) — muddatidan oldin tug'ruq. 2-homiladorlik (2022) — asoratsiz, vaqtida tug'ruq. 3-homiladorlik (2024) — 9-haftada o'z-o'zidan tushish."
 
 // 6. HOMILADORNI BIRINCHI KO'RIGI
 Instance: observation-111-body-height
@@ -1634,19 +1628,6 @@ Usage: #inline
 * component[=].valueQuantity = 92 'cm' "sm"
 
 // 7. TASHQI AKUSHERLIK TEKSHIRUVI (birinchi ko'rikda)
-Instance: observation-111-fundal-height-first
-InstanceOf: UZCoreObservation
-Usage: #inline
-* language = #uz
-* status = #final
-* code = $loinc#11881-0 "Uterus Fundal height Tape measure"
-* code.text = "Bachadon tubi balandligi"
-* subject = Reference(urn:uuid:11100002-1111-2222-3333-444444444444)
-* encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
-* performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
-* effectiveDateTime = "2025-10-20"
-* valueQuantity = 9 'cm' "sm"
-
 Instance: observation-111-abdominal-circumference-first
 InstanceOf: UZCoreObservation
 Usage: #inline
@@ -1673,19 +1654,6 @@ Usage: #inline
 * effectiveDateTime = "2025-10-20"
 * valueCodeableConcept = $form111-fetal-presentation-cs#chr-0015-00003 "Aniqlanmagan"
 * note.text = "9-haftalik muddatda homilaning joylashishini aniqlash mumkin emas"
-
-Instance: observation-111-fetal-heart-rate-first
-InstanceOf: UZCoreObservation
-Usage: #inline
-* language = #uz
-* status = #final
-* code = $loinc#55283-6 "Fetal heart rate"
-* code.text = "Homilaning yurak urishi"
-* subject = Reference(urn:uuid:11100002-1111-2222-3333-444444444444)
-* encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
-* performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
-* effectiveDateTime = "2025-10-20"
-* valueQuantity = 158 '/min' "zarba/daqiqa"
 
 Instance: observation-111-obstetric-ultrasound
 InstanceOf: UZCoreObservation
@@ -2127,17 +2095,18 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100079-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-01-15"
 
-Instance: observation-111-visit-next-appointment
-InstanceOf: UZCoreObservation
+Instance: appointment-111-next-visit
+InstanceOf: Appointment
 Usage: #inline
 * language = #uz
-* status = #final
-* code.text = "Navbatdagi tashrif sanasi"
+* status = #proposed
+* description = "Navbatdagi tashrif"
 * subject = Reference(urn:uuid:11100002-1111-2222-3333-444444444444)
-* encounter = Reference(urn:uuid:11100079-1111-2222-3333-444444444444)
-* performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
-* effectiveDateTime = "2026-01-15"
-* valueDateTime = "2026-02-12"
+* participant[0].actor = Reference(urn:uuid:11100002-1111-2222-3333-444444444444)
+* participant[=].status = #accepted
+* participant[+].actor = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
+* participant[=].status = #accepted
+* requestedPeriod.start = "2026-02-12"
 
 Instance: provenance-111-repeat-visit-signature
 InstanceOf: Provenance
@@ -2595,7 +2564,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2025-11-05"
-* valueString = "Ichki a'zolar tomonidan patologiya aniqlanmadi. Temir taqchilligi anemiyasi (I daraja) — temir preparatlari tavsiya etildi."
+* valueString = "Ichki a'zolar tomonidan patologiya aniqlanmadi."
 
 Instance: observation-111-dentist-conclusion
 InstanceOf: UZCoreObservation

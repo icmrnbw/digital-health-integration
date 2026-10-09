@@ -30,7 +30,7 @@ Description: "Composition profile for Form 111 (Homilador va tuqqan ayolning ind
 * date ^short = "Hujjat shakllantirilgan sana"
 
 * author 1..*
-* author only Reference(UZCorePractitionerRole or UZCorePractitioner or Organization)
+* author only Reference(UZCorePractitionerRole)
 * author ^short = "Kartani yurituvchi shifokor va bo'lim boshlig'i"
 
 * title 1..1
@@ -58,10 +58,10 @@ Description: "Composition profile for Form 111 (Homilador va tuqqan ayolning ind
     externalObstetricExamination 0..1 and
     vaginalExamination 0..1 and
     recommendations 0..1 and
-    pregnancyDelay 0..1 and
+    courseOfPregnancy 0..1 and
     birthPreparation 0..1 and
     patronageVisits 0..1 and
-    sheetforAttachingtheMedicalRecordAndOtherDocuments 0..1 and
+    attachmentsSheet 0..1 and
     perinatalRiskFactors 0..1 and
     specialistConclusions 0..1 and
     postpartumFollowUp 0..1
@@ -149,13 +149,13 @@ Description: "Composition profile for Form 111 (Homilador va tuqqan ayolning ind
 * section[recommendations].entry only Reference(CarePlan or UZCoreObservation or Provenance)
 
 // 10. Homiladorlikning kechishi (takroriy kuzatuv tashriflari)
-* section[pregnancyDelay].title 1..1
-* section[pregnancyDelay].title ^short = "10. Course of pregnancy (follow-up visits)"
-* section[pregnancyDelay].code 1..1
-* section[pregnancyDelay].code = $form111-cs#chr-0034-00004
-* section[pregnancyDelay].code ^short = "Sana, shikoyati, umumiy ahvoli, vazni, arterial qon bosimi, puls, qorin aylanasi, bachadon tubi balandligi, homilaning oldin kelayotgan qismi, joylashishi va holati, yurak urishi, qimirlashi, siydikdagi oqsil miqdori, qondagi Hb miqdori, tashxis (homiladorlik haftasi), patologik o'zgarishlar, ko'rsatmalar va maslahatlar, shifoxonaga yotqizildi, stafilokokk anatoksini yuborildi, navbatdagi tashrif sanasi, imzo"
-* section[pregnancyDelay].entry 1..*
-* section[pregnancyDelay].entry only Reference(UZCoreEncounter or UZCoreObservation or UZCoreCondition or CarePlan or UZCoreImmunization or Appointment or Provenance)
+* section[courseOfPregnancy].title 1..1
+* section[courseOfPregnancy].title ^short = "10. Course of pregnancy (follow-up visits)"
+* section[courseOfPregnancy].code 1..1
+* section[courseOfPregnancy].code = $form111-cs#chr-0034-00004
+* section[courseOfPregnancy].code ^short = "Sana, shikoyati, umumiy ahvoli, vazni, arterial qon bosimi, puls, qorin aylanasi, bachadon tubi balandligi, homilaning oldin kelayotgan qismi, joylashishi va holati, yurak urishi, qimirlashi, siydikdagi oqsil miqdori, qondagi Hb miqdori, tashxis (homiladorlik haftasi), patologik o'zgarishlar, ko'rsatmalar va maslahatlar, shifoxonaga yotqizildi, stafilokokk anatoksini yuborildi, navbatdagi tashrif sanasi, imzo"
+* section[courseOfPregnancy].entry 1..*
+* section[courseOfPregnancy].entry only Reference(UZCoreEncounter or UZCoreObservation or UZCoreCondition or CarePlan or UZCoreImmunization or Appointment or Provenance)
 
 // 11. Tug'ishga tayyorlash
 * section[birthPreparation].title 1..1
@@ -176,13 +176,13 @@ Description: "Composition profile for Form 111 (Homilador va tuqqan ayolning ind
 * section[patronageVisits].entry only Reference(UZCoreEncounter or UZCoreObservation or CarePlan or Provenance)
 
 // 13. Aylanma karta va boshqa hujjatlarni yopishtirish uchun varoq
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].title 1..1
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].title ^short = "13. Sheet for attaching the exchange card and other documents"
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].code 1..1
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].code = $form111-cs#chr-0034-00007
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].code ^short = "Homiladorlik bo'yicha ta'til boshlanish va tugash sanasi, mehnatga layoqatsizlik varog'i raqami, tug'ruq sanasi, tug'ruq holati, muddatdan farq (kun), tug'ruq bo'lib o'tgan tug'ruqxona nomi, tug'ruqdan keyingi ta'til muddati, boshlanish va tugash sanasi, mehnatga layoqatsizlik varog'i raqami"
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].entry 1..*
-* section[sheetforAttachingtheMedicalRecordAndOtherDocuments].entry only Reference(UZCoreObservation or UZCoreProcedure or UZCoreEncounter or Organization or DocumentReference)
+* section[attachmentsSheet].title 1..1
+* section[attachmentsSheet].title ^short = "13. Sheet for attaching the exchange card and other documents"
+* section[attachmentsSheet].code 1..1
+* section[attachmentsSheet].code = $form111-cs#chr-0034-00007
+* section[attachmentsSheet].code ^short = "Homiladorlik bo'yicha ta'til boshlanish va tugash sanasi, mehnatga layoqatsizlik varog'i raqami, tug'ruq sanasi, tug'ruq holati, muddatdan farq (kun), tug'ruq bo'lib o'tgan tug'ruqxona nomi, tug'ruqdan keyingi ta'til muddati, boshlanish va tugash sanasi, mehnatga layoqatsizlik varog'i raqami"
+* section[attachmentsSheet].entry 1..*
+* section[attachmentsSheet].entry only Reference(UZCoreObservation or UZCoreProcedure or UZCoreEncounter or Organization or DocumentReference)
 
 // 14. Perinatal xavf omillari
 * section[perinatalRiskFactors].title 1..1

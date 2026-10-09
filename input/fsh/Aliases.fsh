@@ -199,7 +199,6 @@ Alias: $form111-general-obs-cs = https://terminology.dhp.uz/fhir/integrations/Co
 Alias: $form111-contraception-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-contraception-type-cs
 Alias: $form111-contraception-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-contraception-observation-code-cs
 Alias: $form111-pregnancy-outcome-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-pregnancy-outcome-cs
-Alias: $form111-previous-delivery-term-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-previous-delivery-term-cs
 Alias: $form111-laboratory-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-laboratory-observation-code-cs
 Alias: $encounter-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-type-cs
 Alias: $flag-status-cs = http://hl7.org/fhir/flag-status

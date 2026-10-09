@@ -64,13 +64,13 @@ Description: "Form 111 Obstetric History Factor Code for clinical documents and 
   * ^designation[+].language = #ru
   * ^designation[=].value = "Потеря беременности"
 
-* #chr-0019-00011 "Муддатидан олдин туғруқ"
+* #chr-0019-00011 "Muddatidan oldin tug'ruq"
   * ^designation[0].language = #en
   * ^designation[=].value = "Premature birth"
   * ^designation[+].language = #ru
   * ^designation[=].value = "Преждевременные роды"
 
-* #chr-0019-00012 "Ўлик туғилиш"
+* #chr-0019-00012 "O'lik tug'ilish"
   * ^designation[0].language = #en
   * ^designation[=].value = "Stillbirth"
   * ^designation[+].language = #ru

@@ -2,7 +2,7 @@
 
 #### Added
 
-[Form 111 individual card of a pregnant and postpartum woman](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) is profiled as a FHIR Document, covering registration, diagnosis, pregnancy outcome, anamnesis, examinations, follow-up visits, birth preparation, patronage visits, perinatal risk assessment and specialist conclusions across 15 Composition sections. It ships an example document Bundle and a [field-by-field mapping page](form-111-mapping.html).
+[Form 111 individual card of a pregnant and postpartum woman](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) is profiled as a FHIR Document, covering registration, diagnosis, pregnancy outcome, anamnesis, examinations, follow-up visits, birth preparation, patronage visits, perinatal risk assessment and specialist conclusions across 16 Composition sections. It ships an example document Bundle and a [field-by-field mapping page](form-111-mapping.html).
 
 #### Changed
 
