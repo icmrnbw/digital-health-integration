@@ -29,7 +29,7 @@ For a complete reference instance, see the [Form 111 pregnant woman individual c
 
 ### Field Mapping
 
-# Form 111 Individual Card of a Pregnant and Postpartum Woman - FHIR Mapping
+### Form 111 Individual Card of a Pregnant and Postpartum Woman - FHIR Mapping
 
 ---
 

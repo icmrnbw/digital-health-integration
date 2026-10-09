@@ -31,7 +31,7 @@ To'liq namunaviy nusxa uchun [111-shakl homilador ayolning individual kartasi mi
 
 ### Maydonlarni moslashtirish
 
-# 111-shakl Homilador va tuqqan ayolning individual kartasi - FHIR bilan moslashtirish
+### 111-shakl Homilador va tuqqan ayolning individual kartasi - FHIR bilan moslashtirish
 
 ---
 
