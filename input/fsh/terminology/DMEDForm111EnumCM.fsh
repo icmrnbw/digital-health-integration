@@ -721,7 +721,6 @@ Description: "DMED education_type to FHIR terminology. Only explicit listed mapp
 * group[=].element[=].target[=].display = "Oliy ta'lim — bakalavriat"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Подтверждённый токен DMED."
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-education-type-cs"
 * group[=].element[+].code = #"no_education"
 * group[=].element[=].display = "Таълимсиз"
 * group[=].element[=].noMap = true
@@ -1037,7 +1036,6 @@ Description: "DMED family_status to FHIR terminology. Only explicit listed mappi
 * group[=].element[=].target[=].display = "Domestic partner"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Token semantics are used; the observed DMED Uzbek label should be reviewed."
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-family-status-cs"
 * group[=].element[+].code = #"other"
 * group[=].element[=].display = "Бошқа"
 * group[=].element[=].noMap = true
@@ -1073,13 +1071,13 @@ Description: "DMED education-type-core to FHIR terminology. Only explicit listed
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation."
 * group[=].element[+].code = #"elementary"
-* group[=].element[=].display = "Бошланғич умумий таълим"
+* group[=].element[=].display = "Начальное общее образование"
 * group[=].element[=].target[+].code = #"regis0005.00010"
 * group[=].element[=].target[=].display = "Boshqa"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "National education-cs has no direct category. Use national Other to satisfy the required binding and retain the precise DMED source coding in the same CodeableConcept."
 * group[=].element[+].code = #"secondary"
-* group[=].element[=].display = "Ўрта умумий таълим"
+* group[=].element[=].display = "Среднее общее образование"
 * group[=].element[=].target[+].code = #"regis0005.00004"
 * group[=].element[=].target[=].display = "O'rtacha"
 * group[=].element[=].target[=].relationship = #equivalent
@@ -1109,7 +1107,7 @@ Description: "DMED education-type-core to FHIR terminology. Only explicit listed
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Use national coding for UZCoreSocioeconomicObservation."
 * group[=].element[+].code = #"higher"
-* group[=].element[=].display = "Олий таълим - бакалавриат"
+* group[=].element[=].display = "Высшее образование - бакалавриат"
 * group[=].element[=].target[+].code = #"regis0005.00008"
 * group[=].element[=].target[=].display = "Oliy ma'lumot"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target

@@ -6,7 +6,6 @@ Description: "Source tokens for contraception_type. Preserves the observed DMED 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"surgical" "Хирургическая"
 * #"non_surgical" "Нехирургическая"
 * #"none" "Не пользуется контрацепцией"
@@ -19,7 +18,6 @@ Description: "Source tokens for contraception_details. Preserves the observed DM
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"female_sterilization" "Женская стерилизация"
 * #"vasectomy" "Вазэктомия"
 * #"natural" "Естественная"
@@ -37,7 +35,6 @@ Description: "Source tokens for patient_bad_habits. Preserves the observed DMED 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"drug_addiction" "Наркомания"
 * #"alcoholism" "Алкоголизм"
 * #"smoking" "Курение"
@@ -57,7 +54,6 @@ Description: "Source tokens for breast_condition. Preserves the observed DMED va
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"no_pathology" "Без патологий"
 * #"pathology_present" "Патологии присутствуют"
 
@@ -69,7 +65,6 @@ Description: "Source tokens for vascular_system_status. Preserves the observed D
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"normal" "Норма"
 * #"pathology" "Патология"
 
@@ -81,7 +76,6 @@ Description: "Source tokens for fetal_presentation. Preserves the observed DMED 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"cephalic" "Головное"
 * #"breech" "Ягодичное"
 * #"undetermined" "Не определено"
@@ -94,7 +88,6 @@ Description: "Source tokens for gynecological-examination-status. Preserves the 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"normal" "Норма"
 * #"pathology" "Патология"
 
@@ -106,7 +99,6 @@ Description: "Source tokens for special_characteristics. Preserves the observed 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"false" "Норма"
 * #"true" "Патология"
 
@@ -118,7 +110,6 @@ Description: "Source tokens for pregnancy-progress-boolean. Preserves the observ
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"false" "Нет"
 * #"true" "Да"
 
@@ -130,7 +121,6 @@ Description: "Source tokens for general_condition. Preserves the observed DMED v
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"satisfactory" "Удовлетворительное"
 * #"unsatisfactory" "Неудовлетворительное"
 
@@ -142,7 +132,6 @@ Description: "Source tokens for risk_level. Preserves the observed DMED values; 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"low" "Низкий"
 * #"moderate" "Умеренный"
 * #"high" "Высокий"
@@ -155,7 +144,6 @@ Description: "Source tokens for socio_biological_factors. Preserves the observed
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"maternal_age_under_18_or_over_35" "Возраст матери (до 18 лет, старше 35 лет)"
 * #"paternal_age_over_40" "Возраст отца (старше 40 лет)"
 * #"professional_hazards_of_parents" "Проф. вредности у родителей"
@@ -171,7 +159,6 @@ Description: "Source tokens for obstetric_gynecological_history. Preserves the o
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"number_of_births_4_or_more" "Число родов 4 и более"
 * #"multiple_or_complicated_abortions" "Неоднократные или осложненные аборты"
 * #"surgical_interventions_on_uterus_or_appendages" "Оперативные вмешательства на матке или придатках"
@@ -195,7 +182,6 @@ Description: "Source tokens for extragenital_diseases. Preserves the observed DM
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"urinary_system_diseases" "Заболевания мочевыделительной системы"
 * #"endocrinopathy" "Эндокринопатия"
 * #"blood_diseases" "Болезни крови"
@@ -214,7 +200,6 @@ Description: "Source tokens for pregnancy_progress.pregnancy_complications. Pres
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"vomiting_during_pregnancy" "Рвота беременной"
 * #"threat_of_pregnancy_termination" "Угроза прерывания беременности"
 * #"bleeding_in_first_and_second_half_of_pregnancy" "Кровотечения в I и II половине беременности"
@@ -239,7 +224,6 @@ Description: "Source tokens for education_type. Preserves the observed DMED valu
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"elementary" "Начальное общее образование"
 * #"secondary" "Среднее общее образование"
 * #"higher" "Высшее образование - бакалавриат"
@@ -266,7 +250,6 @@ Description: "Source tokens for status. Preserves the observed DMED values; see 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"gave_birth" "Родоразрешение"
 * #"misbirth" "Самопроизвольный выкидыш"
 * #"abort" "Прерывание беременности"
@@ -281,7 +264,6 @@ Description: "Source tokens for pregnancy_outcome. Preserves the observed DMED v
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"abort" "Аборт"
 * #"birth" "Рождение ребенка"
 
@@ -293,7 +275,6 @@ Description: "Source tokens for analysis_title. Preserves the observed DMED valu
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"OTHER" "Другой анализ"
 
 CodeSystem: DMEDForm111ChildBirthStatusCS
@@ -304,7 +285,6 @@ Description: "Source tokens for child_birth_status. Preserves the observed DMED 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"preterm" "Недоношенный"
 * #"term" "Доношенный"
 
@@ -316,7 +296,6 @@ Description: "Source tokens for blood_group. Preserves the observed DMED values;
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"o" "O(I)"
 * #"a" "A(II)"
 * #"b" "B(III)"
@@ -330,7 +309,6 @@ Description: "Source tokens for rhesus_factor. Preserves the observed DMED value
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"negative" "Rh-"
 * #"positive" "Rh"
 
@@ -342,7 +320,6 @@ Description: "Source tokens for birth_type. Preserves the observed DMED values; 
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"vaginal_delivery" "Роды через естественные родовые пути"
 * #"surgical_delivery" "Акушерско-хирургическая практика"
 
@@ -354,7 +331,6 @@ Description: "Source tokens for child_birth_condition. Preserves the observed DM
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"live_birth" "Живорожденный"
 * #"stillbirth_antenatal" "Мертворожденный — антенатальная смерть"
 * #"stillbirth_intranatal" "Мертворождение — интранатальная смерть"
@@ -367,7 +343,6 @@ Description: "Source tokens for family_status. Preserves the observed DMED value
 * ^status = #draft
 * ^experimental = false
 * ^caseSensitive = true
-* ^content = #fragment
 * #"not_married" "Никоҳда эмас"
 * #"married" "Никоҳланган"
 * #"divorced" "Ажрашкан"
