@@ -22,7 +22,7 @@ Kodlanadigan qiymatlar ekvivalent tushuncha mavjud bo'lgan hamma joyda SNOMED CT
 
 **Manba tizimi.** `meta.source` resursni qaysi tizim yaratganini bildiradi: `https://dhp.uz/fhir/source/screening` (ushbu bachadon bo'yni va sut bezi saratoni skriningi axborot tizimi) yoki `https://dhp.uz/fhir/source/dmed` (DMED). Majburiy maydon, [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) profillarida invariant orqali tekshiriladi. Manba tizimini `https://dhp.uz/fhir/core/sid/doc/uz/screening` tizimidan olingan identifikator mavjudligiga qarab aniqlamang - bu identifikator tizimi resursni qaysi tizim yaratganini bildirmaydi.
 
-Manba qoidasi klinik natijalar va yo'llanmalarga tegishli; yangi takliflar alohida [reja profilidan](StructureDefinition-screening-plan-service-request.html) foydalanadi va `meta.source` yubormaydi.
+Manba qoidasi klinik natijalar va yo'llanmalarga tegishli; yangi takliflar mavjud Core profilidagi [reja kontraktidan](screening-plans.html) foydalanadi va `meta.source` yubormaydi.
 
 ### Nima uchun DMED va HPV dasturi identifikatorlari farq qiladi
 
@@ -305,7 +305,7 @@ Uchta so'rovnoma nashr etiladi. Javoblar QuestionnaireResponse ko'rinishida qayt
 
 ### Skriningning tarixiy yakuniy hujjatlari
 
-[ScreeningComposition](StructureDefinition-screening-composition.html) retired bo'ladi. Kanonik URL va mavjud misollar tarixni tekshirish uchun saqlanadi. Yangi OPV jarayoni Composition yaratmaydi va o'qimaydi; alohida natijalarni dastur identifikatori yoki [rejaga](screening-plans.html) `basedOn` orqali oling.
+[ScreeningComposition](StructureDefinition-screening-composition.html) retired bo'ladi. Kanonik URL va mavjud misollar tarixni tekshirish uchun saqlanadi. OPV eski Composition ni yuborishda davom etishi mumkin; retired kanonik URL va strukturaviy qoidalarni saqlaydi va payload ni taqiqlamaydi. Yangi jarayon Composition ni talab qilmaydi; alohida natijalarni dastur identifikatori yoki [rejaga](screening-plans.html) `basedOn` orqali oling.
 
 ### Hayotiy ko'rsatkichlar (bo'y, vazn, TVI)
 

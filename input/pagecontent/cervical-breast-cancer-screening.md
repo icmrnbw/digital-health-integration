@@ -22,7 +22,7 @@ Coded values use SNOMED CT or LOINC wherever an equivalent concept exists. Local
 
 **Source system.** `meta.source` identifies which system created a resource: `https://dhp.uz/fhir/source/screening` (this Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System) or `https://dhp.uz/fhir/source/dmed` (DMED). Required and enforced by invariant on [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) and [ScreeningComposition](StructureDefinition-screening-composition.html). Do not infer the source system from the presence of an identifier from `https://dhp.uz/fhir/core/sid/doc/uz/screening` - that identifier system does not indicate which system produced a resource.
 
-This source metadata rule applies to clinical evidence and orders; new plan invitations use the separate [screening plan profile](StructureDefinition-screening-plan-service-request.html) and omit `meta.source`.
+This source metadata rule applies to clinical evidence and orders; new plan invitations use the documented [screening plan contract](screening-plans.html) and omit `meta.source`.
 
 ### Why DMED and HPV have different program identifiers
 
@@ -305,7 +305,7 @@ Three questionnaires are published. Answers come back as a QuestionnaireResponse
 
 ### Historical screening summary documents
 
-[ScreeningComposition](StructureDefinition-screening-composition.html) is retired. Its canonical and existing examples are retained for historical validation. New HPV workflows do not create or read Composition; retrieve atomic results by program identifier or via `basedOn` on the [screening plan](screening-plans.html).
+[ScreeningComposition](StructureDefinition-screening-composition.html) is retired. Its canonical and existing examples are retained for historical validation. HPV may continue to submit legacy Composition; retirement retains the canonical and structural rules and introduces no payload rejection. New screening flows do not require Composition; retrieve atomic results by program identifier or via `basedOn` on the [screening plan](screening-plans.html).
 
 ### Vital signs (height, weight, BMI)
 

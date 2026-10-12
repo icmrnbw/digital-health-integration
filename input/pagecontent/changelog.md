@@ -6,7 +6,7 @@
 
 #### Added
 
-New [screening plan profiles and contract](screening-plans.html) separate Ministry invitations from independent MIS plans. The invitation category, exact program identifier and performer are required; plans omit meta.source and occurrencePeriod. National invitations reference canonical|version. Versioned program and activity profiles include a questionnaire activity example. Optional closure reasons remain a draft proposal pending agreement.
+The [screening plan contract and examples](screening-plans.html) reuse existing UZ Core PlanDefinition, ActivityDefinition and ServiceRequest profiles. ActivityDefinition describes an invitation template with kind=ServiceRequest and intent=plan. Applications check the invitation category, program identifier, performer and exact national PlanDefinition version; MIS plans omit instantiatesCanonical. Plans omit meta.source and occurrencePeriod. MIS owns status changes. Optional closure reasons remain a draft proposal. No new screening definition or plan profiles are introduced.
 
 DMED breast/cervical program identifiers are mserv-0007-00007/mserv-0007-00009; HPV retains 268547008/171149006. Clinical questionnaire codes and scoring remain unchanged. Pathology ServiceRequest.basedOn allows 1..* and immunohistochemistry Observation allows multiple links. ScreeningComposition is retired, with its canonical and historical examples retained.
 

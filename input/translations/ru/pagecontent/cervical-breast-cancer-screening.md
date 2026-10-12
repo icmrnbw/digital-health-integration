@@ -22,7 +22,7 @@
 
 **Система-источник.** `meta.source` указывает, какая система создала ресурс: `https://dhp.uz/fhir/source/screening` (данная информационная система скрининга рака шейки матки и молочной железы) либо `https://dhp.uz/fhir/source/dmed` (ДМЕД). Обязательное поле, проверяется инвариантом в профилях [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html). Не пытайтесь определить систему-источник по наличию идентификатора из системы `https://dhp.uz/fhir/core/sid/doc/uz/screening` - эта система идентификаторов не указывает, какая система создала ресурс.
 
-Правило источника относится к клиническим результатам и направлениям; новые приглашения используют отдельный [профиль плана](StructureDefinition-screening-plan-service-request.html) и не содержат `meta.source`.
+Правило источника относится к клиническим результатам и направлениям; новые приглашения используют описанный [контракт плана](screening-plans.html) и не содержат `meta.source`.
 
 ### Почему у DMED и ВПЧ разные идентификаторы программ
 
@@ -319,7 +319,7 @@
 
 ### Исторические сводные документы скрининга
 
-[ScreeningComposition](StructureDefinition-screening-composition.html) получает статус retired. Канонический URL и прежние примеры сохраняются для проверки истории. Новый процесс ВПЧ не создаёт и не читает Composition; отдельные результаты получают по идентификатору программы или через `basedOn` на [план](screening-plans.html).
+[ScreeningComposition](StructureDefinition-screening-composition.html) получает статус retired. Канонический URL и прежние примеры сохраняются для проверки истории. ВПЧ может продолжать передавать Composition; retired сохраняет канонический URL и структурные правила и не вводит запрет на payload. Новый процесс не требует Composition; отдельные результаты получают по идентификатору программы или через `basedOn` на [план](screening-plans.html).
 
 ### Витальные показатели (рост, вес, ИМТ)
 

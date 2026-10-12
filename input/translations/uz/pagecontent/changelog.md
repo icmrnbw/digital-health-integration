@@ -6,7 +6,7 @@
 
 #### Qo'shildi
 
-Yangi [reja profillari va kontrakti](screening-plans.html) Vazirlik takliflarini MIS rejalaridan ajratadi. Taklif toifasi, aniq dastur identifikatori va bajaruvchi majburiy; meta.source va occurrencePeriod yuborilmaydi. Vazirlik taklifi canonical|version ga havola qiladi. Dastur/tadbir profillari so'rovnoma misoli bilan ta'minlangan. Ixtiyoriy yopish sabablari kelishuvgacha loyiha taklifidir.
+[Reja kontrakti va misollari](screening-plans.html) mavjud UZ Core PlanDefinition, ActivityDefinition va ServiceRequest profillaridan foydalanadi. ActivityDefinition kind=ServiceRequest va intent=plan bilan taklif shablonidir. Ilova toifa, dastur identifikatori, bajaruvchi va milliy PlanDefinition ning aniq versiyasini tekshiradi; mustaqil MIS rejasi instantiatesCanonical ni yubormaydi. meta.source va occurrencePeriod yuborilmaydi. Holatni MIS o‘zgartiradi. Ixtiyoriy yopish sabablari taklif bo‘lib qoladi. Yangi skrining ta’rifi yoki reja profillari kiritilmaydi.
 
 DMED dasturlari mserv-0007-00007/mserv-0007-00009, OPV 268547008/171149006 dan foydalanadi. So'rovnoma klinik kodlari va ballari o'zgarmaydi. Patomorfologiya ServiceRequest.basedOn 1..*, immunogistokimyo Observation bir necha havolani oladi. ScreeningComposition retired; kanonik URL va tarixiy misollar saqlanadi.
 
