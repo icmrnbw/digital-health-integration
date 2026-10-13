@@ -2,13 +2,19 @@
 
 #### Qo'shildi
 
-[Skrining sahifasida](cervical-breast-cancer-screening.html#screening-plans) mavjud UZ Core profillari va misollar bilan taklif ta’riflari, bemor rejalari hamda MIS holat o‘zgarishlari tavsiflangan.
-
-DMED dasturlari mserv-0007-00007/mserv-0007-00009, OPV 268547008/171149006 dan foydalanadi. So'rovnoma klinik kodlari va ballari o'zgarmaydi. Patomorfologiya ServiceRequest.basedOn 1..*, immunogistokimyo Observation bir necha havolani oladi. ScreeningComposition retired; kanonik URL va tarixiy misollar saqlanadi.
+Skrining sahifasidagi [Skrining rejalari va takliflari](cervical-breast-cancer-screening.html#screening-plans) bo'limi skrining dasturi bemorni qanday taklif qilishi va uning rejasini yangi profillarsiz, mavjud UZ Core profillarida qanday yuritishini tavsiflaydi. UZ Core ActivityDefinition taklif shabloni bo'ladi (`kind` = `ServiceRequest`, `intent` = `plan`), UZ Core PlanDefinition uni versiyasi bilan biriktiradi, bemorning rejasi esa `intent` = `plan`, skriningga taklif toifasi va bitta dastur identifikatoriga ega UZ Core ServiceRequest dir. Reja holatini MIS boshqaradi: DMED so'rovnoma saqlangach o'z rejasini yakunlaydi, OPV esa rejani skrining bosqichlari davomida faol saqlaydi. DHP natijalarga qarab rejani yakunlangan deb hisoblamaydi.
 
 #### O'zgartirildi
 
-Qo‘llanma UZ Core 0.11.1 ga bog‘liq: ActivityDefinition.kind da ServiceRequest va FHIR R5 ning boshqa so‘rov resurslari turlariga ruxsat beriladi.
+Qo'llanma [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi, unda ActivityDefinition `kind` ServiceRequest ga ruxsat beradi.
+
+[Screening Pathology Service Request](StructureDefinition-screening-pathology-service-request.html) da `basedOn` 1..1 o'rniga 1..*, [Screening Immunohistochemistry Observation](StructureDefinition-screening-immunohistochemistry-observation.html) da esa 0..1 o'rniga 0..* ga ruxsat beradi, shunda ular ham klinik yo'llanmaga, ham skrining rejasiga havola qila oladi. Mavjud resurslar yaroqliligicha qoladi.
+
+[ScreeningComposition](StructureDefinition-screening-composition.html) iste'moldan chiqarildi (retired). Yangi skrining jarayonlari undan foydalanmaydi, lekin kanonik URL, tuzilma va misollar saqlanadi, shuning uchun OPV hali yuborayotgan hujjatlar tekshiruvdan o'tishda davom etadi.
+
+#### Buzuvchi o'zgarishlar
+
+DMED ning [ko'krak bezi](Questionnaire-BreastCancerScreeningQuestionnaire.html) va [bachadon bo'yni](Questionnaire-CervicalCancerScreeningQuestionnaire.html) saratoni skrining so'rovnomalari `268547008` va `171149006` o'rniga `mserv-0007-00007` va `mserv-0007-00009` dastur identifikatorlariga ega; `268547008` va `171149006` endi faqat OPV skrining dasturlarini bildiradi. Ularning klinik kodlari va ball hisoblash o'zgarmagan.
 
 ### Versiya 0.11.0
 

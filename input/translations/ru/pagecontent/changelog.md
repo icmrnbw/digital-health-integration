@@ -2,13 +2,19 @@
 
 #### Добавлено
 
-На [странице скрининга](cervical-breast-cancer-screening.html#screening-plans) описаны определения приглашений, планы пациентов и изменение статусов МИС с существующими профилями UZ Core и примерами.
-
-Программы DMED РМЖ/РШМ используют mserv-0007-00007/mserv-0007-00009, ВПЧ сохраняет 268547008/171149006. Клинические коды и расчёт баллов опросников не меняются. Патоморфологический ServiceRequest.basedOn допускает 1..*, иммуногистохимический Observation — несколько ссылок. ScreeningComposition retired; канонический URL и исторические примеры сохранены.
+Раздел [Планы скрининга и приглашения](cervical-breast-cancer-screening.html#screening-plans) на странице скрининга описывает, как программа скрининга приглашает пациента и ведёт его план на существующих профилях UZ Core, без собственных новых профилей. UZ Core ActivityDefinition служит шаблоном приглашения (`kind` = `ServiceRequest`, `intent` = `plan`), UZ Core PlanDefinition закрепляет его с версией, а план пациента - это UZ Core ServiceRequest с `intent` = `plan`, категорией приглашения на скрининг и одним идентификатором программы. Статусом плана управляет МИС: DMED завершает свой план после сохранения опросника, а ВПЧ держит план активным между раундами скрининга. DHP не выводит завершение плана из результатов.
 
 #### Изменено
 
-Руководство использует UZ Core 0.11.1, который допускает ServiceRequest и остальные типы ресурсов-запросов FHIR R5 в ActivityDefinition.kind.
+Руководство собирается на [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.html), где ActivityDefinition `kind` допускает ServiceRequest.
+
+В [Screening Pathology Service Request](StructureDefinition-screening-pathology-service-request.html) `basedOn` допускает 1..* вместо 1..1, а в [Screening Immunohistochemistry Observation](StructureDefinition-screening-immunohistochemistry-observation.html) `basedOn` - 0..* вместо 0..1, чтобы ссылаться и на клиническое направление, и на план скрининга. Существующие ресурсы остаются валидными.
+
+[ScreeningComposition](StructureDefinition-screening-composition.html) выведен из употребления (retired). Новые процессы скрининга его не используют, но канонический URL, структура и примеры сохранены, поэтому документы, которые ВПЧ продолжает отправлять, по-прежнему проходят проверку.
+
+#### Несовместимые изменения
+
+Опросники DMED по скринингу рака [молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html) и [шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html) содержат идентификаторы программ `mserv-0007-00007` и `mserv-0007-00009` вместо `268547008` и `171149006`, которые теперь обозначают только программы скрининга ВПЧ. Их клинические коды и подсчёт баллов не изменились.
 
 ### Версия 0.11.0
 
