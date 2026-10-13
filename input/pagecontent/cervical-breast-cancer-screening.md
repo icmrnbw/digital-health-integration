@@ -46,6 +46,8 @@ For each patient and program, the MIS links its clinical resources to a plan Ser
 | ActivityDefinition | Describes the invitation template: `kind = ServiceRequest`, `intent = plan`, `profile = https://dhp.uz/fhir/core/StructureDefinition/uz-core-servicerequest` | [UZ Core ActivityDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-activitydefinition.html); [example](ActivityDefinition-example-hpv-cervical-invitation-activity.html) |
 | ServiceRequest | Records a patient's invitation or MIS plan for one program | [UZ Core ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html); [national invitation](ServiceRequest-ServiceRequest-screening-invitation-cervical.html), [MIS plan](ServiceRequest-example-hpv-breast-mis-plan.html) |
 
+<div>{% include screening-plan-model-en.svg %}</div><br clear="all"/>
+
 #### Populating the patient plan
 
 | Field | What to send |
@@ -65,7 +67,7 @@ For each patient and program, the MIS links its clinical resources to a plan Ser
 
 Before saving screening data, find the patient's open plan for the exact program:
 
-```http
+```
 GET [base]/ServiceRequest?subject=Patient/{id}&intent=plan&status=draft,active&category=http://snomed.info/sct|310422005&identifier=https://dhp.uz/fhir/core/sid/prg/uz/program|{programCode}&_sort=-_lastUpdated
 ```
 

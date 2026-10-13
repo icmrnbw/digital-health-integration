@@ -46,6 +46,8 @@ Har bir bemor va dastur uchun MIS klinik resurslarni reja ServiceRequest iga bog
 | ActivityDefinition | Taklif shabloni: `kind = ServiceRequest`, `intent = plan`, `profile = https://dhp.uz/fhir/core/StructureDefinition/uz-core-servicerequest` | [UZ Core ActivityDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-activitydefinition.html); [misol](ActivityDefinition-example-hpv-cervical-invitation-activity.html) |
 | ServiceRequest | Bemorning bitta dasturga taklifi yoki MIS mustaqil rejasi | [UZ Core ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html); [milliy taklif](ServiceRequest-ServiceRequest-screening-invitation-cervical.html), [MIS rejasi](ServiceRequest-example-hpv-breast-mis-plan.html) |
 
+<div>{% include screening-plan-model-uz.svg %}</div><br clear="all"/>
+
 #### Bemor rejasini to‘ldirish
 
 | Maydon | Yuboriladigan qiymat |
@@ -65,7 +67,7 @@ Har bir bemor va dastur uchun MIS klinik resurslarni reja ServiceRequest iga bog
 
 Skrining ma’lumotlarini saqlashdan oldin bemorning aynan shu dastur bo‘yicha ochiq rejasini qidiring:
 
-```http
+```
 GET [base]/ServiceRequest?subject=Patient/{id}&intent=plan&status=draft,active&category=http://snomed.info/sct|310422005&identifier=https://dhp.uz/fhir/core/sid/prg/uz/program|{programCode}&_sort=-_lastUpdated
 ```
 

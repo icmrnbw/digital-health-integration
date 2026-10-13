@@ -46,6 +46,8 @@
 | ActivityDefinition | Шаблон приглашения: `kind = ServiceRequest`, `intent = plan`, `profile = https://dhp.uz/fhir/core/StructureDefinition/uz-core-servicerequest` | [UZ Core ActivityDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-activitydefinition.html); [пример](ActivityDefinition-example-hpv-cervical-invitation-activity.html) |
 | ServiceRequest | Приглашение пациента или самостоятельный план МИС по одной программе | [UZ Core ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html); [национальное приглашение](ServiceRequest-ServiceRequest-screening-invitation-cervical.html), [план МИС](ServiceRequest-example-hpv-breast-mis-plan.html) |
 
+<div>{% include screening-plan-model-ru.svg %}</div><br clear="all"/>
+
 #### Заполнение плана пациента
 
 | Поле | Что передавать |
@@ -65,7 +67,7 @@
 
 Перед сохранением данных скрининга найти открытый план пациента по точной программе:
 
-```http
+```
 GET [base]/ServiceRequest?subject=Patient/{id}&intent=plan&status=draft,active&category=http://snomed.info/sct|310422005&identifier=https://dhp.uz/fhir/core/sid/prg/uz/program|{programCode}&_sort=-_lastUpdated
 ```
 
