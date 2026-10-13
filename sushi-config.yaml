@@ -106,8 +106,6 @@ pages:
     title: Form 066 1 Mapping
   form-130-mapping.md:
     title: Form 130 Mapping
-  screening-plans.md:
-    title: Screening Plans and Invitations
   cervical-breast-cancer-screening.md:
     title: Cervical and Breast Cancer Screening
   sick-leave.md:
@@ -139,7 +137,6 @@ menu:
     Form 066-1 Mapping: form-066-1-mapping.html
     Form 130 Mapping: form-130-mapping.html
   Integrations:
-    Screening Plans and Invitations: screening-plans.html
     Cervical and Breast Cancer Screening: cervical-breast-cancer-screening.html
     Sick Leave: sick-leave.html
     Tuberculosis (DHIS): dhis-tuberculosis.html

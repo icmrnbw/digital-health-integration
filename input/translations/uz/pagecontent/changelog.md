@@ -2,13 +2,13 @@
 
 #### Qo'shildi
 
-[Reja kontrakti va misollari](screening-plans.html) mavjud UZ Core PlanDefinition, ActivityDefinition va ServiceRequest profillaridan foydalanadi. ActivityDefinition kind=ServiceRequest va intent=plan bilan taklif shablonidir. Ilova toifa, dastur identifikatori, bajaruvchi va milliy PlanDefinition ning aniq versiyasini tekshiradi; mustaqil MIS rejasi instantiatesCanonical ni yubormaydi. meta.source va occurrencePeriod yuborilmaydi. Holatni MIS o‘zgartiradi. Ixtiyoriy yopish sabablari taklif bo‘lib qoladi. Yangi skrining ta’rifi yoki reja profillari kiritilmaydi.
+[Skrining sahifasida](cervical-breast-cancer-screening.html#screening-plans) mavjud UZ Core profillari va misollar bilan taklif ta’riflari, bemor rejalari hamda MIS holat o‘zgarishlari tavsiflangan.
 
 DMED dasturlari mserv-0007-00007/mserv-0007-00009, OPV 268547008/171149006 dan foydalanadi. So'rovnoma klinik kodlari va ballari o'zgarmaydi. Patomorfologiya ServiceRequest.basedOn 1..*, immunogistokimyo Observation bir necha havolani oladi. ScreeningComposition retired; kanonik URL va tarixiy misollar saqlanadi.
 
 #### O'zgartirildi
 
-Ushbu nomzod UZ Core 0.11.1 ga bog‘liq: ActivityDefinition.kind da ServiceRequest va FHIR R5 ning barcha boshqa so‘rov resurslari turlariga ruxsat beriladi. Nashr qilingan 0.11.0 versiyasi tarixi quyida saqlangan.
+Qo‘llanma UZ Core 0.11.1 ga bog‘liq: ActivityDefinition.kind da ServiceRequest va FHIR R5 ning boshqa so‘rov resurslari turlariga ruxsat beriladi.
 
 ### Versiya 0.11.0
 

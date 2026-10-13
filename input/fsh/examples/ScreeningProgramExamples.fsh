@@ -2,7 +2,7 @@ Instance: example-hpv-cervical-plan
 InstanceOf: UZCorePlanDefinition
 Usage: #example
 Title: "Example Screening PlanDefinition - HPV Cervical Program"
-Description: "Illustrative HPV program definition. Cohort and recurrence rules are deliberately omitted pending Ministry agreement."
+Description: "HPV cervical program definition referring to a reusable invitation template."
 * language = #uz
 * url = "https://dhp.uz/fhir/integrations/PlanDefinition/example-hpv-cervical-plan"
 * version = "1.0.0"
@@ -10,7 +10,7 @@ Description: "Illustrative HPV program definition. Cohort and recurrence rules a
 * title = "Example HPV cervical screening program"
 * status = #draft
 * experimental = true
-* description = "Illustrative definition of the HPV cervical program; clinical eligibility and recurrence rules require agreement."
+* description = "HPV cervical screening program and its invitation template."
 * identifier[0].system = $screening-program-type-id
 * identifier[0].value = "171149006"
 * useContext[screeningFocus].valueCodeableConcept = $sct#360156006 "Screening intent"
@@ -67,7 +67,7 @@ Description: "Illustrative replacement definition of the same program; a distinc
 * title = "Example HPV cervical screening program version 2"
 * status = #draft
 * experimental = true
-* description = "Illustrative successor program version; the closure mapping for older patient plans requires agreement."
+* description = "A successor definition of the HPV cervical screening program."
 * identifier[0].system = $screening-program-type-id
 * identifier[0].value = "171149006"
 * useContext[screeningFocus].valueCodeableConcept = $sct#360156006 "Screening intent"

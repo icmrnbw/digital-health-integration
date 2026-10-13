@@ -2,13 +2,13 @@
 
 #### Added
 
-The [screening plan contract and examples](screening-plans.html) reuse existing UZ Core PlanDefinition, ActivityDefinition and ServiceRequest profiles. ActivityDefinition describes an invitation template with kind=ServiceRequest and intent=plan. Applications check the invitation category, program identifier, performer and exact national PlanDefinition version; MIS plans omit instantiatesCanonical. Plans omit meta.source and occurrencePeriod. MIS owns status changes. Optional closure reasons remain a draft proposal. No new screening definition or plan profiles are introduced.
+The [screening page](cervical-breast-cancer-screening.html#screening-plans) documents invitation definitions, patient plans and MIS status changes using existing UZ Core profiles, with linked examples.
 
 DMED breast/cervical program identifiers are mserv-0007-00007/mserv-0007-00009; HPV retains 268547008/171149006. Clinical questionnaire codes and scoring remain unchanged. Pathology ServiceRequest.basedOn allows 1..* and immunohistochemistry Observation allows multiple links. ScreeningComposition is retired, with its canonical and historical examples retained.
 
 #### Changed
 
-This candidate depends on UZ Core 0.11.1, which allows ServiceRequest and all other FHIR R5 request types in ActivityDefinition.kind. The published 0.11.0 release history is retained below.
+The guide depends on UZ Core 0.11.1, which allows ServiceRequest and the other FHIR R5 request types in ActivityDefinition.kind.
 
 ### Version 0.11.0
 

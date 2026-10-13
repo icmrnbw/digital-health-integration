@@ -22,30 +22,74 @@
 
 **Система-источник.** `meta.source` указывает, какая система создала ресурс: `https://dhp.uz/fhir/source/screening` (данная информационная система скрининга рака шейки матки и молочной железы) либо `https://dhp.uz/fhir/source/dmed` (ДМЕД). Обязательное поле, проверяется инвариантом в профилях [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html). Не пытайтесь определить систему-источник по наличию идентификатора из системы `https://dhp.uz/fhir/core/sid/doc/uz/screening` - эта система идентификаторов не указывает, какая система создала ресурс.
 
-Правило источника относится к клиническим результатам и направлениям; новые приглашения используют описанный [контракт плана](screening-plans.html) и не содержат `meta.source`.
+Правило источника относится к клиническим результатам и направлениям; новые приглашения используют описанный [контракт плана](#screening-plans) и не содержат `meta.source`.
 
-### Почему у DMED и ВПЧ разные идентификаторы программ
+### Программы DMED и ВПЧ
 
-Похожие названия указывают на одну локализацию рака, но программы различаются процессами и критериями завершения. В DMED [опросник РМЖ](Questionnaire-BreastCancerScreeningQuestionnaire.html) содержит ответы о факторах риска и расчёт балла/категории; [опросник РШМ](Questionnaire-CervicalCancerScreeningQuestionnaire.html) собирает медицинский и репродуктивный анамнез. В системе ВПЧ есть собственные опросники риска [РМЖ](Questionnaire-screening-breast-risk.html) и [РШМ](Questionnaire-screening-cervical-risk.html), осмотр женщины, лабораторные исследования, визуализация, патоморфология и постановка окончательного диагноза, описанные на этой странице. Дополнительные этапы DMED, если они выполняются, относятся к программе DMED и не засчитываются автоматически в программе ВПЧ.
-
-Программы не взаимозаменяемы из-за совпадения названия или клинического кода. Отдельные локальные идентификаторы DMED предотвращают учёт анкеты одной программы как участия в другой или её завершения. Общий клинический код SNOMED не определяет эти разные процессы; локальные идентификаторы различают программы DMED, сохраняя идентификаторы ВПЧ.
-
-Для всех значений таблицы используется `Identifier.system = https://dhp.uz/fhir/core/sid/prg/uz/program`:
+Точное значение идентификатора программы выбирается из [Screening Program Types](https://dhp.uz/fhir/core/en/ValueSet-screening-program-type-vs.html). Оно передаётся дополнительно к идентификатору записи. Программы DMED и ВПЧ по РМЖ/РШМ различаются; совпадение клинического кода SNOMED не делает их взаимозаменяемыми.
 
 | Программа | `identifier.value` | Система, реализующая программу | Опросник |
 | :--- | :--- | :--- | :--- |
-| Программа опросника РМЖ в DMED | `mserv-0007-00007` | DMED | [BreastCancerScreeningQuestionnaire](Questionnaire-BreastCancerScreeningQuestionnaire.html) |
+| Программа опросника РМЖ в DMED | `mserv-0007-00007` | DMED | [Опросник РМЖ](Questionnaire-BreastCancerScreeningQuestionnaire.html) |
 | Программа скрининга РМЖ в ВПЧ | `268547008` | Система ВПЧ | [screening-breast-risk](Questionnaire-screening-breast-risk.html) и последующие применимые этапы |
-| Программа опросника РШМ в DMED | `mserv-0007-00009` | DMED | [CervicalCancerScreeningQuestionnaire](Questionnaire-CervicalCancerScreeningQuestionnaire.html) |
+| Программа опросника РШМ в DMED | `mserv-0007-00009` | DMED | [Опросник РШМ](Questionnaire-CervicalCancerScreeningQuestionnaire.html) |
 | Программа скрининга РШМ в ВПЧ | `171149006` | Система ВПЧ | [screening-cervical-risk](Questionnaire-screening-cervical-risk.html) и последующие применимые этапы |
 
-Идентификатор программы передаётся дополнительно к стабильному идентификатору конкретной записи. `Questionnaire.code` и коды исследований/процедур классифицируют клиническое содержание и не заменяют идентификатор программы, даже если значения похожи. Идентификатор указывается на применимых связанных клинических ресурсах, а не только на ответе на опросник. `meta.source` отдельно сообщает происхождение: ресурсы DMED используют `https://dhp.uz/fhir/source/dmed`, ресурсы ВПЧ — `https://dhp.uz/fhir/source/screening`.
+<a id="screening-plans"></a>
+### Планы скрининга и приглашения
 
-### Приглашения и система, реализующая программу
+Для каждого пациента и программы МИС связывает клинические ресурсы с плановым ServiceRequest. Национальное приглашение — план, созданный DHP; если открытого плана нет, МИС создаёт собственный. Для этих ресурсов используются существующие профили Core:
 
-Используется [контракт планов и приглашений](screening-plans.html). Приглашение Минздрава и собственный план МИС содержат категорию SNOMED CT `310422005` и ровно один идентификатор программы. Программы DMED и ВПЧ по РМЖ/РШМ остаются отдельными. Приглашение Минздрава несёт `instantiatesCanonical = canonical|version`; собственный план МИС не содержит этого поля. План не содержит `meta.source` и `occurrencePeriod`; метаданные источника клинических результатов сохраняются.
+| Ресурс | Назначение | Профиль и пример |
+| :--- | :--- | :--- |
+| PlanDefinition | Определение национальной программы; `action.definitionCanonical` ссылается на шаблон приглашения | [UZ Core PlanDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-plan-definition.html); [пример](PlanDefinition-example-hpv-cervical-plan.html) |
+| ActivityDefinition | Шаблон приглашения: `kind = ServiceRequest`, `intent = plan`, `profile = https://dhp.uz/fhir/core/StructureDefinition/uz-core-servicerequest` | [UZ Core ActivityDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-activitydefinition.html); [пример](ActivityDefinition-example-hpv-cervical-invitation-activity.html) |
+| ServiceRequest | Приглашение пациента или самостоятельный план МИС по одной программе | [UZ Core ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html); [национальное приглашение](ServiceRequest-ServiceRequest-screening-invitation-cervical.html), [план МИС](ServiceRequest-example-hpv-breast-mis-plan.html) |
 
-План ВПЧ остаётся active для повторных обследований. DMED завершает собственный план после сохранения связанного QuestionnaireResponse. Перед переиспользованием приглашения Минздрава проверяют текущую версию определения. Несколько подходящих планов — конфликт; старая версия не блокирует создание текущей. Ссылки на непосредственные направления сохраняют вместе со ссылкой на план. Исторические идентификаторы не переименовывают автоматически.
+#### Заполнение плана пациента
+
+| Поле | Что передавать |
+| :--- | :--- |
+| `intent` | `plan` |
+| `category` | SNOMED CT `310422005` — приглашение на профилактику/скрининг |
+| `identifier` | Один идентификатор программы: system `https://dhp.uz/fhir/core/sid/prg/uz/program`, value — точный код программы |
+| `subject` | Ссылка на пациента |
+| `authoredOn` | Дата и время создания плана |
+| `status` | `draft` для национального приглашения; `active`, когда МИС принимает его или создаёт собственный план |
+| `instantiatesCanonical` | Национальное приглашение: точная пара <code>PlanDefinition.url&#124;version</code>; самостоятельный план МИС: не передавать |
+| `performer` | Назначенный исполнитель, если он есть; иначе не передавать |
+| `code` | Необязательный клинический код в `code.concept`; программу определять по `identifier` |
+| `meta.source`, `occurrencePeriod` | В плане не передавать; клинические ресурсы сохраняют метаданные источника |
+
+#### Поиск, активация и создание плана
+
+Перед сохранением данных скрининга найти открытый план пациента по точной программе:
+
+```http
+GET [base]/ServiceRequest?subject=Patient/{id}&intent=plan&status=draft,active&category=http://snomed.info/sct|310422005&identifier=https://dhp.uz/fhir/core/sid/prg/uz/program|{programCode}&_sort=-_lastUpdated
+```
+
+Значения параметров в запросе URL-кодируются. Для национального приглашения дополнительно сравнить `instantiatesCanonical` с точным каноническим URL и версией действующей программы. Приглашение на прежнее определение не переиспользуется для нового.
+
+1. Найден один подходящий план: переиспользовать; при принятии приглашения изменить `draft` на `active`, сохранив остальные поля.
+2. Подходящего открытого плана нет: создать собственный план МИС со статусом `active`, без `instantiatesCanonical`.
+3. Найдено несколько подходящих планов: устранить дубли до привязки результатов; сортировка не гарантирует уникальность.
+
+Для защиты от дублей используется условное создание (`If-None-Exist`) с полной идентичностью плана; изменение существующего плана защищается версией (`If-Match`).
+
+#### Связи клинических ресурсов и изменение статуса
+
+| Клинический ресурс | Ссылка на план |
+| :--- | :--- |
+| QuestionnaireResponse, Observation, DiagnosticReport, Procedure, клинический ServiceRequest | `basedOn[]` |
+| Specimen | `request[]` |
+| Condition | Стандартное расширение [event-basedOn](https://hl7.org/fhir/extensions/StructureDefinition-event-basedOn.html), `valueReference` |
+
+Ссылка на непосредственное клиническое направление сохраняется вместе со ссылкой на план. Патоморфологический ServiceRequest допускает `basedOn` 1..*, ИГХ и другие Observation скрининга — 0..*. Общий ресурс может ссылаться на оба плана ВПЧ, если относится к обеим программам.
+
+ВПЧ сохраняет план `active` при повторных обследованиях. DMED переводит связанный план в `completed` после сохранения завершённого QuestionnaireResponse, независимо от того, создал его DHP или DMED. Для следующего нового прохождения DMED повторяет поиск открытого плана и создаёт собственный, если подходящего нет; прежний completed-план остаётся в истории. Примеры: [завершённый план DMED](ServiceRequest-example-dmed-breast-plan-completed.html) и [связанный ответ](QuestionnaireResponse-example-dmed-breast-response-with-plan.html).
+
+Статус плана меняет МИС. DHP не вычисляет завершение плана по полученным результатам.
 
 ### Назначение теста или процедуры (ServiceRequest)
 
@@ -319,7 +363,7 @@
 
 ### Исторические сводные документы скрининга
 
-[ScreeningComposition](StructureDefinition-screening-composition.html) получает статус retired. Канонический URL и прежние примеры сохраняются для проверки истории. ВПЧ может продолжать передавать Composition; retired сохраняет канонический URL и структурные правила и не вводит запрет на payload. Новый процесс не требует Composition; отдельные результаты получают по идентификатору программы или через `basedOn` на [план](screening-plans.html).
+[ScreeningComposition](StructureDefinition-screening-composition.html) получает статус retired. Канонический URL и прежние примеры сохраняются для проверки истории. ВПЧ может продолжать передавать Composition; retired сохраняет канонический URL и структурные правила и не вводит запрет на payload. Новый процесс не требует Composition; отдельные результаты получают по идентификатору программы или через `basedOn` на [план](#screening-plans).
 
 ### Витальные показатели (рост, вес, ИМТ)
 

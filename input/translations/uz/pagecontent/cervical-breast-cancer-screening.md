@@ -22,30 +22,74 @@ Kodlanadigan qiymatlar ekvivalent tushuncha mavjud bo'lgan hamma joyda SNOMED CT
 
 **Manba tizimi.** `meta.source` resursni qaysi tizim yaratganini bildiradi: `https://dhp.uz/fhir/source/screening` (ushbu bachadon bo'yni va sut bezi saratoni skriningi axborot tizimi) yoki `https://dhp.uz/fhir/source/dmed` (DMED). Majburiy maydon, [ScreeningObservation](StructureDefinition-screening-observation.html), [ScreeningServiceRequest](StructureDefinition-screening-service-request.html), [ScreeningDiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [ScreeningDocumentReference](StructureDefinition-screening-document-reference.html) profillarida invariant orqali tekshiriladi. Manba tizimini `https://dhp.uz/fhir/core/sid/doc/uz/screening` tizimidan olingan identifikator mavjudligiga qarab aniqlamang - bu identifikator tizimi resursni qaysi tizim yaratganini bildirmaydi.
 
-Manba qoidasi klinik natijalar va yo'llanmalarga tegishli; yangi takliflar mavjud Core profilidagi [reja kontraktidan](screening-plans.html) foydalanadi va `meta.source` yubormaydi.
+Manba qoidasi klinik natijalar va yo'llanmalarga tegishli; yangi takliflar mavjud Core profilidagi [reja kontraktidan](#screening-plans) foydalanadi va `meta.source` yubormaydi.
 
-### Nima uchun DMED va HPV dasturi identifikatorlari farq qiladi
+### DMED va OPV dasturlari
 
-O'xshash nomlar saratonning bir xil joylashuvini bildiradi, ammo dasturlarning jarayonlari va yakunlanish mezonlari farq qiladi. DMED [sut bezi so'rovnomasi](Questionnaire-BreastCancerScreeningQuestionnaire.html) xavf omillari, ball va toifani qayd etadi; [bachadon bo'yni so'rovnomasi](Questionnaire-CervicalCancerScreeningQuestionnaire.html) tibbiy va reproduktiv anamnezni yig'adi. HPV tizimi o'zining [sut bezi](Questionnaire-screening-breast-risk.html) va [bachadon bo'yni](Questionnaire-screening-cervical-risk.html) xavf so'rovnomalari, ayol ko'rigi hamda ushbu sahifada tavsiflangan laboratoriya, tasvirlash, patomorfologiya va yakuniy tashxis jarayonlariga ega. Qo'shimcha DMED bosqichlari mavjud bo'lsa, ular DMED dasturiga tegishli bo'lib, HPV dasturida avtomatik hisobga olinmaydi.
-
-Nom yoki klinik kodning mosligi dasturlarni o'zaro almashtirishga asos emas. Alohida mahalliy DMED identifikatorlari bir dastur so'rovnomasini boshqa dasturda ishtirok etish yoki uni yakunlash deb hisoblashning oldini oladi. Umumiy SNOMED klinik kodi ushbu turli jarayonlarni ajratmaydi; mahalliy identifikatorlar HPV identifikatorlarini o'zgartirmasdan DMED dasturlarini ajratadi.
-
-Jadvaldagi barcha qiymatlar uchun `Identifier.system = https://dhp.uz/fhir/core/sid/prg/uz/program`:
+Dasturning aniq identifikatori [Screening Program Types](https://dhp.uz/fhir/core/en/ValueSet-screening-program-type-vs.html) dan tanlanadi va yozuv identifikatoriga qo‘shimcha yuboriladi. DMED va OPV ko‘krak bezi/bachadon bo‘yni dasturlari alohida; klinik SNOMED kodi mos kelishi ularni o‘zaro almashtirishga ruxsat bermaydi.
 
 | Dastur | `identifier.value` | Dasturni amalga oshiruvchi tizim | So'rovnoma |
 | :--- | :--- | :--- | :--- |
-| DMED sut bezi so'rovnomasi dasturi | `mserv-0007-00007` | DMED | [BreastCancerScreeningQuestionnaire](Questionnaire-BreastCancerScreeningQuestionnaire.html) |
+| DMED sut bezi so'rovnomasi dasturi | `mserv-0007-00007` | DMED | [Ko‘krak bezi so‘rovnomasi](Questionnaire-BreastCancerScreeningQuestionnaire.html) |
 | HPV sut bezi skriningi dasturi | `268547008` | HPV tizimi | [screening-breast-risk](Questionnaire-screening-breast-risk.html) va tegishli keyingi bosqichlar |
-| DMED bachadon bo'yni so'rovnomasi dasturi | `mserv-0007-00009` | DMED | [CervicalCancerScreeningQuestionnaire](Questionnaire-CervicalCancerScreeningQuestionnaire.html) |
+| DMED bachadon bo'yni so'rovnomasi dasturi | `mserv-0007-00009` | DMED | [Bachadon bo‘yni so‘rovnomasi](Questionnaire-CervicalCancerScreeningQuestionnaire.html) |
 | HPV bachadon bo'yni skriningi dasturi | `171149006` | HPV tizimi | [screening-cervical-risk](Questionnaire-screening-cervical-risk.html) va tegishli keyingi bosqichlar |
 
-Dastur identifikatori aniq yozuvning barqaror identifikatoriga qo'shimcha ravishda uzatiladi. `Questionnaire.code` va tekshiruv/muolaja kodlari klinik mazmunni tasniflaydi va qiymatlar o'xshash bo'lsa ham dastur identifikatorini almashtirmaydi. Dastur identifikatori faqat so'rovnoma javobida emas, tegishli bog'langan klinik resurslarda ham ko'rsatiladi. `meta.source` alohida kelib chiqishni bildiradi: DMED resurslari uchun `https://dhp.uz/fhir/source/dmed`, HPV resurslari uchun `https://dhp.uz/fhir/source/screening`.
+<a id="screening-plans"></a>
+### Skrining rejalari va takliflar
 
-### Takliflar va dasturni amalga oshiruvchi tizim
+Har bir bemor va dastur uchun MIS klinik resurslarni reja ServiceRequest iga bog‘laydi. Milliy taklif — DHP yaratgan reja; ochiq reja bo‘lmasa, MIS o‘z rejasini yaratadi. Ushbu resurslar uchun mavjud Core profillaridan foydalaniladi:
 
-[Reja va taklif kontrakti](screening-plans.html) qo'llanadi. Vazirlik taklifi va MIS mustaqil rejasi SNOMED CT `310422005` toifasi hamda aynan bitta dastur identifikatorini yuboradi. DMED va OPV ko'krak bezi/bachadon bo'yni dasturlari alohida qoladi. Vazirlik taklifi `instantiatesCanonical = canonical|version` ni yuboradi; MIS rejasi uni yubormaydi. Rejada `meta.source` va `occurrencePeriod` bo'lmaydi; klinik natijalar manba metama'lumotlarini saqlaydi.
+| Resurs | Vazifasi | Profil va misol |
+| :--- | :--- | :--- |
+| PlanDefinition | Milliy dastur ta’rifi; `action.definitionCanonical` taklif shabloniga havola qiladi | [UZ Core PlanDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-plan-definition.html); [misol](PlanDefinition-example-hpv-cervical-plan.html) |
+| ActivityDefinition | Taklif shabloni: `kind = ServiceRequest`, `intent = plan`, `profile = https://dhp.uz/fhir/core/StructureDefinition/uz-core-servicerequest` | [UZ Core ActivityDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-activitydefinition.html); [misol](ActivityDefinition-example-hpv-cervical-invitation-activity.html) |
+| ServiceRequest | Bemorning bitta dasturga taklifi yoki MIS mustaqil rejasi | [UZ Core ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html); [milliy taklif](ServiceRequest-ServiceRequest-screening-invitation-cervical.html), [MIS rejasi](ServiceRequest-example-hpv-breast-mis-plan.html) |
 
-OPV rejasi takroriy tekshiruvlar uchun active qoladi. DMED bog'langan QuestionnaireResponse ni saqlagandan so'ng o'z rejasini yopadi. Vazirlik taklifini qayta ishlatishdan oldin ta'rifning joriy versiyasini tekshiring. Bir nechta mos reja konflikt; eski versiya joriy taklifni yaratishni to'smaydi. Reja havolasi bilan birga bevosita buyurtma havolasini saqlang. Tarixiy identifikatorlar avtomatik almashtirilmaydi.
+#### Bemor rejasini to‘ldirish
+
+| Maydon | Yuboriladigan qiymat |
+| :--- | :--- |
+| `intent` | `plan` |
+| `category` | SNOMED CT `310422005` — profilaktika/skrining taklifi |
+| `identifier` | Bitta dastur identifikatori: system `https://dhp.uz/fhir/core/sid/prg/uz/program`, value — dasturning aniq kodi |
+| `subject` | Bemorga havola |
+| `authoredOn` | Reja yaratilgan sana va vaqt |
+| `status` | Milliy taklifda `draft`; MIS taklifni qabul qilganda yoki o‘z rejasini yaratganda `active` |
+| `instantiatesCanonical` | Milliy taklifda aniq <code>PlanDefinition.url&#124;version</code>; mustaqil MIS rejasida yuborilmaydi |
+| `performer` | Bajaruvchi tayinlangan bo‘lsa yuboriladi; aks holda yuborilmaydi |
+| `code` | `code.concept` da ixtiyoriy klinik kod; dastur `identifier` orqali aniqlanadi |
+| `meta.source`, `occurrencePeriod` | Rejada yuborilmaydi; klinik resurslarda manba ma’lumoti saqlanadi |
+
+#### Rejani qidirish, faollashtirish va yaratish
+
+Skrining ma’lumotlarini saqlashdan oldin bemorning aynan shu dastur bo‘yicha ochiq rejasini qidiring:
+
+```http
+GET [base]/ServiceRequest?subject=Patient/{id}&intent=plan&status=draft,active&category=http://snomed.info/sct|310422005&identifier=https://dhp.uz/fhir/core/sid/prg/uz/program|{programCode}&_sort=-_lastUpdated
+```
+
+So‘rovdagi parametr qiymatlari URL-kodlanadi. Milliy taklif uchun `instantiatesCanonical` amaldagi dasturning aniq kanonik URL va versiyasi bilan solishtiriladi. Oldingi ta’rifga taklif yangi ta’rif uchun qayta ishlatilmaydi.
+
+1. Bitta mos reja topilsa: qayta ishlating; taklif qabul qilinganda boshqa maydonlarni saqlab, `draft` ni `active` ga o‘zgartiring.
+2. Mos ochiq reja bo‘lmasa: `instantiatesCanonical` siz `active` MIS rejasini yarating.
+3. Bir nechta mos reja topilsa: natijalarni bog‘lashdan oldin dublikatlarni bartaraf eting; saralash yagonalikni ta’minlamaydi.
+
+Dublikatlardan himoyalanish uchun rejaning to‘liq identifikatsiyasi bilan shartli yaratish (`If-None-Exist`), mavjud rejani o‘zgartirishda esa versiya nazorati (`If-Match`) ishlatiladi.
+
+#### Klinik resurslarni bog‘lash va holatni o‘zgartirish
+
+| Klinik resurs | Rejaga havola |
+| :--- | :--- |
+| QuestionnaireResponse, Observation, DiagnosticReport, Procedure, klinik ServiceRequest | `basedOn[]` |
+| Specimen | `request[]` |
+| Condition | Standart [event-basedOn](https://hl7.org/fhir/extensions/StructureDefinition-event-basedOn.html) kengaytmasi, `valueReference` |
+
+Bevosita klinik yo‘llanmaga havola reja havolasi bilan birga saqlanadi. Patomorfologik ServiceRequest `basedOn` 1..*, IGK va boshqa skrining Observation lari 0..* ni qabul qiladi. Umumiy resurs ikkala OPV dasturiga tegishli bo‘lsa, ikkala rejaga havola qilishi mumkin.
+
+OPV takroriy tekshiruvlarda rejani `active` holatda saqlaydi. DMED yakunlangan QuestionnaireResponse saqlangach, DHP yoki DMED yaratgan bog‘liq rejani `completed` ga o‘zgartiradi. Keyingi yangi skrining uchun DMED ochiq rejani qayta qidiradi va mos reja bo‘lmasa o‘z rejasini yaratadi; oldingi completed-reja tarixda qoladi. Misollar: [yakunlangan DMED rejasi](ServiceRequest-example-dmed-breast-plan-completed.html) va [bog‘langan javob](QuestionnaireResponse-example-dmed-breast-response-with-plan.html).
+
+Reja holatini MIS o‘zgartiradi. DHP olingan natijalardan rejaning yakunlanishini hisoblamaydi.
 
 ### Test yoki muolajani buyurtirish (ServiceRequest)
 
@@ -305,7 +349,7 @@ Uchta so'rovnoma nashr etiladi. Javoblar QuestionnaireResponse ko'rinishida qayt
 
 ### Skriningning tarixiy yakuniy hujjatlari
 
-[ScreeningComposition](StructureDefinition-screening-composition.html) retired bo'ladi. Kanonik URL va mavjud misollar tarixni tekshirish uchun saqlanadi. OPV eski Composition ni yuborishda davom etishi mumkin; retired kanonik URL va strukturaviy qoidalarni saqlaydi va payload ni taqiqlamaydi. Yangi jarayon Composition ni talab qilmaydi; alohida natijalarni dastur identifikatori yoki [rejaga](screening-plans.html) `basedOn` orqali oling.
+[ScreeningComposition](StructureDefinition-screening-composition.html) retired bo'ladi. Kanonik URL va mavjud misollar tarixni tekshirish uchun saqlanadi. OPV eski Composition ni yuborishda davom etishi mumkin; retired kanonik URL va strukturaviy qoidalarni saqlaydi va payload ni taqiqlamaydi. Yangi jarayon Composition ni talab qilmaydi; alohida natijalarni dastur identifikatori yoki [rejaga](#screening-plans) `basedOn` orqali oling.
 
 ### Hayotiy ko'rsatkichlar (bo'y, vazn, TVI)
 
