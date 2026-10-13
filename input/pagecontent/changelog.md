@@ -16,6 +16,10 @@ The guide is built against [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.h
 
 The DMED [breast](Questionnaire-BreastCancerScreeningQuestionnaire.html) and [cervical](Questionnaire-CervicalCancerScreeningQuestionnaire.html) cancer screening questionnaires carry the program identifiers `mserv-0007-00007` and `mserv-0007-00009` instead of `268547008` and `171149006`, which now identify only the HPV screening programs. Their clinical codes and scoring are unchanged.
 
+#### Documentation
+
+The [cervical and breast cancer screening](cervical-breast-cancer-screening.html) page explains the program identifier as a short list of where it goes and its exceptions, and shows how a screening plan links to the record in a diagram of its own. The main screening diagram has its `basedOn` cardinalities corrected.
+
 ### Version 0.11.0
 
 #### Changed

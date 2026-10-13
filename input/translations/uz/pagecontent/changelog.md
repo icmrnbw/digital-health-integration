@@ -16,6 +16,10 @@ Qo'llanma [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.html) asosida yig'
 
 DMED ning [ko'krak bezi](Questionnaire-BreastCancerScreeningQuestionnaire.html) va [bachadon bo'yni](Questionnaire-CervicalCancerScreeningQuestionnaire.html) saratoni skrining so'rovnomalari `268547008` va `171149006` o'rniga `mserv-0007-00007` va `mserv-0007-00009` dastur identifikatorlariga ega; `268547008` va `171149006` endi faqat OPV skrining dasturlarini bildiradi. Ularning klinik kodlari va ball hisoblash o'zgarmagan.
 
+#### Hujjatlashtirish
+
+[Bachadon bo'yni va ko'krak bezi saratoni skriningi](cervical-breast-cancer-screening.html) sahifasida dastur identifikatori qisqa ro'yxat bilan tushuntirilgan: u qayerda ko'rsatiladi va qanday istisnolar bor, skrining rejasining yozuv bilan bog'lanishi esa alohida diagrammada ko'rsatilgan. Asosiy skrining diagrammasida `basedOn` kardinalliklari tuzatilgan.
+
 ### Versiya 0.11.0
 
 #### O'zgartirildi
