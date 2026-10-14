@@ -163,8 +163,22 @@ Example: [colposcopy-result](Observation-colposcopy-result.html)
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
 | Procedure code | [ScreeningDiagnosticProcedureVS](ValueSet-screening-diagnostic-procedure-vs.html) | `SNOMED CT#392003006` (colposcopy) | `Observation.code` |
-| Colposcopy impression | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scr-colpo-2` (LSIL) | `Observation.value` |
+| Colposcopy impression | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scrn-0091-00002` (LSIL) | `Observation.value` |
 | Transformation zone type | [ScreeningTransformationZoneVS](ValueSet-screening-transformation-zone-vs.html) | `screening-transformation-zone-cs#scr-tz-2` (Type 2) | `component` (code `SNOMED CT#1285652007`) |
+
+The Screening conclusion values map to [ScreeningColposcopyCS](CodeSystem-screening-colposcopy-cs.html) as follows. Use `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs` in `Observation.valueCodeableConcept.coding.system` and the corresponding code in `coding.code`.
+
+| Screening source value | Colposcopy code | Meaning |
+| :--- | :--- | :--- |
+| `NORM_NILM` | `scrn-0091-00001` | NILM (normal) |
+| `LSIL` | `scrn-0091-00002` | LSIL |
+| `HSIL` | `scrn-0091-00003` | HSIL |
+| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Atypical change |
+| `ASC_H` | `scrn-0091-00005` | Atypical squamous cells, cannot exclude HSIL |
+| `CIN1` | `scrn-0091-00006` | Cervical intraepithelial neoplasia grade 1 |
+| `CIN2_PLUS` | `scrn-0091-00007` | Cervical intraepithelial neoplasia grade 2 or worse |
+
+The first four codes replace the former `scr-colpo-1` through `scr-colpo-4` codes under the same CodeSystem URL. Update the terminology package and source mappings together before switching exporters. ASC-H, CIN 1 and CIN 2+ remain distinct source conclusions; do not recategorize them as atypical change, LSIL or HSIL. CIN 2+ is a combined category and does not identify a specific higher grade. These values record the reported conclusion and do not establish a histologically confirmed diagnosis by themselves.
 
 ### Mammography reading
 

@@ -163,8 +163,22 @@ Misol: [colposcopy-result](Observation-colposcopy-result.html)
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
 | Muolaja kodi | [ScreeningDiagnosticProcedureVS](ValueSet-screening-diagnostic-procedure-vs.html) | `SNOMED CT#392003006` (kolposkopiya) | `Observation.code` |
-| Kolposkopiya xulosasi | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scr-colpo-2` (LSIL) | `Observation.value` |
+| Kolposkopiya xulosasi | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scrn-0091-00002` (LSIL) | `Observation.value` |
 | Transformatsiya zonasi turi | [ScreeningTransformationZoneVS](ValueSet-screening-transformation-zone-vs.html) | `screening-transformation-zone-cs#scr-tz-2` (Type 2) | `component` (kod `SNOMED CT#1285652007`) |
+
+Screening xulosasining qiymatlari quyidagi jadval bo'yicha [ScreeningColposcopyCS](CodeSystem-screening-colposcopy-cs.html) kodlariga mos keladi. `Observation.valueCodeableConcept.coding.system` da `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs`, `coding.code` da esa tegishli kod ko'rsatiladi.
+
+| Screening qiymati | Kolposkopiya xulosasi kodi | Kodning ma'nosi |
+| :--- | :--- | :--- |
+| `NORM_NILM` | `scrn-0091-00001` | Norma (NILM) |
+| `LSIL` | `scrn-0091-00002` | LSIL |
+| `HSIL` | `scrn-0091-00003` | HSIL |
+| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Atipik o'zgarishlar |
+| `ASC_H` | `scrn-0091-00005` | Atipik yassi hujayralar, HSIL ni istisno qilib bo'lmaydi |
+| `CIN1` | `scrn-0091-00006` | Bachadon bo'yni intraepitelial neoplaziyasi 1-daraja |
+| `CIN2_PLUS` | `scrn-0091-00007` | Bachadon bo'yni intraepitelial neoplaziyasi 2-daraja yoki og'irroq |
+
+Birinchi to'rtta kod CodeSystem URL o'zgarmagan holda oldingi `scr-colpo-1`–`scr-colpo-4` kodlarini almashtiradi. Eksportni yangi kodlarga o'tkazishdan oldin terminologiya paketi va manba mosliklarini birgalikda yangilang. ASC-H, CIN 1 va CIN 2+ manbaning alohida xulosalari sifatida saqlanadi; ularni atipik o'zgarish, LSIL yoki HSIL toifalariga almashtirmang. CIN 2+ umumlashtirilgan toifa bo'lib, aniq yuqoriroq darajani ko'rsatmaydi. Bu qiymatlar qayd etilgan xulosani uzatadi va o'z-o'zidan gistologik tasdiqlangan tashxisni anglatmaydi.
 
 ### Mammografiya tavsifi
 

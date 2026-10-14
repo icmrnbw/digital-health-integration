@@ -1,3 +1,9 @@
+### Unreleased
+
+#### Breaking changes
+
+[Colposcopy result codes](CodeSystem-screening-colposcopy-cs.html) now use the screening `scrn-0091-00001`–`scrn-0091-00007` family. The former `scr-colpo-1`–`scr-colpo-4` codes become `scrn-0091-00001`–`scrn-0091-00004`, preserving their meanings and existing SNOMED mappings. New codes record ASC-H, CIN 1 and CIN 2+ separately. The CodeSystem URL is unchanged; update source mappings and deploy the new terminology version together. The [screening page](cervical-breast-cancer-screening.html) lists all seven source-to-code mappings.
+
 ### Version 0.11.1
 
 #### Added

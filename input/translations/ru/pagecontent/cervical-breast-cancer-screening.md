@@ -164,8 +164,22 @@ GET [base]/ServiceRequest?subject=Patient/{id}&intent=plan&status=draft,active&c
 | Записываемая информация | Справочник | Пример кода | Где хранится |
 | :--- | :--- | :--- | :--- |
 | Код процедуры | [ScreeningDiagnosticProcedureVS](ValueSet-screening-diagnostic-procedure-vs.html) | `SNOMED CT#392003006` (кольпоскопия) | `Observation.code` |
-| Заключение кольпоскопии | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scr-colpo-2` (LSIL) | `Observation.value` |
+| Заключение кольпоскопии | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scrn-0091-00002` (LSIL) | `Observation.value` |
 | Тип зоны трансформации | [ScreeningTransformationZoneVS](ValueSet-screening-transformation-zone-vs.html) | `screening-transformation-zone-cs#scr-tz-2` (Type 2) | `component` (код `SNOMED CT#1285652007`) |
+
+Значения заключения Screening сопоставляются с [ScreeningColposcopyCS](CodeSystem-screening-colposcopy-cs.html) по таблице ниже. В `Observation.valueCodeableConcept.coding.system` указывается `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs`, а в `coding.code` — соответствующий код.
+
+| Значение в Screening | Код заключения кольпоскопии | Значение кода |
+| :--- | :--- | :--- |
+| `NORM_NILM` | `scrn-0091-00001` | Норма (NILM) |
+| `LSIL` | `scrn-0091-00002` | LSIL |
+| `HSIL` | `scrn-0091-00003` | HSIL |
+| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Атипичные изменения |
+| `ASC_H` | `scrn-0091-00005` | Атипичные клетки плоского эпителия, нельзя исключить HSIL |
+| `CIN1` | `scrn-0091-00006` | Цервикальная интраэпителиальная неоплазия 1 степени |
+| `CIN2_PLUS` | `scrn-0091-00007` | Цервикальная интраэпителиальная неоплазия 2 степени и выше |
+
+Первые четыре кода заменяют прежние `scr-colpo-1`–`scr-colpo-4` при неизменном URL CodeSystem. Перед переключением экспортёра обновите пакет терминологии и маппинги источника совместно. ASC-H, CIN 1 и CIN 2+ сохраняются как отдельные заключения источника; не заменяйте их категориями атипичных изменений, LSIL или HSIL. CIN 2+ — объединённая категория, которая не указывает конкретную более высокую степень. Эти значения передают записанное заключение и сами по себе не подтверждают гистологический диагноз.
 
 ### Описание маммографии
 
