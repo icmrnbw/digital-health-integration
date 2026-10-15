@@ -7,6 +7,128 @@ are supplied. Admission information and responsible persons still require
 entries. This supports admissions without delivery and information unavailable
 in the source system without introducing placeholder clinical resources.
 
+### Version 0.11.1
+
+#### Added
+
+The [screening plans and invitations](cervical-breast-cancer-screening.html#screening-plans) section of the screening page sets out how a screening program invites a patient and tracks the patient's plan with existing UZ Core profiles, without new profiles of its own. A UZ Core ActivityDefinition is the invitation template (`kind` = `ServiceRequest`, `intent` = `plan`), a UZ Core PlanDefinition pins it by version, and the patient's plan is a UZ Core ServiceRequest with `intent` = `plan`, the screening invitation category and one program identifier. The MIS owns the plan status: DMED completes its plan once the questionnaire is saved, while HPV keeps its plan active across screening rounds. DHP does not infer completion from results.
+
+#### Changed
+
+The guide is built against [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.html), whose ActivityDefinition `kind` allows ServiceRequest.
+
+[Screening Pathology Service Request](StructureDefinition-screening-pathology-service-request.html) `basedOn` allows 1..* instead of 1..1, and [Screening Immunohistochemistry Observation](StructureDefinition-screening-immunohistochemistry-observation.html) `basedOn` 0..* instead of 0..1, so they can reference both the clinical order and the screening plan. Existing resources remain valid.
+
+[ScreeningComposition](StructureDefinition-screening-composition.html) is retired. New screening flows do not use it, but its canonical, structure and examples stay, so the documents HPV still sends continue to validate.
+
+#### Breaking changes
+
+The DMED [breast](Questionnaire-BreastCancerScreeningQuestionnaire.html) and [cervical](Questionnaire-CervicalCancerScreeningQuestionnaire.html) cancer screening questionnaires carry the program identifiers `mserv-0007-00007` and `mserv-0007-00009` instead of `268547008` and `171149006`, which now identify only the HPV screening programs. Their clinical codes and scoring are unchanged.
+
+#### Documentation
+
+The [cervical and breast cancer screening](cervical-breast-cancer-screening.html) page explains the program identifier as a short list of where it goes and its exceptions, and shows how a screening plan links to the record in a diagram of its own. The main screening diagram has its `basedOn` cardinalities corrected.
+
+### Version 0.11.0
+
+#### Changed
+
+The guide is built against [UZ Core 0.11.0](https://dhp.uz/fhir/core/changelog.html). Of its breaking changes, only the removed screening codes reach this guide, and the screening questionnaires below have already moved off them to SNOMED CT.
+
+The screening questionnaires now carry `Questionnaire.code` in SNOMED CT, the same concept as their program type identifier: [IHD pre-test probability](Questionnaire-IhdPretestQuestionnaire.html), [fertility](Questionnaire-FertilityQuestionnaire.html), [helminths](Questionnaire-HelminthScreeningQuestionnaire.html), [cardiovascular risk](Questionnaire-CVDRiskScreeningQuestionnaire.html), [diabetes](Questionnaire-DiabetesScreeningQuestionnaire.html), [breast cancer](Questionnaire-BreastCancerScreeningQuestionnaire.html), [oncohematology](Questionnaire-OncohematologyScreeningQuestionnaire.html) and [cervical cancer](Questionnaire-CervicalCancerScreeningQuestionnaire.html). They previously carried a UZ Core `screening-code-cs` code, which UZ Core 0.11.0 removes in favour of SNOMED CT. The [cerebrovascular](Questionnaire-CerebrovascularScreeningQuestionnaire.html) questionnaire keeps `screening-code-cs#mserv-0007-00003`, as SNOMED CT has no suitable concept for it.
+
+The [screening program type](NamingSystem-screening-program-type-identifier-system.html) identifier now documents a third value besides the SNOMED CT codes and `mserv-0007-00003`: `breast-cervical-unspecified`, which the HPV screening system writes on a resource it creates for breast and cervical cancer screening but cannot attribute to either program - a Condition whose ICD-10 code is on neither program's list, or on both, and a referral to a branch of the national oncology or maternal and child health centre. Such a resource carries exactly one program type identifier.
+
+#### Documentation
+
+The [cancer](cancer.html) and [hepatitis](hepatitis.html) pages now show a diagram of how their resources link together. The diagrams on the other integration pages now include every profile of the integration (screening leaves out the ScreeningComposition document), with several wrong cardinalities corrected. All of them show the clinical graph, leaving out references to organizations, practitioners and other actors.
+
+### Version 0.10.0
+
+#### Added
+
+The [Cancer Registry](cancer.html) now has a FHIR model, shaped after [mCODE](https://hl7.org/fhir/us/mcode/STU4/) where the registry's data allows. [Cancer Condition](StructureDefinition-cancer-condition.html) carries the diagnosis, registry identifier, laterality and circumstances of detection, [Cancer Episode Of Care](StructureDefinition-cancer-episode-of-care.html) groups the treatment course and [Cancer Encounter](StructureDefinition-cancer-encounter.html) a visit within it. Six Observation profiles record tumor morphology, behavior, histologic grade, metastases, TNM category and TNM stage group.
+
+Cancer coding uses ICD-10, ICD-O-3, SNOMED CT and LOINC where they exist, with local code systems for registry concepts such as detection condition, confirmation method and treatment intent. Three ConceptMaps translate the registry's own dictionary identifiers for status, ICD-10 and ICD-O-3 topography into the codes DHP expects.
+
+The hepatitis registry has a model too: [Hepatitis Patient](StructureDefinition-hepatitis-patient.html), [Condition](StructureDefinition-hepatitis-condition.html), [Episode Of Care](StructureDefinition-hepatitis-episode-of-care.html), [Encounter](StructureDefinition-hepatitis-encounter.html), laboratory and ultrasound Observation profiles, and a [Questionnaire](StructureDefinition-hepatitis-questionnaire.html) and [response](StructureDefinition-hepatitis-questionnaire-response.html) for the treatment questionnaire, in place of the unprofiled examples 0.9.0 shipped. Records carry a registry identifier under `https://dhp.uz/fhir/core/sid/reg/uz/hepatitis`. [Hepatitis registry mapping](hepatitis.html) maps every field.
+
+The operation code on a [form 066](form-066-mapping.html) hospital discharge summary is now an ICHI code. [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html) profiles the Procedure the surgical procedures section references, binding `Procedure.code` to [ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html). Previously the section accepted any Procedure.
+
+[ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html) enumerates the 6,853 codes DMED carries: 6,176 of the 9,428 stem codes WHO currently publishes, plus 677 WHO has since withdrawn. The withdrawn ones are `inactive` in [the code system](https://dhp.uz/fhir/core/CodeSystem-who-ichi.html) and admitted here so records already in DMED stay valid, but should not be used going forward. A procedure the platform codes itself comes from [ICHI Codes](https://dhp.uz/fhir/core/ValueSet-ichi-vs.html) in UZ Core.
+
+The [IHD pre-test probability risk categories](CodeSystem-ihd-risk-category-cs.html) are now published here. The [IHD pretest questionnaire](Questionnaire-IhdPretestQuestionnaire.html) already answered its risk category item from them, but under a UZ Core canonical that no UZ Core release contains.
+
+#### Changed
+
+The guide is built against [UZ Core 0.10.0](https://dhp.uz/fhir/core/changelog.html), which publishes the ICHI code system form 066 needs and relaxes `Procedure.code` to an extensible binding.
+
+The [diabetes](Questionnaire-DiabetesScreeningQuestionnaire.html), [oncohematology](Questionnaire-OncohematologyScreeningQuestionnaire.html), [breast cancer](Questionnaire-BreastCancerScreeningQuestionnaire.html), [cervical cancer](Questionnaire-CervicalCancerScreeningQuestionnaire.html) and [fertility](Questionnaire-FertilityQuestionnaire.html) questionnaires now carry `Questionnaire.code` from UZ Core `screening-code-cs`, as the other four screening questionnaires already did.
+
+A [fertility questionnaire response with diagnosed infertility](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) shows two ICD-10 diagnoses, each recorded as its own Condition ([first](Condition-example-fertility-infertility-condition.html), [second](Condition-example-fertility-infertility-condition-2.html)) whose `evidence` references the response.
+
+The [diabetes](Questionnaire-DiabetesScreeningQuestionnaire.html) and [cardiovascular risk](Questionnaire-CVDRiskScreeningQuestionnaire.html) questionnaires now score the answers they actually offer. Diabetes compared age, waist and family history against codes no answer option carries, so those items always scored 0; cardiovascular risk compared tobacco use against a stale local code, so smokers were looked up in the non-smoker half of the WHO/ISH chart. Answers are unchanged.
+
+Artifact versions are all `MAJOR.MINOR.PATCH`. The [diabetes screening questionnaire](Questionnaire-DiabetesScreeningQuestionnaire.html) and the [screening intake template](Questionnaire-screening-intake-template.html) declared their versions as `1.0` and `1.1`; they now declare `1.0.0` and `1.1.0`.
+
+Every questionnaire now names the integration it belongs to in a `program` use context: the nine screening questionnaires and the hepatitis questionnaire carried none and sat ungrouped on the [questionnaires](forms.html) page. [Integration Area](CodeSystem-integration-area-cs.html) gains `hepatitis`, and `screening` now covers the whole screening service rather than cervical and breast cancer screening alone.
+
+#### Breaking changes
+
+The Screening identifier systems now follow the `https://dhp.uz/fhir/core/sid/{namespace}/{country}/{type}` pattern. Two had no namespace segment, and the public health case identifier sat in the organization namespace although it identifies cases, not organizations. Records and cases move to the `doc` namespace, the program type to the general `prg` program system, which any health program can reuse with its own value. Identifier values are unchanged; senders switch the system:
+
+| Identifier | Old system | New system |
+|---|---|---|
+| [Screening record](NamingSystem-screening-identifier-system.html) | `https://dhp.uz/fhir/core/sid/uz/screening` | `https://dhp.uz/fhir/core/sid/doc/uz/screening` |
+| [Public health case](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) | `https://dhp.uz/fhir/core/sid/org/uz/screening` | `https://dhp.uz/fhir/core/sid/doc/uz/screening-case` |
+| [Screening program type](NamingSystem-screening-program-type-identifier-system.html) | `https://dhp.uz/fhir/core/sid/uz/screening-program-type` | `https://dhp.uz/fhir/core/sid/prg/uz/program` |
+
+The Uzbekistan PINFL naming system is removed. PINFL is the national identifier UZ Core already defines as `https://dhp.uz/fhir/core/sid/pid/uz/ni`; send it under that system instead of `https://dhp.uz/fhir/core/sid/uz/pinfl`.
+
+The fertility questionnaire's `infertility-icd-diagnosis` item is now `coding` bound to ICD-10 and repeats, instead of free-text `string`. Responses must send one `valueCoding` per diagnosis instead of `valueString`.
+
+The IHD risk category codes `low`, `medium` and `high` keep their codes but their system changes from `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` to `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs`.
+
+### Version 0.9.0
+
+#### Added
+
+Nine screening questionnaires used by DMED are now published as definitions: [cardiovascular risk](Questionnaire-CVDRiskScreeningQuestionnaire.html), [cerebrovascular](Questionnaire-CerebrovascularScreeningQuestionnaire.html), [diabetes](Questionnaire-DiabetesScreeningQuestionnaire.html), [ischaemic heart disease pretest probability](Questionnaire-IhdPretestQuestionnaire.html), [oncohematology](Questionnaire-OncohematologyScreeningQuestionnaire.html), [breast cancer](Questionnaire-BreastCancerScreeningQuestionnaire.html), [cervical cancer](Questionnaire-CervicalCancerScreeningQuestionnaire.html), [helminthiasis](Questionnaire-HelminthScreeningQuestionnaire.html) and [fertility](Questionnaire-FertilityQuestionnaire.html). Each scores its answers with an SDC `calculatedExpression` into a risk category - [breast cancer](CodeSystem-breast-cancer-risk-category-cs.html), [cerebrovascular](CodeSystem-cerebrovascular-risk-category-cs.html), [cardiovascular](CodeSystem-cvd-risk-category-cs.html) and [diabetes](CodeSystem-diabetes-risk-category-cs.html) - that drives the recommended follow-up. The cardiovascular questionnaire and its risk categories moved here from UZ Core 0.9.0.
+
+Their answer terminology covers the cerebrovascular form's [blood pressure](CodeSystem-cerebrovascular-blood-pressure-status-cs.html), [cholesterol](CodeSystem-cerebrovascular-cholesterol-status-cs.html), [diabetes](CodeSystem-cerebrovascular-diabetes-status-cs.html), [heart condition](CodeSystem-cerebrovascular-heart-condition-cs.html), [family history](CodeSystem-cerebrovascular-family-history-cs.html), [smoking](CodeSystem-cerebrovascular-smoking-status-cs.html), [alcohol and stress](CodeSystem-cerebrovascular-alcohol-stress-level-cs.html) and [physical activity](CodeSystem-cerebrovascular-physical-activity-cs.html) answers, the [IHD chest pain type](CodeSystem-ihd-chest-pain-type-cs.html), and the [diabetes](ValueSet-screening-diabetes-vs.html), [tobacco use](ValueSet-cvd-tobacco-use-vs.html), [cervical cancer](ValueSet-cervical-cancer-screening-questionnaire-vs.html) and [fertility](ValueSet-fertility-questionnaire-vs.html) answer value sets, the last three SNOMED CT coded with Uzbek designations.
+
+Resources belonging to one screening programme now carry an identifier from the new [screening program type](NamingSystem-screening-program-type-identifier-system.html) naming system, valued with the programme's SNOMED CT code. DMED and the HPV screening system write it on clinical and workflow resources, not on Patient, Practitioner or PractitionerRole.
+
+Pathology reporting gained the local remainders SNOMED CT does not cover: [cervical histology morphology](CodeSystem-screening-cervical-histology-morphology-cs.html) subtypes, [cervical](CodeSystem-screening-cervical-material-type-cs.html) and [breast cytology](CodeSystem-screening-breast-cytology-material-type-cs.html) material types, and [breast surgical procedure types](CodeSystem-screening-breast-surgical-procedure-type-cs.html). [Breast histologic type](ValueSet-screening-breast-histologic-type-vs.html) grew by eight subtypes.
+
+The screening questionnaires now name the integration they come from, in a `program` use context coded from [integration area](ValueSet-integration-area-vs.html): `GET [base]/Questionnaire?context-type-value=program$https://terminology.dhp.uz/fhir/integrations/CodeSystem/integration-area-cs|screening` lists one service's forms, and the [questionnaires](forms.html) page groups its picker the same way.
+
+#### Changed
+
+Local codes have been replaced by SNOMED CT wherever a concept exists, leaving the local code systems with the remainder: four compound colour-and-consistency codes in [vaginal discharge type](ValueSet-screening-vaginal-discharge-type-vs.html), one in [urination characteristic](ValueSet-screening-urination-characteristic-vs.html), grade IV in [obesity degree](ValueSet-screening-obesity-degree-vs.html) and "relatively satisfactory" in [general condition](ValueSet-screening-general-condition-vs.html); [axillary](ValueSet-screening-ultrasound-axillary-node-status-vs.html) and [intramammary node status](ValueSet-screening-ultrasound-intramammary-node-status-vs.html) are now entirely SNOMED CT.
+
+Value sets widened for answers the source forms needed: a SNOMED CT concept each in [breast palpation assessment](ValueSet-screening-breast-palpation-assessment-vs.html) and [pregnancy outcome](ValueSet-screening-pregnancy-outcome-vs.html), "not changed" and "pronounced" in [retromammary space](CodeSystem-screening-ultrasound-retromammary-space-cs.html) and [subcutaneous fat](CodeSystem-screening-ultrasound-subcutaneous-fat-cs.html), and six designations in the [body site](CodeSystem-screening-body-site-cs.html) and [diagnostic procedure](CodeSystem-screening-diagnostic-procedure-cs.html) supplements.
+
+The [screening laboratory](CodeSystem-screening-laboratory-cs.html) LOINC supplement now declares version 2.82.0 rather than 2.82.
+
+Citizenship has been dropped from the hepatitis patient example: `iso-3166-2-vs` in UZ Core declares a required supplement on `urn:iso:std:iso:3166` that no FHIR package ships, so the validator fails any instance bound to it. It returns once the core value set is fixed.
+
+The guide is now built against [UZ Core 0.9.0](https://dhp.uz/fhir/core/changelog.html). None of its breaking changes reach this guide.
+
+#### Breaking changes
+
+`meta` and `meta.source` are now 1..1 and Must Support on [Screening Composition](StructureDefinition-screening-composition.html), [DiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [DocumentReference](StructureDefinition-screening-document-reference.html), [Observation](StructureDefinition-screening-observation.html) and [ServiceRequest](StructureDefinition-screening-service-request.html), with an invariant requiring `https://dhp.uz/fhir/source/screening` or `https://dhp.uz/fhir/source/dmed`, naming the creating system. Existing instances must add it.
+
+The obstetrician-gynecologist code in [screening roles](CodeSystem-screening-roles-cs.html) has been shortened from `his_centre_obstetrics_gynecology_obstetrician_gynecologist` to `his_centre_obgyn_obstetrician_gynecologist`.
+
+Local codes that SNOMED CT covers have been removed and must be restated: `scrn-0019-00003`, `scrn-0019-00005`, `scrn-0019-00006` and `scrn-0019-00008` (vaginal discharge), `scrn-0016-00001`, `scrn-0016-00002` and `scrn-0016-00003` (urination), and `scrn-0048-00001` and `scrn-0048-00002` (axillary node status). [Obesity degree](ValueSet-screening-obesity-degree-vs.html) also swapped `162864005` and `83911000119104` for `443371000124107`, `443381000124105` and `819948005`.
+
+#### Documentation
+
+The [screening](cervical-breast-cancer-screening.html), [tuberculosis](dhis-tuberculosis.html), [narcology](narcology.html), [psychiatry](psychiatry.html) and [sick leave](sick-leave.html) pages now open with a resource model diagram, in all three languages.
+
+The Forms menu entry and page title have been renamed to Questionnaires.
+
 ### Version 0.8.0
 
 #### Added
@@ -29,7 +151,7 @@ A screening cycle can now be published as a document. [Screening Composition](St
 
 Sixty code systems and a hundred and six value sets supply the terminology all of this needs. Breast ultrasound reporting has a value set per reported parameter, from [ACR breast composition](ValueSet-screening-ultrasound-acr-composition-vs.html) and [fibroglandular echogenicity](ValueSet-screening-ultrasound-fibroglandular-echogenicity-vs.html) through lesion [shape](ValueSet-screening-ultrasound-lesion-shape-vs.html), [contour](ValueSet-screening-ultrasound-lesion-contour-vs.html), [echogenicity](ValueSet-screening-ultrasound-lesion-echogenicity-vs.html), [orientation](ValueSet-screening-ultrasound-lesion-orientation-vs.html) and [vascularization](ValueSet-screening-ultrasound-lesion-vascularization-vs.html) to [axillary](ValueSet-screening-ultrasound-axillary-node-status-vs.html) and [regional node status](ValueSet-screening-ultrasound-regional-node-status-vs.html). Pathology reporting is covered by [breast histologic type](ValueSet-screening-breast-histologic-type-vs.html), [cervical histologic grade](ValueSet-screening-cervical-histologic-grade-vs.html), pathological [T](ValueSet-screening-pathological-t-vs.html), [N](ValueSet-screening-pathological-n-vs.html) and [M](ValueSet-screening-pathological-m-vs.html) stage, [resection margin status](ValueSet-screening-resection-margin-status-vs.html), [lymphovascular invasion](ValueSet-screening-histology-lymphovascular-invasion-vs.html), [HER2 immunohistochemistry score](ValueSet-screening-her2-ihc-score-vs.html), [p16 result](ValueSet-screening-p16-result-vs.html) and the [Yokohama category](ValueSet-screening-yokohama-category-vs.html). The gynecological examination has its own sets, among them [cervix condition](ValueSet-screening-cervix-condition-vs.html), [vaginal discharge](ValueSet-screening-vaginal-discharge-type-vs.html) and [vaginal wall prolapse](ValueSet-screening-vaginal-wall-prolapse-vs.html), and every question in the risk questionnaires has a value set for its answers.
 
-Four naming systems record the identifiers Screening exchanges - the [questionnaire identifier](NamingSystem-ScreeningQuestionnaireIdNamingSystem.html) and [questionnaire code](NamingSystem-ScreeningQuestionnaireCodeNamingSystem.html) assigned to a questionnaire definition, the [public health case](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) identifier and the [form 025](NamingSystem-ScreeningForm025IdNamingSystem.html) source identifier - alongside one for the [Uzbekistan PINFL](NamingSystem-UzbekistanPinflNamingSystem.html).
+Four naming systems record the identifiers Screening exchanges - the [questionnaire identifier](NamingSystem-ScreeningQuestionnaireIdNamingSystem.html) and [questionnaire code](NamingSystem-ScreeningQuestionnaireCodeNamingSystem.html) assigned to a questionnaire definition, the [public health case](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) identifier and the [form 025](NamingSystem-ScreeningForm025IdNamingSystem.html) source identifier - alongside one for the Uzbekistan PINFL.
 
 #### Changed
 

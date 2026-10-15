@@ -57,7 +57,7 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[medicalAndObstetricHistory].title 1..1
 * section[medicalAndObstetricHistory].code 1..1
 * section[medicalAndObstetricHistory].code = $loinc#11329-0 "History general Narrative - Reported"
-* section[medicalAndObstetricHistory].entry 0..*
+// Required clinical sections inherit the base entry cardinality (0..*).
 * section[medicalAndObstetricHistory] obeys form096-empty-section
 * section[medicalAndObstetricHistory].entry only Reference(UZCoreRelatedPerson or UZCoreObservation or UZCoreCondition or Procedure or UZCoreQuestionnaireResponse)
 
@@ -71,7 +71,6 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[currentPregnancy].title 1..1
 * section[currentPregnancy].code 1..1
 * section[currentPregnancy].code = $loinc#65869-0 "Pregnancy complication"
-* section[currentPregnancy].entry 0..*
 * section[currentPregnancy] obeys form096-empty-section
 * section[currentPregnancy].entry only Reference(UZCoreObservation or UZCoreCondition or UZCoreQuestionnaireResponse)
 
@@ -79,7 +78,6 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[obstetricExamination].title 1..1
 * section[obstetricExamination].code 1..1
 * section[obstetricExamination].code = $sct#171425002
-* section[obstetricExamination].entry 0..*
 * section[obstetricExamination] obeys form096-empty-section
 * section[obstetricExamination].entry only Reference(UZCoreObservation or UZCorePractitionerRole)
 
@@ -87,7 +85,6 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[laborCourse].title 1..1
 * section[laborCourse].code 1..1
 * section[laborCourse].code = $sct#289909005 "Labor"
-* section[laborCourse].entry 0..*
 * section[laborCourse] obeys form096-empty-section
 * section[laborCourse].entry only Reference(UZCoreObservation or Procedure or MedicationAdministration or UZCorePractitionerRole)
 
@@ -95,7 +92,6 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[newbornDeliveryRecord].title 1..1
 * section[newbornDeliveryRecord].code 1..1
 * section[newbornDeliveryRecord].code = $loinc#57075-4 "Newborn delivery information"
-* section[newbornDeliveryRecord].entry 0..*
 * section[newbornDeliveryRecord] obeys form096-empty-section
 * section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or Procedure or Immunization or UZCorePractitionerRole)
 
@@ -103,7 +99,6 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[postpartumPeriod].title 1..1
 * section[postpartumPeriod].code 1..1
 * section[postpartumPeriod].code = $sct#86569001 "Postpartum state"
-* section[postpartumPeriod].entry 0..*
 * section[postpartumPeriod] obeys form096-empty-section
 * section[postpartumPeriod].entry only Reference(UZCoreObservation)
 

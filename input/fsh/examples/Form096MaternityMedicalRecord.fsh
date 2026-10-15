@@ -533,7 +533,7 @@ Usage: #inline
 * effectiveDateTime = "2026-08-16T08:45:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * component[0].code = $loinc#883-9 "ABO group [Type] in Blood"
-* component[=].valueCodeableConcept = $sct#112144000 
+* component[=].valueCodeableConcept = $sct#112144000
 * component[+].code = $loinc#718-7 "Hemoglobin [Mass/volume] in Blood"
 * component[=].valueQuantity = 112 'g/L' "g/L"
 * component[+].code = $loinc#10331-7 "Rh [Type] in Blood"
