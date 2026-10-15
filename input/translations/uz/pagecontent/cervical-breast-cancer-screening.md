@@ -163,22 +163,22 @@ Misol: [colposcopy-result](Observation-colposcopy-result.html)
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
 | Muolaja kodi | [ScreeningDiagnosticProcedureVS](ValueSet-screening-diagnostic-procedure-vs.html) | `SNOMED CT#392003006` (kolposkopiya) | `Observation.code` |
-| Kolposkopiya xulosasi | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scrn-0091-00002` (LSIL) | `Observation.value` |
+| Kolposkopiya xulosasi | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `SNOMED CT#416030007` (LSIL) | `Observation.value` |
 | Transformatsiya zonasi turi | [ScreeningTransformationZoneVS](ValueSet-screening-transformation-zone-vs.html) | `screening-transformation-zone-cs#scr-tz-2` (Type 2) | `component` (kod `SNOMED CT#1285652007`) |
 
-Screening xulosasining qiymatlari quyidagi jadval bo'yicha [ScreeningColposcopyCS](CodeSystem-screening-colposcopy-cs.html) kodlariga mos keladi. `Observation.valueCodeableConcept.coding.system` da `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs`, `coding.code` da esa tegishli kod ko'rsatiladi.
+Quyidagi [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) kodlarini `Observation.valueCodeableConcept` da yuboring. SNOMED CT qatorlari uchun `coding.system` qiymati `http://snomed.info/sct`, mahalliy qatorlar uchun esa `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs` bo'ladi.
 
-| Screening qiymati | Kolposkopiya xulosasi kodi | Kodning ma'nosi |
-| :--- | :--- | :--- |
-| `NORM_NILM` | `scrn-0091-00001` | Norma (NILM) |
-| `LSIL` | `scrn-0091-00002` | LSIL |
-| `HSIL` | `scrn-0091-00003` | HSIL |
-| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Atipik o'zgarishlar |
-| `ASC_H` | `scrn-0091-00005` | Atipik yassi hujayralar, HSIL ni istisno qilib bo'lmaydi |
-| `CIN1` | `scrn-0091-00006` | Bachadon bo'yni intraepitelial neoplaziyasi 1-daraja |
-| `CIN2_PLUS` | `scrn-0091-00007` | Bachadon bo'yni intraepitelial neoplaziyasi 2-daraja yoki og'irroq |
+| Screening manba qiymati | Kod | Kodlash tizimi | Ma'nosi |
+| :--- | :--- | :--- | :--- |
+| `NORM_NILM` | `373887005` | SNOMED CT | Intraepitelial shikastlanish yoki malignizatsiya aniqlanmadi |
+| `LSIL` | `416030007` | SNOMED CT | Servikovaginal sitologiya: past darajali yassi hujayrali intraepitelial shikastlanish |
+| `HSIL` | `22725004` | SNOMED CT | Yuqori darajali yassi hujayrali intraepitelial shikastlanish |
+| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Mahalliy | Atipik o'zgarishlar |
+| `ASC_H` | `373878001` | SNOMED CT | Atipik yassi hujayralar, HSIL ni istisno qilib bo'lmaydi |
+| `CIN1` | `285836003` | SNOMED CT | Bachadon bo'yni intraepitelial neoplaziyasi 1-daraja |
+| `CIN2_PLUS` | `scrn-0091-00007` | Mahalliy | Bachadon bo'yni intraepitelial neoplaziyasi 2-daraja yoki og'irroq (CIN 2+) |
 
-Birinchi to'rtta kod CodeSystem URL o'zgarmagan holda oldingi `scr-colpo-1`–`scr-colpo-4` kodlarini almashtiradi. Eksportni yangi kodlarga o'tkazishdan oldin terminologiya paketi va manba mosliklarini birgalikda yangilang. ASC-H, CIN 1 va CIN 2+ manbaning alohida xulosalari sifatida saqlanadi; ularni atipik o'zgarish, LSIL yoki HSIL toifalariga almashtirmang. CIN 2+ umumlashtirilgan toifa bo'lib, aniq yuqoriroq darajani ko'rsatmaydi. Bu qiymatlar qayd etilgan xulosani uzatadi va o'z-o'zidan gistologik tasdiqlangan tashxisni anglatmaydi.
+Bu mosliklar oldingi `scr-colpo-1`–`scr-colpo-4` kodlarini almashtiradi. Avval yangilangan ValueSet va mahalliy CodeSystem ni joylashtiring, so'ng eksportni almashtirishdan oldin manbaning barcha yettita mosligini yangilang. ASC-H va CIN 1 alohida SNOMED CT konseptlari sifatida yuboriladi; CIN 2+ umumlashtirilgan mahalliy toifa bo'lib qoladi va CIN 2 yoki HSIL ga qisqartirilmaydi. ConceptMap faqat atipik o'zgarishlar uchun kengroq SNOMED mosligini beradi, CIN 2+ uchun esa moslik belgilanmagan. Bu qiymatlar qayd etilgan xulosani uzatadi va o'z-o'zidan gistologik tasdiqlangan tashxisni anglatmaydi.
 
 ### Mammografiya tavsifi
 

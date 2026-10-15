@@ -163,22 +163,22 @@ Example: [colposcopy-result](Observation-colposcopy-result.html)
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
 | Procedure code | [ScreeningDiagnosticProcedureVS](ValueSet-screening-diagnostic-procedure-vs.html) | `SNOMED CT#392003006` (colposcopy) | `Observation.code` |
-| Colposcopy impression | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `screening-colposcopy-cs#scrn-0091-00002` (LSIL) | `Observation.value` |
+| Colposcopy impression | [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) | `SNOMED CT#416030007` (LSIL) | `Observation.value` |
 | Transformation zone type | [ScreeningTransformationZoneVS](ValueSet-screening-transformation-zone-vs.html) | `screening-transformation-zone-cs#scr-tz-2` (Type 2) | `component` (code `SNOMED CT#1285652007`) |
 
-The Screening conclusion values map to [ScreeningColposcopyCS](CodeSystem-screening-colposcopy-cs.html) as follows. Use `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs` in `Observation.valueCodeableConcept.coding.system` and the corresponding code in `coding.code`.
+Use the following codes from [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) in `Observation.valueCodeableConcept`. Set `coding.system` to `http://snomed.info/sct` for SNOMED CT rows, or `https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-colposcopy-cs` for local rows.
 
-| Screening source value | Colposcopy code | Meaning |
-| :--- | :--- | :--- |
-| `NORM_NILM` | `scrn-0091-00001` | NILM (normal) |
-| `LSIL` | `scrn-0091-00002` | LSIL |
-| `HSIL` | `scrn-0091-00003` | HSIL |
-| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Atypical change |
-| `ASC_H` | `scrn-0091-00005` | Atypical squamous cells, cannot exclude HSIL |
-| `CIN1` | `scrn-0091-00006` | Cervical intraepithelial neoplasia grade 1 |
-| `CIN2_PLUS` | `scrn-0091-00007` | Cervical intraepithelial neoplasia grade 2 or worse |
+| Screening source value | Code | Coding system | Meaning |
+| :--- | :--- | :--- | :--- |
+| `NORM_NILM` | `373887005` | SNOMED CT | Negative for intraepithelial lesion or malignancy |
+| `LSIL` | `416030007` | SNOMED CT | Cervicovaginal cytology: Low grade squamous intraepithelial lesion |
+| `HSIL` | `22725004` | SNOMED CT | High-grade squamous intraepithelial lesion |
+| `ATYPICAL_CHANGE` | `scrn-0091-00004` | Local | Atypical change |
+| `ASC_H` | `373878001` | SNOMED CT | Atypical squamous cells, cannot exclude high-grade squamous intraepithelial lesion |
+| `CIN1` | `285836003` | SNOMED CT | Cervical intraepithelial neoplasia grade 1 |
+| `CIN2_PLUS` | `scrn-0091-00007` | Local | Cervical intraepithelial neoplasia grade 2 or worse (CIN 2+) |
 
-The first four codes replace the former `scr-colpo-1` through `scr-colpo-4` codes under the same CodeSystem URL. Update the terminology package and source mappings together before switching exporters. ASC-H, CIN 1 and CIN 2+ remain distinct source conclusions; do not recategorize them as atypical change, LSIL or HSIL. CIN 2+ is a combined category and does not identify a specific higher grade. These values record the reported conclusion and do not establish a histologically confirmed diagnosis by themselves.
+These mappings replace the former `scr-colpo-1` through `scr-colpo-4` codes. Deploy the updated ValueSets and local CodeSystem, then update all seven source mappings before switching exporters. ASC-H and CIN 1 are sent as distinct SNOMED CT concepts; CIN 2+ remains a combined local category and must not be reduced to CIN 2 or HSIL. The ConceptMap supplies only a broader SNOMED target for atypical change and explicitly leaves CIN 2+ unmapped. These values record the reported conclusion and do not establish a histologically confirmed diagnosis by themselves.
 
 ### Mammography reading
 

@@ -2,7 +2,7 @@
 
 #### Breaking changes
 
-[Colposcopy result codes](CodeSystem-screening-colposcopy-cs.html) now use the screening `scrn-0091-00001`–`scrn-0091-00007` family. The former `scr-colpo-1`–`scr-colpo-4` codes become `scrn-0091-00001`–`scrn-0091-00004`, preserving their meanings and existing SNOMED mappings. New codes record ASC-H, CIN 1 and CIN 2+ separately. The CodeSystem URL is unchanged; update source mappings and deploy the new terminology version together. The [screening page](cervical-breast-cancer-screening.html) lists all seven source-to-code mappings.
+[Colposcopy conclusions](ValueSet-screening-colposcopy-vs.html) now use SNOMED CT for NILM, LSIL, HSIL, ASC-H and CIN 1. Only atypical change (`scrn-0091-00004`) and the combined CIN 2+ category (`scrn-0091-00007`) remain in the local CodeSystem. Both the colposcopy ValueSet and the composite Observation value ValueSet include these seven values. The example, ConceptMap and [source mapping table](cervical-breast-cancer-screening.html#colposcopy-result) are updated. This replaces legacy `scr-colpo-*` codes; deploy the terminology before applying the seven source mappings. The local CodeSystem URL is unchanged.
 
 ### Version 0.11.1
 

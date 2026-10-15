@@ -2,7 +2,7 @@
 
 #### Moslikni buzuvchi o'zgarishlar
 
-[Kolposkopiya xulosasi kodlari](CodeSystem-screening-colposcopy-cs.html) skriningning `scrn-0091-00001`–`scrn-0091-00007` oilasiga o'tkazildi. Oldingi `scr-colpo-1`–`scr-colpo-4` kodlari ma'nolari va mavjud SNOMED mosliklarini saqlagan holda `scrn-0091-00001`–`scrn-0091-00004` ga almashtirildi. Yangi kodlar ASC-H, CIN 1 va CIN 2+ ni alohida qayd etadi. CodeSystem URL o'zgarmadi; manba mosliklari va terminologiyaning yangi versiyasini birgalikda yangilang. [Skrining sahifasida](cervical-breast-cancer-screening.html) manba qiymatlarining barcha yettita kodga mosligi keltirilgan.
+[Kolposkopiya xulosalari](ValueSet-screening-colposcopy-vs.html) NILM, LSIL, HSIL, ASC-H va CIN 1 uchun SNOMED CT dan foydalanadi. Mahalliy CodeSystem da faqat atipik o'zgarishlar (`scrn-0091-00004`) va umumlashtirilgan CIN 2+ toifasi (`scrn-0091-00007`) qoladi. Kolposkopiya ValueSet i va Observation qiymatlarining birlashgan ValueSet i barcha yettita qiymatni qamrab oladi. Misol, ConceptMap va [manba mosliklari jadvali](cervical-breast-cancer-screening.html) yangilandi. Oldingi `scr-colpo-*` kodlari almashtiriladi: avval terminologiyani joylashtiring, keyin yettita manba mosligini qo'llang. Mahalliy CodeSystem URL o'zgarmadi.
 
 ### Versiya 0.11.1
 
