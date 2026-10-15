@@ -178,8 +178,6 @@ Quyidagi [ScreeningColposcopyVS](ValueSet-screening-colposcopy-vs.html) kodlarin
 | `CIN1` | `285836003` | SNOMED CT | Bachadon bo'yni intraepitelial neoplaziyasi 1-daraja |
 | `CIN2_PLUS` | `scrn-0091-00007` | Mahalliy | Bachadon bo'yni intraepitelial neoplaziyasi 2-daraja yoki og'irroq (CIN 2+) |
 
-Bu mosliklar oldingi `scr-colpo-1`–`scr-colpo-4` kodlarini almashtiradi. Avval yangilangan ValueSet va mahalliy CodeSystem ni joylashtiring, so'ng eksportni almashtirishdan oldin manbaning barcha yettita mosligini yangilang. ASC-H va CIN 1 alohida SNOMED CT konseptlari sifatida yuboriladi; CIN 2+ umumlashtirilgan mahalliy toifa bo'lib qoladi va CIN 2 yoki HSIL ga qisqartirilmaydi. ConceptMap faqat atipik o'zgarishlar uchun kengroq SNOMED mosligini beradi, CIN 2+ uchun esa moslik belgilanmagan. Bu qiymatlar qayd etilgan xulosani uzatadi va o'z-o'zidan gistologik tasdiqlangan tashxisni anglatmaydi.
-
 ### Mammografiya tavsifi
 
 Tuzilmali mammografiya bahosi. `SNOMED CT#71651007` (Mammografiya) muolaja kodi kuzatuvni aniqlaydi; quyidagi har bir o'lchov komponent sifatida qayd etiladi.

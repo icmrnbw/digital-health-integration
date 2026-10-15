@@ -1,9 +1,3 @@
-### Hali chiqarilmagan
-
-#### Moslikni buzuvchi o'zgarishlar
-
-[Kolposkopiya xulosalari](ValueSet-screening-colposcopy-vs.html) NILM, LSIL, HSIL, ASC-H va CIN 1 uchun SNOMED CT dan foydalanadi. Mahalliy CodeSystem da faqat atipik o'zgarishlar (`scrn-0091-00004`) va umumlashtirilgan CIN 2+ toifasi (`scrn-0091-00007`) qoladi. Kolposkopiya ValueSet i va Observation qiymatlarining birlashgan ValueSet i barcha yettita qiymatni qamrab oladi. Misol, ConceptMap va [manba mosliklari jadvali](cervical-breast-cancer-screening.html) yangilandi. Oldingi `scr-colpo-*` kodlari almashtiriladi: avval terminologiyani joylashtiring, keyin yettita manba mosligini qo'llang. Mahalliy CodeSystem URL o'zgarmadi.
-
 ### Versiya 0.11.1
 
 #### Qo'shildi

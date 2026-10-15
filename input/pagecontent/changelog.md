@@ -1,9 +1,3 @@
-### Unreleased
-
-#### Breaking changes
-
-[Colposcopy conclusions](ValueSet-screening-colposcopy-vs.html) now use SNOMED CT for NILM, LSIL, HSIL, ASC-H and CIN 1. Only atypical change (`scrn-0091-00004`) and the combined CIN 2+ category (`scrn-0091-00007`) remain in the local CodeSystem. Both the colposcopy ValueSet and the composite Observation value ValueSet include these seven values. The example, ConceptMap and [source mapping table](cervical-breast-cancer-screening.html#colposcopy-result) are updated. This replaces legacy `scr-colpo-*` codes; deploy the terminology before applying the seven source mappings. The local CodeSystem URL is unchanged.
-
 ### Version 0.11.1
 
 #### Added

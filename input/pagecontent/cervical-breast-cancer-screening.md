@@ -178,8 +178,6 @@ Use the following codes from [ScreeningColposcopyVS](ValueSet-screening-colposco
 | `CIN1` | `285836003` | SNOMED CT | Cervical intraepithelial neoplasia grade 1 |
 | `CIN2_PLUS` | `scrn-0091-00007` | Local | Cervical intraepithelial neoplasia grade 2 or worse (CIN 2+) |
 
-These mappings replace the former `scr-colpo-1` through `scr-colpo-4` codes. Deploy the updated ValueSets and local CodeSystem, then update all seven source mappings before switching exporters. ASC-H and CIN 1 are sent as distinct SNOMED CT concepts; CIN 2+ remains a combined local category and must not be reduced to CIN 2 or HSIL. The ConceptMap supplies only a broader SNOMED target for atypical change and explicitly leaves CIN 2+ unmapped. These values record the reported conclusion and do not establish a histologically confirmed diagnosis by themselves.
-
 ### Mammography reading
 
 A structured mammography assessment. The procedure code `SNOMED CT#71651007` (Mammography) identifies the observation; each measurement below is recorded as a component.
