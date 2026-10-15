@@ -1,3 +1,8 @@
+Invariant: form096-empty-section
+Description: "A required clinical section must contain entries or explain their absence with both an empty reason and narrative text."
+Severity: #error
+Expression: "entry.exists() or (emptyReason.exists() and text.exists())"
+
 Profile: Form096MaternityMedicalRecordComposition
 Parent: Composition
 Id: form-096-maternity-medical-record-composition
@@ -52,7 +57,8 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[medicalAndObstetricHistory].title 1..1
 * section[medicalAndObstetricHistory].code 1..1
 * section[medicalAndObstetricHistory].code = $loinc#11329-0 "History general Narrative - Reported"
-* section[medicalAndObstetricHistory].entry 1..*
+* section[medicalAndObstetricHistory].entry 0..*
+* section[medicalAndObstetricHistory] obeys form096-empty-section
 * section[medicalAndObstetricHistory].entry only Reference(UZCoreRelatedPerson or UZCoreObservation or UZCoreCondition or Procedure or UZCoreQuestionnaireResponse)
 
 * section[epidemiologicalHistory].title 1..1
@@ -65,35 +71,40 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[currentPregnancy].title 1..1
 * section[currentPregnancy].code 1..1
 * section[currentPregnancy].code = $loinc#65869-0 "Pregnancy complication"
-* section[currentPregnancy].entry 1..*
+* section[currentPregnancy].entry 0..*
+* section[currentPregnancy] obeys form096-empty-section
 * section[currentPregnancy].entry only Reference(UZCoreObservation or UZCoreCondition or UZCoreQuestionnaireResponse)
 
 // Maternal measurements, pelvimetry, pregnancy counts and fetal assessment.
 * section[obstetricExamination].title 1..1
 * section[obstetricExamination].code 1..1
 * section[obstetricExamination].code = $sct#171425002
-* section[obstetricExamination].entry 1..*
+* section[obstetricExamination].entry 0..*
+* section[obstetricExamination] obeys form096-empty-section
 * section[obstetricExamination].entry only Reference(UZCoreObservation or UZCorePractitionerRole)
 
 // Labor onset, rupture of membranes, dilation, pushing, support and duration.
 * section[laborCourse].title 1..1
 * section[laborCourse].code 1..1
 * section[laborCourse].code = $sct#289909005 "Labor"
-* section[laborCourse].entry 1..*
+* section[laborCourse].entry 0..*
+* section[laborCourse] obeys form096-empty-section
 * section[laborCourse].entry only Reference(UZCoreObservation or Procedure or MedicationAdministration or UZCorePractitionerRole)
 
 // Each newborn, birth measurements, presentation, Apgar, placenta, membranes and cord.
 * section[newbornDeliveryRecord].title 1..1
 * section[newbornDeliveryRecord].code 1..1
 * section[newbornDeliveryRecord].code = $loinc#57075-4 "Newborn delivery information"
-* section[newbornDeliveryRecord].entry 1..*
+* section[newbornDeliveryRecord].entry 0..*
+* section[newbornDeliveryRecord] obeys form096-empty-section
 * section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or Procedure or Immunization or UZCorePractitionerRole)
 
 // Repeating postpartum observation rows.
 * section[postpartumPeriod].title 1..1
 * section[postpartumPeriod].code 1..1
 * section[postpartumPeriod].code = $sct#86569001 "Postpartum state"
-* section[postpartumPeriod].entry 1..*
+* section[postpartumPeriod].entry 0..*
+* section[postpartumPeriod] obeys form096-empty-section
 * section[postpartumPeriod].entry only Reference(UZCoreObservation)
 
 * section[medicationOrders].title 1..1

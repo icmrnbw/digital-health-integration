@@ -1,6 +1,11 @@
 ### In development
 
-(No changes yet)
+The [Form 096 Composition](StructureDefinition-form-096-maternity-medical-record-composition.html)
+retains all eight required sections, but allows the six required clinical
+sections to have no entries when both an empty reason and explanatory narrative
+are supplied. Admission information and responsible persons still require
+entries. This supports admissions without delivery and information unavailable
+in the source system without introducing placeholder clinical resources.
 
 ### Version 0.8.0
 
