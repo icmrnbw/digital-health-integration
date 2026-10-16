@@ -338,6 +338,11 @@ Usage: #inline
 Instance: patient-096-newborn-one
 InstanceOf: UZCorePatient
 Usage: #inline
+// Synthetic DMED medical-card number; PINFL is not yet available.
+// Reuse this identity in Form 097 and add nationalId when PINFL becomes available.
+* identifier[healthCardId].system = "https://dhp.uz/fhir/core/sid/pid/uz/hc"
+* identifier[healthCardId].type = $identifier-type#HC
+* identifier[healthCardId].use = #official
 * identifier[healthCardId].value = "NB-096-2026-000123-1"
 * name.text = "Karimov Baby One"
 * name.family = "Karimov"
@@ -350,6 +355,10 @@ Usage: #inline
 Instance: patient-096-newborn-two
 InstanceOf: UZCorePatient
 Usage: #inline
+// The second newborn has a distinct medical-card number and no PINFL yet.
+* identifier[healthCardId].system = "https://dhp.uz/fhir/core/sid/pid/uz/hc"
+* identifier[healthCardId].type = $identifier-type#HC
+* identifier[healthCardId].use = #official
 * identifier[healthCardId].value = "NB-096-2026-000123-2"
 * name.text = "Karimova Baby Two"
 * name.family = "Karimova"
@@ -773,6 +782,10 @@ Usage: #inline
 * component[=].valueQuantity = 34 'cm' "cm"
 * component[+].code = $sct#248366000 "Chest circumference"
 * component[=].valueQuantity = 32 'cm' "cm"
+* component[+].code.text = "Clinical condition assessed by the Apgar scale"
+* component[=].valueCodeableConcept.text = "Good adaptation"
+* component[+].code = $loinc#9272-6 "1 minute Apgar Score"
+* component[=].valueInteger = 8
 
 
 Instance: observation-096-newborn-two
@@ -797,6 +810,10 @@ Usage: #inline
 * component[=].valueQuantity = 33 'cm' "cm"
 * component[+].code = $sct#248366000 "Chest circumference"
 * component[=].valueQuantity = 31 'cm' "cm"
+* component[+].code.text = "Clinical condition assessed by the Apgar scale"
+* component[=].valueCodeableConcept.text = "Good adaptation"
+* component[+].code = $loinc#9272-6 "1 minute Apgar Score"
+* component[=].valueInteger = 8
 
 
 Instance: observation-096-birth-outcome-summary
@@ -822,16 +839,12 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 
 * status = #final
-* code.text = "Apgar, placenta, membranes, cord and blood-loss record"
+* code.text = "Placenta, membranes, cord and maternal blood-loss record"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:40:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* component[0].code.text = "Clinical condition assessed by the Apgar scale"
-* component[=].valueCodeableConcept.text = "Good adaptation"
-* component[+].code = $loinc#9272-6 "1 minute Apgar Score"
-* component[=].valueInteger = 8
-* component[+].code.text = "Interval from birth to placental delivery"
+* component[0].code.text = "Interval from birth to placental delivery"
 * component[=].valueQuantity = 10 'min' "minutes"
 * component[+].code.text = "Placental completeness"
 * component[=].valueCodeableConcept = $form096-tissue-integrity-status-cs#chr-0048-0001 "Intact"

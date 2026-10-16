@@ -7,7 +7,7 @@ Profile: Form096MaternityMedicalRecordComposition
 Parent: Composition
 Id: form-096-maternity-medical-record-composition
 Title: "Form 096 - Maternity Medical Record Composition"
-Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned with the approved Form 096 mapping and terminology workbook."
+Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), based on the Form 096 integration document. The mapping workbook provides supporting traceability."
 
 * identifier 1..*
 * identifier ^short = "Form 096 maternity medical-record number"
@@ -94,6 +94,7 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), aligned
 * section[newbornDeliveryRecord].code = $loinc#57075-4 "Newborn delivery information"
 * section[newbornDeliveryRecord] obeys form096-empty-section
 * section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or Procedure or Immunization or UZCorePractitionerRole)
+* section[newbornDeliveryRecord].entry ^definition = "Include a separate UZCorePatient for each newborn. When PINFL is absent, use the newborn's DMED medical-card number in Patient.identifier[healthCardId], using the UZ Core HC identifier system. Individual measurements and Apgar assessments reference that newborn as Observation.subject; delivery-wide counts reference the mother. Reuse the same patient identity in Form 097 and add PINFL to that identity when available."
 
 // Repeating postpartum observation rows.
 * section[postpartumPeriod].title 1..1

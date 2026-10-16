@@ -7,6 +7,13 @@ are supplied. Admission information and responsible persons still require
 entries. This supports admissions without delivery and information unavailable
 in the source system without introducing placeholder clinical resources.
 
+Form 096 now documents newborn identification by the DMED medical-card number
+using the existing UZ Core HC slice when PINFL is unavailable, identity reuse
+in Form 097, and later addition of PINFL. The example explicitly includes HC
+identifiers for both newborns and places Apgar assessments on each newborn's
+observation. The integration document is the requirements source; the mapping
+workbook provides supporting traceability.
+
 ### Version 0.11.1
 
 #### Added

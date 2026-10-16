@@ -7,6 +7,13 @@ mas'ul shaxslar bo'limlarida yozuvlar hali ham majburiy. Bu tug'ruqsiz yakunlang
 gospitalizatsiyalarni hamda manba tizimida mavjud bo'lmagan ma'lumotlarni soxta
 klinik resurslarsiz uzatish imkonini beradi.
 
+096-shaklda JShShIR bo'lmaganda chaqaloqni DMED tibbiy karta raqami bilan UZ Core
+ning mavjud HC kesimida identifikatsiyalash, shu bemorni 097-shaklda ishlatish va
+keyin JShShIR qo'shish tartibi bayon qilindi. Misolda ikkala chaqaloqning HC
+identifikatorlari aniq berildi va Apgar bahosi har bir chaqaloq kuzatuviga
+o'tkazildi. Talablar manbasi integratsiya hujjati bo'lib, moslashtirish jadvali
+talablarni kuzatish uchun xizmat qiladi.
+
 ### Versiya 0.11.1
 
 #### Qo'shildi
