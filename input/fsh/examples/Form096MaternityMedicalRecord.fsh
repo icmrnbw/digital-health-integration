@@ -216,6 +216,18 @@ Instance: patient-096-mother
 InstanceOf: UZCorePatient
 Usage: #inline
 * language = #en
+// The document renderer includes this Patient as both subject and supporting
+// resource. An explicit narrative without anchors stays valid in both places.
+* text.status = #generated
+* text.div = """
+<div xmlns="http://www.w3.org/1999/xhtml">
+  <p><b>Karimova Dilnoza Akmalovna</b> — female, born 1994-05-14; alive.</p>
+  <p>PINFL: 31234567890123. Health card: HC-096-2026-000123. Local passport: AA1234567.</p>
+  <p>Nationality: Uzbek. Marital status: married. Telephone: +998901234567.</p>
+  <p>Address: Chilonzor-12, 15-uy, 24-xonadon; postal code 100115; city code 16090011; district code 1726266; state code 1726.</p>
+  <p>Managing organization: Toshkent City Perinatal Center.</p>
+</div>
+"""
 * identifier[nationalId].value = "31234567890123"
 * identifier[healthCardId].value = "HC-096-2026-000123"
 * identifier[passportLocal].value = "AA1234567"
