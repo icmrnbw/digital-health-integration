@@ -6,5 +6,8 @@ Description: "Form 111 Fetal Presentation ValueSet for clinical documents and ot
 
 * include codes from system form111-fetal-presentation-cs
 
+// Standard equivalent for the explicit DMED token; local codes remain accepted for compatibility.
+* $sct#1209182005 "Cephalic fetal presentation"
+
 * ^experimental = true
 * ^status = #draft 

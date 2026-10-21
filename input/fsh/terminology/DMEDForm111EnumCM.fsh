@@ -114,12 +114,6 @@ Description: "DMED patient_bad_habits to FHIR terminology. Only explicit listed 
 * group[=].element[=].target[=].display = "Alkogolizm"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
-* group[=].element[+].code = #"smoking"
-* group[=].element[=].display = "Курение"
-* group[=].element[=].target[+].code = #"chr-0020-00009"
-* group[=].element[=].target[=].display = "Chekish"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
 * group[=].element[+].code = #"poor_diet"
 * group[=].element[=].display = "Неправильное питание"
 * group[=].element[=].target[+].code = #"chr-0020-00006"
@@ -162,6 +156,16 @@ Description: "DMED patient_bad_habits to FHIR terminology. Only explicit listed 
 * group[=].element[=].target[=].display = "Jinoiy xulq-atvorga qaramlik"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
+
+// Standard target; existing local concept identifiers remain unchanged for compatibility.
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-patient-bad-habits-cs"
+* group[=].target = "http://snomed.info/sct"
+* group[=].element[+].code = #"smoking"
+* group[=].element[=].display = "Курение"
+* group[=].element[=].target[+].code = #"77176002"
+* group[=].element[=].target[=].display = "Smoker"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Only the explicit source token supports this standard concept; do not apply it to a combined or free-text answer."
 
 Instance: dmed-form-111-breast-condition-cm
 InstanceOf: ConceptMap
@@ -225,12 +229,6 @@ Description: "DMED fetal_presentation to FHIR terminology. Only explicit listed 
 * publisher = "Uzinfocom"
 * group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-fetal-presentation-cs"
 * group[=].target = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-fetal-presentation-cs"
-* group[=].element[+].code = #"cephalic"
-* group[=].element[=].display = "Головное"
-* group[=].element[=].target[+].code = #"chr-0015-00002"
-* group[=].element[=].target[=].display = "Bosh bilan kelish"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
 * group[=].element[+].code = #"breech"
 * group[=].element[=].display = "Ягодичное"
 * group[=].element[=].target[+].code = #"chr-0015-00001"
@@ -243,6 +241,16 @@ Description: "DMED fetal_presentation to FHIR terminology. Only explicit listed 
 * group[=].element[=].target[=].display = "Aniqlanmagan"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
+
+// Standard target; existing local concept identifiers remain unchanged for compatibility.
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-fetal-presentation-cs"
+* group[=].target = "http://snomed.info/sct"
+* group[=].element[+].code = #"cephalic"
+* group[=].element[=].display = "Головное"
+* group[=].element[=].target[+].code = #"1209182005"
+* group[=].element[=].target[=].display = "Cephalic fetal presentation"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Only the explicit source token supports this standard concept; do not apply it to a combined or free-text answer."
 
 Instance: dmed-form-111-gynecological-examination-status-cm
 InstanceOf: ConceptMap
@@ -648,12 +656,6 @@ Description: "DMED pregnancy_progress.pregnancy_complications to FHIR terminolog
 * group[=].element[=].target[=].display = "Platsentar yetishmovchilik"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
-* group[=].element[+].code = #"anemia"
-* group[=].element[=].display = "Анемия"
-* group[=].element[=].target[+].code = #"chr-0022-00002"
-* group[=].element[=].target[=].display = "Anemiya"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
 * group[=].element[+].code = #"rh_and_abo_isoimmunization"
 * group[=].element[=].display = "Rh и АВО изосенсибилизация"
 * group[=].element[=].target[+].code = #"chr-0022-00013"
@@ -690,6 +692,16 @@ Description: "DMED pregnancy_progress.pregnancy_complications to FHIR terminolog
 * group[=].element[=].target[=].display = "Induksiyalangan homiladorlik"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[=].target[=].comment = "Точное соответствие подтверждённому коду ValueSet."
+
+// Standard target; existing local concept identifiers remain unchanged for compatibility.
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-111-pregnancy-progress-pregnancy-complications-cs"
+* group[=].target = "http://snomed.info/sct"
+* group[=].element[+].code = #"anemia"
+* group[=].element[=].display = "Анемия"
+* group[=].element[=].target[+].code = #"271737000"
+* group[=].element[=].target[=].display = "Anemia"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].target[=].comment = "Only the explicit source token supports this standard concept; do not apply it to a combined or free-text answer."
 
 Instance: dmed-form-111-education-type-cm
 InstanceOf: ConceptMap

@@ -15,6 +15,9 @@
 
 Ushbu sahifada 111-shakl (Homilador va tuqqan ayolning individual kartasi) maydonlarining FHIR resurslari bilan moslashtirilishi tavsiflanadi.
 
+
+**DMED terminologiya shartnomasi:** tushuncha `system + code` juftligi bilan aniqlanadi; standart ekvivalent qo‘shilganda qolgan lokal kodlar qayta raqamlanmaydi. Aniq `anemia`, `cephalic` va bemorning alohida `smoking` tokenlari SNOMED CT `271737000`, `1209182005`, `77176002` ga moslanadi. Oldingi lokal kodlar moslik uchun saqlanadi. Birlashtirilgan xavf omillari, gestoz va usuli tasdiqlanmagan tahlillar lokal ma’nosini saqlaydi. Homila harakati va shifoxonaga yotqizish belgisi `valueBoolean`, tug‘ruqqa tayyorgarlik sanalari `valueDateTime` orqali uzatiladi; homiladorlik haftalari alohida kuzatuvlardir. [Oldingi homiladorlik yakuni](ValueSet-form111-previous-pregnancy-outcome-vs.html) faqat `abort/birth` javoblarini qamraydi. [Tug‘ruq muddati](ValueSet-form111-previous-delivery-term-vs.html) preterm va term ni o‘z ichiga oladi, zaxira post-term kodi yo‘q. Eski `chr-0035-00022/00023` xavf dublikatlari deprecated deb belgilangan va amaldagi General Observation ValueSet dan chiqarilgan; ball/daraja uchun `chr-0027-00006/00005` ishlatiladi.
+
 ---
 
 ### Umumiy ma'lumot
@@ -242,14 +245,15 @@ Bo'lim kodi: [Form111 CodeSystem](CodeSystem-form111-cs.html) `chr-0034-00004`.
 | Puls | Пульс | Observation.valueQuantity | LOINC `8867-4` "Heart rate" | 84 /min |
 | Qorin aylanasi | Окружность живота | Observation.valueQuantity | Pregnancy Monitoring Observation Code `chr-0023-00001` | 84 cm |
 | Bachadon tubi balandligi | Высота дна матки | Observation.valueQuantity | LOINC `11881-0` | 21 cm |
-| Homilaning oldin kelayotgan qismi, joylashishi va holati | Предлежащая часть, положение плода | Observation.valueCodeableConcept | SNOMED `364607000` / Fetal Presentation `chr-0015-00002` | Bosh bilan kelish |
-| Yurak urishi, qimirlashi | Сердцебиение, шевеление | Observation.valueQuantity + component | LOINC `55283-6`, `57088-7` / [Fetal Heartbeat Side](CodeSystem-form111-fetal-heartbeat-side-cs.html) `chr-0014-00002` / [Boolean](CodeSystem-form111113-boolean-cs.html) `chr-0031-00002` | 142 /min, o'ngda, Ha |
+| Homilaning oldin kelayotgan qismi, joylashishi va holati | Предлежащая часть, положение плода | Observation.valueCodeableConcept | SNOMED `364607000` / SNOMED `1209182005` | Bosh bilan kelish |
+| Yurak urishi | Сердцебиение | Observation.valueQuantity + component | LOINC `55283-6` / [Fetal Heartbeat Side](CodeSystem-form111-fetal-heartbeat-side-cs.html) `chr-0014-00002` | 142 /min, o'ngda |
+| Homilaning qimirlashi | Шевеление плода | Observation.valueBoolean | LOINC `57088-7` | true |
 | Siydikdagi oqsil miqdori | Белок в моче | Observation.valueQuantity | LOINC `2888-6` "Siydikda oqsil miqdori" | 0 mg/dL |
 | Qondagi Hb miqdori | Гемоглобин крови | Observation.valueQuantity | LOINC `718-7` "Qonda gemoglobin miqdori" | 104 g/L |
 | Tashxis (homiladorlik haftasi) | Диагноз (неделя беременности) | Observation.valueQuantity | LOINC `18185-9` "Gestational age" | 21 wk |
 | Patologik o'zgarishlar | Патологические изменения | Observation.valueString | Gynecological Examination Observation Code `chr-0017-00003` | Gemoglobin pasayishi |
 | Ko'rsatmalar va maslahatlar | Указания и рекомендации | CarePlan.description | - | Temir preparatlari, parhez |
-| Shifoxonaga yotqizildi | Госпитализирована | Observation.valueCodeableConcept | Form111 General Observation Code `chr-0035-00019` / Boolean `chr-0031-00001` | Yo'q |
+| Shifoxonaga yotqizildi | Госпитализирована | Observation.valueBoolean | Form111 General Observation Code `chr-0035-00019` | false |
 | Stafilokokk anatoksini yuborildi | Введён стафилококковый анатоксин | [Immunization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-immunization.html).vaccineCode | SNOMED `871921009` | Staphylococcus toxoid vaccine |
 | Navbatdagi tashrif sanasi | Дата следующего визита | Appointment.requestedPeriod.start | - | 2026-02-12 |
 | Imzo | Подпись | Provenance.signature | - | Yusupova S.T. |
@@ -262,13 +266,13 @@ Bo'lim kodi: [Form111 CodeSystem](CodeSystem-form111-cs.html) `chr-0034-00005`.
 
 | UZ | RU | FHIR yo'li | Kod | Misol qiymati |
 |----|----|------------|------|---------------|
-| Jismoniy tarbiya - sana | Физкультура — дата | Observation.effectiveDateTime + valueBoolean + component (haftasiga soni) | [Preparation Activity](CodeSystem-form111-preparation-activity-cs.html) `chr-0025-00002` / SNOMED `183329005` | 2026-02-12, Ha, haftasiga 2 marta |
+| Jismoniy tarbiya - sana | Физкультура — дата | Observation.valueDateTime + effectiveDateTime | [Preparation Activity](CodeSystem-form111-preparation-activity-cs.html) `chr-0025-00002` | 2026-02-12 |
 | Jismoniy tarbiya vaqtidagi homiladorlik muddati | Срок беременности при занятиях физкультурой | Observation.valueQuantity | LOINC `18185-9` "Gestational age" | 25 wk |
-| Ultrabinafsha nurlari bilan nurlanish - sana | Ультрафиолетовое облучение — дата | Observation.effectiveDateTime + valueBoolean + component (haftasiga soni) | Preparation Activity `chr-0025-00004` / SNOMED `229588000` | 2026-02-19, Ha, haftasiga 1 marta |
+| Ultrabinafsha nurlari bilan nurlanish - sana | Ультрафиолетовое облучение — дата | Observation.valueDateTime + effectiveDateTime | Preparation Activity `chr-0025-00004` | 2026-02-19 |
 | Ultrabinafsha nurlanish vaqtidagi homiladorlik muddati | Срок беременности при ультрафиолетовом облучении | Observation.valueQuantity | LOINC `18185-9` "Gestational age" | 26 wk |
-| Onalar maktabi - sana | Школа матерей — дата | Observation.effectiveDateTime + valueBoolean + component (mashg'ulotlar soni) | Preparation Activity `chr-0025-00001` | 2026-03-05, Ha, 3 marta |
+| Onalar maktabi - sana | Школа матерей — дата | Observation.valueDateTime + effectiveDateTime | Preparation Activity `chr-0025-00001` | 2026-03-05 |
 | Onalar maktabi vaqtidagi homiladorlik muddati | Срок беременности при посещении школы матерей | Observation.valueQuantity | LOINC `18185-9` "Gestational age" | 28 wk |
-| Psixoprofilaktik tayyorlov - sana | Психопрофилактическая подготовка — дата | Observation.effectiveDateTime + valueBoolean + component (haftasiga soni) | Preparation Activity `chr-0025-00003` / SNOMED `408779007` | 2026-03-19, Ha, haftasiga 1 marta |
+| Psixoprofilaktik tayyorlov - sana | Психопрофилактическая подготовка — дата | Observation.valueDateTime + effectiveDateTime | Preparation Activity `chr-0025-00003` | 2026-03-19 |
 | Psixoprofilaktik tayyorlov vaqtidagi homiladorlik muddati | Срок беременности при психопрофилактической подготовке | Observation.valueQuantity | LOINC `18185-9` "Gestational age" | 30 wk |
 
 ---
@@ -283,7 +287,7 @@ Bo'lim kodi: [Form111 CodeSystem](CodeSystem-form111-cs.html) `chr-0034-00006`.
 | Shikoyatlari | Жалобы | Observation.valueString | Assessment Observation Code `chr-0005-00001` | Shikoyatlari yo'q |
 | Umumiy holati (shishlar) | Общее состояние (отёки) | Observation.valueString | Assessment Observation Code `chr-0005-00003` | Qoniqarli, oyoqlarda shish yo'q |
 | Arterial qon bosimi | Артериальное давление | Observation.valueString + bodySite (o'ng: SNOMED `368209003`, chap: `368208006`) | General Observation Code `chr-0035-00024` | 115/70 mm sim.ust., 110/70 mm sim.ust. |
-| Homilaning holati | Положение плода | Observation.valueCodeableConcept | SNOMED `364607000` / Fetal Presentation `chr-0015-00002` | Bosh bilan kelish |
+| Homilaning holati | Положение плода | Observation.valueCodeableConcept | SNOMED `364607000` / SNOMED `1209182005` | Bosh bilan kelish |
 | Homilaning yurak urishi | Сердцебиение плода | Observation.valueQuantity + component | LOINC `55283-6` / Fetal Heartbeat Side `chr-0014-00001` | 138 /min, chapda |
 | Tavsiyalar | Рекомендации | CarePlan.description | - | Kunlik rejim, tuz cheklash |
 | F.I.Sh va imzo | Ф.И.О и подпись | PractitionerRole / Provenance | - | Yusupova S.T. |
@@ -320,7 +324,7 @@ Bo'lim kodi: [Form111 CodeSystem](CodeSystem-form111-cs.html) `chr-0034-00008`.
 | Ijtimoiy-biologik omillari | Социально-биологические факторы | Observation.valueCodeableConcept | Risk Factor Observation Code `chr-0027-00004` / [Socio-biological Factor](CodeSystem-form111-socio-biological-factor-cs.html) `chr-0028-00005` | Chekish, alkogolizm yoki giyohvandlik |
 | Akusher-ginekologik anamnez | Акушерско-гинекологический анамнез | Observation.valueCodeableConcept | Risk Factor Observation Code `chr-0027-00002` / [Obstetric History Factor](CodeSystem-form111-obstetric-history-factor-cs.html) `chr-0019-00010` | Homiladorlikni yo'qotish |
 | Ekstragenital kasalliklari | Экстрагенитальные заболевания | Observation.valueCodeableConcept | Risk Factor Observation Code `chr-0027-00001` / [Extragenital Disease Factor](CodeSystem-form111-extragenital-disease-factor-cs.html) `chr-0012-00003` | Qon kasalliklari |
-| Homiladorlik asorati | Осложнение беременности | Observation.valueCodeableConcept | Risk Factor Observation Code `chr-0027-00003` / Pregnancy Complication Factor `chr-0022-00002` | Anemiya |
+| Homiladorlik asorati | Осложнение беременности | Observation.valueCodeableConcept | Risk Factor Observation Code `chr-0027-00003` / SNOMED `271737000` | Anemiya |
 | Homila holatiga baho berish | Оценка состояния плода | Observation.valueString | Fetal Assessment Observation Code `chr-0013-00002` | Homila holati qoniqarli |
 | Ballar yig'indisi | Сумма баллов | Observation.valueInteger | Risk Factor Observation Code `chr-0027-00006` | 6 |
 | Xavf darajasi | Степень риска | Observation.valueCodeableConcept | Risk Factor Observation Code `chr-0027-00005` / [Perinatal Risk Level](CodeSystem-form111-perinatal-risk-level-cs.html) `chr-0021-00003` | O'rtacha xavf |
@@ -386,7 +390,6 @@ Alohida DMED maydon moslashtirish tahlili aniq lokal kod raqamlarini va bir qato
 - **Chaqaloqning chiqarilish holati**: alohida yangi tug'ilgan Encounter'idagi ikkinchi `Encounter.dischargeDisposition` o'rniga `Observation.valueCodeableConcept` (`observation-111-newborn-discharge-status`) sifatida modellashtirilgan, chunki ushbu IG chaqaloqni o'zining `Patient`/`Encounter` sub'ekti sifatida modellashtirmaydi. Onaning o'z chiqarilish holati kutilganidek `Encounter.admission.dischargeDisposition`ni ishlatadi.
 - **Ish joyi Organization'i**: `organization-111-workplace` endi tasdiqlangan `identifier`ga ega (tashkilot kodi tizimi), bu DMED tahlilining identifikatorsiz erkin matndan `Organization` yaratishga qarshi ogohlantirishiga mos keladi; "Ish joyi" maydonining asosiy ifodasi yuqoridagi `Observation.valueString` qatorida qolmoqda.
 - **Qo'shimcha ishlatilmagan lug'at**: `chr-0005-00002` "Doctor recommendations" va `chr-0005-00004` "Other examination" (Clinical Assessment Observation Code) ishlatilmagan — 9/10-bo'lim tavsiyalari kodsiz oddiy `CarePlan.description`dan foydalanadi, "Boshqa tekshiruv" esa Analysis Test Code `chr-0001-00006`ni ishlatadi. `chr-0001-00005` (OIV uchun muqobil belgi), `chr-0001-00007` (surtma), `chr-0001-00008` (najas), `chr-0001-00010` (siydik) va LOINC `56888-1`/`31201-7` (metodga xos OIV testlari) `form111-analysis-test-code-vs`da nashr etilgan, lekin misolda ishlatilmagan — misol har bir test toifasi uchun faqat bitta vakillik natijasini ko'rsatadi.
-- **Homila qimirlashi**: [Boolean](CodeSystem-form111113-boolean-cs.html) CodeSystem'idan `Observation.valueCodeableConcept` (`chr-0031-00002` "Ha") sifatida modellashtirilgan — bu ushbu IG'dagi barcha boshqa ha/yo'q maydonlarining (masalan, gospitalizatsiya, tug'ruqqa tayyorgarlik bulean maydonlari) ifodalanish uslubiga mos keladi, DMED tahlili faqat shu bitta maydon uchun taklif qilgan tabiiy FHIR `valueBoolean` o'rniga.
 - **Kodlar display tili konventsiyasi**: ushbu IG'dagi barcha lokal `chr-XXXX-YYYYY` kodlari asosiy `display` sifatida o'zbek tilini ishlatadi (CodeSystem'ning `language`si `#uz`), ingliz/rus tillar `designation` sifatida beriladi — masalan, `chr-0001-00004`ning asosiy display'i "OIV" (`designation[en] = "HIV test"` bilan). Bu IG'dagi barcha CodeSystem'lar uchun izchil, faqat shu kodga xos emas.
 
 ---

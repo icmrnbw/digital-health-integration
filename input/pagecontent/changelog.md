@@ -1,5 +1,7 @@
 ### In development
 
+Form 111 preserves existing local code meanings, adds verified standard targets for three explicit tokens, publishes the previous-pregnancy outcome ValueSet and aligns source booleans/activity dates with the DMED contract.
+
 #### Added
 
 [Form 111 individual card of a pregnant and postpartum woman](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) is profiled as a FHIR Document, covering registration, diagnosis, pregnancy outcome, anamnesis, examinations, follow-up visits, birth preparation, patronage visits, perinatal risk assessment and specialist conclusions across 16 Composition sections. It ships an example document Bundle and a [field-by-field mapping page](form-111-mapping.html).

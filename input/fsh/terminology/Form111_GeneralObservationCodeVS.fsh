@@ -5,6 +5,9 @@ Description: "Form 111 General Observation Code ValueSet for clinical documents 
 * insert IntegrationsValueSet(form111-general-observation-code-vs)
 
 * include codes from system form111-general-observation-code-cs
+// Legacy risk duplicates retain their meanings but are not used for new observations.
+* exclude form111-general-observation-code-cs#chr-0035-00022
+* exclude form111-general-observation-code-cs#chr-0035-00023
 
 * ^experimental = true
 * ^status = #draft

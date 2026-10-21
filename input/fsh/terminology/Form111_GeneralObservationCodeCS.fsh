@@ -3,6 +3,9 @@ Id: form111-general-observation-code-cs
 Title: "Form 111 General Observation Code"
 Description: "Form 111 General Observation Code for clinical documents and other knowledge resources in Uzbekistan integrations. Based on Ministry of Health Order 399."
 * insert OriginalCodeSystemDraft(form111-general-observation-code-cs)
+* ^property[0].code = #status
+* ^property[=].uri = "http://hl7.org/fhir/concept-properties#status"
+* ^property[=].type = #code
 
 * #chr-0035-00001 "Ro'yxatga olingan kun"
   * ^designation[0].language = #en
@@ -134,12 +137,16 @@ Description: "Form 111 General Observation Code for clinical documents and other
 // which are section 14-specific and keep perinatal risk codes together with the other risk-factor
 // codes. Kept defined (not removed) since this CodeSystem is #draft, but not used in the example.
 * #chr-0035-00022 "Ballar yig'indisi"
+  * ^property[0].code = #status
+  * ^property[=].valueCode = #deprecated
   * ^designation[0].language = #en
   * ^designation[=].value = "Sum of points"
   * ^designation[+].language = #ru
   * ^designation[=].value = "Сумма баллов"
 
 * #chr-0035-00023 "Xavf darajasi"
+  * ^property[0].code = #status
+  * ^property[=].valueCode = #deprecated
   * ^designation[0].language = #en
   * ^designation[=].value = "Risk level"
   * ^designation[+].language = #ru

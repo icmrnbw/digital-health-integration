@@ -6,5 +6,8 @@ Description: "Form 111 Pregnancy Complication Factor ValueSet"
 
 * include codes from system form111-pregnancy-complication-factor-cs
 
+// Standard equivalent for the explicit DMED token; local codes remain accepted for compatibility.
+* $sct#271737000 "Anemia"
+
 * ^experimental = true
 * ^status = #draft

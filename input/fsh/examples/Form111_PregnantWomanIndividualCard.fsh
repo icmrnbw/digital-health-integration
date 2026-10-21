@@ -1953,7 +1953,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100079-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-01-15"
-* valueCodeableConcept = $form111-fetal-presentation-cs#chr-0015-00002 "Bosh bilan kelish"
+* valueCodeableConcept = $sct#1209182005 "Cephalic fetal presentation"
 * note.text = "Bo'ylama joylashish, birinchi pozitsiya, old ko'rinish"
 
 // form111-fetal-assessment-observation-code-vs + form111-fetal-heartbeat-side-vs
@@ -1984,7 +1984,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100079-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-01-15"
-* valueCodeableConcept = $form111-boolean-cs#chr-0031-00002 "Ha"
+* valueBoolean = true
 * note.text = "Faol, muntazam sezilmoqda"
 
 // form111-laboratory-observation-code-vs
@@ -2081,7 +2081,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100079-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-01-15"
-* valueCodeableConcept = $form111-boolean-cs#chr-0031-00001 "Yo'q"
+* valueBoolean = false
 
 // form111-vaccine-code-vs
 Instance: immunization-111-staphylococcal-toxoid
@@ -2123,7 +2123,7 @@ Usage: #inline
 * signature.sigFormat = #application/pdf
 * signature.data = "JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwo+PgplbmRvYmoKdHJhaWxlcgo8PAovUm9vdCAxIDAgUgo+PgolJUVPRg=="
 
-// 11. TUG'ISHGA TAYYORLASH — DMED da faqat ha/yo'q + haftalik soni saqlanadi
+// 11. Birth preparation: the source activity date is the result; gestational weeks are separate observations.
 Instance: observation-111-physical-preparation
 InstanceOf: UZCoreObservation
 Usage: #inline
@@ -2134,9 +2134,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-02-12"
-* valueBoolean = true
-* component.code.text = "Haftasiga mashg'ulotlar soni"
-* component.valueInteger = 2
+* valueDateTime = "2026-02-12"
 
 Instance: observation-111-ga-physical-preparation
 InstanceOf: UZCoreObservation
@@ -2161,9 +2159,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-02-19"
-* valueBoolean = true
-* component.code.text = "Haftasiga seanslar soni"
-* component.valueInteger = 1
+* valueDateTime = "2026-02-19"
 
 Instance: observation-111-ga-uv-irradiation
 InstanceOf: UZCoreObservation
@@ -2188,9 +2184,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-03-05"
-* valueBoolean = true
-* component.code.text = "Mashg'ulotlar soni"
-* component.valueInteger = 3
+* valueDateTime = "2026-03-05"
 
 Instance: observation-111-ga-mothers-school
 InstanceOf: UZCoreObservation
@@ -2215,9 +2209,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-03-19"
-* valueBoolean = true
-* component.code.text = "Haftasiga mashg'ulotlar soni"
-* component.valueInteger = 1
+* valueDateTime = "2026-03-19"
 
 Instance: observation-111-ga-psychoprophylactic
 InstanceOf: UZCoreObservation
@@ -2326,7 +2318,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100107-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-03-10"
-* valueCodeableConcept = $form111-fetal-presentation-cs#chr-0015-00002 "Bosh bilan kelish"
+* valueCodeableConcept = $sct#1209182005 "Cephalic fetal presentation"
 
 Instance: observation-111-patronage-fetal-heart-rate
 InstanceOf: UZCoreObservation
@@ -2511,7 +2503,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:11100003-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:11100007-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-01-15"
-* valueCodeableConcept = $form111-pregnancy-complication-factor-cs#chr-0022-00002 "Anemiya"
+* valueCodeableConcept = $sct#271737000 "Anemia"
 
 // form111-fetal-assessment-observation-code-vs
 Instance: observation-111-fetal-condition-assessment

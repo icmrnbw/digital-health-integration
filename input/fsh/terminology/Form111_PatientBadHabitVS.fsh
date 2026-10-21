@@ -6,5 +6,8 @@ Description: "Form 111 Patient Bad Habits ValueSet"
 
 * include codes from system form111-patient-bad-habit-cs
 
+// Standard equivalent for the explicit DMED token; local codes remain accepted for compatibility.
+* $sct#77176002 "Smoker"
+
 * ^experimental = true
 * ^status = #draft

@@ -19,6 +19,9 @@ jobs:
       - name: Validate with Sushi
         run: sushi .
 
+      - name: Check Form 111 code identities and DMED contract
+        run: node scripts/check-form111-contract.cjs
+
   ig-publisher:
     runs-on: ubuntu-latest
 
