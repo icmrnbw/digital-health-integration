@@ -8,7 +8,7 @@ Description: "Form 111 CodeSystem"
   * ^designation[0].language = #en
   * ^designation[=].value = "End of pregnancy"
   * ^designation[+].language = #ru
-  * ^designation[=].value = "Конец беременности"
+  * ^designation[=].value = "Исход беременности"
 
 * #chr-0034-00002 "Tashqi akusherlik tekshiruvi"
   * ^designation[0].language = #en
