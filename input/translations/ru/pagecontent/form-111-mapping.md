@@ -64,7 +64,7 @@
 
 | UZ | RU | Путь FHIR | Код | Пример значения |
 |----|----|------------|------|---------------|
-| Qon guruhi | Группа крови | Observation.valueCodeableConcept | LOINC `883-9` "Qonda ABO guruhi turi" / SNOMED `112144000` | Blood group A |
+| Qon guruhi | Группа крови | Observation.valueCodeableConcept | LOINC `883-9` "ABO group [Type] in Blood" / SNOMED `112144000` | Blood group A |
 | Homiladorning Rh mansubligi | Резус-принадлежность беременной | Observation.valueCodeableConcept | LOINC `10331-7` "Qonda Rh turi" / SNOMED `165747007` (RhD positive), `165746003` (RhD negative) | RhD positive |
 | Homiladorning turmush o'rtog'ining Rh mansubligi | Резус-принадлежность супруга беременной | Observation.valueCodeableConcept (`focus` = RelatedPerson) | LOINC `10331-7` / SNOMED `165746003` | RhD negative |
 | Ro'yxatga olingan kun | Дата постановки на учёт | EpisodeOfCare.period.start + Encounter.actualPeriod.start + Encounter.episodeOfCare[] | - | 2025-10-20 |
