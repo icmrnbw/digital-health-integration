@@ -38,7 +38,7 @@ Description: "Form 111 CodeSystem"
   * ^designation[0].language = #en
   * ^designation[=].value = "Patronage visits"
   * ^designation[+].language = #ru
-  * ^designation[=].value = "Покровительственные визиты"
+  * ^designation[=].value = "Патронажные посещения"
 
 * #chr-0034-00007 "Aylanma karta va boshqa hujjatlarni yopishtirish uchun varoq"
   * ^designation[0].language = #en
