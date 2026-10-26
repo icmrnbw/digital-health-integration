@@ -1,8 +1,8 @@
 CodeSystem: ScreeningYesNoTranslationsCS
 Id: screening-yes-no-translations-cs
-Title: "Screening YesNoTranslations"
-Description: "Russian and Uzbek designations for explicit codes used by screening resources and questionnaires."
-* insert SupplementCodeSystemDraft(screening-yes-no-translations-cs, "http://terminology.hl7.org/CodeSystem/v2-0532", 2.9.0)
+Title: "Screening yes/no indicator translations"
+Description: "Expanded yes/no indicator (HL7 v2 table 0532) supplement with translations in Uzbek and Russian. Not yet referenced by any ValueSet."
+* insert SupplementCodeSystemDraft(screening-yes-no-translations-cs, $v2-0532, 3.0.0)
 
 * #N
   * ^designation[0].language = #ru

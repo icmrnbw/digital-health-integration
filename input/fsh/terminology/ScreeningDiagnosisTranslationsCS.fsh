@@ -1,8 +1,8 @@
 CodeSystem: ScreeningDiagnosisTranslationsCS
 Id: screening-diagnosis-translations-cs
-Title: "Screening DiagnosisTranslations"
-Description: "Russian and Uzbek designations for explicit codes used by screening resources and questionnaires."
-* insert SupplementCodeSystemDraft(screening-diagnosis-translations-cs, "http://hl7.org/fhir/sid/icd-10", 2019.0.0)
+Title: "Screening ICD-10 diagnosis translations"
+Description: "ICD-10 supplement with translations in Uzbek and Russian for screening diagnoses. Not yet referenced by any ValueSet."
+* insert SupplementCodeSystemDraft(screening-diagnosis-translations-cs, $icd-10, 2019.0.0)
 
 * #D06.9
   * ^designation[0].language = #ru

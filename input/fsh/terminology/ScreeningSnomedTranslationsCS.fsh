@@ -1,8 +1,8 @@
 CodeSystem: ScreeningSnomedTranslationsCS
 Id: screening-snomed-translations-cs
 Title: "Screening SNOMED CT translations"
-Description: "Russian and Uzbek designations for SNOMED CT codes used by screening resources and questionnaires."
-* insert SupplementCodeSystemDraft(screening-snomed-translations-cs, $sct, 2026.9.30)
+Description: "SNOMED CT supplement with translations in Uzbek and Russian for codes used by screening resources and questionnaires"
+* insert SupplementCodeSystemDraft(screening-snomed-translations-cs, $sct, 2026.1.0)
 
 * #102834005
   * ^designation[0].language = #ru
