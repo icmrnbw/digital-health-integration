@@ -20,3 +20,5 @@ Description: "Other organs or anatomical sites involved according to a Screening
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(CancerBodyLocationCS)

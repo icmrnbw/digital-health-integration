@@ -15,3 +15,5 @@ Description: "Defines Screening Cervical Material Type"
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(ScreeningDiagnosticProcedureCS)
