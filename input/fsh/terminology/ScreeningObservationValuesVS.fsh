@@ -13,3 +13,7 @@ Description: "Combined value set of screening result codes for Observation.value
 * include codes from system screening-birads-cs
 * include codes from system screening-breast-form-cs
 * include codes from system screening-image-quality-cs
+
+// Supplements providing screening display languages.
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)
