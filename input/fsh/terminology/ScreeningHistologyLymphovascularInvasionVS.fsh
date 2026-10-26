@@ -13,4 +13,4 @@ Description: "LOINC answer codes for lymphovascular invasion in a cancer specime
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
+* ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)

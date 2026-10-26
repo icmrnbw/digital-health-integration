@@ -26,6 +26,4 @@ Description: "Combined value set of codes for the Observation.code field (Labora
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
-* ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

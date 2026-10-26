@@ -14,4 +14,4 @@ Description: "LOINC answer codes permitted for HER2 immunohistochemistry results
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
+* ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)

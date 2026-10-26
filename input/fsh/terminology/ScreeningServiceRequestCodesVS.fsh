@@ -18,6 +18,4 @@ Description: "Combined code set for screening service requests (LOINC laboratory
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
-* ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

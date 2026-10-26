@@ -12,4 +12,4 @@ Description: "LOINC answer codes for the type of necrosis in ductal carcinoma in
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
+* ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
