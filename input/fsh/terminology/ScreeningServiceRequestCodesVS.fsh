@@ -25,5 +25,3 @@ Description: "Combined code set for screening service requests (LOINC laboratory
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = "https://terminology.dhp.uz/fhir/core/CodeSystem/group-characteristic-kind-cs"

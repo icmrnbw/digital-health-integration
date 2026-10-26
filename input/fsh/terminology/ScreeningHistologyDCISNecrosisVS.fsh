@@ -15,5 +15,3 @@ Description: "LOINC answer codes for the type of necrosis in ductal carcinoma in
 * ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = "https://terminology.dhp.uz/fhir/core/CodeSystem/group-characteristic-kind-cs"

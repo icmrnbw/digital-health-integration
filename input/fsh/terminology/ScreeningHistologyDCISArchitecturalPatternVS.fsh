@@ -19,5 +19,3 @@ Description: "LOINC answer codes for the architectural growth pattern of ductal 
 * ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = "https://terminology.dhp.uz/fhir/core/CodeSystem/group-characteristic-kind-cs"

@@ -33,5 +33,3 @@ Description: "Combined value set of codes for the Observation.code field (Labora
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = "https://terminology.dhp.uz/fhir/core/CodeSystem/group-characteristic-kind-cs"

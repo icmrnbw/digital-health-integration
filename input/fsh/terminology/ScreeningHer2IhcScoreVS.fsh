@@ -17,5 +17,3 @@ Description: "LOINC answer codes permitted for HER2 immunohistochemistry results
 * ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = "https://terminology.dhp.uz/fhir/core/CodeSystem/group-characteristic-kind-cs"
