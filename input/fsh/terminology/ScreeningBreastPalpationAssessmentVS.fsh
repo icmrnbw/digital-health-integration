@@ -14,5 +14,3 @@ Description: "Defines Screening Breast Palpation Assessment"
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations1CS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)

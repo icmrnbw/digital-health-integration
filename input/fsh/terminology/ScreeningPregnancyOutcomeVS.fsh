@@ -17,5 +17,3 @@ Description: "Defines Screening Pregnancy Outcome"
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations1CS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)

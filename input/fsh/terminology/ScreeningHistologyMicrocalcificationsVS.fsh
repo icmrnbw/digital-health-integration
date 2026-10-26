@@ -14,6 +14,4 @@ Description: "LOINC answer codes for microcalcifications in a breast tumor."
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
-* ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)

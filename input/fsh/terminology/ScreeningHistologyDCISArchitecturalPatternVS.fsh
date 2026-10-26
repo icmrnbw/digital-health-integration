@@ -16,6 +16,4 @@ Description: "LOINC answer codes for the architectural growth pattern of ductal 
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
-* ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)

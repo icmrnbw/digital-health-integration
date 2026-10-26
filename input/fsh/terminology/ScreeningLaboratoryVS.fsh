@@ -11,5 +11,3 @@ Description: "Value set of codes for laboratory referrals and results"
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(ScreeningLaboratoryCS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningLoincTranslationsCS)
