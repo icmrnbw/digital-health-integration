@@ -276,7 +276,6 @@ Description: "Example completed response to the Screening woman examination ques
 * item[1].item[0].text = "Перенесённые инфекции в детстве"
 * item[1].item[0].answer[0].valueCoding.system = $sct
 * item[1].item[0].answer[0].valueCoding.code = #14189004
-* item[1].item[0].answer[0].valueCoding.display = "Measles"
 * item[1].item[0].answer[1].valueCoding.system = $sct
 * item[1].item[0].answer[1].valueCoding.code = #3738000
 * item[1].item[0].answer[2].valueCoding.system = $sct
@@ -712,7 +711,6 @@ Description: "Example completed response to the Screening woman examination ques
 * item[7].item[0].text = "Общее состояние"
 * item[7].item[0].answer[0].valueCoding.system = $sct
 * item[7].item[0].answer[0].valueCoding.code = #6736007
-* item[7].item[0].answer[0].valueCoding.display = "Moderate severity"
 * item[7].item[1].linkId = "obesity-degree"
 * item[7].item[1].text = "Степень ожирения"
 * item[7].item[1].answer[0].valueCoding.system = $sct
