@@ -15,8 +15,4 @@ Description: "SNOMED CT and local special treatment types accepted in breast and
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations1CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

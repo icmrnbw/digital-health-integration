@@ -15,6 +15,4 @@ Description: "Value set containing Cervical Cancer Screening Questionnaire"
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

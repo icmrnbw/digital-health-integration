@@ -11,4 +11,4 @@ Description: "Defines Screening Ultrasound Axillary Node Status"
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations1CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

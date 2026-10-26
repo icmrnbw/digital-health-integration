@@ -12,6 +12,4 @@ Description: "Defines Screening Urination Characteristic"
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations1CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

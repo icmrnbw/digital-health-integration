@@ -11,4 +11,4 @@ Description: "Defines Screening Menstruation Abundance"
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

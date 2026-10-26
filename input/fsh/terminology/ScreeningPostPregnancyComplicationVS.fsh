@@ -11,4 +11,4 @@ Description: "Defines Screening Post Pregnancy Complication"
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations1CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)

@@ -12,6 +12,4 @@ Description: "Value set containing Screening Diabetes Codes"
 
 // Supplements providing screening display languages.
 * ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations2CS)
-* ^extension[+].url = $valueset-supplement
-* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslations3CS)
+* ^extension[=].valueCanonical = Canonical(ScreeningSnomedTranslationsCS)
