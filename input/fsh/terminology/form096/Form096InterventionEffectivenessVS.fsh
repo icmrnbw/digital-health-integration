@@ -5,6 +5,6 @@ Description: "Form 096 terminology binding for Procedure.outcome / Observation.v
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/intervention-effectiveness-vs"
 * ^status = #active
 * ^experimental = true
-* include $form096-intervention-effectiveness-cs#chr-0049-0001 "Fully effective"
-* include $form096-intervention-effectiveness-cs#chr-0049-0002 "Partially effective"
-* include $form096-intervention-effectiveness-cs#chr-0049-0003 "Ineffective"
+* include $sct#385669000 "Successful"
+* include $sct#385670004 "Partially successful"
+* include $sct#385671000 "Unsuccessful"

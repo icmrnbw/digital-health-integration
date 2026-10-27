@@ -3,7 +3,7 @@ Id: vaginal-discharge-color-cs
 Title: "Vaginal Discharge Color CodeSystem"
 Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/vaginal-discharge-color-cs"
-* ^status = #active
+* ^status = #draft
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

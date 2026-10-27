@@ -1,12 +1,7 @@
 Profile: Form096Encounter
 Parent: UZCoreEncounter
 Id: form-096-encounter
-Title: "Form 096 Encounter"
-Description: "Hospital encounter referenced by Form 096, including the complete hospitalization outcome and an optional transfer destination."
+Title: "Form 096 Encounter (deprecated)"
+Description: "Deprecated compatibility profile. Use UZCoreEncounter for the maternal hospitalization shared by Forms 066 and 096; discharge disposition is optional."
+* ^status = #retired
 * ^experimental = true
-
-* admission 1..1 MS
-* admission.dischargeDisposition 1..1 MS
-* admission.dischargeDisposition from Form096HospitalizationOutcomeVS (required)
-* admission.destination 0..1 MS
-* admission.destination only Reference(UZCoreLocation or UZCoreOrganization)

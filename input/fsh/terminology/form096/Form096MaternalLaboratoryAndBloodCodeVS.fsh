@@ -12,7 +12,6 @@ Description: "Form 096 terminology binding for Terminology concepts used by FHIR
 * include $loinc#20507-0 "RW (RPR) result"
 * include $loinc#24111-7 "Gonorrhea test"
 * include $sct#10828004 "Positive"
-* include $sct#11466000 "Name of performed operation"
 * include $sct#112144000 "Blood group A"
 * include $sct#112149005 "Blood group B"
 * include $sct#165743006 "Blood group AB"
@@ -20,5 +19,3 @@ Description: "Form 096 terminology binding for Terminology concepts used by FHIR
 * include $sct#165747007 "RhD positive"
 * include $sct#165746003 "RhD negative"
 * include $sct#260385009 "Negative"
-* include $sct#424441002 "Medical supervision during pregnancy"
-* include $sct#716186003 "Allergic reactions"

@@ -3,7 +3,7 @@ Id: maternal-pelvimetry-measurement-code-cs
 Title: "Maternal Pelvimetry Measurement CodeSystem"
 Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-pelvimetry-measurement-code-cs"
-* ^status = #active
+* ^status = #draft
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete
@@ -33,12 +33,6 @@ Description: "Governed local concepts for Form 096."
   * ^designation[=].value = "Conjugata externa — external conjugate; result is Observation.valueQuantity in cm"
   * ^designation[+].language = #ru
   * ^designation[=].value = "Conjugata externa (наружная конъюгата)"
-
-* #chr-0083-0005 "Conjugata diagonalis — diagonal konyugata"
-  * ^designation[0].language = #en
-  * ^designation[=].value = "Conjugata diagonalis — diagonal conjugate; result is Observation.valueQuantity in cm"
-  * ^designation[+].language = #ru
-  * ^designation[=].value = "Conjugata diagonalis (диагональная конъюгата)"
 
 * #chr-0083-0006 "Conjugata vera — haqiqiy konyugata"
   * ^designation[0].language = #en

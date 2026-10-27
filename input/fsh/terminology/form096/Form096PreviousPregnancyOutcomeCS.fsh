@@ -3,7 +3,7 @@ Id: previous-pregnancy-outcome-cs
 Title: "Previous Pregnancy Outcome CodeSystem"
 Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/previous-pregnancy-outcome-cs"
-* ^status = #active
+* ^status = #draft
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

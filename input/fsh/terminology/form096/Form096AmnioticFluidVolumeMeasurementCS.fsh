@@ -3,7 +3,7 @@ Id: amniotic-fluid-volume-measurement-cs
 Title: "Amniotic Fluid Volume Measurement CodeSystem"
 Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-volume-measurement-cs"
-* ^status = #active
+* ^status = #draft
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

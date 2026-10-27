@@ -3,7 +3,7 @@ Id: tissue-integrity-status-cs
 Title: "Tissue Integrity Status CodeSystem"
 Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/tissue-integrity-status-cs"
-* ^status = #active
+* ^status = #draft
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete

@@ -13,5 +13,5 @@ Description: "Form 096 terminology binding for Terminology concepts used by FHIR
 * include $loinc#11977-6 "Parity"
 * include $loinc#11996-6 "Gravidity"
 * include $loinc#55283-6 "Fetal heart rate, lie and presentation"
-* include $loinc#57088-7 "First fetal movement"
+* include $loinc#57065-5 "Quickening date"
 * include $sct#386216000 "Delivery"

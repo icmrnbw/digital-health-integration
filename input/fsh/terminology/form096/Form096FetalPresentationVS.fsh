@@ -6,5 +6,5 @@ Description: "Form 096 terminology binding for Observation.valueCodeableConcept.
 * ^status = #active
 * ^experimental = true
 * include $form096-fetal-presentation-cs#chr-0044-0001 "Cephalic"
-* include $form096-fetal-presentation-cs#chr-0044-0002 "Breech"
+* include $sct#6096002 "Breech presentation"
 * include $form096-fetal-presentation-cs#chr-0044-0003 "Footling"

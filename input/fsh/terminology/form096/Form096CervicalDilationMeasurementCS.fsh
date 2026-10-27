@@ -3,7 +3,7 @@ Id: cervical-dilation-measurement-cs
 Title: "Cervical Dilation Measurement CodeSystem"
 Description: "Governed local concepts for Form 096."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/cervical-dilation-measurement-cs"
-* ^status = #active
+* ^status = #draft
 * ^experimental = true
 * ^caseSensitive = true
 * ^content = #complete
