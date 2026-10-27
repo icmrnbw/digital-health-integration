@@ -281,3 +281,22 @@ instanceOptions:
   # if InstanceOf references a profile:
   #
   # setId: always # always | standalone-only
+
+# Explicit catalogue descriptions for JSON examples in input/examples.
+resources:
+  Bundle/example-form-096-antepartum-stillbirth:
+    name: Form 096 - antepartum stillbirth example
+    description: Synthetic maternity document with an antepartum stillbirth outcome and fetal-death timing.
+    exampleBoolean: true
+  Bundle/example-form-096-intrapartum-stillbirth:
+    name: Form 096 - intrapartum stillbirth example
+    description: Synthetic maternity document with an intrapartum stillbirth outcome and fetal-death timing.
+    exampleBoolean: true
+  Bundle/example-form-096-minimal:
+    name: Form 096 - minimal document example
+    description: Synthetic maternity document containing required document metadata and references without clinical sections.
+    exampleBoolean: true
+  Bundle/example-form-096-author-without-role:
+    name: Form 096 - author without a known role example
+    description: Synthetic maternity document whose author references an identified practitioner directly when no role is known.
+    exampleBoolean: true

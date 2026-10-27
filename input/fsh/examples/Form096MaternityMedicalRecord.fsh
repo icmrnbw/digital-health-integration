@@ -248,11 +248,27 @@ Usage: #inline
 * text.status = #generated
 * text.div = """
 <div xmlns="http://www.w3.org/1999/xhtml">
-  <p><b>Karimova Dilnoza Akmalovna</b> вЂ” female, born 1994-05-14; alive.</p>
-  <p>PINFL: 31234567890123. Health card: HC-096-2026-000123. Local passport: AA1234567.</p>
-  <p>Nationality: Uzbek. Marital status: married. Telephone: +998901234567.</p>
-  <p>Address: Chilonzor-12, 15-uy, 24-xonadon; postal code 100115; city code 16090011; district code 1726266; state code 1726.</p>
-  <p>Managing organization: Toshkent City Perinatal Center.</p>
+  <div lang="en" xml:lang="en">
+    <p><b>Karimova Dilnoza Akmalovna</b> — female, born 1994-05-14; alive.</p>
+    <p>PINFL: 31234567890123. Health card: HC-096-2026-000123. Local passport: AA1234567.</p>
+    <p>Nationality: Uzbek. Marital status: married. Telephone: +998901234567.</p>
+    <p>Address: Chilonzor-12, 15-uy, 24-xonadon; postal code 100115; city code 16090011; district code 1726266; state code 1726.</p>
+    <p>Managing organization: Toshkent City Perinatal Center.</p>
+  </div>
+  <div lang="ru" xml:lang="ru">
+    <p><b>Каримова Дилноза Акмаловна</b> — женщина, дата рождения 1994-05-14; жива.</p>
+    <p>ПИНФЛ: 31234567890123. Медицинская карта: HC-096-2026-000123. Местный паспорт: AA1234567.</p>
+    <p>Национальность: узбечка. Семейное положение: замужем. Телефон: +998901234567.</p>
+    <p>Адрес: Chilonzor-12, 15-uy, 24-xonadon; почтовый индекс 100115; код города 16090011; код района 1726266; код области 1726.</p>
+    <p>Медицинская организация: Ташкентский городской перинатальный центр.</p>
+  </div>
+  <div lang="uz" xml:lang="uz">
+    <p><b>Karimova Dilnoza Akmalovna</b> — ayol, tug‘ilgan sana 1994-05-14; tirik.</p>
+    <p>JSHSHIR: 31234567890123. Tibbiy karta: HC-096-2026-000123. Mahalliy pasport: AA1234567.</p>
+    <p>Millati: o‘zbek. Oilaviy holati: turmush qurgan. Telefon: +998901234567.</p>
+    <p>Manzil: Chilonzor-12, 15-uy, 24-xonadon; pochta indeksi 100115; shahar kodi 16090011; tuman kodi 1726266; viloyat kodi 1726.</p>
+    <p>Tibbiyot tashkiloti: Toshkent shahar perinatal markazi.</p>
+  </div>
 </div>
 """
 * identifier[nationalId].value = "31234567890123"
