@@ -8,8 +8,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi): the rec
 * identifier 1..*
 * identifier ^short = "Document instance UUID and form number (096)"
 
-* status = #final
-* status ^short = "Document status: final, sent once the record is closed at discharge"
+* status ^short = "Document status: preliminary while the woman is in the maternity hospital, final once the record is closed at discharge"
 
 * type = $composition-type-cs#emdoc-0010-0016 "Maternity (delivery) medical record"
 * type ^short = "Form 096 document type (maternity medical record); LOINC 57057-2 \"Labor and Delivery Summary Note\" may be sent as an additional coding"
@@ -76,7 +75,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi): the rec
 * section[medicalAndObstetricHistory].code 1..1
 * section[medicalAndObstetricHistory].code = $loinc#11329-0 "History general Narrative - Reported"
 * section[medicalAndObstetricHistory].code ^short = "Occupation, general diseases, spouse's health, menstrual, sexual and gynecological history, previous pregnancies, deliveries and abortions, epidemiological history"
-* section[medicalAndObstetricHistory].entry only Reference(UZCoreRelatedPerson or UZCoreObservation or UZCoreSocioeconomicObservation or UZCoreCondition or UZCoreProcedure or UZCoreQuestionnaireResponse)
+* section[medicalAndObstetricHistory].entry only Reference(UZCoreRelatedPerson or UZCoreObservation or UZCoreCondition or UZCoreProcedure or UZCoreQuestionnaireResponse)
 * section[medicalAndObstetricHistory].entry ^short = "Spouse, history observations, occupation, past diseases and operations, history questionnaire"
 
 // 3. Ushbu homiladorlikning kechishi

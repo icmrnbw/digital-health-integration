@@ -7,3 +7,7 @@ Description: "Observation.code for the Form 096 amniotic fluid appearance field,
 * ^experimental = true
 
 * $loinc#1887-9 "Appearance of Amniotic fluid"
+
+// Supplements providing Russian and Uzbek displays.
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096LoincSupplementCS)

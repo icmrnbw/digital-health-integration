@@ -37,3 +37,5 @@ Description: "Observation.code for the Form 096 general, obstetric and fetal exa
 * ^extension[=].valueCanonical = Canonical(Form096SnomedSupplementCS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(Form111SnomedSupplementCS)
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096LoincSupplementCS)
