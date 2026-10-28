@@ -1,8 +1,9 @@
 ValueSet: Form096AmnioticFluidObservationCodeVS
 Id: amniotic-fluid-observation-code-vs
-Title: "Amniotic Fluid Appearance Observation Code"
-Description: "Form 096 terminology binding for Observation.code."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/amniotic-fluid-observation-code-vs"
-* ^status = #active
+Title: "Form 096 Amniotic Fluid Appearance Code"
+Description: "Observation.code for the Form 096 amniotic fluid appearance field, with the value from amniotic-fluid-characteristic-vs."
+* insert IntegrationsValueSet(amniotic-fluid-observation-code-vs)
+* ^status = #draft
 * ^experimental = true
-* include $loinc#1887-9 "Appearance of amniotic fluid"
+
+* $loinc#1887-9 "Appearance of Amniotic fluid"

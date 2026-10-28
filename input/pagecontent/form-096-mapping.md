@@ -1,276 +1,326 @@
 <style>
-.col-12 table.mapping-fields { table-layout: fixed; width: 100%; }
-.col-12 .mapping-fields th, .col-12 .mapping-fields td { overflow-wrap: anywhere; word-break: break-word; vertical-align: top; }
-.col-12 .mapping-fields th:nth-child(1), .col-12 .mapping-fields td:nth-child(1) { width: 17%; }
-.col-12 .mapping-fields th:nth-child(2), .col-12 .mapping-fields td:nth-child(2) { width: 20%; }
-.col-12 .mapping-fields th:nth-child(3), .col-12 .mapping-fields td:nth-child(3) { width: 28%; }
-.col-12 .mapping-fields th:nth-child(4), .col-12 .mapping-fields td:nth-child(4) { width: 23%; }
-.col-12 .mapping-fields th:nth-child(5), .col-12 .mapping-fields td:nth-child(5) { width: 12%; }
+/* Per-form mapping-table column widths (096: one table per Composition section). */
+.col-12 table { table-layout: fixed; width: 100%; }
+.col-12 th, .col-12 td { overflow-wrap: anywhere; word-break: break-word; vertical-align: top; }
+.col-12 th:nth-child(1), .col-12 td:nth-child(1) { width: 18%; }
+.col-12 th:nth-child(2), .col-12 td:nth-child(2) { width: 18%; }
+.col-12 th:nth-child(3), .col-12 td:nth-child(3) { width: 20%; }
+.col-12 th:nth-child(4), .col-12 td:nth-child(4) { width: 26%; }
+.col-12 th:nth-child(5), .col-12 td:nth-child(5) { width: 18%; }
 </style>
 
-### Form 096 — Maternity Medical Record: Field Mapping
+### Form 096 - Maternity Medical Record
+
+This page documents the mapping between Form 096 (Tug'ruq tibbiy kartasi) fields and FHIR resources.
+
+---
 
 ### Overview
 
-This page maps supported Form 096 fields and supplied DMED data to FHIR R5. Use the [Form 096 Composition](StructureDefinition-form-096-maternity-medical-record-composition.html) with UZ Core resources. The [complete synthetic document](Bundle-example-form-096-maternity-medical-record.html) illustrates a broad record; it does not prove that every example field is available in DMED.
+Form 096 is the medical record of a woman's stay in a maternity hospital: admission, history, examination, course of labor, each newborn, the postpartum period, orders and signatures. The form data maps to multiple FHIR resources bundled together as a FHIR Document, conforming to the [Form 096 Maternity Medical Record Composition](StructureDefinition-form-096-maternity-medical-record-composition.html) profile. Where available, resources conform to [UZ Core](https://dhp.uz/fhir/core/en/artifacts.html) profiles.
 
-### Data and identity rules
+Each of the 13 sections of the Composition carries its own `section.code` and lists the resources belonging to that part of the form. Every section is optional: a section is sent only when the form has data for it.
 
-- Clinical facts and sections are optional by availability. Omit unavailable resources/components; preserve genuine 0 and false. Required FHIR/Core metadata and identifiers remain required. UI-required fields do not create additional integration minimums.
-- Use the Form 066 identity, resource-phase and revision workflow. The mother has one shared master Encounter for 066/096; each document retains its historical snapshot. Document POST alone does not upsert master resources. Distinguish stable business identity from Bundle revision identity. UUID examples use urn:ietf:rfc:3986; the form-number value 096 is not a unique card identifier.
-- Most measurements are separate maternal Observations. Explicit component paths describe the worked example's supported clinical components; do not emit the same fact twice. Individual birth facts have the child as subject. Shared labor/placenta facts retain the mother, maternal Encounter and stable fact IDs in 096/097. The child has its own hospitalization.
-- Birth outcome: LOINC 63893-2 → SCT 281050002 Livebirth or 237364002 Stillbirth. A known antepartum/intrapartum period is a separate child Condition, 237361005/237362003. Death after livebirth does not change the birth outcome. Death uses Patient.deceasedDateTime when known, or deceasedBoolean=true when only the fact is known; update the master Patient as well as the snapshot.
-- Incoming DMED Apgar is the one-minute total, 9272-6. Do not invent five-minute or component scores. UI requires a score even for stillbirth: confirm whether a received value is an actual assessment; never turn absence into 0. Durations use UCUM min: 01:30 means 90 minutes. Missing III is not zero, and an I–II subtotal is not a full I–III duration. The end of three-stage labor is not the birth of the last child. Preserve source date precision.
-- Pelvimetry uses six separate maternal Observations. C. diagonalis uses SCT 249011002. Do not silently substitute an obstetric-conjugate code for C. vera. Maternal discharge follows the Core Encounter binding; receiving organization belongs in admission.destination. Placental-delivery method is not Procedure.outcome.
-- Use the selected physician/midwife as the Form 096 authors; when both are absent, use the known actual form-filling user. The discharging user is not automatically the author. Use UZCorePractitioner directly when identity is known but role is not; do not invent a profession. Provenance/attestation follows Form 066; the DHP attester does not replace the clinical author. UZCoreProvenance allows a Bundle document target, not Composition.
-- The supplied frontend description blocks editing after hospitalization completion. The revision transport contract does not imply a post-discharge edit button. Printing a saved revision does not create clinical facts. Historical pregnancy counts must not be calculated from the current delivery.
+Each field is its own Observation with its own `code`. A field Form 096 shares with Form 111 uses the Form 111 code, so the same fact is coded the same way in both forms. The fetal facts are sent once per fetus, with `Observation.focus` referencing the newborn that fetus was born as. Each newborn's own facts have the newborn as `subject`; facts about the delivery as a whole have the mother.
 
-### Composition sections
+For a complete reference instance, see the [Form 096 maternity medical record example](Bundle-example-form-096-maternity-medical-record.html), a vaginal twin delivery.
 
-All 13 named coded slices below are optional (0..1). Epidemiological history is an additional optional open section with source text and no fixed coded discriminator. Base FHIR section-content invariants still apply; omit a section without content instead of inventing entries.
+---
 
-| Slice | Section code | Permitted entries |
-|---|---|---|
-| `admissionInformation` | `LOINC#46241-6` | `UZCorePatient or UZCoreEncounter or UZCoreOrganization or UZCoreObservation or UZCoreCondition or UZCoreProcedure or UZCoreAllergyIntolerance` |
-| `medicalAndObstetricHistory` | `LOINC#11329-0` | `UZCoreRelatedPerson or UZCoreObservation or UZCoreCondition or Procedure or UZCoreQuestionnaireResponse` |
-| `currentPregnancy` | `LOINC#65869-0` | `UZCoreObservation or UZCoreCondition or UZCoreQuestionnaireResponse` |
-| `obstetricExamination` | `SCT#163497009` | `UZCoreObservation or UZCorePractitionerRole` |
-| `laborCourse` | `SCT#289909005` | `UZCoreObservation or Procedure or MedicationAdministration or UZCorePractitionerRole` |
-| `newbornDeliveryRecord` | `LOINC#57075-4` | `UZCorePatient or UZCoreObservation or UZCoreCondition or Procedure or Immunization or UZCorePractitionerRole` |
-| `postpartumPeriod` | `LOINC#11506-3` | `UZCoreObservation` |
-| `medicationOrders` | `LOINC#10160-0` | `MedicationRequest or MedicationAdministration or UZCoreObservation` |
-| `diagnosticOrders` | `LOINC#18776-5` | `UZCoreServiceRequest or UZCoreObservation` |
-| `procedureOrders` | `LOINC#29554-3` | `UZCoreServiceRequest or Procedure` |
-| `usedMaterials` | `LOINC#46264-8` | `SupplyDelivery` |
-| `sickLeaveCertificates` | `SCT#224459001` | `SickLeaveCarePlan` |
-| `responsiblePersons` | `LOINC#51899-3` | `UZCorePractitionerRole or Provenance` |
+### Field Mapping
 
-### Code systems and identifiers
+### Form 096 Maternity Medical Record - FHIR Mapping
 
-Coding systems, unit systems and identifier namespaces are distinct. A ValueSet URL is not a Coding.system. Integration CS/VS links point to definitions in this branch; their existence is not approval or deployment. Do not invent an international mapping from an ambiguous source label.
+---
 
-| Name | URI |
-|---|---|
-| `LOINC` | `http://loinc.org` |
-| `SCT` | `http://snomed.info/sct` |
-| `UCUM` | `http://unitsofmeasure.org` |
-| `ICD-10` | `http://hl7.org/fhir/sid/icd-10` |
-| `ICHI` | `http://id.who.int/icd/release/11/ichi` |
-| `v3-MaritalStatus` | `http://terminology.hl7.org/CodeSystem/v3-MaritalStatus` |
-| `discharge-disposition` | `http://terminology.hl7.org/CodeSystem/discharge-disposition` |
-| `Core home CS` | `https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-discharge-disposition-home-cs` |
-| `diagnosis-type-cs` | `https://terminology.dhp.uz/fhir/core/CodeSystem/diagnosis-type-cs` |
-| `location-kinds-cs` | `https://terminology.dhp.uz/fhir/core/CodeSystem/location-kinds-cs` |
-| `HC` | `https://dhp.uz/fhir/core/sid/pid/uz/hc` |
-| `NI` | `https://dhp.uz/fhir/core/sid/pid/uz/ni` |
-| `Core soliq identifier` | `https://dhp.uz/fhir/core/sid/org/uz/soliq` |
-| `medical-record-number` | `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` |
-| `form-number` | `https://dhp.uz/fhir/core/sid/doc/uz/form-number` |
-| `location-unit` | `https://dhp.uz/fhir/core/NamingSystem/location-unit` |
-| `UUID URI identifier` | `urn:ietf:rfc:3986` |
+### Document Information
 
-[maternal-pelvimetry-measurement-code-cs](CodeSystem-maternal-pelvimetry-measurement-code-cs.html); [fetal-lie-vs](ValueSet-fetal-lie-vs.html); [fetal-presentation-vs](ValueSet-fetal-presentation-vs.html); [abo-blood-group-vs](ValueSet-abo-blood-group-vs.html); [rh-factor-vs](ValueSet-rh-factor-vs.html); [maternal-death-timing-vs](ValueSet-maternal-death-timing-vs.html); [amniotic-fluid-characteristic-vs](ValueSet-amniotic-fluid-characteristic-vs.html).
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Hujjat versiyasi UUID | Идентификатор версии документа | Bundle.identifier | `urn:ietf:rfc:3986` | urn:uuid:09600000-1111-2222-3333-444444444444 |
+| Shakl raqami | Номер формы | Composition.identifier | `https://dhp.uz/fhir/core/sid/doc/uz/form-number` | 096 |
+| Hujjat holati | Статус документа | Composition.status | - | final |
+| Hujjat turi | Тип документа | Composition.type | LOINC `57057-2` "Labor and Delivery Summary Note" | - |
+| Hujjat kategoriyasi | Категория документа | Composition.category | [Document Category](CodeSystem-document-category-cs.html) `form-096` "Birth medical record" | - |
+| Bemor | Пациентка | Composition.subject | [Patient](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-patient.html) | Karimova Dilnoza Akmalovna |
+| Kasallik tarixi | История болезни | Composition.encounter | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html) | MRN-096-2026-000123 |
+| Hujjat sanasi | Дата документа | Composition.date | - | 2026-08-18T15:30:00+05:00 |
+| Shifokor va akusherka | Врач и акушерка | Composition.author | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html), or [Practitioner](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner.html) when the role is not known | Rasulova M.B., Tursunova N.S. |
+| Hujjat egasi | Организация-хранитель документа | Composition.custodian | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | Toshkent City Perinatal Center |
+| Hujjat sarlavhasi | Заголовок документа | Composition.title | - | Form 096 - Maternity Medical Record |
 
-### Document and patient identity
+---
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Hujjat identifikatori | Идентификатор документа | `Composition.identifier; Bundle.identifier`<br/>DMED source: `data.id; document revision context` | `urn:ietf:rfc:3986` | urn:uuid:… |
-| Shakl raqami | Номер формы | `Composition.identifier` | `form-number` | 096 |
-| Tibbiy karta raqami | Номер медкарты пациентки | `Patient.identifier[healthCardId]`<br/>DMED source: `data.patient.number_med_card` | `HC` | MED-096-0001 |
-| JShShIR | ПИНФЛ | `Patient.identifier[nationalId]` | `NI` | 14 digits, when available |
-| Bemor F.I.Sh. | ФИО пациентки | `Patient.name.text; family; given`<br/>DMED source: `data.patient.name` | `—` | Synthetic patient |
-| Tug‘ilgan sana | Дата рождения | `Patient.birthDate` | `—` | 1990-04-12 |
-| Millati | Национальность | `Patient.extension[nationality].extension[code].valueCodeableConcept`<br/>DMED source: `data.nationality` | `Core nationality-cs` | source code |
-| Yashash manzili | Адрес проживания | `Patient.address`<br/>DMED source: `data.patient.place_residence` | `Core address-use rules` | source address |
-| Ro‘yxatdan o‘tgan manzil | Адрес регистрации | `Patient.address`<br/>DMED source: `data.patient.place_registration` | `Core address-use rules` | source address |
-| Oilaviy holati | Семейное положение | `Patient.maritalStatus`<br/>DMED source: `data.patient.family_status` | `v3-MaritalStatus#M` | married |
-| Telefon | Телефон | `Patient.telecom` | `system = phone` | source telephone |
-| Tibbiy muassasa STIRi | ИНН медицинской организации | `Organization.identifier[taxId]` | `Core soliq identifier` | 999999999 |
-{: .mapping-fields}
+### 1. Document details, admission and discharge
 
-### Maternal hospitalization, discharge and death
+Section code: LOINC `LP74442-2` "Admission Information".
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Kasallik tarixi raqami | Номер истории болезни | `Encounter.identifier`<br/>DMED source: `data.hospitalization_id` | `medical-record-number` | 20676 |
-| Qabul qilingan sana va vaqt | Дата и время поступления | `Encounter.actualPeriod.start`<br/>DMED source: `data.hospitalization.start_at` | `—` | 2026-08-30T09:15:00+05:00 |
-| Chiqarilgan sana va vaqt | Дата и время выписки | `Encounter.actualPeriod.end` | `—` | source date/time |
-| Palata | Палата | `Encounter.location.location → Location.identifier[unit]`<br/>DMED source: `data.hospitalization.chamber` | `location-kinds-cs#Ward` | 12 |
-| Yo‘llagan muassasa | Направившая организация | `Encounter.admission.origin → Organization.name`<br/>DMED source: `data.hospitalization.sending_clinic.title` | `—` | source organization |
-| Chiqarildi | Выписана | `Encounter.admission.dischargeDisposition` | `Core home CS#mserv-0004-00004` | discharged |
-| Boshqa muassasaga o‘tkazildi | Переведена | `Encounter.admission.dischargeDisposition` | `discharge-disposition#other-hcf` | transferred |
-| Vafot etdi | Умерла | `Encounter.admission.dischargeDisposition` | `discharge-disposition#exp` | died |
-| O‘tkazilgan muassasa | Учреждение перевода | `Encounter.admission.destination → Organization.identifier[taxId]`<br/>DMED source: `data.pregnancy_birth.clinic.inn` | `Core soliq identifier` | 999999999 |
-| O‘lim sanasi va vaqti | Дата и время смерти | `Patient.deceasedDateTime`<br/>DMED source: `postmortem epicrisis; API selector pending` | `—` | source precision |
-| O‘lim ma’lum, sana noma’lum | Смерть известна, дата неизвестна | `Patient.deceasedBoolean` | `—` | true |
-| Ona o‘limining davri | Период смерти матери | `Observation.component.valueCodeableConcept`<br/>DMED source: `data.pregnancy_birth.death_time` | `maternal-death-timing-vs; mapping pending` | omit until source meaning verified |
-{: .mapping-fields}
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Tibbiy karta raqami | Номер медкарты пациентки | Patient.identifier[healthCardId] | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-096-2026-000123 |
+| JShShIR | ПИНФЛ | Patient.identifier[nationalId] | `system` `https://dhp.uz/fhir/core/sid/pid/uz/ni`<br>`type` `NI` | 31234567890123 |
+| Bemor F.I.Sh. | ФИО пациентки | Patient.name | - | Karimova Dilnoza Akmalovna |
+| Tug'ilgan sana | Дата рождения | Patient.birthDate | - | 1994-05-14 |
+| Millati | Национальность | Patient.extension[nationality] | [UZ Core Nationality](https://dhp.uz/fhir/core/en/CodeSystem-nationality-cs.html) | O'zbek (`44`) |
+| Oilaviy holati | Семейное положение | Patient.maritalStatus | [UZ Core Marital Status](https://dhp.uz/fhir/core/en/ValueSet-marital-status-vs.html) | Married (`M`) |
+| Yashash manzili | Адрес проживания | Patient.address | - | Chilonzor-12, 15-uy, 24-xonadon |
+| Telefon | Телефон | Patient.telecom | - | +998901234567 |
+| Kasallik tarixi raqami | Номер истории болезни | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-096-2026-000123 |
+| Qabul qilingan sana va vaqt | Дата и время поступления | Encounter.actualPeriod.start | - | 2026-08-16T08:20:00+05:00 |
+| Chiqarilgan sana va vaqt | Дата и время выписки | Encounter.actualPeriod.end | - | 2026-08-18T15:00:00+05:00 |
+| O'tkazilgan kunlar | Проведено койко-дней | Encounter.length | UCUM `d` | 2.28 d |
+| Palata | Палата | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html).identifier[unit] | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` | 12 |
+| Yo'llagan muassasa | Направившая организация | Encounter.admission.origin → Organization | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | Chilonzor District Polyclinic No. 5 |
+| Gospitalizatsiya natijasi | Исход госпитализации | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html) | Discharged (`mserv-0004-00004`) |
+| O'tkazilgan muassasa | Учреждение перевода | Encounter.admission.destination → Organization | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | - |
+| Onaning o'limi | Смерть матери | Patient.deceasedDateTime, or Patient.deceasedBoolean when the date is not known | - | - |
+| Ona o'limining davri | Период смерти матери | Condition.code | [Maternal Death Timing](ValueSet-maternal-death-timing-vs.html) | - |
+| Qon guruhi | Группа крови | Observation.valueCodeableConcept | `code` LOINC `883-9` "ABO group [Type] in Blood"<br>`value` [Blood Group](https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs) | A (II) (`112144000`) |
+| Rezus omil | Резус-фактор | Observation.valueCodeableConcept | `code` LOINC `10331-7` "Rh [Type] in Blood"<br>`value` [Blood Rh](https://terminology.dhp.uz/fhir/core/ValueSet/blood-rh-vs) | Rh positive (`165747007`) |
+| Gemoglobin | Гемоглобин | Observation.valueQuantity | [Admission Laboratory Test Codes](ValueSet-maternal-laboratory-and-blood-code-vs.html) LOINC `718-7` "Hemoglobin [Mass/volume] in Blood" | 112 g/L |
+| Antitelolar | Антитела | Observation.valueCodeableConcept | `code` [Admission Laboratory Test Codes](ValueSet-maternal-laboratory-and-blood-code-vs.html) LOINC `890-4` "Blood group antibody screen [Presence] in Serum or Plasma"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative (`260385009`) |
+| RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum", as in Form 111<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative (`260385009`) |
+| Gonokokk | Гонококк | Observation.valueCodeableConcept | `code` [Analysis Test Code](ValueSet-form111-analysis-test-code-vs.html) `chr-0001-00001` "Gonococcus test", as in Form 111<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative (`260385009`) |
+| Homiladorlikdagi ko'riklar soni | Количество осмотров во время беременности | Observation.valueInteger | [Medical and Obstetric History Codes](ValueSet-pregnancy-obstetric-history-code-vs.html) LOINC `68493-6` "Prenatal visits for this pregnancy #" | 6 |
+| Homiladorlik davrida kuzatilgan | Наблюдалась во время беременности | Observation.valueBoolean | `code.text` only, no code yet | true |
+| Qabul tashxisi | Диагноз при поступлении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` | Twin pregnancy (`O30.0`) |
+| Klinik tashxis | Клинический диагноз | Condition.code | ICD-10 | Twin pregnancy (`O30.0`) |
+| Yakuniy tashxis | Заключительный диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `main` | Multiple delivery, all spontaneous (`O84.0`) |
+| Tug'ruqdagi asoratlar | Осложнения родов | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | First degree perineal laceration during delivery (`O70.0`) |
+| Tug'ruqdan keyingi asoratlar | Послеродовые осложнения | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | Disruption of perineal obstetric wound (`O90.1`) |
+| Operatsiya | Операция | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code; occurrenceDateTime; performer.actor | SNOMED CT | Episiotomy (`85548006`), 2026-08-16T12:15:00+05:00 |
+| Allergiya | Аллергия | [AllergyIntolerance](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-allergy-intolerance.html).code | SNOMED CT; `716186003` "No known allergy" only when the form says so | No known allergy (`716186003`) |
 
-### Diagnoses and operations
+---
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Qabul tashxisi | Поступной диагноз | `Condition.code; Encounter.diagnosis.condition`<br/>DMED source: `data.admission_diagnosis.code` | `ICD-10; diagnosis-type-cs#gencl-0001-00002` | O26.9 |
-| Klinik tashxis | Клинический диагноз | `Condition.code; Encounter.diagnosis.use.text`<br/>DMED source: `data.disease_codes[source=hospitalization, type=main].disease_code.code` | `ICD-10; source role text` | O14.1 |
-| Yakuniy tashxis | Окончательный диагноз | `Condition.code; Condition.extension[diagnosisType]`<br/>DMED source: `data.disease_codes[source=medical_case, type=main].disease_code.code` | `ICD-10; diagnosis-type-cs#gencl-0001-00003` | O80 |
-| Asoratlar | Осложнения | `Condition.code; Condition.extension[diagnosisType]`<br/>DMED source: `data.disease_codes[*].disease_code.code` | `ICD-10; diagnosis-type-cs#gencl-0001-00005` | source diagnosis |
-| Hamroh kasalliklar | Сопутствующие заболевания | `Condition.code; Condition.extension[diagnosisType]` | `ICD-10; diagnosis-type-cs#gencl-0001-00004` | source diagnosis |
-| Operatsiya | Операция | `Procedure.code; occurrence[x]; performer.actor`<br/>DMED source: `data.surgical_interventions[*].ichi.title; performed_at` | `ICHI if supplied; otherwise code.text` | source operation title |
-{: .mapping-fields}
+### 2. Medical and obstetric history
 
-### History, allergy, blood group and pregnancy
+Section code: LOINC `11329-0` "History general Narrative - Reported".
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Oldingi kasalliklar va operatsiyalar | Перенесённые болезни и операции | `Condition; Procedure` | `verified source codes or source text` | source history |
-| Akusherlik va epidemiologik anamnez | Акушерский и эпидемиологический анамнез | `QuestionnaireResponse.item.answer` | `form-096-history Questionnaire` | source answers |
-| Turmush o‘rtog‘i haqida | Сведения о супруге | `RelatedPerson; clinical facts with the correct subject` | `verified relationship code` | source data |
-| Allergiya | Аллергия | `AllergyIntolerance.code; reaction`<br/>DMED source: `data.allergies[]` | `verified source code or text` | source allergy |
-| Ma’lum allergiya yo‘q | Явно указано отсутствие известных аллергий | `AllergyIntolerance.code` | `SCT#716186003` | only an explicit negative history |
-| Qon guruhi | Группа крови матери | `Observation.code → valueCodeableConcept`<br/>DMED source: `data.patient_detail.blood_type` | `LOINC#883-9; abo-blood-group-vs` | A / II |
-| Rezus omil | Резус-фактор матери | `Observation.code → valueCodeableConcept`<br/>DMED source: `data.patient_detail.rh_factor` | `LOINC#10331-7; rh-factor-vs` | positive |
-| Homiladorlikdagi ko‘riklar soni | Количество осмотров во время беременности | `Observation.code → valueInteger`<br/>DMED source: `data.pregnancy_progress_count` | `LOINC#68493-6` | 6 |
-| Homiladorliklar soni | Количество беременностей | `Observation.code → valueInteger`<br/>DMED source: `data.birth_protocol.total_pregnancies` | `LOINC#11996-6` | 4 |
-| Tug‘ruqlar soni | Количество родов / паритет | `Observation.code → valueInteger`<br/>DMED source: `data.birth_protocol.total_births` | `LOINC#11977-6` | 2 |
-| Oxirgi hayz sanasi | Дата последней менструации | `Observation.code → valueDateTime`<br/>DMED source: `data.last_menstruation` | `LOINC#8665-2` | 2025-12-01 |
-| Homilaning birinchi qimirlashi | Дата первого шевеления | `Observation.code → valueDateTime`<br/>DMED source: `data.first_fetal_movement` | `LOINC#57065-5` | 2026-04-10 |
-{: .mapping-fields}
+The two previous pregnancies of the example each have an outcome, a delivery term and a newborn weight, dated with the year of the delivery.
 
-### Maternal measurements and pelvimetry
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Turmush o'rtog'i | Супруг | [RelatedPerson](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-relatedperson.html).name; identifier[nationalId] | - | Karimov Jamshid Anvarovich |
+| Turmush o'rtog'ining sog'lig'i | Здоровье супруга | Observation.valueString (`focus` = RelatedPerson) | [Medical and Obstetric History Codes](ValueSet-pregnancy-obstetric-history-code-vs.html) SNOMED `720372000` "Health status of spouse" | Healthy; no relevant hereditary disease reported. |
+| Ish joyi | Место работы | Observation.valueString | LOINC `80427-8` "Employer name [Identifier]", as in Form 111 | Tashkent City School No. 42 |
+| Kasbi va lavozimi | Профессия и должность | [UZCoreSocioeconomicObservation](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-socioeconomic-observation.html).valueCodeableConcept | `code` SNOMED `14679004` "Occupation", as in Form 111<br>`value` [UZ Core Position and Profession](https://dhp.uz/fhir/core/en/CodeSystem-position-and-profession-cs.html) | O'qituvchi (`2330.9`) |
+| Xayz ko'rish necha yoshdan boshlangan | Возраст начала менструаций | Observation.valueQuantity | LOINC `42798-9` "Age at menarche" | 13 a |
+| Jinsiy hayoti necha yoshdan boshlangan | Возраст начала половой жизни | Observation.valueQuantity | SNOMED `228456002` "Age became sexually active", as in Form 111 | 20 a |
+| Avvalgi homiladorliklar soni | Количество предыдущих беременностей | Observation.valueInteger | SNOMED `246211005` "Number of previous pregnancies" | 2 |
+| Abortlar soni | Количество абортов | Observation.valueInteger | LOINC `11612-9` "[#] Abortions" | 0 |
+| Avvalgi homiladorlik natijasi | Исход предыдущей беременности | Observation.valueCodeableConcept | `code` LOINC `63893-2` "Outcome of pregnancy"<br>`value` [Previous Pregnancy Outcome](ValueSet-form111-previous-pregnancy-outcome-vs.html), as in Form 111 | Birth (`3950001`) |
+| Tug'ruq turi (muddati bo'yicha) | Вид родов (по сроку) | Observation.valueCodeableConcept | `code` [Form111 General Observation Code](ValueSet-form111-general-observation-code-vs.html) `chr-0035-00015` "Type of delivery (by term)"<br>`value` [Previous Delivery Term](ValueSet-form111-previous-delivery-term-vs.html), as in Form 111 | Term birth of newborn (`21243004`) |
+| Avvalgi chaqaloqlar vazni | Вес предыдущих новорождённых | Observation.valueQuantity | LOINC `8339-4` "Birth weight Measured", as in Form 111 | 3200 g, 3400 g |
+| Boshdan o'tkazgan kasalliklari | Перенесённые заболевания | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code | ICD-10 | Iron deficiency anaemia, unspecified (`D50.9`) |
+| Ginekologik kasalliklari | Гинекологические заболевания | Condition.code; note | ICD-10 | Acute vaginitis (`N76.0`), treated in 2023 |
+| Akusherlik va epidemiologik anamnez | Акушерский и эпидемиологический анамнез | [QuestionnaireResponse](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-questionnaire-response.html).item.answer | [form-096-history](Questionnaire-form-096-history.html) `previous-pregnancies`, `epidemiological-history` | No recent infectious exposure or travel risk reported. |
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Bo‘yi | Рост матери | `Observation.code → valueQuantity`<br/>DMED source: `data.hospitalization.height` | `LOINC#8302-2; UCUM cm` | 168 cm |
-| Vazni | Вес матери | `Observation.code → valueQuantity`<br/>DMED source: `data.hospitalization.weight` | `LOINC#29463-7; UCUM kg` | 72.4 kg |
-| Tana harorati | Температура | `Observation.code → valueQuantity`<br/>DMED source: `data.hospitalization.temperature` | `LOINC#8310-5; UCUM Cel` | 36.8 Cel |
-| D. spinarum | D. spinarum | `Observation.code → valueQuantity`<br/>DMED source: `UI field; exact API selector pending` | `maternal-pelvimetry-measurement-code-cs#chr-0083-0001; UCUM cm` | 25 cm |
-| D. cristarum | D. cristarum | `Observation.code → valueQuantity`<br/>DMED source: `UI field; exact API selector pending` | `maternal-pelvimetry-measurement-code-cs#chr-0083-0002; UCUM cm` | 28 cm |
-| D. trochanterica | D. trochanterica | `Observation.code → valueQuantity`<br/>DMED source: `UI field; exact API selector pending` | `maternal-pelvimetry-measurement-code-cs#chr-0083-0003; UCUM cm` | 31 cm |
-| C. externa | C. externa | `Observation.code → valueQuantity`<br/>DMED source: `UI field; exact API selector pending` | `maternal-pelvimetry-measurement-code-cs#chr-0083-0004; UCUM cm` | 20 cm |
-| C. diagonalis | C. diagonalis | `Observation.code → valueQuantity`<br/>DMED source: `UI field; exact API selector pending` | `SCT#249011002; UCUM cm` | 12.5 cm |
-| C. vera | C. vera | `Observation.code → valueQuantity`<br/>DMED source: `UI field; exact API selector pending` | `maternal-pelvimetry-measurement-code-cs#chr-0083-0006; UCUM cm` | 11 cm |
-| Qorin aylanasi | Обхват живота | `Observation.code → valueQuantity`<br/>DMED source: `data.abdominal_circumference` | `LOINC#8280-0; UCUM cm` | 98 cm |
-| Bachadon tubi balandligi | Высота дна матки | `Observation.code → valueQuantity`<br/>DMED source: `data.uterine_fundus_height` | `LOINC#11881-0; UCUM cm` | 32 cm |
-{: .mapping-fields}
+---
 
-### Fetal assessment
+### 3. Course of this pregnancy and general examination
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Homilaning yotishi | Положение плода | `Observation.component.code → valueCodeableConcept`<br/>DMED source: `data.fetal_position` | `LOINC#11874-5; fetal-lie-vs` | longitudinal |
-| Homilaning pozitsiyasi va turi | Позиция и вид плода | `Observation.component.code.text → valueCodeableConcept.text` | `exact source text; mapping pending` | source description |
-| Homila yurak urishi | Сердцебиение плода | `Observation.component.code → valueQuantity or valueInteger`<br/>DMED source: `data.fetal_heartbeat` | `LOINC#55283-6; UCUM /min for Quantity` | 145 /min |
-| Yurak tovushlari eshitiladigan joy | Место выслушивания сердцебиения | `Observation.component.code.text → valueString` | `source text` | source location |
-| Homilaning oldinda kelishi | Предлежание плода | `Observation.component.code → valueCodeableConcept`<br/>DMED source: `data.fetal_presentation` | `LOINC#11877-8; fetal-presentation-vs` | cephalic |
-| Homilaning taxminiy vazni | Предполагаемый вес плода | `Observation.component.code → valueQuantity`<br/>DMED source: `data.estimated_fetal_weight` | `LOINC#11727-5; UCUM g` | 3100 g |
-{: .mapping-fields}
+Section code: LOINC `65869-0` "Pregnancy complication".
 
-### Labor and amniotic fluid
+Blood pressure follows the FHIR [vital-signs pattern](https://hl7.org/fhir/R5/bp.html), as in Form 111: LOINC `85354-9` with systolic `8480-6` and diastolic `8462-4` components in `mm[Hg]`, one Observation per arm with `bodySite`.
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Tug‘ruqning boshlanishi va tugashi | Начало и окончание родового процесса | `Observation.effectivePeriod`<br/>DMED source: `source protocol timestamps` | `SCT#386216000` | actual known interval |
-| Qog‘onoq pufagi yorilgan vaqt | Разрыв околоплодного пузыря | `Observation.component.code.text → valueDateTime` | `source label; no invented timestamp` | 2026-08-16T10:05:00+05:00 |
-| Qog‘onoq suvlari | Характер околоплодных вод | `Observation.component.code → valueCodeableConcept` | `LOINC#1887-9; amniotic-fluid-characteristic-vs` | verified source value |
-| I davr | I период | `Observation.component.code → valueQuantity` | `SCT#169821004; UCUM min` | 355 min |
-| II davr | II период | `Observation.component.code → valueQuantity` | `SCT#169822006; UCUM min` | 25 min |
-| III davr | III период | `Observation.component.code → valueQuantity` | `SCT#169823001; UCUM min` | 10 min |
-| Umumiy davomiylik | Общая длительность | `Observation.component.code → valueQuantity` | `SCT#271562002; UCUM min` | 390 min |
-{: .mapping-fields}
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Homiladorlikning kechishi va asoratlari | Течение и осложнения беременности | QuestionnaireResponse.item.answer | [form-096-current-pregnancy](Questionnaire-form-096-current-pregnancy.html) `current-pregnancy-course`, `condition-on-arrival` | Dichorionic diamniotic twin pregnancy; mild iron-deficiency anaemia. |
+| Umumiy ahvoli | Общее состояние | Observation.valueCodeableConcept | `code` [Maternal and Fetal Examination Codes](ValueSet-maternal-examination-observation-code-vs.html) `chr-0005-00003` "General condition", as in Form 111<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html) | Satisfactory (`162669003`) |
+| Yurak | Сердце | Observation.valueString | LOINC `8702-3` "Physical findings of Heart" | Regular rhythm, no murmur. |
+| Puls | Пульс | Observation.valueQuantity | LOINC `8867-4` "Heart rate" | 82 /min |
+| Arterial qon bosimi (o'ng qo'l) | Артериальное давление (правая рука) | Observation.component.valueQuantity; bodySite | `code` LOINC `85354-9` "Blood pressure panel with all children optional"<br>`component` LOINC `8480-6` "Systolic blood pressure", `8462-4` "Diastolic blood pressure"<br>`bodySite` SNOMED `368209003` "Right upper arm structure" | 118/76 mm[Hg] |
+| Arterial qon bosimi (chap qo'l) | Артериальное давление (левая рука) | Observation.component.valueQuantity; bodySite | `code` LOINC `85354-9`<br>`bodySite` SNOMED `368208006` "Left upper arm structure" | 116/74 mm[Hg] |
+| Nafas olish tizimi | Органы дыхания | Observation.valueString | LOINC `11412-4` "Physical findings of Respiratory system Narrative" | Breath sounds vesicular, no added sounds. |
+| Hazm qilish tizimi | Органы пищеварения | Observation.valueString | LOINC `11399-3` "Physical findings of Gastrointestinal system Narrative" | Abdomen appropriate for gestation; no gastrointestinal complaint. |
+| Siydik-tanosil tizimi | Мочеполовая система | Observation.valueString | `code.text` only, no code yet | No dysuria; renal angles non-tender. |
+| Siydik tsentrifugati | Центрифугат мочи | Observation.valueString | [Analysis Test Code](ValueSet-form111-analysis-test-code-vs.html) `chr-0001-00006` "Other analysis", as in Form 111 | No clinically significant sediment abnormality. |
 
-### Individual newborn facts
+---
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Har bir chaqaloq | Отдельный ребёнок | `Patient; Observation.subject`<br/>DMED source: `data.birth_protocol.newborn_children[*]` | `LOINC#57075-4 for delivery information` | one Patient per child |
-| Chaqaloq tibbiy kartasi | HC ребёнка | `Patient.identifier[healthCardId]` | `HC` | distinct stable card number |
-| Tug‘ilgan sana va vaqt | Дата и время рождения | `Patient.birthDate; birthTime extension; Observation.effectiveDateTime` | `Core birth-time rules` | source precision |
-| Tirik tug‘ilish | Живорождение | `Observation.component.code → valueCodeableConcept`<br/>DMED source: `data.birth_protocol.newborn_children[*].birth_outcome` | `LOINC#63893-2 → SCT#281050002` | live_birth |
-| O‘lik tug‘ilish | Мертворождение | `Observation.component.code → valueCodeableConcept`<br/>DMED source: `data.birth_protocol.newborn_children[*].birth_outcome` | `LOINC#63893-2 → SCT#237364002` | stillbirth |
-| Antenatal o‘lim | Антенатальная гибель | `Condition.code; subject = child` | `SCT#237361005` | only when period is known |
-| Intranatal o‘lim | Интранатальная гибель | `Condition.code; subject = child` | `SCT#237362003` | only when period is known |
-| Tug‘ilgandagi vazn | Вес при рождении | `Observation.component.code → valueQuantity`<br/>DMED source: `data.birth_protocol.newborn_children[*].weight_in_grams` | `LOINC#8339-4; UCUM g` | 3250 g |
-| Tug‘ilgandagi bo‘yi | Рост при рождении | `Observation.component.code → valueQuantity` | `LOINC#89269-5; UCUM cm` | 49 cm |
-| Bosh aylanasi | Окружность головы | `Observation.component.code → valueQuantity` | `LOINC#9843-4; UCUM cm` | 34 cm |
-| Ko‘krak aylanasi | Окружность груди | `Observation.component.code → valueQuantity` | `SCT#248366000; UCUM cm` | 32 cm |
-| Apgar bahosi, 1-daqiqa | Апгар на 1-й минуте | `Observation.component.code → valueInteger`<br/>DMED source: `data.birth_protocol.newborn_children[*].apgar_score` | `LOINC#9272-6` | 8 |
-| Tug‘ilgandan keyingi o‘lim | Смерть после живорождения | `Patient.deceased[x]; documented clinical fact`<br/>DMED source: `data.birth_protocol.newborn_children[*].postnatal_death` | `not Stillbirth` | source death date or true |
-| Chaqaloqning chiqishi yoki o‘tkazilishi | Выписка или перевод ребёнка | `child Encounter.actualPeriod; admission.destination` | `child UZCoreEncounter` | source child event |
-{: .mapping-fields}
+### 4. Obstetric examination and fetal assessment
 
-### Current delivery counts and previous pregnancies
+Section code: SNOMED `163497009` "Obstetric examination".
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Hozirgi tug‘ruqda tirik tug‘ilganlar | Живорождённые в текущих родах | `Observation.component.valueInteger (subject = mother)` | `LOINC#73773-4` | 2 |
-| Hozirgi tug‘ruqda o‘lik tug‘ilganlar | Мертворождённые в текущих родах | `Observation.component.valueInteger (subject = mother)` | `SCT#252112002` | 0 |
-| Oldingi homiladorliklar natijalari | Исходы предыдущих беременностей | `maternal Observation; source history` | [form111-previous-pregnancy-outcome-vs](ValueSet-form111-previous-pregnancy-outcome-vs.html), as in Form 111 | omit if unavailable |
-{: .mapping-fields}
+Pelvimetry is one Observation with one component per measurement, using the Form 111 codes. The fetal rows repeat for each fetus, with `focus` referencing the newborn; the example has two fetuses.
 
-### Placenta and postpartum observations
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Bo'yi | Рост | Observation.valueQuantity | LOINC `8302-2` "Body height" | 164 cm |
+| Vazni | Вес | Observation.valueQuantity | LOINC `29463-7` "Body weight" | 72 kg |
+| Tana harorati | Температура тела | Observation.valueQuantity | LOINC `8310-5` "Body temperature" | 36.7 Cel |
+| Homiladorliklar soni | Какая беременность | Observation.valueInteger | LOINC `11996-6` "[#] Pregnancies" | 3 |
+| Tug'ruqlar soni | Какие роды | Observation.valueInteger | LOINC `11977-6` "[#] Parity" | 2 |
+| Oxirgi hayz sanasi | Дата последней менструации | Observation.valueDateTime | LOINC `8665-2` "Last menstrual period start date" | 2025-11-10 |
+| Homilaning birinchi qimirlashi | Первое шевеление плода | Observation.valueDateTime | LOINC `57065-5` "Quickening date" | 2026-03-25 |
+| Chanoq o'lchovlari | Размеры таза | Observation.component.valueQuantity | `code` [Form111 General Observation Code](ValueSet-form111-general-observation-code-vs.html) `chr-0035-00002` "Pelvis measurements" | - |
+| D. spinarum | D. spinarum | *(same Observation).component* | `chr-0035-00003` "Distantia spinarum (D.sp)" | 25 cm |
+| D. cristarum | D. cristarum | *(same Observation).component* | `chr-0035-00004` "Distantia cristarum (D.Cr)" | 28 cm |
+| D. trochanterica | D. trochanterica | *(same Observation).component* | `chr-0035-00005` "Distantia trochanterica (D.troch)" | 31 cm |
+| C. externa | C. externa | *(same Observation).component* | `chr-0035-00006` "Conjugata externa (C.ext)" | 20 cm |
+| C. diagonalis | C. diagonalis | *(same Observation).component* | `chr-0035-00007` "Conjugata diagonalis (C.diag)" | 12.5 cm |
+| C. vera | C. vera | *(same Observation).component* | `chr-0035-00008` "Conjugata vera (C.vera)" | 11 cm |
+| Chanoq aylanasi | Окружность таза | *(same Observation).component* | [Pregnancy Monitoring Observation Code](ValueSet-form111-pregnancy-monitoring-observation-code-vs.html) `chr-0023-00002` "Pelvic circumference" | 96 cm |
+| Qorin aylanasi | Окружность живота | Observation.valueQuantity | SNOMED `396552003` "Abdominal circumference", as in Form 111 | 104 cm |
+| Bachadon tubi balandligi | Высота стояния дна матки | Observation.valueQuantity | LOINC `11881-0` "Uterus Fundal height Tape measure" | 38 cm |
+| Qindan ajralma | Выделения из влагалища | Observation.valueCodeableConcept | `code` SNOMED `271939006` "Vaginal discharge"<br>`value` [Vaginal Discharge Color](ValueSet-vaginal-discharge-color-vs.html) | Bloodstained (`289547007`) |
+| Homilaning joylashuvi | Положение плода | Observation.valueCodeableConcept (`focus` = newborn) | `code` [Maternal and Fetal Examination Codes](ValueSet-maternal-examination-observation-code-vs.html) SNOMED `249062004` "Lie of fetus"<br>`value` [Fetal Lie](ValueSet-fetal-lie-vs.html) | Longitudinal lie (`249063009`), both fetuses |
+| Homilaning pozitsiyasi va turi | Позиция и вид плода | Observation.valueCodeableConcept.text (`focus` = newborn) | SNOMED `364607000` "Position of fetus" | First position, anterior variety; second position, posterior variety |
+| Homilaning oldinda keluvchi qismi | Предлежание плода | Observation.valueCodeableConcept (`focus` = newborn) | `code` SNOMED `271692001` "Presentation of fetus"<br>`value` [Fetal Presentation](ValueSet-fetal-presentation-vs.html) | Cephalic (`1209182005`); breech (`6096002`) |
+| Yurak urishi eshitiladigan joy | Место выслушивания сердцебиения | Observation.valueString (`focus` = newborn) | SNOMED `373720003` "Site of loudest fetal heart sounds" | Left of the midline, below the umbilicus |
+| Homila yurak urishi | Сердцебиение плода | Observation.valueQuantity (`focus` = newborn) | LOINC `55283-6` "Fetal Heart rate" | 142 /min; 136 /min |
+| Homilaning taxminiy vazni | Предполагаемая масса плода | Observation.valueQuantity (`focus` = newborn) | LOINC `11727-5` "Fetal Body weight estimated by US" | 2900 g; 2750 g |
+| Oldinda keluvchi qismning joylashuvi | Расположение предлежащей части | Observation.valueString (`focus` = newborn) | `code.text` only, no code yet | Engaged at the pelvic inlet |
+| Tug'ruq faoliyati | Родовая деятельность | Observation.valueString | `code.text` only, no code yet | Regular contractions, three per ten minutes |
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Yo‘ldosh, pardalar va kindik | Послед, оболочки и пуповина | `Observation.component.value[x]` | `only reviewed indicator codes or source text` | source findings |
-| Qon yo‘qotish | Кровопотеря | `Observation.component.code.text → valueQuantity` | `UCUM mL` | 320 mL |
-| Yo‘ldosh ajralish usuli | Способ отделения последа | `Procedure.note.text` | `method is not Procedure.outcome` | source method |
-| Tug‘ruqdan keyingi kuzatuv | Послеродовое наблюдение | `Observation.effectiveDateTime; component.value[x]` | `individual verified codes or source text` | one row per source assessment |
-{: .mapping-fields}
+---
 
-### Orders, treatment and certificates
+### 5. Course of labor
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Dori buyurilishi | Назначение лекарственного средства | `MedicationRequest.medication; dosageInstruction` | `verified medication code or source text` | source prescription |
-| Dori yuborilishi | Введение лекарственного средства | `MedicationAdministration.medication; occurence[x]; dosage` | `verified medication code or source text` | source administration |
-| Tekshiruv buyurilishi | Назначение исследования | `ServiceRequest.code; authoredOn` | `verified laboratory catalog` | source order |
-| Tekshiruv natijasi | Результат исследования | `Observation.code; value[x]; effective[x]`<br/>DMED source: `data.pregnancy_birth.analyses[*]` | `verified LOINC; UCUM when applicable` | source result |
-| Muolaja natijasi | Результат вмешательства | `Procedure.outcome` | `SCT#385669000 / 385670004 / 385671000` | explicit source outcome |
-| Ishlatilgan materiallar | Использованные материалы | `SupplyDelivery.suppliedItem` | `verified source catalog` | source item and quantity |
-| Mehnatga layoqatsizlik varaqasi | Больничный лист | `SickLeaveCarePlan` | `existing SickLeaveCarePlan profile` | source certificate |
-{: .mapping-fields}
+Section code: LOINC `57074-7` "Labor and delivery process Narrative", as in Form 111.
 
-### Authors and provenance
+Labor runs from its onset to the delivery of the placenta. The durations are in minutes: 01:30 in the form is 90 min.
 
-| UZ | RU | FHIR Path / DMED source | Code | Example |
-|---|---|---|---|---|
-| Davolovchi shifokor | Лечащий врач госпитализации | `Encounter.participant.individual` | `PractitionerRole / Practitioner as permitted` | identified source clinician |
-| Shakldagi shifokor va akusher | Врач и акушер в форме | `Composition.author; clinical performer references` | `UZCorePractitionerRole or UZCorePractitioner` | known source identity |
-| Shaklni to‘ldirgan foydalanuvchi | Заполнивший форму пользователь | `Composition.author when both selected clinicians absent` | `identified source author` | not automatically the discharging user |
-| Mas’ul muassasa | Организация документа | `Composition.custodian` | `UZCoreOrganization` | optional source organization |
-| Saqlash vaqti va kelib chiqishi | Время сохранения и происхождение | `Composition.date; Provenance.recorded; agent` | `Form 066 workflow` | source revision timestamp |
-{: .mapping-fields}
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Tug'ruqning boshlanishi va tugashi, umumiy davomiyligi | Начало и окончание родов, общая продолжительность | Observation.effectivePeriod; valueQuantity | [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) SNOMED `271562002` "Total duration of labor" | 06:10 - 12:37, 387 min |
+| I davr | I период | Observation.valueQuantity | SNOMED `169821004` "Duration of first stage of labor" | 355 min |
+| II davr | II период | Observation.valueQuantity | SNOMED `169822006` "Duration of second stage of labor" | 22 min |
+| III davr; tug'ilishdan yo'ldosh tushguncha | III период; от рождения до выделения последа | Observation.valueQuantity | SNOMED `169823001` "Duration of third stage of labor" | 10 min |
+| Qog'onoq suvi ketgan vaqt | Время излития вод | Observation.valueDateTime | SNOMED `289251005` "Time rupture of membranes detected" | 2026-08-16T10:05:00+05:00 |
+| Qog'onoq suvi hajmi | Объём околоплодных вод | Observation.valueQuantity | [Amniotic Fluid Volume Code](ValueSet-amniotic-fluid-volume-measurement-code-vs.html) `chr-0087-0001` "Amniotic fluid volume" | 650 mL |
+| Qog'onoq suvi | Характер околоплодных вод | Observation.valueCodeableConcept | `code` [Amniotic Fluid Appearance Code](ValueSet-amniotic-fluid-observation-code-vs.html) LOINC `1887-9` "Appearance of Amniotic fluid"<br>`value` [Amniotic Fluid Characteristic](ValueSet-amniotic-fluid-characteristic-vs.html) | Clear (`168090003`) |
+| Bachadon bo'yni to'liq ochilgan vaqt | Время полного раскрытия | Observation.valueQuantity; effectiveDateTime | [Cervical Dilation Code](ValueSet-cervical-dilation-measurement-code-vs.html) SNOMED `289825001` "Diameter of cervical dilatation" | 10 cm at 2026-08-16T12:05:00+05:00 |
+| Kuchanish boshlangan vaqt | Начало потуг | Observation.valueDateTime | `code.text` only, no code yet | 2026-08-16T12:10:00+05:00 |
+| Tug'ruqni qabul qildi | Роды принимала | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).performer.function; performer.actor | `code` SNOMED `236973005` "Delivery procedure"<br>`function` [Birth Attendant](CodeSystem-birth-attendant-cs.html) `chr-0091-0001` "Birth attendant" | Tursunova N.S. |
+| Psixologik yordam va uning natijasi | Психологическая поддержка и её результат | Procedure.code; outcome | `code` SNOMED `698506008` "Supportive counseling"<br>`outcome` [Intervention Effectiveness](ValueSet-intervention-effectiveness-vs.html) | Successful (`385669000`) |
+| Og'riqsizlantirish uchun dori vositalari | Обезболивающие препараты | [MedicationAdministration](https://hl7.org/fhir/R5/medicationadministration.html).medication; occurence[x]; dosage | SNOMED CT | Analgesic (`373265006`) |
+| Yuborilgan dori vositalarining samarasi | Эффект введённых препаратов | Observation.valueCodeableConcept (`focus` = MedicationAdministration) | `code` [Labor Pain Relief Effect Code](ValueSet-maternal-labor-medication-effect-code-vs.html) `chr-0127-0001` "Effect of administered medication"<br>`value` [Intervention Effectiveness](ValueSet-intervention-effectiveness-vs.html) | Successful (`385669000`) |
 
-### Mappings awaiting source confirmation
+---
 
-- Laboratory catalog: obtain source IDs, definitions, methods/specimens and result types for WR I/II, HIV 1/2/rapid, blood count, HBsAg I/II, gonococcus, toxoplasmosis, urine, smear and stool. Do not choose an individual analyte or a method-specific LOINC from a broad UI label. Preserve free-text results until coding is established.
-- Fetal presentation: the supplied UI has 13 options; the current draft ValueSet is not a complete source crosswalk. Resolve complete/incomplete/mixed labels before assigning a code. Fetal lie, presentation and the location of heart sounds are separate facts.
-- Diagnosis roles and operations: obtain source dictionaries and the actual ICHI field or internal-ID lookup. A title is not a machine code. Target Core diagnosis roles use the diagnosis-type extension; legacy Condition.category roles in the example are not the final DMED crosswalk. Clinical diagnosis does not automatically mean working or confirmed.
-- Maternal death timing is a category, not a timestamp. A reported mismatch of UI labels has not been independently verified: obtain selected label → API value → intended meaning. Omit a timing value whose meaning is unknown; death date is independent.
-- Historical living/stillborn/deceased-child counts are not inferred from this delivery. Current-delivery counts need explicit source context; postnatal-death counting still needs a defined observation period. Confirm HC issuance, uniqueness and stability for every child, including stillbirths. Accepting a snapshot does not prove creation of a searchable master Patient.
-- Exact API selectors remain pending for six pelvic measurements, some author fields and precise death/event timestamps. A UI field or synthetic Bundle does not prove a JSON selector. Resolve the ambiguous Rh label and overlapping fetal-heart fields before mapping their raw values.
+### 6. Newborn delivery record
 
-### Bundle structure and examples
+Section code: LOINC `57075-4` "Newborn delivery information".
 
-```text
-Bundle (document; revision identity)
-  Composition (Form 096; stable source document identity)
-    subject -> mother Patient
-    encounter -> maternal UZ Core Encounter shared with Form 066
-    author -> identified PractitionerRole / Practitioner
-    section[0..*] -> available clinical resources only
-  Patient (mother)
-  Encounter (maternal snapshot)
-  Patient (one per newborn; stable HC identity)
-  Observation / Condition / Procedure (correct maternal or child subject)
-  Organization / Location / Practitioner / PractitionerRole as needed
-  QuestionnaireResponse / orders / treatment / certificates when available
-  Provenance according to the Form 066 workflow
-```
+Each newborn is its own [Patient](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-patient.html). When a newborn has no PINFL yet, it is identified by its DMED medical-card number; Form 097 reuses the same Patient and adds the PINFL once it is issued. The rows from "Born alive or dead" to the cord repeat for each newborn, with the newborn as `subject`.
 
-- [Complete synthetic document](Bundle-example-form-096-maternity-medical-record.html)
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Chaqaloq tibbiy kartasi | Медкарта ребёнка | Patient.identifier[healthCardId] | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | NB-096-2026-000123-1 |
+| Jinsi | Пол | Patient.gender | - | male; female |
+| Tug'ilgan sana | Дата рождения | Patient.birthDate | - | 2026-08-16 |
+| Egizaklar tartibi | Порядок рождения двойни | Patient.multipleBirthInteger | - | 1; 2 |
+| Bola tirik / o'lik tug'ilgani | Ребёнок родился живым / мёртвым | Observation.valueCodeableConcept | `code` [Form111 General Observation Code](ValueSet-form111-general-observation-code-vs.html) `chr-0035-00013` "Live/stillbirth status", as in Form 111<br>`value` [Newborn Birth Condition](ValueSet-form111-newborn-birth-condition-vs.html) | Livebirth (`281050002`); see the [antepartum](Bundle-example-form-096-antepartum-stillbirth.html) and [intrapartum](Bundle-example-form-096-intrapartum-stillbirth.html) stillbirth examples |
+| Oldinda kelgan qismi | Предлежание | Observation.valueCodeableConcept | `code` SNOMED `271692001` "Presentation of fetus"<br>`value` [Fetal Presentation](ValueSet-fetal-presentation-vs.html) | Cephalic (`1209182005`); breech (`6096002`) |
+| Vazni | Масса | Observation.valueQuantity | [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) LOINC `8339-4` "Birth weight Measured" | 2850 g; 2700 g |
+| Bo'yi | Рост | Observation.valueQuantity | LOINC `89269-5` "Body height Measured --at birth" | 49 cm; 48 cm |
+| Bosh aylanasi | Окружность головы | Observation.valueQuantity | LOINC `9843-4` "Head Occipital-frontal circumference" | 34 cm; 33 cm |
+| Ko'krak aylanasi | Окружность груди | Observation.valueQuantity | SNOMED `248366000` "Chest circumference" | 32 cm; 31 cm |
+| Umumiy ahvoli | Общее состояние | Observation.valueCodeableConcept | `code` `chr-0005-00003` "General condition"<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html) | Satisfactory (`162669003`) |
+| Apgar bahosi | Оценка по Апгар | Observation.valueInteger | LOINC `9272-6` "1 minute Apgar Score" | 8 |
+| Kindik uzunligi | Длина пуповины | Observation.valueQuantity | SNOMED `249194006` "Length of umbilical cord" | 55 cm; 52 cm |
+| Kindik o'ralishi | Обвитие пуповины | Observation.valueBoolean | `code.text` only, no code yet | false |
+| Kindik xususiyatlari | Особенности пуповины | Observation.valueString | `code.text` only, no code yet | Three vessels, no true knot |
+| Gonoblenoreya profilaktikasi | Профилактика гонобленнореи | Procedure.code; occurrenceDateTime | [Newborn Eye Prophylaxis Code](ValueSet-newborn-eye-prophylaxis-code-vs.html) `chr-0085-0001` "Neonatal ocular prophylaxis against gonococcal ophthalmia" | 2026-08-16T12:28:00+05:00 |
+| Tirik tug'ilganlar soni | Живорождённых | Observation.valueInteger (`subject` = mother) | LOINC `73773-4` "Number of infants in this delivery delivered alive" | 2 |
+| O'lik tug'ilganlar soni | Мертворождённых | Observation.valueInteger (`subject` = mother) | SNOMED `252112002` "Number of stillbirths" | 0 |
+| Tug'ilgandan keyin vafot etganlar soni | Умерших после рождения | Observation.valueInteger (`subject` = mother) | `code.text` only, no code yet | 0 |
+| Yo'ldosh ajralishi | Отделение последа | Procedure.code; occurrenceDateTime | [Placenta Delivery Method](ValueSet-placenta-delivery-method-vs.html) | O'z-o'zidan ajraldi (`chr-0086-0002`) |
+| Yo'ldosh butunligi | Целостность плаценты | Observation.valueCodeableConcept | `code` SNOMED `364343000` "Completeness of placenta"<br>`value` [Placenta and Membranes Completeness](ValueSet-tissue-integrity-status-vs.html) | Complete (`249170006`) |
+| Pardalar butunligi | Целостность оболочек | Observation.valueCodeableConcept | `code` SNOMED `364351002` "Completeness of membranes"<br>`value` [Placenta and Membranes Completeness](ValueSet-tissue-integrity-status-vs.html) | Complete (`249181009`) |
+| Qon yo'qotish | Кровопотеря | Observation.valueQuantity (`subject` = mother) | SNOMED `364332008` "Blood loss in labor" | 320 mL |
+
+---
+
+### 7. Postpartum period
+
+Section code: SNOMED `133906008` "Postpartum care", as in Form 111.
+
+The rows repeat for each day of observation.
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Umumiy ahvoli | Общее состояние | Observation.valueCodeableConcept | `code` [Postpartum Observation Codes](ValueSet-maternal-postpartum-assessment-code-vs.html) `chr-0005-00003` "General condition"<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html) | Satisfactory, afebrile (`162669003`) |
+| Sut bezlari | Молочные железы | Observation.valueString | LOINC `10193-1` "Physical findings of Breasts Narrative", as in Form 111 | Soft, lactation established |
+| Bachadon tubi balandligi | Высота дна матки | Observation.valueQuantity | LOINC `11881-0` "Uterus Fundal height Tape measure" | 14 cm |
+| Loxiyalar | Лохии | Observation.valueCodeableConcept | `code` SNOMED `364239002` "Lochia feature"<br>`value` SNOMED lochia finding | Lochia rubra, moderate (`278072004`) |
+| Siydik pufagi | Мочевой пузырь | Observation.valueString | SNOMED `249585009` "Urinary bladder finding" | Spontaneous urination |
+| Ich kelishi | Стул | Observation.valueString | SNOMED `39211005` "Bowel action" | Normal |
+| Davolash bo'yicha tavsiyalar | Рекомендации по лечению | Observation.valueString | `code.text` only, no code yet | Breastfeeding support, hydration and routine postpartum monitoring |
+| Parhez stoli | Диетический стол | Observation.valueInteger | `code.text` only, no code yet | 15 |
+
+---
+
+### 8. Medication orders and administrations
+
+Section code: LOINC `29549-3` "Medication administered Narrative".
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Dori buyurilishi | Назначение лекарственного средства | [MedicationRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-medicationrequest.html).medication; dosageInstruction | SNOMED CT | Acetaminophen (`387517004`), 500 mg orally every 8 hours as needed |
+| Dori yuborilishi | Введение лекарственного средства | [MedicationAdministration](https://hl7.org/fhir/R5/medicationadministration.html).medication; occurence[x]; dosage | SNOMED CT | Acetaminophen (`387517004`), 500 mg |
+
+---
+
+### 9. Ordered examinations
+
+Section code: LOINC `18776-5` "Plan of care note".
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Tekshiruv buyurilishi | Назначение исследования | [ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html).code; authoredOn | LOINC | CBC panel - Blood by Automated count (`58410-2`) |
+| Tekshiruv natijasi | Результат исследования | Observation.value[x] (`basedOn` = ServiceRequest) | LOINC | Hemoglobin 108 g/L (`718-7`) |
+
+---
+
+### 10. Ordered procedures
+
+Section code: LOINC `29554-3` "Procedure Narrative".
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Muolaja buyurilishi | Назначение процедуры | ServiceRequest.code | `code.text` when the procedure has no code | Perineal wound care |
+| Muolaja bajarilishi | Выполнение процедуры | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code; occurrenceDateTime (`basedOn` = ServiceRequest) | `code.text` when the procedure has no code | Perineal wound care, 2026-08-17T08:45:00+05:00 |
+
+---
+
+### 11. Used materials
+
+Section code: LOINC `46264-8` "History of medical device use".
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Ishlatilgan materiallar | Использованные материалы | [SupplyDelivery](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-supply-delivery.html).suppliedItem | SNOMED CT | Dressing (`129003000`), 2 |
+
+---
+
+### 12. Sick leave certificates
+
+Section code: LOINC `34109-9` "Note", as in Form 066.
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Mehnatga layoqatsizlik varaqasi | Листок нетрудоспособности | [SickLeaveCarePlan](StructureDefinition-sick-leave-careplan.html) | - | - |
+
+---
+
+### 13. Responsible persons and signatures
+
+Section code: LOINC `51899-3` "Details Document".
+
+| UZ | RU | FHIR Path | Code | Example Value |
+|----|----|------------|------|---------------|
+| Shifokor | Врач | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html).practitioner; code | [UZ Core Position and Profession](https://dhp.uz/fhir/core/en/CodeSystem-position-and-profession-cs.html) | Rasulova Malika Bahodirovna (`2222.1`) |
+| Akusherka | Акушерка | PractitionerRole.practitioner; code | [UZ Core Position and Profession](https://dhp.uz/fhir/core/en/CodeSystem-position-and-profession-cs.html) | Tursunova Nodira Saidovna (`3222.1`) |
+| Imzo | Подпись | [Provenance](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-provenance.html).signature | `type` [UZ Core Signature Type](https://dhp.uz/fhir/core/en/CodeSystem-signature-type-cs.html) | soliqAuth, 2026-08-18T15:30:00+05:00 |
+
+---
+
+### Other examples
+
 - [Antepartum stillbirth](Bundle-example-form-096-antepartum-stillbirth.html)
 - [Intrapartum stillbirth](Bundle-example-form-096-intrapartum-stillbirth.html)
-- [Minimal clinical document](Bundle-example-form-096-minimal.html)
+- [Minimal document](Bundle-example-form-096-minimal.html)
 - [Author without a known role](Bundle-example-form-096-author-without-role.html)

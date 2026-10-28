@@ -1,22 +1,30 @@
 ValueSet: Form096LaborDeliveryAndNewbornCodeVS
 Id: labor-delivery-and-newborn-code-vs
-Title: "Labor, Delivery and Newborn-at-Birth Codes"
-Description: "Form 096 terminology binding for Terminology concepts used by FHIR code/value elements."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/labor-delivery-and-newborn-code-vs"
-* ^status = #active
+Title: "Form 096 Labor, Delivery and Newborn Codes"
+Description: "Observation.code for the Form 096 labor and newborn fields: time of rupture of membranes, duration of labor and of each stage, live births and stillbirths in this delivery, and per newborn whether born alive, weight, length, head and chest circumference, general condition and the 1-minute Apgar score; also placenta and membranes completeness, cord length and blood loss. Child born alive or dead uses the Form 111 code chr-0035-00013 with values from form111-newborn-birth-condition-vs."
+* insert IntegrationsValueSet(labor-delivery-and-newborn-code-vs)
+* ^status = #draft
 * ^experimental = true
-* include $loinc#9272-6 "1-minute Apgar score"
-* include $loinc#63893-2 "Outcome of pregnancy"
-* include $loinc#76689-9 "Sex assigned at birth"
-* include $sct#6096002 "Breech presentation"
-* include $sct#50373000 "Body height measure"
-* include $sct#248152002 "Female"
-* include $sct#248153007 "Male"
-* include $sct#249120008 "Onset of labor first stage"
-* include $sct#281050002 "Live birth"
-* include $sct#363812007 "Head circumference"
-* include $sct#248366000 "Chest circumference"
-* include $sct#364589006 "Birth weight"
-* include $sct#698506008 "Psychological support (counseling)"
-* include $loinc#73773-4 "Number of infants in this delivery delivered alive"
-* include $sct#252112002 "Number of stillbirths"
+
+* $sct#289251005 "Time rupture of membranes detected"
+* $sct#271562002 "Total duration of labor"
+* $sct#169821004 "Duration of first stage of labor"
+* $sct#169822006 "Duration of second stage of labor"
+* $sct#169823001 "Duration of third stage of labor"
+* $loinc#73773-4 "Number of infants in this delivery delivered alive"
+* $sct#252112002 "Number of stillbirths"
+* $form111-general-obs-cs#chr-0035-00013 "Bola tirik / o'lik tug'ilgani"
+* $loinc#8339-4 "Birth weight Measured"
+* $loinc#89269-5 "Body height Measured --at birth"
+* $loinc#9843-4 "Head Occipital-frontal circumference"
+* $sct#248366000 "Chest circumference"
+* $form111-assessment-obs-cs#chr-0005-00003 "Umumiy ahvoli"
+* $loinc#9272-6 "1 minute Apgar Score"
+* $sct#364343000 "Completeness of placenta"
+* $sct#364351002 "Completeness of membranes"
+* $sct#249194006 "Length of umbilical cord"
+* $sct#364332008 "Blood loss in labor"
+
+// Supplements providing Russian and Uzbek displays.
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096SnomedSupplementCS)

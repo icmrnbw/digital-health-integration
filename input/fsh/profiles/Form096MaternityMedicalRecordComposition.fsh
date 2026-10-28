@@ -7,7 +7,7 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), based o
 * identifier 1..*
 * identifier ^short = "Form 096 maternity medical-record number"
 * status = #final
-* type = $loinc#34117-2
+* type = $loinc#57057-2 "Labor and Delivery Summary Note"
 * type ^short = "Form 096 maternity medical record"
 * category 1..1
 * category = $document-category-cs#form-096
@@ -42,66 +42,66 @@ Description: "FHIR R5 Composition for Form 096 (Tug'ruq tibbiy kartasi), based o
 // Document identifiers, demographics, admission/discharge, laboratory values,
 // diagnoses, complications, operations, and disposition.
 * section[admissionInformation].code 1..1
-* section[admissionInformation].code = $loinc#46241-6
+* section[admissionInformation].code = $loinc#LP74442-2 "Admission Information"
 * section[admissionInformation].entry only Reference(UZCorePatient or UZCoreEncounter or UZCoreOrganization or UZCoreObservation or UZCoreCondition or UZCoreProcedure or UZCoreAllergyIntolerance)
 
 // General diseases, spouse health, menstrual/sexual/gynecological history, and
-// previous pregnancies, births, abortions, operations, newborn weights and outcomes.
+// previous pregnancies, births, abortions, operations, newborn weights and outcomes,
+// occupation, and the epidemiological history in the history QuestionnaireResponse.
 * section[medicalAndObstetricHistory].code 1..1
-* section[medicalAndObstetricHistory].code = $loinc#11329-0
+* section[medicalAndObstetricHistory].code = $loinc#11329-0 "History general Narrative - Reported"
 // Clinical sections are optional; omit a section when its source data are absent.
-* section[medicalAndObstetricHistory].entry only Reference(UZCoreRelatedPerson or UZCoreObservation or UZCoreCondition or Procedure or UZCoreQuestionnaireResponse)
+* section[medicalAndObstetricHistory].entry only Reference(UZCoreRelatedPerson or UZCoreObservation or UZCoreSocioeconomicObservation or UZCoreCondition or UZCoreProcedure or UZCoreQuestionnaireResponse)
 
 
-// Epidemiological history has no agreed machine code and remains an optional open section.
 // Course/complications of the current pregnancy and general physical examination.
 * section[currentPregnancy].code 1..1
-* section[currentPregnancy].code = $loinc#65869-0
+* section[currentPregnancy].code = $loinc#65869-0 "Pregnancy complication"
 * section[currentPregnancy].entry only Reference(UZCoreObservation or UZCoreCondition or UZCoreQuestionnaireResponse)
 
-// Maternal measurements, pelvimetry, pregnancy counts and fetal assessment.
+// Maternal measurements, pelvimetry, pregnancy counts and fetal assessment, one Observation per fetus.
 * section[obstetricExamination].code 1..1
-* section[obstetricExamination].code = $sct#163497009
-* section[obstetricExamination].entry only Reference(UZCoreObservation or UZCorePractitionerRole)
+* section[obstetricExamination].code = $sct#163497009 "Obstetric examination"
+* section[obstetricExamination].entry only Reference(UZCoreObservation)
 
 // Labor onset, rupture of membranes, dilation, pushing, support and duration.
 * section[laborCourse].code 1..1
-* section[laborCourse].code = $sct#289909005
-* section[laborCourse].entry only Reference(UZCoreObservation or Procedure or MedicationAdministration or UZCorePractitionerRole)
+* section[laborCourse].code = $loinc#57074-7 "Labor and delivery process Narrative"
+* section[laborCourse].entry only Reference(UZCoreObservation or UZCoreProcedure or MedicationAdministration)
 
 // Each newborn, birth measurements, presentation, Apgar, placenta, membranes and cord.
 * section[newbornDeliveryRecord].code 1..1
-* section[newbornDeliveryRecord].code = $loinc#57075-4
-* section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or UZCoreCondition or Procedure or Immunization or UZCorePractitionerRole)
+* section[newbornDeliveryRecord].code = $loinc#57075-4 "Newborn delivery information"
+* section[newbornDeliveryRecord].entry only Reference(UZCorePatient or UZCoreObservation or UZCoreCondition or UZCoreProcedure or UZCoreImmunization)
 * section[newbornDeliveryRecord].entry ^definition = "Include a separate UZCorePatient for each newborn. When PINFL is absent, use the newborn's DMED medical-card number in Patient.identifier[healthCardId], using the UZ Core HC identifier system. Individual measurements and Apgar assessments reference that newborn as Observation.subject; delivery-wide counts reference the mother. Reuse the same patient identity in Form 097 and add PINFL to that identity when available."
 
 // Repeating postpartum observation rows.
 * section[postpartumPeriod].code 1..1
-* section[postpartumPeriod].code = $loinc#11506-3
+* section[postpartumPeriod].code = $sct#133906008 "Postpartum care"
 * section[postpartumPeriod].entry only Reference(UZCoreObservation)
 
 * section[medicationOrders].code 1..1
-* section[medicationOrders].code = $loinc#10160-0
-* section[medicationOrders].entry only Reference(MedicationRequest or MedicationAdministration or UZCoreObservation)
+* section[medicationOrders].code = $loinc#29549-3 "Medication administered Narrative"
+* section[medicationOrders].entry only Reference(UZCoreMedicationRequest or MedicationAdministration or UZCoreObservation)
 
 * section[diagnosticOrders].code 1..1
-* section[diagnosticOrders].code = $loinc#18776-5
+* section[diagnosticOrders].code = $loinc#18776-5 "Plan of care note"
 * section[diagnosticOrders].entry only Reference(UZCoreServiceRequest or UZCoreObservation)
 
 * section[procedureOrders].code 1..1
-* section[procedureOrders].code = $loinc#29554-3
-* section[procedureOrders].entry only Reference(UZCoreServiceRequest or Procedure)
+* section[procedureOrders].code = $loinc#29554-3 "Procedure Narrative"
+* section[procedureOrders].entry only Reference(UZCoreServiceRequest or UZCoreProcedure)
 
 * section[usedMaterials].code 1..1
-* section[usedMaterials].code = $loinc#46264-8
-* section[usedMaterials].entry only Reference(SupplyDelivery)
+* section[usedMaterials].code = $loinc#46264-8 "History of medical device use"
+* section[usedMaterials].entry only Reference(UZCoreSupplyDelivery)
 
 // Sick-leave certificates shown on the title sheet are represented by the
 // existing SickLeaveCarePlan profile and may repeat for one hospitalization.
 * section[sickLeaveCertificates].code 1..1
-* section[sickLeaveCertificates].code = $sct#224459001
+* section[sickLeaveCertificates].code = $loinc#34109-9 "Note"
 * section[sickLeaveCertificates].entry only Reference(SickLeaveCarePlan)
 
 * section[responsiblePersons].code 1..1
-* section[responsiblePersons].code = $loinc#51899-3
-* section[responsiblePersons].entry only Reference(UZCorePractitionerRole or Provenance)
+* section[responsiblePersons].code = $loinc#51899-3 "Details Document"
+* section[responsiblePersons].entry only Reference(UZCorePractitionerRole or UZCoreProvenance)
