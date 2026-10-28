@@ -134832,6 +134832,5 @@
   "status": "draft",
   "experimental": false,
   "publisher": "Uzinfocom",
-  "targetScopeCanonical": "http://hl7.org/fhir/ValueSet/icd-10",
   "sourceScopeCanonical": "https://terminology.dhp.uz/fhir/integrations/ValueSet/cancer-registry-dictionary-icd-10-vs"
 }
