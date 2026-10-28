@@ -25,6 +25,8 @@ publisher:
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
+  # Standard R5 binding expansions, including concept-property-type used by CodeSystem.property.type.
+  hl7.fhir.r5.expansions: 5.0.0
   uz.dhp.core: 0.11.1
   # R4-only package used cross-version for sdc-questionnaire-calculatedExpression (same as uz.dhp.core);
   # the resulting version-mismatch messages are suppressed in ignoreWarnings.txt
