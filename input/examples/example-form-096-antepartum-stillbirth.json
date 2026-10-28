@@ -9,7 +9,7 @@
   "timestamp": "2026-08-18T15:30:00+05:00",
   "entry": [
     {
-      "fullUrl": "urn:uuid:0efa8769-8269-59af-8d85-fd59a6dd3686",
+      "fullUrl": "urn:uuid:be9cf4ac-636f-51c8-8b5f-05538ff1572d",
       "resource": {
         "resourceType": "Composition",
         "id": "composition-096-antepartum",
@@ -21,7 +21,7 @@
         "identifier": [
           {
             "system": "urn:ietf:rfc:3986",
-            "value": "urn:uuid:3b8064c0-a1a2-5398-9b43-292cab85a58a"
+            "value": "urn:uuid:9017e8ed-8d75-5908-bd03-09046d44376d"
           }
         ],
         "status": "final",
@@ -29,7 +29,8 @@
           "coding": [
             {
               "system": "http://loinc.org",
-              "code": "34117-2"
+              "code": "57057-2",
+              "display": "Labor and Delivery Summary Note"
             }
           ]
         },
@@ -49,7 +50,7 @@
           }
         ],
         "encounter": {
-          "reference": "urn:uuid:f0a37c98-10d9-5da7-a9e4-aafaffde9108"
+          "reference": "urn:uuid:7ae2e1e6-5c78-5006-af83-e0c2ad7aba27"
         },
         "date": "2026-08-18T15:30:00+05:00",
         "author": [
@@ -64,7 +65,8 @@
               "coding": [
                 {
                   "system": "http://loinc.org",
-                  "code": "57075-4"
+                  "code": "57075-4",
+                  "display": "Newborn delivery information"
                 }
               ]
             },
@@ -74,9 +76,6 @@
               },
               {
                 "reference": "urn:uuid:85eac94d-8bb2-55b6-bf3c-f0aa9c401a5a"
-              },
-              {
-                "reference": "urn:uuid:cefc0482-3911-56c0-b6b6-50884df1a3ef"
               }
             ]
           }
@@ -232,7 +231,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:f0a37c98-10d9-5da7-a9e4-aafaffde9108",
+      "fullUrl": "urn:uuid:7ae2e1e6-5c78-5006-af83-e0c2ad7aba27",
       "resource": {
         "resourceType": "Encounter",
         "meta": {
@@ -265,7 +264,7 @@
         "identifier": [
           {
             "system": "https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number",
-            "value": "SYNTHETIC-maternal-antepartum"
+            "value": "SYNTHETIC-096-antepartum-stillbirth"
           }
         ],
         "subject": {
@@ -379,8 +378,9 @@
         "code": {
           "coding": [
             {
-              "system": "http://loinc.org",
-              "code": "63893-2"
+              "system": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-general-observation-code-cs",
+              "code": "chr-0035-00013",
+              "display": "Bola tirik / o'lik tug'ilgani"
             }
           ]
         },
@@ -388,7 +388,7 @@
           "reference": "urn:uuid:09600009-1111-2222-3333-444444444444"
         },
         "encounter": {
-          "reference": "urn:uuid:f0a37c98-10d9-5da7-a9e4-aafaffde9108"
+          "reference": "urn:uuid:7ae2e1e6-5c78-5006-af83-e0c2ad7aba27"
         },
         "effectiveDateTime": "2026-08-16",
         "performer": [
@@ -400,68 +400,10 @@
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "237364002"
+              "code": "713202001",
+              "display": "Antepartum stillbirth"
             }
           ]
-        },
-        "language": "en"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:cefc0482-3911-56c0-b6b6-50884df1a3ef",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "death-period-antepartum",
-        "meta": {
-          "profile": [
-            "https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition"
-          ]
-        },
-        "identifier": [
-          {
-            "system": "urn:ietf:rfc:3986",
-            "value": "urn:uuid:cefc0482-3911-56c0-b6b6-50884df1a3ef"
-          }
-        ],
-        "clinicalStatus": {
-          "coding": [
-            {
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "code": "active"
-            }
-          ]
-        },
-        "verificationStatus": {
-          "coding": [
-            {
-              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-              "code": "confirmed"
-            }
-          ]
-        },
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                "code": "encounter-diagnosis"
-              }
-            ]
-          }
-        ],
-        "code": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "237361005"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "urn:uuid:09600009-1111-2222-3333-444444444444"
-        },
-        "encounter": {
-          "reference": "urn:uuid:f0a37c98-10d9-5da7-a9e4-aafaffde9108"
         },
         "language": "en"
       }

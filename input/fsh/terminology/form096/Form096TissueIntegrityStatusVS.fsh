@@ -1,11 +1,16 @@
 ValueSet: Form096TissueIntegrityStatusVS
 Id: tissue-integrity-status-vs
-Title: "Placenta and Membranes Completeness"
-Description: "Form 096 terminology binding for Observation.valueCodeableConcept of the placenta completeness (SNOMED CT 364343000) and membranes completeness (SNOMED CT 364351002) components."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/tissue-integrity-status-vs"
-* ^status = #active
+Title: "Form 096 Placenta and Membranes Completeness"
+Description: "Observation.valueCodeableConcept for the Form 096 placenta completeness (Observation.code SNOMED CT 364343000) and membranes completeness (SNOMED CT 364351002) fields."
+* insert IntegrationsValueSet(tissue-integrity-status-vs)
+* ^status = #draft
 * ^experimental = true
-* include $sct#249170006 "Complete placenta at delivery"
-* include $sct#268479002 "Incomplete placenta at delivery"
-* include $sct#249181009 "Membranes complete"
-* include $sct#249182002 "Membranes incomplete"
+
+* $sct#249170006 "Complete placenta at delivery"
+* $sct#268479002 "Incomplete placenta at delivery"
+* $sct#249181009 "Membranes complete"
+* $sct#249182002 "Membranes incomplete"
+
+// Supplements providing Russian and Uzbek displays.
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096SnomedSupplementCS)

@@ -1,10 +1,15 @@
 ValueSet: Form096InterventionEffectivenessVS
 Id: intervention-effectiveness-vs
-Title: "Intervention Effectiveness"
-Description: "Form 096 terminology binding for Procedure.outcome / Observation.valueCodeableConcept."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/intervention-effectiveness-vs"
-* ^status = #active
+Title: "Form 096 Intervention Effectiveness"
+Description: "Procedure.outcome of the Form 096 labor support field, and Observation.valueCodeableConcept of the pain relief effect field."
+* insert IntegrationsValueSet(intervention-effectiveness-vs)
+* ^status = #draft
 * ^experimental = true
-* include $sct#385669000 "Successful"
-* include $sct#385670004 "Partially successful"
-* include $sct#385671000 "Unsuccessful"
+
+* $sct#385669000 "Successful"
+* $sct#385670004 "Partially successful"
+* $sct#385671000 "Unsuccessful"
+
+// Supplements providing Russian and Uzbek displays.
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096SnomedSupplementCS)

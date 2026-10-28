@@ -1,13 +1,6 @@
 ### In development
 
-Added the [Form 096 field mapping](form-096-mapping.html) in English, Russian and Uzbek, covering source fields, identity, pelvimetry, one-minute Apgar, birth outcome, shared facts and pending source catalogs. All 13 named coded sections are optional (0..1); epidemiological history is an optional open section. Missing clinical data require no placeholder resources or mandatory empty-reason/narrative pair. Required document metadata remain unchanged.
-
-Form 096 now documents newborn identification by the DMED medical-card number
-using the existing UZ Core HC slice when PINFL is unavailable, identity reuse
-in Form 097, and later addition of PINFL. The example explicitly includes HC
-identifiers for both newborns and places Apgar assessments on each newborn's
-observation. The integration document is the requirements source; the mapping
-workbook provides supporting traceability.
+Added Form 096 (Tug'ruq tibbiy kartasi, maternity medical record): the [Form 096 Composition](StructureDefinition-form-096-maternity-medical-record-composition.html), its terminology and the [Form 096 field mapping](form-096-mapping.html) in English, Russian and Uzbek. Each fact is its own coded Observation, and the facts Form 096 shares with Form 111 use Form 111's codes, including pelvimetry, syphilis, gonococcus, general condition and whether a child was born alive. Each newborn is a separate Patient identified by the DMED medical-card number until a PINFL is available, so Form 097 can reuse the same identity.
 
 ### Version 0.11.1
 
@@ -218,17 +211,3 @@ Diagnoses that are not constrained to a narrower list are bound to the [full ICD
 #### Examples
 
 Every area ships realistic examples: the four document Bundles, and the patients, practitioners, organizations, encounters, observations, service requests, specimens and reports they reference. Two example questionnaires are included, a [complaints intake template](Questionnaire-screening-intake-template.html) for gynecologists with an example response, and a [hepatitis B and C treatment questionnaire](Questionnaire-hepatitis-questionnaire.html).
-
-### 2026-10-27 — Form 096 terminology and optionality
-
-All clinical sections are optional (0..1); omit sections and resources whose source facts are absent.
-Do not synthesize zeroes, negative assertions, Apgar components, or a five-minute score. Incoming DMED Apgar is the one-minute total (LOINC 9272-6).
-Composition.author and the mandatory FHIR/Core document metadata remain required. A missing clinical section does not remove author requirements.
-Use exact, documented canonical Coding.system URIs. A CodeSystem defined in an open PR is not automatically approved or deployed.
-Missing machine codes can retain trustworthy source text where the profile permits it; do not substitute a merely similar international concept.
-Birth outcome uses LOINC 63893-2 with SNOMED CT 281050002 Livebirth or 237364002 Stillbirth. Death after livebirth is a separate fact.
-When the period of fetal death is known, add a Condition for the same child: 237361005 for antepartum or 237362003 for intrapartum death.
-Use Patient.deceasedBoolean=true when death is known without an exact date; use deceasedDateTime only when available.
-Historical pregnancy totals must not be computed from the current delivery. Omit unavailable historical counts.
-Preserve the mother and maternal encounter on common delivery facts shared between 096 and 097; use stable source-derived business identifiers.
-The snapshot inside each document is historical. Posting a document alone does not establish an upsert of a standalone master Encounter.
