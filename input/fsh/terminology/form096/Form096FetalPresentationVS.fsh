@@ -5,6 +5,6 @@ Description: "Form 096 terminology binding for Observation.valueCodeableConcept.
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/fetal-presentation-vs"
 * ^status = #active
 * ^experimental = true
-* include $form096-fetal-presentation-cs#chr-0044-0001 "Cephalic"
+* include $sct#1209182005 "Cephalic fetal presentation"
 * include $sct#6096002 "Breech presentation"
-* include $form096-fetal-presentation-cs#chr-0044-0003 "Footling"
+* include $sct#249097002 "Footling breech presentation"

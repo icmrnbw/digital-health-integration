@@ -1,8 +1,9 @@
 ValueSet: SatisfactoryStatusVS
 Id: satisfactory-status-vs
-Title: "Form097 Satisfactory Status ValueSet"
-Description: "ValueSet for satisfactory status, Form097 newborn development record."
+Title: "Satisfactory Status ValueSet"
+Description: "General condition: satisfactory or unsatisfactory, the same SNOMED CT codes as Form 111."
 * insert IntegrationsValueSet(satisfactory-status-vs)
 * ^experimental = true
 
-* include codes from system satisfactory-status-cs
+* include $sct#162669003 "Patient's condition satisfactory"
+* include $sct#162667001 "Patient's condition poor"

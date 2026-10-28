@@ -173,9 +173,9 @@ Coding systems, unit systems and identifier namespaces are distinct. A ValueSet 
 | Tug‘ruqning boshlanishi va tugashi | Начало и окончание родового процесса | `Observation.effectivePeriod`<br/>DMED source: `source protocol timestamps` | `SCT#386216000` | actual known interval |
 | Qog‘onoq pufagi yorilgan vaqt | Разрыв околоплодного пузыря | `Observation.component.code.text → valueDateTime` | `source label; no invented timestamp` | 2026-08-16T10:05:00+05:00 |
 | Qog‘onoq suvlari | Характер околоплодных вод | `Observation.component.code → valueCodeableConcept` | `LOINC#1887-9; amniotic-fluid-characteristic-vs` | verified source value |
-| I davr | I период | `Observation.component.code → valueQuantity` | `SCT#6893006; UCUM min` | 355 min |
-| II davr | II период | `Observation.component.code → valueQuantity` | `SCT#42857002; UCUM min` | 25 min |
-| III davr | III период | `Observation.component.code → valueQuantity` | `SCT#15898009; UCUM min` | 10 min |
+| I davr | I период | `Observation.component.code → valueQuantity` | `SCT#169821004; UCUM min` | 355 min |
+| II davr | II период | `Observation.component.code → valueQuantity` | `SCT#169822006; UCUM min` | 25 min |
+| III davr | III период | `Observation.component.code → valueQuantity` | `SCT#169823001; UCUM min` | 10 min |
 | Umumiy davomiylik | Общая длительность | `Observation.component.code → valueQuantity` | `SCT#271562002; UCUM min` | 390 min |
 {: .mapping-fields}
 
@@ -205,7 +205,7 @@ Coding systems, unit systems and identifier namespaces are distinct. A ValueSet 
 |---|---|---|---|---|
 | Hozirgi tug‘ruqda tirik tug‘ilganlar | Живорождённые в текущих родах | `Observation.component.valueInteger (subject = mother)` | `LOINC#73773-4` | 2 |
 | Hozirgi tug‘ruqda o‘lik tug‘ilganlar | Мертворождённые в текущих родах | `Observation.component.valueInteger (subject = mother)` | `SCT#252112002` | 0 |
-| Oldingi homiladorliklar natijalari | Исходы предыдущих беременностей | `maternal Observation; source history` | `mapping pending` | omit if unavailable |
+| Oldingi homiladorliklar natijalari | Исходы предыдущих беременностей | `maternal Observation; source history` | [form111-previous-pregnancy-outcome-vs](ValueSet-form111-previous-pregnancy-outcome-vs.html), as in Form 111 | omit if unavailable |
 {: .mapping-fields}
 
 ### Placenta and postpartum observations

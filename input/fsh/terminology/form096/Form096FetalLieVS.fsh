@@ -5,6 +5,6 @@ Description: "Form 096 terminology binding for Observation.valueCodeableConcept.
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/fetal-lie-vs"
 * ^status = #active
 * ^experimental = true
-* include $form096-fetal-lie-cs#chr-0045-0001 "Longitudinal"
-* include $form096-fetal-lie-cs#chr-0045-0002 "Transverse"
-* include $form096-fetal-lie-cs#chr-0045-0003 "Oblique"
+* include $sct#249063009 "Longitudinal lie"
+* include $sct#73161006 "Transverse lie"
+* include $sct#63750008 "Oblique lie"

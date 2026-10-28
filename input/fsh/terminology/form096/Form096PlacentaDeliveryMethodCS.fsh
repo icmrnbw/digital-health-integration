@@ -22,12 +22,6 @@ Description: "Governed local concepts for Form 096."
   * ^designation[+].language = #ru
   * ^designation[=].value = "Отделилась самостоятельно"
 
-* #chr-0086-0003 "Qo‘lda ajratib olindi"
-  * ^designation[0].language = #en
-  * ^designation[=].value = "Removed manually"
-  * ^designation[+].language = #ru
-  * ^designation[=].value = "Удалена вручную"
-
 * #chr-0086-0004 "Instrumental usulda ajratib olindi"
   * ^designation[0].language = #en
   * ^designation[=].value = "Removed instrumentally"
