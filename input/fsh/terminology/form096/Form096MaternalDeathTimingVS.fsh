@@ -5,6 +5,6 @@ Description: "Form 096 terminology binding for Observation.valueCodeableConcept.
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/maternal-death-timing-vs"
 * ^status = #active
 * ^experimental = true
-* include $form096-maternal-death-timing-cs#chr-0042-0001 "Before childbirth"
-* include $form096-maternal-death-timing-cs#chr-0042-0002 "During childbirth"
-* include $form096-maternal-death-timing-cs#chr-0042-0003 "After childbirth"
+* include $sct#31868001 "Antepartum maternal death"
+* include $sct#27792001 "Intrapartum maternal death"
+* include $sct#5866003 "Postpartum maternal death"

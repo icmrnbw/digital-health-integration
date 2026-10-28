@@ -833,7 +833,7 @@ Usage: #inline
 * effectiveDateTime = "2026-08-16T09:15:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * component[0].code = $loinc#11874-5
-* component[=].valueCodeableConcept = $form096-fetal-lie-cs#chr-0045-0001
+* component[=].valueCodeableConcept = $sct#249063009 "Longitudinal lie"
 * component[+].code.text = "Fetal position: first or second position"
 * component[=].valueCodeableConcept.text = "First position"
 * component[+].code.text = "Fetal attitude or variety"
@@ -843,7 +843,7 @@ Usage: #inline
 * component[+].code = $loinc#55283-6
 * component[=].valueInteger = 142
 * component[+].code = $loinc#11877-8
-* component[=].valueCodeableConcept = $form096-fetal-presentation-cs#chr-0044-0001
+* component[=].valueCodeableConcept = $sct#1209182005 "Cephalic fetal presentation"
 * component[+].code.text = "Station of the fetal presenting part"
 * component[=].valueString = "Engaged at the pelvic inlet"
 * component[+].code.text = "Labor activity"
@@ -875,11 +875,11 @@ Usage: #inline
 * component[=].valueDateTime = "2026-08-16T12:10:00+05:00"
 * component[+].code = $sct#271562002
 * component[=].valueQuantity = 390 'min' "minutes"
-* component[+].code = $sct#6893006
+* component[+].code = $sct#169821004 "Duration of first stage of labor"
 * component[=].valueQuantity = 355 'min' "minutes"
-* component[+].code = $sct#42857002
+* component[+].code = $sct#169822006 "Duration of second stage of labor"
 * component[=].valueQuantity = 25 'min' "minutes"
-* component[+].code = $sct#15898009
+* component[+].code = $sct#169823001 "Duration of third stage of labor"
 * component[=].valueQuantity = 10 'min' "minutes"
 
 
@@ -909,7 +909,7 @@ Usage: #inline
 * component[0].code = $loinc#63893-2
 * component[=].valueCodeableConcept = $sct#281050002
 * component[+].code = $loinc#11877-8
-* component[=].valueCodeableConcept = $form096-fetal-presentation-cs#chr-0044-0001
+* component[=].valueCodeableConcept = $sct#1209182005 "Cephalic fetal presentation"
 * component[+].code = $loinc#8339-4
 * component[=].valueQuantity = 2850 'g' "g"
 * component[+].code = $loinc#89269-5
@@ -983,10 +983,10 @@ Usage: #inline
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * component[0].code.text = "Interval from birth to placental delivery"
 * component[=].valueQuantity = 10 'min' "minutes"
-* component[+].code.text = "Placental completeness"
-* component[=].valueCodeableConcept = $form096-tissue-integrity-status-cs#chr-0048-0001
-* component[+].code.text = "Fetal membranes completeness"
-* component[=].valueCodeableConcept = $form096-tissue-integrity-status-cs#chr-0048-0001
+* component[+].code = $sct#364343000 "Completeness of placenta"
+* component[=].valueCodeableConcept = $sct#249170006 "Complete placenta at delivery"
+* component[+].code = $sct#364351002 "Completeness of membranes"
+* component[=].valueCodeableConcept = $sct#249181009 "Membranes complete"
 * component[+].code.text = "Umbilical cord length"
 * component[=].valueQuantity = 55 'cm' "cm"
 * component[+].code.text = "Umbilical cord entanglement present"

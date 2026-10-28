@@ -1,9 +1,11 @@
 ValueSet: Form096TissueIntegrityStatusVS
 Id: tissue-integrity-status-vs
-Title: "Tissue Integrity Status"
-Description: "Form 096 terminology binding for Observation.valueCodeableConcept."
+Title: "Placenta and Membranes Completeness"
+Description: "Form 096 terminology binding for Observation.valueCodeableConcept of the placenta completeness (SNOMED CT 364343000) and membranes completeness (SNOMED CT 364351002) components."
 * ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/tissue-integrity-status-vs"
 * ^status = #active
 * ^experimental = true
-* include $form096-tissue-integrity-status-cs#chr-0048-0001 "Intact"
-* include $form096-tissue-integrity-status-cs#chr-0048-0002 "Integrity compromised"
+* include $sct#249170006 "Complete placenta at delivery"
+* include $sct#268479002 "Incomplete placenta at delivery"
+* include $sct#249181009 "Membranes complete"
+* include $sct#249182002 "Membranes incomplete"
