@@ -546,8 +546,9 @@ Instance: organization-096-001
 InstanceOf: UZCoreOrganization
 Usage: #inline
 * language = #en
-* identifier.system = "https://dhp.uz/fhir/core/sid/uz/organization-code"
-* identifier.value = "200096"
+* identifier[taxId].type = $identifier-type#TAX "Tax ID number"
+* identifier[taxId].system = $organization-tax-id-system-dhp
+* identifier[taxId].value = "201234567"
 * name = "Toshkent City Perinatal Center"
 
 
@@ -555,6 +556,9 @@ Instance: organization-096-referring
 InstanceOf: UZCoreOrganization
 Usage: #inline
 * language = #en
+* identifier[taxId].type = $identifier-type#TAX "Tax ID number"
+* identifier[taxId].system = $organization-tax-id-system-dhp
+* identifier[taxId].value = "202345678"
 * name = "Chilonzor District Polyclinic No. 5"
 
 

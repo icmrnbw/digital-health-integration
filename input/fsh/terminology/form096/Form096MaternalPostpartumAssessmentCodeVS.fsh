@@ -16,3 +16,5 @@ Description: "Observation.code for the Form 096 postpartum observation fields, o
 // Supplements providing Russian and Uzbek displays.
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(Form096SnomedSupplementCS)
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096LoincSupplementCS)

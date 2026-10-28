@@ -27,3 +27,5 @@ Description: "Observation.code for the Form 096 history fields: spouse health, m
 * ^extension[=].valueCanonical = Canonical(Form096SnomedSupplementCS)
 * ^extension[+].url = $valueset-supplement
 * ^extension[=].valueCanonical = Canonical(Form111SnomedSupplementCS)
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096LoincSupplementCS)

@@ -40,7 +40,7 @@
 | Hujjat versiyasi UUID | Идентификатор версии документа | Bundle.identifier | `urn:ietf:rfc:3986` | urn:uuid:09600000-1111-2222-3333-444444444444 |
 | Hujjat UUID | Идентификатор документа | Composition.identifier | `urn:ietf:rfc:3986` | urn:uuid:5f0a9c3e-8b1d-4c6e-9a27-0960a1b2c3d4 |
 | Shakl raqami | Номер формы | Composition.identifier | `https://dhp.uz/fhir/core/sid/doc/uz/form-number` | 096 |
-| Hujjat holati | Статус документа | Composition.status | - | final |
+| Hujjat holati | Статус документа | Composition.status | `preliminary` во время пребывания, `final` после закрытия истории | final |
 | Hujjat turi | Тип документа | Composition.type | [Composition Type](https://terminology.dhp.uz/fhir/core/ValueSet/composition-type-vs) `emdoc-0010-0016` "Maternity (delivery) medical record", а также LOINC `57057-2` "Labor and Delivery Summary Note" | - |
 | Hujjat kategoriyasi | Категория документа | Composition.category | [Composition Category](https://terminology.dhp.uz/fhir/core/ValueSet/composition-category-vs) `Comp-001-0001` "Medical record" и [Document Category](CodeSystem-document-category-cs.html) `form-096` "Birth medical record" | - |
 | Bemor | Пациентка | Composition.subject | [Patient](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-patient.html) | Karimova Dilnoza Akmalovna |
@@ -48,6 +48,7 @@
 | Hujjat sanasi | Дата документа | Composition.date | - | 2026-08-18T15:30:00+05:00 |
 | Shifokor va akusherka | Врач и акушерка | Composition.author | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html), или [Practitioner](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner.html), если должность неизвестна | Rasulova M.B., Tursunova N.S. |
 | Hujjat egasi | Организация-хранитель документа | Composition.custodian | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | Toshkent City Perinatal Center |
+| Muassasa STIR | ИНН учреждения | Organization.identifier[taxId] | `https://dhp.uz/fhir/core/sid/org/uz/soliq`, type `TAX` | 201234567 |
 | Hujjat sarlavhasi | Заголовок документа | Composition.title | - | Form 096 - Maternity Medical Record |
 
 ---

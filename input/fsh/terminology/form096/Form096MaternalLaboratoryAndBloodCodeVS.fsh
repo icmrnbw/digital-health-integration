@@ -13,3 +13,7 @@ Description: "Observation.code for the Form 096 admission laboratory fields: blo
 * $loinc#22461-8 "Reagin Ab [Presence] in Serum"
 * $form111-analysis-test-code-cs#chr-0001-00001 "Gonokokk"
 * $form111-analysis-test-code-cs#chr-0001-00006 "Boshqa tahlil"
+
+// Supplements providing Russian and Uzbek displays.
+* ^extension[+].url = $valueset-supplement
+* ^extension[=].valueCanonical = Canonical(Form096LoincSupplementCS)
