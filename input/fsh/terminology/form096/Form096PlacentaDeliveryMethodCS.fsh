@@ -2,13 +2,7 @@ CodeSystem: Form096PlacentaDeliveryMethodCS
 Id: placenta-delivery-method-cs
 Title: "Placenta Delivery Method CodeSystem"
 Description: "Governed local concepts for Form 096."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/placenta-delivery-method-cs"
-* ^status = #draft
-* ^experimental = true
-* ^caseSensitive = true
-* ^content = #complete
-* ^hierarchyMeaning = #is-a
-* ^language = #uz
+* insert OriginalCodeSystemDraft(placenta-delivery-method-cs)
 
 * #chr-0086-0001 "Tushdi"
   * ^designation[0].language = #en

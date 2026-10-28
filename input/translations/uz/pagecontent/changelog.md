@@ -1,6 +1,6 @@
 ### Ishlab chiqilmoqda
 
-096-shakl (Tug'ruq tibbiy kartasi) qo'shildi: [096-shakl Composition](StructureDefinition-form-096-maternity-medical-record-composition.html), uning terminologiyasi va ingliz, rus va o'zbek tillaridagi [096-shakl maydonlar mosligi](form-096-mapping.html). Har bir fakt alohida kodlangan Observation sifatida yuboriladi, 111-shakl bilan umumiy faktlar esa 111-shakl kodlaridan foydalanadi, jumladan chanoq o'lchovlari, zaxm, gonokokk, umumiy ahvol va bolaning tirik tug'ilgani. Har bir chaqaloq JShShIR berilgunga qadar DMED tibbiy karta raqami bilan aniqlanadigan alohida Patient bo'ladi, shuning uchun 097-shakl xuddi shu identifikatsiyadan foydalana oladi.
+096-shakl (Tug'ruq tibbiy kartasi) qo'shildi: [096-shakl Composition](StructureDefinition-form-096-maternity-medical-record-composition.html) (UZ Core Composition asosidagi birinchi shakl Composition), uning terminologiyasi va ingliz, rus va o'zbek tillaridagi [096-shakl maydonlar mosligi](form-096-mapping.html). Har bir fakt alohida kodlangan Observation sifatida yuboriladi, 111-shakl bilan umumiy faktlar esa 111-shakl kodlaridan foydalanadi, jumladan chanoq o'lchovlari, zaxm, gonokokk, umumiy ahvol va bolaning tirik tug'ilgani. Har bir chaqaloq JShShIR berilgunga qadar DMED tibbiy karta raqami bilan aniqlanadigan alohida Patient bo'ladi, shuning uchun 097-shakl xuddi shu identifikatsiyadan foydalana oladi.
 
 ### Versiya 0.11.1
 

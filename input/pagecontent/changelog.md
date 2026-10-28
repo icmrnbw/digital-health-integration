@@ -1,6 +1,6 @@
 ### In development
 
-Added Form 096 (Tug'ruq tibbiy kartasi, maternity medical record): the [Form 096 Composition](StructureDefinition-form-096-maternity-medical-record-composition.html), its terminology and the [Form 096 field mapping](form-096-mapping.html) in English, Russian and Uzbek. Each fact is its own coded Observation, and the facts Form 096 shares with Form 111 use Form 111's codes, including pelvimetry, syphilis, gonococcus, general condition and whether a child was born alive. Each newborn is a separate Patient identified by the DMED medical-card number until a PINFL is available, so Form 097 can reuse the same identity.
+Added Form 096 (Tug'ruq tibbiy kartasi, maternity medical record): the [Form 096 Composition](StructureDefinition-form-096-maternity-medical-record-composition.html), the first form Composition derived from UZ Core Composition, its terminology and the [Form 096 field mapping](form-096-mapping.html) in English, Russian and Uzbek. Each fact is its own coded Observation, and the facts Form 096 shares with Form 111 use Form 111's codes, including pelvimetry, syphilis, gonococcus, general condition and whether a child was born alive. Each newborn is a separate Patient identified by the DMED medical-card number until a PINFL is available, so Form 097 can reuse the same identity.
 
 ### Version 0.11.1
 
