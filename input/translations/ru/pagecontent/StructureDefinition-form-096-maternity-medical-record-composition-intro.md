@@ -1,3 +1,5 @@
+См. [маппинг полей формы 096](form-096-mapping.html) и [полный пример документа](Bundle-example-form-096-maternity-medical-record.html).
+
 > Machine-translated supporting documentation; clinical coding and canonical URIs are unchanged.
 
 Все клинические разделы необязательны (0..1); при отсутствии факта в источнике раздел или ресурс пропускается.
@@ -12,6 +14,6 @@ Composition.author и обязательные метаданные FHIR/Core с
 Общие факты родов в 096 и 097 сохраняют субъектом мать и её госпитализацию и используют стабильные идентификаторы исходных фактов.
 Снимок в документе исторический. Сам POST документа не обеспечивает обновление самостоятельного мастер-Encounter.
 
-Use UZ Core Encounter for the maternal hospitalization shared with Form 066; discharge disposition and custodian are optional. Pelvimetry is represented by six separate maternal Observations; diagonal conjugate uses SNOMED CT 249011002. The anatomical meaning of C. vera must not be silently narrowed. The epidemiological section uses its explicit text discriminator until an exact international section code is established.
+Use UZ Core Encounter for the maternal hospitalization shared with Form 066; discharge disposition and custodian are optional. Pelvimetry is represented by six separate maternal Observations; diagonal conjugate uses SNOMED CT 249011002. The anatomical meaning of C. vera must not be silently narrowed. Эпидемиологический анамнез — необязательная открытая секция без фиксированного кодированного дискриминатора.
 
 If a source author is identified but the position or role is unavailable, Composition.author may reference UZCorePractitioner directly. Do not invent a PractitionerRole or profession.

@@ -1,3 +1,5 @@
+[096-shakl maydonlar mosligi](form-096-mapping.html) va [to‘liq hujjat misoli](Bundle-example-form-096-maternity-medical-record.html)ga qarang.
+
 > Machine-translated supporting documentation; clinical coding and canonical URIs are unchanged.
 
 Barcha klinik bo‘limlar ixtiyoriy (0..1); manbada fakt bo‘lmasa, bo‘lim yoki resurs yuborilmaydi.
@@ -12,6 +14,6 @@ Oldingi homiladorliklar soni joriy tug‘ruqdan hisoblanmaydi; DMED bermagan ana
 096 va 097 dagi umumiy tug‘ruq faktlarining subyekti ona va uning gospitalizatsiyasi bo‘lib qoladi; manbaga asoslangan barqaror identifikatorlar ishlatiladi.
 Hujjatdagi holat tarixiy nusxadir. Hujjatni POST qilish mustaqil asosiy Encounter yangilanishini o‘zi ta’minlamaydi.
 
-Use UZ Core Encounter for the maternal hospitalization shared with Form 066; discharge disposition and custodian are optional. Pelvimetry is represented by six separate maternal Observations; diagonal conjugate uses SNOMED CT 249011002. The anatomical meaning of C. vera must not be silently narrowed. The epidemiological section uses its explicit text discriminator until an exact international section code is established.
+Use UZ Core Encounter for the maternal hospitalization shared with Form 066; discharge disposition and custodian are optional. Pelvimetry is represented by six separate maternal Observations; diagonal conjugate uses SNOMED CT 249011002. The anatomical meaning of C. vera must not be silently narrowed. Epidemiologik anamnez qat’iy kodli diskriminatorsiz ixtiyoriy ochiq bo‘limdir.
 
 If a source author is identified but the position or role is unavailable, Composition.author may reference UZCorePractitioner directly. Do not invent a PractitionerRole or profession.

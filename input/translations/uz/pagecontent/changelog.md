@@ -1,11 +1,6 @@
 ### Ishlab chiqilmoqda
 
-[096-shakl Composition](StructureDefinition-form-096-maternity-medical-record-composition.html)
-profilidagi sakkizta majburiy bo'lim saqlanadi. Oltita klinik bo'limda yozuvlar
-bo'lmasligi mumkin, ammo sababi va matnli izohi ko'rsatilishi shart. Qabul va
-mas'ul shaxslar bo'limlarida yozuvlar hali ham majburiy. Bu tug'ruqsiz yakunlangan
-gospitalizatsiyalarni hamda manba tizimida mavjud bo'lmagan ma'lumotlarni soxta
-klinik resurslarsiz uzatish imkonini beradi.
+[096-shakl maydonlar mosligi](form-096-mapping.html) ingliz, rus va o‘zbek tillarida qo‘shildi: manba maydonlari, identifikatsiya, pelvimetriya, 1-daqiqadagi Apgar, tug‘ilish natijasi, umumiy faktlar va kutilayotgan kataloglar. Barcha 13 nomlangan kodli bo‘lim ixtiyoriy (0..1); epidemiologik anamnez ochiq ixtiyoriy bo‘lim. Klinik ma’lumot bo‘lmasa soxta yozuv yoki majburiy emptyReason/matn juftligi kerak emas. Majburiy hujjat metama’lumotlari saqlanadi.
 
 096-shaklda JShShIR bo'lmaganda chaqaloqni DMED tibbiy karta raqami bilan UZ Core
 ning mavjud HC kesimida identifikatsiyalash, shu bemorni 097-shaklda ishlatish va

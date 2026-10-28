@@ -1,11 +1,6 @@
 ### In development
 
-The [Form 096 Composition](StructureDefinition-form-096-maternity-medical-record-composition.html)
-retains all eight required sections, but allows the six required clinical
-sections to have no entries when both an empty reason and explanatory narrative
-are supplied. Admission information and responsible persons still require
-entries. This supports admissions without delivery and information unavailable
-in the source system without introducing placeholder clinical resources.
+Added the [Form 096 field mapping](form-096-mapping.html) in English, Russian and Uzbek, covering source fields, identity, pelvimetry, one-minute Apgar, birth outcome, shared facts and pending source catalogs. All 13 named coded sections are optional (0..1); epidemiological history is an optional open section. Missing clinical data require no placeholder resources or mandatory empty-reason/narrative pair. Required document metadata remain unchanged.
 
 Form 096 now documents newborn identification by the DMED medical-card number
 using the existing UZ Core HC slice when PINFL is unavailable, identity reuse

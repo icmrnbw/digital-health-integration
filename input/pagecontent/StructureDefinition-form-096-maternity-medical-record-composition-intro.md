@@ -1,3 +1,5 @@
+See the [Form 096 field mapping](form-096-mapping.html) and [complete document example](Bundle-example-form-096-maternity-medical-record.html).
+
 All clinical sections are optional (0..1); omit sections and resources whose source facts are absent.
 Do not synthesize zeroes, negative assertions, Apgar components, or a five-minute score. Incoming DMED Apgar is the one-minute total (LOINC 9272-6).
 Composition.author and the mandatory FHIR/Core document metadata remain required. A missing clinical section does not remove author requirements.
@@ -10,6 +12,6 @@ Historical pregnancy totals must not be computed from the current delivery. Omit
 Preserve the mother and maternal encounter on common delivery facts shared between 096 and 097; use stable source-derived business identifiers.
 The snapshot inside each document is historical. Posting a document alone does not establish an upsert of a standalone master Encounter.
 
-Use UZ Core Encounter for the maternal hospitalization shared with Form 066; discharge disposition and custodian are optional. Pelvimetry is represented by six separate maternal Observations; diagonal conjugate uses SNOMED CT 249011002. The anatomical meaning of C. vera must not be silently narrowed. The epidemiological section uses its explicit text discriminator until an exact international section code is established.
+Use UZ Core Encounter for the maternal hospitalization shared with Form 066; discharge disposition and custodian are optional. Pelvimetry is represented by six separate maternal Observations; diagonal conjugate uses SNOMED CT 249011002. The anatomical meaning of C. vera must not be silently narrowed. Epidemiological history is an optional open section without a fixed coded discriminator.
 
 If a source author is identified but the position or role is unavailable, Composition.author may reference UZCorePractitioner directly. Do not invent a PractitionerRole or profession.
