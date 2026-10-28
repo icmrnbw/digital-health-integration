@@ -10,7 +10,6 @@ Description: "ConceptMap defining the mapping between Cancer Registry internal d
 * publisher = "Uzinfocom"
 
 * sourceScopeCanonical = Canonical(CancerRegistryDictionaryICD10VS)
-* targetScopeCanonical = $icd-10-vs
 
 * group[+].source = Canonical(CancerRegistryDictionaryICD10CS)
 * group[=].target = $icd-10
