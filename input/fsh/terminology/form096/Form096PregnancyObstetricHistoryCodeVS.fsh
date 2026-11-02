@@ -21,7 +21,7 @@ Description: "Observation.code for the Form 096 history fields: spouse health, m
 * $loinc#57065-5 "Quickening date"
 * $loinc#18185-9 "Gestational age"
 * $loinc#68493-6 "Prenatal visits for this pregnancy #"
-* $loinc#75204-8 "Prenatal care indicator"
+* $loinc#75204-8 "Prenatal care indicator [CDC.CS]"
 * $form111-general-obs-cs#chr-0035-00031 "Epidemiologik anamnez"
 * $loinc#80427-8 "Employer name [Identifier]"
 * $sct#14679004 "Occupation"

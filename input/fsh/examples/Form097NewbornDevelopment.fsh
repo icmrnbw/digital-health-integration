@@ -2563,7 +2563,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $loinc#75204-8 "Prenatal care indicator"
+* code = $loinc#75204-8 "Prenatal care indicator [CDC.CS]"
 * subject = Reference(urn:uuid:0970003b-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09700100-1111-2222-3333-444444444444)
 * performer = Reference(urn:uuid:09700101-1111-2222-3333-444444444444)

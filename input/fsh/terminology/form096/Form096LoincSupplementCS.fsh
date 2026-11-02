@@ -209,7 +209,7 @@ Description: "Uzbek and Russian displays for the LOINC codes listed in the Form 
   * ^designation[+].language = #uz
   * ^designation[=].value = "Umumiy qon tahlili"
 
-* #75204-8 "Prenatal care indicator"
+* #75204-8 "Prenatal care indicator [CDC.CS]"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Наблюдалась во время беременности"
   * ^designation[+].language = #uz
