@@ -103,7 +103,7 @@
 | Yakuniy tashxis | Заключительный диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `main` | Multiple delivery, all spontaneous (`O84.0`) |
 | Tug'ruqdagi asoratlar | Осложнения родов | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | First degree perineal laceration during delivery (`O70.0`) |
 | Tug'ruqdan keyingi asoratlar | Послеродовые осложнения | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | Disruption of perineal obstetric wound (`O90.1`) |
-| Operatsiya | Операция | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code; occurrenceDateTime; performer.actor | SNOMED CT | Episiotomy (`85548006`), 2026-08-16T12:15:00+05:00 |
+| Operatsiya | Операция | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code; occurrenceDateTime; performer.actor | ICHI из [ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html), как в [Форме 066](form-066-mapping.html); `procedure-code-vs` допускает и SNOMED CT | Эпизиотомия, 2026-08-16T12:15:00+05:00 |
 | Allergiya | Аллергия | [AllergyIntolerance](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-allergy-intolerance.html).code | SNOMED CT, если есть код; иначе `code.text` с названием препарата или МНН; `716186003` "No known allergy" только если это указано в форме | No known allergy (`716186003`) |
 
 ---
