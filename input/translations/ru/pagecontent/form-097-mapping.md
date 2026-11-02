@@ -74,6 +74,7 @@
 | Homiladorlik soni | Число беременностей | Observation.valueInteger | `code` LOINC `11996-6` "[#] Pregnancies" | 4 |
 | Tug'ruq soni | Число родов | Observation.valueInteger | `code` LOINC `11977-6` "[#] Parity" | 2 |
 | Homiladorlik muddati | Срок беременности | Observation.valueQuantity | `code` LOINC `18185-9` "Gestational age" | 40 wk |
+| Tug'ruqning alohida xususiyatlari | Особенности родов | Observation.valueString | `code` [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) `chr-0035-00012` "Special features of delivery", как в Форме 111 | Spontaneous vaginal delivery, no complications |
 | Tug'ruqning birinchi davri | Первый период родов | Observation.valueString | `code` SNOMED CT `364329005` "Characteristic of first stage of labor" | First stage 6 h 20 min, regular contractions, no complications |
 | Tug'ruqning ikkinchi davri | Второй период родов | Observation.valueString | `code` SNOMED CT `364337002` "Characteristic of second stage of labor" | Second stage 25 min, spontaneous vaginal delivery |
 | I davr davomiyligi | Длительность I периода | Observation.valueQuantity (UCUM `min`) | `code` [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) SNOMED CT `169821004` "Duration of first stage of labor", в минутах, тот же код, что в Форме 096 | 380 min |

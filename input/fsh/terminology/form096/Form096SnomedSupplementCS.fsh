@@ -293,6 +293,12 @@ Description: "Uzbek and Russian displays for the SNOMED CT codes used by Form 09
   * ^designation[+].language = #uz
   * ^designation[=].value = "Aralash chanoq bilan kelish"
 
+* #38049006 "Incomplete breech presentation"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Неполное ягодичное предлежание"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "To'liqmas chanoq bilan kelish"
+
 * #249098007 "Knee presentation"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Коленное предлежание"
@@ -305,7 +311,7 @@ Description: "Uzbek and Russian displays for the SNOMED CT codes used by Form 09
   * ^designation[+].language = #uz
   * ^designation[=].value = "Oldinda keluvchi qismning joylashuvi"
 
-* #276506001 "Newborn death"
+* #276506001 "Neonatal death"
   * ^designation[0].language = #ru
   * ^designation[=].value = "Смерть новорождённого"
   * ^designation[+].language = #uz

@@ -1611,7 +1611,7 @@ Usage: #inline
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T09:15:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
-* valueDateTime = "2026-08-16T06:10:00+05:00"
+* valueDateTime = "2026-08-16"
 
 
 Instance: observation-096-labor-duration

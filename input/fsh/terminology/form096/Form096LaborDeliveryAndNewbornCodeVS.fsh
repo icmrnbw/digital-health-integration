@@ -25,7 +25,7 @@ Description: "Observation.code for the Form 096 labor and newborn fields: time o
 * $loinc#73771-8 "Birth order"
 * $loinc#57071-3 "Obstetric delivery method"
 * $form111-general-obs-cs#chr-0035-00029 "Homila asoratlari"
-* $sct#276506001 "Newborn death"
+* $sct#276506001 "Neonatal death"
 * $form111-general-obs-cs#chr-0035-00030 "Tug'ilgandan keyin vafot etganlar soni"
 * $form111-general-obs-cs#chr-0035-00028 "Ona patronajga muhtojmi"
 * $loinc#106790-9 "Hours before delivery when membranes ruptured [Time]"
