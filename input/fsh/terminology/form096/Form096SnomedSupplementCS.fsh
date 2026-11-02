@@ -298,3 +298,15 @@ Description: "Uzbek and Russian displays for the SNOMED CT codes used by Form 09
   * ^designation[=].value = "Коленное предлежание"
   * ^designation[+].language = #uz
   * ^designation[=].value = "Tizza bilan kelish"
+
+* #364610007 "Engagement of presenting part"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Расположение предлежащей части"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Oldinda keluvchi qismning joylashuvi"
+
+* #276506001 "Newborn death"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Смерть новорождённого"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Yangi tug'ilgan chaqaloq o'limi"

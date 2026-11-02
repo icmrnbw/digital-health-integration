@@ -208,3 +208,45 @@ Description: "Uzbek and Russian displays for the LOINC codes listed in the Form 
   * ^designation[=].value = "Общий анализ крови"
   * ^designation[+].language = #uz
   * ^designation[=].value = "Umumiy qon tahlili"
+
+* #75204-8 "Prenatal care indicator"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Наблюдалась во время беременности"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Homiladorlik davrida kuzatilgan"
+
+* #56866-7 "Onset of painful contractions"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Начало родовой деятельности (схваток)"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tug'ruq faoliyatining (to'lg'oqning) boshlanishi"
+
+* #106790-9 "Hours before delivery when membranes ruptured [Time]"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Безводный период"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Suvsiz davr"
+
+* #73771-8 "Birth order"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Порядок рождения"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tug'ilish tartibi"
+
+* #76689-9 "Sex assigned at birth"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Пол при рождении"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tug'ilgandagi jinsi"
+
+* #57071-3 "Obstetric delivery method"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Вид родов"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tug'ruq turi"
+
+* #10210-3 "Physical findings of General status Narrative"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Состояние при поступлении"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Qabul qilingandagi ahvoli"

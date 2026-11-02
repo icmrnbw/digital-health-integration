@@ -81,6 +81,8 @@ Bo'lim kodi: LOINC `57073-9` "Prenatal records".
 | III davr davomiyligi | Длительность III периода | Observation.valueQuantity (UCUM `min`) | `code` [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) SNOMED CT `169823001` "Duration of third stage of labor", daqiqalarda, 096-shakldagi kod | 10 min |
 | Homiladorlik asorati | Осложнение беременности | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code | ICD-10 | `O24.4` "Diabetes mellitus arising in pregnancy" |
 | Amniotik suyuqlik ko'rinishi | Вид околоплодных вод | Observation.valueCodeableConcept | `code` LOINC `1887-9` "Appearance of amniotic fluid"<br>`value` [Amniotic Fluid Characteristic](ValueSet-amniotic-fluid-characteristic-vs.html), yoki tavsif erkin matn bo'lsa, `valueString` | Amniotic fluid - clear (`168090003`) |
+| Onaning kuzatuvdagi muassasasi | Учреждение, где мать наблюдалась | Observation.valueCodeableConcept; performer → [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | `code` [Medical and Obstetric History Codes](ValueSet-pregnancy-obstetric-history-code-vs.html) LOINC `75204-8` "Prenatal care indicator", 096-shakldagi bilan bir xil kod<br>`value` HL7 [v2-0532](https://terminology.hl7.org/CodeSystem-v2-0532.html) `Y` "Yes"<br>`performer` = muassasa, shu bo'limda yuboriladi | Ha (`Y`), Chilonzor tumani 5-son oilaviy poliklinika |
+| Suvsiz davr | Безводный период | Observation.valueQuantity (UCUM `h`), yoki DMEDda matn bo'lsa valueString | `code` [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) LOINC `106790-9` "Hours before delivery when membranes ruptured [Time]" | 6.5 h |
 | Naslli anamnez (ona) | Наследственный анамнез (мать) | FamilyMemberHistory.condition.code | `relationship` v3-RoleCode `MTH` "mother"<br>`code` ICD-10 | `E14.9` "Unspecified diabetes mellitus : Without complications" |
 | Naslli anamnez (ota) | Наследственный анамнез (отец) | FamilyMemberHistory.condition.code | `relationship` v3-RoleCode `FTH` "father"<br>`code` ICD-10 | `J45.9` "Asthma, unspecified" |
 
@@ -269,7 +271,7 @@ Bundle (document)
 ├── Patient (yangi tug'ilgan chaqaloq)
 ├── Patient[] (ona, ota)
 ├── RelatedPerson[] (ona, ota - chaqaloqning qonuniy vakillari sifatida)
-├── Organization (tug'ruqxona)
+├── Organization[] (tug'ruqxona, onaning kuzatuvdagi muassasasi)
 ├── Location (palata)
 ├── Encounter (chaqaloqning tug'ilishdan chiqarilishgacha bo'lishi; onaning tug'rug'i)
 ├── Practitioner[] / PractitionerRole[] (shifokor, hamshira)
