@@ -268,3 +268,33 @@ Description: "Uzbek and Russian displays for the SNOMED CT codes used by Form 09
   * ^designation[=].value = "Околоплодные воды светлые"
   * ^designation[+].language = #uz
   * ^designation[=].value = "Homila suvi tiniq"
+
+* #70028003 "Vertex presentation"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Затылочное предлежание"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Ensa bilan kelish"
+
+* #21882006 "Face presentation of fetus"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Лицевое предлежание"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Yuz bilan kelish"
+
+* #8014007 "Brow presentation"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Лобное предлежание"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Peshona bilan kelish"
+
+* #49168004 "Complete breech presentation"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Смешанное ягодичное предлежание"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Aralash chanoq bilan kelish"
+
+* #249098007 "Knee presentation"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Коленное предлежание"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tizza bilan kelish"

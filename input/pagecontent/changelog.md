@@ -10,6 +10,8 @@
 
 #### Changed
 
+Form 096 and Form 097 terminology and mappings are extended for the DMED integration. [Fetal presentation](ValueSet-fetal-presentation-vs.html) adds vertex, face, brow, complete breech and knee presentation. [Admission laboratory test codes](ValueSet-maternal-laboratory-and-blood-code-vs.html) add the complete blood count, HBsAg, toxoplasmosis, urinalysis, vaginal smear, stool, HIV 1+2, HIV 1, HIV 2 and rapid HIV tests, and a free-text result may go in `valueString`. Gestational age, characteristics of previous pregnancies and special features of delivery reuse the Form 111 codes. The Form 096 mapping adds the condition on discharge or transfer and allows a free-text allergen and amniotic fluid description; the Form 097 mapping adds the durations of the three stages of labor. LOINC `57057-2` is no longer sent in the Form 096 `Composition.type`, which is bound to the national composition type value set.
+
 The [Form 011](StructureDefinition-form-011-hemodialysis-composition.html), [Form 066](StructureDefinition-form-066-hospital-discharge-composition.html), [Form 066-1](StructureDefinition-form-066-1-psychiatric-discharge-composition.html) and [Form 130](StructureDefinition-form-130-laboratory-test-results-composition.html) Compositions no longer fix `status` to `final`, so a document can follow the [document lifecycle](document-statuses.html) through `preliminary`, `amended` and `entered-in-error`.
 
 ### Version 0.12.1

@@ -10,6 +10,8 @@
 
 #### Изменено
 
+Терминология и сопоставления Форм 096 и 097 расширены для интеграции с DMED. В [предлежание плода](ValueSet-fetal-presentation-vs.html) добавлены затылочное, лицевое, лобное, смешанное ягодичное и коленное предлежания. В [коды анализов при поступлении](ValueSet-maternal-laboratory-and-blood-code-vs.html) добавлены общий анализ крови, HBsAg, токсоплазмоз, анализ мочи, мазок, анализ кала, ВИЧ 1+2, ВИЧ-1, ВИЧ-2 и экспресс-тест на ВИЧ; результат свободным текстом передаётся в `valueString`. Срок беременности, особенности предыдущих беременностей и особенности родов используют коды Формы 111. В сопоставление Формы 096 добавлено состояние при выписке или переводе, аллерген и описание околоплодных вод допускаются свободным текстом; в сопоставление Формы 097 добавлена длительность трёх периодов родов. LOINC `57057-2` больше не передаётся в `Composition.type` Формы 096, привязанном к национальному набору типов документов.
+
 Composition для [Форма 011](StructureDefinition-form-011-hemodialysis-composition.html), [Форма 066](StructureDefinition-form-066-hospital-discharge-composition.html), [Форма 066-1](StructureDefinition-form-066-1-psychiatric-discharge-composition.html) и [Форма 130](StructureDefinition-form-130-laboratory-test-results-composition.html) больше не фиксируют `status` как `final`, поэтому документ может проходить [жизненный цикл](document-statuses.html) через `preliminary`, `amended` и `entered-in-error`.
 
 ### Версия 0.12.1

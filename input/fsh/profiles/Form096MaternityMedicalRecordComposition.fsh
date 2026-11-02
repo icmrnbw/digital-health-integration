@@ -11,7 +11,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi): the rec
 * status ^short = "Document status: preliminary while the woman is in the maternity hospital, final once the record is closed at discharge"
 
 * type = $composition-type-cs#emdoc-0010-0016 "Maternity (delivery) medical record"
-* type ^short = "Form 096 document type (maternity medical record); LOINC 57057-2 \"Labor and Delivery Summary Note\" may be sent as an additional coding"
+* type ^short = "Form 096 document type (maternity medical record)"
 
 * category 1..*
 * category ^short = "Document category: medical record, and the Form 096 category"

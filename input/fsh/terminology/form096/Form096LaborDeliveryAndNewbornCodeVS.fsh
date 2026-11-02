@@ -1,12 +1,13 @@
 ValueSet: Form096LaborDeliveryAndNewbornCodeVS
 Id: labor-delivery-and-newborn-code-vs
 Title: "Form 096 Labor, Delivery and Newborn Codes"
-Description: "Observation.code for the Form 096 labor and newborn fields: time of rupture of membranes, duration of labor and of each stage, live births and stillbirths in this delivery, and per newborn whether born alive, weight, length, head and chest circumference, general condition and the 1-minute Apgar score; also placenta and membranes completeness, cord length and blood loss. Child born alive or dead uses the Form 111 code chr-0035-00013 with values from form111-newborn-birth-condition-vs."
+Description: "Observation.code for the Form 096 labor and newborn fields: time of rupture of membranes, special features of delivery, duration of labor and of each stage, live births and stillbirths in this delivery, and per newborn whether born alive, weight, length, head and chest circumference, general condition and the 1-minute Apgar score; also placenta and membranes completeness, cord length and blood loss. Child born alive or dead uses the Form 111 code chr-0035-00013 with values from form111-newborn-birth-condition-vs."
 * insert IntegrationsValueSet(labor-delivery-and-newborn-code-vs)
 * ^status = #draft
 * ^experimental = true
 
 * $sct#289251005 "Time rupture of membranes detected"
+* $form111-general-obs-cs#chr-0035-00012 "Tug'ruqning alohida xususiyatlari"
 * $sct#271562002 "Total duration of labor"
 * $sct#169821004 "Duration of first stage of labor"
 * $sct#169822006 "Duration of second stage of labor"

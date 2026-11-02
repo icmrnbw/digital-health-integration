@@ -178,3 +178,33 @@ Description: "Uzbek and Russian displays for the LOINC codes listed in the Form 
   * ^designation[=].value = "Оценка по Апгар на 1-й минуте"
   * ^designation[+].language = #uz
   * ^designation[=].value = "1-daqiqadagi Apgar bahosi"
+
+* #18185-9 "Gestational age"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Срок беременности"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Homiladorlik muddati"
+
+* #7917-8 "HIV 1 Ab [Presence] in Serum"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "ВИЧ-1"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "OIV-1 tahlili"
+
+* #30361-0 "HIV 2 Ab [Presence] in Serum or Plasma by Immunoassay"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "ВИЧ-2"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "OIV-2 tahlili"
+
+* #80387-4 "HIV 1+2 Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "ВИЧ, экспресс-тест"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "OIV ekspress-test"
+
+* #58410-2 "CBC panel - Blood by Automated count"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Общий анализ крови"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Umumiy qon tahlili"

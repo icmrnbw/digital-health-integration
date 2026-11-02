@@ -303,7 +303,6 @@ Usage: #inline
 * identifier[=].value = "096"
 * status = #final
 * type.coding[0] = $composition-type-cs#emdoc-0010-0016 "Maternity (delivery) medical record"
-* type.coding[+] = $loinc#57057-2 "Labor and Delivery Summary Note"
 * category[dhpCategory] = $composition-category-cs#Comp-001-0001 "Medical record"
 * category[formCategory] = $document-category-cs#form-096
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
