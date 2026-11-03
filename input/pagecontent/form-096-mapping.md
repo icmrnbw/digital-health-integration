@@ -21,7 +21,7 @@ Form 096 is the medical record of a woman's stay in a maternity hospital: admiss
 
 Each of the 13 sections of the Composition carries its own `section.code` and lists the resources belonging to that part of the form. Every section is optional: a section is sent only when the form has data for it.
 
-Each field is its own Observation with its own `code`. A field Form 096 shares with Form 111 uses the Form 111 code, so the same fact is coded the same way in both forms. The fetal facts are sent once per fetus, with `Observation.focus` referencing the panel of the newborn that fetus was born as. Form 096 sends no Patient for a newborn: every Observation has the mother as `subject`, and each child's own facts are members of that child's panel (section 6).
+Each field is its own Observation with its own `code`. A field Form 096 shares with Form 111 uses the Form 111 code, so the same fact is coded the same way in both forms. The fetal facts are sent per fetus with `Observation.focus` referencing the panel of the newborn that fetus was born as, or, when the source keeps one examination for all fetuses, as one Observation whose `focus` lists every newborn panel of the delivery (section 4). Form 096 sends no Patient for a newborn: every Observation has the mother as `subject`, and each child's own facts are members of that child's panel (section 6).
 
 For a complete reference instance, see the [Form 096 maternity medical record example](Bundle-example-form-096-maternity-medical-record.html), a vaginal twin delivery.
 
@@ -72,12 +72,13 @@ Section code: LOINC `LP74442-2` "Admission Information".
 | Chiqarilgan sana va vaqt | Дата и время выписки | Encounter.actualPeriod.end | - | 2026-08-18T15:00:00+05:00 |
 | O'tkazilgan kunlar | Проведено койко-дней | Encounter.length | UCUM `d` | 2.28 d |
 | Palata | Палата | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html).identifier[unit] | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` | 12 |
+| Bo'lim | Отделение | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Branch` | Physiological maternity department |
 | Yo'llagan muassasa | Направившая организация | Encounter.admission.origin → Organization | Organization | Chilonzor District Polyclinic No. 5 |
 | Gospitalizatsiya natijasi | Исход госпитализации | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html) | Discharged (`mserv-0004-00004`) |
 | Chiqarish yoki o'tkazishdagi ahvoli | Состояние при выписке или переводе | Observation.valueCodeableConcept; effectiveDateTime | `code` [Form111 Clinical Assessment Observation Code](ValueSet-form111-assessment-observation-code-vs.html) `chr-0005-00003` "General condition"<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html); `effectiveDateTime` = discharge or transfer time | Satisfactory (`162669003`), 2026-08-18T15:00:00+05:00 |
 | Chiqarishdagi tashxis | Диагноз при неудовлетворительном состоянии | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `discharge`, only when the condition at discharge or transfer is unsatisfactory | - |
 | O'tkazilgan muassasa | Учреждение перевода | Encounter.admission.destination → Organization | Organization | - |
-| Onaning o'limi | Смерть матери | Patient.deceasedDateTime, or Patient.deceasedBoolean when the date is not known | - | - |
+| Onaning o'limi | Смерть матери | Encounter.admission.dischargeDisposition; Condition.onsetDateTime | `dischargeDisposition` `exp` "Expired"; time of death in `onsetDateTime` of the maternal death timing Condition below. Death is recorded only in the document: the Patient is not updated and carries no `deceased[x]` | 2026-08-17T03:10:00+05:00 |
 | Ona o'limining davri | Период смерти матери | Condition.code | [Maternal Death Timing](ValueSet-maternal-death-timing-vs.html) | - |
 | Qon guruhi | Группа крови | Observation.valueCodeableConcept | `code` LOINC `883-9` "ABO group [Type] in Blood"<br>`value` [Blood Group](https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs) | A (II) (`112144000`) |
 | Rezus omil | Резус-фактор | Observation.valueCodeableConcept | `code` LOINC `10331-7` "Rh [Type] in Blood"<br>`value` [Blood Rh](https://terminology.dhp.uz/fhir/core/ValueSet/blood-rh-vs) | Rh positive (`165747007`) |
@@ -100,6 +101,7 @@ Section code: LOINC `LP74442-2` "Admission Information".
 | Homiladorlik davrida kuzatilgan | Наблюдалась во время беременности | Observation.valueCodeableConcept | `code` [Medical and Obstetric History Codes](ValueSet-pregnancy-obstetric-history-code-vs.html) LOINC `75204-8` "Prenatal care indicator [CDC.CS]"<br>`value` HL7 [v2-0532](https://terminology.hl7.org/CodeSystem-v2-0532.html) `Y` "Yes" / `N` "No" | Yes (`Y`) |
 | Qabul tashxisi | Диагноз при поступлении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` | Twin pregnancy (`O30.0`) |
 | Klinik tashxis | Клинический диагноз | Condition.code | ICD-10 | Twin pregnancy (`O30.0`) |
+| Yondosh tashxis | Сопутствующий диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `concomitant` | Mild anaemia in pregnancy (`O99.0`) |
 | Yakuniy tashxis | Заключительный диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `main` | Multiple delivery, all spontaneous (`O84.0`) |
 | Tug'ruqdagi asoratlar | Осложнения родов | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | First degree perineal laceration during delivery (`O70.0`) |
 | Tug'ruqdan keyingi asoratlar | Послеродовые осложнения | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | Disruption of perineal obstetric wound (`O90.1`) |

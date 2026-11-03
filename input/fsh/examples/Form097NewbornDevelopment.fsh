@@ -563,7 +563,13 @@ Instance: new-born-baby-097
 InstanceOf: UZCorePatient
 Usage: #inline
 * language = #en
-* identifier[healthCardId].value = "HC-2026-00097"
+// No PINFL yet: DMED sends its internal newborn id (newborn_children.id) as a temporary
+// medical record number scoped to the maternity hospital's tax ID, and the newborn is inactive.
+* active = false
+* identifier[+].use = #temp
+* identifier[=].type = $identifier-type#MRT "Temporary Medical Record Number"
+* identifier[=].system = "https://dhp.uz/fhir/core/sid/pid/uz/prn/201122349/mrt"
+* identifier[=].value = "3f6c2a9e-8b1d-4c7a-9e2f-5a1b7d0c4e88"
 * name.use = #official
 * name.text = "Karimov Aziz Shavkatovich"
 * name.family = "Karimov"
