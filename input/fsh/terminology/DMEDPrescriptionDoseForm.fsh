@@ -392,7 +392,7 @@ Instance: dmed-prescription-dose-form-to-medication-doseform-cm
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED prescription dose form to UZ Core dose form"
-Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. Only exact name matches, matches after normalising spelling, and the six forms that got new UZ Core codes are mapped. Forms with a fuzzy or ambiguous match are left out until they are reviewed; a prescription with such a form is rejected with `terminology-crosswalk-not-found`."
+Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. Only forms whose name is the same as a UZ Core dose form, letter for letter or after normalising punctuation, case and ё, and the six forms that got new UZ Core codes are mapped. A generic DMED form such as Капсулы maps to the generic UZ Core form even where the registry names a more specific one for the product. Forms with only a fuzzy match are left out until they are reviewed; a prescription with such a form is rejected with `terminology-crosswalk-not-found`."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-dose-form-to-medication-doseform-cm"
 * name = "DMEDPrescriptionDoseFormToMedicationDoseFormCM"
 * status = #draft
@@ -412,6 +412,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #TAB101
 * group[=].element[=].target[=].display = "tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #4
+* group[=].element[=].display = "Таблетки покрытые оболочкой"
+* group[=].element[=].target[+].code = #TAB117
+* group[=].element[=].target[=].display = "qobiq bilan qoplangan tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #8
 * group[=].element[=].display = "Таблетки покрытые пленочной оболочкой"
 * group[=].element[=].target[+].code = #TAB118
@@ -427,6 +432,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #SUS116
 * group[=].element[=].target[=].display = "ichga qabul qilish uchun suspenziya"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #16
+* group[=].element[=].display = "Раствор"
+* group[=].element[=].target[+].code = #SOL101
+* group[=].element[=].target[=].display = "eritma"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #51
 * group[=].element[=].display = "Раствор для инъекций"
 * group[=].element[=].target[+].code = #SOL123
@@ -441,6 +451,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].display = "Суппозитории вагинальные"
 * group[=].element[=].target[+].code = #SUP102
 * group[=].element[=].target[=].display = "vaginal suppazitoriylar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #69
+* group[=].element[=].display = "Капсулы"
+* group[=].element[=].target[+].code = #CAP101
+* group[=].element[=].target[=].display = "kapsulalar"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #73
 * group[=].element[=].display = "Раствор для инфузий"
@@ -487,6 +502,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #CAP102
 * group[=].element[=].target[=].display = "vaginal kapsulalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #181
+* group[=].element[=].display = "Суспензия"
+* group[=].element[=].target[+].code = #SUS101
+* group[=].element[=].target[=].display = "suspenziya"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #182
 * group[=].element[=].display = "Раствор для внутривенного введения"
 * group[=].element[=].target[+].code = #SOL106
@@ -506,6 +526,16 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].display = "Капли глазные"
 * group[=].element[=].target[+].code = #DRO102
 * group[=].element[=].target[=].display = "ko'z tomchilari"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #274
+* group[=].element[=].display = "Лиофилизат для приготовления раствора для инъекций"
+* group[=].element[=].target[+].code = #LYO222
+* group[=].element[=].target[=].display = "inyeksiya uchun eritma tayyorlash uchun liofilizat"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #331
+* group[=].element[=].display = "Аэрозоль"
+* group[=].element[=].target[+].code = #AER101
+* group[=].element[=].target[=].display = "aerozol"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #343
 * group[=].element[=].display = "Таблетки шипучие"
@@ -537,15 +567,30 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #SHA101
 * group[=].element[=].target[=].display = "dorivor shampun"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #462
+* group[=].element[=].display = "Крем"
+* group[=].element[=].target[+].code = #CRE101
+* group[=].element[=].target[=].display = "krem"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #463
 * group[=].element[=].display = "Таблетки вагинальные"
 * group[=].element[=].target[+].code = #TAB102
 * group[=].element[=].target[=].display = "vaginal tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #477
+* group[=].element[=].display = "Гель"
+* group[=].element[=].target[+].code = #GEL101
+* group[=].element[=].target[=].display = "gel"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #493
 * group[=].element[=].display = "Раствор для приема внутрь"
 * group[=].element[=].target[+].code = #SOL135
 * group[=].element[=].target[=].display = "ichga qabul qilish uchun eritma"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #501
+* group[=].element[=].display = "Порошок"
+* group[=].element[=].target[+].code = #POW101
+* group[=].element[=].target[=].display = "kukun"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #559
 * group[=].element[=].display = "Концентрат для приготовления раствора для инфузий"
@@ -557,10 +602,20 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #SPR105
 * group[=].element[=].target[=].display = "burun spreyi"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #781
+* group[=].element[=].display = "Гранулы"
+* group[=].element[=].target[+].code = #GRA101
+* group[=].element[=].target[=].display = "granulalar"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #787
 * group[=].element[=].display = "Лиофилизат для приготовления концентрата для приготовления раствора для инфузий"
 * group[=].element[=].target[+].code = #LYO140
 * group[=].element[=].target[=].display = "infuziya uchun eritma tayyorlash uchun konsentrat tayyorlash uchun liofilizat"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #794
+* group[=].element[=].display = "Спрей"
+* group[=].element[=].target[+].code = #SPR101
+* group[=].element[=].target[=].display = "sprey"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #807
 * group[=].element[=].display = "Крем вагинальный"
@@ -582,10 +637,20 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #OIN107
 * group[=].element[=].target[=].display = "sirtga qo'llash uchun surtma"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1157
+* group[=].element[=].display = "Капли"
+* group[=].element[=].target[+].code = #DRO101
+* group[=].element[=].target[=].display = "tomchilar"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #1528
 * group[=].element[=].display = "Таблетки растворимые"
 * group[=].element[=].target[+].code = #TAB119
 * group[=].element[=].target[=].display = "eruvchi tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1544
+* group[=].element[=].display = "Мазь"
+* group[=].element[=].target[+].code = #OIN101
+* group[=].element[=].target[=].display = "surtma"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #1596
 * group[=].element[=].display = "Раствор для ингаляций"
@@ -597,10 +662,20 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #POW177
 * group[=].element[=].target[=].display = "ichga qabul qilish uchun eritma tayyorlash uchun kukun"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #2061
+* group[=].element[=].display = "Суппозитории"
+* group[=].element[=].target[+].code = #SUP101
+* group[=].element[=].target[=].display = "suppozitoriylar"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3877
 * group[=].element[=].display = "Таблетки жевательные"
 * group[=].element[=].target[+].code = #TAB110
 * group[=].element[=].target[=].display = "chaynaladigan tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3879
+* group[=].element[=].display = "Эмульсия"
+* group[=].element[=].target[+].code = #EMU101
+* group[=].element[=].target[=].display = "emulsiya"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3881
 * group[=].element[=].display = "Лекарственное растительное сырье"
@@ -637,6 +712,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #SOL133
 * group[=].element[=].target[=].display = "teri ostiga yuborish uchun eritma"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3903
+* group[=].element[=].display = "Аэрозоль"
+* group[=].element[=].target[+].code = #AER101
+* group[=].element[=].target[=].display = "aerozol"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3906
 * group[=].element[=].display = "Концентрат для приготовления эмульсии для инфузий"
 * group[=].element[=].target[+].code = #CON179
@@ -646,6 +726,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].display = "Суспензия для ингаляций"
 * group[=].element[=].target[+].code = #SUS110
 * group[=].element[=].target[=].display = "ingalyatsiya uchun suspenziya"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3910
+* group[=].element[=].display = "Лиофилизат"
+* group[=].element[=].target[+].code = #LYO101
+* group[=].element[=].target[=].display = "liofilizat"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3914
 * group[=].element[=].display = "Раствор для внутрисуставного введения"
@@ -666,6 +751,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].display = "Суспензия для внутримышечного введения"
 * group[=].element[=].target[+].code = #SUS104
 * group[=].element[=].target[=].display = "mushak ichiga yuborish uchun suspenziya"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3923
+* group[=].element[=].display = "Жидкость"
+* group[=].element[=].target[+].code = #LIQ101
+* group[=].element[=].target[=].display = "suyuqlik"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3925
 * group[=].element[=].display = "Таблетки для имплантации"
@@ -711,6 +801,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].display = "Паста"
 * group[=].element[=].target[+].code = #PAS101
 * group[=].element[=].target[=].display = "pasta"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3953
+* group[=].element[=].display = "Раствор для местного применения"
+* group[=].element[=].target[+].code = #SOL124
+* group[=].element[=].target[=].display = "mahalliy qo'llash uchun eritma"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3954
 * group[=].element[=].display = "Лиофилизат для приготовления раствора для подкожного введения"
