@@ -316,7 +316,20 @@
 
 Интеграция повторно использует из UZ Core наборы МНН, лекарственных форм, путей введения, статусов лекарств, статусов назначений, статусов отпуска и единиц измерения. В Integration IG определяются только типы рецептов, действия процесса, бизнес-статусы согласования, ошибки и исходные значения DMED.
 
-Локальные значения DMED переводятся через версионированные ConceptMap. Отсутствие маппинга МНН, лекарственной формы, пути введения или единицы измерения является ошибкой валидации; текст `display` не заменяет код. Текущий IG публикует проверенный маппинг типов рецептов и всех девяти статусов списка. Для путей введения опубликован только непосредственно проверенный идентификатор Prescription API `4` (`Окулярный`) → SNOMED CT `372472002` (`Ocular route`). Старый Core CodeSystem путей DMED использует текстовые коды и не считается исходной системой для числового поля Prescription API. Полные кросс-маппинги лекарственного справочника и маршрутов генерируются только из авторитетной выгрузки DMED.
+Локальные значения DMED переводятся через версионированные ConceptMap. Отсутствие маппинга МНН, лекарственной формы, пути введения или единицы измерения является ошибкой валидации; текст `display` не заменяет код. Публикуются только бесспорные соответствия; исходное значение без соответствия отклоняется с ошибкой `terminology-crosswalk-not-found`, пока его не проверят и не добавят.
+
+| Поле DMED | ConceptMap | Куда | Сопоставлено |
+|---|---|---|---|
+| `type` | [Тип рецепта DMED](ConceptMap-dmed-prescription-type-to-prescription-type.html) | [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html) | 2 из 2 |
+| `status` | [Статус рецепта DMED](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | статус MedicationRequest | 8 из 9; `not_signed` не передаётся |
+| `inn_id` | [МНН DMED → классификация препаратов](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | код МНН UZ Core, иначе WHO ATC | 1 006 МНН и 242 ATC из 2 752 однокомпонентных МНН; комбинации кодируются по компонентам |
+| `dosage_form_id` | [Лекарственная форма DMED](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | лекарственная форма UZ Core | 112 из 372 |
+| `drug_administration_route_id` | [Путь введения DMED](ConceptMap-dmed-prescription-route-to-fhir-route.html) | путь введения SNOMED CT | 23 из 56 |
+| `receive_mode` | [Режим приёма DMED](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 из 7; для `at_any_time` `when` не передаётся |
+| `administration_frequency_measure` | [Период кратности DMED](ConceptMap-dmed-prescription-frequency-period-to-units-of-time.html) | `timing.repeat.periodUnit` | 4 из 4 |
+| `cancellation_reason` | [Причина отмены DMED](ConceptMap-dmed-prescription-cancellation-reason-to-medicationrequest-status-reason.html) | причина статуса UZ Core | 2 из 2 |
+
+Идентификаторы лекарственных форм и путей введения взяты из справочников тестовой среды DMED от 03.11.2026, идентификаторы МНН — из выгрузки DMED от 05.10.2026. Маппинг МНН построен по выгрузке реестра Фармкомитета от 02.11.2026: код МНН берётся, только если все упаковки реестра у торговых наименований этого МНН указывают один код или вещество реестра называется так же, а код ATC — только если это код 5-го уровня, общий для всех торговых наименований. Старый Core CodeSystem путей DMED использует текстовые коды и не считается исходной системой для числового поля Prescription API.
 
 ## FHIR-обмен
 
