@@ -48,8 +48,6 @@ To'liq namunaviy nusxa uchun [097-shakl misoli](Bundle-example-form-097-newborn-
 | Chaqaloqning vaqtinchalik identifikatori | Временный идентификатор новорождённого | Patient.identifier | `use` `temp`, `type` `MRT` "Temporary Medical Record Number"<br>`system` `https://dhp.uz/fhir/core/sid/pid/uz/prn/{soliq-id}/mrt` tug'ruqxona STIR bilan<br>`value` = DMED'dagi chaqaloq id (`newborn_children.id`); STIR bo'lmasa, 097 yuborilmaydi | 3f6c2a9e-8b1d-4c7a-9e2f-5a1b7d0c4e88 |
 | Chaqaloqning JShShIRi | ПИНФЛ новорождённого | Patient.identifier[nationalId] | `system` `https://dhp.uz/fhir/core/sid/pid/uz/ni`<br>`type` `NI`; berilgandan keyin keyingi tahrirda vaqtinchalik identifikator bilan birga yuboriladi | - |
 | Yozuv holati | Активность записи | Patient.active | chaqaloq uchun doim `false` | false |
-| O'lik tug'ilgan | Мертворождение | Patient.deceasedBoolean | tug'ruq bayonnomasidagi natija o'lik tug'ilish bo'lsa, `true`; vafot sanasi yuborilmaydi | true |
-| Tug'ilgandan keyin vafot etdi | Умер после рождения | Patient.deceasedDateTime | `newborn_cards.died_at`, bo'sh bo'lsa - `newborn_children.death_time` | 2026-06-03T04:20:00+05:00 |
 | Tug'ruqxonada bo'lish davri | Пребывание в родильном доме | Composition.encounter | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html) | 2026-06-01 - 2026-06-07 |
 | Tibbiy karta raqami | Номер медицинской карты | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html).identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-097-2026-0001 |
 | Davolovchi shifokor | Лечащий врач | Encounter.participant.actor | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html) | Davolovchi neonatolog |
@@ -253,7 +251,7 @@ Bo'lim kodi: LOINC `8650-4` "Hospital discharge disposition note".
 | Chiqarilgan yoki o'tkazilgan sana | Дата выписки или перевода | Encounter.actualPeriod.end | - | 2026-06-07T10:00:00+05:00 |
 | Chiqarish natijasi | Исход (выписка, перевод, смерть) | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html), 096-shakldagi kabi | Discharged (`mserv-0004-00004`) |
 | O'tkazilgan muassasa | Учреждение перевода | Encounter.admission.destination → Organization | Organization | - |
-| Vafot etdi | Умер | Patient.deceasedDateTime | "Hujjat ma'lumotlari"ga qarang | - |
+| Vafot etdi | Умер | Observation.valueDateTime | `code` [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) SNOMED `276506001` "Neonatal death", 096-shakldagi kabi<br>`value` = `newborn_cards.died_at`, bo'sh bo'lsa - `newborn_children.death_time`. Vafot faqat hujjatda qayd etiladi: Patient yangilanmaydi va `deceased[x]`ni o'z ichiga olmaydi. O'lik tug'ilish - homila natijasi `chr-0035-00013` (2-bo'lim) | 2026-06-03T04:20:00+05:00 |
 | Hamshiradan onaga topshirish | Передача от медсестры матери | [Provenance](https://hl7.org/fhir/R5/provenance.html).agent | `performer` hamshira, `custodian` ona | - |
 | Shifokor imzosi | Подпись врача | Provenance.signature | - | - |
 | Muassasalar orasida o'tkazish | Перевод между учреждениями | Provenance.agent | `informant` hamshira, `custodian` qabul qiluvchi tashkilot | - |

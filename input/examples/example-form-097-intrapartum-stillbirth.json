@@ -202,7 +202,6 @@
             }
           ]
         },
-        "deceasedBoolean": false,
         "managingOrganization": {
           "reference": "urn:uuid:09600004-1111-2222-3333-444444444444"
         }
@@ -245,7 +244,6 @@
         "managingOrganization": {
           "reference": "urn:uuid:09600004-1111-2222-3333-444444444444"
         },
-        "deceasedBoolean": true,
         "language": "en"
       }
     },

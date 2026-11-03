@@ -570,7 +570,6 @@ Usage: #inline
 * address[uzAddress].city = "16090011"
 * address[uzAddress].line[0] = "Chilonzor-12"
 * address[uzAddress].line[+] = "15-uy, 24-xonadon"
-* deceasedBoolean = false
 * managingOrganization = Reference(urn:uuid:09600004-1111-2222-3333-444444444444)
 
 

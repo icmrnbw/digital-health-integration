@@ -48,8 +48,6 @@
 | Chaqaloqning vaqtinchalik identifikatori | Временный идентификатор новорождённого | Patient.identifier | `use` `temp`, `type` `MRT` "Temporary Medical Record Number"<br>`system` `https://dhp.uz/fhir/core/sid/pid/uz/prn/{soliq-id}/mrt` с ИНН роддома<br>`value` = id новорождённого в DMED (`newborn_children.id`); нет ИНН - 097 не отправляется | 3f6c2a9e-8b1d-4c7a-9e2f-5a1b7d0c4e88 |
 | Chaqaloqning JShShIRi | ПИНФЛ новорождённого | Patient.identifier[nationalId] | `system` `https://dhp.uz/fhir/core/sid/pid/uz/ni`<br>`type` `NI`; после выдачи передаётся в следующей редакции вместе с временным идентификатором | - |
 | Yozuv holati | Активность записи | Patient.active | у новорождённого всегда `false` | false |
-| O'lik tug'ilgan | Мертворождение | Patient.deceasedBoolean | `true`, если исход в протоколе родов - мертворождение; дата смерти не передаётся | true |
-| Tug'ilgandan keyin vafot etdi | Умер после рождения | Patient.deceasedDateTime | `newborn_cards.died_at`, а если пусто - `newborn_children.death_time` | 2026-06-03T04:20:00+05:00 |
 | Tug'ruqxonada bo'lish davri | Пребывание в родильном доме | Composition.encounter | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html) | 2026-06-01 - 2026-06-07 |
 | Tibbiy karta raqami | Номер медицинской карты | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html).identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-097-2026-0001 |
 | Davolovchi shifokor | Лечащий врач | Encounter.participant.actor | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html) | Лечащий неонатолог |
@@ -253,7 +251,7 @@
 | Chiqarilgan yoki o'tkazilgan sana | Дата выписки или перевода | Encounter.actualPeriod.end | - | 2026-06-07T10:00:00+05:00 |
 | Chiqarish natijasi | Исход (выписка, перевод, смерть) | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html), как в Форме 096 | Discharged (`mserv-0004-00004`) |
 | O'tkazilgan muassasa | Учреждение перевода | Encounter.admission.destination → Organization | Organization | - |
-| Vafot etdi | Умер | Patient.deceasedDateTime | см. «Сведения о документе» | - |
+| Vafot etdi | Умер | Observation.valueDateTime | `code` [Labor, Delivery and Newborn Codes](ValueSet-labor-delivery-and-newborn-code-vs.html) SNOMED `276506001` "Neonatal death", как в Форме 096<br>`value` = `newborn_cards.died_at`, а если пусто - `newborn_children.death_time`. Смерть фиксируется только в документе: Patient не обновляется и не содержит `deceased[x]`. Мертворождение - исход плода `chr-0035-00013` (раздел 2) | 2026-06-03T04:20:00+05:00 |
 | Hamshiradan onaga topshirish | Передача от медсестры матери | [Provenance](https://hl7.org/fhir/R5/provenance.html).agent | `performer` медсестра, `custodian` мать | - |
 | Shifokor imzosi | Подпись врача | Provenance.signature | - | - |
 | Muassasalar orasida o'tkazish | Перевод между учреждениями | Provenance.agent | `informant` медсестра, `custodian` принимающая организация | - |
