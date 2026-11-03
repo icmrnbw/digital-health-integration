@@ -327,7 +327,7 @@
 | `drug_administration_route_id` | [Путь введения DMED](ConceptMap-dmed-prescription-route-to-fhir-route.html) | путь введения SNOMED CT | 23 из 56 |
 | `receive_mode` | [Режим приёма DMED](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 из 7; для `at_any_time` `when` не передаётся |
 | `administration_frequency_measure` | [Период кратности DMED](ConceptMap-dmed-prescription-frequency-period-to-units-of-time.html) | `timing.repeat.periodUnit` | 4 из 4 |
-| `cancellation_reason` | [Причина отмены DMED](ConceptMap-dmed-prescription-cancellation-reason-to-medicationrequest-status-reason.html) | причина статуса UZ Core | 2 из 2 |
+| `cancellation_reason` | [Причина отмены DMED](ConceptMap-dmed-prescription-cancellation-reason-to-status-reason.html) | причина статуса UZ Core | 2 из 2 |
 
 Идентификаторы лекарственных форм и путей введения взяты из справочников тестовой среды DMED от 03.11.2026, идентификаторы МНН — из выгрузки DMED от 05.10.2026. Маппинг МНН построен по выгрузке реестра Фармкомитета от 02.11.2026: код МНН берётся, только если все упаковки реестра у торговых наименований этого МНН указывают один код или вещество реестра называется так же, а код ATC — только если это код 5-го уровня, общий для всех торговых наименований. Старый Core CodeSystem путей DMED использует текстовые коды и не считается исходной системой для числового поля Prescription API.
 

@@ -161,12 +161,12 @@ Description: "All DMED prescription cancellation reason values."
 * ^experimental = true
 * include codes from system DMEDPrescriptionCancellationReasonCS
 
-Instance: dmed-prescription-cancellation-reason-to-medicationrequest-status-reason
+Instance: dmed-prescription-cancellation-reason-to-status-reason
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED prescription cancellation reason to MedicationRequest status reason"
 Description: "Maps DMED `cancellation_reason` to `MedicationRequest.statusReason`. HL7 has no equivalent for either value, so both map to UZ Core national codes; `cancellation_comment` goes to `statusReason.text`."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-cancellation-reason-to-medicationrequest-status-reason"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-cancellation-reason-to-status-reason"
 * name = "DMEDPrescriptionCancellationReasonToMedicationRequestStatusReason"
 * status = #draft
 * experimental = false
