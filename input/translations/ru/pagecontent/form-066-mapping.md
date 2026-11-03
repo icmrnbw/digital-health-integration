@@ -13,7 +13,7 @@
 
 ### Форма 066 - Статистическая карта выбывшего из стационара
 
-На этой странице описано сопоставление полей Формы 066 (Статистическая карта выбывшего из стационара) с ресурсами FHIR.
+На этой странице описано сопоставление полей [Формы 066](forms-volume-03-diagnostics-laboratory.html) (Статистическая карта выбывшего из стационара) с ресурсами FHIR.
 
 ---
 
@@ -27,7 +27,7 @@
 
 ### Сопоставление полей
 
-# UZ-066 Статистическая карта выбывшего из стационара - сопоставление с FHIR
+### UZ-066 Статистическая карта выбывшего из стационара - сопоставление с FHIR
 
 ---
 
@@ -35,9 +35,9 @@
 
 | UZ-066 | RU-066 | Путь FHIR | Код | Пример значения |
 |--------|--------|------------|------|---------------|
-| Muassasa kodi | Код учреждения | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html).identifier | Local | 200001 |
+| Muassasa kodi | Код учреждения | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html).identifier[taxId] | `system` `https://dhp.uz/fhir/core/sid/org/uz/soliq`<br>`type` `TAX` | 201456781 |
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Toshkent shahar klinik shifoxonasi |
-| Bemor tibbiy bayoni qayd raqami | Регистрационный номер медицинской карты | Composition.identifier | - | 066-2026-001 |
+| Bemor tibbiy bayoni qayd raqami | Регистрационный номер медицинской карты | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html).identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-066-2026-0001 |
 | JShShIR | ПИНФЛ | [Patient](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-patient.html).identifier[nationalId].value | NI | 31234567890123 |
 | Familiyasi | Фамилия | Patient.name.family | - | Tursunov |
 | Ismi | Имя | Patient.name.given | - | Alisher |
@@ -128,12 +128,14 @@
 
 ### Хирургические вмешательства
 
+Код операции - это стержневой код ICHI (Target.Action.Means), передаваемый в `Procedure.code` с системой `http://id.who.int/icd/release/11/ichi`. Выбирайте его из [ICHI Codes Accepted by DMED](https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs) - это то, что принимает DMED. Часть этих кодов в ICHI неактивна и оставлена только для того, чтобы уже имеющиеся в DMED записи проходили валидацию - новую операцию кодируйте активным кодом. Процедура вне формы 066 кодируется из [ICHI Codes](https://terminology.dhp.uz/fhir/core/ValueSet/ichi-vs).
+
 | UZ | RU | Путь FHIR | Код | Пример |
 |----|----|------------|------|---------|
 | Sana va vaqti | Дата и время операции | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).occurrenceDateTime | - | 2026-01-08T11:30:00+05:00 |
-| Kod (ICHI) | Код операции | Procedure.code | SNOMED CT / ICHI | 123.AB.45 |
+| Kod (ICHI) | Код операции | Procedure.code | [ICHI Codes Accepted by DMED](https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs) | JBB.AE.AD |
 | Asosiy | Основная операция | Procedure.category | Local | Main |
-| Nomi | Наименование операции | Procedure.code.text | - | Surgical procedure |
+| Nomi | Наименование операции | Procedure.code.text | - | Bronchoscopy |
 | Shifokor | Врач | Procedure.performer.actor | [Practitioner](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner.html) | Rasulov B.B. |
 
 ---

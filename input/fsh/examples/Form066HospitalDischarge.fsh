@@ -254,31 +254,34 @@ Usage: #inline
 
 
 Instance: organization-066-001
-InstanceOf: Organization
+InstanceOf: UZCoreOrganization
 Usage: #inline
 * language = #en
-* identifier.system = "https://dhp.uz/fhir/core/sid/uz/organization-code"
-* identifier.value = "200001"
+* identifier[taxId].type = $identifier-type#TAX "Tax ID number"
+* identifier[taxId].system = $organization-tax-id-system-dhp
+* identifier[taxId].value = "201456781"
 * name = "Toshkent shahar klinik shifoxonasi"
 
 
 
 Instance: organization-attached-066
-InstanceOf: Organization
+InstanceOf: UZCoreOrganization
 Usage: #inline
 * language = #en
-* identifier.system = "https://dhp.uz/fhir/core/sid/uz/organization-code"
-* identifier.value = "200935"
+* identifier[taxId].type = $identifier-type#TAX "Tax ID number"
+* identifier[taxId].system = $organization-tax-id-system-dhp
+* identifier[taxId].value = "202567892"
 * name = "Yunusobod tuman oilaviy poliklinikasi"
 
 
 
 Instance: organization-referring-066
-InstanceOf: Organization
+InstanceOf: UZCoreOrganization
 Usage: #inline
 * language = #en
-* identifier.system = "https://dhp.uz/fhir/core/sid/uz/organization-code"
-* identifier.value = "200002"
+* identifier[taxId].type = $identifier-type#TAX "Tax ID number"
+* identifier[taxId].system = $organization-tax-id-system-dhp
+* identifier[taxId].value = "203678903"
 * name = "Yunusobod tuman tibbiyot birlashmasi"
 
 
@@ -666,12 +669,13 @@ Usage: #inline
 
 
 Instance: procedure-surgery-066
-InstanceOf: Procedure
+InstanceOf: Form066SurgicalProcedure
 Usage: #inline
 * language = #en
 * status = #completed
 * category = $sct#387713003 "Surgical procedure (procedure)"
-* code = $sct#387713003 "Surgical procedure (procedure)"
+* code = $ichi#JBB.AE.AD "Bronchoscopy"
+* code.text = "Diagnostic bronchoscopy"
 * subject = Reference(urn:uuid:06600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:06600003-1111-2222-3333-444444444444)
 * occurrenceDateTime = "2026-01-08T11:30:00+05:00"

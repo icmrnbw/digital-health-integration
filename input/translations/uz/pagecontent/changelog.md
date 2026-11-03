@@ -1,6 +1,201 @@
-### Ishlab chiqish jarayonida
+### Ishlab chiqilmoqda
 
-(Hozircha o'zgarishlar yo'q)
+#### Qo'shildi
+
+[027-shakl, bemorning tibbiy kartasidan ko'chirma](StructureDefinition-form-027-medical-record-extract-composition.html) FHIR hujjati sifatida profillandi: ro'yxatga olish va shaxsiy ma'lumotlar, manzil, yo'llanma va tashxis, klinik ma'lumotlar, davolash va tavsiyalar, keyingi tadbirlar va mas'ul shaxslar Composition'ning 8 ta bo'limida. Unga hujjat namunasi (Bundle) va [maydonlarni moslashtirish sahifasi](form-027-mapping.html) ilova qilingan.
+
+[003-shakl - statsionar bemorning tibbiy kartasi](StructureDefinition-form-003-inpatient-medical-record-composition.html) FHIR hujjati sifatida profillangan bo'lib, Composition ning 20 ta bo'limi orqali ma'muriy va shaxsiy ma'lumotlar, qabul qilish, qabulda tekshiruv, birlamchi ko'rik, tekshiruv rejasi va natijalari, tashxislar, operatsiyalar, dori va muolaja varaqalari, harorat varaqasi, kasallik kechishi, davolash natijasi, vaqtincha mehnatga layoqatsizlik, patologoanatomik xulosa va mas'ul shaxslarni qamrab oladi. Uning namunaviy hujjat-Bundle'i va [maydonma-maydon moslashtirish sahifasi](form-003-mapping.html) mavjud.
+
+[044-shakl, xorijga ketayotganlar uchun tibbiy ma'lumotnoma](StructureDefinition-form-044-travel-clearance-composition.html) FHIR hujjati sifatida profillandi: shaxsiy ma'lumotlar, kechirgan yuqumli kasalliklar, komissiyaning borish mamlakati va xizmat safari muddati bilan chet elga chiqishga ruxsati, yashash joyi, komissiya raisi va a'zolari - 5 ta Composition bo'limida. Hujjat namunasi (Bundle) va [maydonma-maydon moslashtirish sahifasi](form-044-mapping.html) bilan birga.
+#### O'zgartirildi
+
+096 va 097-shakllarning terminologiyasi va moslashtirishlari DMED integratsiyasi uchun kengaytirildi. [Homilaning oldinda keluvchi qismi](ValueSet-fetal-presentation-vs.html) ga ensa, yuz, peshona, aralash chanoq va tizza bilan kelish qo'shildi. [Qabul paytidagi tahlillar kodlari](ValueSet-maternal-laboratory-and-blood-code-vs.html) ga umumiy qon tahlili, HBsAg, toksoplazmoz, siydik tahlili, surtma, najas tahlili, OIV 1+2, OIV-1, OIV-2 va OIV ekspress-testi qo'shildi; erkin matnli natija `valueString` da yuboriladi. Homiladorlik muddati, avvalgi homiladorliklarning o'ziga xosligi va tug'ruqning alohida xususiyatlari 111-shakl kodlaridan foydalanadi. 096-shakl moslashtirishiga chiqarish yoki o'tkazishdagi ahvol qo'shildi, allergen va qog'onoq suvi tavsifi erkin matnda bo'lishi mumkin; 097-shakl moslashtirishiga tug'ruqning uch davri davomiyligi qo'shildi. LOINC `57057-2` endi 096-shaklning milliy hujjat turlari to'plamiga bog'langan `Composition.type` da yuborilmaydi.
+
+[096-shaklda](form-096-mapping.html) chaqaloq endi Patient emas: har bir chaqaloq onaga oid panel Observation (kod `chr-0035-00013`), uning `hasMember`i bolaning kuzatuvlarini sanaydi, endi tug'ilish tartibi (LOINC `73771-8`), jinsi (LOINC `76689-9`), tug'ruq turi (LOINC `57071-3`), homila asoratlari, tug'ilgandan keyin vafoti (SNOMED CT `276506001`) va gonoblenoreya profilaktikasi ha/yo'q Observation sifatida ham kiradi; homila kuzatuvlari panelga `focus` orqali havola qiladi, chaqaloqlar bo'limi esa Patient'ga endi ruxsat bermaydi. `form-096-history` va `form-096-current-pregnancy` so'rovnomalari olib tashlandi: avvalgi homiladorliklar, epidemiologik anamnez, homiladorlikning kechishi va qabul qilingandagi ahvoli `valueString`li Observation sifatida yuboriladi. Kodsiz yuborilgan maydonlar kod oldi: homiladorlik davrida kuzatilganligi (LOINC `75204-8`), oldinda keluvchi qismning joylashuvi (SNOMED CT `364610007`), tug'ruq faoliyatining boshlanishi (LOINC `56866-7`, endi sana), tug'ilgandan keyin vafot etganlar soni va yangi "ona patronajga muhtojmi" maydoni (mahalliy kodlar `chr-0035-00028`-`chr-0035-00031`). Ha/yo'q javoblari HL7 v2-0532 bilan kodlanadi. `discharge` tashxis roli chiqarish yoki o'tkazishda ahvoli qoniqarsiz bo'lgandagi tashxisni kodlaydi. [097-shakl](form-097-mapping.html) onaning kuzatuvdagi muassasasini (LOINC `75204-8`, Organization `performer`da, endi ona bo'limida ruxsat etilgan) va suvsiz davrni (LOINC `106790-9`) qo'shadi.
+
+[011-shakl](StructureDefinition-form-011-hemodialysis-composition.html), [066-shakl](StructureDefinition-form-066-hospital-discharge-composition.html), [066-1-shakl](StructureDefinition-form-066-1-psychiatric-discharge-composition.html) va [130-shakl](StructureDefinition-form-130-laboratory-test-results-composition.html) Composition'lari endi `status` ni `final` ga qotirmaydi, shuning uchun hujjat [hayot sikli](document-statuses.html) bo'yicha `preliminary`, `amended` va `entered-in-error` holatlaridan o'ta oladi.
+
+### Versiya 0.12.1
+
+#### O'zgartirildi
+
+[097-shakl](form-097-mapping.html) va [111-shakl](form-111-mapping.html) qiymatlar to'plamlari o'zlarining SNOMED CT va LOINC qo'shimchalariga havola qiladi, shuning uchun ularning kodlari rus va o'zbek tillarida ko'rsatiladi.
+
+[097-shakl](form-097-mapping.html) namunalaridagi tashkilotlar 0.12.0 versiyasidan beri boshqa shakllar namunalaridagi kabi Soliq STIR bo'yicha identifikatsiya qilinadi. K vitamini Medication resursi XPN kodi bilan UZ Core Medication bo'ladi, hujjat esa chiqarilish sanasi bilan belgilanadi.
+
+[097-shakl](StructureDefinition-form-097-newborn-development-composition.html) profilaktika va emlash bo'limi yozuvlari istalgan Immunization emas, [UZ Core Immunization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-immunization.html) ga havola qiladi, shuning uchun 097-shaklda yuboriladigan emlashlar UZ Core ga mos keladi.
+
+Apgar komponentlari bahosi, chaqaloq terisining asosiy rangi va chaqaloqni parvarish qilish joyi kodlar tizimlari va qiymatlar to'plamlari (`apgar-component-score-cs`, `newborn-skin-color-basic-cs`, `newborn-care-location-cs` va ularning `-vs` qiymatlar to'plamlari) olib tashlandi. Ularga hech bir profil bog'lanmagan: 097-shakl Apgar bahosini LOINC bilan, teri rangini esa [Newborn Skin Color Detailed](ValueSet-newborn-skin-color-detailed-vs.html) to'plamidan kodlaydi.
+
+[111-shakl](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) ro'yxatga olish bo'limi yozuvlari [UZ Core Socioeconomic Observation](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-socioeconomic-observation.html) ham bo'lishi mumkin. [Previous Pregnancy Outcome](ValueSet-form111-previous-pregnancy-outcome-vs.html) to'plamiga homila tushishi (SNOMED CT `17369002`) qo'shildi. [111-shakl xaritalashi](form-111-mapping.html) Composition.status hayot siklini tavsiflaydi: karta ochiq bo'lganda `preliminary`, yopilgandan keyin `final`, keyingi tuzatishlar uchun `amended` va karta xato sifatida bekor qilinsa `entered-in-error`. [Homilador ayol individual kartasi raqami](NamingSystem-antenatal-card-number-system.html) Encounter.identifier da emas, EpisodeOfCare.identifier da uzatiladi.
+
+#### Hujjatlashtirish
+
+[Shakllar sharhi](forms-overview.html) va uning 11 ta jild sahifasi diagrammalari bilan birga rus va o'zbek tillarida mavjud.
+
+### Versiya 0.12.0
+
+#### Qo'shildi
+
+[111-shakl - homilador va tuqqan ayolning individual kartasi](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) FHIR hujjati sifatida profillangan bo'lib, Composition ning 16 ta bo'limi orqali ro'yxatga olish, tashxis, homiladorlik yakuni, anamnez, ko'riklar, takroriy tashriflar, tug'ishga tayyorlash, patronaj tashriflari, perinatal xavfni baholash va mutaxassislar xulosalarini qamrab oladi. Uning namunaviy hujjat-Bundle'i va [maydonma-maydon moslashtirish sahifasi](form-111-mapping.html) mavjud.
+
+[Tug'ruq tibbiy kartasi, 096-shakl](StructureDefinition-form-096-maternity-medical-record-composition.html), FHIR hujjati sifatida profillandi: qabul qilish, tibbiy va akusherlik anamnezi, joriy homiladorlik, akusherlik ko'rigi, tug'ruq kechishi, chaqaloq haqidagi yozuv, tug'ruqdan keyingi davr, dori, tekshiruv va muolaja tayinlovlari, ishlatilgan materiallar, mehnatga layoqatsizlik varaqalari va mas'ul shaxslar - Composition'ning 13 bo'limida. Hujjat namunalari, jumladan antenatal va intranatal o'lik tug'ilish bilan, va [maydonlar moslashtirish sahifasi](form-096-mapping.html) qo'shildi. 111-shakl bilan umumiy maydonlar 111-shakldagi kodlardan foydalanadi. Har bir chaqaloq alohida Patient bo'ladi va JShShIRi bo'lmaguncha DMED tibbiy karta raqami bilan aniqlanadi; 097-shakl xuddi shu Patient'dan foydalanadi va JShShIR berilganda uni qo'shadi.
+
+[Yangi tug'ilgan chaqaloq rivojlanishining tibbiy kartasi, 097-shakl](StructureDefinition-form-097-newborn-development-composition.html), FHIR hujjati sifatida profillandi: ona haqida ma'lumot va antenatal anamnez, tug'ruq, chaqaloqning birlamchi ko'rigi, oziqlantirish, kundalik kuzatuv va shifokor ko'rigi, tana vazni, profilaktika va immunizatsiya, skrining, chiqarish, o'tkazish yoki o'lim - Composition'ning 11 bo'limida. Hujjat namunalari, jumladan tirik va o'lik tug'ilish natijalari bilan, va [maydonlar moslashtirish sahifasi](form-097-mapping.html) qo'shildi.
+
+[Saraton registri](cancer.html) foydalanuvchi rollari uchun [kodlar tizimi](CodeSystem-cancer-registry-roles-cs.html) va UZ Core lavozim va kasb kodlariga [ConceptMap](ConceptMap-cancer-registry-role-to-dhp-position-cm.html) qo'shildi: tizim administratori, registrator, muassasa administratori va tadqiqotchi.
+
+Skrining terminologiyasi o'zbek va rus tillariga tarjima qilindi. Skrining qiymatlar to'plamlari 202 ta konseptni qamrab olgan yangi [SNOMED CT qo'shimchasiga](CodeSystem-screening-snomed-translations-cs.html) havola qiladi, [LOINC qo'shimchasi](CodeSystem-screening-laboratory-cs.html) esa 3 tadan 41 ta kodgacha kengaydi. Undagi suyuqlik sitologiyasi va OPV kodlari endi surtma olishni emas, tekshiruvning o'zini nomlaydi.
+
+#### O'zgartirildi
+
+Qo'llanma [UZ Core 0.12.0](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi. Undagi yagona buzuvchi o'zgarish, mutaxassis sertifikati identifikatori tizimi, bu qo'llanmaga taalluqli emas. UZ Core endi `order-service` harakat kodini o'zi tarjima qiladi, shuning uchun bu qo'llanmaning harakat kodlari qo'shimchasi olib tashlandi.
+
+[066-shakl](form-066-mapping.html), [066-1-shakl](form-066-1-mapping.html) va [111-shakl](form-111-mapping.html) namunalaridagi tashkilotlar UZ Core Organization profilining `taxId` kesimida Soliq STIR bo'yicha identifikatsiya qilinadi (`https://dhp.uz/fhir/core/sid/org/uz/soliq`). Mahalliy [tashkilot kodi](NamingSystem-organization-code.html) identifikator tizimi `https://dhp.uz/fhir/core/sid/uz/organization-code` iste'moldan chiqarildi: uning kanonik URL manzili saqlanadi, lekin yangi ma'lumotlarda undan foydalanmaslik kerak.
+
+#### Buzuvchi o'zgarishlar
+
+[Bachadon bo'yni skriningidagi](cervical-breast-cancer-screening.html) kolposkopiya xulosalari SNOMED CT da konsepti bo'lsa, SNOMED CT bilan kodlanadi. Lokal [kolposkopiya kodlar tizimida](CodeSystem-screening-colposcopy-cs.html) faqat SNOMED CT da yo'q ikkita xulosa yangi kodlar bilan qoldi, [qiymatlar to'plamiga](ValueSet-screening-colposcopy-vs.html) esa avval bo'lmagan uchta xulosa qo'shildi. Yuboruvchilar kodni, SNOMED CT qatorlari uchun esa tizimni ham almashtiradi:
+
+| Xulosa | Eski kod | Yangi kod |
+|---|---|---|
+| NILM (norma) | `scr-colpo-1` | SNOMED CT `373887005` |
+| LSIL | `scr-colpo-2` | SNOMED CT `416030007` |
+| HSIL | `scr-colpo-3` | SNOMED CT `22725004` |
+| Atipik o'zgarish | `scr-colpo-4` | `scrn-0091-00004` |
+| ASC-H | - | SNOMED CT `373878001` |
+| CIN 1 | - | SNOMED CT `285836003` |
+| CIN 2+ | - | `scrn-0091-00007` |
+
+#### Hujjatlashtirish
+
+[Shakllar sharhi](forms-overview.html) Sog'liqni saqlash vazirligining 399-son buyrug'idagi birlamchi tibbiy hujjat shakllarini 11 ta jild va jildlar bo'ylab takrorlanadigan hujjat turlari bo'yicha tartiblaydi, har bir jild uchun sahifa va diagramma bilan. U faqat ingliz tilida.
+
+[066-1-shakl](form-066-1-mapping.html) va [gepatit](hepatitis.html) moslashtirish sahifalaridagi identifikator qatorlari har bir identifikatorning tizimi va turini ko'rsatadi.
+
+Bachadon bo'yni saratoni skriningi so'rovnomasiga javob namunasi endi [example-cervical-screening-response](QuestionnaireResponse-example-cervical-screening-response.html) deb ataladi, chunki eski id paket uchun juda uzun edi.
+
+### Versiya 0.11.1
+
+#### Qo'shildi
+
+Skrining sahifasidagi [Skrining rejalari va takliflari](cervical-breast-cancer-screening.html#screening-plans) bo'limi skrining dasturi bemorni qanday taklif qilishi va uning rejasini yangi profillarsiz, mavjud UZ Core profillarida qanday yuritishini tavsiflaydi. UZ Core ActivityDefinition taklif shabloni bo'ladi (`kind` = `ServiceRequest`, `intent` = `plan`), UZ Core PlanDefinition uni versiyasi bilan biriktiradi, bemorning rejasi esa `intent` = `plan`, skriningga taklif toifasi va bitta dastur identifikatoriga ega UZ Core ServiceRequest dir. Reja holatini MIS boshqaradi: DMED so'rovnoma saqlangach o'z rejasini yakunlaydi, OPV esa rejani skrining bosqichlari davomida faol saqlaydi. DHP natijalarga qarab rejani yakunlangan deb hisoblamaydi.
+
+#### O'zgartirildi
+
+Qo'llanma [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi, unda ActivityDefinition `kind` ServiceRequest ga ruxsat beradi.
+
+[Screening Pathology Service Request](StructureDefinition-screening-pathology-service-request.html) da `basedOn` 1..1 o'rniga 1..*, [Screening Immunohistochemistry Observation](StructureDefinition-screening-immunohistochemistry-observation.html) da esa 0..1 o'rniga 0..* ga ruxsat beradi, shunda ular ham klinik yo'llanmaga, ham skrining rejasiga havola qila oladi. Mavjud resurslar yaroqliligicha qoladi.
+
+[ScreeningComposition](StructureDefinition-screening-composition.html) iste'moldan chiqarildi (retired). Yangi skrining jarayonlari undan foydalanmaydi, lekin kanonik URL, tuzilma va misollar saqlanadi, shuning uchun OPV hali yuborayotgan hujjatlar tekshiruvdan o'tishda davom etadi.
+
+#### Buzuvchi o'zgarishlar
+
+DMED ning [ko'krak bezi](Questionnaire-BreastCancerScreeningQuestionnaire.html) va [bachadon bo'yni](Questionnaire-CervicalCancerScreeningQuestionnaire.html) saratoni skrining so'rovnomalari `268547008` va `171149006` o'rniga `mserv-0007-00007` va `mserv-0007-00009` dastur identifikatorlariga ega; `268547008` va `171149006` endi faqat OPV skrining dasturlarini bildiradi. Ularning klinik kodlari va ball hisoblash o'zgarmagan.
+
+#### Hujjatlashtirish
+
+[Bachadon bo'yni va ko'krak bezi saratoni skriningi](cervical-breast-cancer-screening.html) sahifasida dastur identifikatori qisqa ro'yxat bilan tushuntirilgan: u qayerda ko'rsatiladi va qanday istisnolar bor, skrining rejasining yozuv bilan bog'lanishi esa alohida diagrammada ko'rsatilgan. Asosiy skrining diagrammasida `basedOn` kardinalliklari tuzatilgan.
+
+### Versiya 0.11.0
+
+#### O'zgartirildi
+
+Qo'llanma [UZ Core 0.11.0](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi. Uning mos kelmaydigan o'zgarishlaridan bu qo'llanmaga faqat skrining kodlarining olib tashlanishi taalluqli, quyidagi skrining so'rovnomalari esa ulardan SNOMED CT ga o'tib bo'lgan.
+
+Skrining so'rovnomalari endi `Questionnaire.code` ni SNOMED CT da olib yuradi - dastur turi identifikatoridagi konseptning o'zi: [YuIK testoldi ehtimoli](Questionnaire-IhdPretestQuestionnaire.html), [fertillik](Questionnaire-FertilityQuestionnaire.html), [gelmintozlar](Questionnaire-HelminthScreeningQuestionnaire.html), [yurak-qon tomir xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html), [qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html) va [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html). Ular avval UZ Core `screening-code-cs` kodini olib yurar edi, UZ Core 0.11.0 uni SNOMED CT foydasiga olib tashlaydi. [Serebrovaskulyar](Questionnaire-CerebrovascularScreeningQuestionnaire.html) so'rovnoma `screening-code-cs#mserv-0007-00003` ni saqlab qoladi, chunki unga mos SNOMED CT konsepti yo'q.
+
+[Skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) identifikatori uchun SNOMED CT kodlari va `mserv-0007-00003` dan tashqari endi uchinchi qiymat ham tavsiflangan - `breast-cervical-unspecified`. Uni OPV (ВПЧ) skrining tizimi ko'krak bezi va bachadon bo'yni saratoni skriningi doirasida yaratilgan, lekin hech bir dasturga biriktirib bo'lmaydigan resursga yozadi: ICD-10 kodi hech bir dastur ro'yxatiga kirmaydigan yoki ikkalasiga ham kiradigan Condition, hamda RSNPMCOiR yoki RSNPMCZMiR filialiga yo'llanma. Bunday resurs dastur turining faqat bitta identifikatoriga ega bo'ladi.
+
+#### Hujjatlar
+
+[Onkologiya](cancer.html) va [gepatit](hepatitis.html) sahifalarida resurslar o'zaro qanday bog'lanishini ko'rsatuvchi diagramma paydo bo'ldi. Boshqa integratsiya sahifalaridagi diagrammalar endi integratsiyaning barcha profillarini o'z ichiga oladi (skriningning yakuniy hujjati ScreeningComposition bundan mustasno), noto'g'ri kardinalliklar tuzatildi. Barcha diagrammalar klinik grafni ko'rsatadi, tashkilotlar, tibbiyot xodimlari va boshqa ishtirokchilarga havolalarsiz.
+
+### Versiya 0.10.0
+
+#### Qo'shildi
+
+[Kanser registri](cancer.html) endi FHIR modeliga ega; model registr ma'lumotlari imkon bergan joyda [mCODE](https://hl7.org/fhir/us/mcode/STU4/) asosida tuzilgan. [Cancer Condition](StructureDefinition-cancer-condition.html) tashxis, registr identifikatori, lateral joylashuv va aniqlanish holatlarini saqlaydi, [Cancer Episode Of Care](StructureDefinition-cancer-episode-of-care.html) davolash kursini birlashtiradi, [Cancer Encounter](StructureDefinition-cancer-encounter.html) esa shu kurs ichidagi tashrifni qayd etadi. Oltita Observation profili o'smaning morfologiyasi va xatti-harakati, differensiallashuv darajasi, metastazlar, TNM toifalari va TNM bosqichini qayd etadi.
+
+Kodlashda ICD-10, ICD-O-3, SNOMED CT va LOINC mavjud bo'lganda ishlatiladi, aniqlanish holati, tasdiqlash usuli va davolash maqsadi kabi registrga xos tushunchalar uchun esa mahalliy kod tizimlari qo'llaniladi. Uchta ConceptMap registrning o'z ma'lumotnoma identifikatorlarini - holat, ICD-10 va ICD-O-3 topografiyasi - DHP kutgan kodlarga o'giradi.
+
+Gepatit registrida ham model bor: [Hepatitis Patient](StructureDefinition-hepatitis-patient.html), [Condition](StructureDefinition-hepatitis-condition.html), [Episode Of Care](StructureDefinition-hepatitis-episode-of-care.html), [Encounter](StructureDefinition-hepatitis-encounter.html), laboratoriya va ultratovush Observation profillari, shuningdek davolash so'rovnomasi uchun [Questionnaire](StructureDefinition-hepatitis-questionnaire.html) va [unga javob](StructureDefinition-hepatitis-questionnaire-response.html) - 0.9.0 da yetkazilgan profillanmagan misollar o'rniga. Yozuvlar `https://dhp.uz/fhir/core/sid/reg/uz/hepatitis` tizimidagi registr identifikatorini olib yuradi. Har bir maydon [gepatit registri sahifasida](hepatitis.html) tavsiflangan.
+
+[066-shakl](form-066-mapping.html) statsionardan chiqarish kartasidagi operatsiya kodi endi ICHI kodi. [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html) jarrohlik amaliyotlari bo'limi havola qiladigan Procedure ni profillaydi va `Procedure.code` ni [ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html) ga bog'laydi. Ilgari bo'lim har qanday Procedure ni qabul qilardi.
+
+[ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html) DMED da mavjud 6 853 kodni sanab o'tadi: JSST hozir nashr etadigan 9 428 o'zak koddan 6 176 tasi va JSST keyinchalik olib tashlagan 677 kod. Olib tashlanganlari [kod tizimida](https://dhp.uz/fhir/core/CodeSystem-who-ichi.html) `inactive` deb belgilangan va bu yerda qabul qilinadi - shunda DMED da allaqachon mavjud yozuvlar validatsiyadan o'tadi, ammo kelgusida ulardan foydalanmaslik kerak. Platforma o'zi kodlaydigan protsedura UZ Core dagi [ICHI Codes](https://dhp.uz/fhir/core/ValueSet-ichi-vs.html) dan olinadi.
+
+[YuIK testoldi ehtimoli bo'yicha xavf kategoriyalari](CodeSystem-ihd-risk-category-cs.html) endi shu yerda e'lon qilinadi. [YuIK testoldi ehtimoli so'rovnomasi](Questionnaire-IhdPretestQuestionnaire.html) xavf kategoriyasi savoliga javoblarda ulardan allaqachon foydalanardi, biroq UZ Core ning hech bir relizida mavjud bo'lmagan UZ Core kanonik URL manzili ostida.
+
+#### O'zgartirildi
+
+Qo'llanma [UZ Core 0.10.0](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi: unda 066-shaklga kerak bo'lgan ICHI kod tizimi nashr etiladi va `Procedure.code` bog'lanishi extensible darajasiga yumshatiladi.
+
+[Qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html) va [fertillik](Questionnaire-FertilityQuestionnaire.html) so'rovnomalari endi UZ Core `screening-code-cs` dan olingan `Questionnaire.code` ga ega, qolgan to'rtta skrining so'rovnomasidagi kabi.
+
+[Bepushtlik aniqlangan fertillik so'rovnomasi javobi](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) XKT-10 bo'yicha ikkita tashxisni ko'rsatadi; ularning har biri alohida Condition sifatida qayd etilgan ([birinchi](Condition-example-fertility-infertility-condition.html), [ikkinchi](Condition-example-fertility-infertility-condition-2.html)) va ularning `evidence` maydoni shu javobga havola qiladi.
+
+[Qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html) va [yurak-qon tomir xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html) so'rovnomalari endi ballarni o'zlarida haqiqatan mavjud bo'lgan javoblar bo'yicha hisoblaydi. Qandli diabet so'rovnomasi yosh, bel o'lchami va oilaviy anamnezni hech bir javob variantida bo'lmagan kodlar bilan solishtirardi, shuning uchun bu savollar doim 0 ball berardi; yurak-qon tomir xavfi so'rovnomasi tamaki iste'molini eskirgan mahalliy kod bilan solishtirardi, shuning uchun chekuvchilar JSST/XGJ jadvalining chekmaydiganlar qismidan qidirilardi. Javoblar o'zgarmagan.
+
+Barcha artefakt versiyalari `MAJOR.MINOR.PATCH` ko'rinishida. [Qandli diabet skriningi so'rovnomasi](Questionnaire-DiabetesScreeningQuestionnaire.html) va [skrining so'rovi shabloni](Questionnaire-screening-intake-template.html) versiyalarini `1.0` va `1.1` deb e'lon qilardi; endi ular `1.0.0` va `1.1.0` ni e'lon qiladi.
+
+Har bir so'rovnoma endi o'zi tegishli integratsiyani `program` qo'llanish kontekstida ko'rsatadi: to'qqizta skrining so'rovnomasi va gepatit so'rovnomasida u yo'q edi, shuning uchun ular [so'rovnomalar](forms.html) sahifasida guruhsiz qolardi. [Integration Area](CodeSystem-integration-area-cs.html) ga `hepatitis` kodi qo'shildi, `screening` esa endi faqat bachadon bo'yni va ko'krak bezi saratoni skriningini emas, butun skrining xizmatini qamrab oladi.
+
+#### Muhim o'zgarishlar
+
+Skrining identifikator tizimlari endi `https://dhp.uz/fhir/core/sid/{namespace}/{country}/{type}` shabloniga amal qiladi. Ulardan ikkitasida nomlar maydoni segmenti yo'q edi, jamoat salomatligi holati identifikatori esa tashkilotlarni emas, holatlarni identifikatsiya qilsa-da, tashkilotlar nomlar maydonida joylashgan edi. Yozuvlar va holatlar `doc` nomlar maydoniga, dastur turi esa har qanday sog'liqni saqlash dasturi o'z qiymati bilan qayta foydalanishi mumkin bo'lgan umumiy `prg` dastur tizimiga ko'chirildi. Identifikator qiymatlari o'zgarmaydi; yuboruvchilar tizimni almashtiradi:
+
+| Identifikator | Avvalgi tizim | Yangi tizim |
+|---|---|---|
+| [Skrining yozuvi](NamingSystem-screening-identifier-system.html) | `https://dhp.uz/fhir/core/sid/uz/screening` | `https://dhp.uz/fhir/core/sid/doc/uz/screening` |
+| [Jamoat salomatligi holati](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) | `https://dhp.uz/fhir/core/sid/org/uz/screening` | `https://dhp.uz/fhir/core/sid/doc/uz/screening-case` |
+| [Skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) | `https://dhp.uz/fhir/core/sid/uz/screening-program-type` | `https://dhp.uz/fhir/core/sid/prg/uz/program` |
+
+O'zbekiston JSHSHIR nom tizimi olib tashlandi. JSHSHIR - UZ Core allaqachon `https://dhp.uz/fhir/core/sid/pid/uz/ni` sifatida belgilagan milliy identifikator; uni `https://dhp.uz/fhir/core/sid/uz/pinfl` o'rniga shu tizimda yuboring.
+
+Fertillik so'rovnomasining `infertility-icd-diagnosis` savoli endi erkin matnli `string` o'rniga XKT-10 ga bog'langan va takrorlanuvchi `coding` turiga ega. Javoblar `valueString` o'rniga har bir tashxis uchun bittadan `valueCoding` yuborishi kerak.
+
+YuIK xavf kategoriyalarining `low`, `medium` va `high` kodlari saqlanadi, ammo ularning tizimi `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` dan `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs` ga o'zgaradi.
+
+### Versiya 0.9.0
+
+#### Qo'shildi
+
+DMed foydalanadigan to'qqizta skrining so'rovnomasi ta'riflar sifatida nashr etildi: [yurak-qon tomir kasalliklari xavfi](Questionnaire-CVDRiskScreeningQuestionnaire.html), [tserebrovaskulyar patologiya](Questionnaire-CerebrovascularScreeningQuestionnaire.html), [qandli diabet](Questionnaire-DiabetesScreeningQuestionnaire.html), [YuIK testoldi ehtimoli](Questionnaire-IhdPretestQuestionnaire.html), [onkogematologiya](Questionnaire-OncohematologyScreeningQuestionnaire.html), [ko'krak bezi saratoni](Questionnaire-BreastCancerScreeningQuestionnaire.html), [bachadon bo'yni saratoni](Questionnaire-CervicalCancerScreeningQuestionnaire.html), [gelmintozlar](Questionnaire-HelminthScreeningQuestionnaire.html) va [fertillik](Questionnaire-FertilityQuestionnaire.html). Har biri javoblarni SDC dagi `calculatedExpression` orqali hisoblaydi va yig'indini xavf toifasiga - [ko'krak bezi saratoni](CodeSystem-breast-cancer-risk-category-cs.html), [tserebrovaskulyar patologiya](CodeSystem-cerebrovascular-risk-category-cs.html), [yurak-qon tomir kasalliklari](CodeSystem-cvd-risk-category-cs.html) va [qandli diabet](CodeSystem-diabetes-risk-category-cs.html) - joylashtiradi, toifa esa tavsiya etiladigan kuzatuvni belgilaydi. Yurak-qon tomir xavfi so'rovnomasi va uning xavf toifalari UZ Core 0.9.0 dan bu yerga ko'chirildi.
+
+Ular uchun javoblar terminologiyasi tserebrovaskulyar so'rovnomaning [arterial bosim](CodeSystem-cerebrovascular-blood-pressure-status-cs.html), [xolesterin](CodeSystem-cerebrovascular-cholesterol-status-cs.html), [qandli diabet](CodeSystem-cerebrovascular-diabetes-status-cs.html), [yurak kasalliklari](CodeSystem-cerebrovascular-heart-condition-cs.html), [oilaviy anamnez](CodeSystem-cerebrovascular-family-history-cs.html), [chekish](CodeSystem-cerebrovascular-smoking-status-cs.html), [alkogol va stress](CodeSystem-cerebrovascular-alcohol-stress-level-cs.html) hamda [jismoniy faollik](CodeSystem-cerebrovascular-physical-activity-cs.html) javoblarini, [YuIK da ko'krak og'rig'i turini](CodeSystem-ihd-chest-pain-type-cs.html), shuningdek [qandli diabet](ValueSet-screening-diabetes-vs.html), [tamaki iste'moli](ValueSet-cvd-tobacco-use-vs.html), [bachadon bo'yni saratoni](ValueSet-cervical-cancer-screening-questionnaire-vs.html) va [fertillik](ValueSet-fertility-questionnaire-vs.html) javoblarining qiymatlar to'plamlarini qamrab oladi; oxirgi uchtasi SNOMED CT da kodlangan va o'zbekcha belgilarga ega.
+
+Bitta skrining dasturiga tegishli resurslar endi yangi [skrining dasturi turi](NamingSystem-screening-program-type-identifier-system.html) nom tizimidan identifikator olib yuradi, uning qiymati dasturning SNOMED CT kodidir. Uni ham DMed, ham OPV (ВПЧ) skrining tizimi klinik va ish jarayoni resurslariga yozadi, Patient, Practitioner va PractitionerRole ga esa yozmaydi.
+
+Patomorfologik xulosa SNOMED CT qamramagan mahalliy kodlar bilan to'ldirildi: [bachadon bo'yni gistologiyasi morfologiyasi](CodeSystem-screening-cervical-histology-morphology-cs.html) kichik turlari, [bachadon bo'yni](CodeSystem-screening-cervical-material-type-cs.html) va [ko'krak bezi sitologiyasi](CodeSystem-screening-breast-cytology-material-type-cs.html) material turlari hamda [ko'krak beziga jarrohlik amaliyoti turlari](CodeSystem-screening-breast-surgical-procedure-type-cs.html). [Ko'krak bezi o'smasining gistologik turi](ValueSet-screening-breast-histologic-type-vs.html) sakkizta kichik tur bilan kengaydi.
+
+Skrining so'rovnomalari endi o'zi qaysi integratsiyadan kelganini `program` foydalanish kontekstida, [integratsiya sohasi](ValueSet-integration-area-vs.html) kodi bilan ko'rsatadi: `GET [base]/Questionnaire?context-type-value=program$https://terminology.dhp.uz/fhir/integrations/CodeSystem/integration-area-cs|screening` so'rovi bitta xizmatning shakllarini qaytaradi, [so'rovnomalar](forms.html) sahifasi esa shakllar ro'yxatini xuddi shunday guruhlaydi.
+
+#### O'zgartirildi
+
+Mos tushuncha mavjud bo'lgan hamma joyda mahalliy kodlar SNOMED CT kodlari bilan almashtirildi, mahalliy kod tizimlariga esa qoldiq qoldirildi: [qindan ajralma turida](ValueSet-screening-vaginal-discharge-type-vs.html) rang va konsistensiyaning to'rtta qo'shma tavsifi, [siyish xususiyatida](ValueSet-screening-urination-characteristic-vs.html) bitta kod, [semizlik darajasida](ValueSet-screening-obesity-degree-vs.html) IV daraja va [umumiy holatda](ValueSet-screening-general-condition-vs.html) «nisbatan qoniqarli»; [qo'ltiq osti](ValueSet-screening-ultrasound-axillary-node-status-vs.html) va [intramammar limfa tugunlari holati](ValueSet-screening-ultrasound-intramammary-node-status-vs.html) endi butunlay SNOMED CT dan.
+
+Qiymatlar to'plamlari manba shakllarga yetishmagan javoblar bilan kengaytirildi: [ko'krak bezini paypaslash bahosi](ValueSet-screening-breast-palpation-assessment-vs.html) va [homiladorlik yakunida](ValueSet-screening-pregnancy-outcome-vs.html) bittadan SNOMED CT tushunchasi, [retromammar bo'shliq](CodeSystem-screening-ultrasound-retromammary-space-cs.html) va [teri osti yog' qatlamida](CodeSystem-screening-ultrasound-subcutaneous-fat-cs.html) «o'zgarmagan» va «yaqqol ifodalangan», [tana sohasi](CodeSystem-screening-body-site-cs.html) va [diagnostik muolajalar](CodeSystem-screening-diagnostic-procedure-cs.html) to'ldiruvchilarida oltita belgi.
+
+[Skrining laboratoriya tekshiruvlari](CodeSystem-screening-laboratory-cs.html) ning LOINC to'ldiruvchisi endi 2.82 o'rniga 2.82.0 versiyasini e'lon qiladi.
+
+Gepatit bilan og'rigan bemor misolidan fuqarolik olib tashlandi: UZ Core dagi `iso-3166-2-vs` `urn:iso:std:iso:3166` ga majburiy to'ldiruvchini e'lon qiladi, ammo uni hech bir FHIR paketi yetkazib bermaydi, shuning uchun validator bu to'plamga bog'langan har qanday misolni rad etadi. core dagi qiymatlar to'plami tuzatilgach, fuqarolik qaytariladi.
+
+Qo'llanma endi [UZ Core 0.9.0](https://dhp.uz/fhir/core/changelog.html) asosida yig'iladi. Uning mos kelmaydigan o'zgarishlaridan birortasi ham bu qo'llanmaga taalluqli emas.
+
+#### Mos kelmaydigan o'zgarishlar
+
+[Screening Composition](StructureDefinition-screening-composition.html), [DiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [DocumentReference](StructureDefinition-screening-document-reference.html), [Observation](StructureDefinition-screening-observation.html) va [ServiceRequest](StructureDefinition-screening-service-request.html) profillarida `meta` va `meta.source` endi 1..1 va Must Support, invariant esa resursni yaratgan tizimni ko'rsatuvchi `https://dhp.uz/fhir/source/screening` yoki `https://dhp.uz/fhir/source/dmed` qiymatini talab qiladi. Mavjud misollar uni qo'shishi shart.
+
+[Skrining rollari](CodeSystem-screening-roles-cs.html) dagi akusher-ginekolog kodi `his_centre_obstetrics_gynecology_obstetrician_gynecologist` dan `his_centre_obgyn_obstetrician_gynecologist` ga qisqartirildi.
+
+SNOMED CT qamrab olgan mahalliy kodlar olib tashlandi va ularni qayta ifodalash kerak: `scrn-0019-00003`, `scrn-0019-00005`, `scrn-0019-00006` va `scrn-0019-00008` (qindan ajralma), `scrn-0016-00001`, `scrn-0016-00002` va `scrn-0016-00003` (siyish), `scrn-0048-00001` va `scrn-0048-00002` (qo'ltiq osti limfa tugunlari holati). [Semizlik darajasi](ValueSet-screening-obesity-degree-vs.html) ham ruxsat etilgan SNOMED CT tushunchalarini `162864005` va `83911000119104` dan `443371000124107`, `443381000124105` va `819948005` ga o'zgartirdi.
+
+#### Hujjatlar
+
+[Skrining](cervical-breast-cancer-screening.html), [sil kasalligi](dhis-tuberculosis.html), [narkologiya](narcology.html), [psixiatriya](psychiatry.html) va [kasallik varaqasi](sick-leave.html) sahifalari endi resurs modeli diagrammasi bilan boshlanadi - uchala tilning har birida.
+
+«Shakllar» menyu bandi va sahifa sarlavhasi «So'rovnomalar» ga o'zgartirildi.
 
 ### Versiya 0.8.0
 
@@ -24,7 +219,7 @@ Skrining sikli endi hujjat sifatida nashr etilishi mumkin. [Screening Compositio
 
 Oltmishta kod tizimi va bir yuz oltita qiymatlar to'plami bularning barchasi uchun zarur terminologiyani ta'minlaydi. Ko'krak bezi UTT tavsifida har bir qayd etiladigan parametr uchun alohida qiymatlar to'plami bor - [ACR bo'yicha ko'krak bezi tarkibi](ValueSet-screening-ultrasound-acr-composition-vs.html) va [fibroglandulyar to'qima exogenligi](ValueSet-screening-ultrasound-fibroglandular-echogenicity-vs.html) dan tortib hosilaning [shakli](ValueSet-screening-ultrasound-lesion-shape-vs.html), [konturi](ValueSet-screening-ultrasound-lesion-contour-vs.html), [exogenligi](ValueSet-screening-ultrasound-lesion-echogenicity-vs.html), [yo'nalishi](ValueSet-screening-ultrasound-lesion-orientation-vs.html) va [vaskulyarizatsiyasi](ValueSet-screening-ultrasound-lesion-vascularization-vs.html) orqali [qo'ltiq osti](ValueSet-screening-ultrasound-axillary-node-status-vs.html) va [regionar limfa tugunlari holati](ValueSet-screening-ultrasound-regional-node-status-vs.html) gacha. Patomorfologik xulosani [ko'krak bezi o'smasining gistologik turi](ValueSet-screening-breast-histologic-type-vs.html), [bachadon bo'yni gistologiyasidagi differensiatsiya darajasi](ValueSet-screening-cervical-histologic-grade-vs.html), patologik [T](ValueSet-screening-pathological-t-vs.html), [N](ValueSet-screening-pathological-n-vs.html) va [M](ValueSet-screening-pathological-m-vs.html) bosqichlari, [rezeksiya chekkasi holati](ValueSet-screening-resection-margin-status-vs.html), [limfovaskulyar invaziya](ValueSet-screening-histology-lymphovascular-invasion-vs.html), [immunogistokimyo bo'yicha HER2 bali](ValueSet-screening-her2-ihc-score-vs.html), [p16 natijasi](ValueSet-screening-p16-result-vs.html) va [Yokogama toifasi](ValueSet-screening-yokohama-category-vs.html) qamrab oladi. Ginekologik ko'rikning o'z to'plamlari bor, ular orasida [bachadon bo'yni holati](ValueSet-screening-cervix-condition-vs.html), [qindan ajralmalar](ValueSet-screening-vaginal-discharge-type-vs.html) va [qin devorlari prolapsi](ValueSet-screening-vaginal-wall-prolapse-vs.html), xavfni baholash so'rovnomalarining har bir savoli uchun esa javoblar qiymatlar to'plami mavjud.
 
-To'rtta nom tizimi Skrining almashadigan identifikatorlarni tavsiflaydi - so'rovnoma ta'rifiga beriladigan [so'rovnoma identifikatori](NamingSystem-ScreeningQuestionnaireIdNamingSystem.html) va [so'rovnoma kodi](NamingSystem-ScreeningQuestionnaireCodeNamingSystem.html), [jamoat salomatligi holati](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) identifikatori va [025-shakl](NamingSystem-ScreeningForm025IdNamingSystem.html) ning manba identifikatori, - ular bilan birga [O'zbekiston JSHSHIR](NamingSystem-UzbekistanPinflNamingSystem.html) uchun nom tizimi qo'shildi.
+To'rtta nom tizimi Skrining almashadigan identifikatorlarni tavsiflaydi - so'rovnoma ta'rifiga beriladigan [so'rovnoma identifikatori](NamingSystem-ScreeningQuestionnaireIdNamingSystem.html) va [so'rovnoma kodi](NamingSystem-ScreeningQuestionnaireCodeNamingSystem.html), [jamoat salomatligi holati](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) identifikatori va [025-shakl](NamingSystem-ScreeningForm025IdNamingSystem.html) ning manba identifikatori, - ular bilan birga O'zbekiston JSHSHIR uchun nom tizimi qo'shildi.
 
 #### O'zgartirildi
 

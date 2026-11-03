@@ -4,9 +4,13 @@ Usage: #definition
 Title: "Helminth Disease Screening Questionnaire"
 Description: "Early detection questionnaire for helminthic diseases (children)"
 * url = "https://dhp.uz/fhir/integrations/Questionnaire/HelminthScreeningQuestionnaire"
+* identifier[0].system = $screening-program-type-id
+* identifier[0].value = "171147008"
 * name = "HelminthScreeningQuestionnaire"
 * language = #uz
 * status = #draft
+* useContext[0].code = $usage-context-type#program
+* useContext[0].valueCodeableConcept = $integration-area#screening
 * publisher = "Ministry of Health of the Republic of Uzbekistan"
 * subjectType = #Patient
 * title = "Gijja kasalliklarini erta aniqlash so'rovnomasi"
@@ -23,7 +27,13 @@ Description: "Early detection questionnaire for helminthic diseases (children)"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Early-detection questionnaire for helminth infection in children aged 2-10."
-* code = $screening-code-cs#mserv-0007-00004 "Gelmintoz kasalliklarini erta aniqlash so'rovnomasi"
+* code = $sct#171147008 "Screening for intestinal helminthiasis"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Ichak gelmintozlari skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг кишечных гельминтозов"
 
 * item[+]
   * linkId = "had-helminth-symptoms-6-months"

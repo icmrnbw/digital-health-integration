@@ -43,13 +43,13 @@ Alias: $iso-3166 = urn:iso:std:iso:3166
 Alias: $iso3166-1-2 = http://hl7.org/fhir/ValueSet/iso3166-1-2
 Alias: $issue-severity = http://hl7.org/fhir/issue-severity
 Alias: $loinc = http://loinc.org
+Alias: $location-kinds-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/location-kinds-cs
 Alias: $location-status = http://hl7.org/fhir/location-status
 Alias: $location-unit = https://dhp.uz/fhir/core/NamingSystem/location-unit
 Alias: $mfa = https://gov.uz/ru/mfa
 Alias: $militaryID = https://gov.uz/mudofaa/identifier/militaryID
 Alias: $mudofaa = https://gov.uz/ru/mudofaa
 Alias: $name-use = http://hl7.org/fhir/name-use
-Alias: $nationaluniqueID = https://dpm.uz/identifier/national-unique-id
 Alias: $nomenclature-group = https://dhp.uz/fhir/core/CodeSystem/nomenclature-group
 Alias: $object-role = http://terminology.hl7.org/CodeSystem/object-role
 Alias: $observation-codes = http://hl7.org/fhir/ValueSet/observation-codes
@@ -58,7 +58,6 @@ Alias: $observation-interpretation = http://terminology.hl7.org/CodeSystem/v3-Ob
 Alias: $observation-methods = http://hl7.org/fhir/ValueSet/observation-methods
 Alias: $observation-referencerange-normalvalue = http://hl7.org/fhir/observation-referencerange-normalvalue
 Alias: $organization-argos-id-system = https://hrm.argos.uz
-Alias: $organization-tax-id-system = https://soliq.uz
 Alias: $organization-type-cs = http://terminology.hl7.org/CodeSystem/organization-type
 Alias: $organization-type-vs = http://hl7.org/fhir/ValueSet/organization-type
 Alias: $organizational-service-group = https://dhp.uz/fhir/core/CodeSystem/organizational-service-group
@@ -147,9 +146,10 @@ Alias: $organizational-structure-cs = https://terminology.dhp.uz/fhir/core/CodeS
 Alias: $organizational-service-group-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-service-group-cs
 Alias: $states-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/states-cs
 Alias: $organization-tax-id-system-dhp = https://dhp.uz/fhir/core/sid/org/uz/soliq
-Alias: $screening-local-id = https://dhp.uz/fhir/core/sid/uz/screening
+Alias: $screening-local-id = https://dhp.uz/fhir/core/sid/doc/uz/screening
 Alias: $screening-patient-id = https://dhp.uz/fhir/core/sid/pid/uz/screening
 Alias: $screening-practitioner-id = https://dhp.uz/fhir/core/sid/pro/uz/screening
+Alias: $screening-program-type-id = https://dhp.uz/fhir/core/sid/prg/uz/program
 Alias: $nationality-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/nationality-cs
 Alias: $doc-typecodes = http://hl7.org/fhir/ValueSet/doc-typecodes
 Alias: $mimetypes = http://hl7.org/fhir/ValueSet/mimetypes
@@ -164,19 +164,98 @@ Alias: $lab-report-types-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/la
 Alias: $lab-pan-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/lab-pan-cs
 Alias: $signature-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/signature-type-cs
 
+Alias: $signature-type = urn:iso-astm:E1762-95:2013
+Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
+Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
+Alias: $form111-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-cs
+Alias: $form111-document-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-document-type-cs
+Alias: $position-profession-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs
+Alias: $form111-analysis-test-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-analysis-test-code-cs
+Alias: $form111-education-level-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-education-level-cs
+Alias: $form111-social-observation-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-social-observation-code-cs
+Alias: $form111-patient-bad-habit-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-patient-bad-habit-cs
+Alias: $form111-risk-factor-observation-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-risk-factor-observation-code-cs
+Alias: $form111-pregnancy-complication-factor-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-pregnancy-complication-factor-cs
+Alias: $form111-birth-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-birth-type-cs
+Alias: $form111-anthropometry-observation-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-anthropometry-observation-code-cs
+Alias: $form111-gynecological-examination-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-gynecological-examination-observation-code-cs
+Alias: $form111-assessment-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-assessment-observation-code-cs
+Alias: $form111-pregnancy-monitoring-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-pregnancy-monitoring-observation-code-cs
+Alias: $form111-fetal-assessment-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-fetal-assessment-observation-code-cs
+Alias: $form111-preparation-activity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-preparation-activity-cs
+Alias: $form111-socio-biological-factor-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-socio-biological-factor-cs
+Alias: $form111-obstetric-history-factor-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-obstetric-history-factor-cs
+Alias: $form111-extragenital-disease-factor-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-extragenital-disease-factor-cs
+Alias: $form111-pregnancy-complication-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-pregnancy-complication-factor-cs
+Alias: $form111-perinatal-risk-level-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-perinatal-risk-level-cs
+Alias: $form111-general-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-general-observation-code-cs
+Alias: $form111-contraception-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-contraception-type-cs
+Alias: $form111-contraception-obs-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-contraception-observation-code-cs
+Alias: $form111-pregnancy-outcome-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form111-pregnancy-outcome-cs
+Alias: $encounter-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-type-cs
 Alias: $flag-status-cs = http://hl7.org/fhir/flag-status
 Alias: $profession-specialization-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/profession-specialization-cs
 
+
+// ===================== ALIASES - Form097 Newborn Development =====================
+
+Alias: $newborn-daily-observation-component-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-daily-observation-component-cs
+Alias: $newborn-term-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-term-status-cs
+Alias: $infant-feeding-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/infant-feeding-type-cs
+
+Alias: $ballard-skin-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-skin-maturity-cs
+Alias: $ballard-lanugo-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-lanugo-maturity-cs
+Alias: $ballard-plantar-surface-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-plantar-surface-cs
+Alias: $ballard-breast-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-breast-maturity-cs
+Alias: $ballard-eye-ear-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-eye-ear-maturity-cs
+Alias: $ballard-male-genital-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-male-genital-maturity-cs
+Alias: $ballard-female-genital-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-female-genital-maturity-cs
+Alias: $ballard-neuromuscular-score-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-neuromuscular-score-cs
+Alias: $ballard-square-window-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-square-window-cs
+Alias: $ballard-arm-recoil-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-arm-recoil-cs
+Alias: $ballard-popliteal-angle-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-popliteal-angle-cs
+
+Alias: $newborn-skin-color-detailed-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-skin-color-detailed-cs
+Alias: $cyanosis-distribution-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cyanosis-distribution-cs
+Alias: $normal-abnormal-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/normal-abnormal-status-cs
+Alias: $eyelid-shape-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/eyelid-shape-cs
+Alias: $ear-morphology-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ear-morphology-cs
+Alias: $respiratory-auscultation-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/respiratory-auscultation-cs
+Alias: $silverman-respiratory-severity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/silverman-respiratory-severity-cs
+Alias: $cardiac-examination-aspect-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cardiac-examination-aspect-cs
+Alias: $urination-ease-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/urination-ease-cs
+Alias: $external-genital-pattern-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/external-genital-pattern-cs
+
+Alias: $primitive-reflex-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/primitive-reflex-type-cs
+Alias: $newborn-activity-level-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-activity-level-cs
+Alias: $form-097-section-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-097-section-cs
+Alias: $form-097-observation-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-097-observation-code-cs
+Alias: $newborn-physical-examination-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-physical-examination-cs
+Alias: $newborn-daily-monitoring-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-daily-monitoring-cs
+Alias: $newborn-maturity-assessment-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-maturity-assessment-cs
+Alias: $newborn-care-feeding-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-care-feeding-cs
+Alias: $newborn-birth-anthropometry-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-birth-anthropometry-cs
+Alias: $breastfeeding-initiation-time-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/breastfeeding-initiation-time-cs
+Alias: $amniotic-fluid-appearance-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-appearance-cs
+Alias: $newborn-signs-of-life-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-signs-of-life-cs
+
+Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
+Alias: $diagnosis-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/diagnosis-type-cs
+Alias: $iccc-3 = http://terminology.hl7.org/CodeSystem/iccc-3
+Alias: $iccc-3-vs = https://terminology.dhp.uz/fhir/core/ValueSet/iccc-3-vs
+Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context-type
+Alias: $integration-area = https://terminology.dhp.uz/fhir/integrations/CodeSystem/integration-area-cs
+Alias: $lab-methods-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/lab-methods-cs
+Alias: $hep-id-sys = https://dhp.uz/fhir/core/sid/reg/uz/hepatitis
+Alias: $diagnosis-type = https://terminology.dhp.uz/fhir/core/CodeSystem/diagnosis-type-cs
 // ===================== DMED early-detection screening questionnaires (moved from digital-health-ig) =====================
 Alias: $v2-0532 = http://terminology.hl7.org/CodeSystem/v2-0532
 Alias: $ordinal-value = http://hl7.org/fhir/StructureDefinition/ordinalValue
 Alias: $variable = http://hl7.org/fhir/StructureDefinition/variable
 Alias: $sdc-calculated-expression = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-calculatedExpression
-// screening-code-cs and ihd-risk-category-cs stay defined only in digital-health-ig (core) —
-// still used there by CVDRiskScreeningQuestionnaire and ScreeningIHDProbabilityQuestionnaire —
-// so these alias directly to the core canonical instead of duplicating the resource.
+// screening-code-cs stays defined only in digital-health-ig (core), so it aliases the core canonical.
 Alias: $screening-code-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/screening-code-cs
-Alias: $ihd-risk-category-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs
+Alias: $ihd-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs
 Alias: $breast-cancer-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/breast-cancer-risk-category-cs
 Alias: $cerebrovascular-alcohol-stress-level-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-alcohol-stress-level-cs
 Alias: $cerebrovascular-blood-pressure-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cerebrovascular-blood-pressure-status-cs
@@ -190,3 +269,22 @@ Alias: $cerebrovascular-smoking-status-cs = https://terminology.dhp.uz/fhir/inte
 Alias: $diabetes-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/diabetes-risk-category-cs
 Alias: $ihd-chest-pain-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-chest-pain-type-cs
 Alias: $cvd-risk-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cvd-risk-category-cs
+Alias: $icd-o-3-morphology-vs = https://terminology.dhp.uz/fhir/core/ValueSet/icd-o-3-morphology-vs
+Alias: $icd-o-3-topography-vs = https://terminology.dhp.uz/fhir/core/ValueSet/icd-o-3-topography-vs
+Alias: $icd-o-3 = http://terminology.hl7.org/CodeSystem/icd-o-3
+Alias: $ichi = http://id.who.int/icd/release/11/ichi
+Alias: $dmed-ichi-vs = https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs
+Alias: $ichi-vs = https://terminology.dhp.uz/fhir/core/ValueSet/ichi-vs
+Alias: $nci = http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
+Alias: $position-and-profession-vs = https://terminology.dhp.uz/fhir/core/ValueSet/position-and-profession-vs
+
+// Form 096
+Alias: $form096-amniotic-fluid-appearance-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-appearance-cs
+Alias: $form096-amniotic-fluid-volume-measurement-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-volume-measurement-cs
+Alias: $form096-birth-attendant-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/birth-attendant-cs
+Alias: $form096-maternal-labor-medication-effect-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/maternal-labor-medication-effect-code-cs
+Alias: $form096-newborn-eye-prophylaxis-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-eye-prophylaxis-cs
+Alias: $form096-placenta-delivery-method-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/placenta-delivery-method-cs
+Alias: $composition-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/composition-type-cs
+Alias: $composition-category-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/composition-category-cs
+Alias: $form-044-observation-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-044-observation-code-cs

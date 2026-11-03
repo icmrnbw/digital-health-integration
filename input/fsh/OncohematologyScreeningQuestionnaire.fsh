@@ -4,9 +4,13 @@ Usage: #definition
 Title: "Oncohematology Screening Questionnaire"
 Description: "Example for Questionnaire for Oncohematology Screening"
 * url = "https://dhp.uz/fhir/integrations/Questionnaire/OncohematologyScreeningQuestionnaire"
+* identifier[0].system = $screening-program-type-id
+* identifier[0].value = "762445000"
 * name = "OncohematologyScreeningQuestionnaire"
 * language = #uz
 * status = #active
+* useContext[0].code = $usage-context-type#program
+* useContext[0].valueCodeableConcept = $integration-area#screening
 * publisher = "Uzinfocom"
 * subjectType = #Patient
 * title = "Onkogematologik kasalliklarni erta aniqlash so‘rovnomasi"
@@ -23,6 +27,13 @@ Description: "Example for Questionnaire for Oncohematology Screening"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for early detection of signs of oncohematologic diseases"
+* code = $sct#762445000 "Screening for hematological disorder"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Gematologik kasalliklar skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг гематологических заболеваний"
 
 * item[+]
   * linkId = "unexplained-weight-loss"

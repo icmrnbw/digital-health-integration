@@ -6,13 +6,16 @@ Title: "Screening Breast Risk Response Example"
 Description: "Example completed response to the Screening breast cancer risk questionnaire."
 * id = "screening-breast-risk-response-example"
 * language = #ru
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].use = #usual
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PHC
 * identifier[0].type.coding[0].display = "Public Health Case Identifier"
-* identifier[0].system = "https://dhp.uz/fhir/core/sid/org/uz/screening"
+* identifier[0].system = "https://dhp.uz/fhir/core/sid/doc/uz/screening-case"
 * identifier[0].value = "136-RMJ"
-* questionnaire = "https://dhp.uz/fhir/integrations/Questionnaire/screening-breast-risk"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "268547008"
+* questionnaire = "https://dhp.uz/fhir/integrations/Questionnaire/screening-breast-risk|1.1.0"
 * status = #completed
 * subject.reference = "Patient/lola-oripova"
 * subject.display = "Lola Oripova Shakhzodovna"
@@ -69,8 +72,8 @@ Description: "Example completed response to the Screening breast cancer risk que
 * item[11].linkId = "statusRisk"
 // * item[11].text = "Рассчитанный риск рака молочной железы"
 * item[11].answer[0].valueCoding.system = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/screening-risk-level-cs"
-* item[11].answer[0].valueCoding.code = #scrn-0081-00001
-* item[11].answer[0].valueCoding.display = "Низкий риск"
+* item[11].answer[0].valueCoding.code = #scrn-0081-00002
+* item[11].answer[0].valueCoding.display = "Средний риск"
 
 // Source: QuestionnaireResponse-cervical-risk-example.json
 Instance: ScreeningCervicalRiskResponseExample
@@ -80,13 +83,16 @@ Title: "Screening Cervical Risk Response Example"
 Description: "Example completed response to the Screening cervical cancer risk questionnaire."
 * id = "screening-cervical-risk-response-example"
 * language = #ru
+* meta.source = "https://dhp.uz/fhir/source/screening"
 * identifier[0].use = #usual
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PHC
 * identifier[0].type.coding[0].display = "Public Health Case Identifier"
-* identifier[0].system = "https://dhp.uz/fhir/core/sid/org/uz/screening"
+* identifier[0].system = "https://dhp.uz/fhir/core/sid/doc/uz/screening-case"
 * identifier[0].value = "136-RSHM"
-* questionnaire = "https://dhp.uz/fhir/integrations/Questionnaire/screening-cervical-risk"
+* identifier[1].system = $screening-program-type-id
+* identifier[1].value = "171149006"
+* questionnaire = "https://dhp.uz/fhir/integrations/Questionnaire/screening-cervical-risk|1.1.0"
 * status = #completed
 * subject.reference = "Patient/lola-oripova"
 * subject.display = "Lola Oripova Shakhzodovna"
@@ -189,14 +195,18 @@ Description: "Example completed response to the Screening woman examination ques
 * identifier[0].type.coding[0].system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[0].type.coding[0].code = #PHC
 * identifier[0].type.coding[0].display = "Public Health Case Identifier"
-* identifier[0].system = "https://dhp.uz/fhir/core/sid/org/uz/screening"
+* identifier[0].system = "https://dhp.uz/fhir/core/sid/doc/uz/screening-case"
 * identifier[0].value = "128"
 * identifier[1].system = "https://dhp.uz/fhir/integrations/sid/screening/form025-id"
 * identifier[1].value = "117"
+* identifier[2].system = $screening-program-type-id
+* identifier[2].value = "268547008"
+* identifier[3].system = $screening-program-type-id
+* identifier[3].value = "171149006"
 * questionnaire = "https://dhp.uz/fhir/integrations/Questionnaire/screening-woman-exam"
 * status = #completed
 * authored = 2026-01-21T05:07:15.806Z
-* author.identifier.system = "https://dhp.uz/fhir/core/sid/uz/pinfl"
+* author.identifier.system = "https://dhp.uz/fhir/core/sid/pid/uz/ni"
 * author.identifier.value = "31705584220029"
 * author.display = "ABDUMALIK KHASHIMOV MUYDINOVICH"
 * item[0].linkId = "complaints"
@@ -705,7 +715,6 @@ Description: "Example completed response to the Screening woman examination ques
 * item[7].item[1].text = "Степень ожирения"
 * item[7].item[1].answer[0].valueCoding.system = $sct
 * item[7].item[1].answer[0].valueCoding.code = #443371000124107
-* item[7].item[1].answer[0].valueCoding.display = "Obese class I"
 * item[8].linkId = "hirsutism-general-exam"
 * item[8].text = "Степень гирсутизма и дополнительные данные общего осмотра"
 * item[8].item[0].linkId = "hirsutism-face"
@@ -784,7 +793,6 @@ Description: "Example completed response to the Screening woman examination ques
 * item[8].item[15].text = "Мочеиспускание"
 * item[8].item[15].answer[0].valueCoding.system = "http://snomed.info/sct"
 * item[8].item[15].answer[0].valueCoding.code = #49650001
-* item[8].item[15].answer[0].valueCoding.display = "Dysuria"
 * item[8].item[16].linkId = "urination-times-per-day"
 * item[8].item[16].text = "Кол-во раз в сутки"
 * item[8].item[16].answer[0].valueInteger = 1
