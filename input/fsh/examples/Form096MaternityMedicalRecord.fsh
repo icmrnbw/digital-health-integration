@@ -1638,7 +1638,7 @@ InstanceOf: UZCoreObservation
 Usage: #inline
 * language = #en
 * status = #final
-* code = $form111-general-obs-cs#chr-0035-00012 "Tug'ruqning alohida xususiyatlari"
+* code = $form111-general-obs-cs#chr-0035-00012 "Special features of delivery"
 * subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
 * encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-08-16T12:37:00+05:00"
