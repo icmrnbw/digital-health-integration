@@ -21,7 +21,7 @@ Ushbu sahifada [096-shakl](forms-volume-01-inpatient.html) (Tug'ruq tibbiy karta
 
 Composition'ning 13 ta bo'limining har biri o'z `section.code`iga ega va shaklning shu qismiga tegishli resurslarni sanab o'tadi. Barcha bo'limlar ixtiyoriy: bo'lim faqat shaklda u uchun ma'lumot bo'lganda yuboriladi.
 
-Har bir maydon o'z `code`iga ega alohida Observation sifatida yuboriladi. 111-shakl bilan umumiy maydon 111-shakl kodidan foydalanadi, shuning uchun bitta fakt ikkala shaklda bir xil kodlanadi. Homila haqidagi ma'lumotlar har bir homila uchun alohida yuboriladi, `Observation.focus` esa shu homiladan tug'ilgan chaqaloq paneliga havola qiladi. 096-shakl chaqaloq uchun Patient yubormaydi: barcha Observation'larda `subject` ona, har bir bolaning o'z ma'lumotlari esa uning paneliga a'zo (6-bo'lim).
+Har bir maydon o'z `code`iga ega alohida Observation sifatida yuboriladi. 111-shakl bilan umumiy maydon 111-shakl kodidan foydalanadi, shuning uchun bitta fakt ikkala shaklda bir xil kodlanadi. Homila haqidagi ma'lumotlar har bir homila uchun alohida yuboriladi va `Observation.focus` shu homiladan tug'ilgan chaqaloq paneliga havola qiladi; manba barcha homilalar uchun bitta ko'rikni saqlasa, `focus`ida shu tug'ruqdagi barcha chaqaloq panellari sanalgan bitta Observation yuboriladi (4-bo'lim). 096-shakl chaqaloq uchun Patient yubormaydi: barcha Observation'larda `subject` ona, har bir bolaning o'z ma'lumotlari esa uning paneliga a'zo (6-bo'lim).
 
 To'liq namunaviy nusxa uchun [096-shakl tug'ruq tibbiy kartasi misoli](Bundle-example-form-096-maternity-medical-record.html)ga qarang: egizaklarning tabiiy yo'l bilan tug'ilishi.
 
@@ -72,6 +72,7 @@ Bo'lim kodi: LOINC `LP74442-2` "Admission Information".
 | Chiqarilgan sana va vaqt | Дата и время выписки | Encounter.actualPeriod.end | - | 2026-08-18T15:00:00+05:00 |
 | O'tkazilgan kunlar | Проведено койко-дней | Encounter.length | UCUM `d` | 2.28 d |
 | Palata | Палата | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html).identifier[unit] | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` | 12 |
+| Bo'lim | Отделение | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Branch` | Fiziologik tug'ruq bo'limi |
 | Yo'llagan muassasa | Направившая организация | Encounter.admission.origin → Organization | Organization | Chilonzor District Polyclinic No. 5 |
 | Gospitalizatsiya natijasi | Исход госпитализации | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html) | Discharged (`mserv-0004-00004`) |
 | Chiqarish yoki o'tkazishdagi ahvoli | Состояние при выписке или переводе | Observation.valueCodeableConcept; effectiveDateTime | `code` [Form111 Clinical Assessment Observation Code](ValueSet-form111-assessment-observation-code-vs.html) `chr-0005-00003` "General condition"<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html); `effectiveDateTime` = chiqarish yoki o'tkazish vaqti | Satisfactory (`162669003`), 2026-08-18T15:00:00+05:00 |
@@ -100,6 +101,7 @@ Bo'lim kodi: LOINC `LP74442-2` "Admission Information".
 | Homiladorlik davrida kuzatilgan | Наблюдалась во время беременности | Observation.valueCodeableConcept | `code` [Medical and Obstetric History Codes](ValueSet-pregnancy-obstetric-history-code-vs.html) LOINC `75204-8` "Prenatal care indicator [CDC.CS]"<br>`value` HL7 [v2-0532](https://terminology.hl7.org/CodeSystem-v2-0532.html) `Y` "Yes" / `N` "No" | Ha (`Y`) |
 | Qabul tashxisi | Диагноз при поступлении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` | Twin pregnancy (`O30.0`) |
 | Klinik tashxis | Клинический диагноз | Condition.code | ICD-10 | Twin pregnancy (`O30.0`) |
+| Yondosh tashxis | Сопутствующий диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `concomitant` | Homiladorlikdagi kamqonlik (`O99.0`) |
 | Yakuniy tashxis | Заключительный диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `main` | Multiple delivery, all spontaneous (`O84.0`) |
 | Tug'ruqdagi asoratlar | Осложнения родов | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | First degree perineal laceration during delivery (`O70.0`) |
 | Tug'ruqdan keyingi asoratlar | Послеродовые осложнения | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | Disruption of perineal obstetric wound (`O90.1`) |

@@ -21,7 +21,7 @@
 
 Каждый из 13 разделов Composition несёт собственный `section.code` и перечисляет ресурсы, относящиеся к этой части формы. Все разделы необязательны: раздел передаётся, только если в форме есть данные для него.
 
-Каждое поле передаётся отдельным Observation со своим `code`. Поле, общее с Формой 111, использует код Формы 111, поэтому один и тот же факт кодируется в обеих формах одинаково. Сведения о плоде передаются для каждого плода отдельно, а `Observation.focus` ссылается на панель новорождённого, которым родился этот плод. Форма 096 не передаёт Patient новорождённого: у всех Observation в `subject` мать, а сведения о каждом ребёнке входят в его панель (раздел 6).
+Каждое поле передаётся отдельным Observation со своим `code`. Поле, общее с Формой 111, использует код Формы 111, поэтому один и тот же факт кодируется в обеих формах одинаково. Сведения о плоде передаются для каждого плода отдельно, и `Observation.focus` ссылается на панель новорождённого, которым родился этот плод; если источник хранит один осмотр на всех плодов, передаётся одна Observation, в `focus` которой перечислены панели всех детей этих родов (раздел 4). Форма 096 не передаёт Patient новорождённого: у всех Observation в `subject` мать, а сведения о каждом ребёнке входят в его панель (раздел 6).
 
 Полный пример экземпляра см. в разделе [Пример истории родов по Форме 096](Bundle-example-form-096-maternity-medical-record.html): самопроизвольные роды двойней.
 
@@ -72,6 +72,7 @@
 | Chiqarilgan sana va vaqt | Дата и время выписки | Encounter.actualPeriod.end | - | 2026-08-18T15:00:00+05:00 |
 | O'tkazilgan kunlar | Проведено койко-дней | Encounter.length | UCUM `d` | 2.28 d |
 | Palata | Палата | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html).identifier[unit] | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` | 12 |
+| Bo'lim | Отделение | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Branch` | Физиологическое родильное отделение |
 | Yo'llagan muassasa | Направившая организация | Encounter.admission.origin → Organization | Organization | Chilonzor District Polyclinic No. 5 |
 | Gospitalizatsiya natijasi | Исход госпитализации | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html) | Discharged (`mserv-0004-00004`) |
 | Chiqarish yoki o'tkazishdagi ahvoli | Состояние при выписке или переводе | Observation.valueCodeableConcept; effectiveDateTime | `code` [Form111 Clinical Assessment Observation Code](ValueSet-form111-assessment-observation-code-vs.html) `chr-0005-00003` "General condition"<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html); `effectiveDateTime` = время выписки или перевода | Satisfactory (`162669003`), 2026-08-18T15:00:00+05:00 |
@@ -100,6 +101,7 @@
 | Homiladorlik davrida kuzatilgan | Наблюдалась во время беременности | Observation.valueCodeableConcept | `code` [Medical and Obstetric History Codes](ValueSet-pregnancy-obstetric-history-code-vs.html) LOINC `75204-8` "Prenatal care indicator [CDC.CS]"<br>`value` HL7 [v2-0532](https://terminology.hl7.org/CodeSystem-v2-0532.html) `Y` "Yes" / `N` "No" | Да (`Y`) |
 | Qabul tashxisi | Диагноз при поступлении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` | Twin pregnancy (`O30.0`) |
 | Klinik tashxis | Клинический диагноз | Condition.code | ICD-10 | Twin pregnancy (`O30.0`) |
+| Yondosh tashxis | Сопутствующий диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `concomitant` | Анемия при беременности (`O99.0`) |
 | Yakuniy tashxis | Заключительный диагноз | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `main` | Multiple delivery, all spontaneous (`O84.0`) |
 | Tug'ruqdagi asoratlar | Осложнения родов | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | First degree perineal laceration during delivery (`O70.0`) |
 | Tug'ruqdan keyingi asoratlar | Послеродовые осложнения | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | Disruption of perineal obstetric wound (`O90.1`) |

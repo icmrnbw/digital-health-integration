@@ -307,6 +307,10 @@ Description: "Example of Form 096 (Tug'ruq tibbiy kartasi) represented as a FHIR
 * entry[=].resource = observation-096-epidemiological-history
 * entry[+].fullUrl = "urn:uuid:09600148-1111-2222-3333-444444444444"
 * entry[=].resource = observation-096-condition-on-arrival
+* entry[+].fullUrl = "urn:uuid:09600149-1111-2222-3333-444444444444"
+* entry[=].resource = observation-096-gestational-age
+* entry[+].fullUrl = "urn:uuid:09600150-1111-2222-3333-444444444444"
+* entry[=].resource = observation-096-delivery-features
 
 
 
@@ -372,6 +376,7 @@ Usage: #inline
 * section[medicalAndObstetricHistory].entry[+] = Reference(urn:uuid:09600042-1111-2222-3333-444444444444)
 * section[medicalAndObstetricHistory].entry[+] = Reference(urn:uuid:09600043-1111-2222-3333-444444444444)
 * section[medicalAndObstetricHistory].entry[+] = Reference(urn:uuid:09600044-1111-2222-3333-444444444444)
+* section[medicalAndObstetricHistory].entry[+] = Reference(urn:uuid:09600149-1111-2222-3333-444444444444)
 * section[medicalAndObstetricHistory].entry[+] = Reference(urn:uuid:09600147-1111-2222-3333-444444444444)
 
 * section[currentPregnancy].title = "Course of this pregnancy and general examination"
@@ -419,6 +424,7 @@ Usage: #inline
 * section[laborCourse].title = "Course of labor"
 * section[laborCourse].code = $loinc#57074-7 "Labor and delivery process Narrative"
 * section[laborCourse].entry[0] = Reference(urn:uuid:09600080-1111-2222-3333-444444444444)
+* section[laborCourse].entry[+] = Reference(urn:uuid:09600150-1111-2222-3333-444444444444)
 * section[laborCourse].entry[+] = Reference(urn:uuid:09600081-1111-2222-3333-444444444444)
 * section[laborCourse].entry[+] = Reference(urn:uuid:09600082-1111-2222-3333-444444444444)
 * section[laborCourse].entry[+] = Reference(urn:uuid:09600083-1111-2222-3333-444444444444)
@@ -1612,6 +1618,32 @@ Usage: #inline
 * effectiveDateTime = "2026-08-16T09:15:00+05:00"
 * performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
 * valueDateTime = "2026-08-16"
+
+
+Instance: observation-096-gestational-age
+InstanceOf: UZCoreObservation
+Usage: #inline
+* language = #en
+* status = #final
+* code = $loinc#18185-9 "Gestational age"
+* subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
+* encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
+* effectiveDateTime = "2026-08-16T08:40:00+05:00"
+* performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
+* valueQuantity = 39 'wk' "weeks"
+
+
+Instance: observation-096-delivery-features
+InstanceOf: UZCoreObservation
+Usage: #inline
+* language = #en
+* status = #final
+* code = $form111-general-obs-cs#chr-0035-00012 "Tug'ruqning alohida xususiyatlari"
+* subject = Reference(urn:uuid:09600002-1111-2222-3333-444444444444)
+* encounter = Reference(urn:uuid:09600003-1111-2222-3333-444444444444)
+* effectiveDateTime = "2026-08-16T12:37:00+05:00"
+* performer = Reference(urn:uuid:09600007-1111-2222-3333-444444444444)
+* valueString = "Twin delivery; second twin born 12 minutes after the first."
 
 
 Instance: observation-096-labor-duration

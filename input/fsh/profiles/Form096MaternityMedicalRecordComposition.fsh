@@ -94,7 +94,7 @@ Description: "Composition profile for Form 096 (Tug'ruq tibbiy kartasi): the rec
 * section[obstetricExamination].code = $sct#163497009 "Obstetric examination"
 * section[obstetricExamination].code ^short = "Fundal height, abdominal circumference, pelvimetry, gravidity and parity, and for each fetus: lie, position, presentation, heart sounds, heart rate, estimated weight"
 * section[obstetricExamination].entry only Reference(UZCoreObservation)
-* section[obstetricExamination].entry ^short = "Maternal measurements and one set of fetal observations per fetus"
+* section[obstetricExamination].entry ^short = "Maternal measurements and fetal observations, per fetus or one set for all fetuses"
 
 // 5. Tug'ruqning kechishi
 * section[laborCourse].title 1..1
