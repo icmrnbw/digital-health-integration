@@ -444,8 +444,8 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. Fo
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #9
 * group[=].element[=].display = "Таблетки с замедленным высвобождением"
-* group[=].element[=].target[+].code = #TAB120
-* group[=].element[=].target[=].display = "ajralib chiqarilishi modifikatsiyalangan tabletkalar"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #10
 * group[=].element[=].display = "Таблетки делимые, пролонгированного действия, покрытые оболочкой"
@@ -719,8 +719,8 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. Fo
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #660
 * group[=].element[=].display = "Капсулы с замедленным высвобождением"
-* group[=].element[=].target[+].code = #CAP109
-* group[=].element[=].target[=].display = "ajralib chiqishi modifikatsiya qilingan kapsulalar"
+* group[=].element[=].target[+].code = #CAP111
+* group[=].element[=].target[=].display = "ajralib chiqishi uzaytirilgan kapsulalar"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #777
 * group[=].element[=].display = "капсулы мягкие"
@@ -1064,8 +1064,8 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. Fo
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #3922
 * group[=].element[=].display = "Таблетки, покрытые оболочкой с замедленным высвобождением"
-* group[=].element[=].target[+].code = #TAB120
-* group[=].element[=].target[=].display = "ajralib chiqarilishi modifikatsiyalangan tabletkalar"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3923
 * group[=].element[=].display = "Жидкость"
@@ -1394,8 +1394,8 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. Fo
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3989
 * group[=].element[=].display = "Таблетки замедленного  высвобождения"
-* group[=].element[=].target[+].code = #TAB120
-* group[=].element[=].target[=].display = "ajralib chiqarilishi modifikatsiyalangan tabletkalar"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3990
 * group[=].element[=].display = "Спрей сублингвальный"
