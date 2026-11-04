@@ -186,3 +186,115 @@ Description: "Maps DMED `drug_administration_route_id` to SNOMED CT routes of ad
 * group.element[=].target[+].code = #37161004
 * group.element[=].target[=].display = "Rectal route"
 * group.element[=].target[=].relationship = #equivalent
+
+Instance: dmed-administration-method-to-fhir-route
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Administration Method to FHIR Route"
+Description: "Maps the DMED treatment course `administration_method` to UZ Core routes of administration, sent in `MedicationAdministration.dosage.method` next to the DMED code. The DMED list names routes rather than techniques, so the targets are SNOMED CT routes, and `parenteral` maps to the UZ Core local route because SNOMED CT has no parenteral route in its route hierarchy. `subarachnoid` maps to the intrathecal route, which is the same space, and `transmucosal` follows its DMED label Трансбуккально to the buccal route. `combined` and `endoneural` have no route and stay unmapped; for them only the DMED code is sent."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-administration-method-to-fhir-route"
+* name = "DMEDAdministrationMethodToFHIRRoute"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* sourceScopeCanonical = Canonical(DMEDAdministrationMethodVS)
+* targetScopeCanonical = $route-code-vs
+* group[+].source = Canonical(DMEDAdministrationMethodCS)
+* group[=].target = $sct
+* group[=].element[+].code = #caudal
+* group[=].element[=].display = "Каудально"
+* group[=].element[=].target[+].code = #417070009
+* group[=].element[=].target[=].display = "Caudal route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #endotracheal
+* group[=].element[=].display = "Эндотрахеально (интубационно)"
+* group[=].element[=].target[+].code = #404818005
+* group[=].element[=].target[=].display = "Intratracheal route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #epidural
+* group[=].element[=].display = "Эпидурально/перидурально"
+* group[=].element[=].target[+].code = #404820008
+* group[=].element[=].target[=].display = "Epidural route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #infiltration
+* group[=].element[=].display = "Инфильтрационно"
+* group[=].element[=].target[+].code = #718329006
+* group[=].element[=].target[=].display = "Infiltration route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #inhalation
+* group[=].element[=].display = "Ингаляционно"
+* group[=].element[=].target[+].code = #447694001
+* group[=].element[=].target[=].display = "Respiratory tract route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #intradermal
+* group[=].element[=].display = "Внутрикожно"
+* group[=].element[=].target[+].code = #372464004
+* group[=].element[=].target[=].display = "Intradermal route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #intramuscular
+* group[=].element[=].display = "Внутримышечно"
+* group[=].element[=].target[+].code = #78421000
+* group[=].element[=].target[=].display = "Intramuscular route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #intravascular
+* group[=].element[=].display = "Внутрисосудисто"
+* group[=].element[=].target[+].code = #445755006
+* group[=].element[=].target[=].display = "Intravascular route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #intravenous
+* group[=].element[=].display = "Внутривенно"
+* group[=].element[=].target[+].code = #47625008
+* group[=].element[=].target[=].display = "Intravenous route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #oral
+* group[=].element[=].display = "Перорально"
+* group[=].element[=].target[+].code = #26643006
+* group[=].element[=].target[=].display = "Oral route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #paracervical
+* group[=].element[=].display = "Парацервикально"
+* group[=].element[=].target[+].code = #418851001
+* group[=].element[=].target[=].display = "Paracervical route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #perineural
+* group[=].element[=].display = "Периневрально"
+* group[=].element[=].target[+].code = #372475000
+* group[=].element[=].target[=].display = "Perineural route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #rectal
+* group[=].element[=].display = "Ректально"
+* group[=].element[=].target[+].code = #37161004
+* group[=].element[=].target[=].display = "Rectal route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #subarachnoid
+* group[=].element[=].display = "Субарахноидально"
+* group[=].element[=].target[+].code = #72607000
+* group[=].element[=].target[=].display = "Intrathecal route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #subcutaneous
+* group[=].element[=].display = "Подкожно"
+* group[=].element[=].target[+].code = #34206005
+* group[=].element[=].target[=].display = "Subcutaneous route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #sublingual
+* group[=].element[=].display = "Сублингвально"
+* group[=].element[=].target[+].code = #37839007
+* group[=].element[=].target[=].display = "Sublingual route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #topical
+* group[=].element[=].display = "Аппликационно/поверхностно"
+* group[=].element[=].target[+].code = #6064005
+* group[=].element[=].target[=].display = "Topical route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #transmucosal
+* group[=].element[=].display = "Трансбуккально"
+* group[=].element[=].target[+].code = #54471007
+* group[=].element[=].target[=].display = "Buccal route"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[+].source = Canonical(DMEDAdministrationMethodCS)
+* group[=].target = $route-codes-cs
+* group[=].element[+].code = #parenteral
+* group[=].element[=].display = "Парентерально"
+* group[=].element[=].target[+].code = #pharm-0001-0052
+* group[=].element[=].target[=].display = "Parenteral"
+* group[=].element[=].target[=].relationship = #equivalent

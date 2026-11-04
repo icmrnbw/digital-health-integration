@@ -257,3 +257,45 @@ Description: "All route of administration identifiers of the DMED prescriptions 
 * ^status = #active
 * ^experimental = false
 * include codes from system DMEDPrescriptionRouteCS
+
+CodeSystem: DMEDAdministrationMethodCS
+Id: dmed-administration-method-cs
+Title: "DMED Administration Method"
+Description: "Administration methods of a DMED treatment course item (`administration_method`). DMED keeps them as a fixed list in its frontend, shared with the anesthesia induction methods of the surgery module; the codes are DMED's own and the displays are its Russian labels. The label of `parenteral` is shown in DMED with a typo (Пареневрально) and is corrected here. Taken from the DMED test environment on 2026-11-04."
+* ^url = $dmed-administration-method-cs
+* ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #complete
+* ^language = #ru
+* ^publisher = "Uzinfocom"
+* #caudal "Каудально"
+* #combined "Комбинированно"
+* #endoneural "Эндоневрально"
+* #endotracheal "Эндотрахеально (интубационно)"
+* #epidural "Эпидурально/перидурально"
+* #infiltration "Инфильтрационно"
+* #inhalation "Ингаляционно"
+* #intradermal "Внутрикожно"
+* #intramuscular "Внутримышечно"
+* #intravascular "Внутрисосудисто"
+* #intravenous "Внутривенно"
+* #oral "Перорально"
+* #paracervical "Парацервикально"
+* #parenteral "Парентерально"
+* #perineural "Периневрально"
+* #rectal "Ректально"
+* #subarachnoid "Субарахноидально"
+* #subcutaneous "Подкожно"
+* #sublingual "Сублингвально"
+* #topical "Аппликационно/поверхностно"
+* #transmucosal "Трансбуккально"
+
+ValueSet: DMEDAdministrationMethodVS
+Id: dmed-administration-method-vs
+Title: "DMED Administration Methods"
+Description: "All administration methods of a DMED treatment course item."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-administration-method-vs"
+* ^status = #active
+* ^experimental = false
+* include codes from system DMEDAdministrationMethodCS

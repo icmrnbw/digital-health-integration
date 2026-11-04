@@ -34,6 +34,8 @@ Description: "Medication administration performed by healthcare personnel agains
 * dosage.text MS
 * dosage.route 1..1 MS
 * dosage.route from http://hl7.org/fhir/ValueSet/route-codes (extensible)
+* dosage.method MS
+* dosage.method ^comment = "The DMED `administration_method` code from DMEDAdministrationMethodCS, plus the route that the DMED Administration Method to FHIR Route ConceptMap gives for it."
 * dosage.dose 1..1 MS
 * dosage.dose.value 1..1 MS
 * dosage.dose.unit 1..1 MS

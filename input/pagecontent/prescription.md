@@ -328,6 +328,7 @@ DMED local values are translated through versioned ConceptMaps. A missing INN, d
 | `receive_mode` | [DMED intake timing](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 of 7; `at_any_time` sends no `when` |
 | `administration_frequency_measure` | [DMED frequency period](ConceptMap-dmed-prescription-frequency-period-to-units-of-time.html) | `timing.repeat.periodUnit` | 4 of 4 |
 | `cancellation_reason` | [DMED cancellation reason](ConceptMap-dmed-prescription-cancellation-reason-to-status-reason.html) | UZ Core status reason | 2 of 2 |
+| `administration_method` (treatment course) | [DMED administration method](ConceptMap-dmed-administration-method-to-fhir-route.html) | `MedicationAdministration.dosage.method`, SNOMED CT or UZ Core route | 19 of 21 |
 
 The dose form and route identifiers come from the DMED test environment dictionaries of 2026-11-03, the INN identifiers from the DMED export of 2026-10-05. The INN map is built from the Pharmaceutical Committee registry export of 2026-11-02: an INN code is taken only when every registry package of the INN's trade names names the same code, or when the registry substance has the same name, and an ATC code only when it is a level-5 code shared by all trade names. The older Core DMED route CodeSystem uses textual codes and is not treated as the source system for the numeric Prescription API field.
 
