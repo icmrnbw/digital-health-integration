@@ -335,7 +335,7 @@
 
 Для атомарного сохранения Medication, MedicationRequest, Task согласования и Provenance используется транзакционный Bundle. Условное создание выполняется по стабильному идентификатору. Обновления учитывают версию ресурса. Успешная транзакция возвращает Bundle типа `transaction-response`, неуспешная — OperationOutcome.
 
-Специфические бизнес-ошибки рецептов передаются в `OperationOutcome.issue.details.coding` с кодом из [PrescriptionErrorCS](CodeSystem-prescription-error-cs.html). `OperationOutcome.issue.code` остаётся кодом обязательного FHIR-набора IssueType. Для ошибки поля `issue.expression` содержит FHIRPath.
+Специфические бизнес-ошибки рецептов передаются в `OperationOutcome.issue.details.coding` с кодом из [PrescriptionErrorCS](CodeSystem-prescription-error-cs.html) (допустимые коды: [PrescriptionErrorVS](ValueSet-prescription-error-vs.html)). `OperationOutcome.issue.code` остаётся кодом обязательного FHIR-набора IssueType. Для ошибки поля `issue.expression` содержит FHIRPath.
 
 Опубликованные примеры:
 

@@ -335,7 +335,7 @@ The dose form and route identifiers come from the DMED test environment dictiona
 
 Creation uses a transaction Bundle when Medication, MedicationRequest, approval Task and Provenance must be stored atomically. Conditional create is performed using the stable identifier. Updates are version-aware. A successful transaction returns a transaction-response Bundle; a failed transaction returns OperationOutcome.
 
-Prescription-specific business errors are carried in `OperationOutcome.issue.details.coding` using [PrescriptionErrorCS](CodeSystem-prescription-error-cs.html). `OperationOutcome.issue.code` remains a code from the required FHIR IssueType ValueSet. Field errors include `issue.expression` with a FHIRPath expression.
+Prescription-specific business errors are carried in `OperationOutcome.issue.details.coding` using [PrescriptionErrorCS](CodeSystem-prescription-error-cs.html) (allowed codes: [PrescriptionErrorVS](ValueSet-prescription-error-vs.html)). `OperationOutcome.issue.code` remains a code from the required FHIR IssueType ValueSet. Field errors include `issue.expression` with a FHIRPath expression.
 
 See the generated examples:
 
