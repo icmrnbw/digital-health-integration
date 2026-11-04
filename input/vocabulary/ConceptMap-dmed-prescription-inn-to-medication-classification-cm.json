@@ -11148,17 +11148,6 @@
           ]
         },
         {
-          "code": "1955",
-          "display": "To‘qsonbosh ildizpoyasi",
-          "target": [
-            {
-              "code": "R05CA24",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "1971",
           "display": "Kalsiy digidrati xlorid",
           "target": [
@@ -11775,17 +11764,6 @@
           ]
         },
         {
-          "code": "2878",
-          "display": "Ferrum (III) gidroksidi saxaroza kompleksi",
-          "target": [
-            {
-              "code": "B03AC02",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "2894",
           "display": "Temir fumarat",
           "target": [
@@ -12099,17 +12077,6 @@
           "target": [
             {
               "code": "N05CD08",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
-          "code": "3145",
-          "display": "Temir (III) gidroksidi izomaltozidi",
-          "target": [
-            {
-              "code": "B03AC06",
               "relationship": "source-is-narrower-than-target",
               "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
             }
@@ -12545,17 +12512,6 @@
           ]
         },
         {
-          "code": "3508",
-          "display": "Temir (III) gidroksid",
-          "target": [
-            {
-              "code": "B03AC02",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "3514",
           "display": "Gepatit A vaksinasi",
           "target": [
@@ -12913,17 +12869,6 @@
           "target": [
             {
               "code": "R03DA04",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
-          "code": "3853",
-          "display": "Benzgidrilpiperazinilbutilmetilksantin suksinat",
-          "target": [
-            {
-              "code": "N05CB03",
               "relationship": "source-is-narrower-than-target",
               "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
             }
@@ -13414,17 +13359,6 @@
           ]
         },
         {
-          "code": "4175",
-          "display": "Shakarning temir (III) gidroksidi kompleksi",
-          "target": [
-            {
-              "code": "B03AC02",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "4178",
           "display": "Tegafur",
           "target": [
@@ -13750,6 +13684,5 @@
   "status": "draft",
   "experimental": false,
   "publisher": "Uzinfocom",
-  "sourceScopeCanonical": "https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-prescription-inn-vs",
-  "targetScopeCanonical": "https://terminology.dhp.uz/fhir/core/ValueSet/medication-classification-vs"
+  "sourceScopeCanonical": "https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-prescription-inn-vs"
 }

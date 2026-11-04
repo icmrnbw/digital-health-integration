@@ -322,7 +322,7 @@ DMED local values are translated through versioned ConceptMaps. A missing INN, d
 |---|---|---|---|
 | `type` | [DMED prescription type](ConceptMap-dmed-prescription-type-to-prescription-type.html) | [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html) | 2 of 2 |
 | `status` | [DMED prescription status](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | MedicationRequest status | 8 of 9; `not_signed` is never sent |
-| `inn_id` | [DMED INN to medication classification](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | UZ Core INN, otherwise WHO ATC | 1 006 INN and 242 ATC of 2 752 single-substance INNs; combinations are coded per component |
+| `inn_id` | [DMED INN to medication classification](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | UZ Core INN, otherwise WHO ATC | 1 006 INN and 236 ATC of 2 752 single-substance INNs; combinations are coded per component |
 | `dosage_form_id` | [DMED dose form](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | UZ Core dose form | 131 of 372 |
 | `drug_administration_route_id` | [DMED route](ConceptMap-dmed-prescription-route-to-fhir-route.html) | SNOMED CT route | 23 of 56 |
 | `receive_mode` | [DMED intake timing](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 of 7; `at_any_time` sends no `when` |

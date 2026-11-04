@@ -9,7 +9,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * experimental = false
 * publisher = "Uzinfocom"
 * sourceScopeCanonical = Canonical(DMEDPrescriptionInnVS)
-* targetScopeCanonical = "https://terminology.dhp.uz/fhir/core/ValueSet/medication-classification-vs"
 
 * group[+].source = Canonical(DMEDPrescriptionInnCS)
 * group[=].target = "https://terminology.dhp.uz/fhir/core/CodeSystem/inn-medication-name-cs"
@@ -5076,11 +5075,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #D08AX01
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #1955
-* group[=].element[=].display = "To‘qsonbosh ildizpoyasi"
-* group[=].element[=].target[+].code = #R05CA24
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #1971
 * group[=].element[=].display = "Kalsiy digidrati xlorid"
 * group[=].element[=].target[+].code = #B05XA07
@@ -5361,11 +5355,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #A05BA03
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #2878
-* group[=].element[=].display = "Ferrum (III) gidroksidi saxaroza kompleksi"
-* group[=].element[=].target[+].code = #B03AC02
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #2894
 * group[=].element[=].display = "Temir fumarat"
 * group[=].element[=].target[+].code = #B03AA02
@@ -5509,11 +5498,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[+].code = #3138
 * group[=].element[=].display = "Bromdigidroxlorfenilbenzodiazepin"
 * group[=].element[=].target[+].code = #N05CD08
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #3145
-* group[=].element[=].display = "Temir (III) gidroksidi izomaltozidi"
-* group[=].element[=].target[+].code = #B03AC06
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #3150
@@ -5711,11 +5695,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #G02AB03
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #3508
-* group[=].element[=].display = "Temir (III) gidroksid"
-* group[=].element[=].target[+].code = #B03AC02
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #3514
 * group[=].element[=].display = "Gepatit A vaksinasi"
 * group[=].element[=].target[+].code = #J07BC01
@@ -5879,11 +5858,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[+].code = #3852
 * group[=].element[=].display = "Teofilin suvsiz"
 * group[=].element[=].target[+].code = #R03DA04
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #3853
-* group[=].element[=].display = "Benzgidrilpiperazinilbutilmetilksantin suksinat"
-* group[=].element[=].target[+].code = #N05CB03
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #3861
@@ -6104,11 +6078,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[+].code = #4168
 * group[=].element[=].display = "Morfin glyukuronid"
 * group[=].element[=].target[+].code = #N02AA01
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #4175
-* group[=].element[=].display = "Shakarning temir (III) gidroksidi kompleksi"
-* group[=].element[=].target[+].code = #B03AC02
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #4178
