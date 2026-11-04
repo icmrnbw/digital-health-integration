@@ -12,7 +12,7 @@ name: Preview build
 
 on:
   push:
-    branches: [ main, claude/project-thread-nfcynh ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
