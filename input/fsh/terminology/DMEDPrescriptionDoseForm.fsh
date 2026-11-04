@@ -417,16 +417,41 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #TAB117
 * group[=].element[=].target[=].display = "qobiq bilan qoplangan tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #5
+* group[=].element[=].display = "Таблетки, покрытые пленочной оболочкой"
+* group[=].element[=].target[+].code = #TAB118
+* group[=].element[=].target[=].display = "plyonka qobiq bilan qoplangan tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #6
+* group[=].element[=].display = "Таблетки, покрытые кишечнорастворимой оболочкой"
+* group[=].element[=].target[+].code = #TAB113
+* group[=].element[=].target[=].display = "ichakda eriydigan tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #7
+* group[=].element[=].display = "Таблетки покрытые оболочкой, кишечнорастворимые"
+* group[=].element[=].target[+].code = #TAB113
+* group[=].element[=].target[=].display = "ichakda eriydigan tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #8
 * group[=].element[=].display = "Таблетки покрытые пленочной оболочкой"
 * group[=].element[=].target[+].code = #TAB118
 * group[=].element[=].target[=].display = "plyonka qobiq bilan qoplangan tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #10
+* group[=].element[=].display = "Таблетки делимые, пролонгированного действия, покрытые оболочкой"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11
 * group[=].element[=].display = "Таблетки с пролонгированным высвобождением"
 * group[=].element[=].target[+].code = #TAB121
 * group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #13
+* group[=].element[=].display = "Таблетки, покрытые пленочной оболочкой пролонгированного действия"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #15
 * group[=].element[=].display = "Суспензия для приёма внутрь"
 * group[=].element[=].target[+].code = #SUS116
@@ -687,6 +712,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #LYO209
 * group[=].element[=].target[=].display = "mushak ichiga yuborish uchun eritma tayyorlash uchun liofilizat"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3891
+* group[=].element[=].display = "таблетки, покрытые кишечнорастворимой пленочной оболочкой"
+* group[=].element[=].target[+].code = #TAB113
+* group[=].element[=].target[=].display = "ichakda eriydigan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3892
 * group[=].element[=].display = "Настойка"
 * group[=].element[=].target[+].code = #TIN101
@@ -742,6 +772,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #SPR103
 * group[=].element[=].target[=].display = "sirtga qo'llash uchun sprey"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3916
+* group[=].element[=].display = "Таблетки, покрытые пленочной оболочкой с модифицированным высвобождением"
+* group[=].element[=].target[+].code = #TAB120
+* group[=].element[=].target[=].display = "ajralib chiqarilishi modifikatsiyalangan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3917
 * group[=].element[=].display = "Суспензия для инъекций"
 * group[=].element[=].target[+].code = #SUS107
@@ -752,6 +787,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #SUS104
 * group[=].element[=].target[=].display = "mushak ichiga yuborish uchun suspenziya"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3922
+* group[=].element[=].display = "Таблетки, покрытые оболочкой с замедленным высвобождением"
+* group[=].element[=].target[+].code = #TAB120
+* group[=].element[=].target[=].display = "ajralib chiqarilishi modifikatsiyalangan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3923
 * group[=].element[=].display = "Жидкость"
 * group[=].element[=].target[+].code = #LIQ101
@@ -777,6 +817,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #CON127
 * group[=].element[=].target[=].display = "inyeksiya uchun eritma tayyorlash uchun konsentrat"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3934
+* group[=].element[=].display = "Таблетки пролонгированного действия, покрытые  оболочкой"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3938
 * group[=].element[=].display = "Таблетки для рассасывания"
 * group[=].element[=].target[+].code = #TAB109
@@ -787,6 +832,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #HRB101
 * group[=].element[=].target[=].display = "dorivor o'simlik xomashyosi"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3942
+* group[=].element[=].display = "Таблетки с контролируемым высвобождением, покрытые оболочкой"
+* group[=].element[=].target[+].code = #TAB120
+* group[=].element[=].target[=].display = "ajralib chiqarilishi modifikatsiyalangan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3946
 * group[=].element[=].display = "Линимент"
 * group[=].element[=].target[+].code = #LIN101
@@ -837,6 +887,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #TAB153
 * group[=].element[=].target[=].display = "mahalliy qo'llash uchun eritmani tayyorlash uchun tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3976
+* group[=].element[=].display = "Таблетки пролонгированного действия, покрытые кишечнорастворимой оболочкой"
+* group[=].element[=].target[+].code = #TAB114
+* group[=].element[=].target[=].display = "ichakda eriydigan, taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #3978
 * group[=].element[=].display = "Суспензия для подкожного введения"
 * group[=].element[=].target[+].code = #SUS115
@@ -877,6 +932,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #LYO226
 * group[=].element[=].target[=].display = "sirtga qo'llash uchun eritma tayyorlash uchun liofilizat"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #4013
+* group[=].element[=].display = "Таблетки, покрытые  пленочной оболочкой  с пролонгированным высвобождением"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #4014
 * group[=].element[=].display = "Таблетки-лиофилизат"
 * group[=].element[=].target[+].code = #TAB115
@@ -912,6 +972,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #DRA101
 * group[=].element[=].target[=].display = "draje"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #4046
+* group[=].element[=].display = "Таблетки, покрытые сахарной оболочкой"
+* group[=].element[=].target[+].code = #TAB117
+* group[=].element[=].target[=].display = "qobiq bilan qoplangan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #4050
 * group[=].element[=].display = "Тампоны лекарственные вагинальные"
 * group[=].element[=].target[+].code = #TAM102
@@ -952,6 +1017,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #LYO256
 * group[=].element[=].target[=].display = "teri ichiga yuborish uchun suspenziya tayyorlash uchun liofilizat"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #4086
+* group[=].element[=].display = "Таблетки кишечнорастворимые, покрытые пленочной оболочкой"
+* group[=].element[=].target[+].code = #TAB113
+* group[=].element[=].target[=].display = "ichakda eriydigan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #4092
 * group[=].element[=].display = "Система внутриматочная терапевтическая"
 * group[=].element[=].target[+].code = #SYS103
@@ -976,6 +1046,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].display = "Лекарственно-растительное сырье"
 * group[=].element[=].target[+].code = #HRB101
 * group[=].element[=].target[=].display = "dorivor o'simlik xomashyosi"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #4110
+* group[=].element[=].display = "Таблетки покрытые кишечнорастворимой оболочкой"
+* group[=].element[=].target[+].code = #TAB113
+* group[=].element[=].target[=].display = "ichakda eriydigan tabletkalar"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #4112
 * group[=].element[=].display = "Капли назальные"
@@ -1047,6 +1122,11 @@ Description: "Maps DMED `dosage_form_id` to the UZ Core medication dose form. On
 * group[=].element[=].target[+].code = #GEL116
 * group[=].element[=].target[=].display = "stomatologik gel"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #4154
+* group[=].element[=].display = "Таблетки с пролонгированным высвобождением, покрытые плёночной оболочкой"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #4157
 * group[=].element[=].display = "Гранулы для приготовления раствора для приема внутрь"
 * group[=].element[=].target[+].code = #GRA153

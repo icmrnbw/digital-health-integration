@@ -323,7 +323,7 @@
 | `type` | [Тип рецепта DMED](ConceptMap-dmed-prescription-type-to-prescription-type.html) | [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html) | 2 из 2 |
 | `status` | [Статус рецепта DMED](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | статус MedicationRequest | 8 из 9; `not_signed` не передаётся |
 | `inn_id` | [МНН DMED → классификация препаратов](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | код МНН UZ Core, иначе WHO ATC | 1 006 МНН и 236 ATC из 2 752 однокомпонентных МНН; комбинации кодируются по компонентам |
-| `dosage_form_id` | [Лекарственная форма DMED](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | лекарственная форма UZ Core | 131 из 372 |
+| `dosage_form_id` | [Лекарственная форма DMED](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | лекарственная форма UZ Core | 147 из 372 |
 | `drug_administration_route_id` | [Путь введения DMED](ConceptMap-dmed-prescription-route-to-fhir-route.html) | путь введения SNOMED CT | 23 из 56 |
 | `receive_mode` | [Режим приёма DMED](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 из 7; для `at_any_time` `when` не передаётся |
 | `administration_frequency_measure` | [Период кратности DMED](ConceptMap-dmed-prescription-frequency-period-to-units-of-time.html) | `timing.repeat.periodUnit` | 4 из 4 |
