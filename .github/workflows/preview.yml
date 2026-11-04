@@ -1,0 +1,109 @@
+name: Preview build
+
+# Builds the IG on every push to main (and on demand) and publishes the result
+# where people without GitHub access to Actions artifacts can get it:
+#   - a rolling pre-release "preview" with package.tgz and full-ig.zip attached,
+#     replaced on every run, so its download links never change;
+#   - the rendered site on GitHub Pages (needs Settings > Pages > Source:
+#     GitHub Actions; until that is set the Pages job fails and the release
+#     is still published).
+# This is not a publication: the package keeps the version in sushi-config.yaml
+# and is flagged notForPublication. Releases are published by release.yml.
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: preview
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUBLISHER_URL: https://media.githubusercontent.com/media/vadi2/ig-publisher-builds/main/publisher-3.0.0-optimised.jar
+      PUBLISHER_SHA256: 34f1bc11c5fd1a9c1d639ad5a8b11b4939073c09e8b8c99838d626c0dde796c1
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      # Same publisher and cache as validate-docs.yml.
+      - name: Cache IG publisher
+        uses: actions/cache@v6
+        with:
+          path: input-cache/publisher.jar
+          key: publisher-${{ env.PUBLISHER_SHA256 }}
+
+      - name: Install IG publisher
+        run: |
+          mkdir -p input-cache
+          if ! echo "$PUBLISHER_SHA256  input-cache/publisher.jar" | sha256sum -c --status 2>/dev/null; then
+            curl -fL --retry 4 --retry-delay 10 -o input-cache/publisher.jar "$PUBLISHER_URL"
+            echo "$PUBLISHER_SHA256  input-cache/publisher.jar" | sha256sum -c || { echo "::error::publisher.jar download invalid"; exit 1; }
+          fi
+
+      - name: Build IG
+        env:
+          JAVA_TOOL_OPTIONS: "-Xmx6g -Dfile.encoding=UTF-8"
+        run: java -jar input-cache/publisher.jar -ig . -tx https://tx.fhir.org
+
+      - name: Check build output
+        run: |
+          test -f output/package.tgz || { echo "::error::output/package.tgz was not produced"; exit 1; }
+          echo "Errors: $(jq -r '.errs // 0' output/qa.json)  Warnings: $(jq -r '.warnings // 0' output/qa.json)"
+          du -sh output
+
+      - name: Upload package
+        uses: actions/upload-artifact@v7
+        with:
+          name: package-${{ github.run_number }}
+          path: output/package.tgz
+          retention-days: 30
+
+      - name: Publish rolling pre-release "preview"
+        run: |
+          VERSION=$(grep -E '^version:' sushi-config.yaml | awk '{print $2}')
+          FILES="output/package.tgz"
+          [ -f output/full-ig.zip ] && FILES="$FILES output/full-ig.zip"
+          gh release delete preview --cleanup-tag --yes 2>/dev/null || true
+          gh release create preview $FILES \
+            --prerelease \
+            --target "$GITHUB_SHA" \
+            --title "Preview build ($VERSION, ${GITHUB_SHA::7})" \
+            --notes "Automatic preview of \`${GITHUB_REF_NAME}\` at ${GITHUB_SHA}, built $(date -u +'%Y-%m-%d %H:%M UTC'). Not an official release: the package is \`uz.dhp.integrations#$VERSION\` flagged notForPublication. Rendered site: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+
+      - name: Prepare Pages site
+        run: |
+          # Drop the downloadable archives (they are on the release) to stay
+          # under the GitHub Pages size limit.
+          rsync -a --exclude '*.zip' --exclude '*.tgz' output/ _site/
+          du -sh _site
+
+      - name: Upload Pages site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
