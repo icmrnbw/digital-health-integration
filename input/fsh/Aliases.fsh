@@ -287,7 +287,9 @@ Alias: $composition-category-cs = https://terminology.dhp.uz/fhir/core/CodeSyste
 Alias: $form-044-observation-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-044-observation-code-cs
 
 // ===================== PRESCRIPTION =====================
-Alias: $prescription-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-type-cs
+Alias: $medicationrequest-admin-location = http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location
+Alias: $medicationrequest-admin-location-vs = https://terminology.dhp.uz/fhir/core/ValueSet/medicationrequest-admin-location-vs
+Alias: $medication-request-order-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs
 Alias: $prescription-workflow-action-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-action-cs
 Alias: $prescription-workflow-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-status-cs
 Alias: $prescription-error-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-error-cs

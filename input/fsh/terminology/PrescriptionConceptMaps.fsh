@@ -1,23 +1,31 @@
-Instance: dmed-prescription-type-to-prescription-type
+Instance: dmed-prescription-type-to-medication-request-category
 InstanceOf: ConceptMap
 Usage: #definition
-Title: "DMED Prescription Type to Prescription Type"
-Description: "Maps the DMED API type values to the A and R prescription types displayed to users."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-type-to-prescription-type"
-* name = "DMEDPrescriptionTypeToPrescriptionType"
+Title: "DMED Prescription Type to MedicationRequest Category"
+Description: "Maps the DMED API prescription type to `MedicationRequest.category`. Every DMED prescription is outpatient; a reimbursement prescription also gets the UZ Core reimbursable order code. An ordinary prescription is the one without that code."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-type-to-medication-request-category"
+* name = "DMEDPrescriptionTypeToMedicationRequestCategory"
 * status = #active
 * experimental = false
 * publisher = "Uzinfocom"
 * sourceScopeCanonical = Canonical(DMEDPrescriptionTypeVS)
-* targetScopeCanonical = Canonical(PrescriptionTypeVS)
-* group.source = Canonical(DMEDPrescriptionTypeCS)
-* group.target = Canonical(PrescriptionTypeCS)
-* group.element[+].code = #simple
-* group.element[=].target[+].code = #A
-* group.element[=].target[=].relationship = #equivalent
-* group.element[+].code = #reimbursement
-* group.element[=].target[+].code = #R
-* group.element[=].target[=].relationship = #equivalent
+* targetScopeCanonical = $medicationrequest-admin-location-vs
+* group[+].source = Canonical(DMEDPrescriptionTypeCS)
+* group[=].target = $medicationrequest-admin-location
+* group[=].element[+].code = #simple
+* group[=].element[=].target[+].code = #outpatient
+* group[=].element[=].target[=].display = "Outpatient"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #reimbursement
+* group[=].element[=].target[+].code = #outpatient
+* group[=].element[=].target[=].display = "Outpatient"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[+].source = Canonical(DMEDPrescriptionTypeCS)
+* group[=].target = $medication-request-order-type-cs
+* group[=].element[+].code = #reimbursement
+* group[=].element[=].target[+].code = #rembr-0001-00001
+* group[=].element[=].target[=].display = "Rembursatsiyali buyurtma"
+* group[=].element[=].target[=].relationship = #equivalent
 
 Instance: dmed-prescription-status-to-medication-request-status
 InstanceOf: ConceptMap

@@ -39,12 +39,12 @@
 
 ## Типы рецептов
 
-| Код | Тип | Значение API DMED | Поведение |
+| Префикс | Тип | Значение API DMED | Поведение |
 |---|---|---|---|
 | `A` | Обычный | `simple` | Платный обычный рецепт. Становится доступным после успешного подписания. |
 | `R` | Реимбурсируемый | `reimbursement` | Рецепт по программе реимбурсации. До согласования скрыт от аптек. |
 
-Тип передаётся в `MedicationRequest.category` кодом из [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html). Обязателен ровно один код A или R.
+У каждого рецепта `MedicationRequest.category` = `outpatient` ([MedicationRequestAdminLocationVS](https://build.fhir.org/ig/uzinfocom-org/digital-health-ig/en/ValueSet-medicationrequest-admin-location-vs.html)). У реимбурсируемого рецепта есть ещё код реимбурсационного заказа UZ Core `rembr-0001-00001`; рецепт без него обычный.
 
 ## Общие бизнес-правила
 
@@ -268,7 +268,7 @@
 |---|---|
 | `number` | `MedicationRequest.identifier[dmedPrescription]` |
 | `uuid` | `MedicationRequest.identifier[dmedPrescriptionUUID]` |
-| `type` (`simple` / `reimbursement`) | `MedicationRequest.category` (`A` / `R`) |
+| `type` (`simple` / `reimbursement`) | `MedicationRequest.category`: `outpatient`, для `reimbursement` ещё `rembr-0001-00001` |
 | `status` | `MedicationRequest.status` плюс Task согласования и состояние отпуска |
 | `drug_appointment.inn` и `drug_appointment.medication` | `MedicationRequest.medication` / связанный Medication |
 | `drug_appointment.patient_uuid` | `MedicationRequest.subject` |
@@ -320,7 +320,7 @@
 
 | Поле DMED | ConceptMap | Куда | Сопоставлено |
 |---|---|---|---|
-| `type` | [Тип рецепта DMED](ConceptMap-dmed-prescription-type-to-prescription-type.html) | [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html) | 2 из 2 |
+| `type` | [Тип рецепта DMED](ConceptMap-dmed-prescription-type-to-medication-request-category.html) | `outpatient` и реимбурсационный заказ UZ Core | 2 из 2 |
 | `status` | [Статус рецепта DMED](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | статус MedicationRequest | 8 из 9; `not_signed` не передаётся |
 | `inn_id` | [МНН DMED → классификация препаратов](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | код МНН UZ Core, иначе WHO ATC | 1 006 МНН и 236 ATC из 2 752 однокомпонентных МНН; комбинации кодируются по компонентам |
 | `dosage_form_id` | [Лекарственная форма DMED](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | лекарственная форма UZ Core | 369 из 372 |

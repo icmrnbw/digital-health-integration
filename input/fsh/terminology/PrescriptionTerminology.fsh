@@ -1,33 +1,3 @@
-CodeSystem: PrescriptionTypeCS
-Id: prescription-type-cs
-Title: "Prescription Type Codes"
-Description: "Types of electronic prescriptions exchanged by the DMED Prescription integration. The codes match the A and R prefixes shown to users."
-* ^url = $prescription-type-cs
-* ^status = #active
-* ^experimental = false
-* ^caseSensitive = true
-* ^content = #complete
-* ^publisher = "Uzinfocom"
-* #A "Ordinary prescription" "An ordinary paid electronic prescription."
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "Обычный рецепт"
-  * ^designation[+].language = #uz
-  * ^designation[=].value = "Oddiy retsept"
-* #R "Reimbursement prescription" "A prescription reimbursed under the State Health Insurance Fund programme."
-  * ^designation[0].language = #ru
-  * ^designation[=].value = "Реимбурсационный рецепт"
-  * ^designation[+].language = #uz
-  * ^designation[=].value = "Reimbursatsiya retsepti"
-
-ValueSet: PrescriptionTypeVS
-Id: prescription-type-vs
-Title: "Prescription Types"
-Description: "Allowed prescription types for the DMED Prescription integration."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/prescription-type-vs"
-* ^status = #active
-* ^experimental = false
-* include codes from system PrescriptionTypeCS
-
 CodeSystem: PrescriptionWorkflowActionCS
 Id: prescription-workflow-action-cs
 Title: "Prescription Workflow Action Codes"

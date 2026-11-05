@@ -39,12 +39,12 @@ Patient, Encounter, Practitioner, PractitionerRole, Organization, Location, Cond
 
 ## Prescription types
 
-| Code | Type | DMED API value | Behaviour |
+| Prefix | Type | DMED API value | Behaviour |
 |---|---|---|---|
 | `A` | Ordinary | `simple` | Paid ordinary prescription. It becomes available after successful signing. |
 | `R` | Reimbursement | `reimbursement` | Covered by the reimbursement programme. It is hidden from pharmacies until reviewer approval. |
 
-The type is carried in `MedicationRequest.category` using [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html). Exactly one A or R coding is required.
+Every prescription has `MedicationRequest.category` `outpatient` ([MedicationRequestAdminLocationVS](https://build.fhir.org/ig/uzinfocom-org/digital-health-ig/en/ValueSet-medicationrequest-admin-location-vs.html)). A reimbursement prescription also has the UZ Core reimbursable order code `rembr-0001-00001`; a prescription without it is ordinary.
 
 ## General business rules
 
@@ -268,7 +268,7 @@ The reimbursement statistics response has this observed shape:
 |---|---|
 | `number` | `MedicationRequest.identifier[dmedPrescription]` |
 | `uuid` | `MedicationRequest.identifier[dmedPrescriptionUUID]` |
-| `type` (`simple` / `reimbursement`) | `MedicationRequest.category` (`A` / `R`) |
+| `type` (`simple` / `reimbursement`) | `MedicationRequest.category`: `outpatient`, plus `rembr-0001-00001` for `reimbursement` |
 | `status` | `MedicationRequest.status` plus approval Task and dispense state |
 | `drug_appointment.inn` and `drug_appointment.medication` | `MedicationRequest.medication` / referenced Medication |
 | `drug_appointment.patient_uuid` | `MedicationRequest.subject` |
@@ -320,7 +320,7 @@ DMED local values are translated through versioned ConceptMaps. A missing INN, d
 
 | DMED field | ConceptMap | Target | Mapped |
 |---|---|---|---|
-| `type` | [DMED prescription type](ConceptMap-dmed-prescription-type-to-prescription-type.html) | [PrescriptionTypeCS](CodeSystem-prescription-type-cs.html) | 2 of 2 |
+| `type` | [DMED prescription type](ConceptMap-dmed-prescription-type-to-medication-request-category.html) | `outpatient` and UZ Core reimbursable order | 2 of 2 |
 | `status` | [DMED prescription status](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | MedicationRequest status | 8 of 9; `not_signed` is never sent |
 | `inn_id` | [DMED INN to medication classification](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | UZ Core INN, otherwise WHO ATC | 1 006 INN and 236 ATC of 2 752 single-substance INNs; combinations are coded per component |
 | `dosage_form_id` | [DMED dose form](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | UZ Core dose form | 369 of 372 |

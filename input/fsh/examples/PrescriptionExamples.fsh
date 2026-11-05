@@ -156,7 +156,7 @@ Description: "An ordinary prescription for one tablet three times a day for 30 d
 * identifier[dmedPrescription].value = "A00012076"
 * identifier[dmedPrescriptionUUID].value = "8fe0325e-79bb-4f0c-9e8a-3f47523578d1"
 * status = #active
-* category = PrescriptionTypeCS#A "Ordinary prescription"
+* category = $medicationrequest-admin-location#outpatient "Outpatient"
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * encounter = Reference(Encounter/example-prescription-encounter) "Example outpatient encounter"
@@ -201,7 +201,8 @@ Description: "A 30-day reimbursement prescription awaiting reviewer confirmation
 * identifier[dmedPrescription].value = "R00012077"
 * identifier[dmedPrescriptionUUID].value = "1ddb576e-7ced-4d26-98af-3a9560eb02f3"
 * status = #active
-* category = PrescriptionTypeCS#R "Reimbursement prescription"
+* category[0] = $medicationrequest-admin-location#outpatient "Outpatient"
+* category[+] = $medication-request-order-type-cs#rembr-0001-00001 "Rembursatsiyali buyurtma"
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * encounter = Reference(Encounter/example-prescription-encounter) "Example outpatient encounter"

@@ -3,25 +3,25 @@ Description: "Exactly one DMED prescription business identifier is present"
 Severity: #error
 Expression: "identifier.where(system = 'https://dhp.uz/fhir/core/sid/doc/uz/dmed-prescription').count() = 1"
 
-Invariant: prescription-type-present
-Description: "Exactly one A or R prescription type coding is present"
+Invariant: prescription-outpatient-category
+Description: "The prescription is categorised as outpatient"
 Severity: #error
-Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-type-cs' and code in ('A' | 'R')).count() = 1"
+Expression: "category.coding.where(system = 'http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location' and code = 'outpatient').exists()"
 
 Invariant: prescription-reimbursement-reason
 Description: "A reimbursement prescription has a clinical reason or diagnosis"
 Severity: #error
-Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-type-cs' and code = 'R').exists() implies reason.exists()"
+Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs' and code = 'rembr-0001-00001').exists() implies reason.exists()"
 
 Invariant: prescription-ordinary-duration
 Description: "An ordinary prescription supplies no more than 90 days"
 Severity: #error
-Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-type-cs' and code = 'A').exists() implies (dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value <= 90)"
+Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs' and code = 'rembr-0001-00001').exists().not() implies (dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value <= 90)"
 
 Invariant: prescription-reimbursement-duration
 Description: "A reimbursement prescription duration is a positive multiple of 30 days"
 Severity: #error
-Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-type-cs' and code = 'R').exists() implies (dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value > 0 and (dispenseRequest.expectedSupplyDuration.value mod 30 = 0))"
+Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs' and code = 'rembr-0001-00001').exists() implies (dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value > 0 and (dispenseRequest.expectedSupplyDuration.value mod 30 = 0))"
 
 Profile: PrescriptionMedicationRequest
 Parent: UZCoreMedicationRequest
@@ -32,7 +32,7 @@ Description: "Electronic prescription created in DMED. The profile separates FHI
 * ^experimental = true
 * ^publisher = "Uzinfocom"
 * insert PrescriptionMetaSource
-* obeys prescription-request-identifier and prescription-type-present and prescription-reimbursement-reason and prescription-ordinary-duration and prescription-reimbursement-duration
+* obeys prescription-request-identifier and prescription-outpatient-category and prescription-reimbursement-reason and prescription-ordinary-duration and prescription-reimbursement-duration
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
@@ -57,7 +57,7 @@ Description: "Electronic prescription created in DMED. The profile separates FHI
 * statusChanged MS
 * intent = #order
 * category 1..* MS
-* category ^short = "Includes exactly one PrescriptionTypeCS code: A or R"
+* category ^short = "Always outpatient; a reimbursement prescription also has the UZ Core reimbursable order code rembr-0001-00001"
 * medication only CodeableReference(PrescriptionMedication)
 * subject MS
 * encounter MS
