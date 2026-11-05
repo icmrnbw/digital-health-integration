@@ -63,7 +63,11 @@ Description: "Maps DMED workflow statuses to the closest FHIR MedicationRequest 
 * group.element[=].target[=].relationship = #related-to
 * group.element[+].code = #canceled
 * group.element[=].target[+].code = #cancelled
-* group.element[=].target[=].relationship = #equivalent
+* group.element[=].target[=].relationship = #source-is-broader-than-target
+* group.element[=].target[=].comment = "Manual cancellation by a doctor, director or pharmacist, recorded with a cancellation reason."
+* group.element[=].target[+].code = #ended
+* group.element[=].target[=].relationship = #source-is-broader-than-target
+* group.element[=].target[=].comment = "Cancellation by the DMED expiry job after expiration_date: no cancellation reason, author or cancellation time. The prescription expired rather than being cancelled."
 
 Instance: dmed-prescription-route-to-fhir-route
 InstanceOf: ConceptMap

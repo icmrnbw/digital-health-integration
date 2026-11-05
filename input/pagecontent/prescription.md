@@ -144,7 +144,7 @@ The values below were verified against the live DMED list filter and its `status
 | `partially_issued` | Partially issued | `active` | completed when approval was required |
 | `issued` | Issued | `completed` | completed when present |
 | `expired` | Expired | `ended` | completed or cancelled when present |
-| `canceled` | Cancelled | `cancelled` | cancelled when present |
+| `canceled` | Cancelled | `cancelled`; `ended` when the DMED expiry job cancelled it (no cancellation reason) | cancelled when present |
 
 `approved` is not a valid FHIR R5 MedicationRequest status. Implementations must not add local strings to the required FHIR status binding.
 
