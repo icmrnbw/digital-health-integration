@@ -68,7 +68,7 @@ Description: "Stable prescription-specific error codes used in OperationOutcome.
 * #reimbursement-inn-limit-exceeded "Reimbursement INN limit exceeded"
 * #reimbursement-repeat-too-soon "Another reimbursement prescription for this INN exists in the previous 30 days"
 * #reimbursement-partial-dispense-forbidden "Partial reimbursement dispense is forbidden"
-* #ordinary-validity-exceeded "Ordinary prescription validity exceeds 90 days"
+* #duration-exceeded "Prescription duration exceeds 90 days"
 * #review-required "Reviewer approval is required"
 * #quantity-exceeds-prescribed "Dispensed quantity exceeds the prescribed quantity"
 * #version-conflict "Resource version conflict"
