@@ -18,11 +18,6 @@ Description: "An ordinary prescription supplies no more than 90 days"
 Severity: #error
 Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs' and code = 'rembr-0001-00001').exists().not() implies (dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value <= 90)"
 
-Invariant: prescription-reimbursement-duration
-Description: "A reimbursement prescription duration is a positive multiple of 30 days"
-Severity: #error
-Expression: "category.coding.where(system = 'https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs' and code = 'rembr-0001-00001').exists() implies (dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value > 0 and (dispenseRequest.expectedSupplyDuration.value mod 30 = 0))"
-
 Profile: PrescriptionMedicationRequest
 Parent: UZCoreMedicationRequest
 Id: prescription-medication-request
@@ -32,7 +27,7 @@ Description: "Electronic prescription created in DMED. The profile separates FHI
 * ^experimental = true
 * ^publisher = "Uzinfocom"
 * insert PrescriptionMetaSource
-* obeys prescription-request-identifier and prescription-outpatient-category and prescription-reimbursement-reason and prescription-ordinary-duration and prescription-reimbursement-duration
+* obeys prescription-request-identifier and prescription-outpatient-category and prescription-reimbursement-reason and prescription-ordinary-duration
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value

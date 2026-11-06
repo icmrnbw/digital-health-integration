@@ -65,7 +65,6 @@ Description: "Stable prescription-specific error codes used in OperationOutcome.
 * ^publisher = "Uzinfocom"
 * #terminology-crosswalk-not-found "Terminology crosswalk not found"
 * #reimbursement-eligibility-failed "Reimbursement eligibility failed"
-* #reimbursement-duration-invalid "Reimbursement duration is not a multiple of 30 days"
 * #reimbursement-inn-limit-exceeded "Reimbursement INN limit exceeded"
 * #reimbursement-repeat-too-soon "Another reimbursement prescription for this INN exists in the previous 30 days"
 * #reimbursement-partial-dispense-forbidden "Partial reimbursement dispense is forbidden"

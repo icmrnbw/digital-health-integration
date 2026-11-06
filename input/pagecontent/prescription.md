@@ -54,7 +54,7 @@ Every prescription has `MedicationRequest.category` `outpatient` ([MedicationReq
 4. Dose and quantity include a numeric value, display unit, system and code.
 5. The total quantity may be calculated from dose, frequency and duration. The prescriber may correct the calculated quantity when the real regimen requires it.
 6. An ordinary prescription has a maximum validity of 90 days. Its planned treatment duration is 30, 60 or at most 90 days in the described DMED workflow.
-7. A reimbursement duration is a positive multiple of 30 days: 30, 60, 90, 120 and so on. Intermediate values such as 15 or 45 days are not allowed.
+7. A reimbursement prescription takes any treatment duration from 1 to 90 days, like an ordinary one; DMED sets its validity to 30 days.
 8. Only one reimbursement prescription for the same INN is allowed during a rolling 30-day period.
 9. No more than four reimbursement INNs may be prescribed to one patient in one calendar month. Each INN retains its own 30-day blocking period.
 10. An ordinary dispense may be smaller than the prescribed amount but must never exceed it.
@@ -117,7 +117,7 @@ Rules 8, 9, 10 and 11 require server-side validation across resources and time p
 
 1. Select type R.
 2. DMED validates eligibility and limits.
-3. Select a medication from the Fund list and enter a duration that is a multiple of 30 days.
+3. Select a medication from the Fund list and enter the treatment duration.
 4. Sign the prescription.
 5. Create a `PrescriptionApprovalTask` with `businessStatus = review-pending`.
 6. The reviewer approves or requests revision.
