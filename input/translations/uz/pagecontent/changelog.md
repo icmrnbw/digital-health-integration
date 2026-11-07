@@ -6,6 +6,8 @@
 
 [003-shakl - statsionar bemorning tibbiy kartasi](StructureDefinition-form-003-inpatient-medical-record-composition.html) FHIR hujjati sifatida profillangan bo'lib, Composition ning 20 ta bo'limi orqali ma'muriy va shaxsiy ma'lumotlar, qabul qilish, qabulda tekshiruv, birlamchi ko'rik, tekshiruv rejasi va natijalari, tashxislar, operatsiyalar, dori va muolaja varaqalari, harorat varaqasi, kasallik kechishi, davolash natijasi, vaqtincha mehnatga layoqatsizlik, patologoanatomik xulosa va mas'ul shaxslarni qamrab oladi. Uning namunaviy hujjat-Bundle'i va [maydonma-maydon moslashtirish sahifasi](form-003-mapping.html) mavjud.
 
+DMED integratsiyasi uchun 003-shaklga DMED titul varag'i tokenlari kod tizimlari va ulardan hujjat yuboradigan kodlarga [ConceptMap'lar](form-003-mapping.html) qo'shildi: bemorni tashish usuli, takroriy yotqizish, davolash natijasi (chiqarish natijasi, klinik holat va vafot etish holati), mehnat qobiliyati va qabulda tekshiruv. Qon guruhi va Rezus mansubligi 111-shakl xaritalarini qayta ishlatadi.
+
 [044-shakl, xorijga ketayotganlar uchun tibbiy ma'lumotnoma](StructureDefinition-form-044-travel-clearance-composition.html) FHIR hujjati sifatida profillandi: shaxsiy ma'lumotlar, kechirgan yuqumli kasalliklar, komissiyaning borish mamlakati va xizmat safari muddati bilan chet elga chiqishga ruxsati, yashash joyi, komissiya raisi va a'zolari - 5 ta Composition bo'limida. Hujjat namunasi (Bundle) va [maydonma-maydon moslashtirish sahifasi](form-044-mapping.html) bilan birga.
 #### O'zgartirildi
 
