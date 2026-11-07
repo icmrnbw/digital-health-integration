@@ -1,8 +1,4 @@
-// DMED source tokens for the Form 003 title page (`GET/POST
-// /api/mis/v2/hospitalizations/{id}/title-page`). Values and Russian displays
-// are the DMED web client's `Form003.*Enum` dictionary, read on 2026-11-05.
-// blood_group and rh_factor use the same tokens as Form 111, so Form 003 reuses
-// dmed-form-111-blood-group-cs / dmed-form-111-rhesus-factor-cs and their ConceptMaps.
+// DMED Form 003 title-page tokens and Russian displays, from the DMED web client (2026-11-05).
 
 CodeSystem: DMEDForm003TransportingMethodCS
 Id: dmed-form-003-transporting-method-cs
