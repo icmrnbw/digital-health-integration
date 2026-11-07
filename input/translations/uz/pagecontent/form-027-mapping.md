@@ -34,7 +34,8 @@ DMED 027-shaklning ayrim qiymatlarini o'z tokenlari bilan yuboradi. Ushbu Concep
 | DMED maydoni | ConceptMap | Qayerga |
 |----|----|----|
 | `disease_codes` kalitlari, tashxis kodining `type` qiymati (`main`, `additional`, `critical`, `background`, `competing`) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category va [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) dan mos tashxis quyi bo'limining kodi |
-| Gospitalizatsiyaga yo'llanmaning `purpose[]` qiymati | [dmed-form-027-hospitalization-purpose-cm](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) | [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html) dan ServiceRequest.reason.concept |
+| `hospitalization_type` (`ambulatory`, `hospitalTreatment`) | [dmed-form-027-hospitalization-type-cm](ConceptMap-dmed-form-027-hospitalization-type-cm.html) | Encounter.class |
+| Gospitalizatsiyaga yo'llanmaning `purpose[]` qiymati; `other_purpose_checked` belgilanganda `other_purpose` | [dmed-form-027-hospitalization-purpose-cm](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) | [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html) dan ServiceRequest.reason.concept |
 
 ---
 
@@ -73,7 +74,7 @@ Bo'lim kodi: LOINC `LP74442-2` "Admission Information".
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Chilonzor tuman poliklinikasi |
 | Bemorning ro'yxatdan o'tish raqami | Регистрационный номер пациента | Patient.identifier[healthCardId], Med ID raqami bilan bir xil qiymat | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-2026-00027 |
 | Tibbiy karta raqami | Номер медицинской карты | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-027-2026-0124 |
-| Bemor turi | Тип пациента | Encounter.class | v3-ActCode | `AMB` "ambulatory" |
+| Bemor turi | Тип пациента | Encounter.class | v3-ActCode; DMED `hospitalization_type` [ConceptMap](ConceptMap-dmed-form-027-hospitalization-type-cm.html) bo'yicha | `AMB` "ambulatory" |
 | Murojaat sanasi | Дата подачи заявления | Encounter.actualPeriod.start | - | 2026-02-08T09:00:00+05:00 |
 | Chiqarilgan sana | Дата выписки | Encounter.actualPeriod.end | - | 2026-02-10T09:00:00+05:00 |
 

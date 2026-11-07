@@ -34,7 +34,8 @@
 | Поле DMED | ConceptMap | Куда |
 |----|----|----|
 | ключи `disease_codes`, `type` кода диагноза (`main`, `additional`, `critical`, `background`, `competing`) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category и код соответствующего подраздела диагнозов из [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) |
-| `purpose[]` направления на госпитализацию | [dmed-form-027-hospitalization-purpose-cm](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) | ServiceRequest.reason.concept из [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html) |
+| `hospitalization_type` (`ambulatory`, `hospitalTreatment`) | [dmed-form-027-hospitalization-type-cm](ConceptMap-dmed-form-027-hospitalization-type-cm.html) | Encounter.class |
+| `purpose[]` направления на госпитализацию; `other_purpose` при `other_purpose_checked` | [dmed-form-027-hospitalization-purpose-cm](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) | ServiceRequest.reason.concept из [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html) |
 
 ---
 
@@ -73,7 +74,7 @@
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Chilonzor tuman poliklinikasi |
 | Bemorning ro'yxatdan o'tish raqami | Регистрационный номер пациента | Patient.identifier[healthCardId], то же значение, что Med ID raqami | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-2026-00027 |
 | Tibbiy karta raqami | Номер медицинской карты | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-027-2026-0124 |
-| Bemor turi | Тип пациента | Encounter.class | v3-ActCode | `AMB` "ambulatory" |
+| Bemor turi | Тип пациента | Encounter.class | v3-ActCode; DMED `hospitalization_type` по [ConceptMap](ConceptMap-dmed-form-027-hospitalization-type-cm.html) | `AMB` "ambulatory" |
 | Murojaat sanasi | Дата подачи заявления | Encounter.actualPeriod.start | - | 2026-02-08T09:00:00+05:00 |
 | Chiqarilgan sana | Дата выписки | Encounter.actualPeriod.end | - | 2026-02-10T09:00:00+05:00 |
 
