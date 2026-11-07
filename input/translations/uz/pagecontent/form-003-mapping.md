@@ -27,6 +27,24 @@ To'liq namunaviy nusxa uchun [003-shakl statsionar bemorning tibbiy kartasi miso
 
 ---
 
+### DMED qiymatlarini moslashtirish
+
+DMED 003-shakl titul varag'i qiymatlarini o'z tokenlari bilan yuboradi. Ushbu ConceptMap'lar har bir token uchun yuboriladigan kodni beradi; qon guruhi va Rezus mansubligi 111-shakldagi tokenlardan foydalanadi va uning xaritalarini qayta ishlatadi.
+
+| DMED maydoni | ConceptMap | Maqsad |
+|----|----|----|
+| `blood_group` | [dmed-form-111-blood-group-cm](ConceptMap-dmed-form-111-blood-group-cm.html) | qon guruhi Observation qiymati (LOINC `883-9`) |
+| `rh_factor` | [dmed-form-111-rhesus-factor-cm](ConceptMap-dmed-form-111-rhesus-factor-cm.html) | Rezus mansubligi Observation qiymati (LOINC `10331-7`) |
+| `transporting_method` | [dmed-form-003-transporting-method-cm](ConceptMap-dmed-form-003-transporting-method-cm.html) | bemorni tashish usuli Observation qiymati |
+| `readmission_same_reason` | [dmed-form-003-readmission-same-reason-cm](ConceptMap-dmed-form-003-readmission-same-reason-cm.html) | Encounter.admission.reAdmission |
+| `result_treatment` | [dmed-form-003-result-treatment-discharge-disposition-cm](ConceptMap-dmed-form-003-result-treatment-discharge-disposition-cm.html) | Encounter.admission.dischargeDisposition |
+| `result_treatment` | [dmed-form-003-result-treatment-subject-status-cm](ConceptMap-dmed-form-003-result-treatment-subject-status-cm.html) | Encounter.subjectStatus |
+| `result_treatment` | [dmed-form-003-result-treatment-death-cm](ConceptMap-dmed-form-003-result-treatment-death-cm.html) | vafot etish holati Observation qiymati yoki 096-shakldagidek onalar o'limi Condition.code |
+| `working_capacity` | [dmed-form-003-working-capacity-cm](ConceptMap-dmed-form-003-working-capacity-cm.html) | mehnat qobiliyati holati Observation qiymati |
+| `analyses[].title` | [dmed-form-003-analyses-cm](ConceptMap-dmed-form-003-analyses-cm.html) | qabulda tekshiruv Observation yoki DiagnosticReport kodi |
+
+---
+
 ### Maydonlarni moslashtirish
 
 ### UZ-003 Statsionar bemorning tibbiy kartasi - FHIR bilan moslashtirish

@@ -27,6 +27,24 @@
 
 ---
 
+### Сопоставление значений DMED
+
+Значения титульного листа Формы 003 DMED передаёт своими токенами. Эти ConceptMap задают код, который нужно передать для каждого токена; группа крови и резус-фактор используют те же токены, что и в Форме 111, и переиспользуют её карты.
+
+| Поле DMED | ConceptMap | Куда |
+|----|----|----|
+| `blood_group` | [dmed-form-111-blood-group-cm](ConceptMap-dmed-form-111-blood-group-cm.html) | значение Observation группы крови (LOINC `883-9`) |
+| `rh_factor` | [dmed-form-111-rhesus-factor-cm](ConceptMap-dmed-form-111-rhesus-factor-cm.html) | значение Observation резус-фактора (LOINC `10331-7`) |
+| `transporting_method` | [dmed-form-003-transporting-method-cm](ConceptMap-dmed-form-003-transporting-method-cm.html) | значение Observation способа транспортировки пациента |
+| `readmission_same_reason` | [dmed-form-003-readmission-same-reason-cm](ConceptMap-dmed-form-003-readmission-same-reason-cm.html) | Encounter.admission.reAdmission |
+| `result_treatment` | [dmed-form-003-result-treatment-discharge-disposition-cm](ConceptMap-dmed-form-003-result-treatment-discharge-disposition-cm.html) | Encounter.admission.dischargeDisposition |
+| `result_treatment` | [dmed-form-003-result-treatment-subject-status-cm](ConceptMap-dmed-form-003-result-treatment-subject-status-cm.html) | Encounter.subjectStatus |
+| `result_treatment` | [dmed-form-003-result-treatment-death-cm](ConceptMap-dmed-form-003-result-treatment-death-cm.html) | значение Observation контекста смерти или Condition.code материнской смерти, как в Форме 096 |
+| `working_capacity` | [dmed-form-003-working-capacity-cm](ConceptMap-dmed-form-003-working-capacity-cm.html) | значение Observation состояния трудоспособности |
+| `analyses[].title` | [dmed-form-003-analyses-cm](ConceptMap-dmed-form-003-analyses-cm.html) | код Observation или DiagnosticReport обследования при поступлении |
+
+---
+
 ### Сопоставление полей
 
 ### UZ-003 Медицинская карта стационарного больного - сопоставление с FHIR

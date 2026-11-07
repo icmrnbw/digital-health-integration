@@ -25,6 +25,24 @@ For a complete reference instance, see the [Form 003 inpatient medical record ex
 
 ---
 
+### DMED value mappings
+
+DMED sends Form 003 title page values as its own tokens. These ConceptMaps give the code to send for each token; blood group and Rh factor use the same tokens as Form 111 and reuse its maps.
+
+| DMED field | ConceptMap | Target |
+|----|----|----|
+| `blood_group` | [dmed-form-111-blood-group-cm](ConceptMap-dmed-form-111-blood-group-cm.html) | ABO group Observation value (LOINC `883-9`) |
+| `rh_factor` | [dmed-form-111-rhesus-factor-cm](ConceptMap-dmed-form-111-rhesus-factor-cm.html) | Rh Observation value (LOINC `10331-7`) |
+| `transporting_method` | [dmed-form-003-transporting-method-cm](ConceptMap-dmed-form-003-transporting-method-cm.html) | Patient transport mobility Observation value |
+| `readmission_same_reason` | [dmed-form-003-readmission-same-reason-cm](ConceptMap-dmed-form-003-readmission-same-reason-cm.html) | Encounter.admission.reAdmission |
+| `result_treatment` | [dmed-form-003-result-treatment-discharge-disposition-cm](ConceptMap-dmed-form-003-result-treatment-discharge-disposition-cm.html) | Encounter.admission.dischargeDisposition |
+| `result_treatment` | [dmed-form-003-result-treatment-subject-status-cm](ConceptMap-dmed-form-003-result-treatment-subject-status-cm.html) | Encounter.subjectStatus |
+| `result_treatment` | [dmed-form-003-result-treatment-death-cm](ConceptMap-dmed-form-003-result-treatment-death-cm.html) | Death context Observation value, or maternal death Condition.code as in Form 096 |
+| `working_capacity` | [dmed-form-003-working-capacity-cm](ConceptMap-dmed-form-003-working-capacity-cm.html) | Work capacity status Observation value |
+| `analyses[].title` | [dmed-form-003-analyses-cm](ConceptMap-dmed-form-003-analyses-cm.html) | Admission screening Observation or DiagnosticReport code |
+
+---
+
 ### Field Mapping
 
 ### UZ-003 Inpatient Medical Record Card - FHIR Mapping
