@@ -332,6 +332,8 @@ DMED local values are translated through versioned ConceptMaps. A missing INN, d
 
 The dose form and route identifiers come from the DMED test environment dictionaries of 2026-11-03, the INN identifiers from the DMED export of 2026-10-05. The INN map is built from the Pharmaceutical Committee registry export of 2026-11-02: an INN code is taken only when every registry package of the INN's trade names names the same code, or when the registry substance has the same name, and every other INN with active trade names, combinations included, gets the most frequent ATC code among them that is in the current WHO ATC. The older Core DMED route CodeSystem uses textual codes and is not treated as the source system for the numeric Prescription API field.
 
+A Medication loaded from the Pharmaceutical Committee drug registry codes `Medication.doseForm` through the [registry dose form map](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html), which maps all 619 registry dose forms (`medicine_form_item_id`) to UZ Core dose forms. A registry package can also list kit components, such as the solvent, as forms; `doseForm` takes the form that is not the solvent.
+
 ## FHIR exchange
 
 Creation uses a transaction Bundle when Medication, MedicationRequest, approval Task and Provenance must be stored atomically. Conditional create is performed using the stable identifier. Updates are version-aware. A successful transaction returns a transaction-response Bundle; a failed transaction returns OperationOutcome.
