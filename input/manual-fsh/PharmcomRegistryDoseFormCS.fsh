@@ -1,7 +1,7 @@
 CodeSystem: PharmcomRegistryDoseFormCS
 Id: pharmcom-registry-dose-form-cs
 Title: "Pharmaceutical Committee registry dose form"
-Description: "Detailed dose form identifiers of the Pharmaceutical Committee drug registry (`medicine.medicine_forms[].medicine_form_item_id` in `exp_drug_box_group_registry`), with their Russian names as the registry gives them. Exported from the registry on 2026-11-02; every identifier used by a registry package is here. The registry also names some kit components, such as the solvent, as forms."
+Description: "Dose form identifiers of the Pharmaceutical Committee drug registry (`medicine_form_item_id`) with their Russian names. Exported on 2026-11-02."
 * insert OriginalCodeSystemDraft(pharmcom-registry-dose-form-cs)
 * ^language = #ru
 * ^publisher = "Uzinfocom"

@@ -2,7 +2,7 @@ Instance: pharmcom-registry-dose-form-to-medication-doseform-cm
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "Pharmaceutical Committee registry dose form to UZ Core dose form"
-Description: "Maps the Pharmaceutical Committee drug registry dose form (`medicine_form_item_id`) to the UZ Core medication dose form, so that a Medication loaded from the registry codes `Medication.doseForm`. Forms whose name is the same as a UZ Core dose form, letter for letter or after normalising punctuation, case, word order and ё, map as `equivalent`; forms with the same name as a DMED dose form take the mapping of the [DMED dose form map](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html). The rest were mapped by hand on 2026-11-09: a form that names several routes, a flavour, a target group or a detail UZ Core does not have (Капсулы мягкие желатиновые, Таблетки жевательные с апельсиновым вкусом) maps to the nearest wider UZ Core form as `source-is-narrower-than-target`, and a solvent or solution supplied in a kit (в комплекте с растворителем - вода для инъекций) maps to the UZ Core solvent. A package lists such kit components next to its own form, so `Medication.doseForm` takes the form that is not the solvent. All 619 forms are mapped."
+Description: "Maps Pharmaceutical Committee drug registry dose forms (`medicine_form_item_id`) to UZ Core dose forms. A form that adds a detail UZ Core does not have maps to the nearest wider form as `source-is-narrower-than-target`; kit solvents map to the UZ Core solvent."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/pharmcom-registry-dose-form-to-medication-doseform-cm"
 * name = "PharmcomRegistryDoseFormToMedicationDoseFormCM"
 * status = #draft
