@@ -2,7 +2,7 @@ Instance: dmed-prescription-inn-to-medication-classification-cm
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED prescription INN to medication classification"
-Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medication.ingredient.item`: the UZ Core INN code where the Pharmaceutical Committee registry gives it without doubt, otherwise a WHO ATC code. Built from the Pharmaceutical Committee registry export of 2026-11-02 and the DMED trade name catalogue of 2026-10-05: an INN code is taken only when every registry package of the INN's trade names names the same INN code, or when the registry substance has the same name. Every other `inn_id` that has active DMED trade names, single-substance or combination, gets the most frequent ATC code among those trade names, after upper-casing and replacing Cyrillic look-alike letters with Latin ones; the comment says how many trade names carry it. Some of these codes are level 2 to 4, which is valid in the WHO ATC but coarser than a substance. For a combination the ATC code goes to `Medication.code`, and each component is coded by its own `inn_id` in `Medication.ingredient`. An `inn_id` without a mapping is rejected with `terminology-crosswalk-not-found`."
+Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medication.ingredient.item`: the UZ Core INN code where the Pharmaceutical Committee registry gives it without doubt, otherwise a WHO ATC code. Built from the Pharmaceutical Committee registry export of 2026-11-02 and the DMED trade name catalogue of 2026-10-05: an INN code is taken only when every registry package of the INN's trade names names the same INN code, or when the registry substance has the same name. Every other `inn_id` that has active DMED trade names, single-substance or combination, gets the most frequent ATC code among those trade names, after upper-casing and replacing Cyrillic look-alike letters with Latin ones; the comment says how many trade names carry it. Some of these codes are level 2 to 4, which is valid in the WHO ATC but coarser than a substance. For a combination the ATC code goes to `Medication.code`, and each component is coded by its own `inn_id` in `Medication.ingredient`. Codes were checked against WHO ATC 2026 on tx.fhir.org; a code that is not there is replaced with its current or nearest valid code, and seven `inn_id` stay unmapped because no ATC code fits them: homeopathic products, a bacterial lysate, a peptide and two dietary supplements that DMED gives unrelated codes. An `inn_id` without a mapping is rejected with `terminology-crosswalk-not-found`."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-inn-to-medication-classification-cm"
 * name = "DMEDPrescriptionInnToMedicationClassificationCM"
 * status = #draft
@@ -6122,9 +6122,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; the most frequent ATC code among active DMED trade names (2 of 4)."
 * group[=].element[+].code = #2491
 * group[=].element[=].display = "Trastuzumab"
-* group[=].element[=].target[+].code = #L01XC03
+* group[=].element[=].target[+].code = #L01FD01
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; the most frequent ATC code among active DMED trade names (9 of 12)."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry L01XC03, which is not in WHO ATC 2026; L01FD01 is used: trastuzumab moved to L01FD01."
 * group[=].element[+].code = #2494
 * group[=].element[=].display = "O‘rik ifori"
 * group[=].element[=].target[+].code = #R05DB13
@@ -6192,9 +6192,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #2566
 * group[=].element[=].display = "Matritsariya romashkasi"
-* group[=].element[=].target[+].code = #A07EB09
+* group[=].element[=].target[+].code = #A01AB
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; the most frequent ATC code among active DMED trade names (6 of 13)."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry A07EB09, which is not in WHO ATC 2026; A01AB is used: the next most frequent code among its trade names."
 * group[=].element[+].code = #2567
 * group[=].element[=].display = "Makkajo‘xori"
 * group[=].element[=].target[+].code = #A05AX
@@ -6677,9 +6677,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
 * group[=].element[+].code = #3008
 * group[=].element[=].display = "Galliy sitrat (67Ga)"
-* group[=].element[=].target[+].code = #A01AX
+* group[=].element[=].target[+].code = #V09HX01
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; all 3 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry A01AX, which is not in WHO ATC 2026; V09HX01 is used: gallium (67Ga) citrate."
 * group[=].element[+].code = #3018
 * group[=].element[=].display = "Lakozamid"
 * group[=].element[=].target[+].code = #N03AX18
@@ -7115,11 +7115,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #B05AA01
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #3291
-* group[=].element[=].display = "Bakteriyalar fagolizatlarining steril tozalangan filtratlari"
-* group[=].element[=].target[+].code = #V30A
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; all 8 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #3292
 * group[=].element[=].display = "Bacillus clausii sporalari"
 * group[=].element[=].target[+].code = #A07FA
@@ -7430,11 +7425,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #B03AB04
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-* group[=].element[+].code = #3532
-* group[=].element[=].display = "Tirozil-D-alanil-glitsil-fenilalanil-leysil-arginin"
-* group[=].element[=].target[+].code = #V30
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; all 2 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #3533
 * group[=].element[=].display = "Zolpidem"
 * group[=].element[=].target[+].code = #N05CF02
@@ -9282,9 +9272,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #4500
 * group[=].element[=].display = "Прегабалин, Метилкобаламин"
-* group[=].element[=].target[+].code = #N03AX16
+* group[=].element[=].target[+].code = #N02BF
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; the most frequent ATC code among active DMED trade names (8 of 10)."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry N03AX16, which is not in WHO ATC 2026; N02BF is used: pregabalin moved to N02BF; gabapentinoid group for the combination."
 * group[=].element[+].code = #4501
 * group[=].element[=].display = "Parasetamol, Askorbin kislotasi, Xlorfenamin, Kofein"
 * group[=].element[=].target[+].code = #N02BE51
@@ -10032,9 +10022,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 6 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #4654
 * group[=].element[=].display = "Kversetin, Toloknyanka barglarining quruq ekstrakti, Oddiy qichitqi o‘t ildizi, Mayda gulli kiprey, Sovunlanmaydigan avokado va soya moylari aralashmalari"
-* group[=].element[=].target[+].code = #G04BX50
+* group[=].element[=].target[+].code = #G04BX
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry G04BX50, which is not in WHO ATC 2026; G04BX is used: its level-4 group."
 * group[=].element[+].code = #4655
 * group[=].element[=].display = "Parasetamol, Metamizol natriy"
 * group[=].element[=].target[+].code = #J01MA02
@@ -10277,9 +10267,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; the most frequent ATC code among active DMED trade names (9 of 13)."
 * group[=].element[+].code = #4705
 * group[=].element[=].display = "Parasetamol, Tramadol"
-* group[=].element[=].target[+].code = #N02AX52
+* group[=].element[=].target[+].code = #N02AJ13
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry N02AX52, which is not in WHO ATC 2026; N02AJ13 is used: tramadol and paracetamol."
 * group[=].element[+].code = #4706
 * group[=].element[=].display = "Tenofovir  , Efavirenz, Lamivudin"
 * group[=].element[=].target[+].code = #J05AR11
@@ -11262,9 +11252,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #4907
 * group[=].element[=].display = "Bendazol, Papaverin gidroxloridi"
-* group[=].element[=].target[+].code = #A03AD51
+* group[=].element[=].target[+].code = #A03AD
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry A03AD51, which is not in WHO ATC 2026; A03AD is used: its level-4 group."
 * group[=].element[+].code = #4908
 * group[=].element[=].display = "Gentamisin, Rux sulfat, Triptofan, Metoksamin"
 * group[=].element[=].target[+].code = #D06C
@@ -11597,9 +11587,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 3 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #4979
 * group[=].element[=].display = "Sianokobalamin, Tiamin gidroxloridi, Piridoksin gidroxlorid  , Riboflafin natriy fosfat, Dekspantenol (vitamin B5), Nikotinamid (Vitamin B3)"
-* group[=].element[=].target[+].code = #A11DB01
+* group[=].element[=].target[+].code = #A11DB
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry A11DB01, which is not in WHO ATC 2026; A11DB is used: its level-4 group."
 * group[=].element[+].code = #4980
 * group[=].element[=].display = "Tamsulozin gidroxloridi, Solifenasin suksinat"
 * group[=].element[=].target[+].code = #G04CA53
@@ -11672,9 +11662,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #4994
 * group[=].element[=].display = "Sianokobalamin, Piridoksin gidroxlorid  , Tiamin Mononitrat"
-* group[=].element[=].target[+].code = #A11DB01
+* group[=].element[=].target[+].code = #A11DB
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry A11DB01, which is not in WHO ATC 2026; A11DB is used: its level-4 group."
 * group[=].element[+].code = #4995
 * group[=].element[=].display = "Imipenem, Natriy klinastinin"
 * group[=].element[=].target[+].code = #J01DH51
@@ -12637,9 +12627,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5204
 * group[=].element[=].display = "oddiy archa, Dala qirqbo‘g‘imi o‘ti, Oddiy shumtol barglari, Toloknyanka barglarining quruq ekstrakti, yirik mevali klyukva mevasining quruq ekstrakti, D-mannoza"
-* group[=].element[=].target[+].code = #G04BX50
+* group[=].element[=].target[+].code = #G04BX
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry G04BX50, which is not in WHO ATC 2026; G04BX is used: its level-4 group."
 * group[=].element[+].code = #5205
 * group[=].element[=].display = "Lamivudin  , Zidovudin, Nevirapin"
 * group[=].element[=].target[+].code = #J05AR05
@@ -13277,9 +13267,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5340
 * group[=].element[=].display = "Gvayfenezin, Ambroksol, Mentol, Xlorfenamin, Terbutalin"
-* group[=].element[=].target[+].code = #R05CA50
+* group[=].element[=].target[+].code = #R05CA
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry R05CA50, which is not in WHO ATC 2026; R05CA is used: its level-4 group."
 * group[=].element[+].code = #5341
 * group[=].element[=].display = "Natriy xlorid, Kaliy xlorid, Kalsiy xlor  , Fruktoza"
 * group[=].element[=].target[+].code = #B05BB02
@@ -13542,9 +13532,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5399
 * group[=].element[=].display = "Valeriana, Oddiy arpabodiyon, Seylon dolchini, Dorivor zanjabil, kardamon moyi, Qora mingdevona"
-* group[=].element[=].target[+].code = #A02DA
+* group[=].element[=].target[+].code = #A03AX
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry A02DA, which is not in WHO ATC 2026; A03AX is used: other drugs for functional gastrointestinal disorders."
 * group[=].element[+].code = #5400
 * group[=].element[=].display = "Natriy sitikolin, Argini gidroxlorid"
 * group[=].element[=].target[+].code = #N07X
@@ -13745,11 +13735,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #N02BB52
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 3 active DMED trade names carry this ATC code."
-* group[=].element[+].code = #5444
-* group[=].element[=].display = "Osiyo sentellasi, Yurakbargli tinospora, Ashvagandxa, Bakopa Mone o‘simligidan quruq ekstrakt, Olabuta po‘stlog‘idan olingan quruq ekstrakt, Kommifora mukul, Hind nardi, Trikatu, Oddiy zig‘ir, Ro‘vaksimon zubturum"
-* group[=].element[=].target[+].code = #H03AX
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5445
 * group[=].element[=].display = "O‘rta zanjirli triglitseridlar  , Kolekalsiferol"
 * group[=].element[=].target[+].code = #A11CC05
@@ -13862,9 +13847,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5469
 * group[=].element[=].display = "Mekobalamin, Pregabalin"
-* group[=].element[=].target[+].code = #N03AX16
+* group[=].element[=].target[+].code = #N02BF
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry N03AX16, which is not in WHO ATC 2026; N02BF is used: pregabalin moved to N02BF; gabapentinoid group for the combination."
 * group[=].element[+].code = #5470
 * group[=].element[=].display = "Holekalsiferol, Kalsiy"
 * group[=].element[=].target[+].code = #A12AX
@@ -14545,11 +14530,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #A11EB
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-* group[=].element[+].code = #5628
-* group[=].element[=].display = "Liposomal kversetin, Magniy sitrat, Ashvaganda ekstrakti, Koreya jenshen ekstrakti, Liposomal epigallokatexin, Sibir jensheni ekstrakti, Ginkgo Bilobaning liposomal ekstrakti, Liposomal gesperidin, Liposomal multivitamin kompleksi, Rux sitrat  , Bakopа liposomal ekstrakti, Liposomal GAMK, Qora qalampir ekstrakti"
-* group[=].element[=].target[+].code = #N03AX16
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5630
 * group[=].element[=].display = "Diflukortolon valerat, Izokonazol nitrat"
 * group[=].element[=].target[+].code = #D07XC04
@@ -15137,9 +15117,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 8 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5769
 * group[=].element[=].display = "Пертузумаб, Трастузумаб"
-* group[=].element[=].target[+].code = #L01XY02
+* group[=].element[=].target[+].code = #L01FY01
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry L01XY02, which is not in WHO ATC 2026; L01FY01 is used: pertuzumab and trastuzumab."
 * group[=].element[+].code = #5770
 * group[=].element[=].display = "Корней марены сердцелистной, Экстракт Алоэ сухой, Азадирахта ибдика, Базилик душистый, Центелла азиатская"
 * group[=].element[=].target[+].code = #D10A
@@ -15620,11 +15600,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #B05BB
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 3 active DMED trade names carry this ATC code."
-* group[=].element[+].code = #5886
-* group[=].element[=].display = "Ацидум силицикум, Фитолакка американская (Phytolacca), Atropa belladonna (Belladonna), Гепар сульфур"
-* group[=].element[=].target[+].code = #V30
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #5888
 * group[=].element[=].display = "Полимиксин B сульфат, Неомицин, Бацитрацин"
 * group[=].element[=].target[+].code = #A07AA51
@@ -16222,9 +16197,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6029
 * group[=].element[=].display = "Трамадол, Парацетамол"
-* group[=].element[=].target[+].code = #N02AX52
+* group[=].element[=].target[+].code = #N02AJ13
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry N02AX52, which is not in WHO ATC 2026; N02AJ13 is used: tramadol and paracetamol."
 * group[=].element[+].code = #6030
 * group[=].element[=].display = "Анестезин, Рацементол, Новокаин"
 * group[=].element[=].target[+].code = #D04AB
@@ -17017,9 +16992,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6221
 * group[=].element[=].display = "Прегабалин, Мекобаламин"
-* group[=].element[=].target[+].code = #N03AX16
+* group[=].element[=].target[+].code = #N02BF
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry N03AX16, which is not in WHO ATC 2026; N02BF is used: pregabalin moved to N02BF; gabapentinoid group for the combination."
 * group[=].element[+].code = #6222
 * group[=].element[=].display = "Периндоприл, Индапамид"
 * group[=].element[=].target[+].code = #C03BA11
@@ -17172,9 +17147,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6255
 * group[=].element[=].display = "Сульбактам, Цефтриаксон"
-* group[=].element[=].target[+].code = #J01DA63
+* group[=].element[=].target[+].code = #J01DD63
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 3 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry J01DA63, which is not in WHO ATC 2026; J01DD63 is used: ceftriaxone and beta-lactamase inhibitor."
 * group[=].element[+].code = #6256
 * group[=].element[=].display = "Цефоперазон, Сульбактам"
 * group[=].element[=].target[+].code = #J01DD62
@@ -17337,9 +17312,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6309
 * group[=].element[=].display = "Пертузумаб, Трастузумаб"
-* group[=].element[=].target[+].code = #L01XY02
+* group[=].element[=].target[+].code = #L01FY01
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry L01XY02, which is not in WHO ATC 2026; L01FY01 is used: pertuzumab and trastuzumab."
 * group[=].element[+].code = #6310
 * group[=].element[=].display = "Ацетат натрия, Натрия хлорид"
 * group[=].element[=].target[+].code = #B05B
@@ -18070,11 +18045,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[+].code = #D11
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-* group[=].element[+].code = #6492
-* group[=].element[=].display = "Апис меллифика, Цимицифуга кистевидная, Лахезис мутус"
-* group[=].element[=].target[+].code = #V30
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6493
 * group[=].element[=].display = "Гидрохлоротиазид, Кандесартан"
 * group[=].element[=].target[+].code = #C09CA06
@@ -18717,9 +18687,9 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6654
 * group[=].element[=].display = "Baziliksimab"
-* group[=].element[=].target[+].code = #L01XC07
+* group[=].element[=].target[+].code = #L04AC02
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this INN; all 2 active DMED trade names carry this ATC code."
+* group[=].element[=].target[=].comment = "No UZ Core INN code. The DMED trade names carry L01XC07, which is not in WHO ATC 2026; L04AC02 is used: basiliximab; DMED gives the bevacizumab code."
 * group[=].element[+].code = #6655
 * group[=].element[=].display = "Натрия хлорид, Сорбитол, Кальция хлорид, Натрия лактат, Магния хлорид, Калия хлорид"
 * group[=].element[=].target[+].code = #B05BB04
@@ -18928,11 +18898,6 @@ Description: "Maps DMED `inn_id` to the code of `Medication.code` and `Medicatio
 * group[=].element[+].code = #6701
 * group[=].element[=].display = "Рибофлавин, Тиамин, Никотинамид, Пиридоксин, Пантотенат кальция"
 * group[=].element[=].target[+].code = #A11A
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-* group[=].element[+].code = #6705
-* group[=].element[=].display = "Гепар сульфурис D12, Pulsatilla pratensis, Pharmaceutical camomile, Белладонна, Феррум фосфорикум D6"
-* group[=].element[=].target[+].code = #V30
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[=].target[=].comment = "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
 * group[=].element[+].code = #6708

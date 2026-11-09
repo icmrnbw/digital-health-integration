@@ -18,6 +18,11 @@ Description: "A prescription, ordinary or reimbursement, supplies no more than 9
 Severity: #error
 Expression: "dispenseRequest.expectedSupplyDuration.code = 'd' and dispenseRequest.expectedSupplyDuration.value <= 90"
 
+Invariant: prescription-route-or-method
+Description: "Each dosage instruction has a route, or a method when DMED gives a method rather than a route"
+Severity: #error
+Expression: "dosageInstruction.all(route.exists() or method.exists())"
+
 Profile: PrescriptionMedicationRequest
 Parent: UZCoreMedicationRequest
 Id: prescription-medication-request
@@ -27,7 +32,7 @@ Description: "Electronic prescription created in DMED. The profile separates FHI
 * ^experimental = true
 * ^publisher = "Uzinfocom"
 * insert PrescriptionMetaSource
-* obeys prescription-request-identifier and prescription-outpatient-category and prescription-reimbursement-reason and prescription-max-duration
+* obeys prescription-request-identifier and prescription-outpatient-category and prescription-reimbursement-reason and prescription-max-duration and prescription-route-or-method
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
@@ -71,7 +76,10 @@ Description: "Electronic prescription created in DMED. The profile separates FHI
 * dosageInstruction.timing.repeat.frequency 1..1 MS
 * dosageInstruction.timing.repeat.period 1..1 MS
 * dosageInstruction.timing.repeat.periodUnit 1..1 MS
-* dosageInstruction.route 1..1 MS
+* dosageInstruction.route 0..1 MS
+* dosageInstruction.route ^comment = "The route that the DMED Prescription Route to FHIR Route ConceptMap gives for `drug_administration_route_id`. Left out when the DMED value names a method rather than a route; the DMED code is then in `method`."
+* dosageInstruction.method MS
+* dosageInstruction.method ^comment = "The DMED `drug_administration_route_id` code from DMEDPrescriptionRouteCS when it names a method rather than a route, such as Инстилляция or Капельно."
 * dosageInstruction.doseAndRate 1..* MS
 * dosageInstruction.doseAndRate.doseQuantity 1..1 MS
 * dosageInstruction.doseAndRate.doseQuantity.value 1..1 MS

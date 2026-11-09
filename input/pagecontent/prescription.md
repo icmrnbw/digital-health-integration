@@ -322,15 +322,15 @@ DMED local values are translated through versioned ConceptMaps. A missing INN, d
 |---|---|---|---|
 | `type` | [DMED prescription type](ConceptMap-dmed-prescription-type-to-medication-request-category.html) | `outpatient` and UZ Core reimbursable order | 2 of 2 |
 | `status` | [DMED prescription status](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | MedicationRequest status | 8 of 9; `not_signed` is never sent |
-| `inn_id` | [DMED INN to medication classification](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | UZ Core INN, otherwise WHO ATC | 1 006 INN and 2 788 ATC: every INN with active trade names, single-substance or combination, except one; combination components are coded by their own INN |
+| `inn_id` | [DMED INN to medication classification](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | UZ Core INN, otherwise WHO ATC | 1 006 INN and 2 781 ATC: every INN with active trade names except 8 that no ATC code fits; combination components are coded by their own INN |
 | `dosage_form_id` | [DMED dose form](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | UZ Core dose form | 369 of 372 |
-| `drug_administration_route_id` | [DMED route](ConceptMap-dmed-prescription-route-to-fhir-route.html) | SNOMED CT route | 23 of 56 |
+| `drug_administration_route_id` | [DMED route](ConceptMap-dmed-prescription-route-to-fhir-route.html) | SNOMED CT or UZ Core route, otherwise `dosageInstruction.method` | 51 of 56; the other 5 name a method and go to `method` |
 | `receive_mode` | [DMED intake timing](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 of 7; `at_any_time` sends no `when` |
 | `administration_frequency_measure` | [DMED frequency period](ConceptMap-dmed-prescription-frequency-period-to-units-of-time.html) | `timing.repeat.periodUnit` | 4 of 4 |
 | `cancellation_reason` | [DMED cancellation reason](ConceptMap-dmed-prescription-cancellation-reason-to-status-reason.html) | UZ Core status reason | 2 of 2 |
 | `administration_method` (treatment course) | [DMED administration method](ConceptMap-dmed-administration-method-to-fhir-route.html) | `MedicationAdministration.dosage.method`, SNOMED CT or UZ Core route | 19 of 21 |
 
-The dose form and route identifiers come from the DMED test environment dictionaries of 2026-11-03, the INN identifiers from the DMED export of 2026-10-05. The INN map is built from the Pharmaceutical Committee registry export of 2026-11-02: an INN code is taken only when every registry package of the INN's trade names names the same code, or when the registry substance has the same name, and an ATC code only when it is a level-5 code shared by all trade names. The older Core DMED route CodeSystem uses textual codes and is not treated as the source system for the numeric Prescription API field.
+The dose form and route identifiers come from the DMED test environment dictionaries of 2026-11-03, the INN identifiers from the DMED export of 2026-10-05. The INN map is built from the Pharmaceutical Committee registry export of 2026-11-02: an INN code is taken only when every registry package of the INN's trade names names the same code, or when the registry substance has the same name, and every other INN with active trade names, combinations included, gets the most frequent ATC code among them that is in the current WHO ATC. The older Core DMED route CodeSystem uses textual codes and is not treated as the source system for the numeric Prescription API field.
 
 ## FHIR exchange
 

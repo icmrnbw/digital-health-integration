@@ -322,15 +322,15 @@
 |---|---|---|---|
 | `type` | [Тип рецепта DMED](ConceptMap-dmed-prescription-type-to-medication-request-category.html) | `outpatient` и реимбурсационный заказ UZ Core | 2 из 2 |
 | `status` | [Статус рецепта DMED](ConceptMap-dmed-prescription-status-to-medication-request-status.html) | статус MedicationRequest | 8 из 9; `not_signed` не передаётся |
-| `inn_id` | [МНН DMED → классификация препаратов](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | код МНН UZ Core, иначе WHO ATC | 1 006 МНН и 2 788 ATC: все МНН с действующими ТН, однокомпонентные и комбинации, кроме одного; компоненты комбинации кодируются своими МНН |
+| `inn_id` | [МНН DMED → классификация препаратов](ConceptMap-dmed-prescription-inn-to-medication-classification-cm.html) | код МНН UZ Core, иначе WHO ATC | 1 006 МНН и 2 781 ATC: все МНН с действующими ТН, кроме 8, которым не подходит ни один код ATC; компоненты комбинации кодируются своими МНН |
 | `dosage_form_id` | [Лекарственная форма DMED](ConceptMap-dmed-prescription-dose-form-to-medication-doseform-cm.html) | лекарственная форма UZ Core | 369 из 372 |
-| `drug_administration_route_id` | [Путь введения DMED](ConceptMap-dmed-prescription-route-to-fhir-route.html) | путь введения SNOMED CT | 23 из 56 |
+| `drug_administration_route_id` | [Путь введения DMED](ConceptMap-dmed-prescription-route-to-fhir-route.html) | путь введения SNOMED CT или UZ Core, иначе `dosageInstruction.method` | 51 из 56; остальные 5 обозначают способ и идут в `method` |
 | `receive_mode` | [Режим приёма DMED](ConceptMap-dmed-prescription-receive-mode-to-event-timing.html) | `timing.repeat.when` | 6 из 7; для `at_any_time` `when` не передаётся |
 | `administration_frequency_measure` | [Период кратности DMED](ConceptMap-dmed-prescription-frequency-period-to-units-of-time.html) | `timing.repeat.periodUnit` | 4 из 4 |
 | `cancellation_reason` | [Причина отмены DMED](ConceptMap-dmed-prescription-cancellation-reason-to-status-reason.html) | причина статуса UZ Core | 2 из 2 |
 | `administration_method` (курс лечения) | [Способ введения DMED](ConceptMap-dmed-administration-method-to-fhir-route.html) | `MedicationAdministration.dosage.method`, путь введения SNOMED CT или UZ Core | 19 из 21 |
 
-Идентификаторы лекарственных форм и путей введения взяты из справочников тестовой среды DMED от 03.11.2026, идентификаторы МНН — из выгрузки DMED от 05.10.2026. Маппинг МНН построен по выгрузке реестра Фармкомитета от 02.11.2026: код МНН берётся, только если все упаковки реестра у торговых наименований этого МНН указывают один код или вещество реестра называется так же, а код ATC — только если это код 5-го уровня, общий для всех торговых наименований. Старый Core CodeSystem путей DMED использует текстовые коды и не считается исходной системой для числового поля Prescription API.
+Идентификаторы лекарственных форм и путей введения взяты из справочников тестовой среды DMED от 03.11.2026, идентификаторы МНН — из выгрузки DMED от 05.10.2026. Маппинг МНН построен по выгрузке реестра Фармкомитета от 02.11.2026: код МНН берётся, только если все упаковки реестра у торговых наименований этого МНН указывают один код или вещество реестра называется так же, а всем остальным МНН с действующими торговыми наименованиями, включая комбинации, — самый частый среди них код ATC, который есть в текущем WHO ATC. Старый Core CodeSystem путей DMED использует текстовые коды и не считается исходной системой для числового поля Prescription API.
 
 ## FHIR-обмен
 

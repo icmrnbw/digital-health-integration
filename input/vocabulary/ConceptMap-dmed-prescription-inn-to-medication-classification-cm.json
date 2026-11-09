@@ -3,7 +3,7 @@
   "id": "dmed-prescription-inn-to-medication-classification-cm",
   "url": "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-inn-to-medication-classification-cm",
   "title": "DMED prescription INN to medication classification",
-  "description": "Maps DMED `inn_id` to the code of `Medication.code` and `Medication.ingredient.item`: the UZ Core INN code where the Pharmaceutical Committee registry gives it without doubt, otherwise a WHO ATC code. Built from the Pharmaceutical Committee registry export of 2026-11-02 and the DMED trade name catalogue of 2026-10-05: an INN code is taken only when every registry package of the INN's trade names names the same INN code, or when the registry substance has the same name. Every other `inn_id` that has active DMED trade names, single-substance or combination, gets the most frequent ATC code among those trade names, after upper-casing and replacing Cyrillic look-alike letters with Latin ones; the comment says how many trade names carry it. Some of these codes are level 2 to 4, which is valid in the WHO ATC but coarser than a substance. For a combination the ATC code goes to `Medication.code`, and each component is coded by its own `inn_id` in `Medication.ingredient`. An `inn_id` without a mapping is rejected with `terminology-crosswalk-not-found`.",
+  "description": "Maps DMED `inn_id` to the code of `Medication.code` and `Medication.ingredient.item`: the UZ Core INN code where the Pharmaceutical Committee registry gives it without doubt, otherwise a WHO ATC code. Built from the Pharmaceutical Committee registry export of 2026-11-02 and the DMED trade name catalogue of 2026-10-05: an INN code is taken only when every registry package of the INN's trade names names the same INN code, or when the registry substance has the same name. Every other `inn_id` that has active DMED trade names, single-substance or combination, gets the most frequent ATC code among those trade names, after upper-casing and replacing Cyrillic look-alike letters with Latin ones; the comment says how many trade names carry it. Some of these codes are level 2 to 4, which is valid in the WHO ATC but coarser than a substance. For a combination the ATC code goes to `Medication.code`, and each component is coded by its own `inn_id` in `Medication.ingredient`. Codes were checked against WHO ATC 2026 on tx.fhir.org; a code that is not there is replaced with its current or nearest valid code, and seven `inn_id` stay unmapped because no ATC code fits them: homeopathic products, a bacterial lysate, a peptide and two dietary supplements that DMED gives unrelated codes. An `inn_id` without a mapping is rejected with `terminology-crosswalk-not-found`.",
   "group": [
     {
       "source": "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-prescription-inn-cs",
@@ -13451,9 +13451,9 @@
           "display": "Trastuzumab",
           "target": [
             {
-              "code": "L01XC03",
+              "code": "L01FD01",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this INN; the most frequent ATC code among active DMED trade names (9 of 12)."
+              "comment": "No UZ Core INN code. The DMED trade names carry L01XC03, which is not in WHO ATC 2026; L01FD01 is used: trastuzumab moved to L01FD01."
             }
           ]
         },
@@ -13605,9 +13605,9 @@
           "display": "Matritsariya romashkasi",
           "target": [
             {
-              "code": "A07EB09",
+              "code": "A01AB",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this INN; the most frequent ATC code among active DMED trade names (6 of 13)."
+              "comment": "No UZ Core INN code. The DMED trade names carry A07EB09, which is not in WHO ATC 2026; A01AB is used: the next most frequent code among its trade names."
             }
           ]
         },
@@ -14672,9 +14672,9 @@
           "display": "Galliy sitrat (67Ga)",
           "target": [
             {
-              "code": "A01AX",
+              "code": "V09HX01",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this INN; all 3 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry A01AX, which is not in WHO ATC 2026; V09HX01 is used: gallium (67Ga) citrate."
             }
           ]
         },
@@ -15636,17 +15636,6 @@
           ]
         },
         {
-          "code": "3291",
-          "display": "Bakteriyalar fagolizatlarining steril tozalangan filtratlari",
-          "target": [
-            {
-              "code": "V30A",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this INN; all 8 active DMED trade names carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "3292",
           "display": "Bacillus clausii sporalari",
           "target": [
@@ -16325,17 +16314,6 @@
               "code": "B03AB04",
               "relationship": "source-is-narrower-than-target",
               "comment": "No UZ Core INN code; all DMED trade names of this INN carry this ATC code."
-            }
-          ]
-        },
-        {
-          "code": "3532",
-          "display": "Tirozil-D-alanil-glitsil-fenilalanil-leysil-arginin",
-          "target": [
-            {
-              "code": "V30",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this INN; all 2 active DMED trade names carry this ATC code."
             }
           ]
         },
@@ -20403,9 +20381,9 @@
           "display": "Прегабалин, Метилкобаламин",
           "target": [
             {
-              "code": "N03AX16",
+              "code": "N02BF",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; the most frequent ATC code among active DMED trade names (8 of 10)."
+              "comment": "No UZ Core INN code. The DMED trade names carry N03AX16, which is not in WHO ATC 2026; N02BF is used: pregabalin moved to N02BF; gabapentinoid group for the combination."
             }
           ]
         },
@@ -22053,9 +22031,9 @@
           "display": "Kversetin, Toloknyanka barglarining quruq ekstrakti, Oddiy qichitqi o‘t ildizi, Mayda gulli kiprey, Sovunlanmaydigan avokado va soya moylari aralashmalari",
           "target": [
             {
-              "code": "G04BX50",
+              "code": "G04BX",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry G04BX50, which is not in WHO ATC 2026; G04BX is used: its level-4 group."
             }
           ]
         },
@@ -22592,9 +22570,9 @@
           "display": "Parasetamol, Tramadol",
           "target": [
             {
-              "code": "N02AX52",
+              "code": "N02AJ13",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry N02AX52, which is not in WHO ATC 2026; N02AJ13 is used: tramadol and paracetamol."
             }
           ]
         },
@@ -24759,9 +24737,9 @@
           "display": "Bendazol, Papaverin gidroxloridi",
           "target": [
             {
-              "code": "A03AD51",
+              "code": "A03AD",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry A03AD51, which is not in WHO ATC 2026; A03AD is used: its level-4 group."
             }
           ]
         },
@@ -25496,9 +25474,9 @@
           "display": "Sianokobalamin, Tiamin gidroxloridi, Piridoksin gidroxlorid  , Riboflafin natriy fosfat, Dekspantenol (vitamin B5), Nikotinamid (Vitamin B3)",
           "target": [
             {
-              "code": "A11DB01",
+              "code": "A11DB",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry A11DB01, which is not in WHO ATC 2026; A11DB is used: its level-4 group."
             }
           ]
         },
@@ -25661,9 +25639,9 @@
           "display": "Sianokobalamin, Piridoksin gidroxlorid  , Tiamin Mononitrat",
           "target": [
             {
-              "code": "A11DB01",
+              "code": "A11DB",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry A11DB01, which is not in WHO ATC 2026; A11DB is used: its level-4 group."
             }
           ]
         },
@@ -27784,9 +27762,9 @@
           "display": "oddiy archa, Dala qirqbo‘g‘imi o‘ti, Oddiy shumtol barglari, Toloknyanka barglarining quruq ekstrakti, yirik mevali klyukva mevasining quruq ekstrakti, D-mannoza",
           "target": [
             {
-              "code": "G04BX50",
+              "code": "G04BX",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry G04BX50, which is not in WHO ATC 2026; G04BX is used: its level-4 group."
             }
           ]
         },
@@ -29192,9 +29170,9 @@
           "display": "Gvayfenezin, Ambroksol, Mentol, Xlorfenamin, Terbutalin",
           "target": [
             {
-              "code": "R05CA50",
+              "code": "R05CA",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry R05CA50, which is not in WHO ATC 2026; R05CA is used: its level-4 group."
             }
           ]
         },
@@ -29775,9 +29753,9 @@
           "display": "Valeriana, Oddiy arpabodiyon, Seylon dolchini, Dorivor zanjabil, kardamon moyi, Qora mingdevona",
           "target": [
             {
-              "code": "A02DA",
+              "code": "A03AX",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry A02DA, which is not in WHO ATC 2026; A03AX is used: other drugs for functional gastrointestinal disorders."
             }
           ]
         },
@@ -30222,17 +30200,6 @@
           ]
         },
         {
-          "code": "5444",
-          "display": "Osiyo sentellasi, Yurakbargli tinospora, Ashvagandxa, Bakopa Mone o‘simligidan quruq ekstrakt, Olabuta po‘stlog‘idan olingan quruq ekstrakt, Kommifora mukul, Hind nardi, Trikatu, Oddiy zig‘ir, Ro‘vaksimon zubturum",
-          "target": [
-            {
-              "code": "H03AX",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "5445",
           "display": "O‘rta zanjirli triglitseridlar  , Kolekalsiferol",
           "target": [
@@ -30479,9 +30446,9 @@
           "display": "Mekobalamin, Pregabalin",
           "target": [
             {
-              "code": "N03AX16",
+              "code": "N02BF",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry N03AX16, which is not in WHO ATC 2026; N02BF is used: pregabalin moved to N02BF; gabapentinoid group for the combination."
             }
           ]
         },
@@ -31982,17 +31949,6 @@
           ]
         },
         {
-          "code": "5628",
-          "display": "Liposomal kversetin, Magniy sitrat, Ashvaganda ekstrakti, Koreya jenshen ekstrakti, Liposomal epigallokatexin, Sibir jensheni ekstrakti, Ginkgo Bilobaning liposomal ekstrakti, Liposomal gesperidin, Liposomal multivitamin kompleksi, Rux sitrat  , Bakopа liposomal ekstrakti, Liposomal GAMK, Qora qalampir ekstrakti",
-          "target": [
-            {
-              "code": "N03AX16",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "5630",
           "display": "Diflukortolon valerat, Izokonazol nitrat",
           "target": [
@@ -33284,9 +33240,9 @@
           "display": "Пертузумаб, Трастузумаб",
           "target": [
             {
-              "code": "L01XY02",
+              "code": "L01FY01",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry L01XY02, which is not in WHO ATC 2026; L01FY01 is used: pertuzumab and trastuzumab."
             }
           ]
         },
@@ -34343,17 +34299,6 @@
               "code": "B05BB",
               "relationship": "source-is-narrower-than-target",
               "comment": "No UZ Core INN code for this combination; all 3 active DMED trade names carry this ATC code."
-            }
-          ]
-        },
-        {
-          "code": "5886",
-          "display": "Ацидум силицикум, Фитолакка американская (Phytolacca), Atropa belladonna (Belladonna), Гепар сульфур",
-          "target": [
-            {
-              "code": "V30",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
             }
           ]
         },
@@ -35671,9 +35616,9 @@
           "display": "Трамадол, Парацетамол",
           "target": [
             {
-              "code": "N02AX52",
+              "code": "N02AJ13",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 2 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry N02AX52, which is not in WHO ATC 2026; N02AJ13 is used: tramadol and paracetamol."
             }
           ]
         },
@@ -37420,9 +37365,9 @@
           "display": "Прегабалин, Мекобаламин",
           "target": [
             {
-              "code": "N03AX16",
+              "code": "N02BF",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry N03AX16, which is not in WHO ATC 2026; N02BF is used: pregabalin moved to N02BF; gabapentinoid group for the combination."
             }
           ]
         },
@@ -37761,9 +37706,9 @@
           "display": "Сульбактам, Цефтриаксон",
           "target": [
             {
-              "code": "J01DA63",
+              "code": "J01DD63",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 3 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry J01DA63, which is not in WHO ATC 2026; J01DD63 is used: ceftriaxone and beta-lactamase inhibitor."
             }
           ]
         },
@@ -38124,9 +38069,9 @@
           "display": "Пертузумаб, Трастузумаб",
           "target": [
             {
-              "code": "L01XY02",
+              "code": "L01FY01",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry L01XY02, which is not in WHO ATC 2026; L01FY01 is used: pertuzumab and trastuzumab."
             }
           ]
         },
@@ -39737,17 +39682,6 @@
           ]
         },
         {
-          "code": "6492",
-          "display": "Апис меллифика, Цимицифуга кистевидная, Лахезис мутус",
-          "target": [
-            {
-              "code": "V30",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-            }
-          ]
-        },
-        {
           "code": "6493",
           "display": "Гидрохлоротиазид, Кандесартан",
           "target": [
@@ -41160,9 +41094,9 @@
           "display": "Baziliksimab",
           "target": [
             {
-              "code": "L01XC07",
+              "code": "L04AC02",
               "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this INN; all 2 active DMED trade names carry this ATC code."
+              "comment": "No UZ Core INN code. The DMED trade names carry L01XC07, which is not in WHO ATC 2026; L04AC02 is used: basiliximab; DMED gives the bevacizumab code."
             }
           ]
         },
@@ -41623,17 +41557,6 @@
           "target": [
             {
               "code": "A11A",
-              "relationship": "source-is-narrower-than-target",
-              "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
-            }
-          ]
-        },
-        {
-          "code": "6705",
-          "display": "Гепар сульфурис D12, Pulsatilla pratensis, Pharmaceutical camomile, Белладонна, Феррум фосфорикум D6",
-          "target": [
-            {
-              "code": "V30",
               "relationship": "source-is-narrower-than-target",
               "comment": "No UZ Core INN code for this combination; all 1 active DMED trade names carry this ATC code."
             }
