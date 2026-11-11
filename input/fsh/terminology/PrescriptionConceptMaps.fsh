@@ -31,7 +31,7 @@ Instance: dmed-prescription-status-to-medication-request-status
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Prescription Status to MedicationRequest Status"
-Description: "Maps DMED workflow statuses to the closest FHIR MedicationRequest clinical status. Approval state remains authoritative in PrescriptionApprovalTask.businessStatus. DMED sends a prescription to DHP only once it is signed, so `not_signed` is not mapped."
+Description: "Maps DMED workflow statuses to the closest FHIR MedicationRequest clinical status. DMED sends a prescription to DHP only once it is signed, so `not_signed` is not mapped."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-status-to-medication-request-status"
 * name = "DMEDPrescriptionStatusToMedicationRequestStatus"
 * status = #active

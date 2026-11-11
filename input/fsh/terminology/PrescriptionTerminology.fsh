@@ -28,31 +28,6 @@ Description: "Allowed actions in the DMED Prescription workflow."
 * ^experimental = false
 * include codes from system PrescriptionWorkflowActionCS
 
-CodeSystem: PrescriptionWorkflowStatusCS
-Id: prescription-workflow-status-cs
-Title: "Prescription Workflow Business Status Codes"
-Description: "Business statuses kept separate from the clinical MedicationRequest.status."
-* ^url = $prescription-workflow-status-cs
-* ^status = #active
-* ^experimental = false
-* ^caseSensitive = true
-* ^content = #complete
-* ^publisher = "Uzinfocom"
-* #not-signed "Not signed"
-* #review-pending "Awaiting reviewer confirmation"
-* #approved "Approved"
-* #revision-requested "Revision requested"
-* #cancelled "Cancelled"
-
-ValueSet: PrescriptionWorkflowStatusVS
-Id: prescription-workflow-status-vs
-Title: "Prescription Workflow Business Statuses"
-Description: "Allowed business statuses for a prescription approval Task."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/ValueSet/prescription-workflow-status-vs"
-* ^status = #active
-* ^experimental = false
-* include codes from system PrescriptionWorkflowStatusCS
-
 CodeSystem: PrescriptionErrorCS
 Id: prescription-error-cs
 Title: "Prescription Integration Error Codes"

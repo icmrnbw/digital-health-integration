@@ -28,7 +28,6 @@
 |---|---|---|
 | Medication | [PrescriptionMedication](StructureDefinition-prescription-medication.html) | Лекарство, выбранное из справочника DMED. |
 | MedicationRequest | [PrescriptionMedicationRequest](StructureDefinition-prescription-medication-request.html) | Электронный рецепт и схема применения. |
-| Task | [PrescriptionApprovalTask](StructureDefinition-prescription-approval-task.html) | Процесс согласования реимбурсируемого рецепта. |
 | MedicationDispense | [PrescriptionMedicationDispense](StructureDefinition-prescription-medication-dispense.html) | Лекарство, фактически выданное аптекой. |
 | MedicationAdministration | [PrescriptionMedicationAdministration](StructureDefinition-prescription-medication-administration.html) | Лекарство, введённое медицинским работником. |
 | Provenance | [PrescriptionProvenance](StructureDefinition-prescription-provenance.html) | Подпись, авторство и завершённые действия процесса. |
@@ -74,7 +73,7 @@
 5. Врач выбирает получателя: пациента или доверенное лицо.
 6. DMED проверяет обязательные поля, кодирование лекарства, схему, срок действия, полномочия врача и право на реимбурсацию.
 7. Врач подписывает рецепт.
-8. Обычный рецепт становится доступным для отпуска. Для реимбурсируемого создаётся Task согласования, а рецепт остаётся скрытым от аптек.
+8. Обычный рецепт становится доступным для отпуска. Реимбурсируемый рецепт остаётся скрытым от аптек.
 9. Согласующий одобряет рецепт либо возвращает его на доработку.
 10. Аптека находит доступный рецепт и регистрирует `MedicationDispense`.
 11. Медицинский работник регистрирует `MedicationAdministration`, когда вводит назначенную дозу.
@@ -119,32 +118,30 @@
 2. DMED проверяет право пациента и ограничения.
 3. Выбрать лекарство из списка Фонда и указать длительность лечения.
 4. Подписать рецепт.
-5. Создать `PrescriptionApprovalTask` с `businessStatus = review-pending`.
-6. Согласующий одобряет рецепт либо возвращает его на доработку.
-7. После одобрения рецепт становится доступным договорным аптекам.
+5. Согласующий одобряет рецепт либо возвращает его на доработку.
+6. После одобрения рецепт становится доступным договорным аптекам.
 
 ### Критерии приёмки
 
 - До согласования аптека не может найти рецепт.
-- Состояние согласования хранится в `Task.businessStatus`, а не в `MedicationRequest.status`.
 - Одобрение или возврат на доработку фиксируется в Provenance и AuditEvent.
 - Частичный отпуск отклоняется со стабильным кодом PrescriptionErrorCS.
 
 ## Модель статусов
 
-Значения ниже проверены 17 сентября 2026 года по реальному фильтру списка DMED и query-параметру `status`. DMED объединяет состояния рецепта, согласования и отпуска в одном исходном поле; в FHIR они разделены между `MedicationRequest`, `Task` согласования и `MedicationDispense`.
+Значения ниже проверены 17 сентября 2026 года по реальному фильтру списка DMED и query-параметру `status`. DMED объединяет состояния рецепта, согласования и отпуска в одном исходном поле; в FHIR они разделены между `MedicationRequest` и `MedicationDispense`.
 
-| Код DMED API | Подпись DMED | MedicationRequest.status | Task согласования |
-|---|---|---|---|
-| `not_signed` | Не подписан | `draft` | отсутствует |
-| `created` | Не выдан | `active` | завершён, если согласование требовалось |
-| `awaiting_confirmation` | Ожидает подтверждения | `active` | `requested` / `review-pending` |
-| `revision` | На доработку | `on-hold` | `completed` / `revision-requested` |
-| `approve` | Подтвержден | `active` | `completed` / `approved` |
-| `partially_issued` | Частично выдан | `active` | завершён, если согласование требовалось |
-| `issued` | Выдан | `completed` | завершён, если существует |
-| `expired` | Срок истек | `ended` | завершён или отменён, если существует |
-| `canceled` | Отменен | `cancelled`; `ended`, если рецепт отменил крон истечения срока DMED (без причины отмены) | отменён, если существует |
+| Код DMED API | Подпись DMED | MedicationRequest.status |
+|---|---|---|
+| `not_signed` | Не подписан | `draft` |
+| `created` | Не выдан | `active` |
+| `awaiting_confirmation` | Ожидает подтверждения | `active` |
+| `revision` | На доработку | `on-hold` |
+| `approve` | Подтвержден | `active` |
+| `partially_issued` | Частично выдан | `active` |
+| `issued` | Выдан | `completed` |
+| `expired` | Срок истек | `ended` |
+| `canceled` | Отменен | `cancelled`; `ended`, если рецепт отменил крон истечения срока DMED (без причины отмены) |
 
 `approved` не является допустимым статусом MedicationRequest в FHIR R5. Реализации не должны добавлять локальные строки в обязательную привязку статуса FHIR.
 
@@ -269,7 +266,7 @@
 | `number` | `MedicationRequest.identifier[dmedPrescription]` |
 | `uuid` | `MedicationRequest.identifier[dmedPrescriptionUUID]` |
 | `type` (`simple` / `reimbursement`) | `MedicationRequest.category`: `outpatient`, для `reimbursement` ещё `rembr-0001-00001` |
-| `status` | `MedicationRequest.status` плюс Task согласования и состояние отпуска |
+| `status` | `MedicationRequest.status` плюс состояние отпуска |
 | `drug_appointment.inn` и `drug_appointment.medication` | `MedicationRequest.medication` / связанный Medication |
 | `drug_appointment.patient_uuid` | `MedicationRequest.subject` |
 | Доверенное лицо | `MedicationRequest.extension[trustee]` |
@@ -334,7 +331,7 @@
 
 ## FHIR-обмен
 
-Для атомарного сохранения Medication, MedicationRequest, Task согласования и Provenance используется транзакционный Bundle. Условное создание выполняется по стабильному идентификатору. Обновления учитывают версию ресурса. Успешная транзакция возвращает Bundle типа `transaction-response`, неуспешная — OperationOutcome.
+Для атомарного сохранения Medication, MedicationRequest и Provenance используется транзакционный Bundle. Условное создание выполняется по стабильному идентификатору. Обновления учитывают версию ресурса. Успешная транзакция возвращает Bundle типа `transaction-response`, неуспешная — OperationOutcome.
 
 Специфические бизнес-ошибки рецептов передаются в `OperationOutcome.issue.details.coding` с кодом из [PrescriptionErrorCS](CodeSystem-prescription-error-cs.html) (допустимые коды: [PrescriptionErrorVS](ValueSet-prescription-error-vs.html)). `OperationOutcome.issue.code` остаётся кодом обязательного FHIR-набора IssueType. Для ошибки поля `issue.expression` содержит FHIRPath.
 
@@ -342,7 +339,6 @@
 
 - [обычный рецепт](MedicationRequest-example-ordinary-prescription.html);
 - [реимбурсируемый рецепт](MedicationRequest-example-reimbursement-prescription.html);
-- [Task согласования](Task-example-prescription-approval-task.html);
 - [отпуск](MedicationDispense-example-prescription-dispense.html);
 - [введение](MedicationAdministration-example-prescription-administration.html);
 - [Provenance подписи](Provenance-example-prescription-signature.html);

@@ -28,7 +28,6 @@ Self-administration by a patient at home is not recorded as a `MedicationAdminis
 |---|---|---|
 | Medication | [PrescriptionMedication](StructureDefinition-prescription-medication.html) | Medication selected from the DMED medication dictionary. |
 | MedicationRequest | [PrescriptionMedicationRequest](StructureDefinition-prescription-medication-request.html) | The electronic prescription and dosage instructions. |
-| Task | [PrescriptionApprovalTask](StructureDefinition-prescription-approval-task.html) | Stateful reviewer workflow for reimbursement prescriptions. |
 | MedicationDispense | [PrescriptionMedicationDispense](StructureDefinition-prescription-medication-dispense.html) | Medication actually handed over by the pharmacy. |
 | MedicationAdministration | [PrescriptionMedicationAdministration](StructureDefinition-prescription-medication-administration.html) | Medication administered by healthcare personnel. |
 | Provenance | [PrescriptionProvenance](StructureDefinition-prescription-provenance.html) | Signature, authorship and completed workflow actions. |
@@ -74,7 +73,7 @@ Rules 8, 9, 10 and 11 require server-side validation across resources and time p
 5. The prescriber selects the patient or a trustee as the receiver.
 6. DMED validates required fields, medication coding, regimen, validity, clinician authority and reimbursement eligibility.
 7. The prescriber signs the prescription.
-8. An ordinary prescription becomes available for dispensing. A reimbursement prescription creates an approval Task and remains hidden from pharmacies.
+8. An ordinary prescription becomes available for dispensing. A reimbursement prescription remains hidden from pharmacies.
 9. The reviewer approves the reimbursement prescription or requests revision.
 10. The pharmacy searches for an available prescription and records `MedicationDispense`.
 11. Healthcare personnel record `MedicationAdministration` when they administer a prescribed dose.
@@ -119,32 +118,30 @@ Rules 8, 9, 10 and 11 require server-side validation across resources and time p
 2. DMED validates eligibility and limits.
 3. Select a medication from the Fund list and enter the treatment duration.
 4. Sign the prescription.
-5. Create a `PrescriptionApprovalTask` with `businessStatus = review-pending`.
-6. The reviewer approves or requests revision.
-7. After approval, the prescription becomes visible to contracted pharmacies.
+5. The reviewer approves or requests revision.
+6. After approval, the prescription becomes visible to contracted pharmacies.
 
 ### Acceptance criteria
 
 - Before approval, the pharmacy cannot find the prescription.
-- Approval state is held in `Task.businessStatus`, not in `MedicationRequest.status`.
 - The approval or revision event is recorded in Provenance and AuditEvent.
 - Partial dispensing is rejected with a stable PrescriptionErrorCS code.
 
 ## Status model
 
-The values below were verified against the live DMED list filter and its `status` query parameter on 17 September 2026. DMED combines prescription, approval and dispensing states in one source field; FHIR keeps those concerns in `MedicationRequest`, approval `Task` and `MedicationDispense`.
+The values below were verified against the live DMED list filter and its `status` query parameter on 17 September 2026. DMED combines prescription, approval and dispensing states in one source field; FHIR keeps those concerns in `MedicationRequest` and `MedicationDispense`.
 
-| DMED API code | DMED label | MedicationRequest.status | Approval Task |
-|---|---|---|---|
-| `not_signed` | Not signed | `draft` | none |
-| `created` | Not issued | `active` | completed when approval was required |
-| `awaiting_confirmation` | Awaiting confirmation | `active` | `requested` / `review-pending` |
-| `revision` | Revision requested | `on-hold` | `completed` / `revision-requested` |
-| `approve` | Approved | `active` | `completed` / `approved` |
-| `partially_issued` | Partially issued | `active` | completed when approval was required |
-| `issued` | Issued | `completed` | completed when present |
-| `expired` | Expired | `ended` | completed or cancelled when present |
-| `canceled` | Cancelled | `cancelled`; `ended` when the DMED expiry job cancelled it (no cancellation reason) | cancelled when present |
+| DMED API code | DMED label | MedicationRequest.status |
+|---|---|---|
+| `not_signed` | Not signed | `draft` |
+| `created` | Not issued | `active` |
+| `awaiting_confirmation` | Awaiting confirmation | `active` |
+| `revision` | Revision requested | `on-hold` |
+| `approve` | Approved | `active` |
+| `partially_issued` | Partially issued | `active` |
+| `issued` | Issued | `completed` |
+| `expired` | Expired | `ended` |
+| `canceled` | Cancelled | `cancelled`; `ended` when the DMED expiry job cancelled it (no cancellation reason) |
 
 `approved` is not a valid FHIR R5 MedicationRequest status. Implementations must not add local strings to the required FHIR status binding.
 
@@ -269,7 +266,7 @@ The reimbursement statistics response has this observed shape:
 | `number` | `MedicationRequest.identifier[dmedPrescription]` |
 | `uuid` | `MedicationRequest.identifier[dmedPrescriptionUUID]` |
 | `type` (`simple` / `reimbursement`) | `MedicationRequest.category`: `outpatient`, plus `rembr-0001-00001` for `reimbursement` |
-| `status` | `MedicationRequest.status` plus approval Task and dispense state |
+| `status` | `MedicationRequest.status` plus dispense state |
 | `drug_appointment.inn` and `drug_appointment.medication` | `MedicationRequest.medication` / referenced Medication |
 | `drug_appointment.patient_uuid` | `MedicationRequest.subject` |
 | Trustee | `MedicationRequest.extension[trustee]` |
@@ -334,7 +331,7 @@ The dose form and route identifiers come from the DMED test environment dictiona
 
 ## FHIR exchange
 
-Creation uses a transaction Bundle when Medication, MedicationRequest, approval Task and Provenance must be stored atomically. Conditional create is performed using the stable identifier. Updates are version-aware. A successful transaction returns a transaction-response Bundle; a failed transaction returns OperationOutcome.
+Creation uses a transaction Bundle when Medication, MedicationRequest and Provenance must be stored atomically. Conditional create is performed using the stable identifier. Updates are version-aware. A successful transaction returns a transaction-response Bundle; a failed transaction returns OperationOutcome.
 
 Prescription-specific business errors are carried in `OperationOutcome.issue.details.coding` using [PrescriptionErrorCS](CodeSystem-prescription-error-cs.html) (allowed codes: [PrescriptionErrorVS](ValueSet-prescription-error-vs.html)). `OperationOutcome.issue.code` remains a code from the required FHIR IssueType ValueSet. Field errors include `issue.expression` with a FHIRPath expression.
 
@@ -342,7 +339,6 @@ See the generated examples:
 
 - [ordinary prescription](MedicationRequest-example-ordinary-prescription.html);
 - [reimbursement prescription](MedicationRequest-example-reimbursement-prescription.html);
-- [approval Task](Task-example-prescription-approval-task.html);
 - [dispense](MedicationDispense-example-prescription-dispense.html);
 - [administration](MedicationAdministration-example-prescription-administration.html);
 - [signature Provenance](Provenance-example-prescription-signature.html);

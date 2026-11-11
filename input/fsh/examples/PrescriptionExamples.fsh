@@ -238,24 +238,6 @@ Description: "A 30-day reimbursement prescription awaiting reviewer confirmation
     * start = "2026-09-17"
     * end = "2026-10-16"
 
-Instance: example-prescription-approval-task
-InstanceOf: PrescriptionApprovalTask
-Usage: #example
-Title: "Prescription Approval Task Example"
-Description: "A reimbursement prescription waiting for review."
-* meta.source = $dmed-prescription-source
-* identifier.system = $dmed-prescription-id
-* identifier.value = "R00012077-approval"
-* status = #requested
-* businessStatus = PrescriptionWorkflowStatusCS#review-pending "Awaiting reviewer confirmation"
-* code = PrescriptionWorkflowActionCS#send-for-confirmation "Send for confirmation"
-* focus = Reference(example-reimbursement-prescription)
-* for = Reference(Patient/example-prescription-patient) "Example patient"
-* authoredOn = "2026-09-17T09:16:00+05:00"
-* lastModified = "2026-09-17T09:16:00+05:00"
-* requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
-* owner = Reference(PractitionerRole/example-prescription-reviewer-role) "Prescription reviewer"
-
 Instance: example-prescription-dispense
 InstanceOf: PrescriptionMedicationDispense
 Usage: #example

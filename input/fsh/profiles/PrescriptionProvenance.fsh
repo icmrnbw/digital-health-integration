@@ -9,7 +9,7 @@ Description: "Authorship, signature and workflow-event provenance for prescripti
 * insert PrescriptionMetaSource
 
 * target 1..* MS
-* target only Reference(PrescriptionMedicationRequest or PrescriptionMedication or PrescriptionMedicationDispense or PrescriptionMedicationAdministration or PrescriptionApprovalTask or Bundle)
+* target only Reference(PrescriptionMedicationRequest or PrescriptionMedication or PrescriptionMedicationDispense or PrescriptionMedicationAdministration or Bundle)
 * occurredDateTime 1..1 MS
 * recorded 1..1 MS
 * activity 1..1 MS

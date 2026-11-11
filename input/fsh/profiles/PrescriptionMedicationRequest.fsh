@@ -27,7 +27,7 @@ Profile: PrescriptionMedicationRequest
 Parent: UZCoreMedicationRequest
 Id: prescription-medication-request
 Title: "Prescription Medication Request"
-Description: "Electronic prescription created in DMED. The profile separates FHIR clinical status from the approval business workflow represented by PrescriptionApprovalTask."
+Description: "Electronic prescription created in DMED."
 * ^status = #active
 * ^experimental = true
 * ^publisher = "Uzinfocom"

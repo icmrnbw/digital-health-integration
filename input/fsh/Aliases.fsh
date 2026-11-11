@@ -291,7 +291,6 @@ Alias: $medicationrequest-admin-location = http://terminology.hl7.org/CodeSystem
 Alias: $medicationrequest-admin-location-vs = https://terminology.dhp.uz/fhir/core/ValueSet/medicationrequest-admin-location-vs
 Alias: $medication-request-order-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs
 Alias: $prescription-workflow-action-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-action-cs
-Alias: $prescription-workflow-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-status-cs
 Alias: $prescription-error-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-error-cs
 Alias: $dmed-prescription-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-prescription-status-cs
 Alias: $dmed-prescription-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-prescription-type-cs
