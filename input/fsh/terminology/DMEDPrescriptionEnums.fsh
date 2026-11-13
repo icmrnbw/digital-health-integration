@@ -165,7 +165,7 @@ Instance: dmed-prescription-cancellation-reason-to-status-reason
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED prescription cancellation reason to MedicationRequest status reason"
-Description: "Maps DMED `cancellation_reason` to `MedicationRequest.statusReason`. HL7 has no equivalent for either value, so both map to UZ Core national codes; `cancellation_comment` goes to `statusReason.text`."
+Description: "Maps DMED `cancellation_reason` to `MedicationRequest.statusReason`; `other` has no code; `cancellation_comment` goes to `statusReason.text`."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-prescription-cancellation-reason-to-status-reason"
 * name = "DMEDPrescriptionCancellationReasonToMedicationRequestStatusReason"
 * status = #draft
@@ -174,14 +174,12 @@ Description: "Maps DMED `cancellation_reason` to `MedicationRequest.statusReason
 * sourceScopeCanonical = Canonical(DMEDPrescriptionCancellationReasonVS)
 * targetScopeCanonical = "https://terminology.dhp.uz/fhir/core/ValueSet/medicationrequest-status-reason-vs"
 * group[+].source = Canonical(DMEDPrescriptionCancellationReasonCS)
-* group[=].target = "https://terminology.dhp.uz/fhir/core/CodeSystem/medicationrequest-status-reason-local-cs"
+* group[=].target = $sct
 * group[=].element[+].code = #medical_contraindication
 * group[=].element[=].display = "Медицинское противопоказание"
-* group[=].element[=].target[+].code = #medical-contraindication
-* group[=].element[=].target[=].display = "Tibbiy qarshi ko'rsatma"
+* group[=].element[=].target[+].code = #438833006
+* group[=].element[=].target[=].display = "Administration of medication contraindicated"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #other
 * group[=].element[=].display = "Другое"
-* group[=].element[=].target[+].code = #other
-* group[=].element[=].target[=].display = "Boshqa sabab"
-* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[=].noMap = true
