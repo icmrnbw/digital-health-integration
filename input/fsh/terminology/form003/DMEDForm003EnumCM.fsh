@@ -185,7 +185,7 @@ Instance: dmed-form-003-result-treatment-death-cm
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 003 result_treatment to death circumstance"
-Description: "Maps DMED `result_treatment` deaths to the `death-context` Observation value, or to the maternal death Condition.code as in Form 096."
+Description: "Maps DMED `result_treatment` deaths to the value of the `death-context` Observation: a local death context code, or SNOMED CT antepartum or postpartum maternal death. Death is recorded only in the document: the Patient is not updated and carries no `deceased[x]`."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-003-result-treatment-death-cm"
 * name = "DMEDForm003ResultTreatmentDeathCM"
 * status = #draft
