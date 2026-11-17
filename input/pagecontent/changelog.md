@@ -10,7 +10,7 @@
 
 The [Pharmaceutical Committee registry ATC map](ConceptMap-pharmcom-registry-atc-to-who-atc-cm.html) replaces 76 registry ATC codes that are not in the current WHO ATC.
 
-The [Pharmaceutical Committee registry dose form map](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) maps the 619 registry dose forms to UZ Core dose forms.
+The [Pharmaceutical Committee registry dose form map](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) maps the 650 registry dose forms to UZ Core dose forms.
 
 The [Prescription integration](prescription.html) describes how DMED sends electronic prescriptions, dispenses and administrations to DHP, with six Prescription profiles. ConceptMaps translate the DMED prescription type, status, INN, dose form, route, intake timing, frequency period and cancellation reason to UZ Core and international codes. Only mappings without doubt are published, so a DMED value without one is rejected until it is reviewed.
 

@@ -3108,3 +3108,156 @@ Description: "Maps Pharmaceutical Committee drug registry dose forms (`medicine_
 * group[=].element[=].target[+].code = #SUB101
 * group[=].element[=].target[=].display = "substansiya"
 * group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1265
+* group[=].element[=].display = "Капсулы твердые, пролонгированного действия"
+* group[=].element[=].target[+].code = #CAP111
+* group[=].element[=].target[=].display = "ajralib chiqishi uzaytirilgan kapsulalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1267
+* group[=].element[=].display = "Гранулы для орального раствора"
+* group[=].element[=].target[+].code = #GRA153
+* group[=].element[=].target[=].display = "ichga qabul qilish uchun eritma tayyorlash uchun granulalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1279
+* group[=].element[=].display = "Порошок для приготовления вагинального раствора"
+* group[=].element[=].target[+].code = #POW144
+* group[=].element[=].target[=].display = "vaginal eritma tayyorlash uchun kukun"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1297
+* group[=].element[=].display = "Лиофилизат для приготовления раствора для внутрисосудистого и внутрипузырного введения"
+* group[=].element[=].target[+].code = #LYO101
+* group[=].element[=].target[=].display = "liofilizat"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1338
+* group[=].element[=].display = "Раствор для внутрисосудистого введения"
+* group[=].element[=].target[+].code = #SOL101
+* group[=].element[=].target[=].display = "eritma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1348
+* group[=].element[=].display = "Раствор для накожного скарификационного нанесения, внутрикожного и подкожного введения"
+* group[=].element[=].target[+].code = #SOL101
+* group[=].element[=].target[=].display = "eritma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1395
+* group[=].element[=].display = "Мазь для ректального и наружного применения"
+* group[=].element[=].target[+].code = #OIN101
+* group[=].element[=].target[=].display = "surtma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1412
+* group[=].element[=].display = "Масло для наружного применения"
+* group[=].element[=].target[+].code = #OIL104
+* group[=].element[=].target[=].display = "sirtga qo'llash uchun moy"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1418
+* group[=].element[=].display = "Пастилки, диспергируемые"
+* group[=].element[=].target[+].code = #LOM101
+* group[=].element[=].target[=].display = "dorivor pastilkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1507
+* group[=].element[=].display = "концентрат для приготовления раствора"
+* group[=].element[=].target[+].code = #CON101
+* group[=].element[=].target[=].display = "konsentrat"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #1517
+* group[=].element[=].display = "Лекарственное растительное сырьё"
+* group[=].element[=].target[+].code = #HRB101
+* group[=].element[=].target[=].display = "dorivor o'simlik xomashyosi"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #1931
+* group[=].element[=].display = "Система внутриматочная терапевтическая"
+* group[=].element[=].target[+].code = #SYS103
+* group[=].element[=].target[=].display = "bachadon ichiga terapevtik sistema"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #2258
+* group[=].element[=].display = "Лиофилизат, приготовления суспензии для подкожного введения и накожного скарификационного нанесения"
+* group[=].element[=].target[+].code = #LYO101
+* group[=].element[=].target[=].display = "liofilizat"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #2270
+* group[=].element[=].display = "Раствор пленкообразующий для наружного применения"
+* group[=].element[=].target[+].code = #SOL127
+* group[=].element[=].target[=].display = "sirtga qo'llash uchun eritma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #2310
+* group[=].element[=].display = "Гранулы для приготовления суспензии для внутреннего применения"
+* group[=].element[=].target[+].code = #GRA181
+* group[=].element[=].target[=].display = "ichga qabul qilish uchun suspenziya tayyorlash uchun granulalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #2314
+* group[=].element[=].display = "Гранулы шипучие для приготовления раствора для приема внутрь"
+* group[=].element[=].target[+].code = #GRA153
+* group[=].element[=].target[=].display = "ichga qabul qilish uchun eritma tayyorlash uchun granulalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #2351
+* group[=].element[=].display = "раствор для внутривенного инфузионного введения"
+* group[=].element[=].target[+].code = #SOL122
+* group[=].element[=].target[=].display = "infuziya uchun eritma"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #2353
+* group[=].element[=].display = "Раствор для подкожного/внутривенного введения"
+* group[=].element[=].target[+].code = #SOL123
+* group[=].element[=].target[=].display = "inyeksiya uchun eritma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #2401
+* group[=].element[=].display = "Комплекс пептидов для инъекций"
+* group[=].element[=].target[+].code = #SOL123
+* group[=].element[=].target[=].display = "inyeksiya uchun eritma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #2406
+* group[=].element[=].display = "Лиофилизат для приготовления раствора для инъекций, местного и наружного применения"
+* group[=].element[=].target[+].code = #LYO101
+* group[=].element[=].target[=].display = "liofilizat"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #2920
+* group[=].element[=].display = "Пастилки диспергируемые в полости рта"
+* group[=].element[=].target[+].code = #LOM101
+* group[=].element[=].target[=].display = "dorivor pastilkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #3002
+* group[=].element[=].display = "иммуноглобулин антирабический для иньекций"
+* group[=].element[=].target[+].code = #SOL123
+* group[=].element[=].target[=].display = "inyeksiya uchun eritma"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #3440
+* group[=].element[=].display = "Лиофилизат для приготовления суспензии для внутрикожного введения"
+* group[=].element[=].target[+].code = #LYO256
+* group[=].element[=].target[=].display = "teri ichiga yuborish uchun suspenziya tayyorlash uchun liofilizat"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #3662
+* group[=].element[=].display = "Педиатрический порошок для приёма внутрь"
+* group[=].element[=].target[+].code = #POW105
+* group[=].element[=].target[=].display = "ichga qabul uchun kukun"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #4060
+* group[=].element[=].display = "Диспергируемые таблетки для приготовления суспензии для приема внутрь"
+* group[=].element[=].target[+].code = #TAB192
+* group[=].element[=].target[=].display = "ichga qabul qilish uchun suspenziya tayyorlash uchun tabletkalar"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #4720
+* group[=].element[=].display = "Концентрат для раствора для инфузий"
+* group[=].element[=].target[+].code = #CON126
+* group[=].element[=].target[=].display = "infuziya uchun eritma tayyorlash uchun konsentrat"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #5420
+* group[=].element[=].display = "Суспензия для приёма внутрь с малиновым вкусом"
+* group[=].element[=].target[+].code = #SUS116
+* group[=].element[=].target[=].display = "ichga qabul qilish uchun suspenziya"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #5460
+* group[=].element[=].display = "Таблетки пролонгированного действия"
+* group[=].element[=].target[+].code = #TAB121
+* group[=].element[=].target[=].display = "taʼsiri uzaytirilgan tabletkalar"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #5780
+* group[=].element[=].display = "раствор для инъекций для внутримышечного введения"
+* group[=].element[=].target[+].code = #SOL110
+* group[=].element[=].target[=].display = "mushak ichiga yuborish uchun eritma"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #6361
+* group[=].element[=].display = "Лиофилизат для приготовления раствора для инфузий"
+* group[=].element[=].target[+].code = #LYO221
+* group[=].element[=].target[=].display = "infuziya uchun eritma tayyorlash uchun liofilizat"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #6380
+* group[=].element[=].display = "в комплекте с  канюля для переливания жидкости"
+* group[=].element[=].noMap = true

@@ -6823,6 +6823,341 @@
               "relationship": "equivalent"
             }
           ]
+        },
+        {
+          "code": "1265",
+          "display": "Капсулы твердые, пролонгированного действия",
+          "target": [
+            {
+              "code": "CAP111",
+              "display": "ajralib chiqishi uzaytirilgan kapsulalar",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1267",
+          "display": "Гранулы для орального раствора",
+          "target": [
+            {
+              "code": "GRA153",
+              "display": "ichga qabul qilish uchun eritma tayyorlash uchun granulalar",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "1279",
+          "display": "Порошок для приготовления вагинального раствора",
+          "target": [
+            {
+              "code": "POW144",
+              "display": "vaginal eritma tayyorlash uchun kukun",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "1297",
+          "display": "Лиофилизат для приготовления раствора для внутрисосудистого и внутрипузырного введения",
+          "target": [
+            {
+              "code": "LYO101",
+              "display": "liofilizat",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1338",
+          "display": "Раствор для внутрисосудистого введения",
+          "target": [
+            {
+              "code": "SOL101",
+              "display": "eritma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1348",
+          "display": "Раствор для накожного скарификационного нанесения, внутрикожного и подкожного введения",
+          "target": [
+            {
+              "code": "SOL101",
+              "display": "eritma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1395",
+          "display": "Мазь для ректального и наружного применения",
+          "target": [
+            {
+              "code": "OIN101",
+              "display": "surtma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1412",
+          "display": "Масло для наружного применения",
+          "target": [
+            {
+              "code": "OIL104",
+              "display": "sirtga qo'llash uchun moy",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "1418",
+          "display": "Пастилки, диспергируемые",
+          "target": [
+            {
+              "code": "LOM101",
+              "display": "dorivor pastilkalar",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1507",
+          "display": "концентрат для приготовления раствора",
+          "target": [
+            {
+              "code": "CON101",
+              "display": "konsentrat",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "1517",
+          "display": "Лекарственное растительное сырьё",
+          "target": [
+            {
+              "code": "HRB101",
+              "display": "dorivor o'simlik xomashyosi",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "1931",
+          "display": "Система внутриматочная терапевтическая",
+          "target": [
+            {
+              "code": "SYS103",
+              "display": "bachadon ichiga terapevtik sistema",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "2258",
+          "display": "Лиофилизат, приготовления суспензии для подкожного введения и накожного скарификационного нанесения",
+          "target": [
+            {
+              "code": "LYO101",
+              "display": "liofilizat",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "2270",
+          "display": "Раствор пленкообразующий для наружного применения",
+          "target": [
+            {
+              "code": "SOL127",
+              "display": "sirtga qo'llash uchun eritma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "2310",
+          "display": "Гранулы для приготовления суспензии для внутреннего применения",
+          "target": [
+            {
+              "code": "GRA181",
+              "display": "ichga qabul qilish uchun suspenziya tayyorlash uchun granulalar",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "2314",
+          "display": "Гранулы шипучие для приготовления раствора для приема внутрь",
+          "target": [
+            {
+              "code": "GRA153",
+              "display": "ichga qabul qilish uchun eritma tayyorlash uchun granulalar",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "2351",
+          "display": "раствор для внутривенного инфузионного введения",
+          "target": [
+            {
+              "code": "SOL122",
+              "display": "infuziya uchun eritma",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "2353",
+          "display": "Раствор для подкожного/внутривенного введения",
+          "target": [
+            {
+              "code": "SOL123",
+              "display": "inyeksiya uchun eritma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "2401",
+          "display": "Комплекс пептидов для инъекций",
+          "target": [
+            {
+              "code": "SOL123",
+              "display": "inyeksiya uchun eritma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "2406",
+          "display": "Лиофилизат для приготовления раствора для инъекций, местного и наружного применения",
+          "target": [
+            {
+              "code": "LYO101",
+              "display": "liofilizat",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "2920",
+          "display": "Пастилки диспергируемые в полости рта",
+          "target": [
+            {
+              "code": "LOM101",
+              "display": "dorivor pastilkalar",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "3002",
+          "display": "иммуноглобулин антирабический для иньекций",
+          "target": [
+            {
+              "code": "SOL123",
+              "display": "inyeksiya uchun eritma",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "3440",
+          "display": "Лиофилизат для приготовления суспензии для внутрикожного введения",
+          "target": [
+            {
+              "code": "LYO256",
+              "display": "teri ichiga yuborish uchun suspenziya tayyorlash uchun liofilizat",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "3662",
+          "display": "Педиатрический порошок для приёма внутрь",
+          "target": [
+            {
+              "code": "POW105",
+              "display": "ichga qabul uchun kukun",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "4060",
+          "display": "Диспергируемые таблетки для приготовления суспензии для приема внутрь",
+          "target": [
+            {
+              "code": "TAB192",
+              "display": "ichga qabul qilish uchun suspenziya tayyorlash uchun tabletkalar",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "4720",
+          "display": "Концентрат для раствора для инфузий",
+          "target": [
+            {
+              "code": "CON126",
+              "display": "infuziya uchun eritma tayyorlash uchun konsentrat",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "5420",
+          "display": "Суспензия для приёма внутрь с малиновым вкусом",
+          "target": [
+            {
+              "code": "SUS116",
+              "display": "ichga qabul qilish uchun suspenziya",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ]
+        },
+        {
+          "code": "5460",
+          "display": "Таблетки пролонгированного действия",
+          "target": [
+            {
+              "code": "TAB121",
+              "display": "taʼsiri uzaytirilgan tabletkalar",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "5780",
+          "display": "раствор для инъекций для внутримышечного введения",
+          "target": [
+            {
+              "code": "SOL110",
+              "display": "mushak ichiga yuborish uchun eritma",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "6361",
+          "display": "Лиофилизат для приготовления раствора для инфузий",
+          "target": [
+            {
+              "code": "LYO221",
+              "display": "infuziya uchun eritma tayyorlash uchun liofilizat",
+              "relationship": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "6380",
+          "display": "в комплекте с  канюля для переливания жидкости",
+          "noMap": true
         }
       ]
     }
