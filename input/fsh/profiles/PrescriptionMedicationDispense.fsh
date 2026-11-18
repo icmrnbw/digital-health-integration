@@ -19,6 +19,7 @@ Description: "Medication actually supplied by a pharmacy against a DMED electron
 * identifier[dmedDispense].system = $dmed-dispense-id
 * identifier[dmedDispense].value 1..1 MS
 * status MS
+* category MS
 * medication only CodeableReference(PrescriptionMedication)
 * subject MS
 * performer 1..* MS

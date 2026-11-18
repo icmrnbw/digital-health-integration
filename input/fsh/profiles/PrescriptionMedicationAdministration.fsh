@@ -19,16 +19,15 @@ Description: "Medication administration performed by healthcare personnel agains
 * identifier[dmedAdministration].system = $dmed-administration-id
 * identifier[dmedAdministration].value 1..1 MS
 * status MS
+* statusReason MS
 * medication only CodeableReference(PrescriptionMedication)
 * subject only Reference(UZCorePatient)
-* encounter 1..1 MS
 * encounter only Reference(UZCoreEncounter)
 * occurence[x] only dateTime
 * occurenceDateTime 1..1 MS
 * recorded 1..1 MS
 * performer 1..* MS
 * performer.actor only CodeableReference(UZCorePractitionerRole)
-* request 1..1 MS
 * request only Reference(PrescriptionMedicationRequest)
 * dosage 1..1 MS
 * dosage.text MS

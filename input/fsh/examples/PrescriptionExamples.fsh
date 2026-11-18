@@ -98,21 +98,6 @@ Title: "Prescription Nurse Role Example"
 * organization = Reference(example-prescription-organization)
 * code = $position-and-profession-cs#2221.3 "Medical nurse with higher education"
 
-Instance: example-prescription-encounter
-InstanceOf: UZCoreEncounter
-Usage: #example
-Title: "Prescription Encounter Example"
-Description: "Example outpatient encounter in which the prescription is authored."
-* status = #completed
-* class = $v3-ActCode#AMB "ambulatory"
-* type[nationalType] = $encounter-type-cs#mserv-0001-00004 "Treatment services"
-* subject = Reference(example-prescription-patient)
-* participant.type = $v3-ParticipationType#ATND "attender"
-* participant.actor = Reference(example-prescriber-role)
-* actualPeriod
-  * start = "2026-09-17T08:30:00+05:00"
-  * end = "2026-09-17T09:30:00+05:00"
-
 Instance: example-prescription-condition
 InstanceOf: UZCoreCondition
 Usage: #example
@@ -176,7 +161,6 @@ Description: "An ordinary prescription for one tablet three times a day for 30 d
 * category = $medicationrequest-admin-location#outpatient "Outpatient"
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
-* encounter = Reference(Encounter/example-prescription-encounter) "Example outpatient encounter"
 * authoredOn = "2026-09-17T09:00:00+05:00"
 * requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
 * reason = Reference(Condition/example-prescription-condition) "Clinical indication"
@@ -222,7 +206,6 @@ Description: "A 30-day reimbursement prescription awaiting reviewer confirmation
 * category[+] = $medication-request-order-type-cs#rembr-0001-00001 "Rembursatsiyali buyurtma"
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
-* encounter = Reference(Encounter/example-prescription-encounter) "Example outpatient encounter"
 * authoredOn = "2026-09-17T09:15:00+05:00"
 * requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
 * reason = Reference(Condition/example-reimbursement-condition) "Diagnosis covered by the reimbursement programme"
@@ -263,6 +246,7 @@ Description: "An allowed partial dispense of 80 tablets against an ordinary pres
 * meta.source = $dmed-prescription-source
 * identifier[dmedDispense].value = "DISP-A00012076-01"
 * status = #completed
+* category = $medicationdispense-admin-location#outpatient "Outpatient"
 * medication = Reference(example-prescription-medication-batch)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * performer.actor = Reference(PractitionerRole/example-pharmacist-role) "Example pharmacist"
@@ -280,17 +264,15 @@ Instance: example-prescription-administration
 InstanceOf: PrescriptionMedicationAdministration
 Usage: #example
 Title: "Prescription Medication Administration Example"
-Description: "A medication dose administered by healthcare personnel."
+Description: "A medication dose from a DMED treatment course administered by healthcare personnel."
 * meta.source = $dmed-prescription-source
 * identifier[dmedAdministration].value = "ADM-A00012076-01"
 * status = #completed
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
-* encounter = Reference(Encounter/example-prescription-encounter) "Example encounter"
 * occurenceDateTime = "2026-09-18T08:00:00+05:00"
 * recorded = "2026-09-18T08:01:00+05:00"
 * performer.actor = Reference(PractitionerRole/example-nurse-role) "Example nurse"
-* request = Reference(example-ordinary-prescription)
 * dosage
   * text = "One tablet administered orally"
   * route = $sct#26643006 "Oral route"
@@ -321,6 +303,183 @@ Description: "Digital signature of a specific prescription version."
   * targetFormat = #application/fhir+json
   * sigFormat = #application/jose
   * data = "ZXhhbXBsZS1zaWduYXR1cmU="
+
+RuleSet: PrescriptionExampleOrdinaryBody
+* meta.source = $dmed-prescription-source
+* category = $medicationrequest-admin-location#outpatient "Outpatient"
+* medication = Reference(example-prescription-medication)
+* subject = Reference(Patient/example-prescription-patient) "Example patient"
+* requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
+* reason = Reference(Condition/example-prescription-condition) "Clinical indication"
+* dosageInstruction[0]
+  * patientInstruction = "Take one tablet three times a day for 30 days."
+  * timing.repeat
+    * frequency = 3
+    * period = 1
+    * periodUnit = #d
+  * route = $sct#26643006 "Oral route"
+  * doseAndRate[0].doseQuantity
+    * value = 1
+    * unit = "tablet"
+    * system = $ucum
+    * code = #1
+* dispenseRequest
+  * quantity
+    * value = 90
+    * unit = "tablet"
+    * system = $ucum
+    * code = #1
+  * expectedSupplyDuration
+    * value = 30
+    * unit = "day"
+    * system = $ucum
+    * code = #d
+
+Instance: example-prescription-approval
+InstanceOf: PrescriptionProvenance
+Usage: #example
+Title: "Prescription Approval Provenance Example"
+Description: "The clinic reviewer approves a reimbursement prescription in DMED."
+* meta.source = $dmed-prescription-source
+* target = Reference(example-reimbursement-prescription)
+* occurredDateTime = "2026-09-17T11:20:00+05:00"
+* recorded = "2026-09-17T11:20:02+05:00"
+* activity = PrescriptionWorkflowActionCS#approve "Approve prescription"
+* patient = Reference(Patient/example-prescription-patient) "Example patient"
+* agent
+  * type = $provenance-participant-type#verifier "Verifier"
+  * who = Reference(PractitionerRole/example-prescription-reviewer-role) "Prescription reviewer"
+
+Instance: example-prescription-on-hold
+InstanceOf: PrescriptionMedicationRequest
+Usage: #example
+Title: "Prescription Returned for Revision Example"
+Description: "A reimbursement prescription the clinic reviewer returned to the doctor for revision."
+* meta.source = $dmed-prescription-source
+* identifier[dmedPrescription].value = "R00012078"
+* status = #on-hold
+* statusReason.text = "Уточните дозировку"
+* category[0] = $medicationrequest-admin-location#outpatient "Outpatient"
+* category[+] = $medication-request-order-type-cs#rembr-0001-00001 "Rembursatsiyali buyurtma"
+* medication = Reference(example-prescription-medication)
+* subject = Reference(Patient/example-prescription-patient) "Example patient"
+* authoredOn = "2026-09-17T09:20:00+05:00"
+* requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
+* reason = Reference(Condition/example-reimbursement-condition) "Diagnosis covered by the reimbursement programme"
+* effectiveDosePeriod.start = "2026-09-17"
+* effectiveDosePeriod.end = "2026-10-16"
+* dosageInstruction[0]
+  * patientInstruction = "Take one tablet once a day for 30 days."
+  * timing.repeat
+    * frequency = 1
+    * period = 1
+    * periodUnit = #d
+  * route = $sct#26643006 "Oral route"
+  * doseAndRate[0].doseQuantity
+    * value = 1
+    * unit = "tablet"
+    * system = $ucum
+    * code = #1
+* dispenseRequest
+  * quantity
+    * value = 30
+    * unit = "tablet"
+    * system = $ucum
+    * code = #1
+  * expectedSupplyDuration
+    * value = 30
+    * unit = "day"
+    * system = $ucum
+    * code = #d
+  * validityPeriod
+    * start = "2026-09-17"
+    * end = "2026-10-16"
+
+Instance: example-prescription-revision-request
+InstanceOf: PrescriptionProvenance
+Usage: #example
+Title: "Prescription Revision Request Provenance Example"
+Description: "The clinic reviewer returns a reimbursement prescription for revision."
+* meta.source = $dmed-prescription-source
+* target = Reference(example-prescription-on-hold)
+* occurredDateTime = "2026-09-17T11:05:00+05:00"
+* recorded = "2026-09-17T11:05:02+05:00"
+* activity = PrescriptionWorkflowActionCS#request-revision "Request revision"
+* patient = Reference(Patient/example-prescription-patient) "Example patient"
+* agent
+  * type = $provenance-participant-type#verifier "Verifier"
+  * who = Reference(PractitionerRole/example-prescription-reviewer-role) "Prescription reviewer"
+
+Instance: example-prescription-cancelled
+InstanceOf: PrescriptionMedicationRequest
+Usage: #example
+Title: "Cancelled Prescription Example"
+Description: "An ordinary prescription cancelled by the doctor because of a medical contraindication."
+* insert PrescriptionExampleOrdinaryBody
+* identifier[dmedPrescription].value = "A00012079"
+* status = #cancelled
+* statusReason = $sct#438833006 "Administration of medication contraindicated"
+* statusReason.text = "Аллергия на парацетамол в анамнезе"
+* statusChanged = "2026-09-18T09:10:00+05:00"
+* authoredOn = "2026-09-17T09:30:00+05:00"
+* effectiveDosePeriod.start = "2026-09-17"
+* effectiveDosePeriod.end = "2026-10-16"
+* dispenseRequest.validityPeriod
+  * start = "2026-09-17"
+  * end = "2026-12-15"
+
+Instance: example-prescription-cancellation
+InstanceOf: PrescriptionProvenance
+Usage: #example
+Title: "Prescription Cancellation Provenance Example"
+Description: "The doctor cancels a prescription."
+* meta.source = $dmed-prescription-source
+* target = Reference(example-prescription-cancelled)
+* occurredDateTime = "2026-09-18T09:10:00+05:00"
+* recorded = "2026-09-18T09:10:03+05:00"
+* activity = PrescriptionWorkflowActionCS#cancel "Cancel prescription"
+* patient = Reference(Patient/example-prescription-patient) "Example patient"
+* agent
+  * type = $provenance-participant-type#author "Author"
+  * who = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
+
+Instance: example-prescription-renewed
+InstanceOf: PrescriptionMedicationRequest
+Usage: #example
+Title: "Renewed Prescription Example"
+Description: "A renewal: a new prescription with a new DMED number. DMED does not keep a link to the earlier prescription, so priorPrescription is not filled."
+* insert PrescriptionExampleOrdinaryBody
+* identifier[dmedPrescription].value = "A00012190"
+* status = #active
+* authoredOn = "2026-10-16T09:00:00+05:00"
+* effectiveDosePeriod.start = "2026-10-16"
+* effectiveDosePeriod.end = "2026-11-14"
+* dispenseRequest.validityPeriod
+  * start = "2026-10-16"
+  * end = "2027-01-13"
+
+Instance: example-prescription-administration-not-done
+InstanceOf: PrescriptionMedicationAdministration
+Usage: #example
+Title: "Prescription Administration Not Done Example"
+Description: "A scheduled dose from a DMED treatment course that was not given."
+* meta.source = $dmed-prescription-source
+* identifier[dmedAdministration].value = "ADM-A00012076-02"
+* status = #not-done
+* statusReason.text = "Пациент отказался от процедуры"
+* medication = Reference(example-prescription-medication)
+* subject = Reference(Patient/example-prescription-patient) "Example patient"
+* occurenceDateTime = "2026-09-19T08:00:00+05:00"
+* recorded = "2026-09-19T08:15:00+05:00"
+* performer.actor = Reference(PractitionerRole/example-nurse-role) "Example nurse"
+* dosage
+  * text = "One tablet orally, not given"
+  * route = $sct#26643006 "Oral route"
+  * dose
+    * value = 1
+    * unit = "tablet"
+    * system = $ucum
+    * code = #1
 
 Instance: example-prescription-operation-outcome
 InstanceOf: OperationOutcome
@@ -360,3 +519,22 @@ Description: "Atomic creation of a medication, an ordinary prescription and its 
   * request
     * method = #POST
     * url = "Provenance"
+
+Instance: example-prescription-transaction-response
+InstanceOf: Bundle
+Usage: #example
+Title: "Prescription Transaction Response Example"
+Description: "DHP response to the prescription transaction: the medication already existed, the prescription and its provenance were created."
+* type = #transaction-response
+* timestamp = "2026-09-17T09:01:06+05:00"
+* entry[0].response
+  * status = "200 OK"
+  * location = "Medication/example-prescription-medication/_history/1"
+* entry[+].response
+  * status = "201 Created"
+  * location = "MedicationRequest/example-ordinary-prescription/_history/1"
+  * etag = "W/\"1\""
+* entry[+].response
+  * status = "201 Created"
+  * location = "Provenance/example-prescription-signature/_history/1"
+  * etag = "W/\"1\""

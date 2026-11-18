@@ -288,6 +288,7 @@ Alias: $form-044-observation-code-cs = https://terminology.dhp.uz/fhir/integrati
 
 // ===================== PRESCRIPTION =====================
 Alias: $medicationrequest-admin-location = http://terminology.hl7.org/CodeSystem/medicationrequest-admin-location
+Alias: $medicationdispense-admin-location = http://hl7.org/fhir/medicationdispense-admin-location
 Alias: $medicationrequest-admin-location-vs = https://terminology.dhp.uz/fhir/core/ValueSet/medicationrequest-admin-location-vs
 Alias: $medication-request-order-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/medication-request-order-type-cs
 Alias: $prescription-workflow-action-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/prescription-workflow-action-cs
