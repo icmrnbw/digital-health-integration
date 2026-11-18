@@ -139,13 +139,30 @@ Instance: example-prescription-medication
 InstanceOf: PrescriptionMedication
 Usage: #example
 Title: "Prescription Medication Example"
-Description: "Paracetamol tablets selected from the DMED medication dictionary."
+Description: "Paracetamol tablets: a DMED trade name with its Pharmaceutical Committee registry identifier."
 * meta.source = $dmed-prescription-source
 * language = #en
-* identifier[dmedMedication].value = "inn-005325-form-TAB101"
+* identifier[dmedMedication].value = "48210"
+* identifier[uzpharmBoxGroupID].value = "102345"
 * code = $atc#N02BE01 "Paracetamol"
 * status = #active
 * doseForm = $medication-doseform-cs#TAB101 "tablets"
+
+Instance: example-prescription-medication-batch
+InstanceOf: PrescriptionMedication
+Usage: #example
+Title: "Prescription Dispensed Batch Example"
+Description: "The batch of paracetamol tablets actually dispensed, shared by all dispenses of this batch."
+* meta.source = $dmed-prescription-source
+* language = #en
+* identifier[dmedMedication].value = "48210"
+* identifier[uzpharmBoxGroupID].value = "102345"
+* code = $atc#N02BE01 "Paracetamol"
+* status = #active
+* doseForm = $medication-doseform-cs#TAB101 "tablets"
+* batch
+  * lotNumber = "PCM-0926"
+  * expirationDate = "2028-08-31"
 
 Instance: example-ordinary-prescription
 InstanceOf: PrescriptionMedicationRequest
@@ -246,7 +263,7 @@ Description: "An allowed partial dispense of 80 tablets against an ordinary pres
 * meta.source = $dmed-prescription-source
 * identifier[dmedDispense].value = "DISP-A00012076-01"
 * status = #completed
-* medication = Reference(example-prescription-medication)
+* medication = Reference(example-prescription-medication-batch)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * performer.actor = Reference(PractitionerRole/example-pharmacist-role) "Example pharmacist"
 * authorizingPrescription = Reference(example-ordinary-prescription)
@@ -329,7 +346,7 @@ Description: "Atomic creation of a medication, an ordinary prescription and its 
   * request
     * method = #POST
     * url = "Medication"
-    * ifNoneExist = "identifier=https://dhp.uz/fhir/core/sid/medication/uz/dmed|inn-005325-form-TAB101"
+    * ifNoneExist = "identifier=https://uzpharminfo.uz/box_group_id|102345"
 * entry[+]
   * fullUrl = "https://example.org/fhir/MedicationRequest/example-ordinary-prescription"
   * resource = example-ordinary-prescription
