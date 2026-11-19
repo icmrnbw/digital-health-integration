@@ -133,22 +133,6 @@ Description: "Paracetamol tablets: a DMED trade name with its Pharmaceutical Com
 * status = #active
 * doseForm = $medication-doseform-cs#TAB101 "tablets"
 
-Instance: example-prescription-medication-batch
-InstanceOf: PrescriptionMedication
-Usage: #example
-Title: "Prescription Dispensed Batch Example"
-Description: "The batch of paracetamol tablets actually dispensed, shared by all dispenses of this batch."
-* meta.source = $dmed-prescription-source
-* language = #en
-* identifier[dmedMedication].value = "48210"
-* identifier[uzpharmBoxGroupID].value = "102345"
-* code = $atc#N02BE01 "Paracetamol"
-* status = #active
-* doseForm = $medication-doseform-cs#TAB101 "tablets"
-* batch
-  * lotNumber = "PCM-0926"
-  * expirationDate = "2028-08-31"
-
 Instance: example-ordinary-prescription
 InstanceOf: PrescriptionMedicationRequest
 Usage: #example
@@ -245,17 +229,24 @@ Title: "Prescription Dispense Example"
 Description: "An allowed partial dispense of 80 tablets against an ordinary prescription for 90 tablets."
 * meta.source = $dmed-prescription-source
 * identifier[dmedDispense].value = "DISP-A00012076-01"
+* identifier[globalTradeItemID].value = "09506000134352"
+// Illustrative package codes, not production marking codes.
+* identifier[markingID][0].value = "010950600013435221DEMO-PACK-001"
+* identifier[markingID][1].value = "010950600013435221DEMO-PACK-002"
 * status = #completed
 * category = $medicationdispense-admin-location#outpatient "Outpatient"
-* medication = Reference(example-prescription-medication-batch)
+* extension[dispensedBatch]
+  * extension[lotNumber].valueString = "PCM-0926"
+  * extension[expirationDate].valueDateTime = "2028-08-31"
+* medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * performer.actor = Reference(PractitionerRole/example-pharmacist-role) "Example pharmacist"
 * authorizingPrescription = Reference(example-ordinary-prescription)
 * quantity
   * value = 80
-  * unit = "tablet"
-  * system = $ucum
-  * code = #1
+  * unit = "piece"
+  * system = $medication-total-volume-local-units-cs
+  * code = #piece
 * recorded = "2026-09-18T10:40:00+05:00"
 * whenHandedOver = "2026-09-18T10:40:00+05:00"
 * receiver = Reference(Patient/example-prescription-patient) "Example patient"

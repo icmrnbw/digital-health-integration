@@ -8,16 +8,36 @@ Description: "Medication actually supplied by a pharmacy against a DMED electron
 * ^publisher = "Uzinfocom"
 * insert PrescriptionMetaSource
 
+* extension contains PrescriptionDispenseBatch named dispensedBatch 0..1 MS
+* extension[dispensedBatch] ^short = "Batch lot number and expiration date reported for this dispense"
+
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #open
-* identifier contains dmedDispense 1..1 MS
+* identifier contains
+    dmedDispense 1..1 MS and
+    globalTradeItemID 0..1 MS and
+    markingID 0..* MS
 * identifier[dmedDispense].use 1..1 MS
 * identifier[dmedDispense].use = #official
 * identifier[dmedDispense].system 1..1 MS
 * identifier[dmedDispense].system = $dmed-dispense-id
 * identifier[dmedDispense].value 1..1 MS
+* identifier[globalTradeItemID]
+  * ^short = "GTIN of the product supplied in this dispense; not a dispense key"
+  * ^definition = "Source-reported GTIN of the supplied product. This identifies the trade item, not the dispense event. Do not use it for conditional creation, updates or deduplication of dispenses."
+  * system 1..1 MS
+  * system = $globalTradeItemID
+  * value 1..1 MS
+  * use 0..0
+* identifier[markingID]
+  * ^short = "Marking code of a supplied package; not a dispense key"
+  * ^definition = "Source-reported Asl Belgisi code of an individual supplied package. Repeat for each distinct code reported for this dispense. The same code may occur in an erroneous dispense and its replacement; it is not a globally unique dispense key."
+  * system 1..1 MS
+  * system = $markingID
+  * value 1..1 MS
+  * use 0..0
 * status MS
 * category MS
 * medication only CodeableReference(PrescriptionMedication)
