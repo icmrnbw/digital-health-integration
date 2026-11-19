@@ -523,7 +523,7 @@ Description: "Atomic creation of a medication, an ordinary prescription and its 
   * request
     * method = #POST
     * url = "Medication"
-    * ifNoneExist = "identifier=https://uzpharminfo.uz/box_group_id|102345"
+    * ifNoneExist = "identifier=https://uzpharminfo.uz/boxGroupId|102345"
 * entry[+]
   * fullUrl = "https://example.org/fhir/MedicationRequest/example-ordinary-prescription"
   * resource = example-ordinary-prescription
