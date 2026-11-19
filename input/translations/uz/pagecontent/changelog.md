@@ -9,6 +9,8 @@
 
 [Farmatsevtika qo'mitasi reyestri dori shakllari xaritasi](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) reyestrning 650 ta dori shaklini UZ Core dori shakllari bilan bog'laydi.
 
+[Farmatsevtika qo'mitasi reyestri faol moddalar xaritasi](ConceptMap-pharmcom-registry-substance-to-inn-cm.html) INN kodlari bor preparatlardagi 1 793 ta [reyestr faol moddasidan](CodeSystem-pharmcom-registry-substance-cs.html) 1 381 tasini, tuzlar va gidratlar bilan birga, `Medication.ingredient` uchun UZ Core INN kodlari bilan bog'laydi.
+
 [Retseptlar integratsiyasi](prescription.html) DMED elektron retseptlar, tasdiqlash, dori berish va dori yuborish ma'lumotlarini DHP ga qanday yuborishini oltita Prescription profili bilan tavsiflaydi. ConceptMap lar DMED retsept turi va holati, INN, dori shakli, yuborish yo'li, qabul qilish vaqti, chastota davri va bekor qilish sababini UZ Core va xalqaro kodlarga o'tkazadi. Faqat shubhasiz moslik e'lon qilinadi, shuning uchun mosligi yo'q DMED qiymati tekshirilguncha rad etiladi.
 
 ### Versiya 0.13.0

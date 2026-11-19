@@ -6,6 +6,8 @@ The [Pharmaceutical Committee registry ATC map](ConceptMap-pharmcom-registry-atc
 
 The [Pharmaceutical Committee registry dose form map](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) maps the 650 registry dose forms to UZ Core dose forms.
 
+The [Pharmaceutical Committee registry substance map](ConceptMap-pharmcom-registry-substance-to-inn-cm.html) maps 1,381 of the 1,793 [registry active substances](CodeSystem-pharmcom-registry-substance-cs.html) of products that have INN codes, including salts and hydrates, to UZ Core INN codes for `Medication.ingredient`.
+
 The [Prescription Dispense Batch extension](StructureDefinition-prescription-dispense-batch.html) records the source-reported lot number and expiration date on [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html), without requiring a separate batch-specific Medication. GTIN and Asl Belgisi package codes are distinct identifiers; only the DMED dispense identifier is the event key. Repeated groups represent multiple source-reported batches within the same dispense and charge.
 
 The [Prescription integration](prescription.html) describes how DMED sends electronic prescriptions, dispenses and administrations to DHP, with six Prescription profiles. ConceptMaps translate the DMED prescription type, status, INN, dose form, route, intake timing, frequency period and cancellation reason to UZ Core and international codes. Only mappings without doubt are published, so a DMED value without one is rejected until it is reviewed.
