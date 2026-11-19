@@ -165,7 +165,7 @@ Description: "Laterality of the anatomical site affected by the primary cancer."
 Extension: PrescriptionDispenseBatch
 Id: prescription-dispense-batch
 Title: "Prescription Dispense Batch"
-Description: "Source-reported lot number and expiration date of the medication supplied in this dispense. These describe the batch, not the serial number of an individual package. Include only data available in the source; do not infer missing values."
+Description: "Source-reported lot number and expiration date of one batch supplied in a dispense. Repeat the extension for each reported batch. These describe the batch, not the serial number of an individual package. Include only data available in the source; do not infer missing values."
 Context: MedicationDispense
 * ^status = #draft
 * ^experimental = true

@@ -8,8 +8,8 @@ Description: "Medication actually supplied by a pharmacy against a DMED electron
 * ^publisher = "Uzinfocom"
 * insert PrescriptionMetaSource
 
-* extension contains PrescriptionDispenseBatch named dispensedBatch 0..1 MS
-* extension[dispensedBatch] ^short = "Batch lot number and expiration date reported for this dispense"
+* extension contains PrescriptionDispenseBatch named dispensedBatch 0..* MS
+* extension[dispensedBatch] ^short = "Source-reported batches supplied in this dispense"
 
 * identifier 1..* MS
 * identifier ^slicing.discriminator.type = #value

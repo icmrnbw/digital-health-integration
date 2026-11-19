@@ -154,11 +154,13 @@ The pharmacist uses the existing DMED search and dispensing workflow. One source
 
 Medication references the actual trade product. GTIN is in identifier[globalTradeItemID], and each reported Asl Belgisi package code has its own identifier[markingID]. Only identifier[dmedDispense] is the event key; GTIN, package codes and lot numbers must not be used to update or deduplicate dispenses.
 
-Source-reported lot number and expiration date are grouped in the [Prescription Dispense Batch extension](StructureDefinition-prescription-dispense-batch.html). Either field may be absent, but the group cannot be empty. A batch-specific Medication is not created solely for these fields. The current extension represents one batch; multiple batches within one source line require confirmed source structure before expanding this model. Missing package codes or a mismatch between their count and quantity alone do not reject a dispense.
+Source-reported lot number and expiration date are grouped in the [Prescription Dispense Batch extension](StructureDefinition-prescription-dispense-batch.html). Either field may be absent, but the group cannot be empty. A batch-specific Medication is not created solely for these fields. Repeat the extension for each distinct source-reported batch within the same dispense line. The line remains one dispense and one ChargeItem, without allocating its total sale amount between batches. These groups list reported batches; they do not by themselves identify which package code belongs to which batch, or assert a quantity per batch. Missing package codes or a mismatch between their count and quantity alone do not reject a dispense.
 
 The full sale amount from sale_price is in UZ Core ChargeItem.totalPriceComponent (type base, UZS), linked to the dispense. This is separate from the reimbursement benefit in ClaimResponse. Erroneous source lines mark both the dispense and charge entered-in-error.
 
 Ordinary dispensing may be partial and includes the source's whole-pack rounding. Reimbursement dispensing is full, in whole packs. These describe the existing source process.
+
+For the external pharmacy mass_issue channel, the complete source batch, GTIN and package-code data is included in the DHP exchange contract. For web dispensing, transmit only the trustworthy package codes retained by DMED; the list may be incomplete. Do not infer quantity, sale amount or reimbursement from the code count, reject a dispense solely for missing package codes, or split a full reimbursement dispense to collect codes.
 
 ## Medication administration
 
@@ -172,7 +174,7 @@ Renewal creates a new prescription with a new DMED identifier. DMED has no link 
 
 Manual cancellation maps to cancelled; expiry, including the expiry job's cancellation without a reason, maps to ended. Resources and their history are retained.
 
-Only Prescription writes MedicationRequest. Reimbursement creates Claim referencing the already stored signed request, then ClaimResponse; Prescription asynchronously adds the insurance reference. validityPeriod remains the DMED prescription period, while ClaimResponse.preAuthPeriod is the separate funding window. A funding refusal does not delete the request or automatically change its clinical status. The source field and format of the refusal reason are not yet confirmed; disposition is the proposed representation if text is available.
+Only Prescription writes MedicationRequest. Reimbursement creates Claim referencing the already stored signed request, then ClaimResponse; Prescription asynchronously adds the insurance reference. validityPeriod remains the DMED prescription period, while ClaimResponse.preAuthPeriod is the separate funding window. A funding refusal does not delete the request or automatically change its clinical status. The refusal reason is supplied as text and is recorded in ClaimResponse.disposition by Reimbursement.
 
 ## Observed DMED API contract
 

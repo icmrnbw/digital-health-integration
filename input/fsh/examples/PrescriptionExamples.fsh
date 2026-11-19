@@ -238,7 +238,7 @@ Instance: example-prescription-dispense
 InstanceOf: PrescriptionMedicationDispense
 Usage: #example
 Title: "Prescription Dispense Example"
-Description: "An allowed partial dispense of 80 tablets against an ordinary prescription for 90 tablets."
+Description: "An allowed partial dispense of 80 tablets from two reported batches against an ordinary prescription for 90 tablets. Package-to-batch allocation is not asserted by this example."
 * meta.source = $dmed-prescription-source
 * identifier[dmedDispense].value = "DISP-A00012076-01"
 * identifier[globalTradeItemID].value = "09506000134352"
@@ -247,9 +247,12 @@ Description: "An allowed partial dispense of 80 tablets against an ordinary pres
 * identifier[markingID][1].value = "010950600013435221DEMO-PACK-002"
 * status = #completed
 * category = $medicationdispense-admin-location#outpatient "Outpatient"
-* extension[dispensedBatch]
+* extension[dispensedBatch][0]
   * extension[lotNumber].valueString = "PCM-0926"
   * extension[expirationDate].valueDateTime = "2028-08-31"
+* extension[dispensedBatch][1]
+  * extension[lotNumber].valueString = "PCM-1026"
+  * extension[expirationDate].valueDateTime = "2028-09-30"
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * performer.actor = Reference(PractitionerRole/example-pharmacist-role) "Example pharmacist"

@@ -5,7 +5,7 @@
 [044-shakl, xorijga ketayotganlar uchun tibbiy ma'lumotnoma](StructureDefinition-form-044-travel-clearance-composition.html) FHIR hujjati sifatida profillandi: shaxsiy ma'lumotlar, kechirgan yuqumli kasalliklar, komissiyaning borish mamlakati va xizmat safari muddati bilan chet elga chiqishga ruxsati, yashash joyi, komissiya raisi va a'zolari - 5 ta Composition bo'limida. Hujjat namunasi (Bundle) va [maydonma-maydon moslashtirish sahifasi](form-044-mapping.html) bilan birga.
 [Farmatsevtika qo'mitasi reyestri ATX kodlari xaritasi](ConceptMap-pharmcom-registry-atc-to-who-atc-cm.html) reyestrning joriy WHO ATC da yo'q 76 ta ATX kodini almashtiradi.
 
-[Dori berish partiyasi kengaytmasi](StructureDefinition-prescription-dispense-batch.html) partiya raqami va yaroqlilik muddatini [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) ichida saqlaydi. GTIN va Asl Belgisi kodlari alohida identifikatorlarda uzatiladi; berish hodisasining kaliti faqat DMED identifikatoridir.
+[Dori berish partiyasi kengaytmasi](StructureDefinition-prescription-dispense-batch.html) partiya raqami va yaroqlilik muddatini [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) ichida saqlaydi. GTIN va Asl Belgisi kodlari alohida identifikatorlarda uzatiladi; berish hodisasining kaliti faqat DMED identifikatoridir. Takrorlanuvchi guruhlar bitta berish hodisasi va umumiy summa doirasida bir nechta partiyani ifodalaydi.
 
 [Farmatsevtika qo'mitasi reyestri dori shakllari xaritasi](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) reyestrning 650 ta dori shaklini UZ Core dori shakllari bilan bog'laydi.
 
