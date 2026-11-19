@@ -335,6 +335,11 @@
           "noMap": true
         },
         {
+          "code": "10372",
+          "display": "коллоидный диоксид силикона",
+          "noMap": true
+        },
+        {
           "code": "10387",
           "display": "D-Сорбит",
           "noMap": true
@@ -2983,6 +2988,11 @@
           "noMap": true
         },
         {
+          "code": "12825",
+          "display": "Безводная лактоза",
+          "noMap": true
+        },
+        {
           "code": "12826",
           "display": "Кальций динатрий ЭДТА",
           "noMap": true
@@ -3896,6 +3906,11 @@
           ],
           "code": "13915",
           "display": "Мелфалан гидрохлорид"
+        },
+        {
+          "code": "13918",
+          "display": "Эссенция ароматическая пищевая",
+          "noMap": true
         },
         {
           "code": "13924",
@@ -8116,9 +8131,15 @@
           "display": "эстрадиол"
         },
         {
+          "target": [
+            {
+              "code": "009173",
+              "display": "estradiola valerat",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "19290",
-          "display": "эстрадиол валерат",
-          "noMap": true
+          "display": "эстрадиол валерат"
         },
         {
           "target": [
@@ -11049,6 +11070,17 @@
           ],
           "code": "21780",
           "display": "норфлоксацин"
+        },
+        {
+          "target": [
+            {
+              "code": "004928",
+              "display": "norgestrel",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "21786",
+          "display": "норгестрел"
         },
         {
           "target": [
@@ -14145,6 +14177,11 @@
           "display": "Амоксициллина тригидрат"
         },
         {
+          "code": "24707",
+          "display": "триглицериды средней цепи",
+          "noMap": true
+        },
+        {
           "target": [
             {
               "code": "004727",
@@ -14194,6 +14231,16 @@
         {
           "code": "24744",
           "display": "натрия цитрат",
+          "noMap": true
+        },
+        {
+          "code": "24750",
+          "display": "Рыбий жир очищенный",
+          "noMap": true
+        },
+        {
+          "code": "24751",
+          "display": "оливковое масло",
           "noMap": true
         },
         {
@@ -14252,6 +14299,11 @@
         {
           "code": "24797",
           "display": "Хондроитина сульфат",
+          "noMap": true
+        },
+        {
+          "code": "24803",
+          "display": "глюкоза",
           "noMap": true
         },
         {
@@ -15770,6 +15822,11 @@
         {
           "code": "46291",
           "display": "Трипсин",
+          "noMap": true
+        },
+        {
+          "code": "46369",
+          "display": "Диэтаноламин",
           "noMap": true
         },
         {

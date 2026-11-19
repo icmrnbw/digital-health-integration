@@ -4,7 +4,7 @@
 
 [Интеграция рецептов](prescription.html) описывает, как DMED передаёт в DHP электронные рецепты, отпуск и введение препаратов, с шестью профилями Prescription. ConceptMap переводят тип и статус рецепта DMED, МНН, лекарственную форму, путь введения, режим приёма, период кратности и причину отмены в коды UZ Core и международные коды. Публикуются только бесспорные соответствия, поэтому значение DMED без соответствия отклоняется, пока его не проверят.
 
-[Карта действующих веществ реестра Фармкомитета](ConceptMap-pharmcom-registry-substance-to-inn-cm.html) сопоставляет 1 381 из 1 793 [действующих веществ реестра](CodeSystem-pharmcom-registry-substance-cs.html) в препаратах с кодами МНН, включая соли и гидраты, с кодами МНН UZ Core для `Medication.ingredient`.
+[Карта действующих веществ реестра Фармкомитета](ConceptMap-pharmcom-registry-substance-to-inn-cm.html) сопоставляет 1 383 из 1 802 [действующих веществ реестра](CodeSystem-pharmcom-registry-substance-cs.html) в препаратах с кодами МНН, включая соли и гидраты, с кодами МНН UZ Core для `Medication.ingredient`.
 
 [Карта кодов АТХ реестра Фармкомитета](ConceptMap-pharmcom-registry-atc-to-who-atc-cm.html) заменяет 76 кодов АТХ реестра, которых нет в текущем WHO ATC.
 

@@ -173,6 +173,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[+].code = #10366
 * group[=].element[=].display = "динатрия эдетат"
 * group[=].element[=].noMap = true
+* group[=].element[+].code = #10372
+* group[=].element[=].display = "коллоидный диоксид силикона"
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #10387
 * group[=].element[=].display = "D-Сорбит"
 * group[=].element[=].noMap = true
@@ -1445,6 +1448,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[+].code = #12822
 * group[=].element[=].display = "Витепсол S55"
 * group[=].element[=].noMap = true
+* group[=].element[+].code = #12825
+* group[=].element[=].display = "Безводная лактоза"
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #12826
 * group[=].element[=].display = "Кальций динатрий ЭДТА"
 * group[=].element[=].noMap = true
@@ -1882,6 +1888,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[+].code = #004072
 * group[=].element[=].target[=].display = "melfalan"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #13918
+* group[=].element[=].display = "Эссенция ароматическая пищевая"
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #13924
 * group[=].element[=].display = "Меглюмин (N-метилглюкамин)"
 * group[=].element[=].noMap = true
@@ -3834,7 +3843,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #19290
 * group[=].element[=].display = "эстрадиол валерат"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #009173
+* group[=].element[=].target[=].display = "estradiola valerat"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #19296
 * group[=].element[=].display = "эстрон"
 * group[=].element[=].target[+].code = #009179
@@ -5176,6 +5187,11 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].display = "норфлоксацин"
 * group[=].element[=].target[+].code = #004945
 * group[=].element[=].target[=].display = "norfloksatsin"
+* group[=].element[=].target[=].relationship = #equivalent
+* group[=].element[+].code = #21786
+* group[=].element[=].display = "норгестрел"
+* group[=].element[=].target[+].code = #004928
+* group[=].element[=].target[=].display = "norgestrel"
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #21799
 * group[=].element[=].display = "носкапин"
@@ -6595,6 +6611,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[+].code = #000439
 * group[=].element[=].target[=].display = "amoksitsillin"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #24707
+* group[=].element[=].display = "триглицериды средней цепи"
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #24724
 * group[=].element[=].display = "Неостигмин метилсульфат"
 * group[=].element[=].target[+].code = #004727
@@ -6622,6 +6641,12 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #24744
 * group[=].element[=].display = "натрия цитрат"
+* group[=].element[=].noMap = true
+* group[=].element[+].code = #24750
+* group[=].element[=].display = "Рыбий жир очищенный"
+* group[=].element[=].noMap = true
+* group[=].element[+].code = #24751
+* group[=].element[=].display = "оливковое масло"
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #24754
 * group[=].element[=].display = "Кофеин"
@@ -6652,6 +6677,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #24797
 * group[=].element[=].display = "Хондроитина сульфат"
+* group[=].element[=].noMap = true
+* group[=].element[+].code = #24803
+* group[=].element[=].display = "глюкоза"
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #24825
 * group[=].element[=].display = "L-Треонин"
@@ -7438,6 +7466,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #46291
 * group[=].element[=].display = "Трипсин"
+* group[=].element[=].noMap = true
+* group[=].element[+].code = #46369
+* group[=].element[=].display = "Диэтаноламин"
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #46403
 * group[=].element[=].display = "Кальция гидрофосфат"
