@@ -147,7 +147,9 @@ Description: "An ordinary prescription for one tablet three times a day for 30 d
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * authoredOn = "2026-09-17T09:00:00+05:00"
 * requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
-* reason = Reference(Condition/example-prescription-condition) "Clinical indication"
+* reason
+  * concept = $icd-10#E11.9 "Type 2 diabetes mellitus without complications"
+  * reference = Reference(Condition/example-prescription-condition) "Clinical indication"
 * effectiveDosePeriod.start = "2026-09-17"
 * effectiveDosePeriod.end = "2026-10-16"
 * dosageInstruction[0]
@@ -156,18 +158,23 @@ Description: "An ordinary prescription for one tablet three times a day for 30 d
     * frequency = 3
     * period = 1
     * periodUnit = #d
+    * boundsDuration
+      * value = 30
+      * unit = "day"
+      * system = $ucum
+      * code = #d
   * route = $sct#26643006 "Oral route"
   * doseAndRate[0].doseQuantity
     * value = 1
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
 * dispenseRequest
   * quantity
     * value = 90
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
   * expectedSupplyDuration
     * value = 30
     * unit = "day"
@@ -201,18 +208,23 @@ Description: "A 30-day reimbursement prescription awaiting reviewer confirmation
     * frequency = 1
     * period = 1
     * periodUnit = #d
+    * boundsDuration
+      * value = 30
+      * unit = "day"
+      * system = $ucum
+      * code = #d
   * route = $sct#26643006 "Oral route"
   * doseAndRate[0].doseQuantity
     * value = 1
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
 * dispenseRequest
   * quantity
     * value = 30
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
   * expectedSupplyDuration
     * value = 30
     * unit = "day"
@@ -269,9 +281,9 @@ Description: "A medication dose from a DMED treatment course administered by hea
   * route = $sct#26643006 "Oral route"
   * dose
     * value = 1
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
 
 Instance: example-prescription-signature
 InstanceOf: PrescriptionProvenance
@@ -301,25 +313,32 @@ RuleSet: PrescriptionExampleOrdinaryBody
 * medication = Reference(example-prescription-medication)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * requester = Reference(PractitionerRole/example-prescriber-role) "Family doctor"
-* reason = Reference(Condition/example-prescription-condition) "Clinical indication"
+* reason
+  * concept = $icd-10#E11.9 "Type 2 diabetes mellitus without complications"
+  * reference = Reference(Condition/example-prescription-condition) "Clinical indication"
 * dosageInstruction[0]
   * patientInstruction = "Take one tablet three times a day for 30 days."
   * timing.repeat
     * frequency = 3
     * period = 1
     * periodUnit = #d
+    * boundsDuration
+      * value = 30
+      * unit = "day"
+      * system = $ucum
+      * code = #d
   * route = $sct#26643006 "Oral route"
   * doseAndRate[0].doseQuantity
     * value = 1
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
 * dispenseRequest
   * quantity
     * value = 90
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
   * expectedSupplyDuration
     * value = 30
     * unit = "day"
@@ -365,18 +384,23 @@ Description: "A reimbursement prescription the clinic reviewer returned to the d
     * frequency = 1
     * period = 1
     * periodUnit = #d
+    * boundsDuration
+      * value = 30
+      * unit = "day"
+      * system = $ucum
+      * code = #d
   * route = $sct#26643006 "Oral route"
   * doseAndRate[0].doseQuantity
     * value = 1
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
 * dispenseRequest
   * quantity
     * value = 30
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
   * expectedSupplyDuration
     * value = 30
     * unit = "day"
@@ -468,9 +492,9 @@ Description: "A scheduled dose from a DMED treatment course that was not given."
   * route = $sct#26643006 "Oral route"
   * dose
     * value = 1
-    * unit = "tablet"
-    * system = $ucum
-    * code = #1
+    * unit = "piece"
+    * system = $medication-total-volume-local-units-cs
+    * code = #piece
 
 Instance: example-prescription-operation-outcome
 InstanceOf: OperationOutcome
@@ -529,3 +553,21 @@ Description: "DHP response to the prescription transaction: the medication alrea
   * status = "201 Created"
   * location = "Provenance/example-prescription-signature/_history/1"
   * etag = "W/\"1\""
+
+Instance: example-prescription-dispense-charge
+InstanceOf: UZCoreChargeItem
+Usage: #example
+Title: "Prescription Dispense Charge Example"
+Description: "Total sale amount of one DMED dispense line, separate from any reimbursement benefit."
+* identifier
+  * system = $dmed-dispense-id
+  * value = "DISP-A00012076-01"
+* status = #billable
+* code = $sct#373784005 "Dispensing medication"
+* subject = Reference(example-prescription-patient)
+* service = Reference(example-prescription-dispense)
+* totalPriceComponent
+  * type = #base
+  * amount
+    * value = 32000
+    * currency = #UZS

@@ -127,6 +127,7 @@ Alias: $local-observation-code = https://terminology.dhp.uz/fhir/integrations/Co
 Alias: $education-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/education-cs
 Alias: $occupation-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs
 Alias: $benefit-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/benefits-cs
+Alias: $lab-categories-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/lab-categories-cs
 Alias: $citizenship = https://terminology.dhp.uz/fhir/core/CodeSystem/iso3166-two-letter-cs
 Alias: $practioner-role = http://terminology.hl7.org/CodeSystem/practitioner-role
 Alias: $social-status = https://terminology.dhp.uz/fhir/core/CodeSystem/social-status-cs
@@ -314,3 +315,14 @@ Alias: $route-codes-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/route-c
 Alias: $medication-total-volume-local-units-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/medication-total-volume-local-units-cs
 Alias: $medicationrequest-status = http://hl7.org/fhir/CodeSystem/medicationrequest-status
 Alias: $task-status = http://hl7.org/fhir/task-status
+
+// Blood donor observations
+Alias: $blood-group-vs = https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs
+Alias: $blood-registration-number = https://dhp.uz/fhir/core/sid/doc/uz/blood-registration
+Alias: $blood-rh-vs = https://terminology.dhp.uz/fhir/core/ValueSet/blood-rh-vs
+
+Alias: $blood-service-request-number = https://dhp.uz/fhir/core/sid/doc/uz/blood-service-request
+Alias: $blood-donation-number = https://dhp.uz/fhir/core/sid/prd/uz/blood/donation
+Alias: $blood-donor-eligibility-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/blood-donor-eligibility-cs
+Alias: $flag-category = http://terminology.hl7.org/CodeSystem/flag-category
+Alias: $workflow-reason = http://hl7.org/fhir/StructureDefinition/workflow-reason

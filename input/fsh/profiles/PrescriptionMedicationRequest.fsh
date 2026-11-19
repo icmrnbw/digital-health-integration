@@ -60,10 +60,12 @@ Description: "Electronic prescription created in DMED."
 * category ^short = "Always outpatient; a reimbursement prescription also has the UZ Core reimbursable order code rembr-0001-00001"
 * medication only CodeableReference(PrescriptionMedication)
 * subject MS
-* encounter MS
+* encounter 0..0
 * authoredOn 1..1 MS
 * requester 1..1 MS
 * reason MS
+* insurance MS
+* insurance ^comment = "Prescription is the sole writer of this request. It adds the ClaimResponse reference asynchronously after Reimbursement has processed the existing request; it does not wait for ClaimResponse before creating the request."
 * extension[trustee] 0..1 MS
 
 * effectiveDosePeriod 1..1 MS
@@ -76,6 +78,7 @@ Description: "Electronic prescription created in DMED."
 * dosageInstruction.timing.repeat.frequency 1..1 MS
 * dosageInstruction.timing.repeat.period 1..1 MS
 * dosageInstruction.timing.repeat.periodUnit 1..1 MS
+* dosageInstruction.timing.repeat.boundsDuration MS
 * dosageInstruction.route 0..1 MS
 * dosageInstruction.route ^comment = "The route that the DMED Prescription Route to FHIR Route ConceptMap gives for `drug_administration_route_id`. Left out when the DMED value names a method rather than a route; the DMED code is then in `method`."
 * dosageInstruction.method MS

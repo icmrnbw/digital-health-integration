@@ -17,7 +17,7 @@ Self-administration by a patient at home is not recorded as a `MedicationAdminis
 | Pharmacist | Finds an available prescription, checks the permitted data and records the actual dispense. |
 | Nurse or other administering practitioner | Records medication administered to the patient. |
 | Patient | Receives the prescribed medication. |
-| Trustee | Receives medication for the patient. A relative may be used for either prescription type; a patronage nurse is permitted for reimbursement prescriptions. |
+| Trustee | Receives medication for the patient. The existing source determines whether the trustee is a relative or a patronage nurse. |
 | State Health Insurance Fund | Defines reimbursement diagnoses, medicines, quantity and duration limits, clinic budgets and contracted pharmacies. |
 | DMED | Executes the clinical workflow and sends validated FHIR resources. |
 | DHP | Validates, stores and exposes resources according to access-control policy. |
@@ -47,22 +47,19 @@ Every prescription has `MedicationRequest.category` `outpatient` ([MedicationReq
 
 ## General business rules
 
-1. One prescribed medication is represented by one `MedicationRequest`. Several items may be sent in one atomic transaction, but they remain separate requests.
-2. Medication selection starts with INN. DMED then presents registered product templates and trade names from the pharmaceutical master data.
-3. A signed prescription has a stable DMED business identifier. Repeating the same command must not create a duplicate.
-4. Dose and quantity include a numeric value, display unit, system and code.
-5. The total quantity may be calculated from dose, frequency and duration. The prescriber may correct the calculated quantity when the real regimen requires it.
-6. An ordinary prescription has a maximum validity of 90 days. Its planned treatment duration is 30, 60 or at most 90 days in the described DMED workflow.
-7. A reimbursement prescription takes any treatment duration from 1 to 90 days, like an ordinary one; DMED sets its validity to 30 days.
-8. Only one reimbursement prescription for the same INN is allowed during a rolling 30-day period.
-9. No more than four reimbursement INNs may be prescribed to one patient in one calendar month. Each INN retains its own 30-day blocking period.
-10. An ordinary dispense may be smaller than the prescribed amount but must never exceed it.
-11. A reimbursement prescription is dispensed only in complete packs. Partial reimbursement dispense is forbidden.
-12. Physical deletion is forbidden. Cancellation uses `MedicationRequest.status = cancelled`, a reason and audit records.
-13. An approved prescription is not edited in place. Renewal cancels the previous request, creates a new request and preserves the relationship between them.
-14. A pharmacy only receives information required for dispensing and does not receive the complete medical record.
-
-Rules 8, 9, 10 and 11 require server-side validation across resources and time periods. They cannot be guaranteed by a StructureDefinition invariant alone.
+1. DMED business processes are the source of truth. This integration selects existing data for transmission and maps it to DHP; it does not introduce new DMED workflow restrictions or mandatory data capture.
+2. One prescribed medication is represented by one MedicationRequest. Repeated delivery is idempotent by the DMED identifier.
+3. An initially unsigned prescription is not sent to DHP. A later edit under the same identifier must preserve version and signature history; the availability of complete change events is still to be confirmed.
+4. Dose and quantity use coded units. The dose, prescribed total and dispensed quantity use the agreed local piece unit; pack codes are not quantities.
+5. Course duration and prescription validity are distinct. Course days map to timing.repeat.boundsDuration and course dates to effectiveDosePeriod; validityPeriod is taken from DMED and does not exceed the agreed 90-day limit.
+6. An ordinary prescription may be partially dispensed. DMED may round up to a whole pack; DHP preserves the reported quantity rather than rejecting the event solely for exceeding the prescribed amount. DMED owns the remaining-quantity calculation.
+7. A reimbursement prescription is dispensed in full, in whole packs; there is no partial reimbursement dispense in the existing workflow. Eligibility and funding limits belong to the existing DMED and Reimbursement processes.
+8. Only Prescription writes MedicationRequest and MedicationDispense. Reimbursement writes Claim and ClaimResponse. The signed request exists before Claim is created; Prescription adds its insurance reference asynchronously.
+9. Prescription validity and the reimbursement authorization window are stored separately. Reimbursement uses the sale amount in ChargeItem and keeps the reimbursement benefit separately in ClaimResponse.
+10. Deleted erroneous dispense lines are represented by entered-in-error on both MedicationDispense and ChargeItem, retaining history.
+11. Renewal uses a new DMED identifier. DMED does not retain the relationship to the previous prescription, so priorPrescription and basedOn are not inferred.
+12. MedicationAdministration records a DMED treatment course independently of electronic prescriptions; request and encounter are not populated.
+13. The pharmacy receives only the data needed for its existing dispensing workflow. Trustee identity fields selected for DHP are reviewed separately from DMED's external pharmacy API response.
 
 ## Overall process
 
@@ -76,7 +73,7 @@ Rules 8, 9, 10 and 11 require server-side validation across resources and time p
 8. An ordinary prescription becomes available for dispensing. A reimbursement prescription remains hidden from pharmacies.
 9. The reviewer approves the reimbursement prescription or requests revision.
 10. The pharmacy searches for an available prescription and records `MedicationDispense`.
-11. Healthcare personnel record `MedicationAdministration` when they administer a prescribed dose.
+11. Healthcare personnel record MedicationAdministration under a treatment course, independently of the electronic prescription.
 12. `Provenance` and `AuditEvent` preserve signature, authorship and access history.
 
 ## Ordinary prescription
@@ -84,7 +81,7 @@ Rules 8, 9, 10 and 11 require server-side validation across resources and time p
 ### Preconditions
 
 - The prescriber is authenticated and has an active PractitionerRole.
-- Patient and encounter context are resolved.
+- The patient and prescriber are resolved; MedicationRequest.encounter is not populated.
 - Medication and terminology services are available.
 
 ### Scenario
@@ -99,7 +96,7 @@ Rules 8, 9, 10 and 11 require server-side validation across resources and time p
 ### Acceptance criteria
 
 - The DMED prescription identifier begins with A and is unique.
-- `MedicationRequest.status` is `draft` before signing and `active` after signing.
+- Initially unsigned prescriptions are not sent to DHP; draft is not used. A signed ordinary prescription is active. Later return to unsigned depends on the available source event mapping.
 - Expected supply duration and validity do not exceed 90 days.
 - The prescription is visible to authorized pharmacies after signing.
 
@@ -133,7 +130,7 @@ The values below were verified against the live DMED list filter and its `status
 
 | DMED API code | DMED label | MedicationRequest.status |
 |---|---|---|
-| `not_signed` | Not signed | `draft` |
+| `not_signed` | Not signed | Not sent initially; no draft resource. Later edits require existing-resource event mapping. |
 | `created` | Not issued | `active` |
 | `awaiting_confirmation` | Awaiting confirmation | `active` |
 | `revision` | Revision requested | `on-hold` |
@@ -149,27 +146,33 @@ The values below were verified against the live DMED list filter and its `status
 
 When the patient collects the medicine, `MedicationDispense.receiver` references the Patient. When another person collects it, the prescription uses the UZ Core `trustee` extension and the dispense receiver references the same RelatedPerson or PractitionerRole.
 
-A relative is represented by UZ Core RelatedPerson. A patronage nurse is represented by UZ Core PractitionerRole and is only allowed for reimbursement prescriptions. Safe codes and identity evidence are not placed in narrative text, logs or unrestricted audit details.
+A relative is represented by UZ Core RelatedPerson. A patronage nurse is represented by UZ Core PractitionerRole when that trustee type is supplied by DMED. Safe codes and identity evidence are not placed in narrative text, logs or unrestricted audit details.
 
 ## Dispensing
 
-The pharmacist may find an available prescription by QR code, patient PINFL plus safe code, or prescription ID plus safe code and patient date of birth. The search mode must match the prescription type.
+The pharmacist uses the existing DMED search and dispensing workflow. One source drug_issues line is one MedicationDispense and one ChargeItem; repeated transmission does not create duplicates.
 
-Before dispensing, the pharmacist verifies the prescription, medication, INN, dose form, dose, route, duration and permitted quantity. The actual trade product, batch/serial details, expiration date, quantity and price are captured by the pharmacy workflow. The FHIR clinical event is `PrescriptionMedicationDispense` linked through `authorizingPrescription`.
+Medication references the actual trade product. GTIN is in identifier[globalTradeItemID], and each reported Asl Belgisi package code has its own identifier[markingID]. Only identifier[dmedDispense] is the event key; GTIN, package codes and lot numbers must not be used to update or deduplicate dispenses.
 
-For an ordinary prescription, a quantity lower than requested is allowed and the remaining amount is calculated from all completed dispense resources. For reimbursement, the server rejects a quantity that does not fulfil the complete-pack rule.
+Source-reported lot number and expiration date are grouped in the [Prescription Dispense Batch extension](StructureDefinition-prescription-dispense-batch.html). Either field may be absent, but the group cannot be empty. A batch-specific Medication is not created solely for these fields. The current extension represents one batch; multiple batches within one source line require confirmed source structure before expanding this model. Missing package codes or a mismatch between their count and quantity alone do not reject a dispense.
+
+The full sale amount from sale_price is in UZ Core ChargeItem.totalPriceComponent (type base, UZS), linked to the dispense. This is separate from the reimbursement benefit in ClaimResponse. Erroneous source lines mark both the dispense and charge entered-in-error.
+
+Ordinary dispensing may be partial and includes the source's whole-pack rounding. Reimbursement dispensing is full, in whole packs. These describe the existing source process.
 
 ## Medication administration
 
-`PrescriptionMedicationAdministration` is created only for administration by healthcare personnel. It references the prescription through `request`, the patient through `subject`, the clinical encounter and the administering PractitionerRole. `occurenceDateTime` is the R5 element spelling used by the base resource.
+PrescriptionMedicationAdministration is based on UZ Core MedicationAdministration and records administration by healthcare personnel under a DMED treatment course. It records the patient, time and administering PractitionerRole. request and encounter are not populated. occurenceDateTime is the R5 element spelling. Self-administration at home is outside this profile.
 
 ## Update, renewal and cancellation
 
-An editable prescription may be updated using version-aware FHIR update. The client sends `If-Match` with the last known version and handles version conflicts.
+Use version-aware updates and preserve the history of the same DMED prescription. DMED may return a signed request to unsigned, edit it and sign it again; DHP does not require a ban on that workflow. A prior signature must not be represented as signing changed content. Complete change data and the re-signing event must be confirmed from existing DMED data before that mapping is treated as implemented. Correct existing dispenses and charges are retained.
 
-An approved prescription is renewed by cancelling the previous MedicationRequest, creating a new business identifier, copying permitted clinical data and linking the new request to the previous request. The selected relationship (`priorPrescription` or `basedOn`) must be used consistently by all implementations.
+Renewal creates a new prescription with a new DMED identifier. DMED has no link to the earlier prescription, so priorPrescription and basedOn are not inferred.
 
-Cancellation requires a reason, changes status to `cancelled`, never deletes the resource and produces audit records.
+Manual cancellation maps to cancelled; expiry, including the expiry job's cancellation without a reason, maps to ended. Resources and their history are retained.
+
+Only Prescription writes MedicationRequest. Reimbursement creates Claim referencing the already stored signed request, then ClaimResponse; Prescription asynchronously adds the insurance reference. validityPeriod remains the DMED prescription period, while ClaimResponse.preAuthPeriod is the separate funding window. A funding refusal does not delete the request or automatically change its clinical status. The source field and format of the refusal reason are not yet confirmed; disposition is the proposed representation if text is available.
 
 ## Observed DMED API contract
 
@@ -270,7 +273,7 @@ The reimbursement statistics response has this observed shape:
 | `drug_appointment.inn` and `drug_appointment.medication` | `MedicationRequest.medication` / referenced Medication |
 | `drug_appointment.patient_uuid` | `MedicationRequest.subject` |
 | Trustee | `MedicationRequest.extension[trustee]` |
-| Encounter | `MedicationRequest.encounter` |
+| Encounter | Not populated |
 | `drug_appointment.doctor_id` | `MedicationRequest.requester` |
 | reimbursement diagnosis/eligibility context | `MedicationRequest.reason` |
 | `drug_appointment.start_date` / `end_date` | `MedicationRequest.effectiveDosePeriod` |
@@ -278,7 +281,7 @@ The reimbursement statistics response has this observed shape:
 | `drug_administration_route.id` | `MedicationRequest.dosageInstruction.route` through ConceptMap |
 | `single_dose`, `substance_dosage.measurement_unit` | `MedicationRequest.dosageInstruction.doseAndRate.doseQuantity` |
 | `total_amount` | `MedicationRequest.dispenseRequest.quantity` |
-| `count_days` | `MedicationRequest.dispenseRequest.expectedSupplyDuration` |
+| `count_days` | `MedicationRequest.dosageInstruction.timing.repeat.boundsDuration` |
 | `created_at`, `expiration_date` | `MedicationRequest.dispenseRequest.validityPeriod` |
 | `cancellation_reason`, `cancellation_comment` | `MedicationRequest.statusReason` and `note` according to access policy |
 | `safe_code` | Not placed in a FHIR clinical resource, narrative or log. |
@@ -301,10 +304,10 @@ The reimbursement statistics response has this observed shape:
 | DMED field | FHIR path |
 |---|---|
 | Administration ID | `MedicationAdministration.identifier` |
-| Prescription | `MedicationAdministration.request` |
+| Electronic prescription | Not populated; administration belongs to a treatment course |
 | Medication | `MedicationAdministration.medication` |
 | Patient | `MedicationAdministration.subject` |
-| Encounter | `MedicationAdministration.encounter` |
+| Encounter | Not populated |
 | Performed time | `MedicationAdministration.occurenceDateTime` |
 | Performer | `MedicationAdministration.performer.actor` |
 | Route and dose | `MedicationAdministration.dosage` |
@@ -352,6 +355,6 @@ See the generated examples:
 - Validate terminology codes and ConceptMap versions.
 - Reject unknown local codes and naked quantities without `system` and `code`.
 - Enforce identifier idempotency.
-- Enforce reimbursement cross-resource limits server-side.
+- Apply reimbursement calculations in the responsible component using existing source data, without new restrictions on the DMED workflow.
 - Verify signature data against the exact resource version or Bundle being signed.
 - Record search, read, update, cancellation, approval and dispense audit events without logging the safe code in clear text.

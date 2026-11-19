@@ -1,8 +1,8 @@
 Profile: PrescriptionMedicationAdministration
-Parent: MedicationAdministration
+Parent: UZCoreMedicationAdministration
 Id: prescription-medication-administration
 Title: "Prescription Medication Administration"
-Description: "Medication administration performed by healthcare personnel against a DMED prescription. Self-administration at home is outside this profile."
+Description: "Medication administration performed by healthcare personnel in a DMED treatment course. Self-administration at home is outside this profile."
 * ^status = #active
 * ^experimental = true
 * ^publisher = "Uzinfocom"
@@ -22,17 +22,16 @@ Description: "Medication administration performed by healthcare personnel agains
 * statusReason MS
 * medication only CodeableReference(PrescriptionMedication)
 * subject only Reference(UZCorePatient)
-* encounter only Reference(UZCoreEncounter)
+* encounter 0..0
 * occurence[x] only dateTime
 * occurenceDateTime 1..1 MS
 * recorded 1..1 MS
 * performer 1..* MS
 * performer.actor only CodeableReference(UZCorePractitionerRole)
-* request only Reference(PrescriptionMedicationRequest)
+* request 0..0
 * dosage 1..1 MS
 * dosage.text MS
 * dosage.route 1..1 MS
-* dosage.route from http://hl7.org/fhir/ValueSet/route-codes (extensible)
 * dosage.method MS
 * dosage.method ^comment = "The DMED `administration_method` code from DMEDAdministrationMethodCS, plus the route that the DMED Administration Method to FHIR Route ConceptMap gives for it."
 * dosage.dose 1..1 MS

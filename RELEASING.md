@@ -16,6 +16,12 @@ Publishing a release is automated by [`.github/workflows/release.yml`](.github/w
    Check <https://packages.fhir.org/uz.dhp.core> lists the version before
    pushing the bump, or `ig-publisher` fails on an unresolvable dependency.
 
+   Before bumping core, work through the open
+   [`needs-core-release`](https://github.com/uzinfocom-org/digital-health-integration/issues?q=is%3Aopen+label%3Aneeds-core-release)
+   issues the new core release unblocks (see
+   [Changes waiting on a UZ Core release](#changes-waiting-on-a-uz-core-release)).
+   The `versions` check fails a PR that bumps `version:` while any is left.
+
    Merge it once CI is green.
 
 2. **Tag the release commit** on `main` and push the tag:
@@ -81,6 +87,29 @@ Publishing a release is automated by [`.github/workflows/release.yml`](.github/w
 
 `main` is ruleset-protected (PR + `sushi`/`ig-publisher` checks required), so the
 feed change must go through a PR rather than a direct push.
+
+## Changes waiting on a UZ Core release
+
+Sometimes this guide needs something UZ Core has merged but not released yet,
+and a PR ships a stopgap instead, such as a profile deriving from a base
+resource until the UZ Core profile is released, or an ignoreWarnings entry for
+a core code system that does not resolve yet. Track each stopgap so the
+release that can undo it does:
+
+1. **File an issue** labelled `needs-core-release` that names the core PR it
+   waits on and lists what to undo once a core release has it.
+2. **Mark every spot to undo** with `CORE-RELEASE #<issue>` in a comment in the
+   file's own syntax: `// CORE-RELEASE #161` in FSH, `# CORE-RELEASE #161` in
+   `input/ignoreWarnings.txt`, `<!-- CORE-RELEASE #161 -->` in Markdown.
+3. **Undo it and remove the markers** in the PR that bumps `uz.dhp.core` to a
+   release that has it, with `Fixes #<issue>` in the PR description.
+
+[`check_core_release_markers.py`](.github/scripts/check_core_release_markers.py)
+runs in the `versions` check on every PR. It fails when a marker names a missing,
+closed or unlabelled issue, warns when an open labelled issue has no marker
+left, and lists the remaining markers in the job summary. On a PR that bumps
+`version:`, and in the Release workflow, it fails while any marker or open
+`needs-core-release` issue remains.
 
 ## Registration
 
