@@ -144,9 +144,15 @@
           "display": "флуоксетина гидрохлорид"
         },
         {
+          "target": [
+            {
+              "code": "008155",
+              "display": "fluotsinolona atsetonid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "10190",
-          "display": "Fluocinalone acetonide",
-          "noMap": true
+          "display": "Fluocinalone acetonide"
         },
         {
           "target": [
@@ -1331,9 +1337,15 @@
           "display": "тетракаин гидрохлорид"
         },
         {
+          "target": [
+            {
+              "code": "009164",
+              "display": "esmolol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "11261",
-          "display": "эсмалол гидрохлорид",
-          "noMap": true
+          "display": "эсмалол гидрохлорид"
         },
         {
           "target": [
@@ -1511,9 +1523,15 @@
           "display": "Кетамина гидрохлорид"
         },
         {
+          "target": [
+            {
+              "code": "007647",
+              "display": "trimeperidin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "11385",
-          "display": "Промедола гидрохлорид",
-          "noMap": true
+          "display": "Промедола гидрохлорид"
         },
         {
           "target": [
@@ -1601,9 +1619,15 @@
           "display": "Барицитиниб"
         },
         {
+          "target": [
+            {
+              "code": "004075",
+              "display": "meldoniy",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "11474",
-          "display": "3-(2,2,2 - триметилгидразиний) пропионата дигидрат (мельдоний)",
-          "noMap": true
+          "display": "3-(2,2,2 - триметилгидразиний) пропионата дигидрат (мельдоний)"
         },
         {
           "target": [
@@ -1650,9 +1674,15 @@
           "display": "Азитромицина дигидрата"
         },
         {
+          "target": [
+            {
+              "code": "003949",
+              "display": "makrogol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "11497",
-          "display": "Полиэтиленгликоль 4000",
-          "noMap": true
+          "display": "Полиэтиленгликоль 4000"
         },
         {
           "target": [
@@ -2129,9 +2159,15 @@
           "display": "аторвастатин кальция"
         },
         {
+          "target": [
+            {
+              "code": "000215",
+              "display": "alverin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "11891",
-          "display": "альверина цитрат",
-          "noMap": true
+          "display": "альверина цитрат"
         },
         {
           "target": [
@@ -2638,9 +2674,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "002993",
+              "display": "itrakonazol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "12321",
-          "display": "Интраконазол",
-          "noMap": true
+          "display": "Интраконазол"
         },
         {
           "target": [
@@ -2747,9 +2789,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "000140",
+              "display": "azoksimer bromid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "12462",
-          "display": "Полиоксидоний®  (Азоксимера бромид)",
-          "noMap": true
+          "display": "Полиоксидоний®  (Азоксимера бромид)"
         },
         {
           "code": "12464",
@@ -2795,9 +2843,15 @@
           "display": "умифеновир гидрохлорид"
         },
         {
+          "target": [
+            {
+              "code": "008402",
+              "display": "xloramfenikol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "12517",
-          "display": "Левомицетин (хлорамфеникол)",
-          "noMap": true
+          "display": "Левомицетин (хлорамфеникол)"
         },
         {
           "code": "12548",
@@ -2827,9 +2881,15 @@
           "display": "Циластатина натрия"
         },
         {
+          "target": [
+            {
+              "code": "006350",
+              "display": "rutozid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "12590",
-          "display": "рутин",
-          "noMap": true
+          "display": "рутин"
         },
         {
           "code": "12641",
@@ -2848,9 +2908,15 @@
           "display": "Лидокаина гидрохлорида моногидрат"
         },
         {
+          "target": [
+            {
+              "code": "008402",
+              "display": "xloramfenikol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "12683",
-          "display": "Синтомицин",
-          "noMap": true
+          "display": "Синтомицин"
         },
         {
           "target": [
@@ -2869,9 +2935,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "004570",
+              "display": "nalbufin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "12706",
-          "display": "Нальбуфина гидрохлорида дигидрат",
-          "noMap": true
+          "display": "Нальбуфина гидрохлорида дигидрат"
         },
         {
           "target": [
@@ -3459,9 +3531,15 @@
           "display": "бримонидина тартрат"
         },
         {
+          "target": [
+            {
+              "code": "004664",
+              "display": "nafazolin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "13298",
-          "display": "нафтизин",
-          "noMap": true
+          "display": "нафтизин"
         },
         {
           "target": [
@@ -3816,9 +3894,15 @@
           "display": "L- гистидина гидрохлорид"
         },
         {
+          "target": [
+            {
+              "code": "002817",
+              "display": "inozin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "13804",
-          "display": "Рибоксин (инозин)",
-          "noMap": true
+          "display": "Рибоксин (инозин)"
         },
         {
           "code": "13816",
@@ -3826,9 +3910,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "003400",
+              "display": "kolekalsiferol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "13840",
-          "display": "Витамина Д3 (холекальциферол)",
-          "noMap": true
+          "display": "Витамина Д3 (холекальциферол)"
         },
         {
           "target": [
@@ -4217,9 +4307,15 @@
           "display": "Алверина цитрат"
         },
         {
+          "target": [
+            {
+              "code": "003827",
+              "display": "loksoprofen",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "14682",
-          "display": "Лохопрофен натрий гидрат",
-          "noMap": true
+          "display": "Лохопрофен натрий гидрат"
         },
         {
           "target": [
@@ -4331,9 +4427,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "003400",
+              "display": "kolekalsiferol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "15141",
-          "display": "Холекальциферол (витамин D3) 100 МЕ/мг",
-          "noMap": true
+          "display": "Холекальциферол (витамин D3) 100 МЕ/мг"
         },
         {
           "target": [
@@ -4384,9 +4486,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "009014",
+              "display": "enisamiy yodid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "15313",
-          "display": "Амизон® (Энисамиум йодид)",
-          "noMap": true
+          "display": "Амизон® (Энисамиум йодид)"
         },
         {
           "target": [
@@ -4787,9 +4895,15 @@
           "display": "оксибупрокаина гидрохлорид"
         },
         {
+          "target": [
+            {
+              "code": "004639",
+              "display": "natriy yodid (131I)",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "16103",
-          "display": "Радионуклид Йода-131",
-          "noMap": true
+          "display": "Радионуклид Йода-131"
         },
         {
           "target": [
@@ -5626,9 +5740,15 @@
           "display": "Алпразолам"
         },
         {
+          "target": [
+            {
+              "code": "003949",
+              "display": "makrogol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "17012",
-          "display": "Полиэтиленгликоль 4000 (макрогол 4000)",
-          "noMap": true
+          "display": "Полиэтиленгликоль 4000 (макрогол 4000)"
         },
         {
           "target": [
@@ -6395,9 +6515,15 @@
           "display": "карбоплатин"
         },
         {
+          "target": [
+            {
+              "code": "003147",
+              "display": "karizoprodol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "17761",
-          "display": "карисопродол",
-          "noMap": true
+          "display": "карисопродол"
         },
         {
           "target": [
@@ -7071,9 +7197,15 @@
           "display": "доцетаксел"
         },
         {
+          "target": [
+            {
+              "code": "002416",
+              "display": "dopamin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "18278",
-          "display": "дофамина гидрохлорид",
-          "noMap": true
+          "display": "дофамина гидрохлорид"
         },
         {
           "target": [
@@ -7389,9 +7521,15 @@
           "display": "дакарбазин"
         },
         {
+          "target": [
+            {
+              "code": "001884",
+              "display": "dalteparin natriy",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "18521",
-          "display": "дальтепарин натрия",
-          "noMap": true
+          "display": "дальтепарин натрия"
         },
         {
           "target": [
@@ -8549,9 +8687,15 @@
           "display": "имипенем"
         },
         {
+          "target": [
+            {
+              "code": "002758",
+              "display": "imiximod",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "19653",
-          "display": "имиквимод",
-          "noMap": true
+          "display": "имиквимод"
         },
         {
           "target": [
@@ -8620,9 +8764,15 @@
           "display": "флуоцинолона ацетонид"
         },
         {
+          "target": [
+            {
+              "code": "008310",
+              "display": "ftoruratsil",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "19797",
-          "display": "флуороурацил",
-          "noMap": true
+          "display": "флуороурацил"
         },
         {
           "target": [
@@ -8682,8 +8832,8 @@
         {
           "target": [
             {
-              "code": "008195",
-              "display": "flutikazon",
+              "code": "008196",
+              "display": "flutikazona furoat",
               "relationship": "source-is-narrower-than-target"
             }
           ],
@@ -9064,9 +9214,15 @@
           "display": "гозерелин"
         },
         {
+          "target": [
+            {
+              "code": "001793",
+              "display": "gozogliptin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "20116",
-          "display": "газоглиптин",
-          "noMap": true
+          "display": "газоглиптин"
         },
         {
           "target": [
@@ -9228,9 +9384,15 @@
           "display": "локсопрофен"
         },
         {
+          "target": [
+            {
+              "code": "003899",
+              "display": "lulikonazol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "20268",
-          "display": "Люликоназол",
-          "noMap": true
+          "display": "Люликоназол"
         },
         {
           "target": [
@@ -9398,9 +9560,15 @@
           "display": "йогексол"
         },
         {
+          "target": [
+            {
+              "code": "002901",
+              "display": "yopamidol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "20390",
-          "display": "иопамидол",
-          "noMap": true
+          "display": "иопамидол"
         },
         {
           "target": [
@@ -9678,9 +9846,15 @@
           "display": "кетотифен"
         },
         {
+          "target": [
+            {
+              "code": "003533",
+              "display": "lakosamid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "20565",
-          "display": "лакозамид",
-          "noMap": true
+          "display": "лакозамид"
         },
         {
           "target": [
@@ -10145,9 +10319,15 @@
           "display": "нафтифин"
         },
         {
+          "target": [
+            {
+              "code": "004570",
+              "display": "nalbufin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "20891",
-          "display": "нальбуфин",
-          "noMap": true
+          "display": "нальбуфин"
         },
         {
           "target": [
@@ -10359,9 +10539,15 @@
           "display": "мефенамовая кислота"
         },
         {
+          "target": [
+            {
+              "code": "004007",
+              "display": "meglyumin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "21104",
-          "display": "меглумин",
-          "noMap": true
+          "display": "меглумин"
         },
         {
           "target": [
@@ -10760,9 +10946,15 @@
           "display": "Пэгфилграстим"
         },
         {
+          "target": [
+            {
+              "code": "005990",
+              "display": "peginterferon alfa-2a",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "21546",
-          "display": "пегинтерферон альфа-2а",
-          "noMap": true
+          "display": "пегинтерферон альфа-2а"
         },
         {
           "target": [
@@ -11045,9 +11237,15 @@
           "display": "нонивамид"
         },
         {
+          "target": [
+            {
+              "code": "009338",
+              "display": "norepinefrin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "21774",
-          "display": "норадреналин",
-          "noMap": true
+          "display": "норадреналин"
         },
         {
           "target": [
@@ -12051,9 +12249,15 @@
           "display": "прамипексол"
         },
         {
+          "target": [
+            {
+              "code": "005778",
+              "display": "prazugrel",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "22693",
-          "display": "прасугрель",
-          "noMap": true
+          "display": "прасугрель"
         },
         {
           "target": [
@@ -12300,8 +12504,8 @@
         {
           "target": [
             {
-              "code": "006243",
-              "display": "rifampitsin",
+              "code": "006242",
+              "display": "rifamitsin",
               "relationship": "source-is-narrower-than-target"
             }
           ],
@@ -14204,9 +14408,15 @@
           "display": "Тиоктовая кислота"
         },
         {
+          "target": [
+            {
+              "code": "007216",
+              "display": "tiazot kislotasi",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "24732",
-          "display": "тиотриазолин",
-          "noMap": true
+          "display": "тиотриазолин"
         },
         {
           "code": "24737",
@@ -14456,9 +14666,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "001607",
+              "display": "geksametoniy bromid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "24929",
-          "display": "бензогексоний",
-          "noMap": true
+          "display": "бензогексоний"
         },
         {
           "target": [
@@ -14483,14 +14699,26 @@
           "display": "ксилометазолин"
         },
         {
+          "target": [
+            {
+              "code": "004783",
+              "display": "niklozamid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "24935",
-          "display": "фенасал",
-          "noMap": true
+          "display": "фенасал"
         },
         {
+          "target": [
+            {
+              "code": "008310",
+              "display": "ftoruratsil",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "24940",
-          "display": "Флуороурацил",
-          "noMap": true
+          "display": "Флуороурацил"
         },
         {
           "code": "24948",
@@ -14825,9 +15053,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "008402",
+              "display": "xloramfenikol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "39425",
-          "display": "Левомицетин",
-          "noMap": true
+          "display": "Левомицетин"
         },
         {
           "code": "39432",
@@ -15136,9 +15370,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "003157",
+              "display": "karmelloza",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "43157",
-          "display": "Карбоксиметилцеллюлоза",
-          "noMap": true
+          "display": "Карбоксиметилцеллюлоза"
         },
         {
           "code": "43167",
@@ -15151,9 +15391,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "004048",
+              "display": "mekobalamin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "43197",
-          "display": "Метилкобаламин",
-          "noMap": true
+          "display": "Метилкобаламин"
         },
         {
           "target": [
@@ -15167,9 +15413,15 @@
           "display": "5-Фторурацил"
         },
         {
+          "target": [
+            {
+              "code": "006350",
+              "display": "rutozid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "43213",
-          "display": "рутина",
-          "noMap": true
+          "display": "рутина"
         },
         {
           "code": "43224",
@@ -15192,9 +15444,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "003400",
+              "display": "kolekalsiferol",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "43295",
-          "display": "витамин Д3",
-          "noMap": true
+          "display": "витамин Д3"
         },
         {
           "code": "43299",
@@ -15244,15 +15502,9 @@
           "display": "Руксолитиниб"
         },
         {
-          "target": [
-            {
-              "code": "009094",
-              "display": "epoetin alfa",
-              "relationship": "source-is-narrower-than-target"
-            }
-          ],
           "code": "43390",
-          "display": "рекомбинантный эритропоэтин человека"
+          "display": "рекомбинантный эритропоэтин человека",
+          "noMap": true
         },
         {
           "code": "43551",
@@ -15291,15 +15543,9 @@
           "display": "Сакубитрил"
         },
         {
-          "target": [
-            {
-              "code": "004007",
-              "display": "meglyumin",
-              "relationship": "source-is-narrower-than-target"
-            }
-          ],
           "code": "43644",
-          "display": "Акридонуксусная кислота"
+          "display": "Акридонуксусная кислота",
+          "noMap": true
         },
         {
           "target": [
@@ -15350,9 +15596,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "006828",
+              "display": "sulfanilamid",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "43877",
-          "display": "СТРЕПТОЦИД РАСТВОРИМЫЙ",
-          "noMap": true
+          "display": "СТРЕПТОЦИД РАСТВОРИМЫЙ"
         },
         {
           "target": [
@@ -15377,9 +15629,15 @@
           "display": "Серратиопептидаза"
         },
         {
+          "target": [
+            {
+              "code": "002334",
+              "display": "difengidramin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "43924",
-          "display": "Димедрол",
-          "noMap": true
+          "display": "Димедрол"
         },
         {
           "target": [
@@ -15646,15 +15904,9 @@
           "display": "Диклофенак калия"
         },
         {
-          "target": [
-            {
-              "code": "007786",
-              "display": "urofollitropin",
-              "relationship": "source-is-narrower-than-target"
-            }
-          ],
           "code": "45082",
-          "display": "Менотропин"
+          "display": "Менотропин",
+          "noMap": true
         },
         {
           "target": [
@@ -16017,9 +16269,15 @@
           "noMap": true
         },
         {
+          "target": [
+            {
+              "code": "009078",
+              "display": "epinefrin",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
           "code": "48417",
-          "display": "адреналина тартрат",
-          "noMap": true
+          "display": "адреналина тартрат"
         },
         {
           "code": "48436",

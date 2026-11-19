@@ -78,7 +78,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #10190
 * group[=].element[=].display = "Fluocinalone acetonide"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #008155
+* group[=].element[=].target[=].display = "fluotsinolona atsetonid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #10191
 * group[=].element[=].display = "Клиндамицина фосфат"
 * group[=].element[=].target[+].code = #003266
@@ -659,7 +661,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11261
 * group[=].element[=].display = "эсмалол гидрохлорид"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #009164
+* group[=].element[=].target[=].display = "esmolol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11284
 * group[=].element[=].display = "лозартан калия"
 * group[=].element[=].target[+].code = #003817
@@ -743,7 +747,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11385
 * group[=].element[=].display = "Промедола гидрохлорид"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #007647
+* group[=].element[=].target[=].display = "trimeperidin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11394
 * group[=].element[=].display = "пембролизумаб"
 * group[=].element[=].target[+].code = #005383
@@ -789,7 +795,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #11474
 * group[=].element[=].display = "3-(2,2,2 - триметилгидразиний) пропионата дигидрат (мельдоний)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004075
+* group[=].element[=].target[=].display = "meldoniy"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11475
 * group[=].element[=].display = "декскетопрофена трометамол"
 * group[=].element[=].target[+].code = #001995
@@ -812,7 +820,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11497
 * group[=].element[=].display = "Полиэтиленгликоль 4000"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003949
+* group[=].element[=].target[=].display = "makrogol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11499
 * group[=].element[=].display = "Нитрофуразон"
 * group[=].element[=].target[+].code = #004856
@@ -1037,7 +1047,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11891
 * group[=].element[=].display = "альверина цитрат"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #000215
+* group[=].element[=].target[=].display = "alverin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #11892
 * group[=].element[=].display = "хлоргексидина диглюконат"
 * group[=].element[=].target[+].code = #008408
@@ -1280,7 +1292,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #12321
 * group[=].element[=].display = "Интраконазол"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #002993
+* group[=].element[=].target[=].display = "itrakonazol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12343
 * group[=].element[=].display = "Донепезила гидрохлорид"
 * group[=].element[=].target[+].code = #002412
@@ -1331,7 +1345,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #12462
 * group[=].element[=].display = "Полиоксидоний®  (Азоксимера бромид)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #000140
+* group[=].element[=].target[=].display = "azoksimer bromid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12464
 * group[=].element[=].display = "Ретинола пальмитат 1,7"
 * group[=].element[=].noMap = true
@@ -1355,7 +1371,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12517
 * group[=].element[=].display = "Левомицетин (хлорамфеникол)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #008402
+* group[=].element[=].target[=].display = "xloramfenikol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12548
 * group[=].element[=].display = "Витамин А пальмитат"
 * group[=].element[=].noMap = true
@@ -1371,7 +1389,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12590
 * group[=].element[=].display = "рутин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #006350
+* group[=].element[=].target[=].display = "rutozid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12641
 * group[=].element[=].display = "β-Эсцин"
 * group[=].element[=].noMap = true
@@ -1382,7 +1402,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12683
 * group[=].element[=].display = "Синтомицин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #008402
+* group[=].element[=].target[=].display = "xloramfenikol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12690
 * group[=].element[=].display = "Клиндамицина гидрохлорид"
 * group[=].element[=].target[+].code = #003266
@@ -1393,7 +1415,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #12706
 * group[=].element[=].display = "Нальбуфина гидрохлорида дигидрат"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004570
+* group[=].element[=].target[=].display = "nalbufin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #12707
 * group[=].element[=].display = "тримебутин малеат"
 * group[=].element[=].target[+].code = #007642
@@ -1675,7 +1699,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #13298
 * group[=].element[=].display = "нафтизин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004664
+* group[=].element[=].target[=].display = "nafazolin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #13299
 * group[=].element[=].display = "тетризолина гидрохлорид"
 * group[=].element[=].target[+].code = #007182
@@ -1846,13 +1872,17 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #13804
 * group[=].element[=].display = "Рибоксин (инозин)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #002817
+* group[=].element[=].target[=].display = "inozin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #13816
 * group[=].element[=].display = "Витамин B6"
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #13840
 * group[=].element[=].display = "Витамина Д3 (холекальциферол)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003400
+* group[=].element[=].target[=].display = "kolekalsiferol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #13885
 * group[=].element[=].display = "мебеверина гидрохлорид пеллеты 80%"
 * group[=].element[=].target[+].code = #003993
@@ -2037,7 +2067,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #14682
 * group[=].element[=].display = "Лохопрофен натрий гидрат"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003827
+* group[=].element[=].target[=].display = "loksoprofen"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #14720
 * group[=].element[=].display = "Нефопама гидрохлорид"
 * group[=].element[=].target[+].code = #004759
@@ -2091,7 +2123,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #15141
 * group[=].element[=].display = "Холекальциферол (витамин D3) 100 МЕ/мг"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003400
+* group[=].element[=].target[=].display = "kolekalsiferol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #15160
 * group[=].element[=].display = "Цинакальцета гидрохлорид"
 * group[=].element[=].target[+].code = #008705
@@ -2118,7 +2152,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #15313
 * group[=].element[=].display = "Амизон® (Энисамиум йодид)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #009014
+* group[=].element[=].target[=].display = "enisamiy yodid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #15344
 * group[=].element[=].display = "верапамила гидрохлорид"
 * group[=].element[=].target[+].code = #001398
@@ -2307,7 +2343,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #16103
 * group[=].element[=].display = "Радионуклид Йода-131"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004639
+* group[=].element[=].target[=].display = "natriy yodid (131I)"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #16111
 * group[=].element[=].display = "Нимесулид микронизированный"
 * group[=].element[=].target[+].code = #004816
@@ -2700,7 +2738,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #17012
 * group[=].element[=].display = "Полиэтиленгликоль 4000 (макрогол 4000)"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003949
+* group[=].element[=].target[=].display = "makrogol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #17013
 * group[=].element[=].display = "Каберголин"
 * group[=].element[=].target[+].code = #003010
@@ -3051,7 +3091,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #17761
 * group[=].element[=].display = "карисопродол"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003147
+* group[=].element[=].target[=].display = "karizoprodol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #17771
 * group[=].element[=].display = "карнитин"
 * group[=].element[=].target[+].code = #003164
@@ -3359,7 +3401,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #18278
 * group[=].element[=].display = "дофамина гидрохлорид"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #002416
+* group[=].element[=].target[=].display = "dopamin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #18291
 * group[=].element[=].display = "домперидон"
 * group[=].element[=].target[+].code = #002411
@@ -3505,7 +3549,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #18521
 * group[=].element[=].display = "дальтепарин натрия"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #001884
+* group[=].element[=].target[=].display = "dalteparin natriy"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #18538
 * group[=].element[=].display = "дапаглифлозин"
 * group[=].element[=].target[+].code = #001905
@@ -4033,7 +4079,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #19653
 * group[=].element[=].display = "имиквимод"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #002758
+* group[=].element[=].target[=].display = "imiximod"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #19675
 * group[=].element[=].display = "Индапамид"
 * group[=].element[=].target[+].code = #002781
@@ -4066,7 +4114,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #19797
 * group[=].element[=].display = "флуороурацил"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #008310
+* group[=].element[=].target[=].display = "ftoruratsil"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #19799
 * group[=].element[=].display = "флуоксетин"
 * group[=].element[=].target[+].code = #008149
@@ -4094,8 +4144,8 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #19838
 * group[=].element[=].display = "флутиказон фуроат"
-* group[=].element[=].target[+].code = #008195
-* group[=].element[=].target[=].display = "flutikazon"
+* group[=].element[=].target[+].code = #008196
+* group[=].element[=].target[=].display = "flutikazona furoat"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #19847
 * group[=].element[=].display = "флувоксамин"
@@ -4270,7 +4320,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #20116
 * group[=].element[=].display = "газоглиптин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #001793
+* group[=].element[=].target[=].display = "gozogliptin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #20118
 * group[=].element[=].display = "грамицидин"
 * group[=].element[=].target[+].code = #001815
@@ -4346,7 +4398,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #20268
 * group[=].element[=].display = "Люликоназол"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003899
+* group[=].element[=].target[=].display = "lulikonazol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #20280
 * group[=].element[=].display = "лутропин альфа"
 * group[=].element[=].target[+].code = #003923
@@ -4424,7 +4478,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #20390
 * group[=].element[=].display = "иопамидол"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #002901
+* group[=].element[=].target[=].display = "yopamidol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #20425
 * group[=].element[=].display = "ипидакрин"
 * group[=].element[=].target[+].code = #002938
@@ -4552,7 +4608,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #20565
 * group[=].element[=].display = "лакозамид"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003533
+* group[=].element[=].target[=].display = "lakosamid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #20568
 * group[=].element[=].display = "лактулоза"
 * group[=].element[=].target[+].code = #003536
@@ -4765,7 +4823,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #20891
 * group[=].element[=].display = "нальбуфин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004570
+* group[=].element[=].target[=].display = "nalbufin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #20898
 * group[=].element[=].display = "налтрексон"
 * group[=].element[=].target[+].code = #004580
@@ -4863,7 +4923,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #21104
 * group[=].element[=].display = "меглумин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004007
+* group[=].element[=].target[=].display = "meglyumin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #21111
 * group[=].element[=].display = "мельдоний"
 * group[=].element[=].target[+].code = #004075
@@ -5046,7 +5108,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #21546
 * group[=].element[=].display = "пегинтерферон альфа-2а"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #005990
+* group[=].element[=].target[=].display = "peginterferon alfa-2a"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #21567
 * group[=].element[=].display = "пеметрексед"
 * group[=].element[=].target[+].code = #005386
@@ -5177,7 +5241,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #21774
 * group[=].element[=].display = "норадреналин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #009338
+* group[=].element[=].target[=].display = "norepinefrin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #21776
 * group[=].element[=].display = "норэтистерон"
 * group[=].element[=].target[+].code = #004951
@@ -5635,7 +5701,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #22693
 * group[=].element[=].display = "прасугрель"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #005778
+* group[=].element[=].target[=].display = "prazugrel"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #22711
 * group[=].element[=].display = "преднизолон"
 * group[=].element[=].target[+].code = #005807
@@ -5748,8 +5816,8 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #22976
 * group[=].element[=].display = "рифамицина"
-* group[=].element[=].target[+].code = #006243
-* group[=].element[=].target[=].display = "rifampitsin"
+* group[=].element[=].target[+].code = #006242
+* group[=].element[=].target[=].display = "rifamitsin"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #22978
 * group[=].element[=].display = "Рифаксимин"
@@ -6626,7 +6694,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #24732
 * group[=].element[=].display = "тиотриазолин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #007216
+* group[=].element[=].target[=].display = "tiazot kislotasi"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #24737
 * group[=].element[=].display = "пирацин"
 * group[=].element[=].noMap = true
@@ -6758,7 +6828,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #24929
 * group[=].element[=].display = "бензогексоний"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #001607
+* group[=].element[=].target[=].display = "geksametoniy bromid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #24933
 * group[=].element[=].display = "монтелукаст"
 * group[=].element[=].target[+].code = #004487
@@ -6771,10 +6843,14 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #24935
 * group[=].element[=].display = "фенасал"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004783
+* group[=].element[=].target[=].display = "niklozamid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #24940
 * group[=].element[=].display = "Флуороурацил"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #008310
+* group[=].element[=].target[=].display = "ftoruratsil"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #24948
 * group[=].element[=].display = "янтарная кислота"
 * group[=].element[=].noMap = true
@@ -6949,7 +7025,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #39425
 * group[=].element[=].display = "Левомицетин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #008402
+* group[=].element[=].target[=].display = "xloramfenikol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #39432
 * group[=].element[=].display = "Аэросил"
 * group[=].element[=].noMap = true
@@ -7110,7 +7188,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #43157
 * group[=].element[=].display = "Карбоксиметилцеллюлоза"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003157
+* group[=].element[=].target[=].display = "karmelloza"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43167
 * group[=].element[=].display = "Вода очищенная"
 * group[=].element[=].noMap = true
@@ -7119,7 +7199,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #43197
 * group[=].element[=].display = "Метилкобаламин"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #004048
+* group[=].element[=].target[=].display = "mekobalamin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43200
 * group[=].element[=].display = "5-Фторурацил"
 * group[=].element[=].target[+].code = #008310
@@ -7127,7 +7209,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43213
 * group[=].element[=].display = "рутина"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #006350
+* group[=].element[=].target[=].display = "rutozid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43224
 * group[=].element[=].display = "Ланолин безводный"
 * group[=].element[=].noMap = true
@@ -7142,7 +7226,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #43295
 * group[=].element[=].display = "витамин Д3"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #003400
+* group[=].element[=].target[=].display = "kolekalsiferol"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43299
 * group[=].element[=].display = "Сахароза"
 * group[=].element[=].noMap = true
@@ -7170,9 +7256,7 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #43390
 * group[=].element[=].display = "рекомбинантный эритропоэтин человека"
-* group[=].element[=].target[+].code = #009094
-* group[=].element[=].target[=].display = "epoetin alfa"
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #43551
 * group[=].element[=].display = "Масло фенхелевое"
 * group[=].element[=].noMap = true
@@ -7195,9 +7279,7 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #43644
 * group[=].element[=].display = "Акридонуксусная кислота"
-* group[=].element[=].target[+].code = #004007
-* group[=].element[=].target[=].display = "meglyumin"
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #43645
 * group[=].element[=].display = "гвайфенезин"
 * group[=].element[=].target[+].code = #001595
@@ -7224,7 +7306,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #43877
 * group[=].element[=].display = "СТРЕПТОЦИД РАСТВОРИМЫЙ"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #006828
+* group[=].element[=].target[=].display = "sulfanilamid"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43879
 * group[=].element[=].display = "Сульфатиазол натрия"
 * group[=].element[=].target[+].code = #006839
@@ -7237,7 +7321,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43924
 * group[=].element[=].display = "Димедрол"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #002334
+* group[=].element[=].target[=].display = "difengidramin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #43928
 * group[=].element[=].display = "Хлорфенамина малеат"
 * group[=].element[=].target[+].code = #008440
@@ -7376,9 +7462,7 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #45082
 * group[=].element[=].display = "Менотропин"
-* group[=].element[=].target[+].code = #007786
-* group[=].element[=].target[=].display = "urofollitropin"
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[=].noMap = true
 * group[=].element[+].code = #45104
 * group[=].element[=].display = "АБАКАВИР СУЛЬФАТ"
 * group[=].element[=].target[+].code = #000002
@@ -7573,7 +7657,9 @@ Description: "Maps Pharmaceutical Committee drug registry active substances (`su
 * group[=].element[=].noMap = true
 * group[=].element[+].code = #48417
 * group[=].element[=].display = "адреналина тартрат"
-* group[=].element[=].noMap = true
+* group[=].element[=].target[+].code = #009078
+* group[=].element[=].target[=].display = "epinefrin"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
 * group[=].element[+].code = #48436
 * group[=].element[=].display = "кальций цитрат"
 * group[=].element[=].noMap = true
