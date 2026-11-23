@@ -42,6 +42,8 @@ DMED sends Form 003 title page values as its own tokens. These ConceptMaps give 
 
 The Encounter is the same one Form 066 sends for this hospitalization, identified by the DMED hospitalization id. Its priority, admit source, re-admission and clinical state (`Encounter.priority`, `admission.admitSource`, `admission.reAdmission`, `subjectStatus`) are taken from the Form 066 card of the hospitalization, with the Form 066 rules, so both documents send the same values. The title page fields `quickly_taken` and `readmission_same_reason` are not written to the Encounter.
 
+The payment type also comes from the Form 066 card (`payment_type`): it is sent as a `Coverage` (`type` from `coverage-type-cs`, beneficiary the patient) in the Administrative Information section, with the Form 066 payment type map. The title page `price_list` is not sent.
+
 ---
 
 ### Field Mapping

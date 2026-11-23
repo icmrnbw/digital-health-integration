@@ -76,14 +76,14 @@ Description: "Composition profile for Form 003 (Statsionar bemorning tibbiy kart
 // ---------------------------------------------------------------------
 // Administrative information - source rows 2, 4-11
 // Organization (institution), Encounter (admission/discharge, bed-days),
-// Location (ward, room, transferred ward)
+// Location (ward, room, transferred ward), Coverage (payment type)
 // ---------------------------------------------------------------------
-* section[administrativeInformation] ^short = "Institution, admission and discharge, ward and room, bed-days"
+* section[administrativeInformation] ^short = "Institution, admission and discharge, ward and room, bed-days, payment type"
 * section[administrativeInformation].title 1..1
 * section[administrativeInformation].code 1..1
 * section[administrativeInformation].code = form-003-section-cs#administrative-information
 * section[administrativeInformation].entry 1..*
-* section[administrativeInformation].entry only Reference(UZCoreOrganization or UZCoreEncounter or UZCoreLocation)
+* section[administrativeInformation].entry only Reference(UZCoreOrganization or UZCoreEncounter or UZCoreLocation or Coverage)
 
 // ---------------------------------------------------------------------
 // Personal information - source rows 12-23, 25-26

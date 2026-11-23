@@ -44,6 +44,8 @@ DMED 003-shakl titul varag'i qiymatlarini o'z tokenlari bilan yuboradi. Ushbu Co
 
 Encounter - shu gospitalizatsiya bo'yicha 066-shakl yuboradigan Encounter, DMED gospitalizatsiya identifikatori bilan. Shoshilinchlik, qabul manbai, takroriy yotqizish va klinik holat (`Encounter.priority`, `admission.admitSource`, `admission.reAdmission`, `subjectStatus`) shu gospitalizatsiyaning 066-shakl kartasidan 066-shakl qoidalari bo'yicha olinadi, shuning uchun ikkala hujjat bir xil qiymatlarni yuboradi. Titul varag'idagi `quickly_taken` va `readmission_same_reason` maydonlari Encounter ga yozilmaydi.
 
+To'lov turi ham 066-shakl kartasidan (`payment_type`) olinadi: u ma'muriy ma'lumotlar bo'limida `Coverage` sifatida (`type` - `coverage-type-cs` dan, oluvchi - bemor) 066-shakl to'lov turi xaritasi bo'yicha yuboriladi. Titul varag'idagi `price_list` yuborilmaydi.
+
 ---
 
 ### Maydonlarni moslashtirish
