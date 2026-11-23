@@ -46,6 +46,25 @@ Encounter - тот же, что передаёт Форма 066 по этой г
 
 Тип оплаты тоже берётся из карты 066 (`payment_type`): он передаётся как `Coverage` (`type` из `coverage-type-cs`, получатель - пациент) в разделе административной информации, по карте типа оплаты Формы 066. `price_list` титульного листа не передаётся.
 
+### Источники DMED, проверенные 23 ноября 2026 года
+
+Титульный лист читается через `GET /api/mis/v2/hospitalizations/{id}/title-page`. Страница также получает госпитализацию и её медицинский случай. Ответ титульного листа содержит только часть полной карты. В UI есть отдельные разделы осмотров, эпикризов, плана обследований, анализов и курсов лечения. Наличие раздела в UI ещё не подтверждает пополевой контракт его выгрузки.
+
+Идентификатор стационарного Encounter — `hospitalization.id` в системе `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`. Med ID пациента берётся из `patient.number_med_card`. Отдельное поле `number` титульного листа печатается как `Shartnoma №` — номер договора.
+
+Печатный компонент добавляет к `time_to_admission` слово `daqiqa` — минуты. Существующий справочник содержит категории «в течение первых 6 часов» (`delay0001_00001`), «в течение 7–24 часов» (`delay0001_00002`) и «спустя 24 часа» (`delay0001_00003`). Шесть, семь и 24 часа соответствуют 360, 420 и 1440 минутам. Источник не задаёт округление и выбор категории для промежутка между шестью и семью часами; это правило ещё нужно определить. В самом поле ввода единица не подписана. Числовой интервал не является датой начала заболевания.
+
+Элемент `analyses[]` содержит `title`, `result`, `date_of_conduct`. Результат вводится свободным текстом. `date_of_conduct` передаётся как эффективная дата наблюдения с исходной точностью. `rw-1` и `rw-2` — отдельные записи RW; `hiv`, `hiv_II`, `hiv_express` — отдельные записи ВИЧ. Актуальный токен бакпосева кала — `stool-culture`. Исторические `blood`, `feces_back_seeding`, `abstract_disease` сохранены в кодовой системе для старых данных.
+
+Каждая запись анализа имеет собственный результат. Объединённое историческое название `blood` не подтверждает одновременно результат RW и результат ВИЧ. Названия RW не подтверждают аналит и сыворотку как материал исследования для LOINC `22461-8`. Названия анализов ВИЧ не подтверждают состав антител/антигенов и метод LOINC `56888-1`, поэтому конкретный LOINC пока не назначен. Пока он уточняется, наблюдение может идентифицироваться кодом исходной системы. Положительный и отрицательный результат кодируются существующим `positive-negative-result-vs`, если исходный текст однозначно подтверждает такое значение; исходный текст результата сохраняется. Остальные текстовые результаты можно передавать в `Observation.valueString`.
+
+Метод обезболивания DMED хранит текстом в `surgical_operations[].method_anesthesia`. По решению от 23 ноября он передаётся в `Procedure.note.text` соответствующей операции. Операции на титульном листе являются редактируемыми текстовыми копиями; для кода ICHI отдельно требуется установить источник кодированного вмешательства. Существующий справочник [Anesthesia Method](ValueSet-anesthesia-method-vs.html) сохраняется, но он не подтверждает кодированное значение для этого текстового поля DMED.
+
+Отдельный признак город/село `permanent_residence_areas` исключён из согласованного пейлоада. Адрес пациента передаётся по существующему маппингу. Поле `hospitalization_reason` есть в титульном листе; полное соответствие для заболевания, травмы, ДТП и плановой госпитализации ещё не определено. Оно не переопределяет правило брать priority из 066.
+
+По подтверждению Эрнеста от 23 ноября 2026 года подпись документа выполняется тем же способом, что и для 066. Для заполнения подписи Provenance нужны фактические данные подписи.
+
+
 ---
 
 ### Сопоставление полей
@@ -79,7 +98,7 @@ Encounter - тот же, что передаёт Форма 066 по этой г
 | UZ | RU | Путь FHIR | Код | Пример |
 |----|----|------------|------|---------|
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Toshkent shahar klinik shifoxonasi |
-| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-003-2026-0042 |
+| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`; DMED `hospitalization.id` | 20760 |
 | Kasalxonaga yotqizilgan kun va vaqti | Дата и время поступления в стационар | Encounter.actualPeriod.start | - | 2026-02-08T10:00:00+05:00 |
 | Kasalxonadan chiqarilgan kun va vaqti | Дата и время выписки из стационара | Encounter.actualPeriod.end | - | 2026-02-18T09:00:00+05:00 |
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
@@ -138,6 +157,7 @@ Encounter - тот же, что передаёт Форма 066 по этой г
 | Bemorni kelish usuli | Метод прибытия пациента | Encounter.admission.admitSource | [Admit Source Local](https://dhp.uz/fhir/core/en/CodeSystem-admit-source-local-cs.html) | `mserv-0006-00004` "Emergency medical service" |
 | Bemor yo'llanmasidagi tashxis | Диагноз в направлении | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `referral` "Referring institution diagnosis" | `J18.9` "Pneumonia, unspecified" |
 | Qabulxonada qo'yilgan tashxis | Диагноз в приёмном отделении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` "Admission diagnosis" | `J18.9` "Pneumonia, unspecified" |
+| Kasalxonada qo'yilgan tashxis | Больничный диагноз (строка 39) | Condition.code; Condition.recordedDate | ICD-10; компонент DMED выбирает диагнозы с источниками `clinical_diagnosis_justification_epicrisis` и `landmark_epicrisis` | - |
 | Tashxis qo'yilgan sana | Дата установления диагноза | Condition.recordedDate | - | 2026-02-08 |
 
 ---
@@ -148,8 +168,8 @@ Encounter - тот же, что передаёт Форма 066 по этой г
 
 | UZ | RU | Путь FHIR | Код | Пример |
 |----|----|------------|------|---------|
-| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
-| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
+| Qon RW | RW — отдельные записи DMED | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `rw-1`, `rw-2`; LOINC `22461-8` требует подтверждения аналита и сыворотки как материала исследования<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) при однозначном подтверждении источником; иначе исходный текст | `260385009` "Negative" |
+| OITS | ВИЧ — отдельные записи DMED | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `hiv`, `hiv_II`, `hiv_express`; конкретный LOINC требует уточнения метода исследования<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) при однозначном подтверждении источником; иначе исходный текст | `260385009` "Negative" |
 | Axlat poshevi | Посев кала | [DiagnosticReport](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-diagnostic-report.html).code | LOINC `625-4` "Bacteria identified in Stool by Culture" | - |
 | Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | `code` SNOMED CT `20848007` "Pediculosis"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
 | Mavhum kasalliklar | Прочие заболевания | Observation.valueString | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `other-diseases` "Other diseases" | - |
@@ -224,7 +244,7 @@ Encounter - тот же, что передаёт Форма 066 по этой г
 |----|----|------------|------|---------|
 | Jarrohlik operatsiyasi nomi | Наименование хирургической операции | [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html).code | [ICHI Codes Accepted by DMED](https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs) | `JCB.JB.AE` "Percutaneous drainage of pleural cavity" |
 | Jarrohlik operatsiyasi sanasi va vaqti | Дата и время хирургической операции | Procedure.occurrenceDateTime | - | 2026-02-10T11:30:00+05:00 |
-| Og'riqsizlantirish usullari | Метод анестезии | separate [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code (coding or text) | [Anesthesia Method](ValueSet-anesthesia-method-vs.html) | `386761002` "Local anesthesia" |
+| Og'riqsizlantirish usullari | Метод анестезии | Procedure.note.text | DMED `surgical_operations[].method_anesthesia`, свободный текст | Local anesthesia |
 | Operatsiyadan keyingi asoratlar | Послеоперационные осложнения | Procedure.complication / Condition | SNOMED CT / ICD-10 | - |
 | Shifokor F.I.Sh. | ФИО врача-хирурга | Procedure.performer.actor → PractitionerRole | - | Rasulov B.B. |
 | Boshqa davolash turlari nomi | Наименование других видов лечения | Procedure.code | [Procedure Code](https://dhp.uz/fhir/core/en/ValueSet-procedure-code-vs.html) | - |

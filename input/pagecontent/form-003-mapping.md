@@ -44,6 +44,25 @@ The Encounter is the same one Form 066 sends for this hospitalization, identifie
 
 The payment type also comes from the Form 066 card (`payment_type`): it is sent as a `Coverage` (`type` from `coverage-type-cs`, beneficiary the patient) in the Administrative Information section, with the Form 066 payment type map. The title page `price_list` is not sent.
 
+### DMED source details verified on 23 November 2026
+
+The title page is read from `GET /api/mis/v2/hospitalizations/{id}/title-page`. The page also reads the hospitalization and its medical case. A title-page response alone does not contain the complete inpatient chart: the UI has separate examination, epicrisis, investigation-plan, analysis and treatment-course sections. Their presence in the UI does not establish a field-level export contract for every section of this profile.
+
+The inpatient Encounter identifier uses `hospitalization.id` in `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`. The patient's Med ID comes from `patient.number_med_card`. The separate title-page `number` is printed as `Shartnoma №` (contract number).
+
+The print component appends `daqiqa` (minutes) to `time_to_admission`. The existing delay categories are “within first 6 hours” (`delay0001_00001`), “within 7–24 hours” (`delay0001_00002`) and “after 24 hours” (`delay0001_00003`). Six, seven and 24 hours correspond to 360, 420 and 1440 minutes. The source does not define rounding or classification for an elapsed time between six and seven hours; that rule remains unresolved. The input control itself has no unit label. A numerical elapsed time is not an onset date.
+
+Each `analyses[]` entry has `title`, `result` and `date_of_conduct`. The result control accepts free text. Use `date_of_conduct` for the observation's effective date with its source precision. `rw-1` and `rw-2` are separate RW entries; `hiv`, `hiv_II` and `hiv_express` are separate HIV entries. `stool-culture` is the current stool-culture token. Historical `blood`, `feces_back_seeding` and `abstract_disease` remain in the source code system for older data.
+
+One analysis entry carries its own result. The combined legacy `blood` title does not establish both an RW result and an HIV result. The RW titles do not establish the analyte and serum specimen of LOINC `22461-8`. The HIV titles do not establish the antibody/antigen combination and method of LOINC `56888-1`; their LOINC mapping remains unassigned. The source code system can identify these observations while a specific laboratory code is being established. Positive and negative results use the existing `positive-negative-result-vs` only when the source result supports that interpretation; the source result text must remain available. Other free-text results can be carried in `Observation.valueString`.
+
+DMED stores `surgical_operations[].method_anesthesia` as text. Carry the anesthesia method in the corresponding surgery's `Procedure.note.text`, as agreed on 23 November. The separately printed operations are editable text copies; a coded surgical-intervention source must be identified independently before assigning an ICHI code. The existing [Anesthesia Method](ValueSet-anesthesia-method-vs.html) catalogue is retained, but it does not establish a coded value for this DMED free-text field.
+
+The separate `permanent_residence_areas` city/village flag is outside the agreed payload. The patient address remains mapped. `hospitalization_reason` is present on the title page; a complete mapping for disease, injury, road accident and planned hospitalization remains unresolved. It does not override the Form 066 priority rule above.
+
+The document signature follows the same mechanism as Form 066, as confirmed by Ernest on 23 November 2026. The actual signature data is required to populate the corresponding Provenance signature.
+
+
 ---
 
 ### Field Mapping
@@ -77,7 +96,7 @@ The payment type also comes from the Form 066 card (`payment_type`): it is sent 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Toshkent shahar klinik shifoxonasi |
-| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-003-2026-0042 |
+| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`; DMED `hospitalization.id` | 20760 |
 | Kasalxonaga yotqizilgan kun va vaqti | Дата и время поступления в стационар | Encounter.actualPeriod.start | - | 2026-02-08T10:00:00+05:00 |
 | Kasalxonadan chiqarilgan kun va vaqti | Дата и время выписки из стационара | Encounter.actualPeriod.end | - | 2026-02-18T09:00:00+05:00 |
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
@@ -136,6 +155,7 @@ Rows 27-32 of the paper form are a single choice field. Each recorded variant is
 | Bemorni kelish usuli | Метод прибытия пациента | Encounter.admission.admitSource | [Admit Source Local](https://dhp.uz/fhir/core/en/CodeSystem-admit-source-local-cs.html) | `mserv-0006-00004` "Emergency medical service" |
 | Bemor yo'llanmasidagi tashxis | Диагноз в направлении | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `referral` "Referring institution diagnosis" | `J18.9` "Pneumonia, unspecified" |
 | Qabulxonada qo'yilgan tashxis | Диагноз в приёмном отделении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` "Admission diagnosis" | `J18.9` "Pneumonia, unspecified" |
+| Kasalxonada qo'yilgan tashxis | Больничный диагноз (строка 39) | Condition.code; Condition.recordedDate | ICD-10; the DMED title-page component selects diagnoses from `clinical_diagnosis_justification_epicrisis` and `landmark_epicrisis` | - |
 | Tashxis qo'yilgan sana | Дата установления диагноза | Condition.recordedDate | - | 2026-02-08 |
 
 ---
@@ -146,8 +166,8 @@ The combined admission screening block expands to one resource per screening.
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
-| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
+| Qon RW | RW — separate DMED entries | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `rw-1`, `rw-2`; LOINC `22461-8` requires confirmation of analyte and serum specimen<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) when explicitly supported by the source; otherwise source text | `260385009` "Negative" |
+| OITS | HIV — separate DMED entries | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `hiv`, `hiv_II`, `hiv_express`; specific LOINC pending laboratory method<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) when explicitly supported by the source; otherwise source text | `260385009` "Negative" |
 | Axlat poshevi | Посев кала | [DiagnosticReport](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-diagnostic-report.html).code | LOINC `625-4` "Bacteria identified in Stool by Culture" | - |
 | Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | `code` SNOMED CT `20848007` "Pediculosis"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
 | Mavhum kasalliklar | Прочие заболевания | Observation.valueString | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `other-diseases` "Other diseases" | - |
@@ -222,7 +242,7 @@ Each diagnosis is one Condition. Its role goes in `Condition.category` as a [Dia
 |----|----|------------|------|---------|
 | Jarrohlik operatsiyasi nomi | Наименование хирургической операции | [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html).code | [ICHI Codes Accepted by DMED](https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs) | `JCB.JB.AE` "Percutaneous drainage of pleural cavity" |
 | Jarrohlik operatsiyasi sanasi va vaqti | Дата и время хирургической операции | Procedure.occurrenceDateTime | - | 2026-02-10T11:30:00+05:00 |
-| Og'riqsizlantirish usullari | Метод анестезии | separate [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code (coding or text) | [Anesthesia Method](ValueSet-anesthesia-method-vs.html) | `386761002` "Local anesthesia" |
+| Og'riqsizlantirish usullari | Метод анестезии | Procedure.note.text | DMED `surgical_operations[].method_anesthesia`, free text | Local anesthesia |
 | Operatsiyadan keyingi asoratlar | Послеоперационные осложнения | Procedure.complication / Condition | SNOMED CT / ICD-10 | - |
 | Shifokor F.I.Sh. | ФИО врача-хирурга | Procedure.performer.actor → PractitionerRole | - | Rasulov B.B. |
 | Boshqa davolash turlari nomi | Наименование других видов лечения | Procedure.code | [Procedure Code](https://dhp.uz/fhir/core/en/ValueSet-procedure-code-vs.html) | - |

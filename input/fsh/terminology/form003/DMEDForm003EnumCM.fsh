@@ -196,16 +196,35 @@ Description: "Maps DMED `analyses[].title` to the admission screening Observatio
 * publisher = "Uzinfocom"
 * group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-analyses-cs"
 * group[=].target = "http://loinc.org"
+// A legacy combined label does not identify two independently measured results.
 * group[=].element[+].code = #"blood"
 * group[=].element[=].display = "Крови (KW, СПИД и другие)"
-* group[=].element[=].target[+].code = #"22461-8"
-* group[=].element[=].target[=].display = "Reagin Ab [Presence] in Serum"
-* group[=].element[=].target[=].relationship = #source-is-broader-than-target
-* group[=].element[=].target[=].comment = "DMED records RW and HIV as one value."
-* group[=].element[=].target[+].code = #"56888-1"
-* group[=].element[=].target[=].display = "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"
-* group[=].element[=].target[=].relationship = #source-is-broader-than-target
-* group[=].element[=].target[=].comment = "DMED records RW and HIV as one value."
+* group[=].element[=].noMap = true
+// The RW title alone does not establish the analyte and serum specimen of LOINC 22461-8.
+* group[=].element[+].code = #"rw-1"
+* group[=].element[=].display = "RW I"
+* group[=].element[=].noMap = true
+// The RW title alone does not establish the analyte and serum specimen of LOINC 22461-8.
+* group[=].element[+].code = #"rw-2"
+* group[=].element[=].display = "RW II"
+* group[=].element[=].noMap = true
+// This title does not establish the analyte, specimen and method of LOINC 56888-1.
+* group[=].element[+].code = #"hiv"
+* group[=].element[=].display = "ВИЧ 1"
+* group[=].element[=].noMap = true
+// This title does not establish the analyte, specimen and method of LOINC 56888-1.
+* group[=].element[+].code = #"hiv_II"
+* group[=].element[=].display = "ВИЧ 2"
+* group[=].element[=].noMap = true
+// This title does not establish the analyte, specimen and method of LOINC 56888-1.
+* group[=].element[+].code = #"hiv_express"
+* group[=].element[=].display = "ВИЧ экспресс"
+* group[=].element[=].noMap = true
+* group[=].element[+].code = #"stool-culture"
+* group[=].element[=].display = "Бакпосев кала"
+* group[=].element[=].target[+].code = #"625-4"
+* group[=].element[=].target[=].display = "Bacteria identified in Stool by Culture"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #"feces_back_seeding"
 * group[=].element[=].display = "Бакпосев кала"
 * group[=].element[=].target[+].code = #"625-4"

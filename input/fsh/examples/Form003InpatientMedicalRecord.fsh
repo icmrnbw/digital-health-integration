@@ -94,8 +94,6 @@ Title: "Form 003 - Inpatient medical record card"
 * entry[=].resource = servicerequest-003-ecg
 * entry[+].fullUrl  = "urn:uuid:00300041-0000-0000-0000-000000000000"
 * entry[=].resource = procedure-003-surgery
-* entry[+].fullUrl  = "urn:uuid:00300042-0000-0000-0000-000000000000"
-* entry[=].resource = procedure-003-anesthesia
 * entry[+].fullUrl  = "urn:uuid:00300043-0000-0000-0000-000000000000"
 * entry[=].resource = medicationrequest-003-001
 * entry[+].fullUrl  = "urn:uuid:00300044-0000-0000-0000-000000000000"
@@ -235,7 +233,6 @@ Usage: #inline
 * section[surgicalProcedures].title = "Surgical Procedures"
 * section[=].code = $loinc#29554-3 "Procedure Narrative"
 * section[=].entry[0] = Reference(urn:uuid:00300041-0000-0000-0000-000000000000)
-* section[=].entry[+] = Reference(urn:uuid:00300042-0000-0000-0000-000000000000)
 
 * section[medicationSheet].title = "Medication Sheet"
 * section[=].code = $loinc#29549-3 "Medication administered Narrative"
@@ -357,7 +354,7 @@ InstanceOf: UZCoreEncounter
 Usage: #inline
 * status = #completed
 * identifier.system = "https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number"
-* identifier.value = "MRN-003-2026-0042"
+* identifier.value = "20760" // DMED hospitalization.id
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#IMP "inpatient encounter"
 * type[nationalType] = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-type-cs#mserv-0001-00004 "Treatment services"
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
@@ -747,22 +744,12 @@ Usage: #inline
 * status = #completed
 * category = $sct#387713003 "Surgical procedure (procedure)"
 * code = $ichi#JCB.JB.AE "Percutaneous drainage of pleural cavity"
+* note.text = "Local anesthesia"                            // row 48: DMED free-text method
 * code.text = "Thoracentesis"
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
 * occurrenceDateTime = "2026-02-10T11:30:00+05:00"           // rows 46-47 merged
 * performer.actor = Reference(urn:uuid:00300011-0000-0000-0000-000000000000)   // row 50
-
-Instance: procedure-003-anesthesia
-InstanceOf: UZCoreProcedure
-Usage: #inline
-* status = #completed
-* code = $sct#386761002 "Local anesthesia"                   // row 48 - anesthesia-method-vs
-* subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
-* encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
-* occurrencePeriod.start = "2026-02-10T11:15:00+05:00"
-* occurrencePeriod.end = "2026-02-10T11:35:00+05:00"
-* performer.actor = Reference(urn:uuid:00300011-0000-0000-0000-000000000000)
 
 Instance: medicationrequest-003-001
 InstanceOf: UZCoreMedicationRequest
