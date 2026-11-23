@@ -1,7 +1,8 @@
 // DMED source tokens used by Form 027 (hospitalization referral `purpose[]`,
 // `hospitalization_type` and diagnosis `disease_codes` keys / `type`). Purpose and
 // hospitalization type tokens are from the DMED web client (lev-g2g, 2026-11-07);
-// diagnosis types match the live "Выберите тип" dropdown that Form 066 maps.
+// diagnosis types match the live "Выберите тип" dropdown that Form 066 maps;
+// hospitalization status tokens are from the same web client (2026-11-23).
 
 CodeSystem: DMEDForm027HospitalizationPurposeCS
 Id: dmed-form-027-hospitalization-purpose-cs
@@ -45,3 +46,23 @@ Description: "Source tokens for the diagnosis type in DMED: the `type` of a dise
 * #"background" "Фоновый"
 * #"critical" "Осложнение"
 * #"competing" "Конкурирующий"
+
+CodeSystem: DMEDForm027HospitalizationStatusCS
+Id: dmed-form-027-hospitalization-status-cs
+Title: "DMED Form 027 hospitalization status"
+Description: "Source tokens for `status` of the DMED hospitalization record that a Form 027 hospitalization referral creates (the same record later carries Forms 066 and 003). Tokens and Russian labels are from the DMED web client (lev-g2g, 2026-11-23)."
+* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-027-hospitalization-status-cs"
+* ^status = #draft
+* ^experimental = false
+* ^caseSensitive = true
+* ^language = #ru
+* #"created" "Создано"
+* #"approved" "Одобрено"
+* #"confirmed" "Подтверждено"
+* #"in_progress" "В процессе"
+* #"completed" "Завершено"
+* #"provided" "Завершено"
+* #"transfered" "Переведен"
+* #"rejected" "Отменено"
+* #"canceled" "Отменен"
+* #"refused" "Отказано"
