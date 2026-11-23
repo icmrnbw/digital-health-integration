@@ -133,6 +133,22 @@ Description: "Paracetamol tablets: a DMED trade name with its Pharmaceutical Com
 * status = #active
 * doseForm = $medication-doseform-cs#TAB101 "tablets"
 
+Instance: example-prescription-medication-batch
+InstanceOf: PrescriptionMedication
+Usage: #example
+Title: "Prescription Dispensed Batch Example"
+Description: "The batch of paracetamol tablets actually dispensed, shared by all dispenses of this batch."
+* meta.source = $dmed-prescription-source
+* language = #en
+* identifier[dmedMedication].value = "48210"
+* identifier[uzpharmBoxGroupID].value = "102345"
+* code = $atc#N02BE01 "Paracetamol"
+* status = #active
+* doseForm = $medication-doseform-cs#TAB101 "tablets"
+* batch
+  * lotNumber = "PCM-0926"
+  * expirationDate = "2028-08-31"
+
 Instance: example-ordinary-prescription
 InstanceOf: PrescriptionMedicationRequest
 Usage: #example
@@ -238,7 +254,7 @@ Instance: example-prescription-dispense
 InstanceOf: PrescriptionMedicationDispense
 Usage: #example
 Title: "Prescription Dispense Example"
-Description: "An allowed partial dispense of 80 tablets from two reported batches against an ordinary prescription for 90 tablets. Package-to-batch allocation is not asserted by this example."
+Description: "An allowed partial dispense of 80 tablets from one batch against an ordinary prescription for 90 tablets."
 * meta.source = $dmed-prescription-source
 * identifier[dmedDispense].value = "DISP-A00012076-01"
 * identifier[globalTradeItemID].value = "09506000134352"
@@ -247,13 +263,7 @@ Description: "An allowed partial dispense of 80 tablets from two reported batche
 * identifier[markingID][1].value = "010950600013435221DEMO-PACK-002"
 * status = #completed
 * category = $medicationdispense-admin-location#outpatient "Outpatient"
-* extension[dispensedBatch][0]
-  * extension[lotNumber].valueString = "PCM-0926"
-  * extension[expirationDate].valueDateTime = "2028-08-31"
-* extension[dispensedBatch][1]
-  * extension[lotNumber].valueString = "PCM-1026"
-  * extension[expirationDate].valueDateTime = "2028-09-30"
-* medication = Reference(example-prescription-medication)
+* medication = Reference(example-prescription-medication-batch)
 * subject = Reference(Patient/example-prescription-patient) "Example patient"
 * performer.actor = Reference(PractitionerRole/example-pharmacist-role) "Example pharmacist"
 * authorizingPrescription = Reference(example-ordinary-prescription)

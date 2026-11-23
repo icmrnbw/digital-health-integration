@@ -10,7 +10,7 @@
 
 [Карта лекарственных форм реестра Фармкомитета](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) сопоставляет 650 форм реестра с формами UZ Core.
 
-[Расширение партии отпуска](StructureDefinition-prescription-dispense-batch.html) передаёт серию и срок годности непосредственно в [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html). GTIN и коды Асл белгиси передаются отдельными идентификаторами; ключ выдачи — только ID DMED. Повторяемые группы представляют несколько переданных партий внутри одной выдачи с одной общей стоимостью.
+[Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) передаёт GTIN и коды Асл белгиси отдельными идентификаторами; ключ выдачи — только ID DMED.
 
 ### Версия 0.13.0
 

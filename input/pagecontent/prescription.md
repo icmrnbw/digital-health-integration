@@ -154,7 +154,7 @@ The pharmacist uses the existing DMED search and dispensing workflow. One source
 
 Medication references the actual trade product. GTIN is in identifier[globalTradeItemID], and each reported Asl Belgisi package code has its own identifier[markingID]. Only identifier[dmedDispense] is the event key; GTIN, package codes and lot numbers must not be used to update or deduplicate dispenses.
 
-Source-reported lot number and expiration date are grouped in the [Prescription Dispense Batch extension](StructureDefinition-prescription-dispense-batch.html). Either field may be absent, but the group cannot be empty. A batch-specific Medication is not created solely for these fields. Repeat the extension for each distinct source-reported batch within the same dispense line. The line remains one dispense and one ChargeItem, without allocating its total sale amount between batches. These groups list reported batches; they do not by themselves identify which package code belongs to which batch, or assert a quantity per batch. Missing package codes or a mismatch between their count and quantity alone do not reject a dispense.
+When the batch is known, MedicationDispense.medication references a separate Medication of that batch (batch.lotNumber, batch.expirationDate), shared by all dispenses of the batch.
 
 The full sale amount from sale_price is in UZ Core ChargeItem.totalPriceComponent (type base, UZS), linked to the dispense. This is separate from the reimbursement benefit in ClaimResponse. Erroneous source lines mark both the dispense and charge entered-in-error.
 
