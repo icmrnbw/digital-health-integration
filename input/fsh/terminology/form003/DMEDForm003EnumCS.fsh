@@ -12,17 +12,6 @@ Description: "Source tokens for transporting_method (how the patient is carried)
 * #"in_wheelchair" "в коляске"
 * #"on_stretcher" "на носилках"
 
-CodeSystem: DMEDForm003ReadmissionSameReasonCS
-Id: dmed-form-003-readmission-same-reason-cs
-Title: "DMED Form 003 readmission_same_reason"
-Description: "Source tokens for readmission_same_reason (hospitalization for the same disease during this year) on the DMED Form 003 title page."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-readmission-same-reason-cs"
-* ^status = #draft
-* ^experimental = false
-* ^caseSensitive = true
-* #"primary" "первичная"
-* #"secondary" "повторная"
-
 CodeSystem: DMEDForm003ResultTreatmentCS
 Id: dmed-form-003-result-treatment-cs
 Title: "DMED Form 003 result_treatment"

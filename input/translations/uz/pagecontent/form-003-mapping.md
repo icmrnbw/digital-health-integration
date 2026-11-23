@@ -36,12 +36,13 @@ DMED 003-shakl titul varag'i qiymatlarini o'z tokenlari bilan yuboradi. Ushbu Co
 | `blood_group` | [dmed-form-111-blood-group-cm](ConceptMap-dmed-form-111-blood-group-cm.html) | qon guruhi Observation qiymati (LOINC `883-9`) |
 | `rh_factor` | [dmed-form-111-rhesus-factor-cm](ConceptMap-dmed-form-111-rhesus-factor-cm.html) | Rezus mansubligi Observation qiymati (LOINC `10331-7`) |
 | `transporting_method` | [dmed-form-003-transporting-method-cm](ConceptMap-dmed-form-003-transporting-method-cm.html) | bemorni tashish usuli Observation qiymati |
-| `readmission_same_reason` | [dmed-form-003-readmission-same-reason-cm](ConceptMap-dmed-form-003-readmission-same-reason-cm.html) | Encounter.admission.reAdmission |
 | `result_treatment` | [dmed-form-003-result-treatment-discharge-disposition-cm](ConceptMap-dmed-form-003-result-treatment-discharge-disposition-cm.html) | Encounter.admission.dischargeDisposition |
-| `result_treatment` | [dmed-form-003-result-treatment-subject-status-cm](ConceptMap-dmed-form-003-result-treatment-subject-status-cm.html) | Encounter.subjectStatus |
 | `result_treatment` | [dmed-form-003-result-treatment-death-cm](ConceptMap-dmed-form-003-result-treatment-death-cm.html) | vafot etish holati Observation qiymati: mahalliy kod yoki tug'ruqdan oldin yoki keyin onalar o'limi uchun SNOMED CT |
+| `disease-codes[].type` (yakuniy tashxislar) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category, yakuniy tashxis kichik bo'limi; 027 va 066-shakllardagi tokenlar bilan bir xil |
 | `working_capacity` | [dmed-form-003-working-capacity-cm](ConceptMap-dmed-form-003-working-capacity-cm.html) | mehnat qobiliyati holati Observation qiymati |
 | `analyses[].title` | [dmed-form-003-analyses-cm](ConceptMap-dmed-form-003-analyses-cm.html) | qabulda tekshiruv Observation yoki DiagnosticReport kodi |
+
+Encounter - shu gospitalizatsiya bo'yicha 066-shakl yuboradigan Encounter, DMED gospitalizatsiya identifikatori bilan. Shoshilinchlik, qabul manbai, takroriy yotqizish va klinik holat (`Encounter.priority`, `admission.admitSource`, `admission.reAdmission`, `subjectStatus`) shu gospitalizatsiyaning 066-shakl kartasidan 066-shakl qoidalari bo'yicha olinadi, shuning uchun ikkala hujjat bir xil qiymatlarni yuboradi. Titul varag'idagi `quickly_taken` va `readmission_same_reason` maydonlari Encounter ga yozilmaydi.
 
 ---
 
@@ -145,10 +146,10 @@ Birlashtirilgan «qabulda tekshiruv» bloki har bir tekshiruv uchun alohida resu
 
 | UZ | RU | FHIR yo'li | Kod | Misol |
 |----|----|------------|------|---------|
-| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` SNOMED CT | `260385009` "Negative" |
-| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` SNOMED CT | `260385009` "Negative" |
+| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
+| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
 | Axlat poshevi | Посев кала | [DiagnosticReport](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-diagnostic-report.html).code | LOINC `625-4` "Bacteria identified in Stool by Culture" | - |
-| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | SNOMED CT `20848007` "Pediculosis" | Negative |
+| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | `code` SNOMED CT `20848007` "Pediculosis"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
 | Mavhum kasalliklar | Прочие заболевания | Observation.valueString | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `other-diseases` "Other diseases" | - |
 
 ---

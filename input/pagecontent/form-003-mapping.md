@@ -34,12 +34,13 @@ DMED sends Form 003 title page values as its own tokens. These ConceptMaps give 
 | `blood_group` | [dmed-form-111-blood-group-cm](ConceptMap-dmed-form-111-blood-group-cm.html) | ABO group Observation value (LOINC `883-9`) |
 | `rh_factor` | [dmed-form-111-rhesus-factor-cm](ConceptMap-dmed-form-111-rhesus-factor-cm.html) | Rh Observation value (LOINC `10331-7`) |
 | `transporting_method` | [dmed-form-003-transporting-method-cm](ConceptMap-dmed-form-003-transporting-method-cm.html) | Patient transport mobility Observation value |
-| `readmission_same_reason` | [dmed-form-003-readmission-same-reason-cm](ConceptMap-dmed-form-003-readmission-same-reason-cm.html) | Encounter.admission.reAdmission |
 | `result_treatment` | [dmed-form-003-result-treatment-discharge-disposition-cm](ConceptMap-dmed-form-003-result-treatment-discharge-disposition-cm.html) | Encounter.admission.dischargeDisposition |
-| `result_treatment` | [dmed-form-003-result-treatment-subject-status-cm](ConceptMap-dmed-form-003-result-treatment-subject-status-cm.html) | Encounter.subjectStatus |
 | `result_treatment` | [dmed-form-003-result-treatment-death-cm](ConceptMap-dmed-form-003-result-treatment-death-cm.html) | Death context Observation value: a local code, or SNOMED CT antepartum or postpartum maternal death |
+| `disease-codes[].type` (final diagnoses) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category, the Final Diagnosis sub-section; the same tokens as Forms 027 and 066 |
 | `working_capacity` | [dmed-form-003-working-capacity-cm](ConceptMap-dmed-form-003-working-capacity-cm.html) | Work capacity status Observation value |
 | `analyses[].title` | [dmed-form-003-analyses-cm](ConceptMap-dmed-form-003-analyses-cm.html) | Admission screening Observation or DiagnosticReport code |
+
+The Encounter is the same one Form 066 sends for this hospitalization, identified by the DMED hospitalization id. Its priority, admit source, re-admission and clinical state (`Encounter.priority`, `admission.admitSource`, `admission.reAdmission`, `subjectStatus`) are taken from the Form 066 card of the hospitalization, with the Form 066 rules, so both documents send the same values. The title page fields `quickly_taken` and `readmission_same_reason` are not written to the Encounter.
 
 ---
 
@@ -143,10 +144,10 @@ The combined admission screening block expands to one resource per screening.
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` SNOMED CT | `260385009` "Negative" |
-| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` SNOMED CT | `260385009` "Negative" |
+| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
+| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | `260385009` "Negative" |
 | Axlat poshevi | Посев кала | [DiagnosticReport](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-diagnostic-report.html).code | LOINC `625-4` "Bacteria identified in Stool by Culture" | - |
-| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | SNOMED CT `20848007` "Pediculosis" | Negative |
+| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | `code` SNOMED CT `20848007` "Pediculosis"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
 | Mavhum kasalliklar | Прочие заболевания | Observation.valueString | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `other-diseases` "Other diseases" | - |
 
 ---
