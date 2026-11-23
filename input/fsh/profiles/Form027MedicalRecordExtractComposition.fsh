@@ -27,7 +27,7 @@ Description: "Composition profile for Form 027 (Tibbiy muassasadagi bemorning ti
 
 * encounter 1..1
 * encounter only Reference(UZCoreEncounter)
-* encounter ^short = "Outpatient visit or inpatient stay the extract summarises"
+* encounter ^short = "Outpatient visit or inpatient stay the extract summarises (for an outpatient visit, identified by the DMED medical case number)"
 
 * date ^short = "Date the document was generated"
 
@@ -86,10 +86,10 @@ Description: "Composition profile for Form 027 (Tibbiy muassasadagi bemorning ti
 * section[referralAndDiagnosis].title ^short = "4. Referral and diagnosis"
 * section[referralAndDiagnosis].code 1..1
 * section[referralAndDiagnosis].code = $loinc#42349-1 "Reason for referral (narrative)"
-* section[referralAndDiagnosis].code ^short = "Referring institution, main diagnosis, complication, concomitant, background and competing diseases"
+* section[referralAndDiagnosis].code ^short = "Main diagnosis, complication, concomitant, background and competing diseases. The institution of items 16-17 is the hospital the patient is referred to: ServiceRequest.performer in the next steps section"
 * section[referralAndDiagnosis].entry 1..*
 * section[referralAndDiagnosis].entry only Reference(UZCoreEncounter)
-* section[referralAndDiagnosis].entry ^short = "Visit or stay carrying the referring institution"
+* section[referralAndDiagnosis].entry ^short = "Visit or stay the diagnoses were made in"
 
 * section[referralAndDiagnosis].section ^slicing.discriminator.type = #value
 * section[referralAndDiagnosis].section ^slicing.discriminator.path = "code"
@@ -151,7 +151,7 @@ Description: "Composition profile for Form 027 (Tibbiy muassasadagi bemorning ti
 * section[nextSteps].code ^short = "Follow-up, dispensary observation, hospitalization"
 * section[nextSteps].entry 0..*
 * section[nextSteps].entry only Reference(UZCoreCarePlan or UZCoreEpisodeOfCare or UZCoreServiceRequest)
-* section[nextSteps].entry ^short = "Follow-up plan, dispensary episode and hospitalization request"
+* section[nextSteps].entry ^short = "Follow-up plan, dispensary episode and hospitalization request (identified by the DMED hospitalization id; performer = the hospital and department the patient is referred to)"
 
 * section[responsiblePersons].title 1..1
 * section[responsiblePersons].title ^short = "8. Responsible persons"

@@ -36,6 +36,7 @@ DMED 027-shaklning ayrim qiymatlarini o'z tokenlari bilan yuboradi. Ushbu Concep
 | `disease_codes` kalitlari, tashxis kodining `type` qiymati (`main`, `additional`, `critical`, `background`, `competing`) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category va [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) dan mos tashxis quyi bo'limining kodi |
 | `hospitalization_type` (`ambulatory`, `hospitalTreatment`) | [dmed-form-027-hospitalization-type-cm](ConceptMap-dmed-form-027-hospitalization-type-cm.html) | Encounter.class |
 | Gospitalizatsiyaga yo'llanmaning `purpose[]` qiymati; `other_purpose_checked` belgilanganda `other_purpose` | [dmed-form-027-hospitalization-purpose-cm](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) | [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html) dan ServiceRequest.reason.concept |
+| Yo'llanma yaratadigan DMED gospitalizatsiya yozuvining `status` qiymati | [dmed-form-027-hospitalization-status-cm](ConceptMap-dmed-form-027-hospitalization-status-cm.html) | ServiceRequest.status |
 
 ---
 
@@ -73,7 +74,7 @@ Bo'lim kodi: LOINC `LP74442-2` "Admission Information".
 | Muassasa kodi | Код учреждения | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html).identifier[taxId] | `system` `https://dhp.uz/fhir/core/sid/org/uz/soliq`<br>`type` `TAX` | 310271027 |
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Chilonzor tuman poliklinikasi |
 | Bemorning ro'yxatdan o'tish raqami | Регистрационный номер пациента | Patient.identifier[healthCardId], Med ID raqami bilan bir xil qiymat | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-2026-00027 |
-| Tibbiy karta raqami | Номер медицинской карты | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-027-2026-0124 |
+| Tibbiy holat raqami | Номер случая (эпизода) DMED | Encounter.identifier: ambulator qabulning DMED `medical_case_id` qiymati. Tibbiy karta raqami tizimi emas: unda DMED gospitalizatsiya identifikatorlari yuboriladi | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` | 2181164 |
 | Bemor turi | Тип пациента | Encounter.class | v3-ActCode; DMED `hospitalization_type` [ConceptMap](ConceptMap-dmed-form-027-hospitalization-type-cm.html) bo'yicha | `AMB` "ambulatory" |
 | Murojaat sanasi | Дата подачи заявления | Encounter.actualPeriod.start | - | 2026-02-08T09:00:00+05:00 |
 | Chiqarilgan sana | Дата выписки | Encounter.actualPeriod.end | - | 2026-02-10T09:00:00+05:00 |
@@ -112,11 +113,11 @@ Bo'lim kodi: LOINC `56799-0` "Address".
 
 Bo'lim kodi: LOINC `42349-1` "Reason for referral (narrative)".
 
-Har bir tashxis [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) kod tizimidan `Condition.category` bilan belgilanadi va Composition'ning mos quyi bo'limiga joylashtiriladi: Asosiy tashxis - `main`, Asorati - `complication`, Yo'ldosh kasallik - `concomitant`. Qog'oz shaklda shu uchta rol bosiladi; DMED fon va raqobat kasalliklarini ham qayd etadi, ular `background` va `competing` quyi bo'limlariga yoziladi. DMED tashxis turi rolga [ushbu ConceptMap](ConceptMap-dmed-form-027-diagnosis-type-cm.html) bo'yicha moslashtiriladi.
+Har bir tashxis [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) kod tizimidan `Condition.category` bilan belgilanadi va Composition'ning mos quyi bo'limiga joylashtiriladi: Asosiy tashxis - `main`, Asorati - `complication`, Yo'ldosh kasallik - `concomitant`. Qog'oz shaklda shu uchta rol bosiladi; DMED fon va raqobat kasalliklarini ham qayd etadi, ular `background` va `competing` quyi bo'limlariga yoziladi. DMED tashxis turi rolga [ushbu ConceptMap](ConceptMap-dmed-form-027-diagnosis-type-cm.html) bo'yicha moslashtiriladi. 16-17-bandlardagi muassasa (Yo'llagan muassasa) - bemor yo'llangan shifoxona; u keyingi tadbirlar bo'limidagi ServiceRequest.performer ga yoziladi.
 
 | UZ | RU | FHIR yo'li | Kod | Misol qiymati |
 |----|----|------------|------|---------------|
-| Yo'llagan muassasa | Направившее учреждение | Encounter.admission.origin | Organization | Yakkasaroy tuman oilaviy poliklinikasi |
+| Yo'llagan muassasa | Учреждение, куда направлен пациент | "7. Keyingi tadbirlar" bo'limidagi ServiceRequest.performer. DMED bu yozuv ostida bemor yo'llangan shifoxonani (`clinic`) chop etadi | Organization | Toshkent shahar 1-son klinik shifoxonasi |
 | Asosiy tashxis | Основной диагноз | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code | ICD-10 | `J18.9` "Pneumonia, unspecified" |
 | Asorati | Осложнение | Condition.code; category | ICD-10; [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `complication` | `J90` "Pleural effusion, not elsewhere classified" |
 | Yo'ldosh kasallik | Сопутствующее заболевание | Condition.code; category | ICD-10; [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `concomitant` | `E66.9` "Obesity, unspecified" |
@@ -162,6 +163,10 @@ Bo'lim kodi: LOINC `74213-0` "Discharge instructions".
 | Kuzatuv | Наблюдение | CarePlan.description | - | Shifoxonadan chiqqandan keyin 1 oy davomida oilaviy poliklinikada kuzatuv |
 | Dispanserizatsiya | Диспансеризация | [EpisodeOfCare](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-episodeofcare.html).type[serviceType] | [Episode of Care Type](https://terminology.dhp.uz/fhir/core/ValueSet/episode-of-care-type-vs) | `mserv-0001-00001` "Preventive services" |
 | Shifoxonaga yotqazish | Госпитализация | [ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html).code | [Service Request Codes](https://terminology.dhp.uz/fhir/core/ValueSet/service-request-code-vs) | SNOMED CT `32485007` "Hospital admission" |
+| Gospitalizatsiya identifikatori | Идентификатор госпитализации | *(o'sha ServiceRequest)* identifier: yo'llanma yaratadigan DMED gospitalizatsiya identifikatori; qabul qiluvchi shifoxona 066, 003 va 096-shakllarda Encounter.identifier ga xuddi shu qiymatni yuboradi | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | 20705 |
+| Yo'llangan muassasa | Учреждение, куда направлен пациент | *(o'sha ServiceRequest)* performer → Organization, DMED `clinic` | `taxId` `https://dhp.uz/fhir/core/sid/org/uz/soliq` | Toshkent shahar 1-son klinik shifoxonasi |
+| Bo'lim | Отделение | *(o'sha ServiceRequest)* performer → Organization (bo'lim, shifoxonaning `partOf`), DMED `planned_department` | `system` `https://dhp.uz/fhir/core/sid/uz/department-code` | 118, Pulmonologiya bo'limi |
+| Yo'llanma holati | Статус направления | *(o'sha ServiceRequest)* status | DMED `status` [ushbu ConceptMap](ConceptMap-dmed-form-027-hospitalization-status-cm.html) bo'yicha; rad etilgan yo'llanmaning `reject_reason` qiymati note.text ga | `active` |
 | Gospitalizatsiya maqsadi | Цель госпитализации | *(o'sha ServiceRequest)* reason.concept, har bir maqsad uchun bittadan; `other` uchun matn reason.concept.text ga | [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html), DMED `purpose[]` [ushbu ConceptMap](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) bo'yicha | `treatment` "Davolash" |
 | Yotqazishga asos bo'lgan tashxis | Диагноз, обосновывающий госпитализацию | *(o'sha ServiceRequest)* reason.reference | Condition (asosiy tashxis) | J18.9 |
 | Izoh | Примечание | *(o'sha ServiceRequest)* note.text | - | Plevral suyuqlik nazorati uchun pulmonologiya bo'limiga. |
@@ -196,7 +201,7 @@ FHIR bu elementlarni talab qiladi, lekin qog'oz shaklda ular uchun maydon yo'q. 
 | MedicationRequest | status; intent | [MedicationRequest Status](https://dhp.uz/fhir/core/en/ValueSet-medicationrequest-status-vs.html); [MedicationRequest Intent](https://dhp.uz/fhir/core/en/ValueSet-medicationrequest-intent-vs.html) | `active`; `order` (ko'chirma bilan berilgan retsept) |
 | CarePlan (kuzatuv) | status; intent | [RequestStatus](https://hl7.org/fhir/R5/valueset-request-status.html); [CarePlanIntent](https://hl7.org/fhir/R5/valueset-care-plan-intent.html) | `active`; `plan` |
 | EpisodeOfCare | status | [EpisodeOfCare Status](https://dhp.uz/fhir/core/en/ValueSet-episode-of-care-status-vs.html) | `active`, bemor dispanser hisobiga olinganda, undan oldin `planned` |
-| ServiceRequest | status; intent | [ServiceRequest Status](https://dhp.uz/fhir/core/en/ValueSet-service-request-status-vs.html); [Request Intent](https://dhp.uz/fhir/core/en/ValueSet-request-intent-vs.html) | `active`; `order` |
+| ServiceRequest | status; intent | [ServiceRequest Status](https://dhp.uz/fhir/core/en/ValueSet-service-request-status-vs.html); [Request Intent](https://dhp.uz/fhir/core/en/ValueSet-request-intent-vs.html) | DMED holati va [ushbu ConceptMap](ConceptMap-dmed-form-027-hospitalization-status-cm.html) bo'yicha `active`, `completed` yoki `revoked`; `order` |
 
 ---
 
