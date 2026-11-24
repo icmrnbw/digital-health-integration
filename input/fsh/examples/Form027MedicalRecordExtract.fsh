@@ -418,7 +418,7 @@ Usage: #inline
 * performer[+] = Reference(urn:uuid:02700027-1111-2222-3333-444444444444)
 * code = $sct#32485007 "Hospital admission"
 // DMED hospitalization_type = hospitalTreatment (Bemor turi: statsionar)
-* orderDetail.parameter.code = hospitalization-referral-order-parameter-cs#treatment-setting "Davolash turi"
+* orderDetail.parameter.code = hospitalization-referral-order-parameter-cs#treatment-setting "Treatment setting"
 * orderDetail.parameter.valueCodeableConcept = $v3-ActCode#IMP "inpatient encounter"
 * reason[0].concept = hospitalization-purpose-cs#treatment "Treatment"
 * reason[+].reference = Reference(urn:uuid:02700008-1111-2222-3333-444444444444)
