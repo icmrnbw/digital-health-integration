@@ -10,7 +10,7 @@
 
 [Карта лекарственных форм реестра Фармкомитета](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) сопоставляет 650 форм реестра с формами UZ Core.
 
-[Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) передаёт GTIN и коды Асл белгиси отдельными идентификаторами; ключ выдачи — только ID DMED.
+[Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) передаёт GTIN и коды Асл белгиси отдельными идентификаторами; ключ выдачи — только ID DMED. Отказ в отпуске передаётся со статусом `declined` и кодом причины.
 
 #### Изменено
 

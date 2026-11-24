@@ -4,7 +4,7 @@
 
 [Farmatsevtika qo'mitasi reyestri ATX kodlari xaritasi](ConceptMap-pharmcom-registry-atc-to-who-atc-cm.html) reyestrning joriy WHO ATC da yo'q 76 ta ATX kodini almashtiradi.
 
-[Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) GTIN va Asl Belgisi kodlarini alohida identifikatorlarda uzatadi; berish hodisasining kaliti faqat DMED identifikatoridir.
+[Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) GTIN va Asl Belgisi kodlarini alohida identifikatorlarda uzatadi; berish hodisasining kaliti faqat DMED identifikatoridir. Berishdan bosh tortish `declined` holati va sabab kodi bilan uzatiladi.
 
 [Farmatsevtika qo'mitasi reyestri dori shakllari xaritasi](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) reyestrning 650 ta dori shaklini UZ Core dori shakllari bilan bog'laydi.
 

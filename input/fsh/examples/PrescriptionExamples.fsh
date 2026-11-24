@@ -276,6 +276,22 @@ Description: "An allowed partial dispense of 80 tablets from one batch against a
 * whenHandedOver = "2026-09-18T10:40:00+05:00"
 * receiver = Reference(Patient/example-prescription-patient) "Example patient"
 
+Instance: example-prescription-dispense-declined
+InstanceOf: PrescriptionMedicationDispense
+Usage: #example
+Title: "Prescription Declined Dispense Example"
+Description: "A pharmacy refusal to dispense because the product is unavailable; the prescription stays active."
+* meta.source = $dmed-prescription-source
+* identifier[dmedDispense].value = "DISP-A00012076-02"
+* status = #declined
+* notPerformedReason.concept = $medicationdispense-status-reason#frr04 "Product unavailable"
+* category = $medicationdispense-admin-location#outpatient "Outpatient"
+* medication = Reference(example-prescription-medication)
+* subject = Reference(Patient/example-prescription-patient) "Example patient"
+* performer.actor = Reference(PractitionerRole/example-pharmacist-role) "Example pharmacist"
+* authorizingPrescription = Reference(example-ordinary-prescription)
+* recorded = "2026-09-19T09:15:00+05:00"
+
 Instance: example-prescription-administration
 InstanceOf: PrescriptionMedicationAdministration
 Usage: #example

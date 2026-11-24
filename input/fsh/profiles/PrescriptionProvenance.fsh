@@ -2,7 +2,7 @@ Profile: PrescriptionProvenance
 Parent: Provenance
 Id: prescription-provenance
 Title: "Prescription Provenance"
-Description: "Authorship, signature and workflow-event provenance for prescription resources. This integration profile is required because UZCoreProvenance 0.13.0 does not permit MedicationRequest as a target."
+Description: "Authorship, signature and workflow-event provenance for prescription resources. This integration profile is required because UZCoreProvenance binds activity to signature activity types and allows only PractitionerRole agents, while prescription events use workflow actions."
 * ^status = #active
 * ^experimental = true
 * ^publisher = "Uzinfocom"

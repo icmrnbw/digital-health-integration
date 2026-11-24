@@ -1,3 +1,13 @@
+Invariant: prescription-dispense-handover
+Description: "A completed dispense has the quantity, handover time and receiver"
+Severity: #error
+Expression: "status = 'completed' implies (quantity.exists() and whenHandedOver.exists() and receiver.exists())"
+
+Invariant: prescription-dispense-declined-reason
+Description: "A declined dispense has a reason and no handover"
+Severity: #error
+Expression: "status = 'declined' implies (notPerformedReason.exists() and whenHandedOver.empty())"
+
 Profile: PrescriptionMedicationDispense
 Parent: UZCoreMedicationDispense
 Id: prescription-medication-dispense
@@ -36,17 +46,18 @@ Description: "Medication actually supplied by a pharmacy against a DMED electron
   * value 1..1 MS
   * use 0..0
 * status MS
+* obeys prescription-dispense-handover and prescription-dispense-declined-reason
 * category MS
 * medication only CodeableReference(PrescriptionMedication)
 * subject MS
 * performer 1..* MS
 * authorizingPrescription 1..1 MS
 * authorizingPrescription only Reference(PrescriptionMedicationRequest)
-* quantity 1..1 MS
+* quantity MS
 * quantity.value 1..1 MS
 * quantity.unit 1..1 MS
 * quantity.system 1..1 MS
 * quantity.code 1..1 MS
 * recorded 1..1 MS
-* whenHandedOver 1..1 MS
-* receiver 1..1 MS
+* whenHandedOver MS
+* receiver MS
