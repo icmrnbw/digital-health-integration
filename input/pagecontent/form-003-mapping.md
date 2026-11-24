@@ -34,12 +34,42 @@ DMED sends Form 003 title page values as its own tokens. These ConceptMaps give 
 | `blood_group` | [dmed-form-111-blood-group-cm](ConceptMap-dmed-form-111-blood-group-cm.html) | ABO group Observation value (LOINC `883-9`) |
 | `rh_factor` | [dmed-form-111-rhesus-factor-cm](ConceptMap-dmed-form-111-rhesus-factor-cm.html) | Rh Observation value (LOINC `10331-7`) |
 | `transporting_method` | [dmed-form-003-transporting-method-cm](ConceptMap-dmed-form-003-transporting-method-cm.html) | Patient transport mobility Observation value |
-| `readmission_same_reason` | [dmed-form-003-readmission-same-reason-cm](ConceptMap-dmed-form-003-readmission-same-reason-cm.html) | Encounter.admission.reAdmission |
 | `result_treatment` | [dmed-form-003-result-treatment-discharge-disposition-cm](ConceptMap-dmed-form-003-result-treatment-discharge-disposition-cm.html) | Encounter.admission.dischargeDisposition |
-| `result_treatment` | [dmed-form-003-result-treatment-subject-status-cm](ConceptMap-dmed-form-003-result-treatment-subject-status-cm.html) | Encounter.subjectStatus |
 | `result_treatment` | [dmed-form-003-result-treatment-death-cm](ConceptMap-dmed-form-003-result-treatment-death-cm.html) | Death context Observation value: a local code, or SNOMED CT antepartum or postpartum maternal death |
+| `disease-codes[].type` (final diagnoses) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category, the Final Diagnosis sub-section; the same tokens as Forms 027 and 066 |
 | `working_capacity` | [dmed-form-003-working-capacity-cm](ConceptMap-dmed-form-003-working-capacity-cm.html) | Work capacity status Observation value |
 | `analyses[].title` | [dmed-form-003-analyses-cm](ConceptMap-dmed-form-003-analyses-cm.html) | Admission screening Observation or DiagnosticReport code |
+
+The Encounter is the same one Form 066 sends for this hospitalization, identified by the DMED hospitalization id. Its priority, admit source, re-admission and clinical state (`Encounter.priority`, `admission.admitSource`, `admission.reAdmission`, `subjectStatus`) are taken from the Form 066 card of the hospitalization, with the Form 066 rules, so both documents send the same values. The title page fields `quickly_taken` and `readmission_same_reason` are not written to the Encounter.
+
+The payment type also comes from the Form 066 card (`payment_type`): it is sent as a `Coverage` (`type` from `coverage-type-cs`, beneficiary the patient) in the Administrative Information section, with the Form 066 payment type map. The title page `price_list` is not sent.
+
+### DMED source details verified on 23–24 November 2026
+
+A DMED document contains only available data. All 20 named sections and all final-diagnosis roles are optional. A supplied section retains its required title, code, reference types and FHIR content rules; it may contain text, structured entries or sub-sections as allowed by that section. The document header and the UZ Core requirements still apply. Do not manufacture absent clinical values or signatures. See the [partial document example](Bundle-example-form-003-partial-inpatient-medical-record.html). This profile does not claim separate structured coverage of every consent, council protocol or detailed neonatal/hourly chart in the attached paper form.
+
+The title page is read from `GET /api/mis/v2/hospitalizations/{id}/title-page`. The page also reads the hospitalization and its medical case. A title-page response alone does not contain the complete inpatient chart: the UI has separate examination, epicrisis, investigation-plan, analysis and treatment-course sections. Their presence in the UI does not establish a field-level export contract for every section of this profile.
+
+DMED's inpatient card number is `hospitalization.number` (for example, `38-2026`), preserved in `section[administrativeInformation].text`. The technical Encounter identifier remains `hospitalization.id` in `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`, shared with Form 066. The separate patient Med ID is `patient.number_med_card`; title-page `number` is the contract number (`Shartnoma №`). These values are not interchangeable.
+
+The print component labels `time_to_admission` in minutes. Preserve a supplied numeric value as `Observation.valueQuantity`, UCUM `min`, with LOINC `77977-7` (Illness duration). The paper form does not specify 6/7/24-hour categories. Do not round or classify the source minutes using the legacy delay catalogue. A duration is not an onset date; omit it when the source is absent.
+
+Each `analyses[]` entry has `title`, `result` and `date_of_conduct`. The result control accepts free text. Use `date_of_conduct` for the observation's effective date with its source precision. `rw-1` and `rw-2` are separate RW entries; `hiv`, `hiv_II` and `hiv_express` are separate HIV entries. `stool-culture` is the current stool-culture token. Historical `blood`, `feces_back_seeding` and `abstract_disease` remain in the source code system for older data.
+
+One analysis entry carries its own result. The combined legacy `blood` title does not establish both an RW result and an HIV result. The RW titles do not establish the analyte and serum specimen of LOINC `22461-8`. The HIV titles do not establish the antibody/antigen combination and method of LOINC `56888-1`; their LOINC mapping remains unassigned. The source code system can identify these observations while a specific laboratory code is being established. Positive and negative results use the existing `positive-negative-result-vs` only when the source result supports that interpretation; the source result text must remain available. Other free-text results can be carried in `Observation.valueString`.
+
+DMED stores `surgical_operations[].method_anesthesia` as text. Carry the anesthesia method in the corresponding surgery's `Procedure.note.text`, as agreed on 23 November. The separately printed operations are editable text copies; a coded surgical-intervention source must be identified independently before assigning an ICHI code. The existing [Anesthesia Method](ValueSet-anesthesia-method-vs.html) catalogue is retained, but it does not establish a coded value for this DMED free-text field.
+
+The separate `permanent_residence_areas` city/village flag is outside the agreed payload; the patient address remains mapped. `hospitalization_reason` is a separate Observation: code `hospitalization-reason` from [Form 003 observation codes](CodeSystem-form-003-observation-code-cs.html), with the source value from [DMED hospitalization reasons](ValueSet-dmed-form-003-hospitalization-reason-vs.html). The [source code system](CodeSystem-dmed-form-003-hospitalization-reason-cs.html) retains `disease`, `injury`, `car_accident` and `planned`. This does not override the Form 066 urgency rule.
+
+The annual total is for the same condition in the current calendar year, including the current hospitalization (confirmed by Ernest on 24 November 2026). Use Observation code `same-condition-hospitalizations-this-year` from [Form 003 observation codes](CodeSystem-form-003-observation-code-cs.html) and `valueInteger`; do not subtract the current stay or supply a default when the count is absent. Preserve the title-page first/repeat answer in `section[hospitalizationSummary].text`; the shared Encounter re-admission value continues to follow Form 066.
+
+The paper records the primary examination's own date and time. Preserve it with the examination narrative in `section[primaryExamination].text`; it is not `Condition.recordedDate`, which means the first recording of that Condition. DMED's diagnosis table reads `disease-codes[].date`; preserve that source date as the hospital-diagnosis date in `section[admissionInformation].text` unless its equivalence to first recording is established. The examined API sample had no hospital-diagnosis records, so that equivalence is not confirmed.
+
+DMED's bed-day display is `ceil((hospitalization_end_date - hospitalization_start_date) / 24 hours)` when both values exist. Preserve this count in `section[administrativeInformation].text`. It is not automatically `Encounter.length`, which is actual duration excluding absences. Diary entries preserve their own source date/time alongside the content in `section[diary].text`. The frontend reads `start_at` (and shows `created_at` as a fallback); the inspected diary response was empty, so a populated backend record is still to be checked. Do not export the editor's current-time default as an examination or diary time.
+
+The document signature follows the same mechanism as Form 066, as confirmed by Ernest on 23 November 2026. The actual signature data is required to populate the corresponding Provenance signature.
+
 
 ---
 
@@ -74,13 +104,13 @@ DMED sends Form 003 title page values as its own tokens. These ConceptMaps give 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Toshkent shahar klinik shifoxonasi |
-| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | MRN-003-2026-0042 |
+| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | section[administrativeInformation].text | DMED `hospitalization.number` | 38-2026 |
 | Kasalxonaga yotqizilgan kun va vaqti | Дата и время поступления в стационар | Encounter.actualPeriod.start | - | 2026-02-08T10:00:00+05:00 |
 | Kasalxonadan chiqarilgan kun va vaqti | Дата и время выписки из стационара | Encounter.actualPeriod.end | - | 2026-02-18T09:00:00+05:00 |
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
 | Statsionar xona raqami | Номер палаты | Location.identifier[unit].value | `type` [Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` "Palata" | 214 |
 | Ko'chirilgan bo'lim | Переведён в отделение | Encounter.location (repeat) + Encounter.location.period | - | - |
-| Yotib davolangan kunlar soni | Количество проведённых койко-дней | Encounter.length | UCUM `d` "day" | 10 days |
+| Yotib davolangan kunlar soni | Количество проведённых койко-дней | section[administrativeInformation].text | DMED bed-day count | 10 |
 
 ---
 
@@ -91,7 +121,7 @@ DMED sends Form 003 title page values as its own tokens. These ConceptMaps give 
 | Bemorning F.I.Sh. | ФИО пациента | Patient.name:official | - | Tursunov Alisher Valiyevich |
 | Bemorning tug'ilgan sanasi | Дата рождения пациента | Patient.birthDate | - | 1990-04-12 |
 | Bemorning jinsi | Пол пациента | Patient.gender; Patient.gender.extension[gender-other] | [Administrative Gender](https://dhp.uz/fhir/core/en/ValueSet-administrative-gender-vs.html); `other` requires the [Gender Other](https://dhp.uz/fhir/core/en/StructureDefinition-gender-other.html) extension | male |
-| Bemorning tibbiy karta raqami | Номер медицинской карты | Patient.identifier[healthCardId].value | - | HC-2026-00042 |
+| Med ID raqami | Med ID пациента | Patient.identifier[healthCardId].value | DMED `patient.number_med_card` | HC-2026-00042 |
 | Bemorning yashash joyi | Место жительства пациента | Patient.address:uzAddress (use = home) | - | Toshkent, Yunusobod, 12-mavze, 15-uy |
 | Qon guruhi | Группа крови | [Observation](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-observation.html).valueCodeableConcept | `code` LOINC `883-9` "ABO group [Type] in Blood"<br>`value` [Blood Group](https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs) | A (II) (`112144000`) |
 | Rezus mansubligi | Резус-фактор | Observation.valueCodeableConcept | `code` LOINC `10331-7` "Rh [Type] in Blood"<br>`value` [Blood Rh](https://terminology.dhp.uz/fhir/core/ValueSet/blood-rh-vs) | Rh positive (`165747007`) |
@@ -129,11 +159,13 @@ Rows 27-32 of the paper form are a single choice field. Each recorded variant is
 | Bemor yuborilgan shifoxona nomi | Кем направлен больной | Encounter.admission.origin → Organization | - | Yunusobod tuman oilaviy poliklinikasi |
 | Kasalxonaga shoshilinch tarzda keltirilgan | Пациент доставлен экстренно | Encounter.priority | [ActPriority](https://terminology.hl7.org/ValueSet-v3-ActPriority.html) `EM` "emergency" / `R` "routine" | Emergency |
 | Tez tibbiy yordam transportida keldi | Доставлен транспортом скорой помощи | Observation.valueBoolean | LOINC `LP97912-7` "Ambulance transport" | true |
-| Kasallik/jarohatdan keyin yotqizishgacha o'tgan vaqt | Время от начала заболевания/травмы до госпитализации | Observation.valueCodeableConcept | [Disease/Injury Delay](CodeSystem-disease-injury-delay-cs.html) | `delay0001_00003` "After 24 hours" |
+| Kasalxonaga yotqizish sababi | Причина госпитализации | Observation.valueCodeableConcept | `code` [Form 003](CodeSystem-form-003-observation-code-cs.html) `hospitalization-reason`; `value` [DMED reasons](ValueSet-dmed-form-003-hospitalization-reason-vs.html) | disease |
+| Kasallik/jarohatdan keyin yotqizishgacha o'tgan vaqt | Время от начала заболевания/травмы до госпитализации | Observation.valueQuantity | LOINC `77977-7`; UCUM `min` | 390 min |
 | Bemorni kelish usuli | Метод прибытия пациента | Encounter.admission.admitSource | [Admit Source Local](https://dhp.uz/fhir/core/en/CodeSystem-admit-source-local-cs.html) | `mserv-0006-00004` "Emergency medical service" |
 | Bemor yo'llanmasidagi tashxis | Диагноз в направлении | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `referral` "Referring institution diagnosis" | `J18.9` "Pneumonia, unspecified" |
 | Qabulxonada qo'yilgan tashxis | Диагноз в приёмном отделении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` "Admission diagnosis" | `J18.9` "Pneumonia, unspecified" |
-| Tashxis qo'yilgan sana | Дата установления диагноза | Condition.recordedDate | - | 2026-02-08 |
+| Kasalxonada qo'yilgan tashxis | Больничный диагноз (строка 39) | Condition.code; section[admissionInformation].text | ICD-10; the DMED title-page component selects diagnoses from `clinical_diagnosis_justification_epicrisis` and `landmark_epicrisis` | - |
+| Tashxis qo'yilgan sana | Дата установления диагноза | section[admissionInformation].text | - | 2026-02-08 |
 
 ---
 
@@ -143,10 +175,10 @@ The combined admission screening block expands to one resource per screening.
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Qon RW | RW | Observation.valueCodeableConcept | `code` LOINC `22461-8` "Reagin Ab [Presence] in Serum"<br>`value` SNOMED CT | `260385009` "Negative" |
-| OITS | ВИЧ 1/2 Ab + p24 Ag | Observation.valueCodeableConcept | `code` LOINC `56888-1` "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"<br>`value` SNOMED CT | `260385009` "Negative" |
+| Qon RW | RW — separate DMED entries | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `rw-1`, `rw-2`; LOINC `22461-8` requires confirmation of analyte and serum specimen<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) when explicitly supported by the source; otherwise source text | `260385009` "Negative" |
+| OITS | HIV — separate DMED entries | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `hiv`, `hiv_II`, `hiv_express`; specific LOINC pending laboratory method<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) when explicitly supported by the source; otherwise source text | `260385009` "Negative" |
 | Axlat poshevi | Посев кала | [DiagnosticReport](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-diagnostic-report.html).code | LOINC `625-4` "Bacteria identified in Stool by Culture" | - |
-| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | SNOMED CT `20848007` "Pediculosis" | Negative |
+| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | `code` SNOMED CT `20848007` "Pediculosis"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
 | Mavhum kasalliklar | Прочие заболевания | Observation.valueString | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `other-diseases` "Other diseases" | - |
 
 ---
@@ -155,7 +187,7 @@ The combined admission screening block expands to one resource per screening.
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Bemorni tekshirish sanasi va vaqti | Дата и время осмотра пациента | Condition.recordedDate of the provisional diagnosis | - | 2026-02-08T10:15:00+05:00 |
+| Bemorni tekshirish sanasi va vaqti | Дата и время осмотра пациента | section[primaryExamination].text | - | 2026-02-08T10:15:00+05:00 |
 | Bemorning yoshi | Возраст пациента | derived from Patient.birthDate and the examination date | - | 35 |
 | Shikoyatlar / Boshqa shikoyatlar | Жалобы / Другие жалобы | Observation.valueString | LOINC `8661-1` "Chief complaint - Reported" | Cough, fever, dyspnoea |
 | Joylashuvi | Локализация | *(same Observation).bodySite* | [Body Site](https://dhp.uz/fhir/core/en/ValueSet-body-site-vs.html) | `266005` "Structure of lower lobe of right lung" |
@@ -219,7 +251,7 @@ Each diagnosis is one Condition. Its role goes in `Condition.category` as a [Dia
 |----|----|------------|------|---------|
 | Jarrohlik operatsiyasi nomi | Наименование хирургической операции | [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html).code | [ICHI Codes Accepted by DMED](https://terminology.dhp.uz/fhir/integrations/ValueSet/dmed-ichi-vs) | `JCB.JB.AE` "Percutaneous drainage of pleural cavity" |
 | Jarrohlik operatsiyasi sanasi va vaqti | Дата и время хирургической операции | Procedure.occurrenceDateTime | - | 2026-02-10T11:30:00+05:00 |
-| Og'riqsizlantirish usullari | Метод анестезии | separate [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code (coding or text) | [Anesthesia Method](ValueSet-anesthesia-method-vs.html) | `386761002` "Local anesthesia" |
+| Og'riqsizlantirish usullari | Метод анестезии | Procedure.note.text | DMED `surgical_operations[].method_anesthesia`, free text | Local anesthesia |
 | Operatsiyadan keyingi asoratlar | Послеоперационные осложнения | Procedure.complication / Condition | SNOMED CT / ICD-10 | - |
 | Shifokor F.I.Sh. | ФИО врача-хирурга | Procedure.performer.actor → PractitionerRole | - | Rasulov B.B. |
 | Boshqa davolash turlari nomi | Наименование других видов лечения | Procedure.code | [Procedure Code](https://dhp.uz/fhir/core/en/ValueSet-procedure-code-vs.html) | - |
@@ -265,9 +297,9 @@ Morning and evening measurements are the same LOINC observation distinguished by
 | Yurak urishi (ertalab / kechqurun) | Пульс (утро / вечер) | Observation.valueQuantity | LOINC `8867-4` "Heart rate" | 96 /min |
 | Qon bosimi (ertalab / kechqurun) | Артериальное давление (утро / вечер) | Observation.component.valueQuantity | LOINC `85354-9` "Blood pressure panel" + `component` LOINC `8480-6` "Systolic blood pressure" / `8462-4` "Diastolic blood pressure" in `mm[Hg]` | 134 / 84 |
 | Harorat (ertalab / kechqurun) | Температура (утро / вечер) | Observation.valueQuantity | LOINC `8310-5` "Body temperature" | 37.6 Cel |
-| Nafas olish tezligi (ertalab / kechqurun) | Частота дыхания (утро / вечер) | Observation.valueQuantity | LOINC `9279-1` "Respiratory rate" | 20 /min |
-| Og'irligi (ertalab / kechqurun) | Вес (утро / вечер) | Observation.valueQuantity | LOINC `29463-7` "Body weight" | 82 kg |
-| Qabul qilingan suyuqlik (ertalab / kechqurun) | Выпито жидкости (утро / вечер) | Observation.valueQuantity, one per half-day | LOINC `9107-4` "Fluid intake total 12 hour" | 600 mL |
+| Nafas olish tezligi | Частота дыхания | Observation.valueQuantity | LOINC `9279-1` "Respiratory rate" | 20 /min |
+| Og'irligi | Вес | Observation.valueQuantity | LOINC `29463-7` "Body weight" | 82 kg |
+| Qabul qilingan suyuqlik miqdori | Количество принятой жидкости | section[temperatureChart].text | Source amount and interval, if recorded; no assumed 12-hour interval | 600 mL |
 | Bir kunlik siydik miqdori | Суточное количество мочи | Observation.valueQuantity | LOINC `9192-6` "Urine output 24 hour" | 1650 mL/(24.h) |
 
 ---
@@ -278,7 +310,7 @@ Morning and evening measurements are the same LOINC observation distinguished by
 |----|----|------------|------|---------|
 | Dinamikadagi ahvoli | Состояние в динамике | Observation.valueString | LOINC `8648-8` "Hospital course note" | Afebrile from day 5, resolving |
 | Shifokor tavsiyalari | Рекомендации врача | [CarePlan](https://hl7.org/fhir/R5/careplan.html).description | - | Oral antibiotics, GP review in 3 days |
-| Kundalik / Shifokor yozuvlari | Дневник / Записи врача | section[diary].text | LOINC `11506-3` "Progress note" | narrative |
+| Kundalik / Shifokor yozuvlari | Дневник / Записи врача | section[diary].text | LOINC `11506-3` "Progress note" | Source date/time + narrative |
 
 ---
 
@@ -286,8 +318,8 @@ Morning and evening measurements are the same LOINC observation distinguished by
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Mazkur yil davomida shu kasallik bo'yicha kasalxonaga yotishi | Госпитализация по данному заболеванию в текущем году | Encounter.admission.reAdmission | [Re-admission Local](https://dhp.uz/fhir/core/en/CodeSystem-re-admission-local-cs.html) `first-time` "First time" / `repeat-current-year` "Repeated within current year" | First time |
-| Yillik kasalxonaga yotqizilganlarning umumiy soni | Общее количество госпитализаций за год | Observation.valueInteger | [Local](CodeSystem-local-observation-code.html) `num-previous-hospitalizations` "Number of previous hospitalizations" | 0 |
+| Mazkur yil davomida shu kasallik bo'yicha kasalxonaga yotishi | Госпитализация по данному заболеванию в текущем году | section[hospitalizationSummary].text | DMED `readmission_same_reason`; Encounter re-admission follows Form 066 | primary |
+| Yillik kasalxonaga yotqizilganlarning umumiy soni | Общее количество госпитализаций за год | Observation.valueInteger | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `same-condition-hospitalizations-this-year`; includes current stay, same condition | 1 |
 
 ---
 
@@ -323,7 +355,7 @@ Present only when the patient died. Each cause of death is one Condition, with i
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Kasallik haqidagi yakuniy tibbiy xulosa | Окончательное медицинское заключение о заболевании | section[postmortemConclusion].text | LOINC `18743-5` "Autopsy report" | narrative |
+| Kasallik haqidagi yakuniy tibbiy xulosa | Окончательное медицинское заключение о заболевании | section[postmortemConclusion].text | LOINC `47046-8` "Summary of Death Note" | narrative |
 | O'limga olib kelgan bevosita sabab | Непосредственная причина смерти | Condition.code | ICD-10 | - |
 | Asosiy kasallik | Основное заболевание | Condition.code | ICD-10 | - |
 
