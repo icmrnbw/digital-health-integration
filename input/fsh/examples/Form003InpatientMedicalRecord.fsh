@@ -58,6 +58,8 @@ Title: "Form 003 - Inpatient medical record card"
 * entry[=].resource = obs-003-arrived-by-ambulance
 * entry[+].fullUrl  = "urn:uuid:00300025-0000-0000-0000-000000000000"
 * entry[=].resource = obs-003-onset-to-admission-delay
+* entry[+].fullUrl = "urn:uuid:00300064-0000-0000-0000-000000000000"
+* entry[=].resource = obs-003-hospitalization-reason
 * entry[+].fullUrl  = "urn:uuid:00300026-0000-0000-0000-000000000000"
 * entry[=].resource = condition-003-referral-dx
 * entry[+].fullUrl  = "urn:uuid:00300027-0000-0000-0000-000000000000"
@@ -121,7 +123,7 @@ Title: "Form 003 - Inpatient medical record card"
 * entry[+].fullUrl  = "urn:uuid:00300055-0000-0000-0000-000000000000"
 * entry[=].resource = careplan-003-sick-leave
 * entry[+].fullUrl  = "urn:uuid:00300056-0000-0000-0000-000000000000"
-* entry[=].resource = obs-003-prev-hospitalizations
+* entry[=].resource = obs-003-same-condition-hospitalizations
 * entry[+].fullUrl  = "urn:uuid:00300057-0000-0000-0000-000000000000"
 * entry[=].resource = obs-003-work-capacity
 * entry[+].fullUrl  = "urn:uuid:00300060-0000-0000-0000-000000000000"
@@ -151,6 +153,8 @@ Usage: #inline
 * title = "Form 003 - Inpatient Medical Record Card"
 
 * section[administrativeInformation].title = "Administrative Information"
+* section[administrativeInformation].text.status = #generated
+* section[administrativeInformation].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Inpatient medical card number: 38-2026. Bed-day count: 10.</p></div>"
 * section[=].code = form-003-section-cs#administrative-information
 * section[=].entry[0] = Reference(urn:uuid:00300004-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
@@ -178,6 +182,7 @@ Usage: #inline
 * section[=].entry[0] = Reference(urn:uuid:00300005-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300024-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300025-0000-0000-0000-000000000000)
+* section[=].entry[+] = Reference(urn:uuid:00300064-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300026-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300027-0000-0000-0000-000000000000)
 
@@ -188,6 +193,8 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:00300039-0000-0000-0000-000000000000)
 
 * section[primaryExamination].title = "Primary Examination Sheet"
+* section[primaryExamination].text.status = #generated
+* section[primaryExamination].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Examination date and time: 2026-02-08T10:15:00+05:00.</p></div>"
 * section[=].code = $loinc#34117-2 "History and physical note"
 * section[=].entry[0] = Reference(urn:uuid:00300060-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300028-0000-0000-0000-000000000000)
@@ -361,7 +368,6 @@ Usage: #inline
 * actualPeriod.start = "2026-02-08T10:00:00+05:00"   // rows 4-5 merged
 * actualPeriod.end   = "2026-02-18T09:00:00+05:00"   // rows 6-7 merged
 * serviceProvider = Reference(urn:uuid:00300004-0000-0000-0000-000000000000)
-* length = 10 'd' "days"                              // row 11
 * priority = http://terminology.hl7.org/CodeSystem/v3-ActPriority#EM "Emergency"   // rows 34, 36
 * admission.origin = Reference(urn:uuid:00300005-0000-0000-0000-000000000000)       // row 33
 * admission.admitSource = https://terminology.dhp.uz/fhir/core/CodeSystem/admit-source-local-cs#mserv-0006-00004 "Emergency medical service"  // row 71
@@ -547,7 +553,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
 * effectiveDateTime = "2026-02-08T10:00:00+05:00"
-* valueCodeableConcept = https://terminology.dhp.uz/fhir/integrations/CodeSystem/disease-injury-delay-cs#delay0001_00003 "After 24 hours"   // row 36a
+* valueQuantity = 5760 'min' "minutes"  // row 36a: source duration, without category rounding
 
 Instance: condition-003-referral-dx
 InstanceOf: UZCoreCondition
@@ -578,7 +584,7 @@ Usage: #inline
 * code.coding = $icd10#J18.9 "Pneumonia, unspecified"
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
-* recordedDate = "2026-02-08T10:15:00+05:00"                // primary examination date and time
+* recordedDate = "2026-02-08T10:15:00+05:00"                // Condition record creation time; examination time is separate
 
 Instance: obs-003-complaints
 InstanceOf: UZCoreObservation
@@ -868,8 +874,8 @@ Usage: #inline
 * effectivePeriod.end = "2026-02-10T00:00:00+05:00"
 * valueQuantity = 1650 'mL/(24.h)' "mL/24h"
 
-// part-of-day fluid intake (rows 146-147) - one per morning/evening:
-// code = LOINC 9107-4 "Fluid intake total 12 hour", valueQuantity in mL, effectivePeriod = the half-day
+// The paper fluid-intake row does not establish a 12-hour interval.
+// Preserve the source amount and any explicitly recorded interval in the temperature-chart narrative.
 
 Instance: obs-003-clinical-course
 InstanceOf: UZCoreObservation
@@ -907,15 +913,16 @@ Usage: #inline
 * addresses[reason].concept = CarePlanReasonCS#emdoc-0001-0001 "disease"
 * extension[workflowStatus].valueCode = #completed
 
-Instance: obs-003-prev-hospitalizations
+Instance: obs-003-same-condition-hospitalizations
 InstanceOf: UZCoreObservation
 Usage: #inline
 * status = #final
-* code = https://terminology.dhp.uz/fhir/integrations/CodeSystem/local-observation-code#num-previous-hospitalizations "Number of previous hospitalizations"   // row 44
+* code = form-003-observation-code-cs#same-condition-hospitalizations-this-year "Same-condition hospitalizations this year, including current"   // row 44
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * effectivePeriod.start = "2026-01-01"
-* effectivePeriod.end = "2026-12-31"
-* valueInteger = 0
+* effectivePeriod.end = "2026-02-18"
+* encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
+* valueInteger = 1
 
 Instance: obs-003-work-capacity
 InstanceOf: UZCoreObservation
@@ -939,3 +946,13 @@ Usage: #inline
 * signature.who = Reference(urn:uuid:00300011-0000-0000-0000-000000000000) "Rasulov B.B."
 * signature.sigFormat = #application/pdf
 * signature.data = "JVBERi0xLjQK"
+
+Instance: obs-003-hospitalization-reason
+InstanceOf: UZCoreObservation
+Usage: #inline
+* status = #final
+* code = form-003-observation-code-cs#hospitalization-reason "Hospitalization reason"
+* subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
+* encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
+* effectiveDateTime = "2026-02-08T10:00:00+05:00"
+* valueCodeableConcept = dmed-form-003-hospitalization-reason-cs#disease "Disease"

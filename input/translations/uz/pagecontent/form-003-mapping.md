@@ -46,13 +46,15 @@ Encounter - shu gospitalizatsiya bo'yicha 066-shakl yuboradigan Encounter, DMED 
 
 To'lov turi ham 066-shakl kartasidan (`payment_type`) olinadi: u ma'muriy ma'lumotlar bo'limida `Coverage` sifatida (`type` - `coverage-type-cs` dan, oluvchi - bemor) 066-shakl to'lov turi xaritasi bo'yicha yuboriladi. Titul varag'idagi `price_list` yuborilmaydi.
 
-### 2026-yil 23-noyabrda tekshirilgan DMED manbalari
+### 2026-yil 23–24-noyabrda tekshirilgan DMED manbalari
+
+DMED hujjati faqat mavjud ma'lumotlarni saqlaydi. Barcha 20 nomlangan bo'lim va yakuniy tashxis rollari ixtiyoriy. Yuborilgan bo'lim uchun sarlavha, kod, havola turlari va FHIR mazmun qoidalari saqlanadi; matn, yozuvlar va ichki bo'limlar tegishli bo'lim qoidalari bo'yicha beriladi. Hujjat sarlavhasi va UZ Core talablari saqlanadi. Mavjud bo'lmagan klinik qiymat yoki imzo yaratilmaydi. [Qisman hujjat namunasi](Bundle-example-form-003-partial-inpatient-medical-record.html). Profil qog'oz shakldagi har bir rozilik, konsilium bayonnomasi va batafsil neonatal/soatlik varaqni alohida tuzilmaviy qamrab olishni da'vo qilmaydi.
 
 Titul varag'i `GET /api/mis/v2/hospitalizations/{id}/title-page` orqali olinadi. Sahifa gospitalizatsiya va tibbiy holatni ham oladi. Titul varag'i javobi to'liq statsionar kartaning bir qismidir. UI da ko'riklar, epikrizlar, tekshiruv rejasi, tahlillar va davolash kurslari alohida bo'limlarda mavjud. Bo'limning UI da borligi uning barcha maydonlarini eksport qilish shartnomasini tasdiqlamaydi.
 
-Statsionar Encounter identifikatori — `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` tizimidagi `hospitalization.id`. Bemorning Med ID raqami `patient.number_med_card` dan olinadi. Titul varag'idagi alohida `number` maydoni `Shartnoma №` sifatida chop etiladi.
+Statsionar karta raqami — `hospitalization.number` (masalan, `38-2026`); u `section[administrativeInformation].text` da saqlanadi. Encounter texnik identifikatori 066 bilan umumiy `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` tizimidagi `hospitalization.id` bo'lib qoladi. Bemor Med ID — `patient.number_med_card`; titul varag'idagi `number` — `Shartnoma №`. Bu qiymatlar bir-birining o'rniga ishlatilmaydi.
 
-Chop etish komponenti `time_to_admission` qiymatiga `daqiqa` so'zini qo'shadi. Mavjud toifalar: dastlabki 6 soat ichida (`delay0001_00001`), 7–24 soat ichida (`delay0001_00002`) va 24 soatdan so'ng (`delay0001_00003`). Olti, yetti va 24 soat 360, 420 va 1440 daqiqaga teng. Manba olti va yetti soat oralig'idagi qiymatlar uchun yaxlitlash yoki toifani tanlash qoidasini belgilamaydi; bu masala ochiq qoladi. Kiritish maydonida birlik ko'rsatilmagan. Sonli vaqt oralig'i kasallik boshlangan sana emas.
+Chop etish komponenti `time_to_admission` ni daqiqada ko'rsatadi. Sonli qiymat yaxlitlanmasdan LOINC `77977-7` (Illness duration) bilan `Observation.valueQuantity`, UCUM `min` orqali uzatiladi. Qog'oz shaklda 6/7/24 soat toifalari yo'q. Eski kechikish katalogi DMED daqiqalarini tasniflash uchun ishlatilmaydi. Davomiylik kasallik boshlangan sana emas; manba qiymati yo'q bo'lsa kuzatuv yaratilmaydi.
 
 `analyses[]` elementi `title`, `result`, `date_of_conduct` maydonlarini saqlaydi. Natija erkin matn bilan kiritiladi. `date_of_conduct` kuzatuvning samarali sanasiga manba aniqligida uzatiladi. `rw-1`, `rw-2` va `hiv`, `hiv_II`, `hiv_express` alohida tahlil yozuvlaridir. Najas bakposevining amaldagi tokeni — `stool-culture`. Eski ma'lumotlar uchun `blood`, `feces_back_seeding`, `abstract_disease` manba kod tizimida saqlangan.
 
@@ -60,7 +62,13 @@ Har bir tahlil yozuvining o'z natijasi bor. Eski birlashtirilgan `blood` nomi RW
 
 DMED og'riqsizlantirish usulini `surgical_operations[].method_anesthesia` matnida saqlaydi. 23-noyabr qaroriga ko'ra u tegishli operatsiyaning `Procedure.note.text` maydonida uzatiladi. Titul varag'idagi operatsiyalar tahrirlanadigan matnli nusxalardir; ICHI kodi uchun kodlangan aralashuv manbai alohida aniqlanishi kerak. Mavjud [Anesthesia Method](ValueSet-anesthesia-method-vs.html) ma'lumotnomasi saqlanadi, ammo u DMED erkin matn maydoni uchun kodlangan qiymatni tasdiqlamaydi.
 
-`permanent_residence_areas` shahar/qishloq belgisi kelishilgan payloadga kiritilmaydi. Bemor manzili mavjud moslashtirish bo'yicha uzatiladi. `hospitalization_reason` titul varag'ida mavjud; kasallik, jarohat, YTH va rejali yotqizishning to'liq moslashtirishi hali aniqlanmagan. U 066-shakldan priority olish qoidasini o'zgartirmaydi.
+`permanent_residence_areas` shahar/qishloq belgisi kelishilgan payloadga kirmaydi; bemor manzili saqlanadi. `hospitalization_reason` alohida Observation: kodi [003 kuzatuv kodlari](CodeSystem-form-003-observation-code-cs.html) dan `hospitalization-reason`, qiymati [DMED yotqizish sabablari](ValueSet-dmed-form-003-hospitalization-reason-vs.html) dan olinadi. [Manba kod tizimi](CodeSystem-dmed-form-003-hospitalization-reason-cs.html) `disease`, `injury`, `car_accident`, `planned` ni saqlaydi. Bu 066 dan olinadigan shoshilinchlikni o'zgartirmaydi.
+
+Yillik jami shu kasallik bo'yicha joriy kalendar yildagi, joriy gospitalizatsiyani ham o'z ichiga oladigan sondir (Ernest, 2026-yil 24-noyabr). [003 kuzatuv kodlari](CodeSystem-form-003-observation-code-cs.html) dan `same-condition-hospitalizations-this-year` va `valueInteger` ishlatiladi. Joriy holat ayirilmaydi, yo'q qiymatga standart son qo'yilmaydi. Titul varag'idagi birlamchi/takroriy javobi `section[hospitalizationSummary].text` da saqlanadi; umumiy Encounter takroriyligi 066 dan olinadi.
+
+Qog'oz shakl birlamchi ko'rikning o'z sanasi va vaqtini saqlaydi. Ular `section[primaryExamination].text` da ko'rik matni bilan uzatiladi. Bu Condition birinchi yozilgan vaqtini bildiruvchi `Condition.recordedDate` emas. DMED tashxis jadvali `disease-codes[].date` ni o'qiydi; birinchi qayd etish bilan mosligi tasdiqlanmaguncha shifoxona tashxisi sanasi `section[admissionInformation].text` da saqlanadi. Tekshirilgan API javobida shifoxona tashxislari bo'lmagan.
+
+DMED yotoq-kunlarni ikkala sana mavjud bo'lganda `ceil((hospitalization_end_date - hospitalization_start_date) / 24 soat)` sifatida hisoblaydi. Son `section[administrativeInformation].text` da saqlanadi; bu yo'qlik davrlarisiz haqiqiy davomiylikni bildiruvchi `Encounter.length` bilan avtomatik tenglashtirilmaydi. Kundalikning manba sana/vaqti mazmuni bilan `section[diary].text` da saqlanadi. Frontend `start_at`, u yo'q bo'lsa `created_at` ni ko'rsatadi; tekshirilgan kundalik API javobi bo'sh edi. To'ldirilgan javob hali tekshirilishi kerak. Muharrir qo'ygan joriy vaqt ko'rik yoki kundalik vaqti sifatida eksport qilinmaydi.
 
 Ernestning 2026-yil 23-noyabrdagi tasdig'iga ko'ra hujjat 066-shakl bilan bir xil usulda imzolanadi. Provenance imzosini to'ldirish uchun haqiqiy imzo ma'lumotlari zarur.
 
@@ -98,13 +106,13 @@ Ernestning 2026-yil 23-noyabrdagi tasdig'iga ko'ra hujjat 066-shakl bilan bir xi
 | UZ | RU | FHIR yo'li | Kod | Misol |
 |----|----|------------|------|---------|
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Toshkent shahar klinik shifoxonasi |
-| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | Encounter.identifier | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`; DMED `hospitalization.id` | 20760 |
+| Statsionar bemorning tibbiy karta raqami | Медицинская карта стационарного больного | section[administrativeInformation].text | DMED `hospitalization.number` | 38-2026 |
 | Kasalxonaga yotqizilgan kun va vaqti | Дата и время поступления в стационар | Encounter.actualPeriod.start | - | 2026-02-08T10:00:00+05:00 |
 | Kasalxonadan chiqarilgan kun va vaqti | Дата и время выписки из стационара | Encounter.actualPeriod.end | - | 2026-02-18T09:00:00+05:00 |
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
 | Statsionar xona raqami | Номер палаты | Location.identifier[unit].value | `type` [Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` "Palata" | 214 |
 | Ko'chirilgan bo'lim | Переведён в отделение | Encounter.location (repeat) + Encounter.location.period | - | - |
-| Yotib davolangan kunlar soni | Количество проведённых койко-дней | Encounter.length | UCUM `d` "day" | 10 days |
+| Yotib davolangan kunlar soni | Количество проведённых койко-дней | section[administrativeInformation].text | DMED bed-day count | 10 |
 
 ---
 
@@ -115,7 +123,7 @@ Ernestning 2026-yil 23-noyabrdagi tasdig'iga ko'ra hujjat 066-shakl bilan bir xi
 | Bemorning F.I.Sh. | ФИО пациента | Patient.name:official | - | Tursunov Alisher Valiyevich |
 | Bemorning tug'ilgan sanasi | Дата рождения пациента | Patient.birthDate | - | 1990-04-12 |
 | Bemorning jinsi | Пол пациента | Patient.gender; Patient.gender.extension[gender-other] | [Administrative Gender](https://dhp.uz/fhir/core/en/ValueSet-administrative-gender-vs.html); `other` requires the [Gender Other](https://dhp.uz/fhir/core/en/StructureDefinition-gender-other.html) extension | male |
-| Bemorning tibbiy karta raqami | Номер медицинской карты | Patient.identifier[healthCardId].value | - | HC-2026-00042 |
+| Med ID raqami | Med ID пациента | Patient.identifier[healthCardId].value | DMED `patient.number_med_card` | HC-2026-00042 |
 | Bemorning yashash joyi | Место жительства пациента | Patient.address:uzAddress (use = home) | - | Toshkent, Yunusobod, 12-mavze, 15-uy |
 | Qon guruhi | Группа крови | [Observation](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-observation.html).valueCodeableConcept | `code` LOINC `883-9` "ABO group [Type] in Blood"<br>`value` [Blood Group](https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs) | A (II) (`112144000`) |
 | Rezus mansubligi | Резус-фактор | Observation.valueCodeableConcept | `code` LOINC `10331-7` "Rh [Type] in Blood"<br>`value` [Blood Rh](https://terminology.dhp.uz/fhir/core/ValueSet/blood-rh-vs) | Rh positive (`165747007`) |
@@ -153,12 +161,13 @@ Qog'oz shaklning 27-32-qatorlari bitta tanlov maydonidir. Har bir to'ldirilgan v
 | Bemor yuborilgan shifoxona nomi | Кем направлен больной | Encounter.admission.origin → Organization | - | Yunusobod tuman oilaviy poliklinikasi |
 | Kasalxonaga shoshilinch tarzda keltirilgan | Пациент доставлен экстренно | Encounter.priority | [ActPriority](https://terminology.hl7.org/ValueSet-v3-ActPriority.html) `EM` "emergency" / `R` "routine" | Emergency |
 | Tez tibbiy yordam transportida keldi | Доставлен транспортом скорой помощи | Observation.valueBoolean | LOINC `LP97912-7` "Ambulance transport" | true |
-| Kasallik/jarohatdan keyin yotqizishgacha o'tgan vaqt | Время от начала заболевания/травмы до госпитализации | Observation.valueCodeableConcept | [Disease/Injury Delay](CodeSystem-disease-injury-delay-cs.html) | `delay0001_00003` "After 24 hours" |
+| Kasalxonaga yotqizish sababi | Причина госпитализации | Observation.valueCodeableConcept | `code` [Form 003](CodeSystem-form-003-observation-code-cs.html) `hospitalization-reason`; `value` [DMED reasons](ValueSet-dmed-form-003-hospitalization-reason-vs.html) | disease |
+| Kasallik/jarohatdan keyin yotqizishgacha o'tgan vaqt | Время от начала заболевания/травмы до госпитализации | Observation.valueQuantity | LOINC `77977-7`; UCUM `min` | 390 min |
 | Bemorni kelish usuli | Метод прибытия пациента | Encounter.admission.admitSource | [Admit Source Local](https://dhp.uz/fhir/core/en/CodeSystem-admit-source-local-cs.html) | `mserv-0006-00004` "Emergency medical service" |
 | Bemor yo'llanmasidagi tashxis | Диагноз в направлении | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `referral` "Referring institution diagnosis" | `J18.9` "Pneumonia, unspecified" |
 | Qabulxonada qo'yilgan tashxis | Диагноз в приёмном отделении | Condition.code; Condition.category | `code` ICD-10<br>`category` [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) `admission` "Admission diagnosis" | `J18.9` "Pneumonia, unspecified" |
-| Kasalxonada qo'yilgan tashxis | Больничный диагноз (строка 39) | Condition.code; Condition.recordedDate | ICD-10; DMED komponenti `clinical_diagnosis_justification_epicrisis` va `landmark_epicrisis` manbalaridan tashxislarni tanlaydi | - |
-| Tashxis qo'yilgan sana | Дата установления диагноза | Condition.recordedDate | - | 2026-02-08 |
+| Kasalxonada qo'yilgan tashxis | Больничный диагноз (строка 39) | Condition.code; section[admissionInformation].text | ICD-10; DMED komponenti `clinical_diagnosis_justification_epicrisis` va `landmark_epicrisis` manbalaridan tashxislarni tanlaydi | - |
+| Tashxis qo'yilgan sana | Дата установления диагноза | section[admissionInformation].text | - | 2026-02-08 |
 
 ---
 
@@ -180,7 +189,7 @@ Birlashtirilgan «qabulda tekshiruv» bloki har bir tekshiruv uchun alohida resu
 
 | UZ | RU | FHIR yo'li | Kod | Misol |
 |----|----|------------|------|---------|
-| Bemorni tekshirish sanasi va vaqti | Дата и время осмотра пациента | Condition.recordedDate of the provisional diagnosis | - | 2026-02-08T10:15:00+05:00 |
+| Bemorni tekshirish sanasi va vaqti | Дата и время осмотра пациента | section[primaryExamination].text | - | 2026-02-08T10:15:00+05:00 |
 | Bemorning yoshi | Возраст пациента | derived from Patient.birthDate and the examination date | - | 35 |
 | Shikoyatlar / Boshqa shikoyatlar | Жалобы / Другие жалобы | Observation.valueString | LOINC `8661-1` "Chief complaint - Reported" | Cough, fever, dyspnoea |
 | Joylashuvi | Локализация | *(same Observation).bodySite* | [Body Site](https://dhp.uz/fhir/core/en/ValueSet-body-site-vs.html) | `266005` "Structure of lower lobe of right lung" |
@@ -290,9 +299,9 @@ Ertalabki va kechqurungi o'lchovlar bir xil LOINC kuzatuvi bo'lib, `Observation.
 | Yurak urishi (ertalab / kechqurun) | Пульс (утро / вечер) | Observation.valueQuantity | LOINC `8867-4` "Heart rate" | 96 /min |
 | Qon bosimi (ertalab / kechqurun) | Артериальное давление (утро / вечер) | Observation.component.valueQuantity | LOINC `85354-9` "Blood pressure panel" + `component` LOINC `8480-6` "Systolic blood pressure" / `8462-4` "Diastolic blood pressure" in `mm[Hg]` | 134 / 84 |
 | Harorat (ertalab / kechqurun) | Температура (утро / вечер) | Observation.valueQuantity | LOINC `8310-5` "Body temperature" | 37.6 Cel |
-| Nafas olish tezligi (ertalab / kechqurun) | Частота дыхания (утро / вечер) | Observation.valueQuantity | LOINC `9279-1` "Respiratory rate" | 20 /min |
-| Og'irligi (ertalab / kechqurun) | Вес (утро / вечер) | Observation.valueQuantity | LOINC `29463-7` "Body weight" | 82 kg |
-| Qabul qilingan suyuqlik (ertalab / kechqurun) | Выпито жидкости (утро / вечер) | Observation.valueQuantity, one per half-day | LOINC `9107-4` "Fluid intake total 12 hour" | 600 mL |
+| Nafas olish tezligi | Частота дыхания | Observation.valueQuantity | LOINC `9279-1` "Respiratory rate" | 20 /min |
+| Og'irligi | Вес | Observation.valueQuantity | LOINC `29463-7` "Body weight" | 82 kg |
+| Qabul qilingan suyuqlik miqdori | Количество принятой жидкости | section[temperatureChart].text | Source amount and interval, if recorded; no assumed 12-hour interval | 600 mL |
 | Bir kunlik siydik miqdori | Суточное количество мочи | Observation.valueQuantity | LOINC `9192-6` "Urine output 24 hour" | 1650 mL/(24.h) |
 
 ---
@@ -303,7 +312,7 @@ Ertalabki va kechqurungi o'lchovlar bir xil LOINC kuzatuvi bo'lib, `Observation.
 |----|----|------------|------|---------|
 | Dinamikadagi ahvoli | Состояние в динамике | Observation.valueString | LOINC `8648-8` "Hospital course note" | Afebrile from day 5, resolving |
 | Shifokor tavsiyalari | Рекомендации врача | [CarePlan](https://hl7.org/fhir/R5/careplan.html).description | - | Oral antibiotics, GP review in 3 days |
-| Kundalik / Shifokor yozuvlari | Дневник / Записи врача | section[diary].text | LOINC `11506-3` "Progress note" | narrative |
+| Kundalik / Shifokor yozuvlari | Дневник / Записи врача | section[diary].text | LOINC `11506-3` "Progress note" | Source date/time + narrative |
 
 ---
 
@@ -311,8 +320,8 @@ Ertalabki va kechqurungi o'lchovlar bir xil LOINC kuzatuvi bo'lib, `Observation.
 
 | UZ | RU | FHIR yo'li | Kod | Misol |
 |----|----|------------|------|---------|
-| Mazkur yil davomida shu kasallik bo'yicha kasalxonaga yotishi | Госпитализация по данному заболеванию в текущем году | Encounter.admission.reAdmission | [Re-admission Local](https://dhp.uz/fhir/core/en/CodeSystem-re-admission-local-cs.html) `first-time` "First time" / `repeat-current-year` "Repeated within current year" | First time |
-| Yillik kasalxonaga yotqizilganlarning umumiy soni | Общее количество госпитализаций за год | Observation.valueInteger | [Local](CodeSystem-local-observation-code.html) `num-previous-hospitalizations` "Number of previous hospitalizations" | 0 |
+| Mazkur yil davomida shu kasallik bo'yicha kasalxonaga yotishi | Госпитализация по данному заболеванию в текущем году | section[hospitalizationSummary].text | DMED `readmission_same_reason`; Encounter re-admission follows Form 066 | primary |
+| Yillik kasalxonaga yotqizilganlarning umumiy soni | Общее количество госпитализаций за год | Observation.valueInteger | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `same-condition-hospitalizations-this-year`; includes current stay, same condition | 1 |
 
 ---
 
@@ -348,7 +357,7 @@ Faqat o'lim yuz berganda mavjud bo'ladi. Har bir o'lim sababi - bitta Condition,
 
 | UZ | RU | FHIR yo'li | Kod | Misol |
 |----|----|------------|------|---------|
-| Kasallik haqidagi yakuniy tibbiy xulosa | Окончательное медицинское заключение о заболевании | section[postmortemConclusion].text | LOINC `18743-5` "Autopsy report" | narrative |
+| Kasallik haqidagi yakuniy tibbiy xulosa | Окончательное медицинское заключение о заболевании | section[postmortemConclusion].text | LOINC `47046-8` "Summary of Death Note" | narrative |
 | O'limga olib kelgan bevosita sabab | Непосредственная причина смерти | Condition.code | ICD-10 | - |
 | Asosiy kasallik | Основное заболевание | Condition.code | ICD-10 | - |
 
