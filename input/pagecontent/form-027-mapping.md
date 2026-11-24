@@ -25,6 +25,21 @@ For a complete reference instance, see the [Form 027 medical record extract exam
 
 ---
 
+### Two variants in DMED
+
+DMED prints Form 027 in two places. The variant decides what the Encounter is and whether a hospitalization request is sent.
+
+| | A. Referral from an outpatient clinic | B. Emergency admission without a referral |
+|---|---|---|
+| Where in DMED | Hospitalization → New referral | Emergency room → Admit a patient without a referral |
+| Encounter | The outpatient visit: `class` `AMB`, `identifier` = DMED `medical_case_id` in `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` (none when the extract is filled in by hand) | The hospitalization itself, the same Encounter Forms 066, 003 and 096 send: `class` `IMP`, `identifier` = DMED hospitalization id in `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` |
+| Hospitalization ServiceRequest | Sent, `identifier` = DMED hospitalization id | Not sent: the patient is already admitted |
+| Composition.type | `emdoc-0010-0106` until UZ Core releases the outpatient extract code `emdoc-0010-0472` | `emdoc-0010-0106` |
+| Example | [variant A](Bundle-example-form-027-medical-record-extract.html) | [variant B](Bundle-example-form-027-emergency-admission.html) |
+
+
+---
+
 ### DMED value mappings
 
 DMED sends some Form 027 values as its own tokens. These ConceptMaps give the code to send for each token.
