@@ -17,6 +17,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: read
 
 jobs:
   release:
@@ -46,6 +47,9 @@ jobs:
             exit 1
           fi
 
+      - name: Check no stopgap still waits on a UZ Core release
+        run: python3 .github/scripts/check_core_release_markers.py --release
+
       - name: Install Jekyll
         run: sudo gem install jekyll
 
@@ -64,7 +68,7 @@ jobs:
 
       - name: Build IG
         env:
-          JAVA_TOOL_OPTIONS: "-Xmx6g -Dfile.encoding=UTF-8"
+          JAVA_TOOL_OPTIONS: "-Xmx8g -Dfile.encoding=UTF-8"
         run: |
           # Run the publisher directly against the working https terminology server;
           # _genonce.sh would fall back to `-tx n/a` and skip terminology validation.
