@@ -51,7 +51,7 @@ For each patient and program, the MIS links its clinical resources to a plan Ser
 | ActivityDefinition | Describes the invitation template: `kind = ServiceRequest`, `intent = plan`, `profile = https://dhp.uz/fhir/core/StructureDefinition/uz-core-servicerequest` | [UZ Core ActivityDefinition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-activitydefinition.html); [example](ActivityDefinition-example-hpv-cervical-invitation-activity.html) |
 | ServiceRequest | Records a patient's invitation or MIS plan for one program | [UZ Core ServiceRequest](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-servicerequest.html); [national invitation](ServiceRequest-ServiceRequest-screening-invitation-cervical.html), [MIS plan](ServiceRequest-example-hpv-breast-mis-plan.html) |
 
-<div>{% include screening-plan-model-en.svg %}</div><br clear="all"/>
+{% capture plan_model_svg %}{% include screening-plan-model-en.svg %}{% endcapture %}<div>{{ plan_model_svg | replace: '"ent0', '"plan-ent0' }}</div><br clear="all"/>
 
 #### Populating the patient plan
 
