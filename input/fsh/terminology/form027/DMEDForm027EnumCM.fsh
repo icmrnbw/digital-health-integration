@@ -48,7 +48,7 @@ Instance: dmed-form-027-hospitalization-type-cm
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 027 hospitalization_type mapping"
-Description: "Maps DMED `hospitalization_type` (Bemor turi, Form 027 item 2: the setting of the treatment the patient is referred for) to the value of the `hospitalization-referral-order-parameter-cs#treatment-setting` order detail of the Form 027 hospitalization request. It is not Encounter.class: the Form 027 Encounter is the outpatient visit the referral is written in, always `AMB`."
+Description: "Maps DMED `hospitalization_type` (Bemor turi, Form 027 item 2: the setting of the treatment the patient is referred for) to the value of the `hospitalization-referral-order-parameter-cs#treatment-setting` order detail of the Form 027 hospitalization request. It is not Encounter.class: Encounter.class is the class of the DMED medical case the referral is written in (`AMB`, or `IMP` when `is_inpatient_patient` is true)."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-027-hospitalization-type-cm"
 * name = "DMEDForm027HospitalizationTypeCM"
 * status = #draft
