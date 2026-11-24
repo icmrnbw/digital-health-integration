@@ -27,6 +27,21 @@ To'liq namunaviy nusxa uchun [027-shakl ko'chirma misoli](Bundle-example-form-02
 
 ---
 
+### DMED dagi ikki variant
+
+DMED 027-shaklni ikki joyda chop etadi. Variantga qarab Encounter nima ekani va gospitalizatsiyaga yo'llanma yuborilishi belgilanadi.
+
+| | A. Poliklinikadan yo'llanma | B. Qabul bo'limi, yo'llanmasiz |
+|---|---|---|
+| DMED da qayerda | Gospitalizatsiya → Yangi yo'llanma | Qabul bo'limi → Bemorni yo'llanmasiz rasmiylashtirish |
+| Encounter | Ambulator qabul: `class` `AMB`, `identifier` = DMED `medical_case_id`, `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` tizimida (ko'chirma qo'lda to'ldirilganda yo'q) | Gospitalizatsiyaning o'zi, 066, 003 va 096-shakllar yuboradigan Encounter: `class` `IMP`, `identifier` = DMED gospitalizatsiya identifikatori, `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` tizimida |
+| Gospitalizatsiya ServiceRequest | Yuboriladi, `identifier` = DMED gospitalizatsiya identifikatori | Yuborilmaydi: bemor allaqachon yotqizilgan |
+| Composition.type | UZ Core ambulator ko'chirma kodi `emdoc-0010-0472` ni chiqarguncha `emdoc-0010-0106` | `emdoc-0010-0106` |
+| Misol | [A variant](Bundle-example-form-027-medical-record-extract.html) | [B variant](Bundle-example-form-027-emergency-admission.html) |
+
+
+---
+
 ### DMED qiymatlarini moslashtirish
 
 DMED 027-shaklning ayrim qiymatlarini o'z tokenlari bilan yuboradi. Ushbu ConceptMap'lar har bir token uchun yuboriladigan kodni belgilaydi.
