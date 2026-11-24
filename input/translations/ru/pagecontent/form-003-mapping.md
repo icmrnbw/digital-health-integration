@@ -76,7 +76,7 @@ Encounter - тот же, что передаёт Форма 066 по этой г
 
 Бланк содержит собственные дату и время первичного осмотра. Они сохраняются вместе с текстом осмотра в `section[primaryExamination].text`. Это не `Condition.recordedDate`, означающее первое внесение конкретной записи Condition. Таблица диагнозов DMED использует `disease-codes[].date`; исходная дата больничного диагноза сохраняется в `section[admissionInformation].text`, пока не подтверждено её совпадение с первым внесением Condition. В проверенном ответе API больничных диагнозов не было, поэтому такое совпадение не подтверждено.
 
-DMED показывает койко-дни как `ceil((hospitalization_end_date - hospitalization_start_date) / 24 часа)`, если обе даты заполнены. Этот счётчик сохраняется в `section[administrativeInformation].text`. Он не приравнивается автоматически к `Encounter.length`, которое означает фактическую продолжительность без периодов отсутствия. Записи дневника сохраняют собственные исходные дату и время рядом с содержимым в `section[diary].text`. Фронтенд читает `start_at` и при отсутствии показывает `created_at`; проверенный ответ дневника был пустым, заполненный ответ API ещё нужно проверить. Текущее время, подставляемое редактором, не выдаётся за время осмотра или записи дневника.
+DMED показывает койко-дни как `ceil((hospitalization_end_date - hospitalization_start_date) / 24 часа)`, если обе даты заполнены. По согласованному правилу DMED этот округлённый счётчик передаётся в `Encounter.length`, UCUM `d`. В `Encounter.actualPeriod` сохраняются исходные даты и время поступления и выписки; они не округляются и не восстанавливаются из счётчика. Здесь `length` — длительность DMED с округлением вверх до дней, поэтому она может отличаться от точного интервала `actualPeriod`. При отсутствии исходных дат счётчик не передаётся. Записи дневника сохраняют собственные исходные дату и время рядом с содержимым в `section[diary].text`. Фронтенд читает `start_at` и при отсутствии показывает `created_at`; проверенный ответ дневника был пустым, заполненный ответ API ещё нужно проверить. Текущее время, подставляемое редактором, не выдаётся за время осмотра или записи дневника.
 
 По подтверждению Эрнеста от 23 ноября 2026 года подпись документа выполняется тем же способом, что и для 066. Для заполнения подписи Provenance нужны фактические данные подписи.
 
@@ -120,7 +120,7 @@ DMED показывает койко-дни как `ceil((hospitalization_end_da
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
 | Statsionar xona raqami | Номер палаты | Location.identifier[unit].value | `type` [Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` "Palata" | 214 |
 | Ko'chirilgan bo'lim | Переведён в отделение | Encounter.location (repeat) + Encounter.location.period | - | - |
-| Yotib davolangan kunlar soni | Количество проведённых койко-дней | section[administrativeInformation].text | DMED bed-day count | 10 |
+| Yotib davolangan kunlar soni | Количество проведённых койко-дней | Encounter.length | DMED rounded-up day count; UCUM `d` | 10 d |
 
 ---
 

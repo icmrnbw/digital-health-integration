@@ -74,7 +74,7 @@ The annual total is for the same condition in the current calendar year, includi
 
 The paper records the primary examination's own date and time. Preserve it with the examination narrative in `section[primaryExamination].text`; it is not `Condition.recordedDate`, which means the first recording of that Condition. DMED's diagnosis table reads `disease-codes[].date`; preserve that source date as the hospital-diagnosis date in `section[admissionInformation].text` unless its equivalence to first recording is established. The examined API sample had no hospital-diagnosis records, so that equivalence is not confirmed.
 
-DMED's bed-day display is `ceil((hospitalization_end_date - hospitalization_start_date) / 24 hours)` when both values exist. Preserve this count in `section[administrativeInformation].text`. It is not automatically `Encounter.length`, which is actual duration excluding absences. Diary entries preserve their own source date/time alongside the content in `section[diary].text`. The frontend reads `start_at` (and shows `created_at` as a fallback); the inspected diary response was empty, so a populated backend record is still to be checked. Do not export the editor's current-time default as an examination or diary time.
+DMED's bed-day display is `ceil((hospitalization_end_date - hospitalization_start_date) / 24 hours)` when both values exist. By the agreed DMED mapping, send this rounded count in `Encounter.length` with UCUM `d`. Preserve the source admission and discharge date/times in `Encounter.actualPeriod`; do not round or reconstruct them from the count. Here `length` is the DMED duration rounded up to days, so it may differ from the exact interval in `actualPeriod`. Omit the count when the source dates are absent. Diary entries preserve their own source date/time alongside the content in `section[diary].text`. The frontend reads `start_at` (and shows `created_at` as a fallback); the inspected diary response was empty, so a populated backend record is still to be checked. Do not export the editor's current-time default as an examination or diary time.
 
 The document signature follows the same mechanism as Form 066, as confirmed by Ernest on 23 November 2026. The actual signature data is required to populate the corresponding Provenance signature.
 
@@ -118,7 +118,7 @@ The document signature follows the same mechanism as Form 066, as confirmed by E
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
 | Statsionar xona raqami | Номер палаты | Location.identifier[unit].value | `type` [Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` "Palata" | 214 |
 | Ko'chirilgan bo'lim | Переведён в отделение | Encounter.location (repeat) + Encounter.location.period | - | - |
-| Yotib davolangan kunlar soni | Количество проведённых койко-дней | section[administrativeInformation].text | DMED bed-day count | 10 |
+| Yotib davolangan kunlar soni | Количество проведённых койко-дней | Encounter.length | DMED rounded-up day count; UCUM `d` | 10 d |
 
 ---
 

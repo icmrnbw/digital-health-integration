@@ -152,7 +152,7 @@ Usage: #inline
 
 * section[administrativeInformation].title = "Administrative Information"
 * section[administrativeInformation].text.status = #generated
-* section[administrativeInformation].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Inpatient medical card number: 38-2026. Bed-day count: 10.</p></div>"
+* section[administrativeInformation].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Inpatient medical card number: 38-2026.</p></div>"
 * section[=].code = form-003-section-cs#administrative-information
 * section[=].entry[0] = Reference(urn:uuid:00300004-0000-0000-0000-000000000000)
 * section[=].entry[+] = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
@@ -366,6 +366,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * actualPeriod.start = "2026-02-08T10:00:00+05:00"   // rows 4-5 merged
 * actualPeriod.end   = "2026-02-18T09:00:00+05:00"   // rows 6-7 merged
+* length = 10 'd' "days" // DMED ceil(239 hours / 24); actualPeriod retains the exact timestamps
 * serviceProvider = Reference(urn:uuid:00300004-0000-0000-0000-000000000000)
 * priority = http://terminology.hl7.org/CodeSystem/v3-ActPriority#EM "Emergency"   // rows 34, 36
 * admission.origin = Reference(urn:uuid:00300005-0000-0000-0000-000000000000)       // row 33

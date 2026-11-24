@@ -76,7 +76,7 @@ Yillik jami shu kasallik bo'yicha joriy kalendar yildagi, joriy gospitalizatsiya
 
 Qog'oz shakl birlamchi ko'rikning o'z sanasi va vaqtini saqlaydi. Ular `section[primaryExamination].text` da ko'rik matni bilan uzatiladi. Bu Condition birinchi yozilgan vaqtini bildiruvchi `Condition.recordedDate` emas. DMED tashxis jadvali `disease-codes[].date` ni o'qiydi; birinchi qayd etish bilan mosligi tasdiqlanmaguncha shifoxona tashxisi sanasi `section[admissionInformation].text` da saqlanadi. Tekshirilgan API javobida shifoxona tashxislari bo'lmagan.
 
-DMED yotoq-kunlarni ikkala sana mavjud bo'lganda `ceil((hospitalization_end_date - hospitalization_start_date) / 24 soat)` sifatida hisoblaydi. Son `section[administrativeInformation].text` da saqlanadi; bu yo'qlik davrlarisiz haqiqiy davomiylikni bildiruvchi `Encounter.length` bilan avtomatik tenglashtirilmaydi. Kundalikning manba sana/vaqti mazmuni bilan `section[diary].text` da saqlanadi. Frontend `start_at`, u yo'q bo'lsa `created_at` ni ko'rsatadi; tekshirilgan kundalik API javobi bo'sh edi. To'ldirilgan javob hali tekshirilishi kerak. Muharrir qo'ygan joriy vaqt ko'rik yoki kundalik vaqti sifatida eksport qilinmaydi.
+DMED yotoq-kunlarni ikkala sana mavjud bo'lganda `ceil((hospitalization_end_date - hospitalization_start_date) / 24 soat)` sifatida hisoblaydi. Kelishilgan DMED xaritasida yaxlitlangan son `Encounter.length` da UCUM `d` bilan uzatiladi. Qabul qilish va chiqarishning manba sana/vaqtlari `Encounter.actualPeriod` da saqlanadi; ular yaxlitlanmaydi va sondan qayta hisoblanmaydi. Bu yerda `length` DMED davomiyligining kunlargacha yuqoriga yaxlitlangan qiymati, shuning uchun u `actualPeriod` dagi aniq oraliqdan farq qilishi mumkin. Manba sanalari bo'lmasa, son yuborilmaydi. Kundalikning manba sana/vaqti mazmuni bilan `section[diary].text` da saqlanadi. Frontend `start_at`, u yo'q bo'lsa `created_at` ni ko'rsatadi; tekshirilgan kundalik API javobi bo'sh edi. To'ldirilgan javob hali tekshirilishi kerak. Muharrir qo'ygan joriy vaqt ko'rik yoki kundalik vaqti sifatida eksport qilinmaydi.
 
 Ernestning 2026-yil 23-noyabrdagi tasdig'iga ko'ra hujjat 066-shakl bilan bir xil usulda imzolanadi. Provenance imzosini to'ldirish uchun haqiqiy imzo ma'lumotlari zarur.
 
@@ -120,7 +120,7 @@ Ernestning 2026-yil 23-noyabrdagi tasdig'iga ko'ra hujjat 066-shakl bilan bir xi
 | Statsionar bo'limi | Отделение стационара | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html) | - | Therapeutic department |
 | Statsionar xona raqami | Номер палаты | Location.identifier[unit].value | `type` [Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` "Palata" | 214 |
 | Ko'chirilgan bo'lim | Переведён в отделение | Encounter.location (repeat) + Encounter.location.period | - | - |
-| Yotib davolangan kunlar soni | Количество проведённых койко-дней | section[administrativeInformation].text | DMED bed-day count | 10 |
+| Yotib davolangan kunlar soni | Количество проведённых койко-дней | Encounter.length | DMED rounded-up day count; UCUM `d` | 10 d |
 
 ---
 
