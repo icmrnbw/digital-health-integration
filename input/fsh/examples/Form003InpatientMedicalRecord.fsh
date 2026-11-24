@@ -116,8 +116,6 @@ Title: "Form 003 - Inpatient medical record card"
 * entry[=].resource = obs-003-morning-rr
 * entry[+].fullUrl  = "urn:uuid:00300052-0000-0000-0000-000000000000"
 * entry[=].resource = obs-003-daily-urine
-* entry[+].fullUrl  = "urn:uuid:00300053-0000-0000-0000-000000000000"
-* entry[=].resource = obs-003-clinical-course
 * entry[+].fullUrl  = "urn:uuid:00300054-0000-0000-0000-000000000000"
 * entry[=].resource = careplan-003-recommendations
 * entry[+].fullUrl  = "urn:uuid:00300055-0000-0000-0000-000000000000"
@@ -264,8 +262,9 @@ Usage: #inline
 
 * section[clinicalCourse].title = "Clinical Course"
 * section[=].code = $loinc#8648-8 "Hospital course note"
-* section[=].entry[0] = Reference(urn:uuid:00300053-0000-0000-0000-000000000000)
-* section[=].entry[+] = Reference(urn:uuid:00300054-0000-0000-0000-000000000000)
+* section[=].text.status = #generated
+* section[=].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Afebrile from day 5, cough and dyspnoea resolving, mobilising independently.</p></div>"
+* section[=].entry[0] = Reference(urn:uuid:00300054-0000-0000-0000-000000000000)
 * section[clinicalCourse].section[diary].title = "Diary"
 * section[clinicalCourse].section[diary].code = $loinc#11506-3 "Progress note"
 * section[clinicalCourse].section[diary].text.status = #generated
@@ -705,7 +704,7 @@ Instance: obs-003-pediculosis
 InstanceOf: UZCoreObservation
 Usage: #inline
 * status = #final
-* code = $sct#20848007 "Pediculosis"                         // row 60
+* code = DMEDForm003AnalysesCS#pediculosis                    // row 60: screening item, not a disorder
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
 * effectiveDateTime = "2026-02-08T10:20:00+05:00"
@@ -876,16 +875,6 @@ Usage: #inline
 
 // The paper fluid-intake row does not establish a 12-hour interval.
 // Preserve the source amount and any explicitly recorded interval in the temperature-chart narrative.
-
-Instance: obs-003-clinical-course
-InstanceOf: UZCoreObservation
-Usage: #inline
-* status = #final
-* code = $loinc#8648-8 "Hospital course note"               // row 99
-* subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
-* encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
-* effectiveDateTime = "2026-02-11T08:00:00+05:00"
-* valueString = "Afebrile from day 5, cough and dyspnoea resolving, mobilising independently."
 
 Instance: careplan-003-recommendations
 InstanceOf: UZCoreCarePlan

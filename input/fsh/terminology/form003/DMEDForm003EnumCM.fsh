@@ -194,6 +194,7 @@ Description: "Maps DMED `analyses[].title` to the admission screening Observatio
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
+* targetScopeCanonical = Canonical(DMEDForm003AnalysisMappingTargetVS)
 * group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-analyses-cs"
 * group[=].target = "http://loinc.org"
 // A legacy combined label does not identify two independently measured results.
@@ -234,9 +235,9 @@ Description: "Maps DMED `analyses[].title` to the admission screening Observatio
 * group[=].target = "http://snomed.info/sct"
 * group[=].element[+].code = #"pediculosis"
 * group[=].element[=].display = "Педикулез"
-* group[=].element[=].target[+].code = #"20848007"
-* group[=].element[=].target[=].display = "Pediculosis"
-* group[=].element[=].target[=].relationship = #equivalent
+// The source names a screening item, not a diagnosis of infestation.
+// Keep the source code in Observation.code; do not substitute the disorder code 20848007.
+* group[=].element[=].noMap = true
 * group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-analyses-cs"
 * group[=].target = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-003-observation-code-cs"
 * group[=].element[+].code = #"abstract_disease"

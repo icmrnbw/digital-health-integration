@@ -186,7 +186,7 @@ The combined admission screening block expands to one resource per screening.
 | Qon RW | RW — separate DMED entries | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `rw-1`, `rw-2`; LOINC `22461-8` requires confirmation of analyte and serum specimen<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) when explicitly supported by the source; otherwise source text | `260385009` "Negative" |
 | OITS | HIV — separate DMED entries | Observation.code; Observation.value[x] | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html): `hiv`, `hiv_II`, `hiv_express`; specific LOINC pending laboratory method<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) when explicitly supported by the source; otherwise source text | `260385009` "Negative" |
 | Axlat poshevi | Посев кала | [DiagnosticReport](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-diagnostic-report.html).code | LOINC `625-4` "Bacteria identified in Stool by Culture" | - |
-| Pedikulyoz | Педикулёз | Observation.valueCodeableConcept | `code` SNOMED CT `20848007` "Pediculosis"<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
+| Pedikulyoz | Педикулёз | Observation.code; Observation.valueCodeableConcept | `code` [DMED Form 003 analyses](CodeSystem-dmed-form-003-analyses-cs.html) `pediculosis` (screening item)<br>`value` [Positive / Negative Result](ValueSet-positive-negative-result-vs.html) | Negative |
 | Mavhum kasalliklar | Прочие заболевания | Observation.valueString | [Form 003 Observation Code](CodeSystem-form-003-observation-code-cs.html) `other-diseases` "Other diseases" | - |
 
 ---
@@ -320,7 +320,7 @@ Morning and evening measurements are the same LOINC observation distinguished by
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Dinamikadagi ahvoli | Состояние в динамике | Observation.valueString | LOINC `8648-8` "Hospital course note" | Afebrile from day 5, resolving |
+| Dinamikadagi ahvoli | Состояние в динамике | section[clinicalCourse].text | LOINC `8648-8` "Hospital course note" | Afebrile from day 5, resolving |
 | Shifokor tavsiyalari | Рекомендации врача | [CarePlan](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-careplan.html).description | - | Oral antibiotics, GP review in 3 days |
 | Kundalik / Shifokor yozuvlari | Дневник / Записи врача | section[diary].text | LOINC `11506-3` "Progress note" | Source date/time + narrative |
 
