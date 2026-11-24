@@ -48,6 +48,10 @@ To'lov turi ham 066-shakl kartasidan (`payment_type`) olinadi: u ma'muriy ma'lum
 
 ### 2026-yil 23–24-noyabrda tekshirilgan DMED manbalari
 
+Kelishilgan DMED eksportida faqat DMED 003-shaklining o'zidagi maydonlar hamda oldin kelishilgan 066-shaklning umumiy Encounter va to'lov ma'lumotlari uzatiladi. Quyidagi jadvallar qog'oz shaklni ham tavsiflaydi; ular DMEDdan qo'shimcha ma'lumot yig'ish talablari emas. Alohida davolash kursi modulidan dori buyurish va bajarish yozuvlari ushbu hujjat uchun olinmaydi. To'liq qog'oz shakl namunasi umumiy profilni ko'rsatadi, DMED eksporti tarkibini emas.
+
+Titul varag'ida Selsiy darajasidagi bitta `temperature` maydoni bor, ertalab/kechqurun o'lchovlar qatori emas. Mavjud qiymat shaxsiy ma'lumotlardagi tana harorati Observation orqali uzatiladi; manba o'lchov vaqtini belgilamaydi. `treatment` (Boshqa davolash turlari) va `comment` erkin matndir. `treatment` `section[surgicalProcedures].text` da saqlanadi; muolaja kodi, holati yoki bajarish vaqti o'ylab topilmaydi. Har bir `analyses[]` yozuvi o'z `title`, matnli `result` va faqat sanadan iborat `date_of_conduct` ni saqlaydi; vaqt yoki vaqt zonasi qo'shilmaydi. Bu maydonlarni saqlash va qayta o'qish test UI orqali tekshirildi. Davomiylik va yillik jami to'ldirilmaganida API nol qaytarishi, UI esa bo'sh qiymat ko'rsatishi mumkin; nolning o'zi maydon to'ldirilganini tasdiqlamaydi. Bu standart qiymatlar qayd etilgan nol daqiqa yoki nol gospitalizatsiyaga aylantirilmaydi.
+
 DMED hujjati faqat mavjud ma'lumotlarni saqlaydi. Barcha 20 nomlangan bo'lim va yakuniy tashxis rollari ixtiyoriy. Yuborilgan bo'lim uchun sarlavha, kod, havola turlari va FHIR mazmun qoidalari saqlanadi; matn, yozuvlar va ichki bo'limlar tegishli bo'lim qoidalari bo'yicha beriladi. Hujjat sarlavhasi va UZ Core talablari saqlanadi. Mavjud bo'lmagan klinik qiymat yoki imzo yaratilmaydi. [Qisman hujjat namunasi](Bundle-example-form-003-partial-inpatient-medical-record.html). Profil qog'oz shakldagi har bir rozilik, konsilium bayonnomasi va batafsil neonatal/soatlik varaqni alohida tuzilmaviy qamrab olishni da'vo qilmaydi.
 
 Titul varag'i `GET /api/mis/v2/hospitalizations/{id}/title-page` orqali olinadi. Sahifa gospitalizatsiya va tibbiy holatni ham oladi. Titul varag'i javobi to'liq statsionar kartaning bir qismidir. UI da ko'riklar, epikrizlar, tekshiruv rejasi, tahlillar va davolash kurslari alohida bo'limlarda mavjud. Bo'limning UI da borligi uning barcha maydonlarini eksport qilish shartnomasini tasdiqlamaydi.
@@ -256,11 +260,13 @@ Har bir tashxis - bitta Condition. Uning roli `Condition.category`da [Diagnosis 
 | Og'riqsizlantirish usullari | Метод анестезии | Procedure.note.text | DMED `surgical_operations[].method_anesthesia`, erkin matn | Local anesthesia |
 | Operatsiyadan keyingi asoratlar | Послеоперационные осложнения | Procedure.complication / Condition | SNOMED CT / ICD-10 | - |
 | Shifokor F.I.Sh. | ФИО врача-хирурга | Procedure.performer.actor → PractitionerRole | - | Rasulov B.B. |
-| Boshqa davolash turlari nomi | Наименование других видов лечения | Procedure.code | [Procedure Code](https://dhp.uz/fhir/core/en/ValueSet-procedure-code-vs.html) | - |
+| Boshqa davolash turlari nomi | Наименование других видов лечения | section[surgicalProcedures].text | DMED `treatment`, free text | - |
 
 ---
 
 ### Dori vositalarini buyurish varaqasi
+
+Faqat qog'oz shakl uchun ma'lumotnoma. Tekshirilgan DMED 003-shaklida bu varaq yo'q va u kelishilgan DMED eksportiga kirmaydi. Alohida davolash kursi modulidan to'ldirilmaydi.
 
 | UZ | RU | FHIR yo'li | Kod | Misol |
 |----|----|------------|------|---------|
@@ -289,6 +295,8 @@ Har bir tashxis - bitta Condition. Uning roli `Condition.category`da [Diagnosis 
 ---
 
 ### Harorat jadvali
+
+Quyidagi vaqt qatorlari qog'oz shaklga tegishli. Tekshirilgan DMED 003-shaklida antropometriyadagi bitta harorat bor, alohida bunday jadval yo'q. Bu eksport uchun puls, nafas va suyuqlik qatorlari boshqa modullardan talab qilinmaydi va yig'ilmaydi.
 
 Ertalabki va kechqurungi o'lchovlar bir xil LOINC kuzatuvi bo'lib, `Observation.effectiveDateTime` bo'yicha farqlanadi.
 

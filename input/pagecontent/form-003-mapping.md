@@ -46,6 +46,10 @@ The payment type also comes from the Form 066 card (`payment_type`): it is sent 
 
 ### DMED source details verified on 23–24 November 2026
 
+For the agreed DMED export, use only fields present in DMED Form 003 itself, together with the already agreed shared Form 066 Encounter and payment data. The tables below also document the paper form; they are not a list of additional DMED extraction requirements. Do not obtain medication prescriptions or administrations from the separate treatment-course module to fill this document. The full paper-form example demonstrates the general profile, not the DMED export scope.
+
+The title page has a single `temperature` field in degrees Celsius, not a morning/evening series. Map a supplied value to the body-temperature Observation in Personal Information; this source does not establish a measurement time. `treatment` (Other types of treatment) and `comment` are free text. Preserve `treatment` in `section[surgicalProcedures].text` without inventing a procedure code, status or execution time. Each `analyses[]` entry retains its own `title`, free-text `result` and date-only `date_of_conduct`; do not add a time or timezone to a date-only source. Saving and reloading these title-page fields was verified in the test UI. Empty duration and annual-total fields can return zero from the API while the UI displays no value; zero alone does not prove that either field was completed. Do not turn these defaults into a recorded zero-minute duration or an annual total of zero.
+
 A DMED document contains only available data. All 20 named sections and all final-diagnosis roles are optional. A supplied section retains its required title, code, reference types and FHIR content rules; it may contain text, structured entries or sub-sections as allowed by that section. The document header and the UZ Core requirements still apply. Do not manufacture absent clinical values or signatures. See the [partial document example](Bundle-example-form-003-partial-inpatient-medical-record.html). This profile does not claim separate structured coverage of every consent, council protocol or detailed neonatal/hourly chart in the attached paper form.
 
 The title page is read from `GET /api/mis/v2/hospitalizations/{id}/title-page`. The page also reads the hospitalization and its medical case. A title-page response alone does not contain the complete inpatient chart: the UI has separate examination, epicrisis, investigation-plan, analysis and treatment-course sections. Their presence in the UI does not establish a field-level export contract for every section of this profile.
@@ -254,11 +258,13 @@ Each diagnosis is one Condition. Its role goes in `Condition.category` as a [Dia
 | Og'riqsizlantirish usullari | Метод анестезии | Procedure.note.text | DMED `surgical_operations[].method_anesthesia`, free text | Local anesthesia |
 | Operatsiyadan keyingi asoratlar | Послеоперационные осложнения | Procedure.complication / Condition | SNOMED CT / ICD-10 | - |
 | Shifokor F.I.Sh. | ФИО врача-хирурга | Procedure.performer.actor → PractitionerRole | - | Rasulov B.B. |
-| Boshqa davolash turlari nomi | Наименование других видов лечения | Procedure.code | [Procedure Code](https://dhp.uz/fhir/core/en/ValueSet-procedure-code-vs.html) | - |
+| Boshqa davolash turlari nomi | Наименование других видов лечения | section[surgicalProcedures].text | DMED `treatment`, free text | - |
 
 ---
 
 ### Medication Sheet
+
+Paper-form reference only. This sheet is not present in the inspected DMED Form 003 and is outside the agreed DMED export. Do not populate it from the separate treatment-course module.
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
@@ -287,6 +293,8 @@ Each diagnosis is one Condition. Its role goes in `Condition.category` as a [Dia
 ---
 
 ### Temperature Chart
+
+Paper-form reference only for the series below. The inspected DMED Form 003 provides a single temperature under Anthropometry; it does not provide this separate chart. Do not require or collect a pulse, breathing or fluid series from other modules for this export.
 
 Morning and evening measurements are the same LOINC observation distinguished by `Observation.effectiveDateTime`.
 
