@@ -2,7 +2,6 @@
 
 #### Qo'shildi
 
-[044-shakl, xorijga ketayotganlar uchun tibbiy ma'lumotnoma](StructureDefinition-form-044-travel-clearance-composition.html) FHIR hujjati sifatida profillandi: shaxsiy ma'lumotlar, kechirgan yuqumli kasalliklar, komissiyaning borish mamlakati va xizmat safari muddati bilan chet elga chiqishga ruxsati, yashash joyi, komissiya raisi va a'zolari - 5 ta Composition bo'limida. Hujjat namunasi (Bundle) va [maydonma-maydon moslashtirish sahifasi](form-044-mapping.html) bilan birga.
 [Farmatsevtika qo'mitasi reyestri ATX kodlari xaritasi](ConceptMap-pharmcom-registry-atc-to-who-atc-cm.html) reyestrning joriy WHO ATC da yo'q 76 ta ATX kodini almashtiradi.
 
 [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) GTIN va Asl Belgisi kodlarini alohida identifikatorlarda uzatadi; berish hodisasining kaliti faqat DMED identifikatoridir.
@@ -12,6 +11,16 @@
 [Farmatsevtika qo'mitasi reyestri faol moddalar xaritasi](ConceptMap-pharmcom-registry-substance-to-inn-cm.html) INN kodlari bor preparatlardagi 1 802 ta [reyestr faol moddasidan](CodeSystem-pharmcom-registry-substance-cs.html) 1 426 tasini, tuzlar va gidratlar bilan birga, `Medication.ingredient` uchun UZ Core INN kodlari bilan bog'laydi.
 
 [Retseptlar integratsiyasi](prescription.html) DMED elektron retseptlar, tasdiqlash, dori berish va dori yuborish ma'lumotlarini DHP ga qanday yuborishini oltita Prescription profili bilan tavsiflaydi. ConceptMap lar DMED retsept turi va holati, INN, dori shakli, yuborish yo'li, qabul qilish vaqti, chastota davri va bekor qilish sababini UZ Core va xalqaro kodlarga o'tkazadi. Faqat shubhasiz moslik e'lon qilinadi, shuning uchun mosligi yo'q DMED qiymati tekshirilguncha rad etiladi.
+
+#### O'zgartirildi
+
+Qo'llanma sahifalari [DHP dasturchilar hujjatlari](https://docs.dhp.uz/uz/) uslubida bezatilgan: Onest va JetBrains Mono shriftlari, DHP yashil ranglari va logotipi, yangilangan sarlavha, menyu, jadvallar, eslatmalar va nusxa olish tugmasi bilan kod bloklari. Sarlavhadagi mavzu menyusi yorug', qorong'i yoki tizimdagidek mavzuni tanlaydi.
+
+### Versiya 0.13.1
+
+#### Qo'shildi
+
+[Orders](orders.html): yo'llanma va kelishuv vazifalari profillari, terminologiya, davlat hisobidan davolash asoslari va SBDL mezonlari, huquqiy moliyalashtirish asoslari, gospitalizatsiya hamda chiqarish hujjati bo'limlari misollari qo'shildi. UZ Core #402 funksiyalari Integrations ga ko'chirildi; hujjatlar ingliz, rus va o'zbek tillarida mavjud.
 
 ### Versiya 0.13.0
 
@@ -31,7 +40,7 @@
 
 [Blood Transfusion Assessment Observation](StructureDefinition-blood-transfusion-assessment-observation.html) retsipiyent va bitta qon birligi o'rtasidagi ABO, Rh-Hr bo'yicha moslik va biologik sinamani SNOMED CT natijalari bilan qayd etadi, [Blood Recipient History Observation](StructureDefinition-blood-recipient-history-observation.html) esa u tayanadigan retsipiyentning transfuzion va akusherlik anamnezini qayd etadi.
 
-[Donor so‘rovnomasi](forms.html?form=donor-questionnaire) o‘zbek, rus va ingliz tillarida 35 savol, bemor bilan [to‘ldirilgan javob namunasi](QuestionnaireResponse-example-donor-questionnaire-response.html) va qaysi javoblar chetlatishga olib kelishi mumkinligi haqidagi [Blood Service bosqichini](blood-service.html#interviewing) taqdim etadi. Donorni chetlatish sabablari kod tizimi qayta ishlatiladi. Dastur konteksti so‘rovnomani so'rovnomalar sahifasida guruhlaydi.
+[Donor so‘rovnomasi](forms.html#donor-questionnaire) o‘zbek, rus va ingliz tillarida 35 savol, bemor bilan [to‘ldirilgan javob namunasi](QuestionnaireResponse-example-donor-questionnaire-response.html) va qaysi javoblar chetlatishga olib kelishi mumkinligi haqidagi [Blood Service bosqichini](blood-service.html#interviewing) taqdim etadi. Donorni chetlatish sabablari kod tizimi qayta ishlatiladi. Dastur konteksti so‘rovnomani so'rovnomalar sahifasida guruhlaydi.
 
 [Qidiruv](search.html) sahifa sarlavhasidagi yangi maydondan ochiladi. U resurslarni sarlavhasi, nomi, URL yoki tavsifi bo'yicha, shuningdek kod tizimlari, qiymatlar to'plamlari va ConceptMaplardagi kodlar, atamalar va moslashtirishlarni ingliz, rus va o'zbek tillarida topadi. Natijalarni resurs turi bo'yicha filtrlash mumkin.
 
