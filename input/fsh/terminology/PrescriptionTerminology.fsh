@@ -9,15 +9,55 @@ Description: "Actions performed during the prescription signing, approval, revis
 * ^content = #complete
 * ^publisher = "Uzinfocom"
 * #create "Create prescription"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Создание рецепта"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retsept yaratish"
 * #sign "Sign prescription"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Подписание рецепта"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retseptni imzolash"
 * #send-for-confirmation "Send for confirmation"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Отправка на подтверждение"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tasdiqlashga yuborish"
 * #approve "Approve prescription"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Подтверждение рецепта"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retseptni tasdiqlash"
 * #request-revision "Request revision"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Возврат на доработку"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Qayta ishlashga qaytarish"
 * #update "Update prescription"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Изменение рецепта"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retseptni o'zgartirish"
 * #renew "Renew prescription"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Продление рецепта"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retseptni uzaytirish"
 * #cancel "Cancel prescription"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Отмена рецепта"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retseptni bekor qilish"
 * #dispense "Dispense medication"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Отпуск препарата"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Dori vositasini berish"
 * #administer "Administer medication"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Введение препарата"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Dori vositasini yuborish"
 
 ValueSet: PrescriptionWorkflowActionVS
 Id: prescription-workflow-action-vs
@@ -39,14 +79,50 @@ Description: "Stable prescription-specific error codes used in OperationOutcome.
 * ^content = #complete
 * ^publisher = "Uzinfocom"
 * #terminology-crosswalk-not-found "Terminology crosswalk not found"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Не найдено соответствие кода в справочнике"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Ma'lumotnomada kod moslashuvi topilmadi"
 * #reimbursement-eligibility-failed "Reimbursement eligibility failed"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Пациент не имеет права на реимбурсацию"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Bemorda reimbursatsiya huquqi yo'q"
 * #reimbursement-inn-limit-exceeded "Reimbursement INN limit exceeded"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Превышен лимит реимбурсации по МНН"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "XPN bo'yicha reimbursatsiya limiti oshib ketdi"
 * #reimbursement-repeat-too-soon "Another reimbursement prescription for this INN exists in the previous 30 days"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "За последние 30 дней уже есть реимбурсационный рецепт с этим МНН"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "So'nggi 30 kun ichida ushbu XPN bilan reimbursatsiya retsepti mavjud"
 * #reimbursement-partial-dispense-forbidden "Partial reimbursement dispense is forbidden"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Частичный отпуск по реимбурсационному рецепту запрещён"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Reimbursatsiya retsepti bo'yicha qisman berish taqiqlangan"
 * #duration-exceeded "Prescription duration exceeds 90 days"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Длительность рецепта превышает 90 дней"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Retsept muddati 90 kundan oshadi"
 * #review-required "Reviewer approval is required"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Требуется подтверждение проверяющего"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Tekshiruvchining tasdig'i talab qilinadi"
 * #quantity-exceeds-prescribed "Dispensed quantity exceeds the prescribed quantity"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Выдаваемое количество превышает назначенное"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Beriladigan miqdor buyurilgan miqdordan oshadi"
 * #version-conflict "Resource version conflict"
+  * ^designation[0].language = #ru
+  * ^designation[=].value = "Конфликт версий ресурса"
+  * ^designation[+].language = #uz
+  * ^designation[=].value = "Resurs versiyalari ziddiyati"
 
 ValueSet: PrescriptionErrorVS
 Id: prescription-error-vs

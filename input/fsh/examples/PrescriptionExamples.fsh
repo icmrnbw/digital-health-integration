@@ -533,7 +533,7 @@ Description: "Atomic creation of a medication, an ordinary prescription and its 
   * request
     * method = #POST
     * url = "Medication"
-    * ifNoneExist = "identifier=https://uzpharminfo.uz/boxGroupId|102345"
+    * ifNoneExist = "identifier=https://uzpharminfo.uz/boxGroupId|102345&lot-number:missing=true"
 * entry[+]
   * fullUrl = "https://example.org/fhir/MedicationRequest/example-ordinary-prescription"
   * resource = example-ordinary-prescription
@@ -547,6 +547,35 @@ Description: "Atomic creation of a medication, an ordinary prescription and its 
   * request
     * method = #POST
     * url = "Provenance"
+
+Instance: example-prescription-dispense-transaction
+InstanceOf: Bundle
+Usage: #example
+Title: "Prescription Dispense Transaction Example"
+Description: "A dispense from one batch: the batch Medication is found or created by box group ID and lot number, then the dispense and its charge are created."
+* type = #transaction
+* timestamp = "2026-09-18T10:40:05+05:00"
+* entry[0]
+  * fullUrl = "https://example.org/fhir/Medication/example-prescription-medication-batch"
+  * resource = example-prescription-medication-batch
+  * request
+    * method = #POST
+    * url = "Medication"
+    * ifNoneExist = "identifier=https://uzpharminfo.uz/boxGroupId|102345&lot-number=PCM-0926"
+* entry[+]
+  * fullUrl = "https://example.org/fhir/MedicationDispense/example-prescription-dispense"
+  * resource = example-prescription-dispense
+  * request
+    * method = #POST
+    * url = "MedicationDispense"
+    * ifNoneExist = "identifier=https://dhp.uz/fhir/core/sid/dispense/uz/dmed|DISP-A00012076-01"
+* entry[+]
+  * fullUrl = "https://example.org/fhir/ChargeItem/example-prescription-dispense-charge"
+  * resource = example-prescription-dispense-charge
+  * request
+    * method = #POST
+    * url = "ChargeItem"
+    * ifNoneExist = "identifier=https://dhp.uz/fhir/core/sid/dispense/uz/dmed|DISP-A00012076-01"
 
 Instance: example-prescription-transaction-response
 InstanceOf: Bundle

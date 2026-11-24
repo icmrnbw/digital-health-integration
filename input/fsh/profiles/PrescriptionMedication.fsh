@@ -2,16 +2,15 @@ Profile: PrescriptionMedication
 Parent: UZCoreMedication
 Id: prescription-medication
 Title: "Prescription Medication"
-Description: "Medication selected from the DMED medication dictionary for use in the Prescription integration."
+Description: "Medication prescribed, dispensed or administered in the Prescription integration, such as a Pharmaceutical Committee registry product or a dispensed batch."
 * ^status = #active
 * ^experimental = true
 * ^publisher = "Uzinfocom"
-* insert PrescriptionMetaSource
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #open
-* identifier contains dmedMedication 1..1 MS
+* identifier contains dmedMedication 0..1 MS
 * identifier[dmedMedication].use 1..1 MS
 * identifier[dmedMedication].use = #official
 * identifier[dmedMedication].system 1..1 MS
