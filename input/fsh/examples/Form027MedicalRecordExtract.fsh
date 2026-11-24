@@ -181,7 +181,7 @@ Usage: #inline
 // that one carries DMED hospitalization ids (Forms 066, 003, 096 and the ServiceRequest below).
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number"
 * identifier[=].value = "2181164"
-// The visit the extract is written in: always ambulatory, whatever the referral type.
+// Class of the DMED medical case the extract is written in (is_inpatient_patient = false), not the referral type.
 * class = $v3-ActCode#AMB "ambulatory"
 * type[nationalType] = encounter-type-cs#mserv-0001-00004 "Treatment services"
 * subject = Reference(urn:uuid:02700002-1111-2222-3333-444444444444)

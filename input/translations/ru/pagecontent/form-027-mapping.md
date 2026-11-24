@@ -75,7 +75,7 @@
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Chilonzor tuman poliklinikasi |
 | Bemorning ro'yxatdan o'tish raqami | Регистрационный номер пациента | Patient.identifier[healthCardId], то же значение, что Med ID raqami | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-2026-00027 |
 | Tibbiy holat raqami | Номер случая (эпизода) DMED | Encounter.identifier: `medical_case_id` амбулаторного приёма в DMED. Не система номера медицинской карты: в ней передаются идентификаторы госпитализаций DMED | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` | 2181164 |
-| Bemor turi | Тип пациента | Печатается из `hospitalization_type` DMED, вида лечения по направлению: передаётся в ServiceRequest.orderDetail в "7. Последующие мероприятия". Encounter.class приёма всегда `AMB` | v3-ActCode | `AMB` "ambulatory" |
+| Bemor turi | Тип пациента | Печатается из `hospitalization_type` DMED, вида лечения по направлению: передаётся в ServiceRequest.orderDetail в "7. Последующие мероприятия". Encounter.class приёма `AMB`, или `IMP`, если случай DMED стационарный (`is_inpatient_patient`) | v3-ActCode | `AMB` "ambulatory" |
 | Murojaat sanasi | Дата подачи заявления | Encounter.actualPeriod.start | - | 2026-02-08T09:00:00+05:00 |
 | Chiqarilgan sana | Дата выписки | Encounter.actualPeriod.end | - | 2026-02-10T09:00:00+05:00 |
 

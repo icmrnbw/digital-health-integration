@@ -73,7 +73,7 @@ Section code: LOINC `LP74442-2` "Admission Information".
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Chilonzor tuman poliklinikasi |
 | Bemorning ro'yxatdan o'tish raqami | Регистрационный номер пациента | Patient.identifier[healthCardId], the same value as Med ID raqami | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-2026-00027 |
 | Tibbiy holat raqami | Номер случая (эпизода) DMED | Encounter.identifier: DMED `medical_case_id` of the outpatient visit. Not the medical record number system, which carries DMED hospitalization ids | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` | 2181164 |
-| Bemor turi | Тип пациента | Printed from DMED `hospitalization_type`, the treatment setting of the referral: sent in ServiceRequest.orderDetail in "7. Next steps". Encounter.class of the visit is always `AMB` | v3-ActCode | `AMB` "ambulatory" |
+| Bemor turi | Тип пациента | Printed from DMED `hospitalization_type`, the treatment setting of the referral: sent in ServiceRequest.orderDetail in "7. Next steps". Encounter.class of the visit is `AMB`, or `IMP` when the DMED medical case is inpatient (`is_inpatient_patient`) | v3-ActCode | `AMB` "ambulatory" |
 | Murojaat sanasi | Дата подачи заявления | Encounter.actualPeriod.start | - | 2026-02-08T09:00:00+05:00 |
 | Chiqarilgan sana | Дата выписки | Encounter.actualPeriod.end | - | 2026-02-10T09:00:00+05:00 |
 
