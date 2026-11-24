@@ -34,7 +34,7 @@ DMED 027-shaklning ayrim qiymatlarini o'z tokenlari bilan yuboradi. Ushbu Concep
 | DMED maydoni | ConceptMap | Qayerga |
 |----|----|----|
 | `disease_codes` kalitlari, tashxis kodining `type` qiymati (`main`, `additional`, `critical`, `background`, `competing`) | [dmed-form-027-diagnosis-type-cm](ConceptMap-dmed-form-027-diagnosis-type-cm.html) | Condition.category va [Diagnosis Role](CodeSystem-diagnosis-role-integration.html) dan mos tashxis quyi bo'limining kodi |
-| `hospitalization_type` (`ambulatory`, `hospitalTreatment`) | [dmed-form-027-hospitalization-type-cm](ConceptMap-dmed-form-027-hospitalization-type-cm.html) | Encounter.class |
+| `hospitalization_type` (`ambulatory`, `hospitalTreatment`) | [dmed-form-027-hospitalization-type-cm](ConceptMap-dmed-form-027-hospitalization-type-cm.html) | `treatment-setting` parametrining ServiceRequest.orderDetail.parameter.value qiymati |
 | Gospitalizatsiyaga yo'llanmaning `purpose[]` qiymati; `other_purpose_checked` belgilanganda `other_purpose` | [dmed-form-027-hospitalization-purpose-cm](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) | [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html) dan ServiceRequest.reason.concept |
 | Yo'llanma yaratadigan DMED gospitalizatsiya yozuvining `status` qiymati | [dmed-form-027-hospitalization-status-cm](ConceptMap-dmed-form-027-hospitalization-status-cm.html) | ServiceRequest.status |
 
@@ -75,7 +75,7 @@ Bo'lim kodi: LOINC `LP74442-2` "Admission Information".
 | Muassasa nomi | Наименование учреждения | Organization.name | - | Chilonzor tuman poliklinikasi |
 | Bemorning ro'yxatdan o'tish raqami | Регистрационный номер пациента | Patient.identifier[healthCardId], Med ID raqami bilan bir xil qiymat | `system` `https://dhp.uz/fhir/core/sid/pid/uz/hc`<br>`type` `HC` | HC-2026-00027 |
 | Tibbiy holat raqami | Номер случая (эпизода) DMED | Encounter.identifier: ambulator qabulning DMED `medical_case_id` qiymati. Tibbiy karta raqami tizimi emas: unda DMED gospitalizatsiya identifikatorlari yuboriladi | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` | 2181164 |
-| Bemor turi | Тип пациента | Encounter.class | v3-ActCode; DMED `hospitalization_type` [ConceptMap](ConceptMap-dmed-form-027-hospitalization-type-cm.html) bo'yicha | `AMB` "ambulatory" |
+| Bemor turi | Тип пациента | DMED `hospitalization_type` dan, ya'ni yo'llanma bo'yicha davolash turidan chop etiladi: "7. Keyingi tadbirlar" dagi ServiceRequest.orderDetail ga yuboriladi. Qabulning Encounter.class qiymati doim `AMB` | v3-ActCode | `AMB` "ambulatory" |
 | Murojaat sanasi | Дата подачи заявления | Encounter.actualPeriod.start | - | 2026-02-08T09:00:00+05:00 |
 | Chiqarilgan sana | Дата выписки | Encounter.actualPeriod.end | - | 2026-02-10T09:00:00+05:00 |
 
@@ -166,6 +166,7 @@ Bo'lim kodi: LOINC `74213-0` "Discharge instructions".
 | Gospitalizatsiya identifikatori | Идентификатор госпитализации | *(o'sha ServiceRequest)* identifier: yo'llanma yaratadigan DMED gospitalizatsiya identifikatori; qabul qiluvchi shifoxona 066, 003 va 096-shakllarda Encounter.identifier ga xuddi shu qiymatni yuboradi | `system` `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` | 20705 |
 | Yo'llangan muassasa | Учреждение, куда направлен пациент | *(o'sha ServiceRequest)* performer → Organization, DMED `clinic` | `taxId` `https://dhp.uz/fhir/core/sid/org/uz/soliq` | Toshkent shahar 1-son klinik shifoxonasi |
 | Bo'lim | Отделение | *(o'sha ServiceRequest)* performer → Organization (bo'lim, shifoxonaning `partOf`), DMED `planned_department` | `system` `https://dhp.uz/fhir/core/sid/uz/department-code` | 118, Pulmonologiya bo'limi |
+| Davolash turi | Вид лечения | *(o'sha ServiceRequest)* orderDetail.parameter: [Hospitalization Referral Order Parameter](CodeSystem-hospitalization-referral-order-parameter-cs.html) dan `treatment-setting` kodi, valueCodeableConcept v3-ActCode `AMB` yoki `IMP`; DMED `hospitalization_type` [ushbu ConceptMap](ConceptMap-dmed-form-027-hospitalization-type-cm.html) bo'yicha | v3-ActCode | `IMP` "inpatient encounter" |
 | Yo'llanma holati | Статус направления | *(o'sha ServiceRequest)* status | DMED `status` [ushbu ConceptMap](ConceptMap-dmed-form-027-hospitalization-status-cm.html) bo'yicha; rad etilgan yo'llanmaning `reject_reason` qiymati note.text ga | `active` |
 | Gospitalizatsiya maqsadi | Цель госпитализации | *(o'sha ServiceRequest)* reason.concept, har bir maqsad uchun bittadan; `other` uchun matn reason.concept.text ga | [Hospitalization Purpose](ValueSet-hospitalization-purpose-vs.html), DMED `purpose[]` [ushbu ConceptMap](ConceptMap-dmed-form-027-hospitalization-purpose-cm.html) bo'yicha | `treatment` "Davolash" |
 | Yotqazishga asos bo'lgan tashxis | Диагноз, обосновывающий госпитализацию | *(o'sha ServiceRequest)* reason.reference | Condition (asosiy tashxis) | J18.9 |

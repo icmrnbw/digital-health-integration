@@ -181,6 +181,7 @@ Usage: #inline
 // that one carries DMED hospitalization ids (Forms 066, 003, 096 and the ServiceRequest below).
 * identifier[0].system = "https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number"
 * identifier[=].value = "2181164"
+// The visit the extract is written in: always ambulatory, whatever the referral type.
 * class = $v3-ActCode#AMB "ambulatory"
 * type[nationalType] = encounter-type-cs#mserv-0001-00004 "Treatment services"
 * subject = Reference(urn:uuid:02700002-1111-2222-3333-444444444444)
@@ -416,6 +417,9 @@ Usage: #inline
 * performer[0] = Reference(urn:uuid:02700005-1111-2222-3333-444444444444)
 * performer[+] = Reference(urn:uuid:02700027-1111-2222-3333-444444444444)
 * code = $sct#32485007 "Hospital admission"
+// DMED hospitalization_type = hospitalTreatment (Bemor turi: statsionar)
+* orderDetail.parameter.code = hospitalization-referral-order-parameter-cs#treatment-setting "Davolash turi"
+* orderDetail.parameter.valueCodeableConcept = $v3-ActCode#IMP "inpatient encounter"
 * reason[0].concept = hospitalization-purpose-cs#treatment "Treatment"
 * reason[+].reference = Reference(urn:uuid:02700008-1111-2222-3333-444444444444)
 * note.text = "Plevral suyuqlik nazorati uchun pulmonologiya bo'limiga."
