@@ -28,29 +28,6 @@ Description: "Maps DMED `transporting_method` to `patient-transport-mobility-cs`
 * group[=].element[=].target[=].display = "Zambilda"
 * group[=].element[=].target[=].relationship = #equivalent
 
-Instance: dmed-form-003-readmission-same-reason-cm
-InstanceOf: ConceptMap
-Usage: #definition
-Title: "DMED Form 003 readmission_same_reason mapping"
-Description: "Maps DMED `readmission_same_reason` to `Encounter.admission.reAdmission`."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-003-readmission-same-reason-cm"
-* name = "DMEDForm003ReadmissionSameReasonCM"
-* status = #draft
-* experimental = false
-* publisher = "Uzinfocom"
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-readmission-same-reason-cs"
-* group[=].target = "https://terminology.dhp.uz/fhir/core/CodeSystem/re-admission-local-cs"
-* group[=].element[+].code = #"primary"
-* group[=].element[=].display = "первичная"
-* group[=].element[=].target[+].code = #"first-time"
-* group[=].element[=].target[=].display = "Birinchi marta"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[+].code = #"secondary"
-* group[=].element[=].display = "повторная"
-* group[=].element[=].target[+].code = #"repeat-current-year"
-* group[=].element[=].target[=].display = "Joriy yilda qayta"
-* group[=].element[=].target[=].relationship = #equivalent
-
 Instance: dmed-form-003-result-treatment-discharge-disposition-cm
 InstanceOf: ConceptMap
 Usage: #definition
@@ -125,61 +102,6 @@ Description: "Maps DMED `result_treatment` to `Encounter.admission.dischargeDisp
 * group[=].element[=].target[+].code = #"exp"
 * group[=].element[=].target[=].display = "Expired"
 * group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-
-Instance: dmed-form-003-result-treatment-subject-status-cm
-InstanceOf: ConceptMap
-Usage: #definition
-Title: "DMED Form 003 result_treatment to subject status"
-Description: "Maps DMED `result_treatment` to `Encounter.subjectStatus`."
-* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-003-result-treatment-subject-status-cm"
-* name = "DMEDForm003ResultTreatmentSubjectStatusCM"
-* status = #draft
-* experimental = false
-* publisher = "Uzinfocom"
-* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-result-treatment-cs"
-* group[=].target = "https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-local-subject-status-cs"
-* group[=].element[+].code = #"healthy"
-* group[=].element[=].display = "Выписан из больницы: здоров"
-* group[=].element[=].target[+].code = #"loc-cs-001"
-* group[=].element[=].target[=].display = "Tuzaldi"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[+].code = #"slight_improvement"
-* group[=].element[=].display = "Выписан из больницы: незначительное улучшение"
-* group[=].element[=].target[+].code = #"loc-cs-002"
-* group[=].element[=].target[=].display = "Ijobiy o'zgarish bilan"
-* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
-* group[=].element[+].code = #"no_change"
-* group[=].element[=].display = "Выписан из больницы: без изменений"
-* group[=].element[=].target[+].code = #"loc-cs-003"
-* group[=].element[=].target[=].display = "O'zgarishsiz"
-* group[=].element[=].target[=].relationship = #equivalent
-* group[=].element[+].code = #"discharged"
-* group[=].element[=].display = "Выписан"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"discharged_at_his_own_request"
-* group[=].element[=].display = "Выписан по собственному желанию"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"transferred_to_another_facility"
-* group[=].element[=].display = "Переведен в другое медицинское учреждение"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"deceased"
-* group[=].element[=].display = "Скончался"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"deceased_after_28_weeks"
-* group[=].element[=].display = "Скончалась после 28й недели беременности"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"deceased_after_childbirth"
-* group[=].element[=].display = "Скончалась после родов"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"deceased_before_28_weeks"
-* group[=].element[=].display = "Скончалась до 28й недели беременности"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"deceased_before_childbirth"
-* group[=].element[=].display = "Скончалась до родов"
-* group[=].element[=].noMap = true
-* group[=].element[+].code = #"deceased_in_er"
-* group[=].element[=].display = "Скончался(ась) в приемном покое"
-* group[=].element[=].noMap = true
 
 Instance: dmed-form-003-result-treatment-death-cm
 InstanceOf: ConceptMap
@@ -274,16 +196,35 @@ Description: "Maps DMED `analyses[].title` to the admission screening Observatio
 * publisher = "Uzinfocom"
 * group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-analyses-cs"
 * group[=].target = "http://loinc.org"
+// A legacy combined label does not identify two independently measured results.
 * group[=].element[+].code = #"blood"
 * group[=].element[=].display = "Крови (KW, СПИД и другие)"
-* group[=].element[=].target[+].code = #"22461-8"
-* group[=].element[=].target[=].display = "Reagin Ab [Presence] in Serum"
-* group[=].element[=].target[=].relationship = #source-is-broader-than-target
-* group[=].element[=].target[=].comment = "DMED records RW and HIV as one value."
-* group[=].element[=].target[+].code = #"56888-1"
-* group[=].element[=].target[=].display = "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"
-* group[=].element[=].target[=].relationship = #source-is-broader-than-target
-* group[=].element[=].target[=].comment = "DMED records RW and HIV as one value."
+* group[=].element[=].noMap = true
+// The RW title alone does not establish the analyte and serum specimen of LOINC 22461-8.
+* group[=].element[+].code = #"rw-1"
+* group[=].element[=].display = "RW I"
+* group[=].element[=].noMap = true
+// The RW title alone does not establish the analyte and serum specimen of LOINC 22461-8.
+* group[=].element[+].code = #"rw-2"
+* group[=].element[=].display = "RW II"
+* group[=].element[=].noMap = true
+// This title does not establish the analyte, specimen and method of LOINC 56888-1.
+* group[=].element[+].code = #"hiv"
+* group[=].element[=].display = "ВИЧ 1"
+* group[=].element[=].noMap = true
+// This title does not establish the analyte, specimen and method of LOINC 56888-1.
+* group[=].element[+].code = #"hiv_II"
+* group[=].element[=].display = "ВИЧ 2"
+* group[=].element[=].noMap = true
+// This title does not establish the analyte, specimen and method of LOINC 56888-1.
+* group[=].element[+].code = #"hiv_express"
+* group[=].element[=].display = "ВИЧ экспресс"
+* group[=].element[=].noMap = true
+* group[=].element[+].code = #"stool-culture"
+* group[=].element[=].display = "Бакпосев кала"
+* group[=].element[=].target[+].code = #"625-4"
+* group[=].element[=].target[=].display = "Bacteria identified in Stool by Culture"
+* group[=].element[=].target[=].relationship = #equivalent
 * group[=].element[+].code = #"feces_back_seeding"
 * group[=].element[=].display = "Бакпосев кала"
 * group[=].element[=].target[+].code = #"625-4"

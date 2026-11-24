@@ -12,17 +12,6 @@ Description: "Source tokens for transporting_method (how the patient is carried)
 * #"in_wheelchair" "в коляске"
 * #"on_stretcher" "на носилках"
 
-CodeSystem: DMEDForm003ReadmissionSameReasonCS
-Id: dmed-form-003-readmission-same-reason-cs
-Title: "DMED Form 003 readmission_same_reason"
-Description: "Source tokens for readmission_same_reason (hospitalization for the same disease during this year) on the DMED Form 003 title page."
-* ^url = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-003-readmission-same-reason-cs"
-* ^status = #draft
-* ^experimental = false
-* ^caseSensitive = true
-* #"primary" "первичная"
-* #"secondary" "повторная"
-
 CodeSystem: DMEDForm003ResultTreatmentCS
 Id: dmed-form-003-result-treatment-cs
 Title: "DMED Form 003 result_treatment"
@@ -70,3 +59,20 @@ Description: "Source tokens for analyses[].title (admission screening) on the DM
 * #"feces_back_seeding" "Бакпосев кала"
 * #"pediculosis" "Педикулез"
 * #"abstract_disease" "Абстрактные болезни"
+* #"rw-1" "RW I"
+* #"rw-2" "RW II"
+* #"hiv" "ВИЧ 1"
+* #"hiv_II" "ВИЧ 2"
+* #"hiv_express" "ВИЧ экспресс"
+* #"cbc" "Общий анализ крови"
+* #"hbsAg-1" "Гепатит Б"
+* #"hcv" "Гепатит С"
+* #"gonococcus" "Гонококк"
+* #"toxoplasmosis" "Токсоплазмоз"
+* #"general-urine-analysis" "Общий анализ мочи"
+* #"smear-analysis" "Анализ мазка"
+* #"stool-culture" "Бакпосев кала"
+* #"stool-analysis" "Анализ кала"
+* #"hemoglobin" "Гемоглобин"
+* #"antibody-titer" "Титр антител"
+* #"pcr-test" "ПЦР тест"
