@@ -48,7 +48,7 @@ Instance: dmed-form-027-hospitalization-type-cm
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "DMED Form 027 hospitalization_type mapping"
-Description: "Maps DMED `hospitalization_type` (Bemor turi, Form 027 item 2) to Encounter.class."
+Description: "Maps DMED `hospitalization_type` (Bemor turi, Form 027 item 2: the setting of the treatment the patient is referred for) to the value of the `hospitalization-referral-order-parameter-cs#treatment-setting` order detail of the Form 027 hospitalization request. It is not Encounter.class: Encounter.class is the class of the DMED medical case the referral is written in (`AMB`, or `IMP` when `is_inpatient_patient` is true)."
 * url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-027-hospitalization-type-cm"
 * name = "DMEDForm027HospitalizationTypeCM"
 * status = #draft
@@ -104,3 +104,66 @@ Description: "Maps the DMED diagnosis type to `diagnosis-role-integration`, sent
 * group[=].element[=].target[+].code = #"competing"
 * group[=].element[=].target[=].display = "Raqobat tashxis"
 * group[=].element[=].target[=].relationship = #equivalent
+
+Instance: dmed-form-027-hospitalization-status-cm
+InstanceOf: ConceptMap
+Usage: #definition
+Title: "DMED Form 027 hospitalization status mapping"
+Description: "Maps the DMED hospitalization `status` to ServiceRequest.status of the Form 027 hospitalization request. Until the patient is admitted and while the stay runs the request is `active`; once the stay has ended (completed, or the patient was transferred) it is `completed`; a rejected, cancelled or refused referral is `revoked`, with the DMED `reject_reason` in ServiceRequest.note."
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dmed-form-027-hospitalization-status-cm"
+* name = "DMEDForm027HospitalizationStatusCM"
+* status = #draft
+* experimental = false
+* publisher = "Uzinfocom"
+* group[+].source = "https://terminology.dhp.uz/fhir/integrations/CodeSystem/dmed-form-027-hospitalization-status-cs"
+* group[=].target = "http://hl7.org/fhir/request-status"
+* group[=].element[+].code = #"created"
+* group[=].element[=].display = "Создано"
+* group[=].element[=].target[+].code = #active
+* group[=].element[=].target[=].display = "Active"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"approved"
+* group[=].element[=].display = "Одобрено"
+* group[=].element[=].target[+].code = #active
+* group[=].element[=].target[=].display = "Active"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"confirmed"
+* group[=].element[=].display = "Подтверждено"
+* group[=].element[=].target[+].code = #active
+* group[=].element[=].target[=].display = "Active"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"in_progress"
+* group[=].element[=].display = "В процессе"
+* group[=].element[=].target[+].code = #active
+* group[=].element[=].target[=].display = "Active"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"completed"
+* group[=].element[=].display = "Завершено"
+* group[=].element[=].target[+].code = #completed
+* group[=].element[=].target[=].display = "Completed"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"provided"
+* group[=].element[=].display = "Завершено"
+* group[=].element[=].target[+].code = #completed
+* group[=].element[=].target[=].display = "Completed"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"transfered"
+* group[=].element[=].display = "Переведен"
+* group[=].element[=].target[+].code = #completed
+* group[=].element[=].target[=].display = "Completed"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"rejected"
+* group[=].element[=].display = "Отменено"
+* group[=].element[=].target[+].code = #revoked
+* group[=].element[=].target[=].display = "Revoked"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"canceled"
+* group[=].element[=].display = "Отменен"
+* group[=].element[=].target[+].code = #revoked
+* group[=].element[=].target[=].display = "Revoked"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
+* group[=].element[+].code = #"refused"
+* group[=].element[=].display = "Отказано"
+* group[=].element[=].target[+].code = #revoked
+* group[=].element[=].target[=].display = "Revoked"
+* group[=].element[=].target[=].relationship = #source-is-narrower-than-target
