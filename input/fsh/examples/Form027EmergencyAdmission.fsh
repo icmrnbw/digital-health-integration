@@ -48,7 +48,7 @@ Usage: #inline
 * identifier[+].system = "https://dhp.uz/fhir/core/sid/doc/uz/form-number"
 * identifier[=].value = "027"
 * status = #final
-* type.coding[0] = $composition-type-cs#emdoc-0010-0106 "Extract from inpatient medical record"
+* type.coding[0] = $composition-type-cs#emdoc-0010-0106
 * category[dhpCategory] = $composition-category-cs#Comp-001-0001 "Medical record"
 * category[formCategory] = $document-category-cs#form-027 "Extract from patient's medical record"
 * subject = Reference(urn:uuid:027b0002-1111-2222-3333-444444444444)

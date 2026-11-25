@@ -36,7 +36,7 @@ DMED 027-shaklni ikki joyda chop etadi. Variantga qarab Encounter nima ekani va 
 | DMED da qayerda | Gospitalizatsiya → Yangi yo'llanma | Qabul bo'limi → Bemorni yo'llanmasiz rasmiylashtirish |
 | Encounter | Ambulator qabul: `class` `AMB`, `identifier` = DMED `medical_case_id`, `https://dhp.uz/fhir/core/sid/doc/uz/medical-case-number` tizimida (ko'chirma qo'lda to'ldirilganda yo'q) | Gospitalizatsiyaning o'zi, 066, 003 va 096-shakllar yuboradigan Encounter: `class` `IMP`, `identifier` = DMED gospitalizatsiya identifikatori, `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number` tizimida |
 | Gospitalizatsiya ServiceRequest | Yuboriladi, `identifier` = DMED gospitalizatsiya identifikatori | Yuborilmaydi: bemor allaqachon yotqizilgan |
-| Composition.type | UZ Core ambulator ko'chirma kodi `emdoc-0010-0472` ni chiqarguncha `emdoc-0010-0106` | `emdoc-0010-0106` |
+| Composition.type | Ikkala variant uchun `emdoc-0010-0106`; AMB / IMP sharoiti Encounter.class orqali farqlanadi | `emdoc-0010-0106` |
 | Misol | [A variant](Bundle-example-form-027-medical-record-extract.html) | [B variant](Bundle-example-form-027-emergency-admission.html) |
 
 
@@ -69,7 +69,7 @@ DMED 027-shaklning ayrim qiymatlarini o'z tokenlari bilan yuboradi. Ushbu Concep
 | Hujjat UUID | Идентификатор документа | Composition.identifier | `urn:ietf:rfc:3986` | urn:uuid:861f9511-f30c-52e5-b827-557766550027 |
 | Shakl raqami | Номер формы | Composition.identifier | `https://dhp.uz/fhir/core/sid/doc/uz/form-number` | 027 |
 | Hujjat holati | Статус документа | Composition.status | [Hujjat holatlari](document-statuses.html): ko'chirma imzolangach `final`, keyingi tuzatishlar uchun `amended`, qaytarib olinganda `entered-in-error` | final |
-| Hujjat turi | Тип документа | Composition.type | [Composition Type](https://terminology.dhp.uz/fhir/core/ValueSet/composition-type-vs) `emdoc-0010-0106` "Extract from inpatient medical record", shuningdek LOINC `34133-9` "Summary of episode note" | - |
+| Hujjat turi | Тип документа | Composition.type | [Composition Type](https://terminology.dhp.uz/fhir/core/ValueSet/composition-type-vs) `emdoc-0010-0106` "Extract from patient medical record", shuningdek LOINC `34133-9` "Summary of episode note" | - |
 | Hujjat kategoriyasi | Категория документа | Composition.category | [Composition Category](https://terminology.dhp.uz/fhir/core/ValueSet/composition-category-vs) `Comp-001-0001` "Medical record" va [Document Category](CodeSystem-document-category-cs.html) `form-027` "Extract from patient's medical record" | - |
 | Bemor | Пациент | Composition.subject | [Patient](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-patient.html) | Yusupova Nilufar Rustamovna |
 | Murojaat yoki statsionarda davolanish | Обращение или пребывание в стационаре | Composition.encounter | [Encounter](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-encounter.html) | 2026-02-08 - 2026-02-10 |
