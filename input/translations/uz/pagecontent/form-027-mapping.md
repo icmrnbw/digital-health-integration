@@ -42,6 +42,8 @@ DMED 027-shaklni ikki joyda chop etadi. Variantga qarab Encounter nima ekani va 
 
 ---
 
+027-shakl DMEDda saqlanganda yuboriladi. Hujjatda shu saqlash paytidagi yo'llanma holati uzatiladi. Keyinchalik faqat yo'llanma holatining o'zgarishi kelishilgan hajmda 027-shaklni qayta yuborishni yoki ServiceRequest uchun alohida fon yangilanishini ishga tushirmaydi.
+
 ### DMED qiymatlarini moslashtirish
 
 DMED 027-shaklning ayrim qiymatlarini o'z tokenlari bilan yuboradi. Ushbu ConceptMap'lar har bir token uchun yuboriladigan kodni belgilaydi.

@@ -40,6 +40,8 @@ DMED prints Form 027 in two places. The variant decides what the Encounter is an
 
 ---
 
+Form 027 is sent when it is saved in DMED. The document carries the hospitalization request status available at that save. A subsequent change of the referral status alone does not trigger another Form 027 submission or a separate background ServiceRequest update in the agreed scope.
+
 ### DMED value mappings
 
 DMED sends some Form 027 values as its own tokens. These ConceptMaps give the code to send for each token.
