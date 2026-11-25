@@ -5,11 +5,13 @@ Title: "Cervical Cancer Screening Questionnaire"
 Description: "Example for Questionnaire for Cervical Cancer Screening"
 * url = "https://dhp.uz/fhir/integrations/Questionnaire/CervicalCancerScreeningQuestionnaire"
 * identifier[0].system = $screening-program-type-id
-* identifier[0].value = "171149006"
+* identifier[0].value = "mserv-0007-00009"
 * name = "CervicalCancerScreeningQuestionnaire"
 * version = "1.0.0"
 * language = #uz
 * status = #active
+* useContext[0].code = $usage-context-type#program
+* useContext[0].valueCodeableConcept = $integration-area#screening
 * subjectType = #Patient
 * title = "Bachadon bo'yni saratonini erta aniqlash bo'yicha so'rovnoma"
 * title.extension[$translation-extension][+]
@@ -25,6 +27,13 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
 * description.extension[$translation-extension][+]
   * extension[lang].valueCode = #en
   * extension[content].valueString = "Questionnaire for collecting medical history and cervical cancer risk factors within the national screening program."
+* code = $sct#171149006 "Screening for malignant neoplasm of cervix"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Bachadon bo'yni saratoni skriningi"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #ru
+    * extension[content].valueString = "Скрининг рака шейки матки"
 
 * item[+]
   * linkId = "menstrual-cycle"
@@ -566,15 +575,18 @@ Description: "Example for Questionnaire for Cervical Cancer Screening"
   * required = true
   * repeats = false
 
-Instance: example-cervical-cancer-screening-questionnaire-response
+Instance: example-cervical-screening-response
 InstanceOf: UZCoreQuestionnaireResponse
 Usage: #example
 Title: "Bachadon bo'yni saratoni skriningi so'rovnomasiga javob namunasi"
 Description: "Bemor tomonidan to'ldirilgan bachadon bo'yni saratoni skriningi so'rovnomasining namunaviy javobi"
 
 * questionnaire = Canonical(CervicalCancerScreeningQuestionnaire)
+* identifier[0].system = $screening-program-type-id
+* identifier[0].value = "mserv-0007-00009"
+* meta.source = "https://dhp.uz/fhir/source/dmed"
 * status = #completed
-* subject = Reference(example-salim)
+* subject = Reference(lola-oripova)
 * authored = "2026-07-01T14:30:00+05:00"
 * language = #uz
 

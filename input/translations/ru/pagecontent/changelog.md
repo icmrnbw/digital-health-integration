@@ -1,6 +1,248 @@
 ### В разработке
 
-(Пока без изменений)
+#### Добавлено
+
+Диспансерный учёт: добавлены [расширение характера заболевания](StructureDefinition-disease-nature.html), пять значений DMED `disease_nature` и соответствующие коды DHP (`chr-0128-0001`–`chr-0128-0005`), ValueSet и ConceptMap. [Пример Condition](Condition-example-dispensary-condition.html) передаёт значение расширения; [пример EpisodeOfCare](EpisodeOfCare-example-dispensary-episode-of-care.html) использует согласованную роль диагноза `final`.
+
+#### Изменено
+
+Страницы руководства оформлены в стиле [документации DHP для разработчиков](https://docs.dhp.uz/ru/): шрифты Onest и JetBrains Mono, зелёные цвета и логотип DHP, обновлённые шапка, меню, таблицы, примечания и блоки кода с кнопкой копирования. Меню темы в шапке переключает светлую, тёмную тему или тему как в системе.
+
+[Форма 027](StructureDefinition-form-027-medical-record-extract-composition.html) использует `emdoc-0010-0106` для выписок и из амбулаторной, и из стационарной карты, а различает их `Encounter.class` (`AMB` или `IMP`). Фиксированный `type` больше не содержит прежнее название "Extract from inpatient medical record".
+
+### Версия 0.13.1
+
+#### Добавлено
+
+[Orders](orders.html): добавлены профили направлений и задач согласования, терминология, основания государственного финансирования и критерии SBDL, правовые основания оплаты, примеры госпитализации и разделов выписного документа. Функциональность PR UZ Core #402 перенесена в Integrations; документация доступна на английском, русском и узбекском.
+
+### Версия 0.13.0
+
+#### Добавлено
+
+[Blood Donor Eligibility Flag](StructureDefinition-blood-donor-eligibility-flag.html) на основе [UZ Core Flag](https://dhp.uz/fhir/core/ru/StructureDefinition-uz-core-flag.html) фиксирует, может ли донор сдавать кровь или он временно или постоянно отведён; есть примеры [допуска](Flag-example-blood-donor-eligible.html), [временного](Flag-example-blood-donor-temporary-deferral.html) и [постоянного](Flag-example-blood-donor-permanent-deferral.html) отвода. У отвода расширение `workflow-reason` содержит причину из локальной кодовой системы [причин отвода](CodeSystem-donor-deferral-reason-cs.html) ([ValueSet](ValueSet-donor-deferral-reason-vs.html)).
+
+[Blood Service Registration Observation](StructureDefinition-blood-service-registration-observation.html) на основе UZ Core Observation фиксирует регистрацию человека в службе крови как донора или реципиента. Оно содержит регистрационный номер, пациента, дату и время, Encounter и исполнителя. Срезы компонентов передают категорию донора, оплату и вид донации для донора и диагноз по МКБ-10 для реципиента; регистрация реципиента не может содержать компоненты донора. Примеры охватывают кадрового донора, резервного донора и реципиента, с Encounter регистрации и регистратором Practitioner для реципиента.
+
+Сопутствующая терминология: кодовая система [типов наблюдений службы крови](CodeSystem-blood-service-observation-type-cs.html) для типов регистрации ([ValueSet](ValueSet-blood-service-registration-type-vs.html)) и кодов компонентов, набор значений [категории донора](ValueSet-donor-category-vs.html) (SNOMED CT `275561000` для кадрового донора, локальный [код](CodeSystem-donor-category-cs.html) для резервного), локальная кодовая система [оплаты донации](CodeSystem-donation-compensation-cs.html) ([ValueSet](ValueSet-donation-compensation-vs.html)), набор значений SNOMED CT [вид донации](ValueSet-donation-type-vs.html), а также [переводы](CodeSystem-blood-service-snomed-translations-cs.html) кодов SNOMED CT на узбекский и русский. Регистрационный номер использует новую систему идентификаторов [номера регистрации в службе крови](NamingSystem-blood-registration-number-system.html) `https://dhp.uz/fhir/core/sid/doc/uz/blood-registration`.
+
+[Blood ServiceRequest](StructureDefinition-blood-servicerequest.html) оформляет отдельные исследования, панели и операции переработки; добавлены фиксированные системы номеров назначения и донации, subject Patient или Location, BloodLabCodesVS и BloodComponentProcessingCS, коды SNOMED CT для переработки и 15 примеров.
+
+[Blood Transfusion Assessment Observation](StructureDefinition-blood-transfusion-assessment-observation.html) фиксирует пробы на совместимость по ABO, по Rh-Hr и биологическую пробу между реципиентом и одной единицей крови с результатами в SNOMED CT, а [Blood Recipient History Observation](StructureDefinition-blood-recipient-history-observation.html) - трансфузионный и акушерский анамнез реципиента, на который она опирается.
+
+[Анкета донора](forms.html#donor-questionnaire) содержит 35 вопросов на узбекском, русском и английском языках, [заполненный пример ответа](QuestionnaireResponse-example-donor-questionnaire-response.html) с пациентом и [шаг на странице Blood Service](blood-service.html#interviewing) о том, какие ответы могут привести к отводу. Используется кодовая система причин отвода из спецификации службы крови. Контекст программы группирует анкету на странице опросников.
+
+[Поиск](search.html), который открывается из нового поля в шапке страницы, находит ресурсы по заголовку, имени, URL или описанию, а также коды, термины и сопоставления в системах кодов, наборах значений и ConceptMap на английском, русском и узбекском языках. Результаты можно отфильтровать по типу ресурса.
+
+Страница [Blood Service](blood-service.html) описывает работу службы крови, от регистрации и обследования донора до забора, компонентов, запасов, поставки и трансфузии, через профили UZ Core и [Blood Service Registration Observation](StructureDefinition-blood-service-registration-observation.html). Она описывает объём и гематокрит компонента, осложнения донации и трансфузии, отчёты об остатках, групповые запросы на поставку и выдачу единиц реципиентам.
+
+[Форма 003 - медицинская карта стационарного больного](StructureDefinition-form-003-inpatient-medical-record-composition.html) профилирована как FHIR-документ, охватывающий административные и личные сведения, поступление, осмотр при поступлении, первичный осмотр, план и результаты обследования, диагнозы, операции, листы назначений и процедур, температурный лист, течение болезни, исход лечения, временную нетрудоспособность, патологоанатомическое заключение и ответственных лиц в 20 разделах Composition. Для неё есть пример документа-Bundle и [страница пополевого сопоставления](form-003-mapping.html). Сопутствующая терминология: локальные кодовые системы [метода анестезии](CodeSystem-anesthesia-method-cs.html), [обстоятельств смерти](CodeSystem-death-context-cs.html), [больничной диеты](CodeSystem-hospital-diet-type-cs.html), [способа транспортировки пациента](CodeSystem-patient-transport-mobility-cs.html) и [трудоспособности](CodeSystem-work-capacity-status-cs.html), каждая со своим набором значений, а также коды [наблюдений](CodeSystem-form-003-observation-code-cs.html) и [разделов](CodeSystem-form-003-section-cs.html) Формы 003.
+
+[Форма 027, выписка из медицинской карты пациента](StructureDefinition-form-027-medical-record-extract-composition.html), профилирована как FHIR-документ: регистрационные и личные данные, адрес, направление и диагноз, клинические данные, лечение и рекомендации, последующие мероприятия и ответственные лица в 8 разделах Composition. К ней прилагаются пример документа (Bundle) и [страница пополевого сопоставления](form-027-mapping.html). В кодовую систему [категорий документов](CodeSystem-document-category-cs.html) добавлен код `form-027`.
+
+[Форма 044, медицинская справка для выезжающих за границу](StructureDefinition-form-044-travel-clearance-composition.html), описана как FHIR-документ: личные данные, перенесённые инфекционные заболевания, заключение комиссии о допуске к выезду со страной назначения и сроком командировки, место жительства и председатель и члены комиссии в 5 разделах Composition. В комплекте пример документа (Bundle) и [страница пополевого сопоставления](form-044-mapping.html). Номер справки использует новую систему идентификаторов [номера медицинской справки](NamingSystem-medical-certificate-number-system.html) `https://dhp.uz/fhir/core/sid/doc/uz/medical-certificate-number`, в кодовую систему [категорий документов](CodeSystem-document-category-cs.html) добавлен код `form-044`, а локальные [коды наблюдений Формы 044](CodeSystem-form-044-observation-code-cs.html) описывают заключение о допуске к выезду и срок командировки.
+
+#### Изменено
+
+Composition для [Форма 011](StructureDefinition-form-011-hemodialysis-composition.html), [Форма 066](StructureDefinition-form-066-hospital-discharge-composition.html), [Форма 066-1](StructureDefinition-form-066-1-psychiatric-discharge-composition.html) и [Форма 130](StructureDefinition-form-130-laboratory-test-results-composition.html) больше не фиксируют `status` как `final`, поэтому документ может проходить [жизненный цикл](document-statuses.html) через `preliminary`, `amended` и `entered-in-error`.
+
+JSON-копия ресурса на каждом языке теперь сохраняет остальные языки в расширениях `translation`, как в пакете; раньше в JSON по ссылкам с английских, русских и узбекских страниц они удалялись.
+
+Записи CarePlan в Composition [Форма 111](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) ссылаются на UZ Core CarePlan, а не на любой CarePlan.
+
+Кодировки ICHI в примере Формы 066 указывают версию ICHI `2026.9.17`, а кодировка ICCC-3 в примере [Cancer Condition](StructureDefinition-cancer-condition.html) - версию `0.13.0`, как требует UZ Core 0.13.0.
+
+На каждой странице Questionnaire ссылка, которая открывала форму в NLM form viewer, теперь открывает её на странице [вопросников](forms.html), и страницы гепатита, скрининга рака шейки матки и молочной железы и Формы 096 ссылаются на вопросники туда же. Примеры ответов на вопросники риска скрининга ссылаются на вопросники без версии.
+
+Набор значений [характеристик околоплодных вод](ValueSet-amniotic-fluid-characteristic-vs.html) и дополнение SNOMED CT Формы 096 используют актуальное отображение `Amniotic fluid clear` для `168090003`.
+
+Руководство зависит от [UZ Core 0.13.0](https://dhp.uz/fhir/core/changelog.html). [Narcology and Psychiatry Flag](StructureDefinition-narcology-psychiatry-flag.html) основан на [UZ Core Flag](https://dhp.uz/fhir/core/ru/StructureDefinition-uz-core-flag.html), а [Sick Leave CarePlan](StructureDefinition-sick-leave-careplan.html) - на [UZ Core CarePlan](https://dhp.uz/fhir/core/ru/StructureDefinition-uz-core-careplan.html). Локальные `flag-status-cs` и `flag-status-vs` удалены: статус флага использует набор значений UZ Core [Flag status](https://dhp.uz/fhir/core/ru/ValueSet-flag-status-vs.html) с теми же кодами HL7.
+
+#### Документация
+
+Каждая страница сопоставления формы ссылается на свой том [обзора форм](forms-overview.html) и даёт ссылку на профиль только при первом упоминании. Заголовки таблиц на странице [гепатита](hepatitis.html) совпадают с другими страницами интеграций.
+
+[Обзор форм](forms-overview.html) и страницы его 11 томов вместе с диаграммами доступны на русском и узбекском языках.
+
+Страницы сопоставления [Формы 066](form-066-mapping.html) и [Формы 097](form-097-mapping.html) относят номер медицинской карты к Encounter.identifier с системой `https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number`, как в примерах, а не к Composition.identifier.
+
+### Версия 0.12.1
+
+#### Изменено
+
+Наборы значений [формы 097](form-097-mapping.html) и [формы 111](form-111-mapping.html) ссылаются на свои дополнения SNOMED CT и LOINC, поэтому их коды отображаются на русском и узбекском.
+
+Организации в примерах [формы 097](form-097-mapping.html) идентифицируются по ИНН Soliq, как и в примерах других форм начиная с 0.12.0. Medication витамина K - UZ Core Medication с кодом МНН, а документ датирован выпиской.
+
+Записи раздела профилактики и иммунизации [формы 097](StructureDefinition-form-097-newborn-development-composition.html) ссылаются на [UZ Core Immunization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-immunization.html) вместо любого Immunization, поэтому прививки в форме 097 соответствуют UZ Core.
+
+Системы кодов и наборы значений оценки компонентов Апгар, базового цвета кожи новорождённого и места ухода за новорождённым (`apgar-component-score-cs`, `newborn-skin-color-basic-cs`, `newborn-care-location-cs` и их наборы значений `-vs`) удалены. Ни один профиль к ним не привязан: форма 097 кодирует оценку по Апгар кодом LOINC, а цвет кожи - из [Newborn Skin Color Detailed](ValueSet-newborn-skin-color-detailed-vs.html).
+
+Записи регистрационного раздела [формы 111](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) также могут быть [UZ Core Socioeconomic Observation](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-socioeconomic-observation.html). В [Previous Pregnancy Outcome](ValueSet-form111-previous-pregnancy-outcome-vs.html) добавлен выкидыш (SNOMED CT `17369002`). [Сопоставление формы 111](form-111-mapping.html) описывает жизненный цикл Composition.status: `preliminary`, пока карта открыта, `final` после её закрытия, `amended` для последующих исправлений и `entered-in-error`, если карта отозвана как ошибочная. [Номер индивидуальной карты беременной](NamingSystem-antenatal-card-number-system.html) передаётся в EpisodeOfCare.identifier, а не в Encounter.identifier.
+
+### Версия 0.12.0
+
+#### Добавлено
+
+[Форма 111 - индивидуальная карта беременной и родильницы](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) профилирована как FHIR-документ, охватывающий постановку на учёт, диагноз, исход беременности, анамнез, осмотры, повторные визиты, подготовку к родам, патронажные визиты, оценку перинатального риска и заключения специалистов в 16 разделах Composition. Для неё есть пример документа-Bundle и [страница пополевого сопоставления](form-111-mapping.html).
+
+[История родов, форма 096](StructureDefinition-form-096-maternity-medical-record-composition.html), профилирована как документ FHIR: поступление, медицинский и акушерский анамнез, текущая беременность, акушерский осмотр, течение родов, запись о новорождённом, послеродовой период, назначения лекарств, исследований и процедур, использованные материалы, листки нетрудоспособности и ответственные лица - в 13 разделах Composition. Добавлены примеры документов, в том числе с антенатальной и интранатальной гибелью плода, и [страница сопоставления полей](form-096-mapping.html). Поля, общие с формой 111, используют те же коды, что и в форме 111. Каждый новорождённый - отдельный Patient, который идентифицируется номером медкарты DMED, пока у него нет ПИНФЛ; форма 097 использует тот же Patient и добавляет ПИНФЛ, когда он выдан.
+
+[Медицинская карта развития новорождённого, форма 097](StructureDefinition-form-097-newborn-development-composition.html), профилирована как документ FHIR: сведения о матери и антенатальный анамнез, роды, первичный осмотр новорождённого, вскармливание, ежедневное наблюдение и осмотр врача, масса тела, профилактика и иммунизация, скрининг, выписка, перевод или смерть - в 11 разделах Composition. Добавлены примеры документов, в том числе с живорождением и мертворождением, и [страница сопоставления полей](form-097-mapping.html).
+
+Для ролей пользователей [Канцер-регистра](cancer.html) добавлены [система кодов](CodeSystem-cancer-registry-roles-cs.html) и [ConceptMap](ConceptMap-cancer-registry-role-to-dhp-position-cm.html) на коды должностей и профессий UZ Core: системный администратор, регистратор, администратор учреждения и исследователь.
+
+Терминология скрининга получила переводы на узбекский и русский. Наборы значений скрининга ссылаются на новое [дополнение SNOMED CT](CodeSystem-screening-snomed-translations-cs.html) на 202 концепта, а [дополнение LOINC](CodeSystem-screening-laboratory-cs.html) выросло с 3 до 41 кода. Его коды жидкостной цитологии и ВПЧ теперь называют само исследование, а не взятие мазка.
+
+#### Изменено
+
+Руководство собирается на [UZ Core 0.12.0](https://dhp.uz/fhir/core/changelog.html). Его единственное несовместимое изменение, система идентификатора сертификата специалиста, это руководство не затрагивает. UZ Core теперь сам переводит код действия `order-service`, поэтому собственное дополнение кодов действий здесь удалено.
+
+Организации в примерах [формы 066](form-066-mapping.html), [формы 066-1](form-066-1-mapping.html) и [формы 111](form-111-mapping.html) идентифицируются по ИНН Soliq в срезе `taxId` профиля UZ Core Organization (`https://dhp.uz/fhir/core/sid/org/uz/soliq`). Локальная система идентификаторов [кода организации](NamingSystem-organization-code.html) `https://dhp.uz/fhir/core/sid/uz/organization-code` выведена из употребления: её канонический URL сохраняется, но в новых данных её использовать не следует.
+
+#### Несовместимые изменения
+
+Заключения кольпоскопии в [скрининге рака шейки матки](cervical-breast-cancer-screening.html) кодируются в SNOMED CT, где в нём есть такой концепт. В локальной [системе кодов кольпоскопии](CodeSystem-screening-colposcopy-cs.html) остались только два заключения, которых нет в SNOMED CT, под новыми кодами, а в [наборе значений](ValueSet-screening-colposcopy-vs.html) появились три заключения, которых раньше не было. Отправители меняют код, а для строк SNOMED CT и систему:
+
+| Заключение | Старый код | Новый код |
+|---|---|---|
+| NILM (норма) | `scr-colpo-1` | SNOMED CT `373887005` |
+| LSIL | `scr-colpo-2` | SNOMED CT `416030007` |
+| HSIL | `scr-colpo-3` | SNOMED CT `22725004` |
+| Атипичное изменение | `scr-colpo-4` | `scrn-0091-00004` |
+| ASC-H | - | SNOMED CT `373878001` |
+| CIN 1 | - | SNOMED CT `285836003` |
+| CIN 2+ | - | `scrn-0091-00007` |
+
+#### Документация
+
+[Обзор форм](forms-overview.html) раскладывает формы первичной медицинской документации приказа Минздрава № 399 по его 11 томам и по повторяющимся типам документов, общим для томов, со страницей и диаграммой на каждый том. Он доступен только на английском.
+
+Строки идентификаторов на страницах маппинга [формы 066-1](form-066-1-mapping.html) и [гепатита](hepatitis.html) указывают систему и тип каждого идентификатора.
+
+Пример ответа на опросник скрининга рака шейки матки теперь называется [example-cervical-screening-response](QuestionnaireResponse-example-cervical-screening-response.html), так как прежний id был слишком длинным для пакета.
+
+### Версия 0.11.1
+
+#### Добавлено
+
+Раздел [Планы скрининга и приглашения](cervical-breast-cancer-screening.html#screening-plans) на странице скрининга описывает, как программа скрининга приглашает пациента и ведёт его план на существующих профилях UZ Core, без собственных новых профилей. UZ Core ActivityDefinition служит шаблоном приглашения (`kind` = `ServiceRequest`, `intent` = `plan`), UZ Core PlanDefinition закрепляет его с версией, а план пациента - это UZ Core ServiceRequest с `intent` = `plan`, категорией приглашения на скрининг и одним идентификатором программы. Статусом плана управляет МИС: DMED завершает свой план после сохранения опросника, а ВПЧ держит план активным между раундами скрининга. DHP не выводит завершение плана из результатов.
+
+#### Изменено
+
+Руководство собирается на [UZ Core 0.11.1](https://dhp.uz/fhir/core/changelog.html), где ActivityDefinition `kind` допускает ServiceRequest.
+
+В [Screening Pathology Service Request](StructureDefinition-screening-pathology-service-request.html) `basedOn` допускает 1..* вместо 1..1, а в [Screening Immunohistochemistry Observation](StructureDefinition-screening-immunohistochemistry-observation.html) `basedOn` - 0..* вместо 0..1, чтобы ссылаться и на клиническое направление, и на план скрининга. Существующие ресурсы остаются валидными.
+
+[ScreeningComposition](StructureDefinition-screening-composition.html) выведен из употребления (retired). Новые процессы скрининга его не используют, но канонический URL, структура и примеры сохранены, поэтому документы, которые ВПЧ продолжает отправлять, по-прежнему проходят проверку.
+
+#### Несовместимые изменения
+
+Опросники DMED по скринингу рака [молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html) и [шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html) содержат идентификаторы программ `mserv-0007-00007` и `mserv-0007-00009` вместо `268547008` и `171149006`, которые теперь обозначают только программы скрининга ВПЧ. Их клинические коды и подсчёт баллов не изменились.
+
+#### Документация
+
+На странице [скрининга рака шейки матки и молочной железы](cervical-breast-cancer-screening.html) идентификатор программы описан коротким списком: где он указывается и какие есть исключения, а связь плана скрининга с записью показана на отдельной схеме. На основной схеме скрининга исправлены кардинальности `basedOn`.
+
+### Версия 0.11.0
+
+#### Изменено
+
+Руководство собирается на [UZ Core 0.11.0](https://dhp.uz/fhir/core/changelog.html). Из его несовместимых изменений это руководство затрагивает только удаление кодов скрининга, и скрининговые опросники ниже уже перешли с них на SNOMED CT.
+
+Скрининговые опросники теперь содержат `Questionnaire.code` в SNOMED CT - тот же концепт, что и в идентификаторе типа программы: [предтестовая вероятность ИБС](Questionnaire-IhdPretestQuestionnaire.html), [фертильность](Questionnaire-FertilityQuestionnaire.html), [гельминтозы](Questionnaire-HelminthScreeningQuestionnaire.html), [риск сердечно-сосудистых заболеваний](Questionnaire-CVDRiskScreeningQuestionnaire.html), [сахарный диабет](Questionnaire-DiabetesScreeningQuestionnaire.html), [рак молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html), [онкогематология](Questionnaire-OncohematologyScreeningQuestionnaire.html) и [рак шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html). Ранее они содержали код из `screening-code-cs` UZ Core, который UZ Core 0.11.0 удаляет в пользу SNOMED CT. [Цереброваскулярный](Questionnaire-CerebrovascularScreeningQuestionnaire.html) опросник сохраняет `screening-code-cs#mserv-0007-00003`, так как подходящего концепта SNOMED CT для него нет.
+
+Для идентификатора [типа скрининговой программы](NamingSystem-screening-program-type-identifier-system.html) помимо кодов SNOMED CT и `mserv-0007-00003` теперь описано третье значение - `breast-cervical-unspecified`. Его записывает система скрининга ВПЧ на ресурс, созданный в рамках скрининга рака молочной железы и шейки матки, но который нельзя отнести ни к одной из программ: Condition, чей код МКБ-10 не входит ни в один из списков программ или входит в оба, и направление в филиал РСНПМЦОиР или РСНПМЦЗМиР. Такой ресурс содержит ровно один идентификатор типа программы.
+
+#### Документация
+
+На страницах [онкологии](cancer.html) и [гепатита](hepatitis.html) появилась схема связей между ресурсами. Схемы на страницах остальных интеграций теперь включают все профили интеграции (кроме итогового документа скрининга ScreeningComposition), а ошибочные кратности исправлены. Все схемы показывают клинический граф, без ссылок на организации, медработников и других участников.
+
+### Версия 0.10.0
+
+#### Добавлено
+
+[Онкологический регистр](cancer.html) теперь представлен моделью FHIR, построенной по образцу [mCODE](https://hl7.org/fhir/us/mcode/STU4/) там, где это позволяют данные регистра. [Cancer Condition](StructureDefinition-cancer-condition.html) содержит диагноз, идентификатор регистра, латеральность и обстоятельства выявления, [Cancer Episode Of Care](StructureDefinition-cancer-episode-of-care.html) объединяет курс лечения, а [Cancer Encounter](StructureDefinition-cancer-encounter.html) - визит в его рамках. Шесть профилей Observation фиксируют морфологию и поведение опухоли, степень дифференцировки, метастазы, категории TNM и стадию TNM.
+
+Для кодирования используются ICD-10, ICD-O-3, SNOMED CT и LOINC там, где они есть, а локальные системы кодов - для понятий регистра, таких как обстоятельства выявления, метод подтверждения и цель лечения. Три ConceptMap переводят собственные справочные идентификаторы регистра для статуса, ICD-10 и топографии ICD-O-3 в коды, которые ожидает DHP.
+
+У регистра гепатитов тоже есть модель: [Hepatitis Patient](StructureDefinition-hepatitis-patient.html), [Condition](StructureDefinition-hepatitis-condition.html), [Episode Of Care](StructureDefinition-hepatitis-episode-of-care.html), [Encounter](StructureDefinition-hepatitis-encounter.html), профили Observation для лабораторных и ультразвуковых исследований, а также [Questionnaire](StructureDefinition-hepatitis-questionnaire.html) и [ответ на него](StructureDefinition-hepatitis-questionnaire-response.html) для опросника лечения - вместо непрофилированных примеров, которые поставлялись в 0.9.0. Записи несут идентификатор регистра в системе `https://dhp.uz/fhir/core/sid/reg/uz/hepatitis`. [Сопоставление регистра гепатитов](hepatitis.html) описывает каждое поле.
+
+Код операции в [выписной карте формы 066](form-066-mapping.html) теперь код ICHI. [Form 066 Surgical Procedure](StructureDefinition-form-066-surgical-procedure.html) профилирует Procedure, на который ссылается раздел хирургических вмешательств, и привязывает `Procedure.code` к [ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html). Раньше раздел принимал любой Procedure.
+
+[ICHI Codes Accepted by DMED](ValueSet-dmed-ichi-vs.html) перечисляет 6 853 кода, которые есть в DMED: 6 176 из 9 428 стержневых кодов, публикуемых ВОЗ сейчас, плюс 677 кодов, которые ВОЗ с тех пор убрала. Убранные помечены `inactive` в [системе кодов](https://dhp.uz/fhir/core/CodeSystem-who-ichi.html) и допускаются здесь, чтобы записи, уже имеющиеся в DMED, оставались валидными, но использовать их в дальнейшем не следует. Процедуру, которую платформа кодирует сама, выбирают из [ICHI Codes](https://dhp.uz/fhir/core/ValueSet-ichi-vs.html) в UZ Core.
+
+[Категории риска по предтестовой вероятности ИБС](CodeSystem-ihd-risk-category-cs.html) теперь публикуются здесь. [Опросник предтестовой вероятности ИБС](Questionnaire-IhdPretestQuestionnaire.html) уже использовал их в ответах на вопрос о категории риска, но под каноническим URL UZ Core, которого нет ни в одном релизе UZ Core.
+
+#### Изменено
+
+Гайд собирается на основе [UZ Core 0.10.0](https://dhp.uz/fhir/core/changelog.html), где публикуется система кодов ICHI, нужная форме 066, и привязка `Procedure.code` ослаблена до extensible.
+
+Опросники по [сахарному диабету](Questionnaire-DiabetesScreeningQuestionnaire.html), [онкогематологии](Questionnaire-OncohematologyScreeningQuestionnaire.html), [раку молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html), [раку шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html) и [фертильности](Questionnaire-FertilityQuestionnaire.html) теперь содержат `Questionnaire.code` из `screening-code-cs` UZ Core, как уже содержали остальные четыре скрининговых опросника.
+
+[Ответ на опросник фертильности с установленным бесплодием](QuestionnaireResponse-example-fertility-questionnaire-response-infertility.html) показывает два диагноза по МКБ-10, каждый из которых записан отдельным Condition ([первый](Condition-example-fertility-infertility-condition.html), [второй](Condition-example-fertility-infertility-condition-2.html)), чей `evidence` ссылается на этот ответ.
+
+Опросники по [сахарному диабету](Questionnaire-DiabetesScreeningQuestionnaire.html) и [сердечно-сосудистому риску](Questionnaire-CVDRiskScreeningQuestionnaire.html) теперь подсчитывают баллы по тем ответам, которые в них действительно есть. Опросник диабета сравнивал возраст, окружность талии и семейный анамнез с кодами, которых нет ни в одном варианте ответа, поэтому эти вопросы всегда давали 0 баллов; опросник сердечно-сосудистого риска сравнивал курение с устаревшим локальным кодом, поэтому курящие искались в половине таблицы ВОЗ/МОАГ для некурящих. Ответы не изменились.
+
+Версии всех артефактов имеют вид `MAJOR.MINOR.PATCH`. [Опросник скрининга сахарного диабета](Questionnaire-DiabetesScreeningQuestionnaire.html) и [шаблон скринингового анкетирования](Questionnaire-screening-intake-template.html) объявляли версии `1.0` и `1.1`; теперь они объявляют `1.0.0` и `1.1.0`.
+
+Каждый опросник теперь указывает интеграцию, к которой относится, в контексте использования `program`: у девяти скрининговых опросников и опросника по гепатиту его не было, и на странице [опросников](forms.html) они оставались без группы. В [Integration Area](CodeSystem-integration-area-cs.html) добавлен код `hepatitis`, а `screening` теперь охватывает всю скрининговую службу, а не только скрининг рака шейки матки и молочной железы.
+
+#### Несовместимые изменения
+
+Системы идентификаторов Скрининга теперь следуют шаблону `https://dhp.uz/fhir/core/sid/{namespace}/{country}/{type}`. У двух из них не было сегмента пространства имён, а идентификатор случая общественного здравоохранения находился в пространстве организаций, хотя идентифицирует случаи, а не организации. Записи и случаи перенесены в пространство `doc`, тип программы - в общую систему программ `prg`, которую любая программа здравоохранения может использовать со своим значением. Значения идентификаторов не меняются; отправителям нужно сменить систему:
+
+| Идентификатор | Прежняя система | Новая система |
+|---|---|---|
+| [Запись Скрининга](NamingSystem-screening-identifier-system.html) | `https://dhp.uz/fhir/core/sid/uz/screening` | `https://dhp.uz/fhir/core/sid/doc/uz/screening` |
+| [Случай общественного здравоохранения](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) | `https://dhp.uz/fhir/core/sid/org/uz/screening` | `https://dhp.uz/fhir/core/sid/doc/uz/screening-case` |
+| [Тип программы скрининга](NamingSystem-screening-program-type-identifier-system.html) | `https://dhp.uz/fhir/core/sid/uz/screening-program-type` | `https://dhp.uz/fhir/core/sid/prg/uz/program` |
+
+Система имён для ПИНФЛ Узбекистана удалена. ПИНФЛ - это национальный идентификатор, который UZ Core уже определяет как `https://dhp.uz/fhir/core/sid/pid/uz/ni`; передавайте его в этой системе вместо `https://dhp.uz/fhir/core/sid/uz/pinfl`.
+
+Вопрос `infertility-icd-diagnosis` опросника фертильности теперь имеет тип `coding` с привязкой к МКБ-10 и допускает несколько ответов вместо свободного текста `string`. Ответы должны передавать по одному `valueCoding` на каждый диагноз вместо `valueString`.
+
+Коды категорий риска ИБС `low`, `medium` и `high` сохраняются, но их система меняется с `https://terminology.dhp.uz/fhir/core/CodeSystem/ihd-risk-category-cs` на `https://terminology.dhp.uz/fhir/integrations/CodeSystem/ihd-risk-category-cs`.
+
+### Версия 0.9.0
+
+#### Добавлено
+
+Девять скрининговых опросников, используемых DMed, опубликованы как определения: [риск сердечно-сосудистых заболеваний](Questionnaire-CVDRiskScreeningQuestionnaire.html), [цереброваскулярная патология](Questionnaire-CerebrovascularScreeningQuestionnaire.html), [сахарный диабет](Questionnaire-DiabetesScreeningQuestionnaire.html), [предтестовая вероятность ИБС](Questionnaire-IhdPretestQuestionnaire.html), [онкогематология](Questionnaire-OncohematologyScreeningQuestionnaire.html), [рак молочной железы](Questionnaire-BreastCancerScreeningQuestionnaire.html), [рак шейки матки](Questionnaire-CervicalCancerScreeningQuestionnaire.html), [гельминтозы](Questionnaire-HelminthScreeningQuestionnaire.html) и [фертильность](Questionnaire-FertilityQuestionnaire.html). Каждый подсчитывает ответы через `calculatedExpression` из SDC и относит сумму к категории риска - [рак молочной железы](CodeSystem-breast-cancer-risk-category-cs.html), [цереброваскулярная патология](CodeSystem-cerebrovascular-risk-category-cs.html), [сердечно-сосудистые заболевания](CodeSystem-cvd-risk-category-cs.html) и [сахарный диабет](CodeSystem-diabetes-risk-category-cs.html), - определяющей рекомендуемое наблюдение. Опросник сердечно-сосудистого риска и его категории риска перенесены сюда из UZ Core 0.9.0.
+
+Терминология ответов для них включает ответы цереброваскулярного опросника об [артериальном давлении](CodeSystem-cerebrovascular-blood-pressure-status-cs.html), [холестерине](CodeSystem-cerebrovascular-cholesterol-status-cs.html), [сахарном диабете](CodeSystem-cerebrovascular-diabetes-status-cs.html), [заболеваниях сердца](CodeSystem-cerebrovascular-heart-condition-cs.html), [семейном анамнезе](CodeSystem-cerebrovascular-family-history-cs.html), [курении](CodeSystem-cerebrovascular-smoking-status-cs.html), [алкоголе и стрессе](CodeSystem-cerebrovascular-alcohol-stress-level-cs.html) и [физической активности](CodeSystem-cerebrovascular-physical-activity-cs.html), [тип боли в груди при ИБС](CodeSystem-ihd-chest-pain-type-cs.html), а также наборы значений ответов о [сахарном диабете](ValueSet-screening-diabetes-vs.html), [употреблении табака](ValueSet-cvd-tobacco-use-vs.html), [раке шейки матки](ValueSet-cervical-cancer-screening-questionnaire-vs.html) и [фертильности](ValueSet-fertility-questionnaire-vs.html); последние три кодируются в SNOMED CT с узбекскими обозначениями.
+
+Ресурсы, относящиеся к одной скрининговой программе, теперь несут идентификатор из новой системы имён [типа скрининговой программы](NamingSystem-screening-program-type-identifier-system.html) со значением кода программы в SNOMED CT. Его записывают и DMed, и система скрининга ВПЧ на клинических и рабочих ресурсах, но не на Patient, Practitioner и PractitionerRole.
+
+Патоморфологическое заключение получило локальные коды на то, чего нет в SNOMED CT: подтипы [морфологии при гистологии шейки матки](CodeSystem-screening-cervical-histology-morphology-cs.html), типы материала при [биопсии шейки матки](CodeSystem-screening-cervical-material-type-cs.html) и [цитологии молочной железы](CodeSystem-screening-breast-cytology-material-type-cs.html), а также [типы хирургических вмешательств на молочной железе](CodeSystem-screening-breast-surgical-procedure-type-cs.html). [Гистологический тип опухоли молочной железы](ValueSet-screening-breast-histologic-type-vs.html) пополнился восемью подтипами.
+
+Скрининговые опросники теперь указывают интеграцию, из которой они происходят, в контексте использования `program` с кодом из [области интеграции](ValueSet-integration-area-vs.html): запрос `GET [base]/Questionnaire?context-type-value=program$https://terminology.dhp.uz/fhir/integrations/CodeSystem/integration-area-cs|screening` возвращает формы одной службы, а страница [опросников](forms.html) группирует список форм так же.
+
+#### Изменено
+
+Локальные коды заменены кодами SNOMED CT везде, где есть подходящее понятие, а локальным кодовым системам оставлен остаток: четыре составных описания цвета и консистенции в [типе выделений из влагалища](ValueSet-screening-vaginal-discharge-type-vs.html), один код в [характере мочеиспускания](ValueSet-screening-urination-characteristic-vs.html), IV степень в [степени ожирения](ValueSet-screening-obesity-degree-vs.html) и «относительно удовлетворительное» в [общем состоянии](ValueSet-screening-general-condition-vs.html); состояние [подмышечных](ValueSet-screening-ultrasound-axillary-node-status-vs.html) и [интрамаммарных лимфоузлов](ValueSet-screening-ultrasound-intramammary-node-status-vs.html) теперь целиком из SNOMED CT.
+
+Наборы значений расширены ответами, которых не хватало исходным формам: по одному понятию SNOMED CT в [оценке при пальпации молочной железы](ValueSet-screening-breast-palpation-assessment-vs.html) и [исходе беременности](ValueSet-screening-pregnancy-outcome-vs.html), «не изменено» и «выражена» в [ретромаммарном пространстве](CodeSystem-screening-ultrasound-retromammary-space-cs.html) и [подкожной жировой клетчатке](CodeSystem-screening-ultrasound-subcutaneous-fat-cs.html), шесть обозначений в дополнениях [участков тела](CodeSystem-screening-body-site-cs.html) и [диагностических процедур](CodeSystem-screening-diagnostic-procedure-cs.html).
+
+Дополнение LOINC [лабораторных исследований скрининга](CodeSystem-screening-laboratory-cs.html) теперь объявляет версию 2.82.0 вместо 2.82.
+
+Из примера пациента с гепатитом убрано гражданство: `iso-3166-2-vs` в UZ Core объявляет обязательное дополнение к `urn:iso:std:iso:3166`, которого нет ни в одном FHIR-пакете, поэтому валидатор отклоняет любой экземпляр, связанный с этим набором. Гражданство вернётся, когда набор значений в core будет исправлен.
+
+Руководство теперь собирается на [UZ Core 0.9.0](https://dhp.uz/fhir/core/changelog.html). Ни одно из его несовместимых изменений этого руководства не затрагивает.
+
+#### Несовместимые изменения
+
+`meta` и `meta.source` теперь 1..1 и Must Support в профилях [Screening Composition](StructureDefinition-screening-composition.html), [DiagnosticReport](StructureDefinition-screening-diagnostic-report.html), [DocumentReference](StructureDefinition-screening-document-reference.html), [Observation](StructureDefinition-screening-observation.html) и [ServiceRequest](StructureDefinition-screening-service-request.html), а инвариант требует `https://dhp.uz/fhir/source/screening` или `https://dhp.uz/fhir/source/dmed`, указывающего создавшую ресурс систему. Существующие экземпляры должны его добавить.
+
+Код врача акушера-гинеколога в [ролях скрининга](CodeSystem-screening-roles-cs.html) сокращён с `his_centre_obstetrics_gynecology_obstetrician_gynecologist` до `his_centre_obgyn_obstetrician_gynecologist`.
+
+Локальные коды, покрытые SNOMED CT, удалены и должны быть переведены: `scrn-0019-00003`, `scrn-0019-00005`, `scrn-0019-00006` и `scrn-0019-00008` (выделения из влагалища), `scrn-0016-00001`, `scrn-0016-00002` и `scrn-0016-00003` (мочеиспускание), `scrn-0048-00001` и `scrn-0048-00002` (состояние подмышечных лимфоузлов). [Степень ожирения](ValueSet-screening-obesity-degree-vs.html) также сменила допустимые понятия SNOMED CT с `162864005` и `83911000119104` на `443371000124107`, `443381000124105` и `819948005`.
+
+#### Документация
+
+Страницы [скрининга](cervical-breast-cancer-screening.html), [туберкулёза](dhis-tuberculosis.html), [наркологии](narcology.html), [психиатрии](psychiatry.html) и [листа нетрудоспособности](sick-leave.html) теперь открываются диаграммой модели ресурсов - на каждом из трёх языков.
+
+Пункт меню и заголовок страницы «Формы» переименованы в «Опросники».
 
 ### Версия 0.8.0
 
@@ -8,7 +250,7 @@
 
 ##### Наркология
 
-Теперь охвачен [наркологический регистр](narcology.html). [Narcology EpisodeOfCare](StructureDefinition-narcology-episode-of-care.html) - это регистрация пациента, несущая группу динамического наблюдения, в которую он помещён, [Narcology Observation](StructureDefinition-narcology-observation.html) - решение врачебно-консультативной комиссии, а [Narcology and Psychiatry Flag](StructureDefinition-narcology-psychiatry-flag.html) - сведения регистра, которые медицинский работник должен знать до начала лечения пациента, такие как социальная опасность или принудительное лечение. Группы наблюдения кодируются [группами типов эпизода](ValueSet-narcology-psychiatry-episode-of-care-type-group-vs.html), а флаги - кодами [флагов регистра](ValueSet-narcology-psychiatry-registry-flag-vs.html) и [статусов флага](ValueSet-flag-status-vs.html); каждая из этих систем сопоставлена с SNOMED CT: [группы типов](ConceptMap-narcology-psychiatry-episode-of-care-type-group-to-snomed.html), [флаги регистра](ConceptMap-narcology-psychiatry-registry-flag-to-snomed.html) и [типы ресурсов](ConceptMap-type-resource-to-snomed.html).
+Теперь охвачен [наркологический регистр](narcology.html). [Narcology EpisodeOfCare](StructureDefinition-narcology-episode-of-care.html) - это регистрация пациента, несущая группу динамического наблюдения, в которую он помещён, [Narcology Observation](StructureDefinition-narcology-observation.html) - решение врачебно-консультативной комиссии, а [Narcology and Psychiatry Flag](StructureDefinition-narcology-psychiatry-flag.html) - сведения регистра, которые медицинский работник должен знать до начала лечения пациента, такие как социальная опасность или принудительное лечение. Группы наблюдения кодируются [группами типов эпизода](ValueSet-narcology-psychiatry-episode-of-care-type-group-vs.html), а флаги - кодами [флагов регистра](ValueSet-narcology-psychiatry-registry-flag-vs.html) и [статусов флага](https://dhp.uz/fhir/core/ru/ValueSet-flag-status-vs.html); каждая из этих систем сопоставлена с SNOMED CT: [группы типов](ConceptMap-narcology-psychiatry-episode-of-care-type-group-to-snomed.html), [флаги регистра](ConceptMap-narcology-psychiatry-registry-flag-to-snomed.html) и [типы ресурсов](ConceptMap-type-resource-to-snomed.html).
 
 ##### Психиатрия
 
@@ -24,7 +266,7 @@
 
 Шестьдесят кодовых систем и сто шесть наборов значений обеспечивают всю необходимую для этого терминологию. У УЗИ молочной железы есть набор значений для каждого описываемого параметра - от [состава молочной железы по ACR](ValueSet-screening-ultrasound-acr-composition-vs.html) и [эхогенности фиброгландулярной ткани](ValueSet-screening-ultrasound-fibroglandular-echogenicity-vs.html) через [форму](ValueSet-screening-ultrasound-lesion-shape-vs.html), [контур](ValueSet-screening-ultrasound-lesion-contour-vs.html), [эхогенность](ValueSet-screening-ultrasound-lesion-echogenicity-vs.html), [ориентацию](ValueSet-screening-ultrasound-lesion-orientation-vs.html) и [васкуляризацию](ValueSet-screening-ultrasound-lesion-vascularization-vs.html) образования до состояния [подмышечных](ValueSet-screening-ultrasound-axillary-node-status-vs.html) и [регионарных лимфоузлов](ValueSet-screening-ultrasound-regional-node-status-vs.html). Патоморфологическое заключение покрывают [гистологический тип опухоли молочной железы](ValueSet-screening-breast-histologic-type-vs.html), [степень дифференцировки при гистологии шейки матки](ValueSet-screening-cervical-histologic-grade-vs.html), патологические стадии [T](ValueSet-screening-pathological-t-vs.html), [N](ValueSet-screening-pathological-n-vs.html) и [M](ValueSet-screening-pathological-m-vs.html), [состояние края резекции](ValueSet-screening-resection-margin-status-vs.html), [лимфоваскулярная инвазия](ValueSet-screening-histology-lymphovascular-invasion-vs.html), [балл HER2 по иммуногистохимии](ValueSet-screening-her2-ihc-score-vs.html), [результат p16](ValueSet-screening-p16-result-vs.html) и [Йокогамская категория](ValueSet-screening-yokohama-category-vs.html). У гинекологического осмотра свои наборы, среди них [состояние шейки матки](ValueSet-screening-cervix-condition-vs.html), [выделения из влагалища](ValueSet-screening-vaginal-discharge-type-vs.html) и [пролапс стенок влагалища](ValueSet-screening-vaginal-wall-prolapse-vs.html), а у каждого вопроса опросников оценки риска есть набор значений для его ответов.
 
-Четыре системы имён описывают идентификаторы, которыми обменивается Скрининг, - [идентификатор опросника](NamingSystem-ScreeningQuestionnaireIdNamingSystem.html) и [код опросника](NamingSystem-ScreeningQuestionnaireCodeNamingSystem.html), присваиваемые определению опросника, идентификатор [случая общественного здравоохранения](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) и исходный идентификатор [формы 025](NamingSystem-ScreeningForm025IdNamingSystem.html), - а вместе с ними добавлена система имён для [ПИНФЛ Узбекистана](NamingSystem-UzbekistanPinflNamingSystem.html).
+Четыре системы имён описывают идентификаторы, которыми обменивается Скрининг, - [идентификатор опросника](NamingSystem-ScreeningQuestionnaireIdNamingSystem.html) и [код опросника](NamingSystem-ScreeningQuestionnaireCodeNamingSystem.html), присваиваемые определению опросника, идентификатор [случая общественного здравоохранения](NamingSystem-ScreeningPublicHealthCaseNamingSystem.html) и исходный идентификатор [формы 025](NamingSystem-ScreeningForm025IdNamingSystem.html), - а вместе с ними добавлена система имён для ПИНФЛ Узбекистана.
 
 #### Изменено
 

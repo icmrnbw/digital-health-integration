@@ -1,6 +1,6 @@
 CodeSystem: DMEDDispensaryDiseaseNatureCS
 Id: dmed-dispensary-disease-nature-cs
-Title: "DMED Dispensary Disease Nature CodeSystem"
+Title: "DMED dispensary disease nature"
 Description: "Disease nature values exactly as DMED sends them in the `disease_nature` field of a dispensary registration record. [dmed-dispensary-disease-nature-to-dhp](ConceptMap-dmed-dispensary-disease-nature-to-dhp.html) translates them to DHP codes."
 * insert OriginalCodeSystemDraft(dmed-dispensary-disease-nature-cs)
 

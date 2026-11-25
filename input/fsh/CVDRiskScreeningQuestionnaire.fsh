@@ -9,6 +9,8 @@ Description: "Example for CVD Risk Screening Questionnaire"
 * name = "CVDRiskScreeningQuestionnaire"
 * language = #uz
 * status = #draft
+* useContext[0].code = $usage-context-type#program
+* useContext[0].valueCodeableConcept = $integration-area#screening
 * publisher = "Ministry of Health of the Republic of Uzbekistan"
 * subjectType = #Patient
 * title = "Yurak-qon tomir kasalliklari xavfini erta aniqlash skriningi"
@@ -25,13 +27,13 @@ Description: "Example for CVD Risk Screening Questionnaire"
   * extension[$translation-extension][+]
     * extension[lang].valueCode = #en
     * extension[content].valueString = "Questionnaire for DMed during patient visit: age, sex, weight, height, BMI, blood pressure and tobacco use."
-* code[+] = $screening-code-cs#mserv-0007-00005 "Yurak-qon tomir kasalliklari xavfini erta aniqlash so'rovnomasi"
+* code[+] = $sct#300007000 "Screening for cardiovascular system disease"
+  * display.extension[$translation-extension][+]
+    * extension[lang].valueCode = #uz
+    * extension[content].valueString = "Yurak-qon tomir tizimi kasalliklari skriningi"
   * display.extension[$translation-extension][+]
     * extension[lang].valueCode = #ru
-    * extension[content].valueString = "Опросник раннего выявления риска сердечно-сосудистых заболеваний"
-  * display.extension[$translation-extension][+]
-    * extension[lang].valueCode = #en
-    * extension[content].valueString = "Early Detection Questionnaire for Cardiovascular Disease Risk"
+    * extension[content].valueString = "Скрининг заболеваний сердечно-сосудистой системы"
 
 // Question 1: Age (years)
 * item[+]
@@ -267,7 +269,7 @@ Description: "Example for CVD Risk Screening Questionnaire"
   * extension[$variable][=].valueExpression.expression = "iif(%sexcode = 'male', 0, iif(%sexcode = 'female', 1, {}))"
   * extension[$variable][+].valueExpression.name = #smkIdx
   * extension[$variable][=].valueExpression.language = #"text/fhirpath"
-  * extension[$variable][=].valueExpression.expression = "iif(%smk = 'scrn-0073-00002', 1, 0)"
+  * extension[$variable][=].valueExpression.expression = "iif(%smk = '110483000', 1, 0)"
   * extension[$variable][+].valueExpression.name = #idx
   * extension[$variable][=].valueExpression.language = #"text/fhirpath"
   * extension[$variable][=].valueExpression.expression = "((((%sexIdx * 2 + %smkIdx) * 7 + %ageIdx) * 5 + %sbpIdx) * 5 + %bmiIdx)"

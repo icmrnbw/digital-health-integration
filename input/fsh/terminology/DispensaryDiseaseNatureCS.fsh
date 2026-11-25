@@ -1,6 +1,6 @@
 CodeSystem: DispensaryDiseaseNatureCS
 Id: dispensary-disease-nature-cs
-Title: "Dispensary Disease Nature CodeSystem"
+Title: "Dispensary disease nature"
 Description: "Nature of the disease recorded when a patient is placed under dispensary observation. Carried on the diagnosis through the [Disease Nature extension](StructureDefinition-disease-nature.html)."
 * insert OriginalCodeSystemDraft(dispensary-disease-nature-cs)
 

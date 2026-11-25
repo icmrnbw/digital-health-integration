@@ -6,7 +6,6 @@ Description: "Composition profile for Form 066 hospital discharge statistical ca
 
 
 * identifier 1..*
-* status = #final
 * type = $loinc#18842-5 "Discharge summary"
 * category 1..1
 * category = $document-category-cs#form-066 "Hospital discharge statistical card"
@@ -123,7 +122,7 @@ Description: "Composition profile for Form 066 hospital discharge statistical ca
 * section[surgicalProcedures].code 1..1
 * section[surgicalProcedures].code = $loinc#29554-3 "Procedure Narrative"
 * section[surgicalProcedures].entry 1..*
-* section[surgicalProcedures].entry only Reference(Procedure)
+* section[surgicalProcedures].entry only Reference(Form066SurgicalProcedure)
 
 * section[laboratoryResults].title 1..1
 * section[laboratoryResults].code 1..1
