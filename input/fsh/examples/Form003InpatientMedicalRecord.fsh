@@ -553,7 +553,7 @@ Usage: #inline
 * subject = Reference(urn:uuid:00300002-0000-0000-0000-000000000000)
 * encounter = Reference(urn:uuid:00300003-0000-0000-0000-000000000000)
 * effectiveDateTime = "2026-02-08T10:00:00+05:00"
-* valueQuantity = 5760 'min' "minutes"  // row 36a: source duration, without category rounding
+* valueInteger = 5760  // row 36a: the DMED number as sent, no unit
 
 Instance: condition-003-referral-dx
 InstanceOf: UZCoreCondition
