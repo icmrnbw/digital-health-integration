@@ -20,7 +20,7 @@ Description: "Salim's active dispensary observation for thalassaemia, opened by 
 Usage: #example
 
 * status = #active
-* type[serviceType] = $episode-of-care-type#mserv-0001-00004 "Treatment services"
+* type[serviceType] = $episode-of-care-type#mserv-0001-00001 "Preventive services"
 * diagnosis[0].condition = Reference(Condition/example-dispensary-condition)
 * diagnosis[0].use = $encounter-diagnosis-use-cs#final "Final"
 * patient = Reference(example-salim)

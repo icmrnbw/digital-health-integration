@@ -2,7 +2,7 @@
 
 #### Qo'shildi
 
-Dispanser hisobi uchun [kasallik xususiyati kengaytmasi](StructureDefinition-disease-nature.html), DMED `disease_nature` maydonining beshta qiymati va DHP kodlari (`chr-0128-0001`–`chr-0128-0005`), ValueSet va ConceptMap qo'shildi. [Condition misoli](Condition-example-dispensary-condition.html) moslashtirilgan qiymatni, [EpisodeOfCare misoli](EpisodeOfCare-example-dispensary-episode-of-care.html) esa tashxisning kelishilgan `final` rolini ko'rsatadi.
+Dispanser hisobi uchun [kasallik xususiyati kengaytmasi](StructureDefinition-disease-nature.html), DMED `disease_nature` maydonining beshta qiymati va DHP kodlari (`chr-0128-0001`–`chr-0128-0005`), ValueSet va ConceptMap qo'shildi. [Condition misoli](Condition-example-dispensary-condition.html) moslashtirilgan qiymatni, [EpisodeOfCare misoli](EpisodeOfCare-example-dispensary-episode-of-care.html) esa profilaktik xizmatlar (`mserv-0001-00001`) va tashxisning kelishilgan `final` rolini ko'rsatadi.
 
 #### O'zgartirildi
 
