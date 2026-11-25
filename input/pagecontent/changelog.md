@@ -8,11 +8,19 @@ For the DMED integration, Form 003 adds code systems for the DMED title page tok
 
 #### Changed
 
+[Blood Service Operations](CodeSystem-blood-component-processing-cs.html), formerly Blood component processing operations, adds a code for blood product quality control.
+
+[Blood ServiceRequest](StructureDefinition-blood-servicerequest.html) adds active, completed and revoked blood product quality control examples and an expeditor PractitionerRole example.
+
 Form 003 now accepts partial source documents: its clinical sections and diagnosis roles are optional while the header and supplied-content constraints remain. A [partial example](Bundle-example-form-003-partial-inpatient-medical-record.html) demonstrates this. The mapping preserves raw duration values without an assigned unit, a separate hospitalization reason and the same-condition annual total including the current stay. Card number and examination date retain their source meanings. By the agreed DMED mapping, Encounter.length carries the day count rounded up, while actualPeriod retains the source admission and discharge timestamps. The death conclusion uses LOINC `47046-8` (Summary of Death Note), rather than an autopsy report. The DMED export is limited to fields in its Form 003 and the agreed shared Form 066 data; separate treatment-course prescriptions and administrations are excluded. Title-page temperature, free-text treatment and date-only analysis results are distinguished from the broader paper-form tables. Undated title-page height, weight and temperature are preserved in narrative so missing measurement dates do not invalidate the document. The pediculosis screening retains its source item code rather than a disorder code, and the clinical-course note is section narrative rather than an Observation result.
 
 [Form 027](StructureDefinition-form-027-medical-record-extract-composition.html) uses `emdoc-0010-0106` for both outpatient and inpatient extracts, and `Encounter.class` (`AMB` or `IMP`) tells them apart. The fixed `type` no longer carries the old display "Extract from inpatient medical record".
 
 The guide's pages use the look of the [DHP developer documentation](https://docs.dhp.uz/): Onest and JetBrains Mono fonts, DHP green colours and logo, and a restyled header, menu, tables, notes and code blocks, which now have a copy button. A theme menu in the header switches between light, dark and the system setting.
+
+#### Documentation
+
+[Blood Donor Eligibility Flag](StructureDefinition-blood-donor-eligibility-flag.html) shows how to record lifting a deferral early: the flag is set to `inactive` and a Provenance records who lifted it and why ([example](Provenance-example-blood-donor-deferral-lifted-provenance.html)).
 
 ### Version 0.13.1
 
