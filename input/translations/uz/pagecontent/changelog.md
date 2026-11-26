@@ -6,6 +6,8 @@
 
 [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) GTIN va Asl Belgisi kodlarini alohida identifikatorlarda uzatadi; berish hodisasining kaliti faqat DMED identifikatoridir. Berishdan bosh tortish `declined` holati va sabab kodi bilan uzatiladi.
 
+[Prescription Provenance](StructureDefinition-prescription-provenance.html) UZ Core DeviceRequest’ga ham havola qila oladi — bachadon ichi tizimiga retsept uchun.
+
 [Farmatsevtika qo'mitasi reyestri dori shakllari xaritasi](ConceptMap-pharmcom-registry-dose-form-to-medication-doseform-cm.html) reyestrning 650 ta dori shaklini UZ Core dori shakllari bilan bog'laydi.
 
 [Farmatsevtika qo'mitasi reyestri faol moddalar xaritasi](ConceptMap-pharmcom-registry-substance-to-inn-cm.html) INN kodlari bor preparatlardagi 1 802 ta [reyestr faol moddasidan](CodeSystem-pharmcom-registry-substance-cs.html) 1 426 tasini, tuzlar va gidratlar bilan birga, `Medication.ingredient` uchun UZ Core INN kodlari bilan bog'laydi.

@@ -10,6 +10,8 @@ The [Pharmaceutical Committee registry substance map](ConceptMap-pharmcom-regist
 
 [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) carries the source-reported GTIN and Asl Belgisi package codes as separate identifiers; only the DMED dispense identifier is the event key. A refusal to dispense is sent with status `declined` and a coded reason.
 
+[Prescription Provenance](StructureDefinition-prescription-provenance.html) can also target a UZ Core DeviceRequest, for a prescription of an intrauterine system.
+
 The [Prescription integration](prescription.html) describes how DMED sends electronic prescriptions, dispenses and administrations to DHP, with six Prescription profiles. ConceptMaps translate the DMED prescription type, status, INN, dose form, route, intake timing, frequency period and cancellation reason to UZ Core and international codes. Only mappings without doubt are published, so a DMED value without one is rejected until it is reviewed.
 
 #### Changed

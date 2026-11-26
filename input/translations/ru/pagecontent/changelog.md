@@ -12,6 +12,8 @@
 
 [Prescription MedicationDispense](StructureDefinition-prescription-medication-dispense.html) передаёт GTIN и коды Асл белгиси отдельными идентификаторами; ключ выдачи — только ID DMED. Отказ в отпуске передаётся со статусом `declined` и кодом причины.
 
+[Prescription Provenance](StructureDefinition-prescription-provenance.html) может ссылаться и на UZ Core DeviceRequest — для рецепта на внутриматочную систему.
+
 #### Изменено
 
 Страницы руководства оформлены в стиле [документации DHP для разработчиков](https://docs.dhp.uz/ru/): шрифты Onest и JetBrains Mono, зелёные цвета и логотип DHP, обновлённые шапка, меню, таблицы, примечания и блоки кода с кнопкой копирования. Меню темы в шапке переключает светлую, тёмную тему или тему как в системе.
