@@ -6,9 +6,17 @@ Dispensary registration adds the [Disease nature extension](StructureDefinition-
 
 #### Changed
 
+[Blood Service Operations](CodeSystem-blood-component-processing-cs.html), formerly Blood component processing operations, adds a code for blood product quality control.
+
+[Blood ServiceRequest](StructureDefinition-blood-servicerequest.html) adds active, completed and revoked blood product quality control examples and an expeditor PractitionerRole example.
+
 [Form 027](StructureDefinition-form-027-medical-record-extract-composition.html) uses `emdoc-0010-0106` for both outpatient and inpatient extracts, and `Encounter.class` (`AMB` or `IMP`) tells them apart. The fixed `type` no longer carries the old display "Extract from inpatient medical record".
 
 The guide's pages use the look of the [DHP developer documentation](https://docs.dhp.uz/): Onest and JetBrains Mono fonts, DHP green colours and logo, and a restyled header, menu, tables, notes and code blocks, which now have a copy button. A theme menu in the header switches between light, dark and the system setting.
+
+#### Documentation
+
+[Blood Donor Eligibility Flag](StructureDefinition-blood-donor-eligibility-flag.html) shows how to record lifting a deferral early: the flag is set to `inactive` and a Provenance records who lifted it and why ([example](Provenance-example-blood-donor-deferral-lifted-provenance.html)).
 
 ### Version 0.13.1
 
